@@ -52,7 +52,7 @@
             this.txtPRI = new System.Windows.Forms.TextBox();
             this.lblBarcode = new System.Windows.Forms.Label();
             this.pbLogout = new System.Windows.Forms.PictureBox();
-            this.txtCID = new System.Windows.Forms.TextBox();
+            this.txtCategoryId = new System.Windows.Forms.TextBox();
             this.pbExit = new System.Windows.Forms.PictureBox();
             this.pcRight = new System.Windows.Forms.PictureBox();
             this.pnlRightMain = new System.Windows.Forms.Panel();
@@ -62,19 +62,19 @@
             this.tabCategory = new DevExpress.XtraTab.XtraTabControl();
             this.xCategory = new DevExpress.XtraTab.XtraTabPage();
             this.GbPersonal = new DevExpress.XtraEditors.GroupControl();
-            this.cmbIMG = new System.Windows.Forms.ComboBox();
+            this.cmbProductImage = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dkpREG = new System.Windows.Forms.DateTimePicker();
-            this.imgCAT = new System.Windows.Forms.PictureBox();
+            this.dkpDateRegister = new System.Windows.Forms.DateTimePicker();
+            this.imgCategoryImage = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtDET = new System.Windows.Forms.TextBox();
+            this.txtCategoryDetails = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCOD = new System.Windows.Forms.TextBox();
+            this.txtCategoryCode = new System.Windows.Forms.TextBox();
             this.xImage = new DevExpress.XtraTab.XtraTabPage();
             this.GProfileImage = new DevExpress.XtraEditors.GroupControl();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtIID = new System.Windows.Forms.TextBox();
+            this.txtImageId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.gImageList = new DevExpress.XtraEditors.GroupControl();
             this.gIMG = new DevExpress.XtraGrid.GridControl();
@@ -85,12 +85,12 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.txtCGD = new System.Windows.Forms.TextBox();
-            this.bntLOD = new System.Windows.Forms.Button();
+            this.txtImageCode = new System.Windows.Forms.TextBox();
+            this.bntImageImport = new System.Windows.Forms.Button();
             this.label46 = new System.Windows.Forms.Label();
-            this.txtNGM = new System.Windows.Forms.TextBox();
-            this.txtLGC = new System.Windows.Forms.TextBox();
-            this.imgPRO = new System.Windows.Forms.PictureBox();
+            this.txtImageName = new System.Windows.Forms.TextBox();
+            this.txtImageLocation = new System.Windows.Forms.TextBox();
+            this.imgImagePreview = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.XtrAuthAccount = new DevExpress.XtraTab.XtraTabPage();
             this.GuserAccount = new DevExpress.XtraEditors.GroupControl();
@@ -135,7 +135,7 @@
             this.xCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GbPersonal)).BeginInit();
             this.GbPersonal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCAT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCategoryImage)).BeginInit();
             this.xImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GProfileImage)).BeginInit();
             this.GProfileImage.SuspendLayout();
@@ -146,7 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPRO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgImagePreview)).BeginInit();
             this.XtrAuthAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GuserAccount)).BeginInit();
             this.GuserAccount.SuspendLayout();
@@ -473,16 +473,16 @@
             this.pbLogout.TabStop = false;
             this.pbLogout.Click += new System.EventHandler(this.pbLogout_Click);
             // 
-            // txtCID
+            // txtCategoryId
             // 
-            this.txtCID.BackColor = System.Drawing.Color.DimGray;
-            this.txtCID.Enabled = false;
-            this.txtCID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCID.ForeColor = System.Drawing.Color.Maroon;
-            this.txtCID.Location = new System.Drawing.Point(139, 66);
-            this.txtCID.Name = "txtCID";
-            this.txtCID.Size = new System.Drawing.Size(269, 29);
-            this.txtCID.TabIndex = 110;
+            this.txtCategoryId.BackColor = System.Drawing.Color.DimGray;
+            this.txtCategoryId.Enabled = false;
+            this.txtCategoryId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategoryId.ForeColor = System.Drawing.Color.Maroon;
+            this.txtCategoryId.Location = new System.Drawing.Point(139, 66);
+            this.txtCategoryId.Name = "txtCategoryId";
+            this.txtCategoryId.Size = new System.Drawing.Size(269, 29);
+            this.txtCategoryId.TabIndex = 110;
             // 
             // pbExit
             // 
@@ -566,7 +566,7 @@
             this.xCategory.Appearance.PageClient.Options.UseBackColor = true;
             this.xCategory.Controls.Add(this.GbPersonal);
             this.xCategory.Name = "xCategory";
-            this.xCategory.Size = new System.Drawing.Size(1006, 558);
+            this.xCategory.Size = new System.Drawing.Size(1010, 561);
             this.xCategory.Text = "Category Details";
             // 
             // GbPersonal
@@ -574,42 +574,42 @@
             this.GbPersonal.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.GbPersonal.Appearance.Options.UseBackColor = true;
             this.GbPersonal.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.GbPersonal.Controls.Add(this.cmbIMG);
+            this.GbPersonal.Controls.Add(this.cmbProductImage);
             this.GbPersonal.Controls.Add(this.label4);
-            this.GbPersonal.Controls.Add(this.dkpREG);
-            this.GbPersonal.Controls.Add(this.imgCAT);
+            this.GbPersonal.Controls.Add(this.dkpDateRegister);
+            this.GbPersonal.Controls.Add(this.imgCategoryImage);
             this.GbPersonal.Controls.Add(this.label3);
             this.GbPersonal.Controls.Add(this.label2);
-            this.GbPersonal.Controls.Add(this.txtDET);
+            this.GbPersonal.Controls.Add(this.txtCategoryDetails);
             this.GbPersonal.Controls.Add(this.label1);
-            this.GbPersonal.Controls.Add(this.txtCOD);
+            this.GbPersonal.Controls.Add(this.txtCategoryCode);
             this.GbPersonal.Controls.Add(this.gbCON);
             this.GbPersonal.Controls.Add(this.lblBarcode);
-            this.GbPersonal.Controls.Add(this.txtCID);
+            this.GbPersonal.Controls.Add(this.txtCategoryId);
             this.GbPersonal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GbPersonal.Location = new System.Drawing.Point(0, 0);
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1006, 558);
+            this.GbPersonal.Size = new System.Drawing.Size(1010, 561);
             this.GbPersonal.TabIndex = 173;
             // 
-            // cmbIMG
+            // cmbProductImage
             // 
-            this.cmbIMG.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbIMG.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbIMG.BackColor = System.Drawing.Color.DimGray;
-            this.cmbIMG.Enabled = false;
-            this.cmbIMG.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbIMG.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbIMG.FormattingEnabled = true;
-            this.cmbIMG.Location = new System.Drawing.Point(139, 171);
-            this.cmbIMG.Name = "cmbIMG";
-            this.cmbIMG.Size = new System.Drawing.Size(269, 29);
-            this.cmbIMG.TabIndex = 113;
-            this.cmbIMG.SelectedIndexChanged += new System.EventHandler(this.cmbIMG_SelectedIndexChanged);
-            this.cmbIMG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbIMG_KeyDown);
-            this.cmbIMG.Leave += new System.EventHandler(this.cmbIMG_Leave);
+            this.cmbProductImage.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbProductImage.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbProductImage.BackColor = System.Drawing.Color.DimGray;
+            this.cmbProductImage.Enabled = false;
+            this.cmbProductImage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProductImage.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbProductImage.FormattingEnabled = true;
+            this.cmbProductImage.Location = new System.Drawing.Point(139, 171);
+            this.cmbProductImage.Name = "cmbProductImage";
+            this.cmbProductImage.Size = new System.Drawing.Size(269, 29);
+            this.cmbProductImage.TabIndex = 113;
+            this.cmbProductImage.SelectedIndexChanged += new System.EventHandler(this.cmbIMG_SelectedIndexChanged);
+            this.cmbProductImage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductImage_KeyDown);
+            this.cmbProductImage.Leave += new System.EventHandler(this.cmbProductImage_Leave);
             // 
             // label4
             // 
@@ -623,28 +623,28 @@
             this.label4.TabIndex = 183;
             this.label4.Text = "Date Register:";
             // 
-            // dkpREG
+            // dkpDateRegister
             // 
-            this.dkpREG.CustomFormat = "dd-MM-yyyy";
-            this.dkpREG.Enabled = false;
-            this.dkpREG.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dkpREG.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpREG.Location = new System.Drawing.Point(139, 206);
-            this.dkpREG.Name = "dkpREG";
-            this.dkpREG.Size = new System.Drawing.Size(269, 29);
-            this.dkpREG.TabIndex = 114;
-            this.dkpREG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpREG_KeyDown);
-            this.dkpREG.Leave += new System.EventHandler(this.dkpREG_Leave);
+            this.dkpDateRegister.CustomFormat = "dd-MM-yyyy";
+            this.dkpDateRegister.Enabled = false;
+            this.dkpDateRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dkpDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dkpDateRegister.Location = new System.Drawing.Point(139, 206);
+            this.dkpDateRegister.Name = "dkpDateRegister";
+            this.dkpDateRegister.Size = new System.Drawing.Size(269, 29);
+            this.dkpDateRegister.TabIndex = 114;
+            this.dkpDateRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpREG_KeyDown);
+            this.dkpDateRegister.Leave += new System.EventHandler(this.dkpREG_Leave);
             // 
-            // imgCAT
+            // imgCategoryImage
             // 
-            this.imgCAT.BackColor = System.Drawing.Color.Gray;
-            this.imgCAT.Location = new System.Drawing.Point(565, 21);
-            this.imgCAT.Name = "imgCAT";
-            this.imgCAT.Size = new System.Drawing.Size(242, 256);
-            this.imgCAT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgCAT.TabIndex = 181;
-            this.imgCAT.TabStop = false;
+            this.imgCategoryImage.BackColor = System.Drawing.Color.Gray;
+            this.imgCategoryImage.Location = new System.Drawing.Point(565, 21);
+            this.imgCategoryImage.Name = "imgCategoryImage";
+            this.imgCategoryImage.Size = new System.Drawing.Size(242, 256);
+            this.imgCategoryImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgCategoryImage.TabIndex = 181;
+            this.imgCategoryImage.TabStop = false;
             // 
             // label3
             // 
@@ -670,18 +670,18 @@
             this.label2.TabIndex = 176;
             this.label2.Text = "Category Details:";
             // 
-            // txtDET
+            // txtCategoryDetails
             // 
-            this.txtDET.BackColor = System.Drawing.Color.DimGray;
-            this.txtDET.Enabled = false;
-            this.txtDET.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDET.ForeColor = System.Drawing.Color.Maroon;
-            this.txtDET.Location = new System.Drawing.Point(139, 136);
-            this.txtDET.Name = "txtDET";
-            this.txtDET.Size = new System.Drawing.Size(269, 29);
-            this.txtDET.TabIndex = 112;
-            this.txtDET.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDET_KeyDown);
-            this.txtDET.Leave += new System.EventHandler(this.txtDET_Leave);
+            this.txtCategoryDetails.BackColor = System.Drawing.Color.DimGray;
+            this.txtCategoryDetails.Enabled = false;
+            this.txtCategoryDetails.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategoryDetails.ForeColor = System.Drawing.Color.Maroon;
+            this.txtCategoryDetails.Location = new System.Drawing.Point(139, 136);
+            this.txtCategoryDetails.Name = "txtCategoryDetails";
+            this.txtCategoryDetails.Size = new System.Drawing.Size(269, 29);
+            this.txtCategoryDetails.TabIndex = 112;
+            this.txtCategoryDetails.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCategoryDetails_KeyDown);
+            this.txtCategoryDetails.Leave += new System.EventHandler(this.txtCategoryDetails_Leave);
             // 
             // label1
             // 
@@ -695,22 +695,22 @@
             this.label1.TabIndex = 174;
             this.label1.Text = "Category Code:";
             // 
-            // txtCOD
+            // txtCategoryCode
             // 
-            this.txtCOD.BackColor = System.Drawing.Color.DimGray;
-            this.txtCOD.Enabled = false;
-            this.txtCOD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCOD.ForeColor = System.Drawing.Color.Maroon;
-            this.txtCOD.Location = new System.Drawing.Point(139, 101);
-            this.txtCOD.Name = "txtCOD";
-            this.txtCOD.Size = new System.Drawing.Size(269, 29);
-            this.txtCOD.TabIndex = 111;
+            this.txtCategoryCode.BackColor = System.Drawing.Color.DimGray;
+            this.txtCategoryCode.Enabled = false;
+            this.txtCategoryCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategoryCode.ForeColor = System.Drawing.Color.Maroon;
+            this.txtCategoryCode.Location = new System.Drawing.Point(139, 101);
+            this.txtCategoryCode.Name = "txtCategoryCode";
+            this.txtCategoryCode.Size = new System.Drawing.Size(269, 29);
+            this.txtCategoryCode.TabIndex = 111;
             // 
             // xImage
             // 
             this.xImage.Controls.Add(this.GProfileImage);
             this.xImage.Name = "xImage";
-            this.xImage.Size = new System.Drawing.Size(1006, 558);
+            this.xImage.Size = new System.Drawing.Size(1010, 561);
             this.xImage.Text = "Product Image";
             // 
             // GProfileImage
@@ -719,24 +719,24 @@
             this.GProfileImage.Appearance.Options.UseBackColor = true;
             this.GProfileImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.GProfileImage.Controls.Add(this.label7);
-            this.GProfileImage.Controls.Add(this.txtIID);
+            this.GProfileImage.Controls.Add(this.txtImageId);
             this.GProfileImage.Controls.Add(this.label6);
             this.GProfileImage.Controls.Add(this.gImageList);
             this.GProfileImage.Controls.Add(this.label5);
             this.GProfileImage.Controls.Add(this.label45);
-            this.GProfileImage.Controls.Add(this.txtCGD);
-            this.GProfileImage.Controls.Add(this.bntLOD);
+            this.GProfileImage.Controls.Add(this.txtImageCode);
+            this.GProfileImage.Controls.Add(this.bntImageImport);
             this.GProfileImage.Controls.Add(this.label46);
-            this.GProfileImage.Controls.Add(this.txtNGM);
-            this.GProfileImage.Controls.Add(this.txtLGC);
-            this.GProfileImage.Controls.Add(this.imgPRO);
+            this.GProfileImage.Controls.Add(this.txtImageName);
+            this.GProfileImage.Controls.Add(this.txtImageLocation);
+            this.GProfileImage.Controls.Add(this.imgImagePreview);
             this.GProfileImage.Controls.Add(this.textBox2);
             this.GProfileImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GProfileImage.Location = new System.Drawing.Point(0, 0);
             this.GProfileImage.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GProfileImage.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GProfileImage.Name = "GProfileImage";
-            this.GProfileImage.Size = new System.Drawing.Size(1006, 558);
+            this.GProfileImage.Size = new System.Drawing.Size(1010, 561);
             this.GProfileImage.TabIndex = 174;
             // 
             // label7
@@ -751,16 +751,16 @@
             this.label7.TabIndex = 191;
             this.label7.Text = "Image Id:";
             // 
-            // txtIID
+            // txtImageId
             // 
-            this.txtIID.BackColor = System.Drawing.Color.DimGray;
-            this.txtIID.Enabled = false;
-            this.txtIID.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIID.ForeColor = System.Drawing.Color.Black;
-            this.txtIID.Location = new System.Drawing.Point(251, 90);
-            this.txtIID.Name = "txtIID";
-            this.txtIID.Size = new System.Drawing.Size(352, 30);
-            this.txtIID.TabIndex = 119;
+            this.txtImageId.BackColor = System.Drawing.Color.DimGray;
+            this.txtImageId.Enabled = false;
+            this.txtImageId.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImageId.ForeColor = System.Drawing.Color.Black;
+            this.txtImageId.Location = new System.Drawing.Point(251, 90);
+            this.txtImageId.Name = "txtImageId";
+            this.txtImageId.Size = new System.Drawing.Size(352, 30);
+            this.txtImageId.TabIndex = 119;
             // 
             // label6
             // 
@@ -954,32 +954,32 @@
             this.label45.TabIndex = 186;
             this.label45.Text = "Image Code:";
             // 
-            // txtCGD
+            // txtImageCode
             // 
-            this.txtCGD.BackColor = System.Drawing.Color.DimGray;
-            this.txtCGD.Enabled = false;
-            this.txtCGD.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCGD.ForeColor = System.Drawing.Color.Black;
-            this.txtCGD.Location = new System.Drawing.Point(251, 126);
-            this.txtCGD.Name = "txtCGD";
-            this.txtCGD.Size = new System.Drawing.Size(352, 30);
-            this.txtCGD.TabIndex = 120;
+            this.txtImageCode.BackColor = System.Drawing.Color.DimGray;
+            this.txtImageCode.Enabled = false;
+            this.txtImageCode.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImageCode.ForeColor = System.Drawing.Color.Black;
+            this.txtImageCode.Location = new System.Drawing.Point(251, 126);
+            this.txtImageCode.Name = "txtImageCode";
+            this.txtImageCode.Size = new System.Drawing.Size(352, 30);
+            this.txtImageCode.TabIndex = 120;
             // 
-            // bntLOD
+            // bntImageImport
             // 
-            this.bntLOD.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.bntLOD.Enabled = false;
-            this.bntLOD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bntLOD.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.bntLOD.Image = ((System.Drawing.Image)(resources.GetObject("bntLOD.Image")));
-            this.bntLOD.Location = new System.Drawing.Point(251, 233);
-            this.bntLOD.Name = "bntLOD";
-            this.bntLOD.Size = new System.Drawing.Size(352, 36);
-            this.bntLOD.TabIndex = 122;
-            this.bntLOD.UseVisualStyleBackColor = true;
-            this.bntLOD.Click += new System.EventHandler(this.bntUpload_Click);
-            this.bntLOD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bntLOD_KeyDown);
-            this.bntLOD.Leave += new System.EventHandler(this.bntLOD_Leave);
+            this.bntImageImport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.bntImageImport.Enabled = false;
+            this.bntImageImport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.bntImageImport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.bntImageImport.Image = ((System.Drawing.Image)(resources.GetObject("bntImageImport.Image")));
+            this.bntImageImport.Location = new System.Drawing.Point(251, 233);
+            this.bntImageImport.Name = "bntImageImport";
+            this.bntImageImport.Size = new System.Drawing.Size(352, 36);
+            this.bntImageImport.TabIndex = 122;
+            this.bntImageImport.UseVisualStyleBackColor = true;
+            this.bntImageImport.Click += new System.EventHandler(this.bntUpload_Click);
+            this.bntImageImport.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bntImageImport_KeyDown);
+            this.bntImageImport.Leave += new System.EventHandler(this.bntImageImport_Leave);
             // 
             // label46
             // 
@@ -993,41 +993,41 @@
             this.label46.TabIndex = 185;
             this.label46.Text = "Image Name:";
             // 
-            // txtNGM
+            // txtImageName
             // 
-            this.txtNGM.BackColor = System.Drawing.Color.DimGray;
-            this.txtNGM.Enabled = false;
-            this.txtNGM.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNGM.ForeColor = System.Drawing.Color.Black;
-            this.txtNGM.Location = new System.Drawing.Point(251, 160);
-            this.txtNGM.Name = "txtNGM";
-            this.txtNGM.Size = new System.Drawing.Size(352, 30);
-            this.txtNGM.TabIndex = 121;
-            this.txtNGM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNGM_KeyDown);
-            this.txtNGM.Leave += new System.EventHandler(this.txtNGM_Leave);
+            this.txtImageName.BackColor = System.Drawing.Color.DimGray;
+            this.txtImageName.Enabled = false;
+            this.txtImageName.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImageName.ForeColor = System.Drawing.Color.Black;
+            this.txtImageName.Location = new System.Drawing.Point(251, 160);
+            this.txtImageName.Name = "txtImageName";
+            this.txtImageName.Size = new System.Drawing.Size(352, 30);
+            this.txtImageName.TabIndex = 121;
+            this.txtImageName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImageName_KeyDown);
+            this.txtImageName.Leave += new System.EventHandler(this.txtImageName_Leave);
             // 
-            // txtLGC
+            // txtImageLocation
             // 
-            this.txtLGC.BackColor = System.Drawing.Color.DimGray;
-            this.txtLGC.Enabled = false;
-            this.txtLGC.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLGC.ForeColor = System.Drawing.Color.Black;
-            this.txtLGC.Location = new System.Drawing.Point(251, 196);
-            this.txtLGC.Name = "txtLGC";
-            this.txtLGC.Size = new System.Drawing.Size(352, 33);
-            this.txtLGC.TabIndex = 123;
-            this.txtLGC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLGC_KeyDown);
-            this.txtLGC.Leave += new System.EventHandler(this.txtLGC_Leave);
+            this.txtImageLocation.BackColor = System.Drawing.Color.DimGray;
+            this.txtImageLocation.Enabled = false;
+            this.txtImageLocation.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImageLocation.ForeColor = System.Drawing.Color.Black;
+            this.txtImageLocation.Location = new System.Drawing.Point(251, 196);
+            this.txtImageLocation.Name = "txtImageLocation";
+            this.txtImageLocation.Size = new System.Drawing.Size(352, 33);
+            this.txtImageLocation.TabIndex = 123;
+            this.txtImageLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImageLocation_KeyDown);
+            this.txtImageLocation.Leave += new System.EventHandler(this.txtImageLocation_Leave);
             // 
-            // imgPRO
+            // imgImagePreview
             // 
-            this.imgPRO.BackColor = System.Drawing.Color.Gray;
-            this.imgPRO.Location = new System.Drawing.Point(741, 30);
-            this.imgPRO.Name = "imgPRO";
-            this.imgPRO.Size = new System.Drawing.Size(255, 247);
-            this.imgPRO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgPRO.TabIndex = 180;
-            this.imgPRO.TabStop = false;
+            this.imgImagePreview.BackColor = System.Drawing.Color.Gray;
+            this.imgImagePreview.Location = new System.Drawing.Point(741, 30);
+            this.imgImagePreview.Name = "imgImagePreview";
+            this.imgImagePreview.Size = new System.Drawing.Size(255, 247);
+            this.imgImagePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgImagePreview.TabIndex = 180;
+            this.imgImagePreview.TabStop = false;
             // 
             // textBox2
             // 
@@ -1046,7 +1046,7 @@
             // 
             this.XtrAuthAccount.Controls.Add(this.GuserAccount);
             this.XtrAuthAccount.Name = "XtrAuthAccount";
-            this.XtrAuthAccount.Size = new System.Drawing.Size(1006, 558);
+            this.XtrAuthAccount.Size = new System.Drawing.Size(1010, 561);
             this.XtrAuthAccount.Text = "Authentication";
             // 
             // GuserAccount
@@ -1060,7 +1060,7 @@
             this.GuserAccount.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GuserAccount.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GuserAccount.Name = "GuserAccount";
-            this.GuserAccount.Size = new System.Drawing.Size(1006, 558);
+            this.GuserAccount.Size = new System.Drawing.Size(1010, 561);
             this.GuserAccount.TabIndex = 173;
             // 
             // textBox1
@@ -1259,7 +1259,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GbPersonal)).EndInit();
             this.GbPersonal.ResumeLayout(false);
             this.GbPersonal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCAT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCategoryImage)).EndInit();
             this.xImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GProfileImage)).EndInit();
             this.GProfileImage.ResumeLayout(false);
@@ -1272,7 +1272,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPRO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgImagePreview)).EndInit();
             this.XtrAuthAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GuserAccount)).EndInit();
             this.GuserAccount.ResumeLayout(false);
@@ -1302,7 +1302,7 @@
         private System.Windows.Forms.TextBox txtPRI;
         private System.Windows.Forms.Label lblBarcode;
         private System.Windows.Forms.PictureBox pbLogout;
-        private System.Windows.Forms.TextBox txtCID;
+        private System.Windows.Forms.TextBox txtCategoryId;
         private System.Windows.Forms.PictureBox pbExit;
         private System.Windows.Forms.PictureBox pcRight;
         private System.Windows.Forms.Panel pnlRightMain;
@@ -1314,12 +1314,12 @@
         private DevExpress.XtraEditors.GroupControl GbPersonal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtDET;
+        private System.Windows.Forms.TextBox txtCategoryDetails;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCOD;
+        private System.Windows.Forms.TextBox txtCategoryCode;
         private DevExpress.XtraTab.XtraTabPage xImage;
         private DevExpress.XtraEditors.GroupControl GProfileImage;
-        private System.Windows.Forms.PictureBox imgPRO;
+        private System.Windows.Forms.PictureBox imgImagePreview;
         private System.Windows.Forms.TextBox textBox2;
         private DevExpress.XtraTab.XtraTabPage XtrAuthAccount;
         private DevExpress.XtraEditors.GroupControl GuserAccount;
@@ -1333,16 +1333,16 @@
         private System.Windows.Forms.Button bntSAV;
         private System.Windows.Forms.Button bntUPD;
         private System.Windows.Forms.Timer RightOptions;
-        private System.Windows.Forms.PictureBox imgCAT;
+        private System.Windows.Forms.PictureBox imgCategoryImage;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dkpREG;
-        private System.Windows.Forms.ComboBox cmbIMG;
+        private System.Windows.Forms.DateTimePicker dkpDateRegister;
+        private System.Windows.Forms.ComboBox cmbProductImage;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.TextBox txtCGD;
-        private System.Windows.Forms.Button bntLOD;
+        private System.Windows.Forms.TextBox txtImageCode;
+        private System.Windows.Forms.Button bntImageImport;
         private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.TextBox txtNGM;
-        private System.Windows.Forms.TextBox txtLGC;
+        private System.Windows.Forms.TextBox txtImageName;
+        private System.Windows.Forms.TextBox txtImageLocation;
         private System.Windows.Forms.OpenFileDialog imgOFD;
         private DevExpress.XtraGrid.GridControl gCON;
         private DevExpress.XtraGrid.Views.Grid.GridView gridCategory;
@@ -1359,6 +1359,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtIID;
+        private System.Windows.Forms.TextBox txtImageId;
     }
 }

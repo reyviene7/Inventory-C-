@@ -92,7 +92,7 @@ namespace Inventory.MainForm
                 InputWhit();
                 var que =
                     PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delete Category Code: " + txtCOD.Text.Trim(' ') + " " + "?", "Category Details");
+                        "Are you sure you want to Delete Category Code: " + txtCategoryCode.Text.Trim(' ') + " " + "?", "Category Details");
                 if (que)
                 {
                     ButDel();
@@ -109,7 +109,7 @@ namespace Inventory.MainForm
                 InputWhitimg();
                 var que =
                     PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delete Image Name: " + txtNGM.Text.Trim(' ') + " " + "?", "Image Details");
+                        "Are you sure you want to Delete Image Name: " + txtImageName.Text.Trim(' ') + " " + "?", "Image Details");
                 if (que)
                 {
                     ButDel();
@@ -227,88 +227,88 @@ namespace Inventory.MainForm
 
         private void InputWhit()
         {
-            txtCID.BackColor = Color.White;
-            txtCOD.BackColor = Color.White;
-            txtDET.BackColor = Color.White;
-            cmbIMG.BackColor = Color.White;
-            dkpREG.BackColor = Color.White;
+            txtCategoryId.BackColor = Color.White;
+            txtCategoryCode.BackColor = Color.White;
+            txtCategoryDetails.BackColor = Color.White;
+            cmbProductImage.BackColor = Color.White;
+            dkpDateRegister.BackColor = Color.White;
         }
         private void InputEnab()
         {
-            txtCID.Enabled = false;
-            txtCOD.Enabled = true;
-            txtDET.Enabled = true;
-            cmbIMG.Enabled = true;
-            dkpREG.Enabled = true;
+            txtCategoryId.Enabled = false;
+            txtCategoryCode.Enabled = true;
+            txtCategoryDetails.Enabled = true;
+            cmbProductImage.Enabled = true;
+            dkpDateRegister.Enabled = true;
         }
         private void InputDisb()
         {
-            txtCID.Enabled = false;
-            txtCOD.Enabled = false;
-            txtDET.Enabled = false;
-            cmbIMG.Enabled = false;
-            dkpREG.Enabled = false;
+            txtCategoryId.Enabled = false;
+            txtCategoryCode.Enabled = false;
+            txtCategoryDetails.Enabled = false;
+            cmbProductImage.Enabled = false;
+            dkpDateRegister.Enabled = false;
         }
         private void InputClea()
         {
-            txtCID.Clear();
+            txtCategoryId.Clear();
             if (!_add == false)
             {
-                txtCOD.Clear();
+                txtCategoryCode.Clear();
             }
            
-            txtDET.Clear();
-            cmbIMG.Text = "";
+            txtCategoryDetails.Clear();
+            cmbProductImage.Text = "";
 
         }
         private void InputDimG()
         {
-            txtCID.BackColor = Color.DimGray;
-            txtCOD.BackColor = Color.DimGray;
-            txtDET.BackColor = Color.DimGray;
-            cmbIMG.BackColor = Color.DimGray;
-            dkpREG.BackColor = Color.DimGray;
+            txtCategoryId.BackColor = Color.DimGray;
+            txtCategoryCode.BackColor = Color.DimGray;
+            txtCategoryDetails.BackColor = Color.DimGray;
+            cmbProductImage.BackColor = Color.DimGray;
+            dkpDateRegister.BackColor = Color.DimGray;
         }
 
         private void InputWhitimg()
         {
-            txtIID.BackColor = Color.White;
-            txtCGD.BackColor = Color.White;
-            txtNGM.BackColor = Color.White;
-            txtLGC.BackColor = Color.White;
-            bntLOD.BackColor = Color.White;
+            txtImageId.BackColor = Color.White;
+            txtImageCode.BackColor = Color.White;
+            txtImageName.BackColor = Color.White;
+            txtImageLocation.BackColor = Color.White;
+            bntImageImport.BackColor = Color.White;
         }
         private void InputEnabimg() {
-            txtCGD.Enabled = true;
-            txtNGM.Enabled = true;
-            txtLGC.Enabled = false;
-            bntLOD.Enabled = true;
+            txtImageCode.Enabled = true;
+            txtImageName.Enabled = true;
+            txtImageLocation.Enabled = false;
+            bntImageImport.Enabled = true;
         }
         private void InputDisbimg()
         {
-            txtCGD.Enabled = false;
-            txtNGM.Enabled = false;
-            txtLGC.Enabled = false;
-            bntLOD.Enabled = false;
+            txtImageCode.Enabled = false;
+            txtImageName.Enabled = false;
+            txtImageLocation.Enabled = false;
+            bntImageImport.Enabled = false;
         }
         private void InputCleaimg()
         {
-            txtIID.Clear();
+            txtImageId.Clear();
             if (_add == false)
             {
-                txtCGD.Clear();
+                txtImageCode.Clear();
             }
-            txtNGM.Clear();
-            txtLGC.Clear();
+            txtImageName.Clear();
+            txtImageLocation.Clear();
           
         }
         private void InputDimGimg()
         {
-            txtIID.BackColor = Color.DimGray;
-            txtCGD.BackColor = Color.DimGray;
-            txtNGM.BackColor = Color.DimGray;
-            txtLGC.BackColor = Color.DimGray;
-            bntLOD.BackColor = Color.DimGray;
+            txtImageId.BackColor = Color.DimGray;
+            txtImageCode.BackColor = Color.DimGray;
+            txtImageName.BackColor = Color.DimGray;
+            txtImageLocation.BackColor = Color.DimGray;
+            bntImageImport.BackColor = Color.DimGray;
         }
 
 
@@ -354,7 +354,7 @@ namespace Inventory.MainForm
             var lastId = GetSettings.GetLastBarcode(lastCode);
             var alphaNumeric = new GenerateAlpaNum(3, 2, lastId, "CA");
             alphaNumeric.Increment();
-            txtCOD.Text = alphaNumeric.ToString();
+            txtCategoryCode.Text = alphaNumeric.ToString();
         }
         private void GenerateImgCode()
         {
@@ -362,7 +362,7 @@ namespace Inventory.MainForm
             var lastId = GetSettings.GetLastBarcode(lastCode);
             var alphaNumeric = new GenerateAlpaNum(3, 2, lastId, "IP");
             alphaNumeric.Increment();
-            txtCGD.Text = alphaNumeric.ToString();
+            txtImageCode.Text = alphaNumeric.ToString();
         }
 
 
@@ -381,7 +381,7 @@ namespace Inventory.MainForm
                 InputEnab();
                 InputWhit();
                 InputClea();
-                txtDET.Focus();
+                txtCategoryDetails.Focus();
                 GenerateCode();
             }
             if (_cat == false && _img)
@@ -390,7 +390,7 @@ namespace Inventory.MainForm
                 InputEnabimg();
                 InputWhitimg();
                 InputCleaimg();
-                txtNGM.Focus();
+                txtImageName.Focus();
             }
 
         }
@@ -430,7 +430,7 @@ namespace Inventory.MainForm
             InputWhitimg();
             InputCleaimg();
             gCON.Enabled = true;
-            cmbIMG.DataBindings.Clear();
+            cmbProductImage.DataBindings.Clear();
         }
         private void ButSav()
         {
@@ -450,7 +450,7 @@ namespace Inventory.MainForm
             InputDimG();
             InputClea();
             gCON.Enabled = true;
-            cmbIMG.DataBindings.Clear();
+            cmbProductImage.DataBindings.Clear();
         }
 
         #region SaveCategory
@@ -490,7 +490,7 @@ namespace Inventory.MainForm
             _cat = true;
             _img = false;
             gCON.Enabled = true;
-            cmbIMG.DataBindings.Clear();
+            cmbProductImage.DataBindings.Clear();
         }
 #endregion
 
@@ -611,8 +611,8 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 var repository = new Repository<ProductImages>(unWork);
                 var query = repository.SelectAll(Query.AllProductImage).Select(x => x.title).Distinct().ToList();
-                cmbIMG.DataBindings.Clear();
-                cmbIMG.DataSource = query;
+                cmbProductImage.DataBindings.Clear();
+                cmbProductImage.DataSource = query;
             }
         }
         private int ProductImageId(string input)
@@ -640,8 +640,8 @@ namespace Inventory.MainForm
         #region ImgBrowse
         private void BrwImage()
         {
-            imgPRO.DataBindings.Clear();
-            imgPRO.Image = null;
+            imgImagePreview.DataBindings.Clear();
+            imgImagePreview.Image = null;
             imgOFD.Title = @"Open Image";
             imgOFD.Filter = Messages.ImageFormat;
             imgOFD.DefaultExt = "*.jpg";
@@ -651,14 +651,14 @@ namespace Inventory.MainForm
             if (result == DialogResult.OK)
            {
                 var imgFile = imgOFD.FileName;
-                txtLGC.Text = imgFile;
+                txtImageLocation.Text = imgFile;
                 var objImg  = Image.FromFile(@imgFile);
                 var imgType = Path.GetExtension(imgFile);
                 _imgWidth   = objImg.Width;
                 _imgHeight  = objImg.Height;
                 _location   = imgFile;
-                _code       = txtCGD.Text.Trim(' ');
-                _title      = txtNGM.Text.Trim(' ');
+                _code       = txtImageCode.Text.Trim(' ');
+                _title      = txtImageName.Text.Trim(' ');
                 _type       = imgType.Trim(' ');
                 objImg.Dispose();
             }
@@ -691,7 +691,7 @@ namespace Inventory.MainForm
                     var result = repository.Add(img);
                     if (result > 0)
                     {
-                        PopupNotification.PopUpMessages(1, "Image Name: " + txtNGM.Text.Trim(' ') + " " + Messages.SuccessInsert,
+                        PopupNotification.PopUpMessages(1, "Image Name: " + txtImageName.Text.Trim(' ') + " " + Messages.SuccessInsert,
                         Messages.TitleSuccessInsert);
                         unWork.Commit();
                     }
@@ -714,7 +714,7 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var imgId = Convert.ToInt32(txtIID.Text);
+                    var imgId = Convert.ToInt32(txtImageId.Text);
                     var repository = new Repository<ProductImages>(unWork);
                     var fileStream = new FileStream(_location, FileMode.Open);
                     var binaryReader = new BinaryReader(fileStream);
@@ -731,7 +731,7 @@ namespace Inventory.MainForm
                     var result = repository.Update(que);
                     if (result)
                     {
-                        PopupNotification.PopUpMessages(1, "Image Name: " + txtNGM.Text.Trim(' ') + " " + Messages.SuccessUpdate,
+                        PopupNotification.PopUpMessages(1, "Image Name: " + txtImageName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
                         Messages.TitleSuccessUpdate);
                         unWork.Commit();
                     }
@@ -751,13 +751,13 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var imgId = Convert.ToInt32(txtIID.Text);
+                    var imgId = Convert.ToInt32(txtImageId.Text);
                     var repository = new Repository<ProductImages>(unWork);
                     var que = repository.Id(imgId);
                     var result = repository.Delete(que);
                     if (result)
                     {
-                        PopupNotification.PopUpMessages(1, "Image Name: " + txtNGM.Text.Trim(' ') + " " + Messages.SuccessDelete,
+                        PopupNotification.PopUpMessages(1, "Image Name: " + txtImageName.Text.Trim(' ') + " " + Messages.SuccessDelete,
                         Messages.TitleSuccessDelete);
                         unWork.Commit();
                     }
@@ -781,21 +781,21 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var imgName = cmbIMG.Text.Trim(' ');
+                    var imgName = cmbProductImage.Text.Trim(' ');
                     var repository = new Repository<Category>(unWork);
                     var category = new Category()
                     {
-                        category_code    = txtCOD.Text.Trim(' '),
-                        category_details = txtDET.Text.Trim(' '), 
+                        category_code    = txtCategoryCode.Text.Trim(' '),
+                        category_details = txtCategoryDetails.Text.Trim(' '), 
                         image_id         = ProductImageId(imgName),
-                        date_register    = dkpREG.Value.Date
+                        date_register    = dkpDateRegister.Value.Date
                     };
                     var result = repository.Add(category);
                     if (result > 0)
                     {
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1, "Category Code: " +
-                                                           txtCOD.Text.Trim(' ')
+                                                           txtCategoryCode.Text.Trim(' ')
                                                            + " " + Messages.SuccessInsert,
                             Messages.TitleSuccessInsert);
                     }
@@ -816,21 +816,21 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var catId = Convert.ToInt32(txtCID.Text);
-                    var imgName = cmbIMG.Text.Trim(' ');
+                    var catId = Convert.ToInt32(txtCategoryId.Text);
+                    var imgName = cmbProductImage.Text.Trim(' ');
                     var repository = new Repository<Category>(unWork);
                     var que = repository.Id(catId);
 
-                    que.category_code = txtCOD.Text.Trim(' ');
-                    que.category_details = txtDET.Text.Trim(' ');
+                    que.category_code = txtCategoryCode.Text.Trim(' ');
+                    que.category_details = txtCategoryDetails.Text.Trim(' ');
                     que.image_id = ProductImageId(imgName);
-                    que.date_register = dkpREG.Value.Date;
+                    que.date_register = dkpDateRegister.Value.Date;
                     var result = repository.Update(que);
                     if (result)
                     {
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1, "Category Code: " +
-                                                           txtCOD.Text.Trim(' ')
+                                                           txtCategoryCode.Text.Trim(' ')
                                                            + " " + Messages.SuccessUpdate,
                             Messages.TitleSuccessUpdate);
                     }
@@ -850,7 +850,7 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var catId = Convert.ToInt32(txtCID.Text);
+                    var catId = Convert.ToInt32(txtCategoryId.Text);
                     var repository = new Repository<Category>(unWork);
                     var que = repository.Id(catId);
                     var result = repository.Delete(que);
@@ -858,7 +858,7 @@ namespace Inventory.MainForm
                     {
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1, "Category Code: " +
-                                                           txtCOD.Text.Trim(' ')
+                                                           txtCategoryCode.Text.Trim(' ')
                                                            + " " + Messages.SuccessDelete,
                             Messages.TitleSuccessDelete);
                     }
@@ -876,7 +876,7 @@ namespace Inventory.MainForm
 
         private void BntEnabled()
         {
-            bntLOD.Enabled = true;
+            bntImageImport.Enabled = true;
         }
         #endregion
 
@@ -887,11 +887,11 @@ namespace Inventory.MainForm
             if (img != null)
             {
                 MemoryStream memoryStream = new MemoryStream(img);
-                imgPRO.Image = Image.FromStream(memoryStream);
+                imgImagePreview.Image = Image.FromStream(memoryStream);
             }
             else
             {
-                imgPRO.Image = null;
+                imgImagePreview.Image = null;
             }
         }
 
@@ -901,11 +901,11 @@ namespace Inventory.MainForm
             if (img != null)
             {
                 MemoryStream memoryStream = new MemoryStream(img);
-                imgCAT.Image = Image.FromStream(memoryStream);
+                imgCategoryImage.Image = Image.FromStream(memoryStream);
             }
             else
             {
-                imgCAT.Image = null;
+                imgCategoryImage.Image = null;
             }
         }
 
@@ -959,11 +959,11 @@ namespace Inventory.MainForm
         {
             if (gridImage.RowCount > 0)
             {
-                txtIID.Text = ((GridView)sender).GetFocusedRowCellValue("ImageId").ToString();
-                txtCGD.Text = ((GridView)sender).GetFocusedRowCellValue("ImageCode").ToString();
-                txtNGM.Text = ((GridView)sender).GetFocusedRowCellValue("Title").ToString();
-                txtLGC.Text = ((GridView)sender).GetFocusedRowCellValue("ImgLocation").ToString();
-                DisplayImage(Convert.ToInt32(txtIID.Text));
+                txtImageId.Text = ((GridView)sender).GetFocusedRowCellValue("ImageId").ToString();
+                txtImageCode.Text = ((GridView)sender).GetFocusedRowCellValue("ImageCode").ToString();
+                txtImageName.Text = ((GridView)sender).GetFocusedRowCellValue("Title").ToString();
+                txtImageLocation.Text = ((GridView)sender).GetFocusedRowCellValue("ImgLocation").ToString();
+                DisplayImage(Convert.ToInt32(txtImageId.Text));
             }
         }
 
@@ -974,14 +974,14 @@ namespace Inventory.MainForm
 
         private void dkpREG_Leave(object sender, EventArgs e)
         {
-            InputManipulation.InputBoxLeave(dkpREG, bntSAV, "Image Register", Messages.TitleCategory);
+            InputManipulation.InputBoxLeave(dkpDateRegister, bntSAV, "Image Register", Messages.TitleCategory);
         }
 
         private void dkpREG_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputBoxLeave(dkpREG, bntSAV, "Image Register", Messages.TitleCategory);
+                InputManipulation.InputBoxLeave(dkpDateRegister, bntSAV, "Image Register", Messages.TitleCategory);
             }
         }
 
@@ -1000,12 +1000,12 @@ namespace Inventory.MainForm
             {
                 try
                 {
-                    txtCID.Text = ((GridView)sender).GetFocusedRowCellValue("CategoryId").ToString();
-                    txtCOD.Text = ((GridView)sender).GetFocusedRowCellValue("CategoryCode").ToString();
-                    txtDET.Text = ((GridView)sender).GetFocusedRowCellValue("CategoryDetails").ToString();
-                    cmbIMG.Text = ((GridView)sender).GetFocusedRowCellValue("Title").ToString();
-                    dkpREG.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DateRegister");
-                    var imgId = ProductImageId(cmbIMG.Text);
+                    txtCategoryId.Text = ((GridView)sender).GetFocusedRowCellValue("CategoryId").ToString();
+                    txtCategoryCode.Text = ((GridView)sender).GetFocusedRowCellValue("CategoryCode").ToString();
+                    txtCategoryDetails.Text = ((GridView)sender).GetFocusedRowCellValue("CategoryDetails").ToString();
+                    cmbProductImage.Text = ((GridView)sender).GetFocusedRowCellValue("Title").ToString();
+                    dkpDateRegister.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DateRegister");
+                    var imgId = ProductImageId(cmbProductImage.Text);
                     DisplayCategory(imgId);
                 }
                 catch (Exception ex)
@@ -1031,31 +1031,88 @@ namespace Inventory.MainForm
        
 
         //CATEGORY LEAVE
-        private void txtDET_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(txtDET, cmbIMG, "Category Details", Messages.TitleCategory);
-        }
-
-        private void txtDET_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtDET, cmbIMG, "Category Details", Messages.TitleCategory);
-            }
-        }
-
         private void cmbIMG_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbIMG.Text.Length > 0)
+            if (cmbProductImage.Text.Length > 0)
             {
-                var imgId = ProductImageId(cmbIMG.Text);
+                var imgId = ProductImageId(cmbProductImage.Text);
                 DisplayCategory(imgId);
             }
         }
 
+        private void txtImageName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtImageName, txtImageLocation, "Image Name", Messages.TitleProductImage);
+            }
+        }
+
+        private void txtImageName_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.InputBoxLeave(txtImageName, txtImageLocation, "Image Name", Messages.TitleProductImage);
+        }
+
+        private void cmbProductImage_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                BindImage();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
+            }
+        }
+
+        private void cmbProductImage_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
+        }
+
+        private void txtImageLocation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtImageLocation, bntImageImport, "Image Location", Messages.TitleProductImage);
+            }
+        }
+
+        private void txtImageLocation_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.InputBoxLeave(txtImageLocation, bntImageImport, "Image Location", Messages.TitleProductImage);
+        }
+
+        private void bntImageImport_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(bntImageImport, bntSAV, "Image Upload", Messages.TitleProductImage);
+            }
+        }
+
+        private void bntImageImport_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.InputBoxLeave(bntImageImport, bntSAV, "Image Upload", Messages.TitleProductImage);
+        }
+
+        private void txtCategoryDetails_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtCategoryDetails, cmbProductImage, "Category Details", Messages.TitleCategory);
+            }
+        }
+
+        private void txtCategoryDetails_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.InputBoxLeave(txtCategoryDetails, cmbProductImage, "Category Details", Messages.TitleCategory);
+        }
+
         private void cmbIMG_Leave(object sender, EventArgs e)
         {
-            InputManipulation.InputBoxLeave(cmbIMG, dkpREG, "Image Title", Messages.TitleCategory);
+            InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
         }
 
         private void cmbIMG_KeyDown(object sender, KeyEventArgs e)
@@ -1067,45 +1124,8 @@ namespace Inventory.MainForm
             if (e.KeyCode == Keys.Enter)
             {
 
-                InputManipulation.InputBoxLeave(cmbIMG, dkpREG, "Image Title", Messages.TitleCategory);
+                InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
             }
         }
-
-        private void txtNGM_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(txtNGM, txtLGC, "Image Name", Messages.TitleProductImage);
-        }
-
-        private void txtNGM_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtNGM, txtLGC, "Image Name", Messages.TitleProductImage);
-            }
-        }
-        private void txtLGC_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(txtLGC, bntLOD, "Image Location", Messages.TitleProductImage);
-        }
-        private void txtLGC_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtLGC, bntLOD, "Image Location", Messages.TitleProductImage);
-            }
-        }
-        private void bntLOD_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(bntLOD, bntSAV, "Image Upload", Messages.TitleProductImage);
-        }
-        private void bntLOD_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(bntLOD, bntSAV, "Image Upload", Messages.TitleProductImage);
-            }
-        }
-
     }
 }
