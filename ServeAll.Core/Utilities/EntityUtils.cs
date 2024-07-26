@@ -1,0 +1,63 @@
+﻿using ServeAll.Core.Entities;
+using ServeAll.Core.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ServeAll.Core.Queries;
+using ServeAll.Core.Helper;
+
+namespace ServeAll.Core.Utilities
+{
+    public static class EntityUtils
+    {
+        public static CustomerCredit getCustomerCredit(int customerId) {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<CustomerCredit>(unWork);
+                    var parameter = new { customerId = customerId };
+                    return repository.SearchBy(Query.getCustomerCurrentCredit, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    CustomerCredit credit = new CustomerCredit
+                    {
+                        customer_credit_id = 0,
+                        credit_code = "",
+                        customer_id = customerId,
+                        credit_limit = 0,
+                        credit_used = 0,
+                        balance = 0
+                    };
+                    return credit;
+                }
+            }
+        }
+
+        public static void addItemDiscount(int salesId, decimal discount)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<TempSales>(unWork);
+                     repository.ExecAddItemDiscount(StoredProcedure.UspAddItemDiscount,
+                                                          SqlVariables.SalesId, salesId,
+                                                          SqlVariables.Discount, discount);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+    }
+}

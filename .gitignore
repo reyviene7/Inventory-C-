@@ -1,0 +1,28 @@
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.vscode/
+
+# Build and package artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Temporary files
+.vs/
+
+# NuGet Packages
+packages/
+
+# Publish outputs
+*.PublishProfiles/
+
+# Local database files
+*.mdf
+*.ldf

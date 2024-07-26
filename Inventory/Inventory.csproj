@@ -1,0 +1,568 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{132CC3A8-D043-40BD-9435-62EFD107AB37}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inventory</RootNamespace>
+    <AssemblyName>Inventory</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Graph.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Inventory.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper.Contrib, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Contrib.1.50.0\lib\net45\Dapper.Contrib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\NetCore\DevExpress.Charts.v24.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.CodeParser.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Data.24.1.3\lib\net452\DevExpress.Data.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\NetCore\DevExpress.DataAccess.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Images.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.Images.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.Office.v24.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.Pdf.v24.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.PivotGrid.v24.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.Printing.v24.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.RichEdit.v24.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v24.1.Export, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.RichEdit.v24.1.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.Sparkline.v24.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.Utils.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v24.1.UI, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.Utils.v24.1.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.Xpo.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraBars.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraCharts.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraEditors.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraGauges.v24.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraGrid.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraLayout.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraNavBar.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraPrinting.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraReports.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v24.1.Extensions, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraReports.v24.1.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.30.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 8.0.30\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\BranchDelivery.cs" />
+    <Compile Include="Class\DepotDelivery.cs" />
+    <Compile Include="Class\ProductList.cs" />
+    <Compile Include="Class\ReturnDepot.cs" />
+    <Compile Include="Class\ReturnWarehouse.cs" />
+    <Compile Include="Class\SummaryBranchDelivery.cs" />
+    <Compile Include="Config\CapsLock.cs" />
+    <Compile Include="Config\Constant.cs" />
+    <Compile Include="Config\GenerateAlpaNum.cs" />
+    <Compile Include="Config\GetSettings.cs" />
+    <Compile Include="Config\InputManipulation.cs" />
+    <Compile Include="Config\Messages.cs" />
+    <Compile Include="Config\PanelInterface.cs" />
+    <Compile Include="Config\PopupNotification.cs" />
+    <Compile Include="Config\Query.cs" />
+    <Compile Include="Config\ReportRepository.cs" />
+    <Compile Include="Config\ReportSetting.cs" />
+    <Compile Include="Config\StringExtension.cs" />
+    <Compile Include="Entities\Depot.cs" />
+    <Compile Include="Entities\Final.cs" />
+    <Compile Include="Entities\ReturnDepot.cs" />
+    <Compile Include="Entities\ViewReturnDepotDelivery.cs" />
+    <Compile Include="Entities\ViewBranchDelivery.cs" />
+    <Compile Include="Entities\ViewDepot.cs" />
+    <Compile Include="Entities\ViewReportWareHousetItem.cs" />
+    <Compile Include="Entities\ViewReturnDepot.cs" />
+    <Compile Include="Entities\ViewReturnWareHouseDepot.cs" />
+    <Compile Include="Entities\ViewWareHouse.cs" />
+    <Compile Include="Entities\WareHouse.cs" />
+    <Compile Include="Interface\IDepotDelivery.cs" />
+    <Compile Include="Interface\IProductList.cs" />
+    <Compile Include="Interface\IReadOnlyReport.cs" />
+    <Compile Include="Interface\IReturnDepot.cs" />
+    <Compile Include="Interface\IReturnWarehouse.cs" />
+    <Compile Include="Interface\ISummaryBranchDelivery.cs" />
+    <Compile Include="Interface\IWareHouseDelivery.cs" />
+    <Compile Include="Interface\IWareHouseItem.cs" />
+    <Compile Include="MainForm\FirmWareHouseDelivery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FirmWareHouseDelivery.Designer.cs">
+      <DependentUpon>FirmWareHouseDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FirmWareHouseReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FirmWareHouseReturn.Designer.cs">
+      <DependentUpon>FirmWareHouseReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FirmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FirmLogin.Designer.cs">
+      <DependentUpon>FirmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FirmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FirmMain.Designer.cs">
+      <DependentUpon>FirmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FirmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FirmSplash.Designer.cs">
+      <DependentUpon>FirmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FirmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FirmCategory.Designer.cs">
+      <DependentUpon>FirmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FirmProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FirmProducts.Designer.cs">
+      <DependentUpon>FirmProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FirmDepot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FirmDepot.Designer.cs">
+      <DependentUpon>FirmDepot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FirmDepotReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FirmDepotReturn.Designer.cs">
+      <DependentUpon>FirmDepotReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FirmWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FirmWarehouse.Designer.cs">
+      <DependentUpon>FirmWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FrmWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FrmWait.Designer.cs">
+      <DependentUpon>FrmWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\WaitForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\WaitForm1.Designer.cs">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopAuthentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopAuthentication.Designer.cs">
+      <DependentUpon>FirmPopAuthentication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopBranches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopBranches.Designer.cs">
+      <DependentUpon>FirmPopBranches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopCategoryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopCategoryReport.Designer.cs">
+      <DependentUpon>FirmPopCategoryReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopDeliveryInvBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopDeliveryInvBranch.Designer.cs">
+      <DependentUpon>FirmPopDeliveryInvBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopLogin.Designer.cs">
+      <DependentUpon>FirmPopLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopDateEntries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopDateEntries.Designer.cs">
+      <DependentUpon>FirmPopDateEntries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopReturnEmpty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopReturnEmpty.Designer.cs">
+      <DependentUpon>FirmPopReturnEmpty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopServer.Designer.cs">
+      <DependentUpon>FirmPopServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\RepAllItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepAllItem.Designer.cs">
+      <DependentUpon>RepAllItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RepDepotDelivery.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepDepotDelivery.Designer.cs">
+      <DependentUpon>RepDepotDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RepItemProductLpg.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepItemProductLpg.Designer.cs">
+      <DependentUpon>RepItemProductLpg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RepItemWareHouse.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepItemWareHouse.Designer.cs">
+      <DependentUpon>RepItemWareHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RepReturnDepot.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepReturnDepot.Designer.cs">
+      <DependentUpon>RepReturnDepot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RepReturnWareHouse.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepReturnWareHouse.Designer.cs">
+      <DependentUpon>RepReturnWareHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RepSummaryBranchDelivery.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepSummaryBranchDelivery.Designer.cs">
+      <DependentUpon>RepSummaryBranchDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RepWareHouseDelivery.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepWareHouseDelivery.Designer.cs">
+      <DependentUpon>RepWareHouseDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ServDepotDelivery.cs" />
+    <Compile Include="Services\ServProductList.cs" />
+    <Compile Include="Services\ServProductsLpg.cs" />
+    <Compile Include="Services\ServReturnDepot.cs" />
+    <Compile Include="Services\ServReturnWareHouse.cs" />
+    <Compile Include="Services\ServSumBranchDelivery.cs" />
+    <Compile Include="Services\ServWareHouseDelivery.cs" />
+    <Compile Include="Services\ServWarehouseItem.cs" />
+    <EmbeddedResource Include="MainForm\FirmWareHouseDelivery.resx">
+      <DependentUpon>FirmWareHouseDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FirmWareHouseReturn.resx">
+      <DependentUpon>FirmWareHouseReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FirmLogin.resx">
+      <DependentUpon>FirmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FirmMain.resx">
+      <DependentUpon>FirmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FirmSplash.resx">
+      <DependentUpon>FirmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FirmCategory.resx">
+      <DependentUpon>FirmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FirmProducts.resx">
+      <DependentUpon>FirmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FirmDepot.resx">
+      <DependentUpon>FirmDepot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FirmDepotReturn.resx">
+      <DependentUpon>FirmDepotReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FirmWarehouse.resx">
+      <DependentUpon>FirmWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FrmWait.resx">
+      <DependentUpon>FrmWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\WaitForm1.resx">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopAuthentication.resx">
+      <DependentUpon>FirmPopAuthentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopBranches.resx">
+      <DependentUpon>FirmPopBranches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopCategoryReport.resx">
+      <DependentUpon>FirmPopCategoryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopDeliveryInvBranch.resx">
+      <DependentUpon>FirmPopDeliveryInvBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopLogin.resx">
+      <DependentUpon>FirmPopLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopDateEntries.resx">
+      <DependentUpon>FirmPopDateEntries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopReturnEmpty.resx">
+      <DependentUpon>FirmPopReturnEmpty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopServer.resx">
+      <DependentUpon>FirmPopServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Report\RepAllItem.resx">
+      <DependentUpon>RepAllItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepDepotDelivery.resx">
+      <DependentUpon>RepDepotDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepItemProductLpg.resx">
+      <DependentUpon>RepItemProductLpg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepItemWareHouse.resx">
+      <DependentUpon>RepItemWareHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepReturnDepot.resx">
+      <DependentUpon>RepReturnDepot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepReturnWareHouse.resx">
+      <DependentUpon>RepReturnWareHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepSummaryBranchDelivery.resx">
+      <DependentUpon>RepSummaryBranchDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepWareHouseDelivery.resx">
+      <DependentUpon>RepWareHouseDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Graph.ico" />
+    <None Include="Resources\transit.bus.png" />
+    <None Include="Resources\Petron.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServeAll.Core\ServeAll.Core.csproj">
+      <Project>{D2A26968-BCA8-4332-98E3-4757F1C8D773}</Project>
+      <Name>ServeAll.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2A26968-BCA8-4332-98E3-4757F1C8D773}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServeAll.Core</RootNamespace>
+    <AssemblyName>ServeAll.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper.Contrib, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Contrib.1.50.0\lib\net45\Dapper.Contrib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DapperExtensions, Version=1.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DapperExtensions.1.6.3\lib\net45\DapperExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.30.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 8.0.30\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\Branch.cs" />
+    <Compile Include="Entities\BranchDelivery.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Company.cs" />
+    <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Entities\Credit.cs" />
+    <Compile Include="Entities\CreditParticular.cs" />
+    <Compile Include="Entities\CustomerCredit.cs" />
+    <Compile Include="Entities\Customers.cs" />
+    <Compile Include="Entities\CustomerType.cs" />
+    <Compile Include="Entities\Department.cs" />
+    <Compile Include="Entities\EmployeeImage.cs" />
+    <Compile Include="Entities\Employees.cs" />
+    <Compile Include="Entities\Exclusive.cs" />
+    <Compile Include="Entities\Finger.cs" />
+    <Compile Include="Entities\Inventory.cs" />
+    <Compile Include="Entities\Manufacturer.cs" />
+    <Compile Include="Entities\MerchandiseStatus.cs" />
+    <Compile Include="Entities\Payment.cs" />
+    <Compile Include="Entities\ProductImages.cs" />
+    <Compile Include="Entities\Products.cs" />
+    <Compile Include="Entities\ProductStatus.cs" />
+    <Compile Include="Entities\ProductViews.cs" />
+    <Compile Include="Entities\ProductWarranty.cs" />
+    <Compile Include="Entities\Profile.cs" />
+    <Compile Include="Entities\ProfileEntities.cs" />
+    <Compile Include="Entities\ReturnWareHouse.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\RouteLog.cs" />
+    <Compile Include="Entities\Sales.cs" />
+    <Compile Include="Entities\SalesParticular.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserProfile.cs" />
+    <Compile Include="Entities\ViewCreditParticular.cs" />
+    <Compile Include="Entities\ViewDailySales.cs" />
+    <Compile Include="Entities\ViewPosEntity.cs" />
+    <Compile Include="Entities\ViewProfile.cs" />
+    <Compile Include="Entities\ViewSalesCredit.cs" />
+    <Compile Include="Entities\ViewCustomerList.cs" />
+    <Compile Include="Entities\ViewInventoryList.cs" />
+    <Compile Include="Entities\ViewLpgGasul.cs" />
+    <Compile Include="Entities\ViewPayment.cs" />
+    <Compile Include="Entities\ViewProductList.cs" />
+    <Compile Include="Entities\ViewProductWarranty.cs" />
+    <Compile Include="Entities\ViewReturnWarehouse.cs" />
+    <Compile Include="Entities\ViewSalesWarranty.cs" />
+    <Compile Include="Entities\Supplier.cs" />
+    <Compile Include="Entities\TempSales.cs" />
+    <Compile Include="Entities\users.cs" />
+    <Compile Include="Entities\UserType.cs" />
+    <Compile Include="Entities\ViewCategoryImage.cs" />
+    <Compile Include="Entities\ViewCatImages.cs" />
+    <Compile Include="Entities\ViewCredit.cs" />
+    <Compile Include="Entities\ViewCustomers.cs" />
+    <Compile Include="Entities\ViewEmployees.cs" />
+    <Compile Include="Entities\ViewInventory.cs" />
+    <Compile Include="Entities\ViewManufacturer.cs" />
+    <Compile Include="Entities\ViewPosCustomers.cs" />
+    <Compile Include="Entities\ViewPosProduct.cs" />
+    <Compile Include="Entities\ViewProductCategory.cs" />
+    <Compile Include="Entities\ViewProducts.cs" />
+    <Compile Include="Entities\ViewSales.cs" />
+    <Compile Include="Entities\ViewSalesPart.cs" />
+    <Compile Include="Entities\ViewSupplier.cs" />
+    <Compile Include="Entities\ViewTempSales.cs" />
+    <Compile Include="Entities\ViewUnderWarranty.cs" />
+    <Compile Include="Entities\ViewUser.cs" />
+    <Compile Include="Entities\ViewUserEmployees.cs" />
+    <Compile Include="Entities\Warranty.cs" />
+    <Compile Include="Entities\WarrantyStatus.cs" />
+    <Compile Include="Helper\AppData.cs" />
+    <Compile Include="Helper\ParamQuery.cs" />
+    <Compile Include="Helper\PasswordCipter.cs" />
+    <Compile Include="Helper\StoredProcedure.cs" />
+    <Compile Include="Helper\StringCipher.cs" />
+    <Compile Include="Helper\UserDefinedFunctions.cs" />
+    <Compile Include="Helper\Utils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\Query.cs" />
+    <Compile Include="Queries\PosQuery.cs" />
+    <Compile Include="Repository\ConStr.cs" />
+    <Compile Include="Repository\DalSession.cs" />
+    <Compile Include="Repository\ServerSettings.cs" />
+    <Compile Include="Repository\IIKeyedRepository.cs" />
+    <Compile Include="Repository\IReadOnlyRepository.cs" />
+    <Compile Include="Repository\IReadOnlyStoredProcedure.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\IUnitofWorks.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="Repository\TargetClass.cs" />
+    <Compile Include="Repository\UnitofWork.cs" />
+    <Compile Include="Utilities\EntityUtils.cs" />
+    <Compile Include="Utilities\EnumerableUtils.cs" />
+    <Compile Include="Utilities\FetchUtils.cs" />
+    <Compile Include="Utilities\OperationUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
