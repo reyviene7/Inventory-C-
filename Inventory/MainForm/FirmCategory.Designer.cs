@@ -56,7 +56,7 @@
             this.pbExit = new System.Windows.Forms.PictureBox();
             this.pcRight = new System.Windows.Forms.PictureBox();
             this.pnlRightMain = new System.Windows.Forms.Panel();
-            this.bntADD = new System.Windows.Forms.Button();
+            this.bntAdd = new System.Windows.Forms.Button();
             this.pnlRightOptions = new System.Windows.Forms.Panel();
             this.Options = new System.Windows.Forms.Timer(this.components);
             this.tabCategory = new DevExpress.XtraTab.XtraTabControl();
@@ -97,12 +97,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.lblMainTitle = new System.Windows.Forms.Label();
-            this.bntHOM = new System.Windows.Forms.Button();
-            this.bntDEL = new System.Windows.Forms.Button();
-            this.bntCLR = new System.Windows.Forms.Button();
-            this.bntCAN = new System.Windows.Forms.Button();
-            this.bntSAV = new System.Windows.Forms.Button();
-            this.bntUPD = new System.Windows.Forms.Button();
+            this.bntHome = new System.Windows.Forms.Button();
+            this.bntDelete = new System.Windows.Forms.Button();
+            this.bntClear = new System.Windows.Forms.Button();
+            this.bntCancel = new System.Windows.Forms.Button();
+            this.bntSave = new System.Windows.Forms.Button();
+            this.bntUpdate = new System.Windows.Forms.Button();
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
             this.imgOFD = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
@@ -516,21 +516,21 @@
             this.pnlRightMain.Size = new System.Drawing.Size(70, 529);
             this.pnlRightMain.TabIndex = 1;
             // 
-            // bntADD
+            // bntAdd
             // 
-            this.bntADD.BackColor = System.Drawing.Color.Red;
-            this.bntADD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntADD.ForeColor = System.Drawing.Color.White;
-            this.bntADD.Image = ((System.Drawing.Image)(resources.GetObject("bntADD.Image")));
-            this.bntADD.Location = new System.Drawing.Point(5, 161);
-            this.bntADD.Name = "bntADD";
-            this.bntADD.Size = new System.Drawing.Size(91, 104);
-            this.bntADD.TabIndex = 49;
-            this.bntADD.Text = "ADD";
-            this.bntADD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntADD.UseVisualStyleBackColor = false;
-            this.bntADD.Click += new System.EventHandler(this.bntADD_Click);
+            this.bntAdd.BackColor = System.Drawing.Color.Red;
+            this.bntAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntAdd.ForeColor = System.Drawing.Color.White;
+            this.bntAdd.Image = ((System.Drawing.Image)(resources.GetObject("bntAdd.Image")));
+            this.bntAdd.Location = new System.Drawing.Point(5, 161);
+            this.bntAdd.Name = "bntAdd";
+            this.bntAdd.Size = new System.Drawing.Size(91, 104);
+            this.bntAdd.TabIndex = 49;
+            this.bntAdd.Text = "ADD";
+            this.bntAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntAdd.UseVisualStyleBackColor = false;
+            this.bntAdd.Click += new System.EventHandler(this.bntAdd_Click);
             // 
             // pnlRightOptions
             // 
@@ -1081,13 +1081,13 @@
             this.pnlMain.BackColor = System.Drawing.SystemColors.HotTrack;
             this.pnlMain.Controls.Add(this.tabCategory);
             this.pnlMain.Controls.Add(this.lblMainTitle);
-            this.pnlMain.Controls.Add(this.bntHOM);
-            this.pnlMain.Controls.Add(this.bntDEL);
-            this.pnlMain.Controls.Add(this.bntCLR);
-            this.pnlMain.Controls.Add(this.bntCAN);
-            this.pnlMain.Controls.Add(this.bntSAV);
-            this.pnlMain.Controls.Add(this.bntUPD);
-            this.pnlMain.Controls.Add(this.bntADD);
+            this.pnlMain.Controls.Add(this.bntHome);
+            this.pnlMain.Controls.Add(this.bntDelete);
+            this.pnlMain.Controls.Add(this.bntClear);
+            this.pnlMain.Controls.Add(this.bntCancel);
+            this.pnlMain.Controls.Add(this.bntSave);
+            this.pnlMain.Controls.Add(this.bntUpdate);
+            this.pnlMain.Controls.Add(this.bntAdd);
             this.pnlMain.Location = new System.Drawing.Point(1, 1);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1207, 626);
@@ -1104,103 +1104,103 @@
             this.lblMainTitle.TabIndex = 59;
             this.lblMainTitle.Text = "Category";
             // 
-            // bntHOM
+            // bntHome
             // 
-            this.bntHOM.BackColor = System.Drawing.Color.ForestGreen;
-            this.bntHOM.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntHOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntHOM.ForeColor = System.Drawing.Color.White;
-            this.bntHOM.Image = ((System.Drawing.Image)(resources.GetObject("bntHOM.Image")));
-            this.bntHOM.Location = new System.Drawing.Point(97, 476);
-            this.bntHOM.Name = "bntHOM";
-            this.bntHOM.Size = new System.Drawing.Size(91, 104);
-            this.bntHOM.TabIndex = 55;
-            this.bntHOM.Text = "HOME";
-            this.bntHOM.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntHOM.UseVisualStyleBackColor = false;
-            this.bntHOM.Click += new System.EventHandler(this.bntHOM_Click);
+            this.bntHome.BackColor = System.Drawing.Color.ForestGreen;
+            this.bntHome.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntHome.ForeColor = System.Drawing.Color.White;
+            this.bntHome.Image = ((System.Drawing.Image)(resources.GetObject("bntHome.Image")));
+            this.bntHome.Location = new System.Drawing.Point(97, 476);
+            this.bntHome.Name = "bntHome";
+            this.bntHome.Size = new System.Drawing.Size(91, 104);
+            this.bntHome.TabIndex = 55;
+            this.bntHome.Text = "HOME";
+            this.bntHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntHome.UseVisualStyleBackColor = false;
+            this.bntHome.Click += new System.EventHandler(this.bntHome_Click);
             // 
-            // bntDEL
+            // bntDelete
             // 
-            this.bntDEL.BackColor = System.Drawing.Color.DarkOrange;
-            this.bntDEL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntDEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntDEL.ForeColor = System.Drawing.Color.White;
-            this.bntDEL.Image = ((System.Drawing.Image)(resources.GetObject("bntDEL.Image")));
-            this.bntDEL.Location = new System.Drawing.Point(5, 476);
-            this.bntDEL.Name = "bntDEL";
-            this.bntDEL.Size = new System.Drawing.Size(91, 104);
-            this.bntDEL.TabIndex = 54;
-            this.bntDEL.Text = "DELETE";
-            this.bntDEL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntDEL.UseVisualStyleBackColor = false;
-            this.bntDEL.Click += new System.EventHandler(this.bntDEL_Click);
+            this.bntDelete.BackColor = System.Drawing.Color.DarkOrange;
+            this.bntDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntDelete.ForeColor = System.Drawing.Color.White;
+            this.bntDelete.Image = ((System.Drawing.Image)(resources.GetObject("bntDelete.Image")));
+            this.bntDelete.Location = new System.Drawing.Point(5, 476);
+            this.bntDelete.Name = "bntDelete";
+            this.bntDelete.Size = new System.Drawing.Size(91, 104);
+            this.bntDelete.TabIndex = 54;
+            this.bntDelete.Text = "DELETE";
+            this.bntDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntDelete.UseVisualStyleBackColor = false;
+            this.bntDelete.Click += new System.EventHandler(this.bntDelete_Click);
             // 
-            // bntCLR
+            // bntClear
             // 
-            this.bntCLR.BackColor = System.Drawing.Color.Firebrick;
-            this.bntCLR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntCLR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntCLR.ForeColor = System.Drawing.Color.White;
-            this.bntCLR.Image = ((System.Drawing.Image)(resources.GetObject("bntCLR.Image")));
-            this.bntCLR.Location = new System.Drawing.Point(5, 371);
-            this.bntCLR.Name = "bntCLR";
-            this.bntCLR.Size = new System.Drawing.Size(91, 104);
-            this.bntCLR.TabIndex = 53;
-            this.bntCLR.Text = "CLEAR";
-            this.bntCLR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntCLR.UseVisualStyleBackColor = false;
-            this.bntCLR.Click += new System.EventHandler(this.bntCLR_Click);
+            this.bntClear.BackColor = System.Drawing.Color.Firebrick;
+            this.bntClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntClear.ForeColor = System.Drawing.Color.White;
+            this.bntClear.Image = ((System.Drawing.Image)(resources.GetObject("bntClear.Image")));
+            this.bntClear.Location = new System.Drawing.Point(5, 371);
+            this.bntClear.Name = "bntClear";
+            this.bntClear.Size = new System.Drawing.Size(91, 104);
+            this.bntClear.TabIndex = 53;
+            this.bntClear.Text = "CLEAR";
+            this.bntClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntClear.UseVisualStyleBackColor = false;
+            this.bntClear.Click += new System.EventHandler(this.bntClear_Click);
             // 
-            // bntCAN
+            // bntCancel
             // 
-            this.bntCAN.BackColor = System.Drawing.Color.DimGray;
-            this.bntCAN.Enabled = false;
-            this.bntCAN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntCAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntCAN.ForeColor = System.Drawing.Color.White;
-            this.bntCAN.Image = ((System.Drawing.Image)(resources.GetObject("bntCAN.Image")));
-            this.bntCAN.Location = new System.Drawing.Point(97, 371);
-            this.bntCAN.Name = "bntCAN";
-            this.bntCAN.Size = new System.Drawing.Size(91, 104);
-            this.bntCAN.TabIndex = 52;
-            this.bntCAN.Text = "CANCEL";
-            this.bntCAN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntCAN.UseVisualStyleBackColor = false;
-            this.bntCAN.Click += new System.EventHandler(this.bntCAN_Click);
+            this.bntCancel.BackColor = System.Drawing.Color.DimGray;
+            this.bntCancel.Enabled = false;
+            this.bntCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntCancel.ForeColor = System.Drawing.Color.White;
+            this.bntCancel.Image = ((System.Drawing.Image)(resources.GetObject("bntCancel.Image")));
+            this.bntCancel.Location = new System.Drawing.Point(97, 371);
+            this.bntCancel.Name = "bntCancel";
+            this.bntCancel.Size = new System.Drawing.Size(91, 104);
+            this.bntCancel.TabIndex = 52;
+            this.bntCancel.Text = "CANCEL";
+            this.bntCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntCancel.UseVisualStyleBackColor = false;
+            this.bntCancel.Click += new System.EventHandler(this.bntCancel_Click);
             // 
-            // bntSAV
+            // bntSave
             // 
-            this.bntSAV.BackColor = System.Drawing.Color.Fuchsia;
-            this.bntSAV.Enabled = false;
-            this.bntSAV.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntSAV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntSAV.ForeColor = System.Drawing.Color.White;
-            this.bntSAV.Image = ((System.Drawing.Image)(resources.GetObject("bntSAV.Image")));
-            this.bntSAV.Location = new System.Drawing.Point(5, 266);
-            this.bntSAV.Name = "bntSAV";
-            this.bntSAV.Size = new System.Drawing.Size(183, 104);
-            this.bntSAV.TabIndex = 51;
-            this.bntSAV.Text = "SAVE";
-            this.bntSAV.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntSAV.UseVisualStyleBackColor = false;
-            this.bntSAV.Click += new System.EventHandler(this.bntSAV_Click);
+            this.bntSave.BackColor = System.Drawing.Color.Fuchsia;
+            this.bntSave.Enabled = false;
+            this.bntSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntSave.ForeColor = System.Drawing.Color.White;
+            this.bntSave.Image = ((System.Drawing.Image)(resources.GetObject("bntSave.Image")));
+            this.bntSave.Location = new System.Drawing.Point(5, 266);
+            this.bntSave.Name = "bntSave";
+            this.bntSave.Size = new System.Drawing.Size(183, 104);
+            this.bntSave.TabIndex = 51;
+            this.bntSave.Text = "SAVE";
+            this.bntSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntSave.UseVisualStyleBackColor = false;
+            this.bntSave.Click += new System.EventHandler(this.bntSave_Click);
             // 
-            // bntUPD
+            // bntUpdate
             // 
-            this.bntUPD.BackColor = System.Drawing.Color.Blue;
-            this.bntUPD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntUPD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntUPD.ForeColor = System.Drawing.Color.White;
-            this.bntUPD.Image = ((System.Drawing.Image)(resources.GetObject("bntUPD.Image")));
-            this.bntUPD.Location = new System.Drawing.Point(97, 161);
-            this.bntUPD.Name = "bntUPD";
-            this.bntUPD.Size = new System.Drawing.Size(91, 104);
-            this.bntUPD.TabIndex = 50;
-            this.bntUPD.Text = "EDIT";
-            this.bntUPD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntUPD.UseVisualStyleBackColor = false;
-            this.bntUPD.Click += new System.EventHandler(this.bntUPD_Click);
+            this.bntUpdate.BackColor = System.Drawing.Color.Blue;
+            this.bntUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntUpdate.ForeColor = System.Drawing.Color.White;
+            this.bntUpdate.Image = ((System.Drawing.Image)(resources.GetObject("bntUpdate.Image")));
+            this.bntUpdate.Location = new System.Drawing.Point(97, 161);
+            this.bntUpdate.Name = "bntUpdate";
+            this.bntUpdate.Size = new System.Drawing.Size(91, 104);
+            this.bntUpdate.TabIndex = 50;
+            this.bntUpdate.Text = "EDIT";
+            this.bntUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntUpdate.UseVisualStyleBackColor = false;
+            this.bntUpdate.Click += new System.EventHandler(this.bntUpdate_Click);
             // 
             // RightOptions
             // 
@@ -1306,7 +1306,7 @@
         private System.Windows.Forms.PictureBox pbExit;
         private System.Windows.Forms.PictureBox pcRight;
         private System.Windows.Forms.Panel pnlRightMain;
-        private System.Windows.Forms.Button bntADD;
+        private System.Windows.Forms.Button bntAdd;
         private System.Windows.Forms.Panel pnlRightOptions;
         private System.Windows.Forms.Timer Options;
         private DevExpress.XtraTab.XtraTabControl tabCategory;
@@ -1326,12 +1326,12 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Label lblMainTitle;
-        private System.Windows.Forms.Button bntHOM;
-        private System.Windows.Forms.Button bntDEL;
-        private System.Windows.Forms.Button bntCLR;
-        private System.Windows.Forms.Button bntCAN;
-        private System.Windows.Forms.Button bntSAV;
-        private System.Windows.Forms.Button bntUPD;
+        private System.Windows.Forms.Button bntHome;
+        private System.Windows.Forms.Button bntDelete;
+        private System.Windows.Forms.Button bntClear;
+        private System.Windows.Forms.Button bntCancel;
+        private System.Windows.Forms.Button bntSave;
+        private System.Windows.Forms.Button bntUpdate;
         private System.Windows.Forms.Timer RightOptions;
         private System.Windows.Forms.PictureBox imgCategoryImage;
         private System.Windows.Forms.Label label4;

@@ -60,76 +60,6 @@ namespace Inventory.MainForm
             PanelInterface.MouseMOve(this, pnlRightOptions, e);
         }
 
-        private void bntADD_Click(object sender, EventArgs e)
-        {
-            ButAdd();
-        }
-
-        private void bntUPD_Click(object sender, EventArgs e)
-        {
-            ButUpd();
-        }
-
-        private void bntSAV_Click(object sender, EventArgs e)
-        {
-            ButSav();
-        }
-
-        private void bntCLR_Click(object sender, EventArgs e)
-        {
-            ButClr();
-        }
-
-        private void bntCAN_Click(object sender, EventArgs e)
-        {
-            ButCan();
-        }
-
-        private void bntDEL_Click(object sender, EventArgs e)
-        {
-            if (_cat && _img == false)
-            {
-                InputWhit();
-                var que =
-                    PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delete Category Code: " + txtCategoryCode.Text.Trim(' ') + " " + "?", "Category Details");
-                if (que)
-                {
-                    ButDel();
-                    gCON.Enabled = false;
-                }
-                else
-                {
-                    ButCan();
-                    gCON.Enabled = true;
-                }
-            }
-            if (_cat == false && _img)
-            {
-                InputWhitimg();
-                var que =
-                    PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delete Image Name: " + txtImageName.Text.Trim(' ') + " " + "?", "Image Details");
-                if (que)
-                {
-                    ButDel();
-                    gIMG.Enabled = false;
-                }
-                else
-                {
-                    ButCan();
-                    gIMG.Enabled = true;
-                }
-            }
-
-        }
-
-        private void bntHOM_Click(object sender, EventArgs e)
-        {
-            Main.Show();
-            Close();
-        }
-
         private void pbHome_Click(object sender, EventArgs e)
         {
             Main.Show();
@@ -148,78 +78,78 @@ namespace Inventory.MainForm
 
         private void ButtonAdd()
         {
-            bntADD.Enabled = true;
-            bntUPD.Enabled = false;
-            bntDEL.Enabled = false;
-            bntSAV.Enabled = true;
-            bntCLR.Enabled = false;
-            bntCAN.Enabled = true;
-            bntHOM.Enabled = false;
+            bntAdd.Enabled = true;
+            bntUpdate.Enabled = false;
+            bntDelete.Enabled = false;
+            bntSave.Enabled = true;
+            bntClear.Enabled = false;
+            bntCancel.Enabled = true;
+            bntHome.Enabled = false;
             pbHome.Enabled = false;
             pbLogout.Enabled = false;
             pbExit.Enabled = false;
         }
         private void ButtonUpd()
         {
-            bntADD.Enabled = false;
-            bntUPD.Enabled = true;
-            bntDEL.Enabled = false;
-            bntSAV.Enabled = true;
-            bntCLR.Enabled = false;
-            bntCAN.Enabled = true;
-            bntHOM.Enabled = false;
+            bntAdd.Enabled = false;
+            bntUpdate.Enabled = true;
+            bntDelete.Enabled = false;
+            bntSave.Enabled = true;
+            bntClear.Enabled = false;
+            bntCancel.Enabled = true;
+            bntHome.Enabled = false;
             pbHome.Enabled = false;
             pbLogout.Enabled = false;
             pbExit.Enabled = false;
         }
         private void ButtonDel()
         {
-            bntADD.Enabled = false;
-            bntUPD.Enabled = false;
-            bntDEL.Enabled = true;
-            bntSAV.Enabled = true;
-            bntCLR.Enabled = false;
-            bntCAN.Enabled = true;
-            bntHOM.Enabled = false;
+            bntAdd.Enabled = false;
+            bntUpdate.Enabled = false;
+            bntDelete.Enabled = true;
+            bntSave.Enabled = true;
+            bntClear.Enabled = false;
+            bntCancel.Enabled = true;
+            bntHome.Enabled = false;
             pbHome.Enabled = false;
             pbLogout.Enabled = false;
             pbExit.Enabled = false;
         }
         private void ButtonSav()
         {
-            bntADD.Enabled = true;
-            bntUPD.Enabled = true;
-            bntDEL.Enabled = true;
-            bntSAV.Enabled = false;
-            bntCLR.Enabled = true;
-            bntCAN.Enabled = false;
-            bntHOM.Enabled = true;
+            bntAdd.Enabled = true;
+            bntUpdate.Enabled = true;
+            bntDelete.Enabled = true;
+            bntSave.Enabled = false;
+            bntClear.Enabled = true;
+            bntCancel.Enabled = false;
+            bntHome.Enabled = true;
             pbHome.Enabled = true;
             pbLogout.Enabled = true;
             pbExit.Enabled = true;
         }
         private void ButtonClr()
         {
-            bntADD.Enabled = true;
-            bntUPD.Enabled = true;
-            bntDEL.Enabled = true;
-            bntSAV.Enabled = false;
-            bntCLR.Enabled = false;
-            bntCAN.Enabled = false;
-            bntHOM.Enabled = true;
+            bntAdd.Enabled = true;
+            bntUpdate.Enabled = true;
+            bntDelete.Enabled = true;
+            bntSave.Enabled = false;
+            bntClear.Enabled = false;
+            bntCancel.Enabled = false;
+            bntHome.Enabled = true;
             pbHome.Enabled = true;
             pbLogout.Enabled = true;
             pbExit.Enabled = true;
         }
         private void ButtonCan()
         {
-            bntADD.Enabled = true;
-            bntUPD.Enabled = true;
-            bntDEL.Enabled = true;
-            bntSAV.Enabled = false;
-            bntCLR.Enabled = true;
-            bntCAN.Enabled = false;
-            bntHOM.Enabled = true;
+            bntAdd.Enabled = true;
+            bntUpdate.Enabled = true;
+            bntDelete.Enabled = true;
+            bntSave.Enabled = false;
+            bntClear.Enabled = true;
+            bntCancel.Enabled = false;
+            bntHome.Enabled = true;
             pbHome.Enabled = true;
             pbLogout.Enabled = true;
             pbExit.Enabled = true;
@@ -974,14 +904,14 @@ namespace Inventory.MainForm
 
         private void dkpREG_Leave(object sender, EventArgs e)
         {
-            InputManipulation.InputBoxLeave(dkpDateRegister, bntSAV, "Image Register", Messages.TitleCategory);
+            InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Image Register", Messages.TitleCategory);
         }
 
         private void dkpREG_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputBoxLeave(dkpDateRegister, bntSAV, "Image Register", Messages.TitleCategory);
+                InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Image Register", Messages.TitleCategory);
             }
         }
 
@@ -1053,6 +983,75 @@ namespace Inventory.MainForm
             InputManipulation.InputBoxLeave(txtImageName, txtImageLocation, "Image Name", Messages.TitleProductImage);
         }
 
+        private void bntAdd_Click(object sender, EventArgs e)
+        {
+            ButAdd();
+        }
+
+        private void bntUpdate_Click(object sender, EventArgs e)
+        {
+            ButUpd();
+        }
+
+        private void bntSave_Click(object sender, EventArgs e)
+        {
+            ButSav();
+        }
+
+        private void bntCancel_Click(object sender, EventArgs e)
+        {
+            ButCan();
+        }
+
+        private void bntClear_Click(object sender, EventArgs e)
+        {
+            ButClr();
+        }
+
+        private void bntDelete_Click(object sender, EventArgs e)
+        {
+            if (_cat && _img == false)
+            {
+                InputWhit();
+                var que =
+                    PopupNotification.PopUpMessageQuestion(
+                        "Are you sure you want to Delete Category Code: " + txtCategoryCode.Text.Trim(' ') + " " + "?", "Category Details");
+                if (que)
+                {
+                    ButDel();
+                    gCON.Enabled = false;
+                }
+                else
+                {
+                    ButCan();
+                    gCON.Enabled = true;
+                }
+            }
+            if (_cat == false && _img)
+            {
+                InputWhitimg();
+                var que =
+                    PopupNotification.PopUpMessageQuestion(
+                        "Are you sure you want to Delete Image Name: " + txtImageName.Text.Trim(' ') + " " + "?", "Image Details");
+                if (que)
+                {
+                    ButDel();
+                    gIMG.Enabled = false;
+                }
+                else
+                {
+                    ButCan();
+                    gIMG.Enabled = true;
+                }
+            }
+        }
+
+        private void bntHome_Click(object sender, EventArgs e)
+        {
+            Main.Show();
+            Close();
+        }
+
         private void cmbProductImage_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -1088,13 +1087,13 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputBoxLeave(bntImageImport, bntSAV, "Image Upload", Messages.TitleProductImage);
+                InputManipulation.InputBoxLeave(bntImageImport, bntSave, "Image Upload", Messages.TitleProductImage);
             }
         }
 
         private void bntImageImport_Leave(object sender, EventArgs e)
         {
-            InputManipulation.InputBoxLeave(bntImageImport, bntSAV, "Image Upload", Messages.TitleProductImage);
+            InputManipulation.InputBoxLeave(bntImageImport, bntSave, "Image Upload", Messages.TitleProductImage);
         }
 
         private void txtCategoryDetails_KeyDown(object sender, KeyEventArgs e)
@@ -1108,24 +1107,6 @@ namespace Inventory.MainForm
         private void txtCategoryDetails_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(txtCategoryDetails, cmbProductImage, "Category Details", Messages.TitleCategory);
-        }
-
-        private void cmbIMG_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
-        }
-
-        private void cmbIMG_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                BindImage();
-            }
-            if (e.KeyCode == Keys.Enter)
-            {
-
-                InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
-            }
         }
     }
 }
