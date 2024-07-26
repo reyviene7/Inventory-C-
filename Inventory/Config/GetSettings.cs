@@ -123,7 +123,7 @@ namespace Inventory.Config
                     unWork.Begin();
                     var repository = new Repository<RouteLog>(unWork);
                     var que = repository.Id(GetLastUserId());
-                    que.TimeOut = DateTime.Now;
+                    que.time_out = DateTime.Now;
                     var result = repository.Update(que);
                     if (result)
                     {

@@ -253,8 +253,8 @@ namespace Inventory.PopupForm
                     var unWork = session.UnitofWrk;
                     var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
                     return repository.SelectAll(Query.AllInventory)
-                        .Where(x => x.ReceiptNo == receiptNo)
-                        .Select(x => x.InventoryId)
+                        .Where(x => x.inventory_code == receiptNo)
+                        .Select(x => x.inventory_id)
                         .Count();
                 }
                 catch (Exception)

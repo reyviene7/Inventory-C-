@@ -320,8 +320,8 @@ namespace Inventory.MainForm
                 unitWork.Begin();
                 var repository = new Repository<ProductImages>(unitWork);
                 var result = (from b in repository.SelectAll(Query.AllProductImage)
-                              orderby b.ImageId descending
-                              select b.ImageCode).Take(1).SingleOrDefault();
+                              orderby b.image_id descending
+                              select b.image_code).Take(1).SingleOrDefault();
                 if (result != null)
                 {
                     return result;
@@ -610,7 +610,7 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 var repository = new Repository<ProductImages>(unWork);
-                var query = repository.SelectAll(Query.AllProductImage).Select(x => x.Title).Distinct().ToList();
+                var query = repository.SelectAll(Query.AllProductImage).Select(x => x.title).Distinct().ToList();
                 cmbIMG.DataBindings.Clear();
                 cmbIMG.DataSource = query;
             }
@@ -624,8 +624,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.Title == input);
-                    return query.ImageId;
+                    var query = repository.FindBy(x => x.title == input);
+                    return query.image_id;
 
                 }
                 catch (Exception)
@@ -680,13 +680,13 @@ namespace Inventory.MainForm
                     var image = binaryReader.ReadBytes((int) fileStream.Length);
                     var img = new ProductImages()
                     {
-                        ImageCode    = _code,
-                        ProductImage = image, 
-                        Title        = _title, 
-                        ImgType      = _type, 
-                        ImgLocation  = _location, 
-                        ImgHeight    = _imgHeight, 
-                        ImgWidth     = _imgWidth
+                        image_code    = _code,
+                        image = image, 
+                        title        = _title, 
+                        img_type      = _type, 
+                        img_location  = _location, 
+                        img_height    = _imgHeight, 
+                        img_width     = _imgWidth
                     };
                     var result = repository.Add(img);
                     if (result > 0)
@@ -720,13 +720,13 @@ namespace Inventory.MainForm
                     var binaryReader = new BinaryReader(fileStream);
                     var image = binaryReader.ReadBytes((int)fileStream.Length);
                     var que = repository.Id(imgId);
-                        que.ImageCode = _code;
-                        que.ProductImage = image;
-                        que.Title = _title;
-                        que.ImgType = _type;
-                        que.ImgLocation = _location;
-                        que.ImgHeight = _imgHeight;
-                        que.ImgWidth = _imgWidth;
+                        que.image_code = _code;
+                        que.image = image;
+                        que.title = _title;
+                        que.img_type = _type;
+                        que.img_location = _location;
+                        que.img_height = _imgHeight;
+                        que.img_width = _imgWidth;
                     
                     var result = repository.Update(que);
                     if (result)
@@ -785,10 +785,10 @@ namespace Inventory.MainForm
                     var repository = new Repository<Category>(unWork);
                     var category = new Category()
                     {
-                        CategoryCode    = txtCOD.Text.Trim(' '),
-                        CategoryDetails = txtDET.Text.Trim(' '), 
-                        ImageId         = ProductImageId(imgName),
-                        DateRegister    = dkpREG.Value.Date
+                        category_code    = txtCOD.Text.Trim(' '),
+                        category_details = txtDET.Text.Trim(' '), 
+                        image_id         = ProductImageId(imgName),
+                        date_register    = dkpREG.Value.Date
                     };
                     var result = repository.Add(category);
                     if (result > 0)
@@ -821,10 +821,10 @@ namespace Inventory.MainForm
                     var repository = new Repository<Category>(unWork);
                     var que = repository.Id(catId);
 
-                    que.CategoryCode = txtCOD.Text.Trim(' ');
-                    que.CategoryDetails = txtDET.Text.Trim(' ');
-                    que.ImageId = ProductImageId(imgName);
-                    que.DateRegister = dkpREG.Value.Date;
+                    que.category_code = txtCOD.Text.Trim(' ');
+                    que.category_details = txtDET.Text.Trim(' ');
+                    que.image_id = ProductImageId(imgName);
+                    que.date_register = dkpREG.Value.Date;
                     var result = repository.Update(que);
                     if (result)
                     {
