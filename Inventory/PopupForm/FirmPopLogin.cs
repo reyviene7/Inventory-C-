@@ -112,9 +112,9 @@ namespace Inventory.PopupForm
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<Users>(unWork);
-                    var query = repository.FindBy(x => x.UserName == input);
-                    return query.UserId;
+                    var repository = new Repository<User>(unWork);
+                    var query = repository.FindBy(x => x.username == input);
+                    return query.user_id;
                 }
                 catch (Exception ex)
                 {

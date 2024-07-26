@@ -338,8 +338,8 @@ namespace Inventory.MainForm
                 unitWork.Begin();
                 var repository = new Repository<Category>(unitWork);
                 var result = (from b in repository.SelectAll(Query.AllCategory)
-                              orderby b.CategoryId descending
-                              select b.CategoryCode).Take(1).SingleOrDefault();
+                              orderby b.category_id descending
+                              select b.category_code).Take(1).SingleOrDefault();
                 if (result != null)
                 {
                     return result;
@@ -918,8 +918,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.ImageId == imgId);
-                    return query.ProductImage;
+                    var query = repository.FindBy(x => x.image_id == imgId);
+                    return query.image;
                 }
                 catch (Exception ex)
                 {

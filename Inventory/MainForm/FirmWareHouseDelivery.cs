@@ -141,8 +141,8 @@ namespace Inventory.MainForm
                         cmbNAM.BackColor = Color.White;
                         txtDEL.BackColor = Color.Yellow;
                         txtDEL.Focus();
-                        txtBAR.Text = SearchBarcode(cmbNAM.Text).Code;
-                        txtPRC.Text = SearchBarcode(cmbNAM.Text).RetailPrice.ToString(CultureInfo.InvariantCulture);
+                        txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
+                        txtPRC.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                     }
                     else
                     {
@@ -662,8 +662,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.ImageId == imgId);
-                    return query.ProductImage;
+                    var query = repository.FindBy(x => x.image_id == imgId);
+                    return query.image;
                 }
                 catch (Exception ex)
                 {
@@ -711,9 +711,9 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 var repository = new Repository<Products>(unWork);
                 var query = (from r in repository.SelectAll(Query.AllProducts)
-                    where r.Name.Contains(Constant.AddFilterLpg)
-                    where !r.Name.Contains(Constant.AddFilterEmp)
-                    select r.Name.Distinct()).ToList();
+                    where r.product_name.Contains(Constant.AddFilterLpg)
+                    where !r.product_name.Contains(Constant.AddFilterEmp)
+                    select r.product_name.Distinct()).ToList();
                 cmbNAM.DataBindings.Clear();
                 cmbNAM.DataSource = query;
             }
@@ -823,8 +823,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
-                    return query.ProductId;
+                    var query = repository.FindBy(x => x.product_name == input);
+                    return query.product_id;
                 }
                 catch (Exception)
                 {
@@ -843,7 +843,7 @@ namespace Inventory.MainForm
                 {
                     var repository = new Repository<Branch>(unWork);
                     var query = repository.FindBy(x => x.BranchDetails == input);
-                    return query.BranchId;
+                    return query.branch_id;
                 }
                 catch (Exception)
                 {
@@ -993,7 +993,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
+                    var query = repository.FindBy(x => x.product_name == input);
                     return query;
                 }
                 catch (Exception)
@@ -1196,8 +1196,8 @@ namespace Inventory.MainForm
                         ShowValue(invId);
                         var imgId = GetProductImgId(cmbNAM.Text);
                         DisplayImage(imgId);
-                        txtBAR.Text = SearchBarcode(cmbNAM.Text).Code;
-                        txtPRC.Text = SearchBarcode(cmbNAM.Text).RetailPrice.ToString(CultureInfo.InvariantCulture);
+                        txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
+                        txtPRC.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                     }
                     if (_wer == false && _bra)
                     {
@@ -1205,8 +1205,8 @@ namespace Inventory.MainForm
                         ShowBranch(invId);
                         var imgId = GetProductImgId(cmbNAM.Text);
                         DisplayImage(imgId);
-                        txtBAR.Text = SearchBarcode(cmbNAM.Text).Code;
-                        txtPRC.Text = SearchBarcode(cmbNAM.Text).RetailPrice.ToString(CultureInfo.InvariantCulture);
+                        txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
+                        txtPRC.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                     }
 
 

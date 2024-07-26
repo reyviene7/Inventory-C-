@@ -58,15 +58,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CalendarClock">
-      <HintPath>..\ServeAll.Core\Libraries\Clock\CalendarClock.dll</HintPath>
+      <HintPath>..\..\..\dll\CalendarClock.dll</HintPath>
     </Reference>
-    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Dapper">
+      <HintPath>..\..\..\dll\Dapper.dll</HintPath>
     </Reference>
-    <Reference Include="Dapper.Contrib, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.Contrib.1.50.0\lib\net45\Dapper.Contrib.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Dapper.Contrib">
+      <HintPath>..\..\..\dll\Dapper.Contrib.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Charts.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -176,7 +174,7 @@
       <HintPath>..\..\..\..\..\..\..\Program Files\DevExpress 24.1\Components\Bin\Framework\DevExpress.XtraReports.v24.1.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="DigitalClock">
-      <HintPath>..\ServeAll.Core\Libraries\Clock\DigitalClock.dll</HintPath>
+      <HintPath>..\..\..\dll\DigitalClock.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>

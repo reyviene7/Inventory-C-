@@ -121,8 +121,8 @@ namespace Inventory.PopupForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
-                    return query.ProductId;
+                    var query = repository.FindBy(x => x.product_name == input);
+                    return query.product_id;
                 }
                 catch (Exception)
                 {
@@ -141,7 +141,7 @@ namespace Inventory.PopupForm
                 {
                     var repository = new Repository<Branch>(unWork);
                     var query = repository.FindBy(x => x.BranchDetails == input);
-                    return query.BranchId;
+                    return query.branch_id;
                 }
                 catch (Exception)
                 {
@@ -233,8 +233,8 @@ namespace Inventory.PopupForm
                     var unWork = session.UnitofWrk;
                     var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
                     return repository.SelectAll(Query.AllInventory)
-                        .Where(x => x.DeliveryNo == deliveryNo)
-                        .Select(x => x.InventoryId)
+                        .Where(x => x.delivery_code == deliveryNo)
+                        .Select(x => x.inventory_id)
                         .Count();
                 }
                 catch (Exception)

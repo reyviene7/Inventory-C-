@@ -297,8 +297,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
-                    return query.ProductId;
+                    var query = repository.FindBy(x => x.product_name == input);
+                    return query.product_id;
                 }
                 catch (Exception)
                 {
@@ -317,7 +317,7 @@ namespace Inventory.MainForm
                 {
                     var repository = new Repository<Branch>(unWork);
                     var query = repository.FindBy(x => x.BranchDetails == input);
-                    return query.BranchId;
+                    return query.branch_id;
                 }
                 catch (Exception)
                 {
@@ -354,7 +354,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.BranchId == input);
+                    var query = repository.FindBy(x => x.branch_id == input);
                     return query.BranchDetails;
                 }
                 catch (Exception e)
@@ -678,8 +678,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.ImageId == imgId);
-                    return query.ProductImage;
+                    var query = repository.FindBy(x => x.image_id == imgId);
+                    return query.image;
                 }
                 catch (Exception ex)
                 {

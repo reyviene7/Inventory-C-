@@ -569,8 +569,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
-                    return query.ProductId;
+                    var query = repository.FindBy(x => x.product_name == input);
+                    return query.product_id;
                 }
                 catch (Exception)
                 {
@@ -590,7 +590,7 @@ namespace Inventory.MainForm
                 {
                     var repository = new Repository<Branch>(unWork);
                     var query = repository.FindBy(x => x.BranchDetails == input);
-                    return query.BranchId;
+                    return query.branch_id;
                 }
                 catch (Exception)
                 {
@@ -608,7 +608,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.BranchId == input);
+                    var query = repository.FindBy(x => x.branch_id == input);
                     return query.BranchDetails;
                 }
                 catch (Exception e)
@@ -702,8 +702,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.ImageId == imgId);
-                    return query.ProductImage;
+                    var query = repository.FindBy(x => x.image_id == imgId);
+                    return query.image;
                 }
                 catch (Exception ex)
                 {
@@ -901,9 +901,9 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 var repository = new Repository<Products>(unWork);
                 var query = (from r in repository.SelectAll(Query.AllProducts)
-                    where r.Name.Contains(Constant.AddFilterLpg)
-                    where !r.Name.Contains(Constant.AddFilterEmp)
-                    select r.Name).Distinct().ToList();
+                    where r.product_name.Contains(Constant.AddFilterLpg)
+                    where !r.product_name.Contains(Constant.AddFilterEmp)
+                    select r.product_name).Distinct().ToList();
                 cmbNAM.DataBindings.Clear();
                 cmbNAM.DataSource = query;
             }
@@ -916,9 +916,9 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 var repository = new Repository<Products>(unWork);
                 var query = (from r in repository.SelectAll(Query.AllProducts)
-                    where !r.Name.Contains(Constant.AddFilterLpg)
-                    where !r.Name.Contains(Constant.AddFilterEmp)
-                    select r.Name).Distinct().ToList();
+                    where !r.product_name.Contains(Constant.AddFilterLpg)
+                    where !r.product_name.Contains(Constant.AddFilterEmp)
+                    select r.product_name).Distinct().ToList();
                 cmbNAM.DataBindings.Clear();
                 cmbNAM.DataSource = query;
             }
