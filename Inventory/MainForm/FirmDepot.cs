@@ -325,8 +325,8 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 var repository = new Repository<Products>(unWork);
                 var query = repository.SelectAll(Query.AllProducts)
-                    .Where(x => x.Name.Contains(Constant.AddFilterLpg))
-                    .Select(x => x.Name)
+                    .Where(x => x.product_name.Contains(Constant.AddFilterLpg))
+                    .Select(x => x.product_name)
                     .Distinct()
                     .ToList();
                 cmbNAM.DataBindings.Clear();
@@ -577,8 +577,8 @@ namespace Inventory.MainForm
                     ShowValue(invId);
                     var imgId = GetProductImgId(cmbNAM.Text);
                     DisplayImage(imgId);
-                    txtBAR.Text = SearchBarcode(cmbNAM.Text).Code;
-                    lblPRZ.Text = SearchBarcode(cmbNAM.Text).RetailPrice.ToString(CultureInfo.InvariantCulture);
+                    txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
+                    lblPRZ.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                 }
                 catch (Exception ex)
                 {
@@ -670,8 +670,8 @@ namespace Inventory.MainForm
                     txtDEL.BackColor = Color.Yellow;
                     txtDEL.Focus();
                   
-                    txtBAR.Text = SearchBarcode(cmbNAM.Text).Code;
-                    lblPRZ.Text = SearchBarcode(cmbNAM.Text).RetailPrice.ToString(CultureInfo.InvariantCulture);
+                    txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
+                    lblPRZ.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                 }
                 else
                 {
@@ -827,8 +827,8 @@ namespace Inventory.MainForm
             cmbNAM.Size = new Size(269, 29);
             if (txtBAR.Text.Length > 0)
             {
-                txtBAR.Text = SearchBarcode(cmbNAM.Text).Code;
-                lblPRZ.Text = SearchBarcode(cmbNAM.Text).RetailPrice.ToString(CultureInfo.InvariantCulture);
+                txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
+                lblPRZ.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                
             }
         }
@@ -935,8 +935,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
-                    return query.ProductId;
+                    var query = repository.FindBy(x => x.product_name == input);
+                    return query.product_id;
                 }
                 catch (Exception)
                 {
@@ -955,7 +955,7 @@ namespace Inventory.MainForm
                 {
                     var repository = new Repository<Branch>(unWork);
                     var query = repository.FindBy(x => x.BranchDetails == input);
-                    return query.BranchId;
+                    return query.branch_id;
                 }
                 catch (Exception)
                 {
@@ -1029,7 +1029,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
+                    var query = repository.FindBy(x => x.product_name == input);
                     return query;
                 }
                 catch (Exception)
@@ -1106,7 +1106,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.BranchId == branchId);
+                    var query = repository.FindBy(x => x.branch_id == branchId);
                     return query.BranchDetails;
                 }
                 catch (Exception)
@@ -1148,8 +1148,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.ImageId == imgId);
-                    return query.ProductImage;
+                    var query = repository.FindBy(x => x.image_id == imgId);
+                    return query.image;
                 }
                 catch (Exception ex)
                 {

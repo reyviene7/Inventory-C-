@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Inventory.MainForm;
-using ServeAll.Core.Entities;
 using ServeAll.Core.Helper;
 using ServeAll.Core.Repository;
 using Constant = Inventory.Config.Constant;
 using Inventory.Config;
+using ServeAll.Core.Entities;
 
 namespace Inventory.PopupForm
 {
@@ -78,7 +77,7 @@ namespace Inventory.PopupForm
 
                     await Task.Delay((int)TimeSpan.FromMilliseconds(1).TotalMilliseconds);
                     var unWork = session.UnitofWrk;
-                    var repository = new Repository<Users>(unWork);
+                    var repository = new Repository<users>(unWork);
                     var query = repository.ExecLoginUser(StoredProcedure.UspGetPasswordLogin, SqlVariables.UserName, userName, SqlVariables.UserType, userType);
                     if (query.Length <= 0) return;
                     const string salt = PasswordCipter.EncryptionPass;
@@ -113,9 +112,9 @@ namespace Inventory.PopupForm
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<Users>(unWork);
-                    var query = repository.FindBy(x => x.UserName == input);
-                    return query.UserId;
+                    var repository = new Repository<User>(unWork);
+                    var query = repository.FindBy(x => x.username == input);
+                    return query.user_id;
                 }
                 catch (Exception ex)
                 {

@@ -327,8 +327,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.ImageId == imgId);
-                    return query.ProductImage;
+                    var query = repository.FindBy(x => x.image_id == imgId);
+                    return query.image;
                 }
                 catch (Exception ex)
                 {
@@ -364,7 +364,7 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 var repository = new Repository<Category>(unWork);
-                var query = repository.SelectAll(Query.AllCategory).Select(x => x.CategoryDetails).Distinct().ToList();
+                var query = repository.SelectAll(Query.AllCategory).Select(x => x.category_details).Distinct().ToList();
                 cmbCAT.DataBindings.Clear();
                 cmbCAT.DataSource = query;
             }
@@ -376,7 +376,7 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 var repository = new Repository<MerchandiseStatus>(unWork);
-                var query = repository.SelectAll(Query.AllMerchandiseStatus).Select(x => x.Status).Distinct().ToList();
+                var query = repository.SelectAll(Query.AllMerchandiseStatus).Select(x => x.status_details).Distinct().ToList();
                 cmbDIS.DataBindings.Clear();
                 cmbDIS.DataSource = query;
             }
@@ -388,7 +388,7 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 var repository = new Repository<Supplier>(unWork);
-                var query = repository.SelectAll(Query.AllSupplier).Select(x => x.Name).Distinct().ToList();
+                var query = repository.SelectAll(Query.AllSupplier).Select(x => x.supplier_name).Distinct().ToList();
                 cmbSUP.DataBindings.Clear();
                 cmbSUP.DataSource = query;
             }
@@ -402,8 +402,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Category>(unWork);
-                    var query = repository.FindBy(x => x.CategoryDetails == input);
-                    return query.CategoryId;
+                    var query = repository.FindBy(x => x.category_details == input);
+                    return query.category_id;
                 }
                 catch (Exception)
                 {
@@ -421,8 +421,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<MerchandiseStatus>(unWork);
-                    var query = repository.FindBy(x => x.Status == input);
-                    return query.StatusId;
+                    var query = repository.FindBy(x => x.status_details == input);
+                    return query.status_id;
                 }
                 catch (Exception)
                 {
@@ -440,8 +440,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Supplier>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
-                    return query.SupplierId;
+                    var query = repository.FindBy(x => x.supplier_name == input);
+                    return query.supplier_id;
                 }
                 catch (Exception)
                 {
@@ -460,7 +460,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ViewProducts>(unWork);
-                    return repository.FindBy(x => x.ProductId == productId);
+                    return repository.FindBy(x => x.product_id == productId);
                 }
                 catch (Exception e)
                 {
@@ -479,8 +479,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Category>(unWork);
-                    var query = repository.FindBy(x => x.CategoryDetails == input);
-                    return query.ImageId;
+                    var query = repository.FindBy(x => x.category_details == input);
+                    return query.image_id;
                 }
                 catch (Exception)
                 {
@@ -615,8 +615,8 @@ namespace Inventory.MainForm
                 unitWork.Begin();
                 var repository = new Repository<ViewProducts>(unitWork);
                 var result = (from b in repository.SelectAll(Query.AllProducts)
-                              orderby b.ProductId descending
-                              select b.StockCode).Take(1).SingleOrDefault();
+                              orderby b.product_id descending
+                              select b.stock_code).Take(1).SingleOrDefault();
                 if (result != null)
                 {
                     return result;
@@ -645,22 +645,22 @@ namespace Inventory.MainForm
                     var repository = new Repository<Products>(unWork);
                     var product = new Products()
                     {
-                        Code            = txtCOD.Text.Trim(' '),
-                        Name            = txtNAM.Text.Trim(' '),
-                        CategoryId      = GetCategoryId(cmbCAT.Text),
-                        SupplierId      = GetSupplierId(cmbSUP.Text),
-                        StockCode       = txtSTC.Text.Trim(' '),
-                        Brand           = txtBRD.Text.Trim(' '),
-                        Model           = txtMOD.Text.Trim(' '),
-                        Made            = txtMAD.Text.Trim(' '),
-                        Serial          = txtSER.Text.Trim(' '),
-                        TareWeight      = Convert.ToDecimal(txtWET.Text),
-                        NetWeight       = Convert.ToDecimal(txtNET.Text),
-                        TradePrice      = Convert.ToDecimal(txtTRD.Text),
-                        RetailPrice     = Convert.ToDecimal(txtRET.Text),
-                        WholeSale       = Convert.ToDecimal(txtWHL.Text), 
-                        StatusId        = GetStatusId(cmbDIS.Text),
-                        Register        = dkpREG.Value.Date
+                        product_code            = txtCOD.Text.Trim(' '),
+                        product_name            = txtNAM.Text.Trim(' '),
+                        category_id      = GetCategoryId(cmbCAT.Text),
+                        supplier_id      = GetSupplierId(cmbSUP.Text),
+                        stock_code       = txtSTC.Text.Trim(' '),
+                        brand           = txtBRD.Text.Trim(' '),
+                        model           = txtMOD.Text.Trim(' '),
+                        made            = txtMAD.Text.Trim(' '),
+                        serial_number          = txtSER.Text.Trim(' '),
+                        tare_weight      = Convert.ToDecimal(txtWET.Text),
+                        net_weight       = Convert.ToDecimal(txtNET.Text),
+                        trade_price      = Convert.ToDecimal(txtTRD.Text),
+                        retail_price     = Convert.ToDecimal(txtRET.Text),
+                        wholesale       = Convert.ToDecimal(txtWHL.Text), 
+                        status_id        = GetStatusId(cmbDIS.Text),
+                        date_register        = dkpREG.Value.Date
                     };
                     var result = repository.Add(product);
                     if (result > 0)
@@ -700,23 +700,23 @@ namespace Inventory.MainForm
                     var repository = new Repository<Products>(unWork);
                     var que = repository.Id(proId);
 
-                    que.Code        = txtCOD.Text.Trim(' ');
-                    que.Name        = txtNAM.Text.Trim(' ');
-                    que.CategoryId  = GetCategoryId(cmbCAT.Text);
-                    que.SupplierId  = GetSupplierId(cmbSUP.Text);
-                    que.StockCode   = txtSTC.Text.Trim(' ');
-                    que.Brand       = txtBRD.Text.Trim(' ');
-                    que.Model       = txtMOD.Text.Trim(' ');
-                    que.Made        = txtMAD.Text.Trim(' ');
-                    que.Serial      = txtSER.Text.Trim(' ');
-                    que.TareWeight  = Convert.ToDecimal(txtWET.Text);
-                    que.NetWeight   = Convert.ToDecimal(txtNET.Text);
-                    que.TradePrice = Convert.ToDecimal(txtTRD.Text);
-                    que.RetailPrice = Convert.ToDecimal(txtRET.Text);
-                    que.WholeSale = Convert.ToDecimal(txtWHL.Text);
-                    que.StatusId    = GetStatusId(cmbDIS.Text);
+                    que.product_code        = txtCOD.Text.Trim(' ');
+                    que.product_name        = txtNAM.Text.Trim(' ');
+                    que.category_id  = GetCategoryId(cmbCAT.Text);
+                    que.supplier_id  = GetSupplierId(cmbSUP.Text);
+                    que.stock_code   = txtSTC.Text.Trim(' ');
+                    que.brand       = txtBRD.Text.Trim(' ');
+                    que.model       = txtMOD.Text.Trim(' ');
+                    que.made        = txtMAD.Text.Trim(' ');
+                    que.serial_number      = txtSER.Text.Trim(' ');
+                    que.tare_weight  = Convert.ToDecimal(txtWET.Text);
+                    que.net_weight   = Convert.ToDecimal(txtNET.Text);
+                    que.trade_price = Convert.ToDecimal(txtTRD.Text);
+                    que.retail_price = Convert.ToDecimal(txtRET.Text);
+                    que.wholesale = Convert.ToDecimal(txtWHL.Text);
+                    que.status_id    = GetStatusId(cmbDIS.Text);
              
-                    que.Register    = dkpREG.Value.Date;
+                    que.date_register    = dkpREG.Value.Date;
                     var result      = repository.Update(que);
                     if (result)
                     {
@@ -782,22 +782,22 @@ namespace Inventory.MainForm
                 try
                 {
                     txtPID.Text = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    txtCOD.Text = Product().Code;
-                    txtNAM.Text = Product().Name;
-                    cmbCAT.Text = Product().Category;
-                    cmbSUP.Text = Product().Supplier;
-                    txtSTC.Text = Product().StockCode;
-                    txtBRD.Text = Product().Brand;
-                    txtMOD.Text = Product().Model;
-                    txtMAD.Text = Product().Made;
-                    txtSER.Text = Product().Serial;
-                    txtWET.Text = Product().TareWeight.ToString(CultureInfo.InvariantCulture);
-                    txtNET.Text = Product().NetWeight.ToString(CultureInfo.InvariantCulture);
-                    txtTRD.Text = Product().TradePrice.ToString(CultureInfo.InvariantCulture);
-                    txtRET.Text = Product().RetailPrice.ToString(CultureInfo.InvariantCulture);
-                    txtWHL.Text = Product().WholeSale.ToString(CultureInfo.InvariantCulture);
-                    cmbDIS.Text = Product().Status;
-                    dkpREG.Value = Product().Register;
+                    txtCOD.Text = Product().product_code;
+                    txtNAM.Text = Product().product_name;
+                    cmbCAT.Text = Product().category_details;
+                    cmbSUP.Text = Product().supplier_name;
+                    txtSTC.Text = Product().stock_code;
+                    txtBRD.Text = Product().brand;
+                    txtMOD.Text = Product().model;
+                    txtMAD.Text = Product().made;
+                    txtSER.Text = Product().serial_number;
+                    txtWET.Text = Product().tare_weight.ToString(CultureInfo.InvariantCulture);
+                    txtNET.Text = Product().net_weight.ToString(CultureInfo.InvariantCulture);
+                    txtTRD.Text = Product().trade_price.ToString(CultureInfo.InvariantCulture);
+                    txtRET.Text = Product().retail_price.ToString(CultureInfo.InvariantCulture);
+                    txtWHL.Text = Product().wholesale.ToString(CultureInfo.InvariantCulture);
+                    cmbDIS.Text = Product().status_details;
+                    dkpREG.Value = Product().date_register;
                     var cat = cmbCAT.Text.Trim(' ');
                     var imgId = GetProductImgId(cat);
                     DisplayImage(imgId);
@@ -1127,8 +1127,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var que = repository.FindBy(x => x.Code==barcode);
-                    return que.ProductId;
+                    var que = repository.FindBy(x => x.product_code ==barcode);
+                    return que.product_id;
                 }
                 catch (Exception e)
                 {

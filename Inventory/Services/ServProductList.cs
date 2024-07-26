@@ -20,11 +20,11 @@ namespace Inventory.Services
             {
                 _list.Add(new ProductList()
                  {
-                     Id = source.ProductId, 
-                     Code = source.Code,
-                     Name = source.Name,
-                     TradePrice = source.TradePrice,
-                     RetailPrice = source.RetailPrice
+                     Id = source.product_id, 
+                     Code = source.product_code,
+                     Name = source.product_name,
+                     TradePrice = source.trade_price,
+                     RetailPrice = source.retail_price
                  });
             }
             return _list;
@@ -36,11 +36,11 @@ namespace Inventory.Services
             {
                 _list.Add(new ProductList()
                 {
-                    Id = source.ProductId,
-                    Code = source.Code,
-                    Name = source.Name,
-                    TradePrice = source.TradePrice,
-                    RetailPrice = source.RetailPrice
+                    Id = source.product_id,
+                    Code = source.product_code,
+                    Name = source.product_name,
+                    TradePrice = source.trade_price,
+                    RetailPrice = source.retail_price
                 });
             }
             return _list;

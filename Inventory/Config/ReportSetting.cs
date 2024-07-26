@@ -330,7 +330,7 @@ namespace Inventory.Config
                 {
                     var repository = new Repository<Branch>(unWork);
                     var query = repository.FindBy(x => x.BranchDetails == input);
-                    return query.BranchId;
+                    return query.branch_id;
                 }
                 catch (Exception)
                 {
@@ -348,8 +348,8 @@ namespace Inventory.Config
                 try
                 {
                     var repository = new Repository<Customers>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
-                    return query.CustomerId;
+                    var query = repository.FindBy(x => x.customer_name == input);
+                    return query.customer_id;
                 }
                 catch (Exception)
                 {

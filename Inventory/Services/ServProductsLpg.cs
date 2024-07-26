@@ -22,11 +22,11 @@ namespace Inventory.Services
             {
                 _productLists.Add(new ProductList
                 {
-                    Id = product.ProductId, 
-                    Code = product.Code, 
-                    Name = product.Name,
-                    TradePrice = product.TradePrice, 
-                    RetailPrice = product.RetailPrice
+                    Id = product.product_id, 
+                    Code = product.product_code, 
+                    Name = product.product_name,
+                    TradePrice = product.trade_price, 
+                    RetailPrice = product.retail_price
                 });
             }
             return _productLists;
@@ -40,7 +40,7 @@ namespace Inventory.Services
                 {
                     var repository = new Repository<Products>(unWork);
                     return repository.SelectAll(Query.SelectReportAllItem)
-                        .Where(x => x.Name.Contains(Constant.AddFilterLpg))
+                        .Where(x => x.product_name.Contains(Constant.AddFilterLpg))
                         .ToList();
                 }
                 catch (Exception e)

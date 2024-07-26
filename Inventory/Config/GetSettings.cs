@@ -107,8 +107,8 @@ namespace Inventory.Config
                 unitWork.Begin();
                 var repository = new Repository<RouteLog>(unitWork);
                 var result = (from b in repository.SelectAll(ServeAll.Core.Queries.Query.AllRouteLogId)
-                              orderby b.RouteLogId descending
-                              select b.RouteLogId).Take(1).SingleOrDefault();
+                              orderby b.route_log_id descending
+                              select b.route_log_id).Take(1).SingleOrDefault();
                 return result;
             }
         }
@@ -123,7 +123,7 @@ namespace Inventory.Config
                     unWork.Begin();
                     var repository = new Repository<RouteLog>(unWork);
                     var que = repository.Id(GetLastUserId());
-                    que.TimeOut = DateTime.Now;
+                    que.time_out = DateTime.Now;
                     var result = repository.Update(que);
                     if (result)
                     {

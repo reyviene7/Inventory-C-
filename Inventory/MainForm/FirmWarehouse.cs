@@ -120,7 +120,7 @@ namespace Inventory.MainForm
                 var proLastCost = decimal.Parse(txtLST.Text);
                 var productIdWh = GetProductId(cmbNAM.Text);
                 var productName = cmbNAM.Text.Trim(' ');
-                var productCode = ProductWareH(productIdWh).Code;
+                var productCode = ProductWareH(productIdWh).product_code;
                 var itemOnOrder = int.Parse(txtORD.Text);
                 var delivery = new FirmPopDeliveryInvBranch(_userId, _userTyp, wareHouseId, wareHousCod, proLastCost, productIdWh, productName, productCode, wareHousQty, itemOnOrder)
                 {
@@ -193,8 +193,8 @@ namespace Inventory.MainForm
                 ShowValue(invId);
                 var imgId = GetProductImgId(cmbNAM.Text);
                 DisplayImage(imgId);
-                txtBAR.Text = SearchBarcode(cmbNAM.Text).Code;
-                txtPRC.Text = SearchBarcode(cmbNAM.Text).RetailPrice.ToString(CultureInfo.InvariantCulture);
+                txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
+                txtPRC.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                 bntCLR.Enabled = true;
             }
             catch (Exception ex)
@@ -646,7 +646,7 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 var repository = new Repository<Products>(unWork);
                 var query = repository.SelectAll(Query.AllItemNotInDepot)
-                    .Select(x => x.Name)
+                    .Select(x => x.product_id)
                     .Distinct()
                     .ToList();
                 cmbNAM.DataBindings.Clear();
@@ -733,7 +733,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
+                    var query = repository.FindBy(x => x.product_name == input);
                     return query;
                 }
                 catch (Exception)
@@ -791,7 +791,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    return repository.FindBy(x => x.ProductId == productId);
+                    return repository.FindBy(x => x.product_id == productId);
                 }
                 catch (Exception e)
                 {
@@ -809,8 +809,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.ImageId == imgId);
-                    return query.ProductImage;
+                    var query = repository.FindBy(x => x.image_id == imgId);
+                    return query.image;
                 }
                 catch (Exception ex)
                 {
@@ -846,8 +846,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
-                    return query.ProductId;
+                    var query = repository.FindBy(x => x.product_name == input);
+                    return query.product_id;
                 }
                 catch (Exception)
                 {
@@ -866,7 +866,7 @@ namespace Inventory.MainForm
                 {
                     var repository = new Repository<Branch>(unWork);
                     var query = repository.FindBy(x => x.BranchDetails == input);
-                    return query.BranchId;
+                    return query.branch_id;
                 }
                 catch (Exception)
                 {
@@ -884,7 +884,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.BranchId == branchId);
+                    var query = repository.FindBy(x => x.branch_id == branchId);
                     return query.BranchDetails;
                 }
                 catch (Exception)
@@ -1004,8 +1004,8 @@ namespace Inventory.MainForm
                 cmbNAM.BackColor = Color.White;
                 txtDEL.BackColor = Color.Yellow;
                 txtDEL.Focus();
-                txtBAR.Text = SearchBarcode(cmbNAM.Text).Code;
-                txtPRC.Text = SearchBarcode(cmbNAM.Text).RetailPrice.ToString(CultureInfo.InvariantCulture);
+                txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
+                txtPRC.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
             }
         }
         private void cmbNAM_SelectedIndexChanged(object sender, EventArgs e)
@@ -1021,8 +1021,8 @@ namespace Inventory.MainForm
             cmbNAM.Size = new Size(269, 29);
             if (txtBAR.Text.Length == 0)
             {
-                txtBAR.Text = SearchBarcode(cmbNAM.Text).Code;
-                txtPRC.Text = SearchBarcode(cmbNAM.Text).RetailPrice.ToString(CultureInfo.InvariantCulture);
+                txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
+                txtPRC.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
             }
         }
         private void cmbNAM_KeyPress(object sender, KeyPressEventArgs e)

@@ -38,7 +38,7 @@ namespace Inventory.PopupForm
         private void ShowEntity(string name)
         {
             var entity = Entity(name);
-            txtPID.Text = entity.ProductId.ToString();
+            txtPID.Text = entity.product_id.ToString();
         }
         private Products Entity(string name)
         {
@@ -48,7 +48,7 @@ namespace Inventory.PopupForm
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    return repository.FindBy(x => x.Name == name);
+                    return repository.FindBy(x => x.product_name == name);
                 }
                 catch (Exception e)
                 {
@@ -243,7 +243,7 @@ namespace Inventory.PopupForm
                 {
                     var repository = new Repository<Branch>(unWork);
                     var query = repository.FindBy(x => x.BranchDetails == input);
-                    return query.BranchId;
+                    return query.branch_id;
                 }
                 catch (Exception)
                 {
@@ -299,8 +299,8 @@ namespace Inventory.PopupForm
                 unWork.Begin();
                 var repository = new Repository<Products>(unWork);
                 var query = repository.SelectAll(Query.AllProducts)
-                    .Where(x => x.Name.Contains(Constant.DefaultEmptyCylinder))
-                    .Select(x => x.Name)
+                    .Where(x => x.product_name.Contains(Constant.DefaultEmptyCylinder))
+                    .Select(x => x.product_name)
                     .Distinct().ToList();
                 cmbNAM.DataBindings.Clear();
                 cmbNAM.DataSource = query;
