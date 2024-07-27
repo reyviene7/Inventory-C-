@@ -7,7 +7,7 @@ namespace Inventory.Config
     {
         public int Alpha { get; protected set; }
         public int Numeric { get; protected set; }
-        public int FinalNumberic { get; protected set; }
+        public int FinalNumeric { get; protected set; }
         public int NumericStart { get; protected set; }
         public int NumericLenght { get; protected set; }
         public string FrontKeys { get; set; }
@@ -16,13 +16,13 @@ namespace Inventory.Config
 
         public GenerateAlpaNum(int numericLength, int alphaStart, int numberStart, string endngkeys)
         {
-            FrontKeys = GetSettings.YearEnding("S");
+            FrontKeys = GetSettings.YearEnding("STK");
             EndngKeys = endngkeys;
             NumericStart = numberStart;
             NumericLenght = numericLength;
             Alpha = alphaStart;
             Numeric = 0;
-            FinalNumberic = 0;
+            FinalNumeric = 0;
         }
 
         public void Increment()
@@ -38,9 +38,9 @@ namespace Inventory.Config
         }
         public override string ToString()
         {
-            FinalNumberic = Numeric + this.NumericStart;
+            FinalNumeric = Numeric + this.NumericStart;
             return
-                $"{this.FrontKeys}-{Chars[Alpha]}{FinalNumberic.ToString().PadLeft(NumericLenght, '0')}-{this.EndngKeys}";
+                $"{this.FrontKeys}{Chars[Alpha]}{FinalNumeric.ToString().PadLeft(NumericLenght, '0')}";
         }
     }
 }

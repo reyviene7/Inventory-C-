@@ -9,6 +9,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using Inventory.Config;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
+using ServeAll.Core.Utilities;
 using Query = ServeAll.Core.Queries.Query;
 
 
@@ -18,6 +19,7 @@ namespace Inventory.MainForm
     {
         private FirmMain _main;
         private bool _add, _edt, _del;
+        private IEnumerable<ViewProducts> listProducts;
         public FirmMain Main
         {
             get { return _main; }
@@ -38,6 +40,7 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
+            listProducts = getProductList();
             BindProductList();
          
         }
@@ -168,11 +171,12 @@ namespace Inventory.MainForm
             _add = true;
             _edt = false;
             _del = false;
-            gCON.Enabled = false;
+            gridControl.Enabled = false;
             imgPRO.DataBindings.Clear();
             imgBigPreview.DataBindings.Clear();
             imgBigPreview.Image = null;
             imgPRO.Image = null;
+            GenerateCode();
         }
         private void ButUpd()
         {
@@ -182,7 +186,7 @@ namespace Inventory.MainForm
             _add = false;
             _edt = true;
             _del = false;
-            gCON.Enabled = false;
+            gridControl.Enabled = false;
         }
         private void ButDel()
         {
@@ -192,7 +196,7 @@ namespace Inventory.MainForm
             _add = false;
             _edt = false;
             _del = true;
-            gCON.Enabled = false;
+            gridControl.Enabled = false;
         }
         private void ButClr()
         {
@@ -200,7 +204,7 @@ namespace Inventory.MainForm
             InputEnab();
             InputWhit();
             InputClea();
-            gCON.Enabled = true;
+            gridControl.Enabled = true;
             cmbCategory.DataBindings.Clear();
             cmbSupplier.DataBindings.Clear();
         }
@@ -243,7 +247,7 @@ namespace Inventory.MainForm
             _add = false;
             _edt = false;
             _del = false;
-            gCON.Enabled = true;
+            gridControl.Enabled = true;
             cmbCategory.DataBindings.Clear();
             cmbSupplier.DataBindings.Clear();
             imgPRO.DataBindings.Clear();
@@ -257,7 +261,7 @@ namespace Inventory.MainForm
             InputDisb();
             InputDimG();
             InputClea();
-            gCON.Enabled = true;
+            gridControl.Enabled = true;
             cmbCategory.DataBindings.Clear();
             cmbSupplier.DataBindings.Clear();
        
@@ -301,21 +305,35 @@ namespace Inventory.MainForm
         }
         private void BindProductList()
         {
-            gCON.Update();
+            gridControl.Update();
             try
             {
+               var list = listProducts.Select(x => new { 
+                    Id = x.product_id,
+                    Barcode = x.product_code,
+                    Item = x.product_name,
+                    Category = x.category_details,
+                    SerialNo = x.serial_number,
+                    Trade = x.trade_price,
+                    Retail = x.retail_price,
+                    Status = x.status_details 
+                });
+
                 splash.ShowWaitForm();
-                gCON.DataBindings.Clear();
-                gCON.DataSource = RebindProducts();
-                gridProduct.Columns[0].Width = 40;
-                gridProduct.Columns[1].Width = 90;
-                gridProduct.Columns[2].Width = 290;
-                gridProduct.Columns[5].Width = 55;
+                gridControl.DataBindings.Clear();
+                gridControl.DataSource = list;
+
+
+                gridProductList.Columns[0].Width = 40;
+                gridProductList.Columns[1].Width = 90;
+                gridProductList.Columns[2].Width = 290;
+                gridProductList.Columns[3].Width = 100;
+                gridProductList.Columns[4].Width = 100;
                 splash.CloseWaitForm();
             }
             catch (Exception ex)
             {
-                gCON.EndUpdate();
+                gridControl.EndUpdate();
                 PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
             }
         }
@@ -451,7 +469,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private IEnumerable<ProductViews> RebindProducts()
+        private IEnumerable<ViewProducts> getProductList()
         {
             using (var session = new DalSession())
             {
@@ -459,7 +477,7 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<ProductViews>(unWork);
+                    var repository = new Repository<ViewProducts>(unWork);
                     return repository.SelectAll(Query.AllViewProducts).ToList();
                 }
                 catch (Exception)
@@ -589,9 +607,8 @@ namespace Inventory.MainForm
         }
         private void GenerateCode()
         {
-            var lastCode = GetLastId();
-            var lastId = GetSettings.GetLastBarcode(lastCode);
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastId, "PR");
+            var lastProductId = FetchUtils.getLastProductId();
+            var alphaNumeric = new GenerateAlpaNum(3, 2, lastProductId, "P");
             alphaNumeric.Increment();
             txtStockCode.Text = alphaNumeric.ToString();
         }
@@ -739,30 +756,39 @@ namespace Inventory.MainForm
         }
         private void gridProduct_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (gridProduct.RowCount > 0)
+            if (gridProductList.RowCount > 0)
             {
                 try
                 {
-                    txtProductId.Text = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    txtProductBarcode.Text = Product().product_code;
-                    txtProductName.Text = Product().product_name;
-                    cmbCategory.Text = Product().category_details;
-                    cmbSupplier.Text = Product().supplier_name;
-                    txtStockCode.Text = Product().stock_code;
-                    txtProductBrand.Text = Product().brand;
-                    txtProductModel.Text = Product().model;
-                    txtProductMade.Text = Product().made;
-                    txtSerialNumber.Text = Product().serial_number;
-                    txtTareWeight.Text = Product().tare_weight.ToString(CultureInfo.InvariantCulture);
-                    txtNetWeight.Text = Product().net_weight.ToString(CultureInfo.InvariantCulture);
-                    txtTradePrice.Text = Product().trade_price.ToString(CultureInfo.InvariantCulture);
-                    txtRetailPrice.Text = Product().retail_price.ToString(CultureInfo.InvariantCulture);
-                    txtWholesale.Text = Product().wholesale.ToString(CultureInfo.InvariantCulture);
-                    cmbProductStatus.Text = Product().status_details;
-                    dkpDateRegister.Value = Product().date_register;
-                    var cat = cmbCategory.Text.Trim(' ');
-                    var imgId = GetProductImgId(cat);
-                    DisplayImage(imgId);
+                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (id.Length > 0)
+                    {
+                        var productId = int.Parse(id);
+                        var product = searchProductId(productId);
+                        txtProductBarcode.Text = product.product_code;
+
+                        txtProductName.Text = product.product_name;
+                        cmbCategory.Text = product.category_details;
+                        cmbSupplier.Text = product.supplier_name;
+                        txtStockCode.Text = product.stock_code;
+                        txtProductBrand.Text = product.brand;
+                        txtProductModel.Text = product.model;
+                        txtProductMade.Text = product.made;
+                        txtSerialNumber.Text = product.serial_number;
+                        txtTareWeight.Text = product.tare_weight.ToString(CultureInfo.InvariantCulture);
+                        txtNetWeight.Text = product.net_weight.ToString(CultureInfo.InvariantCulture);
+                        txtTradePrice.Text = product.trade_price.ToString(CultureInfo.InvariantCulture);
+                        txtRetailPrice.Text = product.retail_price.ToString(CultureInfo.InvariantCulture);
+                        txtWholesale.Text = product.wholesale.ToString(CultureInfo.InvariantCulture);
+                        cmbProductStatus.Text = product.status_details;
+                        dkpDateRegister.Value = product.date_register;
+                    }
+                     
+                    
+                     
+                      /* var cat = cmbCategory.Text.Trim(' ');
+                      var imgId = GetProductImgId(cat);
+                      DisplayImage(imgId); */
                 }
                 catch (Exception ex)
                 {
@@ -772,6 +798,12 @@ namespace Inventory.MainForm
                 
             }
         }
+
+        private ViewProducts searchProductId(int id)
+        {
+            return listProducts.FirstOrDefault(product => product.product_id == id);
+        }
+
         private void gridProduct_LostFocus(object sender, EventArgs e)
         {
             InputDimG();

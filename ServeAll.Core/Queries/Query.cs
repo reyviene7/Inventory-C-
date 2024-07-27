@@ -166,7 +166,7 @@
 
         public const string AllItemNotInDepot = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE ProductId NOT IN(SELECT ProductId FROM Products WHERE Name LIKE '%LPG%')";
         public const string AllItemFromDepots = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE Name LIKE '%LPG%'";
-        public const string AllViewProducts = "SELECT product_id, product_code, product_name, category_details, serial_number, trade_price, retail_price, status_details FROM view_product";
+        public const string AllViewProducts = "SELECT * FROM view_product";
 
         public const string AllInventory = @"SELECT     InventoryId, 
 		                                                Barcode,
@@ -295,5 +295,6 @@
         public const string getCustomerList = "select customer_id, customer_name from view_poscustomers";
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
+        public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
     }
 }

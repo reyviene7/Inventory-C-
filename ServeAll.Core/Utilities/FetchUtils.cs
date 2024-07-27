@@ -47,6 +47,26 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getLastProductId()
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Products>(unWork);
+                    return repository.SelectAll(Query.getLastProductIdQuery)
+                        .Select(x => x.product_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
         public static int getProductId(string productName) {
 
             using (var session = new DalSession())

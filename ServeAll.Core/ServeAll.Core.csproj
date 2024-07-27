@@ -89,7 +89,6 @@
     <Compile Include="Entities\ProductImages.cs" />
     <Compile Include="Entities\Products.cs" />
     <Compile Include="Entities\ProductStatus.cs" />
-    <Compile Include="Entities\ProductViews.cs" />
     <Compile Include="Entities\ProductWarranty.cs" />
     <Compile Include="Entities\Profile.cs" />
     <Compile Include="Entities\ProfileEntities.cs" />
