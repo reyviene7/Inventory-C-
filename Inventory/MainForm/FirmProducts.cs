@@ -56,44 +56,6 @@ namespace Inventory.MainForm
         {
             PanelInterface.RightOptionTick(this, pnlRightOptions);
         }
-
-        private void bntADD_Click(object sender, EventArgs e)
-        {
-            ButAdd();
-        }
-        private void bntUPD_Click(object sender, EventArgs e)
-        {
-            ButUpd();
-        }
-        private void bntSAV_Click(object sender, EventArgs e)
-        {
-            ButSav();
-        }
-        private void bntCLR_Click(object sender, EventArgs e)
-        {
-            ButClr();
-        }
-        private void bntCAN_Click(object sender, EventArgs e)
-        {
-            ButCan();
-        }
-        private void bntDEL_Click(object sender, EventArgs e)
-        {
-            InputWhit();
-            var que =
-                PopupNotification.PopUpMessageQuestion(
-                    "Are you sure you want to Delete Product: " + txtNAM.Text.Trim(' ') + " " + "?", "Product Details");
-            if (que)
-            {
-                ButDel();
-            }
-            else { ButCan(); }
-        }
-        private void bntHOM_Click(object sender, EventArgs e)
-        {
-            Main.Show();
-            Close();
-        }
         private void pbLogout_Click(object sender, EventArgs e)
         {
             var que = PopupNotification.PopUpMassageLogOff();
@@ -115,78 +77,78 @@ namespace Inventory.MainForm
 
         private void ButtonAdd()
         {
-            bntADD.Enabled = true;
-            bntUPD.Enabled = false;
-            bntDEL.Enabled = false;
-            bntSAV.Enabled = true;
-            bntCLR.Enabled = false;
-            bntCAN.Enabled = true;
-            bntHOM.Enabled = false;
+            bntAdd.Enabled = true;
+            bntUpdate.Enabled = false;
+            bntDelete.Enabled = false;
+            bntSave.Enabled = true;
+            bntClear.Enabled = false;
+            bntCancel.Enabled = true;
+            bntHome.Enabled = false;
             pbHome.Enabled = false;
             pbLogout.Enabled = false;
             pbExit.Enabled = false;
         }
         private void ButtonUpd()
         {
-            bntADD.Enabled = false;
-            bntUPD.Enabled = true;
-            bntDEL.Enabled = false;
-            bntSAV.Enabled = true;
-            bntCLR.Enabled = false;
-            bntCAN.Enabled = true;
-            bntHOM.Enabled = false;
+            bntAdd.Enabled = false;
+            bntUpdate.Enabled = true;
+            bntDelete.Enabled = false;
+            bntSave.Enabled = true;
+            bntClear.Enabled = false;
+            bntCancel.Enabled = true;
+            bntHome.Enabled = false;
             pbHome.Enabled = false;
             pbLogout.Enabled = false;
             pbExit.Enabled = false;
         }
         private void ButtonDel()
         {
-            bntADD.Enabled = false;
-            bntUPD.Enabled = false;
-            bntDEL.Enabled = true;
-            bntSAV.Enabled = true;
-            bntCLR.Enabled = false;
-            bntCAN.Enabled = true;
-            bntHOM.Enabled = false;
+            bntAdd.Enabled = false;
+            bntUpdate.Enabled = false;
+            bntDelete.Enabled = true;
+            bntSave.Enabled = true;
+            bntClear.Enabled = false;
+            bntCancel.Enabled = true;
+            bntHome.Enabled = false;
             pbHome.Enabled = false;
             pbLogout.Enabled = false;
             pbExit.Enabled = false;
         }
         private void ButtonSav()
         {
-            bntADD.Enabled = true;
-            bntUPD.Enabled = true;
-            bntDEL.Enabled = true;
-            bntSAV.Enabled = false;
-            bntCLR.Enabled = true;
-            bntCAN.Enabled = false;
-            bntHOM.Enabled = true;
+            bntAdd.Enabled = true;
+            bntUpdate.Enabled = true;
+            bntDelete.Enabled = true;
+            bntSave.Enabled = false;
+            bntClear.Enabled = true;
+            bntCancel.Enabled = false;
+            bntHome.Enabled = true;
             pbHome.Enabled = true;
             pbLogout.Enabled = true;
             pbExit.Enabled = true;
         }
         private void ButtonClr()
         {
-            bntADD.Enabled = true;
-            bntUPD.Enabled = true;
-            bntDEL.Enabled = true;
-            bntSAV.Enabled = false;
-            bntCLR.Enabled = false;
-            bntCAN.Enabled = false;
-            bntHOM.Enabled = true;
+            bntAdd.Enabled = true;
+            bntUpdate.Enabled = true;
+            bntDelete.Enabled = true;
+            bntSave.Enabled = false;
+            bntClear.Enabled = false;
+            bntCancel.Enabled = false;
+            bntHome.Enabled = true;
             pbHome.Enabled = true;
             pbLogout.Enabled = true;
             pbExit.Enabled = true;
         }
         private void ButtonCan()
         {
-            bntADD.Enabled = true;
-            bntUPD.Enabled = true;
-            bntDEL.Enabled = true;
-            bntSAV.Enabled = false;
-            bntCLR.Enabled = true;
-            bntCAN.Enabled = false;
-            bntHOM.Enabled = true;
+            bntAdd.Enabled = true;
+            bntUpdate.Enabled = true;
+            bntDelete.Enabled = true;
+            bntSave.Enabled = false;
+            bntClear.Enabled = true;
+            bntCancel.Enabled = false;
+            bntHome.Enabled = true;
             pbHome.Enabled = true;
             pbLogout.Enabled = true;
             pbExit.Enabled = true;
@@ -202,14 +164,14 @@ namespace Inventory.MainForm
             BindSupplier();
             BindCategory();
             BindStatus();
-            txtCOD.Focus();
+            txtProductBarcode.Focus();
             _add = true;
             _edt = false;
             _del = false;
             gCON.Enabled = false;
             imgPRO.DataBindings.Clear();
-            imgBIG.DataBindings.Clear();
-            imgBIG.Image = null;
+            imgBigPreview.DataBindings.Clear();
+            imgBigPreview.Image = null;
             imgPRO.Image = null;
         }
         private void ButUpd()
@@ -239,8 +201,8 @@ namespace Inventory.MainForm
             InputWhit();
             InputClea();
             gCON.Enabled = true;
-            cmbCAT.DataBindings.Clear();
-            cmbSUP.DataBindings.Clear();
+            cmbCategory.DataBindings.Clear();
+            cmbSupplier.DataBindings.Clear();
         }
         private void ButSav()
         {
@@ -282,11 +244,11 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gCON.Enabled = true;
-            cmbCAT.DataBindings.Clear();
-            cmbSUP.DataBindings.Clear();
+            cmbCategory.DataBindings.Clear();
+            cmbSupplier.DataBindings.Clear();
             imgPRO.DataBindings.Clear();
-            imgBIG.DataBindings.Clear();
-            imgBIG.Image = null;
+            imgBigPreview.DataBindings.Clear();
+            imgBigPreview.Image = null;
             imgPRO.Image = null;
         }
         private void ButCan()
@@ -296,26 +258,26 @@ namespace Inventory.MainForm
             InputDimG();
             InputClea();
             gCON.Enabled = true;
-            cmbCAT.DataBindings.Clear();
-            cmbSUP.DataBindings.Clear();
+            cmbCategory.DataBindings.Clear();
+            cmbSupplier.DataBindings.Clear();
        
         }
         #endregion
         private void DisplayImage(int imgId)
         {
             imgPRO.DataBindings.Clear();
-            imgBIG.DataBindings.Clear();
+            imgBigPreview.DataBindings.Clear();
             var img = GetByImage(imgId);
             if (img != null)
             {
                 MemoryStream memoryStream = new MemoryStream(img);
                 imgPRO.Image = Image.FromStream(memoryStream);
-                imgBIG.Image = Image.FromStream(memoryStream);
+                imgBigPreview.Image = Image.FromStream(memoryStream);
             }
             else
             {
                 imgPRO.Image = null;
-                imgBIG.Image = null;
+                imgBigPreview.Image = null;
             }
         }
         private byte[] GetByImage(int imgId)
@@ -365,8 +327,8 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 var repository = new Repository<Category>(unWork);
                 var query = repository.SelectAll(Query.AllCategory).Select(x => x.category_details).Distinct().ToList();
-                cmbCAT.DataBindings.Clear();
-                cmbCAT.DataSource = query;
+                cmbCategory.DataBindings.Clear();
+                cmbCategory.DataSource = query;
             }
         }
         private void BindStatus()
@@ -377,8 +339,8 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 var repository = new Repository<MerchandiseStatus>(unWork);
                 var query = repository.SelectAll(Query.AllMerchandiseStatus).Select(x => x.status_details).Distinct().ToList();
-                cmbDIS.DataBindings.Clear();
-                cmbDIS.DataSource = query;
+                cmbProductStatus.DataBindings.Clear();
+                cmbProductStatus.DataSource = query;
             }
         }
         private void BindSupplier()
@@ -389,8 +351,8 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 var repository = new Repository<Supplier>(unWork);
                 var query = repository.SelectAll(Query.AllSupplier).Select(x => x.supplier_name).Distinct().ToList();
-                cmbSUP.DataBindings.Clear();
-                cmbSUP.DataSource = query;
+                cmbSupplier.DataBindings.Clear();
+                cmbSupplier.DataSource = query;
             }
         }
         private int GetCategoryId(string input)
@@ -452,7 +414,7 @@ namespace Inventory.MainForm
         }
         private ViewProducts Product()
         {
-            var productId = int.Parse(txtPID.Text);
+            var productId = int.Parse(txtProductId.Text);
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
@@ -509,103 +471,103 @@ namespace Inventory.MainForm
         }
         private void InputWhit()
         {
-            txtPID.BackColor = Color.White;
-            txtCOD.BackColor = Color.White;
-            txtNAM.BackColor = Color.White;
-            cmbCAT.BackColor = Color.White;
-            cmbSUP.BackColor = Color.White;
-            txtSTC.BackColor = Color.White;
-            txtBRD.BackColor = Color.White;
-            txtMOD.BackColor = Color.White;
-            txtMAD.BackColor = Color.White;
-            txtSER.BackColor = Color.White;
-            txtWET.BackColor = Color.White;
-            txtNET.BackColor = Color.White;
-            txtTRD.BackColor = Color.White;
-            txtRET.BackColor = Color.White;
-            txtWHL.BackColor = Color.White;
-            cmbDIS.BackColor = Color.White;
-            dkpREG.BackColor = Color.White;
+            txtProductId.BackColor = Color.White;
+            txtProductBarcode.BackColor = Color.White;
+            txtProductName.BackColor = Color.White;
+            cmbCategory.BackColor = Color.White;
+            cmbSupplier.BackColor = Color.White;
+            txtStockCode.BackColor = Color.White;
+            txtProductBrand.BackColor = Color.White;
+            txtProductModel.BackColor = Color.White;
+            txtProductMade.BackColor = Color.White;
+            txtSerialNumber.BackColor = Color.White;
+            txtTareWeight.BackColor = Color.White;
+            txtNetWeight.BackColor = Color.White;
+            txtTradePrice.BackColor = Color.White;
+            txtRetailPrice.BackColor = Color.White;
+            txtWholesale.BackColor = Color.White;
+            cmbProductStatus.BackColor = Color.White;
+            dkpDateRegister.BackColor = Color.White;
         }
         private void InputEnab()
         {
-            txtPID.Enabled = true;
-            txtCOD.Enabled = true;
-            txtNAM.Enabled = true;
-            cmbCAT.Enabled = true;
-            cmbSUP.Enabled = true;
-            txtSTC.Enabled = true;
-            txtBRD.Enabled = true;
-            txtMOD.Enabled = true;
-            txtMAD.Enabled = true;
-            txtSER.Enabled = true;
-            txtWET.Enabled = true;
-            txtNET.Enabled = true;
-            txtTRD.Enabled = true;
-            txtRET.Enabled = true;
-            txtWHL.Enabled = true;
-            cmbDIS.Enabled = true;
-            dkpREG.Enabled = true;
+            txtProductId.Enabled = true;
+            txtProductBarcode.Enabled = true;
+            txtProductName.Enabled = true;
+            cmbCategory.Enabled = true;
+            cmbSupplier.Enabled = true;
+            txtStockCode.Enabled = true;
+            txtProductBrand.Enabled = true;
+            txtProductModel.Enabled = true;
+            txtProductMade.Enabled = true;
+            txtSerialNumber.Enabled = true;
+            txtTareWeight.Enabled = true;
+            txtNetWeight.Enabled = true;
+            txtTradePrice.Enabled = true;
+            txtRetailPrice.Enabled = true;
+            txtWholesale.Enabled = true;
+            cmbProductStatus.Enabled = true;
+            dkpDateRegister.Enabled = true;
         }
         private void InputDisb()
         {
-            txtPID.Enabled = false;
-            txtCOD.Enabled = false;
-            txtNAM.Enabled = false;
-            cmbCAT.Enabled = false;
-            cmbSUP.Enabled = false;
-            txtSTC.Enabled = false;
-            txtBRD.Enabled = false;
-            txtMOD.Enabled = false;
-            txtMAD.Enabled = false;
-            txtSER.Enabled = false;
-            txtWET.Enabled = false;
-            txtNET.Enabled = false;
-            txtTRD.Enabled = false;
-            txtRET.Enabled = false;
-            txtWHL.Enabled = false;
-            cmbDIS.Enabled = false;
-            dkpREG.Enabled = false;
+            txtProductId.Enabled = false;
+            txtProductBarcode.Enabled = false;
+            txtProductName.Enabled = false;
+            cmbCategory.Enabled = false;
+            cmbSupplier.Enabled = false;
+            txtStockCode.Enabled = false;
+            txtProductBrand.Enabled = false;
+            txtProductModel.Enabled = false;
+            txtProductMade.Enabled = false;
+            txtSerialNumber.Enabled = false;
+            txtTareWeight.Enabled = false;
+            txtNetWeight.Enabled = false;
+            txtTradePrice.Enabled = false;
+            txtRetailPrice.Enabled = false;
+            txtWholesale.Enabled = false;
+            cmbProductStatus.Enabled = false;
+            dkpDateRegister.Enabled = false;
         }
         private void InputClea()
         {
-            txtPID.Clear();
-            txtCOD.Clear();
-            txtNAM.Clear();
-            cmbCAT.Text = "";
-            cmbSUP.Text = "";
-            txtSTC.Clear();
-            txtBRD.Clear();
-            txtMOD.Clear();
-            txtMAD.Clear();
-            txtSER.Clear();
-            txtWET.Clear();
-            txtNET.Clear();
-            cmbDIS.Text = "";
-            txtTRD.Clear();
-            txtRET.Clear();
-            txtWHL.Clear();
+            txtProductId.Clear();
+            txtProductBarcode.Clear();
+            txtProductName.Clear();
+            cmbCategory.Text = "";
+            cmbSupplier.Text = "";
+            txtStockCode.Clear();
+            txtProductBrand.Clear();
+            txtProductModel.Clear();
+            txtProductMade.Clear();
+            txtSerialNumber.Clear();
+            txtTareWeight.Clear();
+            txtNetWeight.Clear();
+            cmbProductStatus.Text = "";
+            txtTradePrice.Clear();
+            txtRetailPrice.Clear();
+            txtWholesale.Clear();
 
-            dkpREG.Value = DateTime.Now.Date;
+            dkpDateRegister.Value = DateTime.Now.Date;
         }
         private void InputDimG() {
-            txtPID.BackColor = Color.DimGray;
-            txtCOD.BackColor = Color.DimGray;
-            txtNAM.BackColor = Color.DimGray;
-            cmbCAT.BackColor = Color.DimGray;
-            cmbSUP.BackColor = Color.DimGray;
-            txtSTC.BackColor = Color.DimGray;
-            txtBRD.BackColor = Color.DimGray;
-            txtMOD.BackColor = Color.DimGray;
-            txtMAD.BackColor = Color.DimGray;
-            txtSER.BackColor = Color.DimGray;
-            txtWET.BackColor = Color.DimGray;
-            txtNET.BackColor = Color.DimGray;
-            txtTRD.BackColor = Color.DimGray;
-            txtRET.BackColor = Color.DimGray;
-            txtWHL.BackColor = Color.DimGray;
-            cmbDIS.BackColor = Color.DimGray;
-            dkpREG.BackColor = Color.DimGray;
+            txtProductId.BackColor = Color.DimGray;
+            txtProductBarcode.BackColor = Color.DimGray;
+            txtProductName.BackColor = Color.DimGray;
+            cmbCategory.BackColor = Color.DimGray;
+            cmbSupplier.BackColor = Color.DimGray;
+            txtStockCode.BackColor = Color.DimGray;
+            txtProductBrand.BackColor = Color.DimGray;
+            txtProductModel.BackColor = Color.DimGray;
+            txtProductMade.BackColor = Color.DimGray;
+            txtSerialNumber.BackColor = Color.DimGray;
+            txtTareWeight.BackColor = Color.DimGray;
+            txtNetWeight.BackColor = Color.DimGray;
+            txtTradePrice.BackColor = Color.DimGray;
+            txtRetailPrice.BackColor = Color.DimGray;
+            txtWholesale.BackColor = Color.DimGray;
+            cmbProductStatus.BackColor = Color.DimGray;
+            dkpDateRegister.BackColor = Color.DimGray;
         }
         private string GetLastId()
         {
@@ -631,7 +593,7 @@ namespace Inventory.MainForm
             var lastId = GetSettings.GetLastBarcode(lastCode);
             var alphaNumeric = new GenerateAlpaNum(3, 2, lastId, "PR");
             alphaNumeric.Increment();
-            txtSTC.Text = alphaNumeric.ToString();
+            txtStockCode.Text = alphaNumeric.ToString();
         }
         private void DataInsert()
         {
@@ -645,29 +607,29 @@ namespace Inventory.MainForm
                     var repository = new Repository<Products>(unWork);
                     var product = new Products()
                     {
-                        product_code            = txtCOD.Text.Trim(' '),
-                        product_name            = txtNAM.Text.Trim(' '),
-                        category_id      = GetCategoryId(cmbCAT.Text),
-                        supplier_id      = GetSupplierId(cmbSUP.Text),
-                        stock_code       = txtSTC.Text.Trim(' '),
-                        brand           = txtBRD.Text.Trim(' '),
-                        model           = txtMOD.Text.Trim(' '),
-                        made            = txtMAD.Text.Trim(' '),
-                        serial_number          = txtSER.Text.Trim(' '),
-                        tare_weight      = Convert.ToDecimal(txtWET.Text),
-                        net_weight       = Convert.ToDecimal(txtNET.Text),
-                        trade_price      = Convert.ToDecimal(txtTRD.Text),
-                        retail_price     = Convert.ToDecimal(txtRET.Text),
-                        wholesale       = Convert.ToDecimal(txtWHL.Text), 
-                        status_id        = GetStatusId(cmbDIS.Text),
-                        date_register        = dkpREG.Value.Date
+                        product_code            = txtProductBarcode.Text.Trim(' '),
+                        product_name            = txtProductName.Text.Trim(' '),
+                        category_id      = GetCategoryId(cmbCategory.Text),
+                        supplier_id      = GetSupplierId(cmbSupplier.Text),
+                        stock_code       = txtStockCode.Text.Trim(' '),
+                        brand           = txtProductBrand.Text.Trim(' '),
+                        model           = txtProductModel.Text.Trim(' '),
+                        made            = txtProductMade.Text.Trim(' '),
+                        serial_number          = txtSerialNumber.Text.Trim(' '),
+                        tare_weight      = Convert.ToDecimal(txtTareWeight.Text),
+                        net_weight       = Convert.ToDecimal(txtNetWeight.Text),
+                        trade_price      = Convert.ToDecimal(txtTradePrice.Text),
+                        retail_price     = Convert.ToDecimal(txtRetailPrice.Text),
+                        wholesale       = Convert.ToDecimal(txtWholesale.Text), 
+                        status_id        = GetStatusId(cmbProductStatus.Text),
+                        date_register        = dkpDateRegister.Value.Date
                     };
                     var result = repository.Add(product);
                     if (result > 0)
                     {
                         splash.ShowWaitForm();
                         PopupNotification.PopUpMessages(1,
-                            "Product Name: " + txtNAM.Text.Trim(' ') + " " + Messages.SuccessInsert,
+                            "Product Name: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
                             Messages.TitleSuccessInsert);
                         unWork.Commit();
                     }
@@ -696,33 +658,33 @@ namespace Inventory.MainForm
                 try
                 {
                     splash.ShowWaitForm();
-                    var proId = Convert.ToInt32(txtPID.Text);
+                    var proId = Convert.ToInt32(txtProductId.Text);
                     var repository = new Repository<Products>(unWork);
                     var que = repository.Id(proId);
 
-                    que.product_code        = txtCOD.Text.Trim(' ');
-                    que.product_name        = txtNAM.Text.Trim(' ');
-                    que.category_id  = GetCategoryId(cmbCAT.Text);
-                    que.supplier_id  = GetSupplierId(cmbSUP.Text);
-                    que.stock_code   = txtSTC.Text.Trim(' ');
-                    que.brand       = txtBRD.Text.Trim(' ');
-                    que.model       = txtMOD.Text.Trim(' ');
-                    que.made        = txtMAD.Text.Trim(' ');
-                    que.serial_number      = txtSER.Text.Trim(' ');
-                    que.tare_weight  = Convert.ToDecimal(txtWET.Text);
-                    que.net_weight   = Convert.ToDecimal(txtNET.Text);
-                    que.trade_price = Convert.ToDecimal(txtTRD.Text);
-                    que.retail_price = Convert.ToDecimal(txtRET.Text);
-                    que.wholesale = Convert.ToDecimal(txtWHL.Text);
-                    que.status_id    = GetStatusId(cmbDIS.Text);
+                    que.product_code        = txtProductBarcode.Text.Trim(' ');
+                    que.product_name        = txtProductName.Text.Trim(' ');
+                    que.category_id  = GetCategoryId(cmbCategory.Text);
+                    que.supplier_id  = GetSupplierId(cmbSupplier.Text);
+                    que.stock_code   = txtStockCode.Text.Trim(' ');
+                    que.brand       = txtProductBrand.Text.Trim(' ');
+                    que.model       = txtProductModel.Text.Trim(' ');
+                    que.made        = txtProductMade.Text.Trim(' ');
+                    que.serial_number      = txtSerialNumber.Text.Trim(' ');
+                    que.tare_weight  = Convert.ToDecimal(txtTareWeight.Text);
+                    que.net_weight   = Convert.ToDecimal(txtNetWeight.Text);
+                    que.trade_price = Convert.ToDecimal(txtTradePrice.Text);
+                    que.retail_price = Convert.ToDecimal(txtRetailPrice.Text);
+                    que.wholesale = Convert.ToDecimal(txtWholesale.Text);
+                    que.status_id    = GetStatusId(cmbProductStatus.Text);
              
-                    que.date_register    = dkpREG.Value.Date;
+                    que.date_register    = dkpDateRegister.Value.Date;
                     var result      = repository.Update(que);
                     if (result)
                     {
                         splash.CloseWaitForm();
                         PopupNotification.PopUpMessages(1,
-                            "Product Name: " + txtNAM.Text.Trim(' ') + " " + Messages.SuccessUpdate,
+                            "Product Name: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
                             Messages.TitleSuccessUpdate);
                         unWork.Commit();
                     }
@@ -749,7 +711,7 @@ namespace Inventory.MainForm
                 try
                 {
                     splash.ShowWaitForm();
-                    var proId = Convert.ToInt32(txtPID.Text);
+                    var proId = Convert.ToInt32(txtProductId.Text);
                     var repository = new Repository<Products>(unWork);
                     var que = repository.Id(proId);
                     var result = repository.Delete(que);
@@ -757,7 +719,7 @@ namespace Inventory.MainForm
                     {
                         splash.CloseWaitForm();
                         PopupNotification.PopUpMessages(1,
-                            "Product Name: " + txtNAM.Text.Trim(' ') + " " + Messages.SuccessDelete,
+                            "Product Name: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessDelete,
                             Messages.TitleSuccessDelete);
                         unWork.Commit();
                     }
@@ -781,24 +743,24 @@ namespace Inventory.MainForm
             {
                 try
                 {
-                    txtPID.Text = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    txtCOD.Text = Product().product_code;
-                    txtNAM.Text = Product().product_name;
-                    cmbCAT.Text = Product().category_details;
-                    cmbSUP.Text = Product().supplier_name;
-                    txtSTC.Text = Product().stock_code;
-                    txtBRD.Text = Product().brand;
-                    txtMOD.Text = Product().model;
-                    txtMAD.Text = Product().made;
-                    txtSER.Text = Product().serial_number;
-                    txtWET.Text = Product().tare_weight.ToString(CultureInfo.InvariantCulture);
-                    txtNET.Text = Product().net_weight.ToString(CultureInfo.InvariantCulture);
-                    txtTRD.Text = Product().trade_price.ToString(CultureInfo.InvariantCulture);
-                    txtRET.Text = Product().retail_price.ToString(CultureInfo.InvariantCulture);
-                    txtWHL.Text = Product().wholesale.ToString(CultureInfo.InvariantCulture);
-                    cmbDIS.Text = Product().status_details;
-                    dkpREG.Value = Product().date_register;
-                    var cat = cmbCAT.Text.Trim(' ');
+                    txtProductId.Text = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    txtProductBarcode.Text = Product().product_code;
+                    txtProductName.Text = Product().product_name;
+                    cmbCategory.Text = Product().category_details;
+                    cmbSupplier.Text = Product().supplier_name;
+                    txtStockCode.Text = Product().stock_code;
+                    txtProductBrand.Text = Product().brand;
+                    txtProductModel.Text = Product().model;
+                    txtProductMade.Text = Product().made;
+                    txtSerialNumber.Text = Product().serial_number;
+                    txtTareWeight.Text = Product().tare_weight.ToString(CultureInfo.InvariantCulture);
+                    txtNetWeight.Text = Product().net_weight.ToString(CultureInfo.InvariantCulture);
+                    txtTradePrice.Text = Product().trade_price.ToString(CultureInfo.InvariantCulture);
+                    txtRetailPrice.Text = Product().retail_price.ToString(CultureInfo.InvariantCulture);
+                    txtWholesale.Text = Product().wholesale.ToString(CultureInfo.InvariantCulture);
+                    cmbProductStatus.Text = Product().status_details;
+                    dkpDateRegister.Value = Product().date_register;
+                    var cat = cmbCategory.Text.Trim(' ');
                     var imgId = GetProductImgId(cat);
                     DisplayImage(imgId);
                 }
@@ -820,270 +782,72 @@ namespace Inventory.MainForm
         }
 
         #region stringManipulation
-        private void txtNAM_KeyDown(object sender, KeyEventArgs e)
+        
+        private void bntAdd_Click(object sender, EventArgs e)
+        {
+            ButAdd();
+        }
+
+        private void bntUpdate_Click(object sender, EventArgs e)
+        {
+            ButUpd();
+        }
+
+        private void bntSave_Click(object sender, EventArgs e)
+        {
+            ButSav();
+        }
+
+        private void bntClear_Click(object sender, EventArgs e)
+        {
+            ButClr();
+        }
+
+        private void bntCancel_Click(object sender, EventArgs e)
+        {
+            ButCan();
+        }
+
+        private void bntDelete_Click(object sender, EventArgs e)
+        {
+            InputWhit();
+            var que =
+                PopupNotification.PopUpMessageQuestion(
+                    "Are you sure you want to Delete Product: " + txtProductName.Text.Trim(' ') + " " + "?", "Product Details");
+            if (que)
+            {
+                ButDel();
+            }
+            else { ButCan(); }
+        }
+
+        private void bntHome_Click(object sender, EventArgs e)
+        {
+            Main.Show();
+            Close();
+        }
+
+        private void txtProductBarcode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputBoxLeave(txtNAM, cmbCAT, "Product Name",
-                Messages.TitleProducts);
-            }
-        }
-
-        private void cmbCAT_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputEmpLeave(cmbCAT, cmbSUP, "Product Category",
-                Messages.TitleProducts);
-            }
-            if (e.KeyCode == Keys.F1)
-            {
-                BindCategory();
-            }
-        }
-
-        private void cmbSUP_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputEmpLeave(cmbSUP, txtSTC, "Product Supplier",
-                Messages.TitleProducts);
-            }
-            if (e.KeyCode == Keys.F1)
-            {
-                BindSupplier();
-            }
-        }
-
-        private void txtSTC_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtSTC, txtBRD, "Stock Code",
-                Messages.TitleProducts);
-            }
-        }
-
-        private void txtBRD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtBRD, txtMOD, "Product Brand",
-                Messages.TitleProducts);
-            }
-        }
-
-        private void txtMOD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtMOD, txtMAD, "Product Model",
-                Messages.TitleProducts);
-            }
-        }
-
-        private void txtMAD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtMAD, txtSER, "Product Made",
-                Messages.TitleProducts);
-            }
-        }
-
-        private void txtSER_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtSER, txtWET, "Serial Number",
-                Messages.TitleProducts);
-            }
-        }
-
-        private void txtWET_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtWET, txtNET, "Tare Weight",
-                Messages.TitleProducts);
-            }
-        }
-        private void txtNET_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtNET, txtTRD, "Net Weight",
-                Messages.TitleProducts);
-            }
-        }
-
-        private void txtWET_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtWET.Focus();
-                txtWET.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtWET.BackColor = Color.White;
-            }
-        }
-        private void txtNET_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtNET.Focus();
-                txtNET.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtNET.BackColor = Color.White;
-            }
-        }
-
-        private void txtWET_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.DetectIntLeave(txtWET);
-        }
-
-        private void txtNET_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.DetectIntLeave(txtNET);
-        }
-
-        private void cmbCAT_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_add || _edt)
-            {
-                var cat = cmbCAT.Text.Trim(' ');
-                var imgId = GetProductImgId(cat);
-                DisplayImage(imgId);
-            }
-        }
-        private void cmbDIS_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(cmbDIS, dkpREG, "Discontinued",
-                Messages.TitleProducts);
-            }
-            if (e.KeyCode == Keys.F1)
-            {
-                BindStatus();
-            }
-        }
-
-        private void txtTRD_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtTRD.Focus();
-                txtTRD.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtTRD.BackColor = Color.White;
-            }
-        }
-
-        private void txtTRD_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.DetectIntLeave(txtTRD);
-        }
-
-        private void txtRET_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtRET.Focus();
-                txtRET.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtRET.BackColor = Color.White;
-            }
-        }
-
-        private void txtRET_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.DetectIntLeave(txtRET);
-        }
-
-        private void txtWHL_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtWHL.Focus();
-                txtWHL.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtWHL.BackColor = Color.White;
-            }
-        }
-
-        private void txtWHL_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.DetectIntLeave(txtWHL);
-        }
-
-        private void txtTRD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtTRD, txtRET, "Trade Price",
-                Messages.TitleProducts);
-            }
-        }
-
-        private void txtRET_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtRET, txtWHL, "Retail Price",
-                Messages.TitleProducts);
-            }
-        }
-
-        private void txtWHL_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtWHL, cmbDIS, "Whole Sale Price",
-                Messages.TitleProducts);
-            }
-        }
-
-        private void txtCOD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var barcode = txtCOD.Text.Trim(' ');
+                var barcode = txtProductBarcode.Text.Trim(' ');
                 var que = VerifyCode(barcode);
                 if (que == 0)
                 {
-                    InputManipulation.InputBoxLeave(txtCOD, txtNAM, "Barcode",
+                    InputManipulation.InputBoxLeave(txtProductBarcode, txtProductName, "Barcode",
                         Messages.TitleProducts);
-                    txtCOD.Enabled = true;
+                    txtProductBarcode.Enabled = true;
                 }
                 else
                 {
                     PopupNotification.PopUpMessages(0, "Product Barcode already exist!", Messages.GasulPos);
-                    txtCOD.Focus();
+                    txtProductBarcode.Focus();
                 }
-
-
-              
             }
         }
 
-        private void txtCOD_Leave(object sender, EventArgs e)
+        private void txtProductBarcode_Leave(object sender, EventArgs e)
         {
             //var barcode = txtCOD.Text.Trim(' ');
             //var len = txtCOD.Text.Length;
@@ -1107,15 +871,256 @@ namespace Inventory.MainForm
             //txtCOD.Focus();
         }
 
-        private void dkpREG_KeyDown(object sender, KeyEventArgs e)
+        private void txtProductName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputBoxLeave(dkpREG, bntSAV, "Date Register", Messages.TitleProducts);
+                InputManipulation.InputBoxLeave(txtProductName, cmbCategory, "Product Name",
+                Messages.TitleProducts);
             }
         }
 
+        private void cmbCategory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputEmpLeave(cmbCategory, cmbSupplier, "Product Category",
+                Messages.TitleProducts);
+            }
+            if (e.KeyCode == Keys.F1)
+            {
+                BindCategory();
+            }
+        }
 
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_add || _edt)
+            {
+                var cat = cmbCategory.Text.Trim(' ');
+                var imgId = GetProductImgId(cat);
+                DisplayImage(imgId);
+            }
+        }
+
+        private void cmbSupplier_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputEmpLeave(cmbSupplier, txtStockCode, "Product Supplier",
+                Messages.TitleProducts);
+            }
+            if (e.KeyCode == Keys.F1)
+            {
+                BindSupplier();
+            }
+        }
+
+        private void txtStockCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtStockCode, txtProductBrand, "Stock Code",
+                Messages.TitleProducts);
+            }
+        }
+
+        private void txtProductBrand_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtProductBrand, txtProductModel, "Product Brand",
+                Messages.TitleProducts);
+            }
+        }
+
+        private void txtProductModel_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtProductModel, txtProductMade, "Product Model",
+                Messages.TitleProducts);
+            }
+        }
+
+        private void txtProductMade_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtProductMade, txtSerialNumber, "Product Made",
+                Messages.TitleProducts);
+            }
+        }
+
+        private void txtSerialNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtSerialNumber, txtTareWeight, "Serial Number",
+                Messages.TitleProducts);
+            }
+        }
+
+        private void txtTareWeight_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtTareWeight, txtNetWeight, "Tare Weight",
+                Messages.TitleProducts);
+            }
+        }
+
+        private void txtTareWeight_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
+                txtTareWeight.Focus();
+                txtTareWeight.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtTareWeight.BackColor = Color.White;
+            }
+        }
+
+        private void txtTareWeight_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.DetectIntLeave(txtTareWeight);
+        }
+
+        private void txtNetWeight_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtNetWeight, txtTradePrice, "Net Weight",
+                Messages.TitleProducts);
+            }
+        }
+
+        private void txtNetWeight_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
+                txtNetWeight.Focus();
+                txtNetWeight.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtNetWeight.BackColor = Color.White;
+            }
+        }
+
+        private void txtNetWeight_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.DetectIntLeave(txtNetWeight);
+        }
+
+        private void txtTradePrice_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtTradePrice, txtRetailPrice, "Trade Price",
+                Messages.TitleProducts);
+            }
+        }
+
+        private void txtTradePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
+                txtTradePrice.Focus();
+                txtTradePrice.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtTradePrice.BackColor = Color.White;
+            }
+        }
+
+        private void txtTradePrice_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.DetectIntLeave(txtTradePrice);
+        }
+
+        private void txtRetailPrice_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtRetailPrice, txtWholesale, "Retail Price",
+                Messages.TitleProducts);
+            }
+        }
+
+        private void txtRetailPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
+                txtRetailPrice.Focus();
+                txtRetailPrice.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtRetailPrice.BackColor = Color.White;
+            }
+        }
+
+        private void txtRetailPrice_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.DetectIntLeave(txtRetailPrice);
+        }
+
+        private void txtWholesale_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtWholesale, cmbProductStatus, "Whole Sale Price",
+                Messages.TitleProducts);
+            }
+        }
+
+        private void txtWholesale_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
+                txtWholesale.Focus();
+                txtWholesale.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtWholesale.BackColor = Color.White;
+            }
+        }
+
+        private void txtWholesale_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.DetectIntLeave(txtWholesale);
+        }
+
+        private void cmbProductStatus_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(cmbProductStatus, dkpDateRegister, "Discontinued",
+                Messages.TitleProducts);
+            }
+            if (e.KeyCode == Keys.F1)
+            {
+                BindStatus();
+            }
+        }
+
+        private void dkpDateRegister_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Date Register", Messages.TitleProducts);
+            }
+        }
         #endregion
 
         private int VerifyCode(string barcode)

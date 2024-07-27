@@ -40,38 +40,38 @@
             this.XtrPerProfile = new DevExpress.XtraTab.XtraTabPage();
             this.GbPersonal = new DevExpress.XtraEditors.GroupControl();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtTRD = new System.Windows.Forms.TextBox();
+            this.txtTradePrice = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtWHL = new System.Windows.Forms.TextBox();
+            this.txtWholesale = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtRET = new System.Windows.Forms.TextBox();
+            this.txtRetailPrice = new System.Windows.Forms.TextBox();
             this.imgPRO = new System.Windows.Forms.PictureBox();
-            this.cmbCAT = new System.Windows.Forms.ComboBox();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.cmbSUP = new System.Windows.Forms.ComboBox();
+            this.cmbSupplier = new System.Windows.Forms.ComboBox();
             this.lblPostion = new System.Windows.Forms.Label();
-            this.cmbDIS = new System.Windows.Forms.ComboBox();
+            this.cmbProductStatus = new System.Windows.Forms.ComboBox();
             this.lblHiredate = new System.Windows.Forms.Label();
-            this.dkpREG = new System.Windows.Forms.DateTimePicker();
+            this.dkpDateRegister = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtNET = new System.Windows.Forms.TextBox();
+            this.txtNetWeight = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtWET = new System.Windows.Forms.TextBox();
+            this.txtTareWeight = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtSER = new System.Windows.Forms.TextBox();
+            this.txtSerialNumber = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtMAD = new System.Windows.Forms.TextBox();
+            this.txtProductMade = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtMOD = new System.Windows.Forms.TextBox();
+            this.txtProductModel = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtBRD = new System.Windows.Forms.TextBox();
+            this.txtProductBrand = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtSTC = new System.Windows.Forms.TextBox();
+            this.txtStockCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtNAM = new System.Windows.Forms.TextBox();
+            this.txtProductName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCOD = new System.Windows.Forms.TextBox();
+            this.txtProductBarcode = new System.Windows.Forms.TextBox();
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
             this.gCON = new DevExpress.XtraGrid.GridControl();
             this.gridProduct = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -87,17 +87,17 @@
             this.xtraTabImage = new DevExpress.XtraTab.XtraTabPage();
             this.grpImage = new DevExpress.XtraEditors.GroupControl();
             this.lblBarcode = new System.Windows.Forms.Label();
-            this.txtPID = new System.Windows.Forms.TextBox();
-            this.imgBIG = new System.Windows.Forms.PictureBox();
+            this.txtProductId = new System.Windows.Forms.TextBox();
+            this.imgBigPreview = new System.Windows.Forms.PictureBox();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.lblMainTitle = new System.Windows.Forms.Label();
-            this.bntHOM = new System.Windows.Forms.Button();
-            this.bntDEL = new System.Windows.Forms.Button();
-            this.bntCLR = new System.Windows.Forms.Button();
-            this.bntCAN = new System.Windows.Forms.Button();
-            this.bntSAV = new System.Windows.Forms.Button();
-            this.bntUPD = new System.Windows.Forms.Button();
-            this.bntADD = new System.Windows.Forms.Button();
+            this.bntHome = new System.Windows.Forms.Button();
+            this.bntDelete = new System.Windows.Forms.Button();
+            this.bntClear = new System.Windows.Forms.Button();
+            this.bntCancel = new System.Windows.Forms.Button();
+            this.bntSave = new System.Windows.Forms.Button();
+            this.bntUpdate = new System.Windows.Forms.Button();
+            this.bntAdd = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pcSchedule = new System.Windows.Forms.PictureBox();
             this.pcBL = new System.Windows.Forms.PictureBox();
@@ -134,7 +134,7 @@
             this.xtraTabImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpImage)).BeginInit();
             this.grpImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgBIG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBigPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcSchedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcBL)).BeginInit();
@@ -223,7 +223,7 @@
             this.XtrPerProfile.Appearance.PageClient.Options.UseBackColor = true;
             this.XtrPerProfile.Controls.Add(this.GbPersonal);
             this.XtrPerProfile.Name = "XtrPerProfile";
-            this.XtrPerProfile.Size = new System.Drawing.Size(1006, 558);
+            this.XtrPerProfile.Size = new System.Drawing.Size(1010, 561);
             this.XtrPerProfile.Text = "Product Details";
             // 
             // GbPersonal
@@ -232,38 +232,38 @@
             this.GbPersonal.Appearance.Options.UseBackColor = true;
             this.GbPersonal.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.GbPersonal.Controls.Add(this.label12);
-            this.GbPersonal.Controls.Add(this.txtTRD);
+            this.GbPersonal.Controls.Add(this.txtTradePrice);
             this.GbPersonal.Controls.Add(this.label13);
-            this.GbPersonal.Controls.Add(this.txtWHL);
+            this.GbPersonal.Controls.Add(this.txtWholesale);
             this.GbPersonal.Controls.Add(this.label14);
-            this.GbPersonal.Controls.Add(this.txtRET);
+            this.GbPersonal.Controls.Add(this.txtRetailPrice);
             this.GbPersonal.Controls.Add(this.imgPRO);
-            this.GbPersonal.Controls.Add(this.cmbCAT);
+            this.GbPersonal.Controls.Add(this.cmbCategory);
             this.GbPersonal.Controls.Add(this.label11);
-            this.GbPersonal.Controls.Add(this.cmbSUP);
+            this.GbPersonal.Controls.Add(this.cmbSupplier);
             this.GbPersonal.Controls.Add(this.lblPostion);
-            this.GbPersonal.Controls.Add(this.cmbDIS);
+            this.GbPersonal.Controls.Add(this.cmbProductStatus);
             this.GbPersonal.Controls.Add(this.lblHiredate);
-            this.GbPersonal.Controls.Add(this.dkpREG);
+            this.GbPersonal.Controls.Add(this.dkpDateRegister);
             this.GbPersonal.Controls.Add(this.label10);
-            this.GbPersonal.Controls.Add(this.txtNET);
+            this.GbPersonal.Controls.Add(this.txtNetWeight);
             this.GbPersonal.Controls.Add(this.label9);
-            this.GbPersonal.Controls.Add(this.txtWET);
+            this.GbPersonal.Controls.Add(this.txtTareWeight);
             this.GbPersonal.Controls.Add(this.label8);
-            this.GbPersonal.Controls.Add(this.txtSER);
+            this.GbPersonal.Controls.Add(this.txtSerialNumber);
             this.GbPersonal.Controls.Add(this.label7);
-            this.GbPersonal.Controls.Add(this.txtMAD);
+            this.GbPersonal.Controls.Add(this.txtProductMade);
             this.GbPersonal.Controls.Add(this.label6);
-            this.GbPersonal.Controls.Add(this.txtMOD);
+            this.GbPersonal.Controls.Add(this.txtProductModel);
             this.GbPersonal.Controls.Add(this.label5);
-            this.GbPersonal.Controls.Add(this.txtBRD);
+            this.GbPersonal.Controls.Add(this.txtProductBrand);
             this.GbPersonal.Controls.Add(this.label4);
-            this.GbPersonal.Controls.Add(this.txtSTC);
+            this.GbPersonal.Controls.Add(this.txtStockCode);
             this.GbPersonal.Controls.Add(this.label3);
             this.GbPersonal.Controls.Add(this.label2);
-            this.GbPersonal.Controls.Add(this.txtNAM);
+            this.GbPersonal.Controls.Add(this.txtProductName);
             this.GbPersonal.Controls.Add(this.label1);
-            this.GbPersonal.Controls.Add(this.txtCOD);
+            this.GbPersonal.Controls.Add(this.txtProductBarcode);
             this.GbPersonal.Controls.Add(this.gbCON);
             this.GbPersonal.Controls.Add(this.txtPIR);
             this.GbPersonal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -271,7 +271,7 @@
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1006, 558);
+            this.GbPersonal.Size = new System.Drawing.Size(1010, 561);
             this.GbPersonal.TabIndex = 173;
             // 
             // label12
@@ -286,19 +286,19 @@
             this.label12.TabIndex = 208;
             this.label12.Text = "Trade Price:";
             // 
-            // txtTRD
+            // txtTradePrice
             // 
-            this.txtTRD.BackColor = System.Drawing.Color.DimGray;
-            this.txtTRD.Enabled = false;
-            this.txtTRD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTRD.ForeColor = System.Drawing.Color.Maroon;
-            this.txtTRD.Location = new System.Drawing.Point(499, 97);
-            this.txtTRD.Name = "txtTRD";
-            this.txtTRD.Size = new System.Drawing.Size(269, 29);
-            this.txtTRD.TabIndex = 122;
-            this.txtTRD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTRD_KeyDown);
-            this.txtTRD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTRD_KeyPress);
-            this.txtTRD.Leave += new System.EventHandler(this.txtTRD_Leave);
+            this.txtTradePrice.BackColor = System.Drawing.Color.DimGray;
+            this.txtTradePrice.Enabled = false;
+            this.txtTradePrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTradePrice.ForeColor = System.Drawing.Color.Maroon;
+            this.txtTradePrice.Location = new System.Drawing.Point(499, 97);
+            this.txtTradePrice.Name = "txtTradePrice";
+            this.txtTradePrice.Size = new System.Drawing.Size(269, 29);
+            this.txtTradePrice.TabIndex = 122;
+            this.txtTradePrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTradePrice_KeyDown);
+            this.txtTradePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTradePrice_KeyPress);
+            this.txtTradePrice.Leave += new System.EventHandler(this.txtTradePrice_Leave);
             // 
             // label13
             // 
@@ -312,19 +312,19 @@
             this.label13.TabIndex = 207;
             this.label13.Text = "Whole Sale:";
             // 
-            // txtWHL
+            // txtWholesale
             // 
-            this.txtWHL.BackColor = System.Drawing.Color.DimGray;
-            this.txtWHL.Enabled = false;
-            this.txtWHL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWHL.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWHL.Location = new System.Drawing.Point(499, 157);
-            this.txtWHL.Name = "txtWHL";
-            this.txtWHL.Size = new System.Drawing.Size(269, 29);
-            this.txtWHL.TabIndex = 124;
-            this.txtWHL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWHL_KeyDown);
-            this.txtWHL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWHL_KeyPress);
-            this.txtWHL.Leave += new System.EventHandler(this.txtWHL_Leave);
+            this.txtWholesale.BackColor = System.Drawing.Color.DimGray;
+            this.txtWholesale.Enabled = false;
+            this.txtWholesale.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWholesale.ForeColor = System.Drawing.Color.Maroon;
+            this.txtWholesale.Location = new System.Drawing.Point(499, 157);
+            this.txtWholesale.Name = "txtWholesale";
+            this.txtWholesale.Size = new System.Drawing.Size(269, 29);
+            this.txtWholesale.TabIndex = 124;
+            this.txtWholesale.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWholesale_KeyDown);
+            this.txtWholesale.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWholesale_KeyPress);
+            this.txtWholesale.Leave += new System.EventHandler(this.txtWholesale_Leave);
             // 
             // label14
             // 
@@ -338,19 +338,19 @@
             this.label14.TabIndex = 206;
             this.label14.Text = "Retail Price:";
             // 
-            // txtRET
+            // txtRetailPrice
             // 
-            this.txtRET.BackColor = System.Drawing.Color.DimGray;
-            this.txtRET.Enabled = false;
-            this.txtRET.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRET.ForeColor = System.Drawing.Color.Maroon;
-            this.txtRET.Location = new System.Drawing.Point(499, 127);
-            this.txtRET.Name = "txtRET";
-            this.txtRET.Size = new System.Drawing.Size(269, 29);
-            this.txtRET.TabIndex = 123;
-            this.txtRET.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRET_KeyDown);
-            this.txtRET.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRET_KeyPress);
-            this.txtRET.Leave += new System.EventHandler(this.txtRET_Leave);
+            this.txtRetailPrice.BackColor = System.Drawing.Color.DimGray;
+            this.txtRetailPrice.Enabled = false;
+            this.txtRetailPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRetailPrice.ForeColor = System.Drawing.Color.Maroon;
+            this.txtRetailPrice.Location = new System.Drawing.Point(499, 127);
+            this.txtRetailPrice.Name = "txtRetailPrice";
+            this.txtRetailPrice.Size = new System.Drawing.Size(269, 29);
+            this.txtRetailPrice.TabIndex = 123;
+            this.txtRetailPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRetailPrice_KeyDown);
+            this.txtRetailPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRetailPrice_KeyPress);
+            this.txtRetailPrice.Leave += new System.EventHandler(this.txtRetailPrice_Leave);
             // 
             // imgPRO
             // 
@@ -362,20 +362,20 @@
             this.imgPRO.TabIndex = 202;
             this.imgPRO.TabStop = false;
             // 
-            // cmbCAT
+            // cmbCategory
             // 
-            this.cmbCAT.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbCAT.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbCAT.BackColor = System.Drawing.Color.DimGray;
-            this.cmbCAT.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCAT.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbCAT.FormattingEnabled = true;
-            this.cmbCAT.Location = new System.Drawing.Point(125, 67);
-            this.cmbCAT.Name = "cmbCAT";
-            this.cmbCAT.Size = new System.Drawing.Size(269, 29);
-            this.cmbCAT.TabIndex = 113;
-            this.cmbCAT.SelectedIndexChanged += new System.EventHandler(this.cmbCAT_SelectedIndexChanged);
-            this.cmbCAT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCAT_KeyDown);
+            this.cmbCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbCategory.BackColor = System.Drawing.Color.DimGray;
+            this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategory.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(125, 67);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(269, 29);
+            this.cmbCategory.TabIndex = 113;
+            this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
+            this.cmbCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCategory_KeyDown);
             // 
             // label11
             // 
@@ -389,26 +389,26 @@
             this.label11.TabIndex = 200;
             this.label11.Text = "Category:";
             // 
-            // cmbSUP
+            // cmbSupplier
             // 
-            this.cmbSUP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbSUP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbSUP.BackColor = System.Drawing.Color.DimGray;
-            this.cmbSUP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbSUP.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbSUP.FormattingEnabled = true;
-            this.cmbSUP.Items.AddRange(new object[] {
+            this.cmbSupplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbSupplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbSupplier.BackColor = System.Drawing.Color.DimGray;
+            this.cmbSupplier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSupplier.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbSupplier.FormattingEnabled = true;
+            this.cmbSupplier.Items.AddRange(new object[] {
             "Unknown",
             "Biomed",
             "Staff",
             "User",
             "Admin",
             "Programmer"});
-            this.cmbSUP.Location = new System.Drawing.Point(125, 97);
-            this.cmbSUP.Name = "cmbSUP";
-            this.cmbSUP.Size = new System.Drawing.Size(269, 29);
-            this.cmbSUP.TabIndex = 114;
-            this.cmbSUP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSUP_KeyDown);
+            this.cmbSupplier.Location = new System.Drawing.Point(125, 97);
+            this.cmbSupplier.Name = "cmbSupplier";
+            this.cmbSupplier.Size = new System.Drawing.Size(269, 29);
+            this.cmbSupplier.TabIndex = 114;
+            this.cmbSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSupplier_KeyDown);
             // 
             // lblPostion
             // 
@@ -422,22 +422,22 @@
             this.lblPostion.TabIndex = 198;
             this.lblPostion.Text = "Product Status:";
             // 
-            // cmbDIS
+            // cmbProductStatus
             // 
-            this.cmbDIS.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbDIS.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbDIS.BackColor = System.Drawing.Color.DimGray;
-            this.cmbDIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDIS.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbDIS.FormattingEnabled = true;
-            this.cmbDIS.Items.AddRange(new object[] {
+            this.cmbProductStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbProductStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbProductStatus.BackColor = System.Drawing.Color.DimGray;
+            this.cmbProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProductStatus.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbProductStatus.FormattingEnabled = true;
+            this.cmbProductStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbDIS.Location = new System.Drawing.Point(499, 187);
-            this.cmbDIS.Name = "cmbDIS";
-            this.cmbDIS.Size = new System.Drawing.Size(269, 29);
-            this.cmbDIS.TabIndex = 125;
-            this.cmbDIS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbDIS_KeyDown);
+            this.cmbProductStatus.Location = new System.Drawing.Point(499, 187);
+            this.cmbProductStatus.Name = "cmbProductStatus";
+            this.cmbProductStatus.Size = new System.Drawing.Size(269, 29);
+            this.cmbProductStatus.TabIndex = 125;
+            this.cmbProductStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductStatus_KeyDown);
             // 
             // lblHiredate
             // 
@@ -451,16 +451,16 @@
             this.lblHiredate.TabIndex = 197;
             this.lblHiredate.Text = "Date Register:";
             // 
-            // dkpREG
+            // dkpDateRegister
             // 
-            this.dkpREG.CustomFormat = "dd-MM-yyyy";
-            this.dkpREG.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dkpREG.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpREG.Location = new System.Drawing.Point(499, 217);
-            this.dkpREG.Name = "dkpREG";
-            this.dkpREG.Size = new System.Drawing.Size(269, 29);
-            this.dkpREG.TabIndex = 126;
-            this.dkpREG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpREG_KeyDown);
+            this.dkpDateRegister.CustomFormat = "dd-MM-yyyy";
+            this.dkpDateRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dkpDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dkpDateRegister.Location = new System.Drawing.Point(499, 217);
+            this.dkpDateRegister.Name = "dkpDateRegister";
+            this.dkpDateRegister.Size = new System.Drawing.Size(269, 29);
+            this.dkpDateRegister.TabIndex = 126;
+            this.dkpDateRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDateRegister_KeyDown);
             // 
             // label10
             // 
@@ -474,20 +474,20 @@
             this.label10.TabIndex = 192;
             this.label10.Text = "Net Weight:";
             // 
-            // txtNET
+            // txtNetWeight
             // 
-            this.txtNET.BackColor = System.Drawing.Color.DimGray;
-            this.txtNET.Enabled = false;
-            this.txtNET.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNET.ForeColor = System.Drawing.Color.Maroon;
-            this.txtNET.Location = new System.Drawing.Point(499, 67);
-            this.txtNET.MaxLength = 8;
-            this.txtNET.Name = "txtNET";
-            this.txtNET.Size = new System.Drawing.Size(269, 29);
-            this.txtNET.TabIndex = 121;
-            this.txtNET.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNET_KeyDown);
-            this.txtNET.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNET_KeyPress);
-            this.txtNET.Leave += new System.EventHandler(this.txtNET_Leave);
+            this.txtNetWeight.BackColor = System.Drawing.Color.DimGray;
+            this.txtNetWeight.Enabled = false;
+            this.txtNetWeight.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNetWeight.ForeColor = System.Drawing.Color.Maroon;
+            this.txtNetWeight.Location = new System.Drawing.Point(499, 67);
+            this.txtNetWeight.MaxLength = 8;
+            this.txtNetWeight.Name = "txtNetWeight";
+            this.txtNetWeight.Size = new System.Drawing.Size(269, 29);
+            this.txtNetWeight.TabIndex = 121;
+            this.txtNetWeight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNetWeight_KeyDown);
+            this.txtNetWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNetWeight_KeyPress);
+            this.txtNetWeight.Leave += new System.EventHandler(this.txtNetWeight_Leave);
             // 
             // label9
             // 
@@ -501,20 +501,20 @@
             this.label9.TabIndex = 190;
             this.label9.Text = "Tare Weight:";
             // 
-            // txtWET
+            // txtTareWeight
             // 
-            this.txtWET.BackColor = System.Drawing.Color.DimGray;
-            this.txtWET.Enabled = false;
-            this.txtWET.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWET.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWET.Location = new System.Drawing.Point(499, 37);
-            this.txtWET.MaxLength = 8;
-            this.txtWET.Name = "txtWET";
-            this.txtWET.Size = new System.Drawing.Size(269, 29);
-            this.txtWET.TabIndex = 120;
-            this.txtWET.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWET_KeyDown);
-            this.txtWET.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWET_KeyPress);
-            this.txtWET.Leave += new System.EventHandler(this.txtWET_Leave);
+            this.txtTareWeight.BackColor = System.Drawing.Color.DimGray;
+            this.txtTareWeight.Enabled = false;
+            this.txtTareWeight.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTareWeight.ForeColor = System.Drawing.Color.Maroon;
+            this.txtTareWeight.Location = new System.Drawing.Point(499, 37);
+            this.txtTareWeight.MaxLength = 8;
+            this.txtTareWeight.Name = "txtTareWeight";
+            this.txtTareWeight.Size = new System.Drawing.Size(269, 29);
+            this.txtTareWeight.TabIndex = 120;
+            this.txtTareWeight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTareWeight_KeyDown);
+            this.txtTareWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTareWeight_KeyPress);
+            this.txtTareWeight.Leave += new System.EventHandler(this.txtTareWeight_Leave);
             // 
             // label8
             // 
@@ -528,17 +528,17 @@
             this.label8.TabIndex = 188;
             this.label8.Text = "Serial Number:";
             // 
-            // txtSER
+            // txtSerialNumber
             // 
-            this.txtSER.BackColor = System.Drawing.Color.DimGray;
-            this.txtSER.Enabled = false;
-            this.txtSER.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSER.ForeColor = System.Drawing.Color.Maroon;
-            this.txtSER.Location = new System.Drawing.Point(499, 7);
-            this.txtSER.Name = "txtSER";
-            this.txtSER.Size = new System.Drawing.Size(269, 29);
-            this.txtSER.TabIndex = 119;
-            this.txtSER.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSER_KeyDown);
+            this.txtSerialNumber.BackColor = System.Drawing.Color.DimGray;
+            this.txtSerialNumber.Enabled = false;
+            this.txtSerialNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSerialNumber.ForeColor = System.Drawing.Color.Maroon;
+            this.txtSerialNumber.Location = new System.Drawing.Point(499, 7);
+            this.txtSerialNumber.Name = "txtSerialNumber";
+            this.txtSerialNumber.Size = new System.Drawing.Size(269, 29);
+            this.txtSerialNumber.TabIndex = 119;
+            this.txtSerialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSerialNumber_KeyDown);
             // 
             // label7
             // 
@@ -552,17 +552,17 @@
             this.label7.TabIndex = 186;
             this.label7.Text = "Product Made:";
             // 
-            // txtMAD
+            // txtProductMade
             // 
-            this.txtMAD.BackColor = System.Drawing.Color.DimGray;
-            this.txtMAD.Enabled = false;
-            this.txtMAD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMAD.ForeColor = System.Drawing.Color.Maroon;
-            this.txtMAD.Location = new System.Drawing.Point(125, 217);
-            this.txtMAD.Name = "txtMAD";
-            this.txtMAD.Size = new System.Drawing.Size(269, 29);
-            this.txtMAD.TabIndex = 118;
-            this.txtMAD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMAD_KeyDown);
+            this.txtProductMade.BackColor = System.Drawing.Color.DimGray;
+            this.txtProductMade.Enabled = false;
+            this.txtProductMade.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductMade.ForeColor = System.Drawing.Color.Maroon;
+            this.txtProductMade.Location = new System.Drawing.Point(125, 217);
+            this.txtProductMade.Name = "txtProductMade";
+            this.txtProductMade.Size = new System.Drawing.Size(269, 29);
+            this.txtProductMade.TabIndex = 118;
+            this.txtProductMade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductMade_KeyDown);
             // 
             // label6
             // 
@@ -576,17 +576,17 @@
             this.label6.TabIndex = 184;
             this.label6.Text = "Product Model:";
             // 
-            // txtMOD
+            // txtProductModel
             // 
-            this.txtMOD.BackColor = System.Drawing.Color.DimGray;
-            this.txtMOD.Enabled = false;
-            this.txtMOD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMOD.ForeColor = System.Drawing.Color.Maroon;
-            this.txtMOD.Location = new System.Drawing.Point(125, 187);
-            this.txtMOD.Name = "txtMOD";
-            this.txtMOD.Size = new System.Drawing.Size(269, 29);
-            this.txtMOD.TabIndex = 117;
-            this.txtMOD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMOD_KeyDown);
+            this.txtProductModel.BackColor = System.Drawing.Color.DimGray;
+            this.txtProductModel.Enabled = false;
+            this.txtProductModel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductModel.ForeColor = System.Drawing.Color.Maroon;
+            this.txtProductModel.Location = new System.Drawing.Point(125, 187);
+            this.txtProductModel.Name = "txtProductModel";
+            this.txtProductModel.Size = new System.Drawing.Size(269, 29);
+            this.txtProductModel.TabIndex = 117;
+            this.txtProductModel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductModel_KeyDown);
             // 
             // label5
             // 
@@ -600,17 +600,17 @@
             this.label5.TabIndex = 182;
             this.label5.Text = "Product Brand:";
             // 
-            // txtBRD
+            // txtProductBrand
             // 
-            this.txtBRD.BackColor = System.Drawing.Color.DimGray;
-            this.txtBRD.Enabled = false;
-            this.txtBRD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBRD.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBRD.Location = new System.Drawing.Point(125, 157);
-            this.txtBRD.Name = "txtBRD";
-            this.txtBRD.Size = new System.Drawing.Size(269, 29);
-            this.txtBRD.TabIndex = 116;
-            this.txtBRD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBRD_KeyDown);
+            this.txtProductBrand.BackColor = System.Drawing.Color.DimGray;
+            this.txtProductBrand.Enabled = false;
+            this.txtProductBrand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductBrand.ForeColor = System.Drawing.Color.Maroon;
+            this.txtProductBrand.Location = new System.Drawing.Point(125, 157);
+            this.txtProductBrand.Name = "txtProductBrand";
+            this.txtProductBrand.Size = new System.Drawing.Size(269, 29);
+            this.txtProductBrand.TabIndex = 116;
+            this.txtProductBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductBrand_KeyDown);
             // 
             // label4
             // 
@@ -624,17 +624,17 @@
             this.label4.TabIndex = 180;
             this.label4.Text = "Stock Code:";
             // 
-            // txtSTC
+            // txtStockCode
             // 
-            this.txtSTC.BackColor = System.Drawing.Color.DimGray;
-            this.txtSTC.Enabled = false;
-            this.txtSTC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSTC.ForeColor = System.Drawing.Color.Maroon;
-            this.txtSTC.Location = new System.Drawing.Point(125, 127);
-            this.txtSTC.Name = "txtSTC";
-            this.txtSTC.Size = new System.Drawing.Size(269, 29);
-            this.txtSTC.TabIndex = 115;
-            this.txtSTC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSTC_KeyDown);
+            this.txtStockCode.BackColor = System.Drawing.Color.DimGray;
+            this.txtStockCode.Enabled = false;
+            this.txtStockCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStockCode.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStockCode.Location = new System.Drawing.Point(125, 127);
+            this.txtStockCode.Name = "txtStockCode";
+            this.txtStockCode.Size = new System.Drawing.Size(269, 29);
+            this.txtStockCode.TabIndex = 115;
+            this.txtStockCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStockCode_KeyDown);
             // 
             // label3
             // 
@@ -660,17 +660,17 @@
             this.label2.TabIndex = 176;
             this.label2.Text = "Product Name:";
             // 
-            // txtNAM
+            // txtProductName
             // 
-            this.txtNAM.BackColor = System.Drawing.Color.DimGray;
-            this.txtNAM.Enabled = false;
-            this.txtNAM.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNAM.ForeColor = System.Drawing.Color.Maroon;
-            this.txtNAM.Location = new System.Drawing.Point(125, 37);
-            this.txtNAM.Name = "txtNAM";
-            this.txtNAM.Size = new System.Drawing.Size(269, 29);
-            this.txtNAM.TabIndex = 112;
-            this.txtNAM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNAM_KeyDown);
+            this.txtProductName.BackColor = System.Drawing.Color.DimGray;
+            this.txtProductName.Enabled = false;
+            this.txtProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductName.ForeColor = System.Drawing.Color.Maroon;
+            this.txtProductName.Location = new System.Drawing.Point(125, 37);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Size = new System.Drawing.Size(269, 29);
+            this.txtProductName.TabIndex = 112;
+            this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
             // 
             // label1
             // 
@@ -684,18 +684,18 @@
             this.label1.TabIndex = 174;
             this.label1.Text = "Product Barcode:";
             // 
-            // txtCOD
+            // txtProductBarcode
             // 
-            this.txtCOD.BackColor = System.Drawing.Color.DimGray;
-            this.txtCOD.Enabled = false;
-            this.txtCOD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCOD.ForeColor = System.Drawing.Color.Maroon;
-            this.txtCOD.Location = new System.Drawing.Point(125, 7);
-            this.txtCOD.Name = "txtCOD";
-            this.txtCOD.Size = new System.Drawing.Size(269, 29);
-            this.txtCOD.TabIndex = 111;
-            this.txtCOD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCOD_KeyDown);
-            this.txtCOD.Leave += new System.EventHandler(this.txtCOD_Leave);
+            this.txtProductBarcode.BackColor = System.Drawing.Color.DimGray;
+            this.txtProductBarcode.Enabled = false;
+            this.txtProductBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductBarcode.ForeColor = System.Drawing.Color.Maroon;
+            this.txtProductBarcode.Location = new System.Drawing.Point(125, 7);
+            this.txtProductBarcode.Name = "txtProductBarcode";
+            this.txtProductBarcode.Size = new System.Drawing.Size(269, 29);
+            this.txtProductBarcode.TabIndex = 111;
+            this.txtProductBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductBarcode_KeyDown);
+            this.txtProductBarcode.Leave += new System.EventHandler(this.txtProductBarcode_Leave);
             // 
             // gbCON
             // 
@@ -885,13 +885,13 @@
             this.pnlMain.BackColor = System.Drawing.SystemColors.HotTrack;
             this.pnlMain.Controls.Add(this.XtraEmployee);
             this.pnlMain.Controls.Add(this.lblMainTitle);
-            this.pnlMain.Controls.Add(this.bntHOM);
-            this.pnlMain.Controls.Add(this.bntDEL);
-            this.pnlMain.Controls.Add(this.bntCLR);
-            this.pnlMain.Controls.Add(this.bntCAN);
-            this.pnlMain.Controls.Add(this.bntSAV);
-            this.pnlMain.Controls.Add(this.bntUPD);
-            this.pnlMain.Controls.Add(this.bntADD);
+            this.pnlMain.Controls.Add(this.bntHome);
+            this.pnlMain.Controls.Add(this.bntDelete);
+            this.pnlMain.Controls.Add(this.bntClear);
+            this.pnlMain.Controls.Add(this.bntCancel);
+            this.pnlMain.Controls.Add(this.bntSave);
+            this.pnlMain.Controls.Add(this.bntUpdate);
+            this.pnlMain.Controls.Add(this.bntAdd);
             this.pnlMain.Location = new System.Drawing.Point(1, 1);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1207, 626);
@@ -912,7 +912,7 @@
             // 
             this.xtraTabImage.Controls.Add(this.grpImage);
             this.xtraTabImage.Name = "xtraTabImage";
-            this.xtraTabImage.Size = new System.Drawing.Size(1006, 558);
+            this.xtraTabImage.Size = new System.Drawing.Size(1010, 561);
             this.xtraTabImage.Text = "Product Image";
             // 
             // grpImage
@@ -921,15 +921,15 @@
             this.grpImage.Appearance.Options.UseBackColor = true;
             this.grpImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.grpImage.Controls.Add(this.lblBarcode);
-            this.grpImage.Controls.Add(this.txtPID);
-            this.grpImage.Controls.Add(this.imgBIG);
+            this.grpImage.Controls.Add(this.txtProductId);
+            this.grpImage.Controls.Add(this.imgBigPreview);
             this.grpImage.Controls.Add(this.textBox23);
             this.grpImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpImage.Location = new System.Drawing.Point(0, 0);
             this.grpImage.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.grpImage.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grpImage.Name = "grpImage";
-            this.grpImage.Size = new System.Drawing.Size(1006, 558);
+            this.grpImage.Size = new System.Drawing.Size(1010, 561);
             this.grpImage.TabIndex = 174;
             // 
             // lblBarcode
@@ -944,26 +944,26 @@
             this.lblBarcode.TabIndex = 205;
             this.lblBarcode.Text = "Product ID:";
             // 
-            // txtPID
+            // txtProductId
             // 
-            this.txtPID.BackColor = System.Drawing.Color.DimGray;
-            this.txtPID.Enabled = false;
-            this.txtPID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPID.ForeColor = System.Drawing.Color.Maroon;
-            this.txtPID.Location = new System.Drawing.Point(157, 505);
-            this.txtPID.Name = "txtPID";
-            this.txtPID.Size = new System.Drawing.Size(269, 29);
-            this.txtPID.TabIndex = 204;
+            this.txtProductId.BackColor = System.Drawing.Color.DimGray;
+            this.txtProductId.Enabled = false;
+            this.txtProductId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductId.ForeColor = System.Drawing.Color.Maroon;
+            this.txtProductId.Location = new System.Drawing.Point(157, 505);
+            this.txtProductId.Name = "txtProductId";
+            this.txtProductId.Size = new System.Drawing.Size(269, 29);
+            this.txtProductId.TabIndex = 204;
             // 
-            // imgBIG
+            // imgBigPreview
             // 
-            this.imgBIG.BackColor = System.Drawing.Color.Gray;
-            this.imgBIG.Location = new System.Drawing.Point(157, 21);
-            this.imgBIG.Name = "imgBIG";
-            this.imgBIG.Size = new System.Drawing.Size(689, 478);
-            this.imgBIG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgBIG.TabIndex = 203;
-            this.imgBIG.TabStop = false;
+            this.imgBigPreview.BackColor = System.Drawing.Color.Gray;
+            this.imgBigPreview.Location = new System.Drawing.Point(157, 21);
+            this.imgBigPreview.Name = "imgBigPreview";
+            this.imgBigPreview.Size = new System.Drawing.Size(689, 478);
+            this.imgBigPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgBigPreview.TabIndex = 203;
+            this.imgBigPreview.TabStop = false;
             // 
             // textBox23
             // 
@@ -989,119 +989,119 @@
             this.lblMainTitle.TabIndex = 59;
             this.lblMainTitle.Text = "Products";
             // 
-            // bntHOM
+            // bntHome
             // 
-            this.bntHOM.BackColor = System.Drawing.Color.ForestGreen;
-            this.bntHOM.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntHOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntHOM.ForeColor = System.Drawing.Color.White;
-            this.bntHOM.Image = ((System.Drawing.Image)(resources.GetObject("bntHOM.Image")));
-            this.bntHOM.Location = new System.Drawing.Point(98, 474);
-            this.bntHOM.Name = "bntHOM";
-            this.bntHOM.Size = new System.Drawing.Size(91, 104);
-            this.bntHOM.TabIndex = 55;
-            this.bntHOM.Text = "HOME";
-            this.bntHOM.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntHOM.UseVisualStyleBackColor = false;
-            this.bntHOM.Click += new System.EventHandler(this.bntHOM_Click);
+            this.bntHome.BackColor = System.Drawing.Color.ForestGreen;
+            this.bntHome.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntHome.ForeColor = System.Drawing.Color.White;
+            this.bntHome.Image = ((System.Drawing.Image)(resources.GetObject("bntHome.Image")));
+            this.bntHome.Location = new System.Drawing.Point(98, 474);
+            this.bntHome.Name = "bntHome";
+            this.bntHome.Size = new System.Drawing.Size(91, 104);
+            this.bntHome.TabIndex = 55;
+            this.bntHome.Text = "HOME";
+            this.bntHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntHome.UseVisualStyleBackColor = false;
+            this.bntHome.Click += new System.EventHandler(this.bntHome_Click);
             // 
-            // bntDEL
+            // bntDelete
             // 
-            this.bntDEL.BackColor = System.Drawing.Color.DarkOrange;
-            this.bntDEL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntDEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntDEL.ForeColor = System.Drawing.Color.White;
-            this.bntDEL.Image = ((System.Drawing.Image)(resources.GetObject("bntDEL.Image")));
-            this.bntDEL.Location = new System.Drawing.Point(6, 474);
-            this.bntDEL.Name = "bntDEL";
-            this.bntDEL.Size = new System.Drawing.Size(91, 104);
-            this.bntDEL.TabIndex = 54;
-            this.bntDEL.Text = "DELETE";
-            this.bntDEL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntDEL.UseVisualStyleBackColor = false;
-            this.bntDEL.Click += new System.EventHandler(this.bntDEL_Click);
+            this.bntDelete.BackColor = System.Drawing.Color.DarkOrange;
+            this.bntDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntDelete.ForeColor = System.Drawing.Color.White;
+            this.bntDelete.Image = ((System.Drawing.Image)(resources.GetObject("bntDelete.Image")));
+            this.bntDelete.Location = new System.Drawing.Point(6, 474);
+            this.bntDelete.Name = "bntDelete";
+            this.bntDelete.Size = new System.Drawing.Size(91, 104);
+            this.bntDelete.TabIndex = 54;
+            this.bntDelete.Text = "DELETE";
+            this.bntDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntDelete.UseVisualStyleBackColor = false;
+            this.bntDelete.Click += new System.EventHandler(this.bntDelete_Click);
             // 
-            // bntCLR
+            // bntClear
             // 
-            this.bntCLR.BackColor = System.Drawing.Color.Firebrick;
-            this.bntCLR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntCLR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntCLR.ForeColor = System.Drawing.Color.White;
-            this.bntCLR.Image = ((System.Drawing.Image)(resources.GetObject("bntCLR.Image")));
-            this.bntCLR.Location = new System.Drawing.Point(6, 369);
-            this.bntCLR.Name = "bntCLR";
-            this.bntCLR.Size = new System.Drawing.Size(91, 104);
-            this.bntCLR.TabIndex = 53;
-            this.bntCLR.Text = "CLEAR";
-            this.bntCLR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntCLR.UseVisualStyleBackColor = false;
-            this.bntCLR.Click += new System.EventHandler(this.bntCLR_Click);
+            this.bntClear.BackColor = System.Drawing.Color.Firebrick;
+            this.bntClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntClear.ForeColor = System.Drawing.Color.White;
+            this.bntClear.Image = ((System.Drawing.Image)(resources.GetObject("bntClear.Image")));
+            this.bntClear.Location = new System.Drawing.Point(6, 369);
+            this.bntClear.Name = "bntClear";
+            this.bntClear.Size = new System.Drawing.Size(91, 104);
+            this.bntClear.TabIndex = 53;
+            this.bntClear.Text = "CLEAR";
+            this.bntClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntClear.UseVisualStyleBackColor = false;
+            this.bntClear.Click += new System.EventHandler(this.bntClear_Click);
             // 
-            // bntCAN
+            // bntCancel
             // 
-            this.bntCAN.BackColor = System.Drawing.Color.DimGray;
-            this.bntCAN.Enabled = false;
-            this.bntCAN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntCAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntCAN.ForeColor = System.Drawing.Color.White;
-            this.bntCAN.Image = ((System.Drawing.Image)(resources.GetObject("bntCAN.Image")));
-            this.bntCAN.Location = new System.Drawing.Point(98, 369);
-            this.bntCAN.Name = "bntCAN";
-            this.bntCAN.Size = new System.Drawing.Size(91, 104);
-            this.bntCAN.TabIndex = 52;
-            this.bntCAN.Text = "CANCEL";
-            this.bntCAN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntCAN.UseVisualStyleBackColor = false;
-            this.bntCAN.Click += new System.EventHandler(this.bntCAN_Click);
+            this.bntCancel.BackColor = System.Drawing.Color.DimGray;
+            this.bntCancel.Enabled = false;
+            this.bntCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntCancel.ForeColor = System.Drawing.Color.White;
+            this.bntCancel.Image = ((System.Drawing.Image)(resources.GetObject("bntCancel.Image")));
+            this.bntCancel.Location = new System.Drawing.Point(98, 369);
+            this.bntCancel.Name = "bntCancel";
+            this.bntCancel.Size = new System.Drawing.Size(91, 104);
+            this.bntCancel.TabIndex = 52;
+            this.bntCancel.Text = "CANCEL";
+            this.bntCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntCancel.UseVisualStyleBackColor = false;
+            this.bntCancel.Click += new System.EventHandler(this.bntCancel_Click);
             // 
-            // bntSAV
+            // bntSave
             // 
-            this.bntSAV.BackColor = System.Drawing.Color.Fuchsia;
-            this.bntSAV.Enabled = false;
-            this.bntSAV.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntSAV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntSAV.ForeColor = System.Drawing.Color.White;
-            this.bntSAV.Image = ((System.Drawing.Image)(resources.GetObject("bntSAV.Image")));
-            this.bntSAV.Location = new System.Drawing.Point(6, 264);
-            this.bntSAV.Name = "bntSAV";
-            this.bntSAV.Size = new System.Drawing.Size(183, 104);
-            this.bntSAV.TabIndex = 51;
-            this.bntSAV.Text = "SAVE";
-            this.bntSAV.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntSAV.UseVisualStyleBackColor = false;
-            this.bntSAV.Click += new System.EventHandler(this.bntSAV_Click);
+            this.bntSave.BackColor = System.Drawing.Color.Fuchsia;
+            this.bntSave.Enabled = false;
+            this.bntSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntSave.ForeColor = System.Drawing.Color.White;
+            this.bntSave.Image = ((System.Drawing.Image)(resources.GetObject("bntSave.Image")));
+            this.bntSave.Location = new System.Drawing.Point(6, 264);
+            this.bntSave.Name = "bntSave";
+            this.bntSave.Size = new System.Drawing.Size(183, 104);
+            this.bntSave.TabIndex = 51;
+            this.bntSave.Text = "SAVE";
+            this.bntSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntSave.UseVisualStyleBackColor = false;
+            this.bntSave.Click += new System.EventHandler(this.bntSave_Click);
             // 
-            // bntUPD
+            // bntUpdate
             // 
-            this.bntUPD.BackColor = System.Drawing.Color.Blue;
-            this.bntUPD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntUPD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntUPD.ForeColor = System.Drawing.Color.White;
-            this.bntUPD.Image = ((System.Drawing.Image)(resources.GetObject("bntUPD.Image")));
-            this.bntUPD.Location = new System.Drawing.Point(98, 159);
-            this.bntUPD.Name = "bntUPD";
-            this.bntUPD.Size = new System.Drawing.Size(91, 104);
-            this.bntUPD.TabIndex = 50;
-            this.bntUPD.Text = "EDIT";
-            this.bntUPD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntUPD.UseVisualStyleBackColor = false;
-            this.bntUPD.Click += new System.EventHandler(this.bntUPD_Click);
+            this.bntUpdate.BackColor = System.Drawing.Color.Blue;
+            this.bntUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntUpdate.ForeColor = System.Drawing.Color.White;
+            this.bntUpdate.Image = ((System.Drawing.Image)(resources.GetObject("bntUpdate.Image")));
+            this.bntUpdate.Location = new System.Drawing.Point(98, 159);
+            this.bntUpdate.Name = "bntUpdate";
+            this.bntUpdate.Size = new System.Drawing.Size(91, 104);
+            this.bntUpdate.TabIndex = 50;
+            this.bntUpdate.Text = "EDIT";
+            this.bntUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntUpdate.UseVisualStyleBackColor = false;
+            this.bntUpdate.Click += new System.EventHandler(this.bntUpdate_Click);
             // 
-            // bntADD
+            // bntAdd
             // 
-            this.bntADD.BackColor = System.Drawing.Color.Red;
-            this.bntADD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntADD.ForeColor = System.Drawing.Color.White;
-            this.bntADD.Image = ((System.Drawing.Image)(resources.GetObject("bntADD.Image")));
-            this.bntADD.Location = new System.Drawing.Point(6, 159);
-            this.bntADD.Name = "bntADD";
-            this.bntADD.Size = new System.Drawing.Size(91, 104);
-            this.bntADD.TabIndex = 49;
-            this.bntADD.Text = "ADD";
-            this.bntADD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.bntADD.UseVisualStyleBackColor = false;
-            this.bntADD.Click += new System.EventHandler(this.bntADD_Click);
+            this.bntAdd.BackColor = System.Drawing.Color.Red;
+            this.bntAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntAdd.ForeColor = System.Drawing.Color.White;
+            this.bntAdd.Image = ((System.Drawing.Image)(resources.GetObject("bntAdd.Image")));
+            this.bntAdd.Location = new System.Drawing.Point(6, 159);
+            this.bntAdd.Name = "bntAdd";
+            this.bntAdd.Size = new System.Drawing.Size(91, 104);
+            this.bntAdd.TabIndex = 49;
+            this.bntAdd.Text = "ADD";
+            this.bntAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntAdd.UseVisualStyleBackColor = false;
+            this.bntAdd.Click += new System.EventHandler(this.bntAdd_Click);
             // 
             // pictureBox1
             // 
@@ -1269,7 +1269,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpImage)).EndInit();
             this.grpImage.ResumeLayout(false);
             this.grpImage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgBIG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBigPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcSchedule)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcBL)).EndInit();
@@ -1297,28 +1297,28 @@
         private DevExpress.XtraTab.XtraTabPage XtrPerProfile;
         private DevExpress.XtraEditors.GroupControl GbPersonal;
         private System.Windows.Forms.Label lblPostion;
-        private System.Windows.Forms.ComboBox cmbDIS;
+        private System.Windows.Forms.ComboBox cmbProductStatus;
         private System.Windows.Forms.Label lblHiredate;
-        private System.Windows.Forms.DateTimePicker dkpREG;
+        private System.Windows.Forms.DateTimePicker dkpDateRegister;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtNET;
+        private System.Windows.Forms.TextBox txtNetWeight;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtWET;
+        private System.Windows.Forms.TextBox txtTareWeight;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtSER;
+        private System.Windows.Forms.TextBox txtSerialNumber;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtMAD;
+        private System.Windows.Forms.TextBox txtProductMade;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtMOD;
+        private System.Windows.Forms.TextBox txtProductModel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtBRD;
+        private System.Windows.Forms.TextBox txtProductBrand;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtSTC;
+        private System.Windows.Forms.TextBox txtStockCode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtNAM;
+        private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCOD;
+        private System.Windows.Forms.TextBox txtProductBarcode;
         private DevExpress.XtraEditors.GroupControl gbCON;
         private System.Windows.Forms.TextBox txtPRI;
         private System.Windows.Forms.TextBox txtPIR;
@@ -1330,13 +1330,13 @@
         private DevExpress.XtraEditors.GroupControl grpImage;
         private System.Windows.Forms.TextBox textBox23;
         private System.Windows.Forms.Label lblMainTitle;
-        private System.Windows.Forms.Button bntHOM;
-        private System.Windows.Forms.Button bntDEL;
-        private System.Windows.Forms.Button bntCLR;
-        private System.Windows.Forms.Button bntCAN;
-        private System.Windows.Forms.Button bntSAV;
-        private System.Windows.Forms.Button bntUPD;
-        private System.Windows.Forms.Button bntADD;
+        private System.Windows.Forms.Button bntHome;
+        private System.Windows.Forms.Button bntDelete;
+        private System.Windows.Forms.Button bntClear;
+        private System.Windows.Forms.Button bntCancel;
+        private System.Windows.Forms.Button bntSave;
+        private System.Windows.Forms.Button bntUpdate;
+        private System.Windows.Forms.Button bntAdd;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pcSchedule;
         private System.Windows.Forms.PictureBox pcBL;
@@ -1348,9 +1348,9 @@
         private System.Windows.Forms.Panel pnlOptionsMain;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pcSettings;
-        private System.Windows.Forms.ComboBox cmbCAT;
+        private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cmbSUP;
+        private System.Windows.Forms.ComboBox cmbSupplier;
         private System.Windows.Forms.PictureBox imgPRO;
         private DevExpress.XtraGrid.GridControl gCON;
         private DevExpress.XtraGrid.Views.Grid.GridView gridProduct;
@@ -1358,15 +1358,15 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraGrid.Views.Grid.GridView grdHIS;
         private DevExpress.XtraSplashScreen.SplashScreenManager ProWet;
-        private System.Windows.Forms.PictureBox imgBIG;
+        private System.Windows.Forms.PictureBox imgBigPreview;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtTRD;
+        private System.Windows.Forms.TextBox txtTradePrice;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtWHL;
+        private System.Windows.Forms.TextBox txtWholesale;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtRET;
+        private System.Windows.Forms.TextBox txtRetailPrice;
         private System.Windows.Forms.Label lblBarcode;
-        private System.Windows.Forms.TextBox txtPID;
+        private System.Windows.Forms.TextBox txtProductId;
         private DevExpress.XtraSplashScreen.SplashScreenManager splash;
     }
 }
