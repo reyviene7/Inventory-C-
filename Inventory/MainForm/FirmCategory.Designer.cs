@@ -105,6 +105,7 @@
             this.bntUpdate = new System.Windows.Forms.Button();
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
             this.imgOFD = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
             this.pnlOptions.SuspendLayout();
             this.pnlOptionsMain.SuspendLayout();
@@ -151,6 +152,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GuserAccount)).BeginInit();
             this.GuserAccount.SuspendLayout();
             this.pnlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pbHome
@@ -1079,6 +1081,7 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlMain.Controls.Add(this.pictureBox2);
             this.pnlMain.Controls.Add(this.tabCategory);
             this.pnlMain.Controls.Add(this.lblMainTitle);
             this.pnlMain.Controls.Add(this.bntHome);
@@ -1211,6 +1214,16 @@
             // 
             this.imgOFD.FileName = "openImage";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(53, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(93, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 120;
+            this.pictureBox2.TabStop = false;
+            // 
             // FirmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1279,6 +1292,7 @@
             this.GuserAccount.PerformLayout();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1360,5 +1374,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtImageId;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
