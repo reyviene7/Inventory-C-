@@ -67,6 +67,46 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getLastCategoryId()
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Category>(unWork);
+                    return repository.SelectAll(Query.getLastCategoryIdQuery)
+                        .Select(x => x.category_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
+        public static int getLastImageId()
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ProductImages>(unWork);
+                    return repository.SelectAll(Query.getLastImageIdQuery)
+                        .Select(x => x.image_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
         public static int getProductId(string productName) {
 
             using (var session = new DalSession())

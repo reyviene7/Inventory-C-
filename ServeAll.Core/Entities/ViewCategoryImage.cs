@@ -7,10 +7,10 @@ namespace ServeAll.Core.Entities
     public class ViewCategoryImage
     {
         [Key]
-        public int CategoryId           { get; set; }
-        public string CategoryCode      { get; set; }
-        public string CategoryDetails   { get; set; }
-        public string Title             { get; set; }
-        public DateTime DateRegister    { get; set; }
+        public int category_id           { get; set; }
+        public string category_code      { get; set; }
+        public string category_details   { get; set; }
+        public string title             { get; set; }
+        public DateTime date_register    { get; set; }
     }
 }

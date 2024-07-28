@@ -122,15 +122,15 @@
                                               date_egister
                                           FROM view_manufacture";
 
-        public const string AllProductImage = @"SELECT	ImageId, 
-		                                                ImageCode, 
-		                                                ProductImage, 
-		                                                Title, 
-		                                                ImgType, 
-		                                                ImgLocation, 
-		                                                ImgHeight, 
-		                                                ImgWidth 
-                                                FROM ProductImages";
+        public const string AllProductImage = @"SELECT	image_id, 
+		                                                image_code, 
+		                                                image, 
+		                                                title, 
+		                                                img_type, 
+		                                                img_location, 
+		                                                img_height, 
+		                                                img_width 
+                                                FROM product_image";
         public const string AllCategory = @"SELECT category_id, 
 	                                               category_code, 
 	                                               category_details, 
@@ -138,12 +138,7 @@
 	                                               date_register
                                              FROM category";
 
-        public const string AllCategoryImage = @"SELECT CategoryId,
-                                                  CategoryCode,
-                                                  CategoryDetails,
-                                                  Title,
-                                                  DateRegister
-                                              FROM view_category_image";
+        public const string AllCategoryImage = @"SELECT * FROM view_category_image";
 
         public const string AllProducts = @"SELECT product_id
                                                   ,product_code
@@ -183,27 +178,7 @@
                                                         Warranty,
                                                         Status
                                                 FROM view_inventory";
-        public const string AllProductCategory = @"SELECT CategoryId, 
-	                                                       CategoryCode, 
-	                                                       CategoryDetails, 
-	                                                       ImageId,
-	                                                       Code, 
-	                                                       Name, 
-	                                                       SupplierId, 
-	                                                       StockCode, 
-	                                                       Brand, 
-	                                                       Model, 
-	                                                       Made, 
-	                                                       Serial, 
-	                                                       TareWeight, 
-	                                                       NetWeight,
-                                                           TradePrice, 
-                                                           RetailPrice,
-                                                           WholeSale,    
-	                                                       StatusId, 
-                                                           Status,
-	                                                       DateRegister 
-                                                    FROM view_product_category";
+        public const string AllProductCategory = @"SELECT * FROM view_product_category";
         public const string AllProductStatus = @"SELECT StatusId, Status FROM ProductStatus";
         public const string AllUsers = @"SELECT user_id,
                                                 user_code,
@@ -296,5 +271,7 @@
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
+        public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
+        public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
     }
 }

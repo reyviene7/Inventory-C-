@@ -766,7 +766,6 @@ namespace Inventory.MainForm
                         var productId = int.Parse(id);
                         var product = searchProductId(productId);
                         txtProductBarcode.Text = product.product_code;
-
                         txtProductName.Text = product.product_name;
                         cmbCategory.Text = product.category_details;
                         cmbSupplier.Text = product.supplier_name;

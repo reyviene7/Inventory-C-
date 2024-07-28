@@ -737,8 +737,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ViewProductCategory>(unWork);
-                    var query = repository.FindBy(x => x.Name == input);
-                    return query.ImageId;
+                    var query = repository.FindBy(x => x.product_name == input);
+                    return query.image_id;
                 }
                 catch (Exception)
                 {

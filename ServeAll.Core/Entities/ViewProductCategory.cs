@@ -7,26 +7,25 @@ namespace ServeAll.Core.Entities
     public class ViewProductCategory
     {
         [Key]
-        public int CategoryId { get; set; }
-        public string CategoryCode { get; set; }
-        public string CategoryDetails { get; set; }
-        public int ImageId{ get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
-        public int SupplierId{ get; set; }
-        public string StockCode { get; set; }
-        public string Brand { get; set; }
-        public string Model { get; set; }
-        public string Made { get; set; }
-        public string Serial{ get; set; }
-        public decimal TareWeight { get; set; }
-        public decimal NetWeight{ get; set; }
-        public decimal TradePrice { get; set; }
-        public decimal RetailPrice { get; set; }
-        public decimal WholeSale { get; set; }
-        public int StatusId{ get; set; }
-        public string Status        { get; set; }
-        public DateTime  DateRegister{ get; set; }
+        public int category_id { get; set; }
+        public string category_code { get; set; }
+        public string category_details { get; set; }
+        public int image_id{ get; set; }
+        public string supplier_name { get; set; }
+        public string product_code { get; set; }
+        public string product_name{ get; set; }
+        public string stock_code { get; set; }
+        public string brand { get; set; }
+        public string model { get; set; }
+        public string made { get; set; }
+        public string serial_number { get; set; }
+        public decimal tare_weight { get; set; }
+        public decimal net_weight{ get; set; }
+        public decimal trade_price { get; set; }
+        public decimal retail_price { get; set; }
+        public decimal wholesale { get; set; }
+        public string status        { get; set; }
+        public DateTime  date_register { get; set; }
   
     }
 }

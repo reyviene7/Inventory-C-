@@ -44,7 +44,7 @@
             this.pcChangePassword = new System.Windows.Forms.PictureBox();
             this.pbHide = new System.Windows.Forms.PictureBox();
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
-            this.gCON = new DevExpress.XtraGrid.GridControl();
+            this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridCategory = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -96,6 +96,7 @@
             this.GuserAccount = new DevExpress.XtraEditors.GroupControl();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.bntHome = new System.Windows.Forms.Button();
             this.bntDelete = new System.Windows.Forms.Button();
@@ -105,7 +106,6 @@
             this.bntUpdate = new System.Windows.Forms.Button();
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
             this.imgOFD = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
             this.pnlOptions.SuspendLayout();
             this.pnlOptionsMain.SuspendLayout();
@@ -121,7 +121,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbHide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).BeginInit();
             this.gbCON.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gCON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
@@ -300,7 +300,7 @@
             this.gbCON.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbCON.Appearance.Options.UseBackColor = true;
             this.gbCON.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.gbCON.Controls.Add(this.gCON);
+            this.gbCON.Controls.Add(this.gridControl);
             this.gbCON.Controls.Add(this.txtPRI);
             this.gbCON.Location = new System.Drawing.Point(-1, 283);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
@@ -310,20 +310,20 @@
             this.gbCON.TabIndex = 172;
             this.gbCON.Text = "Category List";
             // 
-            // gCON
+            // gridControl
             // 
-            this.gCON.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gCON.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gCON.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.gCON.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
-            this.gCON.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.gCON.Location = new System.Drawing.Point(3, 18);
-            this.gCON.MainView = this.gridCategory;
-            this.gCON.Name = "gCON";
-            this.gCON.Size = new System.Drawing.Size(1001, 254);
-            this.gCON.TabIndex = 103;
-            this.gCON.TabStop = false;
-            this.gCON.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridControl.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.gridControl.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridControl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.gridControl.Location = new System.Drawing.Point(3, 18);
+            this.gridControl.MainView = this.gridCategory;
+            this.gridControl.Name = "gridControl";
+            this.gridControl.Size = new System.Drawing.Size(1001, 254);
+            this.gridControl.TabIndex = 103;
+            this.gridControl.TabStop = false;
+            this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridCategory,
             this.gridView2,
             this.gridView3,
@@ -373,7 +373,7 @@
             this.gridCategory.AppearancePrint.Row.Options.UseFont = true;
             this.gridCategory.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridCategory.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
-            this.gridCategory.GridControl = this.gCON;
+            this.gridCategory.GridControl = this.gridControl;
             this.gridCategory.Name = "gridCategory";
             this.gridCategory.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridCategory.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -390,7 +390,7 @@
             // 
             // gridView2
             // 
-            this.gridView2.GridControl = this.gCON;
+            this.gridView2.GridControl = this.gridControl;
             this.gridView2.Name = "gridView2";
             // 
             // gridView3
@@ -423,7 +423,7 @@
             this.gridView3.AppearancePrint.Row.Options.UseFont = true;
             this.gridView3.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridView3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.gridView3.GridControl = this.gCON;
+            this.gridView3.GridControl = this.gridControl;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView3.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -436,7 +436,7 @@
             // 
             // grdHIS
             // 
-            this.grdHIS.GridControl = this.gCON;
+            this.grdHIS.GridControl = this.gridControl;
             this.grdHIS.Name = "grdHIS";
             // 
             // txtPRI
@@ -1096,6 +1096,16 @@
             this.pnlMain.Size = new System.Drawing.Size(1207, 626);
             this.pnlMain.TabIndex = 66;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(53, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(93, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 120;
+            this.pictureBox2.TabStop = false;
+            // 
             // lblMainTitle
             // 
             this.lblMainTitle.AutoSize = true;
@@ -1214,16 +1224,6 @@
             // 
             this.imgOFD.FileName = "openImage";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(53, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(93, 119);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 120;
-            this.pictureBox2.TabStop = false;
-            // 
             // FirmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1256,7 +1256,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
             this.gbCON.ResumeLayout(false);
             this.gbCON.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gCON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
@@ -1358,7 +1358,7 @@
         private System.Windows.Forms.TextBox txtImageName;
         private System.Windows.Forms.TextBox txtImageLocation;
         private System.Windows.Forms.OpenFileDialog imgOFD;
-        private DevExpress.XtraGrid.GridControl gCON;
+        private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridCategory;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;

@@ -8,6 +8,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using Inventory.Config;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
+using ServeAll.Core.Utilities;
 using Query = ServeAll.Core.Queries.Query;
 
 
@@ -17,7 +18,8 @@ namespace Inventory.MainForm
     {
         private FirmMain _main;
         private bool _add, _edt, _del, _img, _cat;
-        
+        private IEnumerable<ViewCategoryImage> listCategory;
+        private IEnumerable<ProductImages> listProductImage;
         private string _title, _type, _location, _code;
         private int _imgHeight, _imgWidth;
 
@@ -41,6 +43,8 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
+            listCategory = getCategoryImage();
+            listProductImage = getProductImage();
             BindCategoryList();
             BindImageList();
             _cat = true;
@@ -280,17 +284,15 @@ namespace Inventory.MainForm
         }
         private void GenerateCode()
         {
-            var lastCode = GetLastId();
-            var lastId = GetSettings.GetLastBarcode(lastCode);
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastId, "CA");
+            var lastCategoryId = FetchUtils.getLastCategoryId();
+            var alphaNumeric = new GenerateAlpaNum(3, 2, lastCategoryId, "C");
             alphaNumeric.Increment();
             txtCategoryCode.Text = alphaNumeric.ToString();
         }
         private void GenerateImgCode()
         {
-            var lastCode = GetLastImgId();
-            var lastId = GetSettings.GetLastBarcode(lastCode);
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastId, "IP");
+            var lastImageId = FetchUtils.getLastImageId();
+            var alphaNumeric = new GenerateAlpaNum(3, 2, lastImageId, "IP");
             alphaNumeric.Increment();
             txtImageCode.Text = alphaNumeric.ToString();
         }
@@ -303,7 +305,7 @@ namespace Inventory.MainForm
             _add = true;
             _edt = false;
             _del = false;
-            gCON.Enabled = false;
+            gridControl.Enabled = false;
             if (_cat && _img == false)
             {
                
@@ -334,7 +336,7 @@ namespace Inventory.MainForm
             {
                 InputEnab();
                 InputWhit();
-                gCON.Enabled = false;
+                gridControl.Enabled = false;
             }
             if (_cat == false && _img)
             {
@@ -351,7 +353,7 @@ namespace Inventory.MainForm
             _add = false;
             _edt = false;
             _del = true;
-            gCON.Enabled = false;
+            gridControl.Enabled = false;
         }
         private void ButClr()
         {
@@ -359,7 +361,7 @@ namespace Inventory.MainForm
             InputEnabimg();
             InputWhitimg();
             InputCleaimg();
-            gCON.Enabled = true;
+            gridControl.Enabled = true;
             cmbProductImage.DataBindings.Clear();
         }
         private void ButSav()
@@ -379,7 +381,7 @@ namespace Inventory.MainForm
             InputDisb();
             InputDimG();
             InputClea();
-            gCON.Enabled = true;
+            gridControl.Enabled = true;
             cmbProductImage.DataBindings.Clear();
         }
 
@@ -419,7 +421,7 @@ namespace Inventory.MainForm
             _del = false;
             _cat = true;
             _img = false;
-            gCON.Enabled = true;
+            gridControl.Enabled = true;
             cmbProductImage.DataBindings.Clear();
         }
 #endregion
@@ -462,40 +464,71 @@ namespace Inventory.MainForm
             _cat = false;
             gIMG.Enabled = true;
         }
-#endregion
-
-
-        
+#endregion  
 
         private void BindCategoryList()
         {
-            gCON.Update();
+            gridControl.Update();
             try
             {
-                gCON.DataBindings.Clear();
-                gCON.DataSource = RebindCategory();
+                var listCat = listCategory.Select(x => new {
+                    Id = x.category_id,
+                    CategoryCode = x.category_code,
+                    Category = x.category_details,
+                    Title = x.title,
+                    DateRegister = x.date_register
+                });
+
+                gridControl.DataBindings.Clear();
+                gridControl.DataSource = listCat;
+
+
+                gridCategory.Columns[0].Width = 40;
+                gridCategory.Columns[1].Width = 90;
+                gridCategory.Columns[2].Width = 290;
+                gridCategory.Columns[3].Width = 100;
+                gridCategory.Columns[4].Width = 100;
             }
             catch (Exception ex)
             {
-                gCON.EndUpdate();
-                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableCategory);
+                gridControl.EndUpdate();
+                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
             }
         }
+
         private void BindImageList()
         {
             gIMG.Update();
             try
             {
+                var listImage = listProductImage.Select(x => new {
+                    Id = x.image_id,
+                    ImageCode = x.image_code,
+                    Image = x.image,
+                    Title = x.title,
+                    ImgType = x.img_type,
+                    ImgLocation = x.img_location,
+                    ImgHeight = x.img_height,
+                    ImgWidth = x.img_width
+                });
+
                 gIMG.DataBindings.Clear();
-                gIMG.DataSource = RebindImages();
+                gIMG.DataSource = listImage;
+
+
+                gridImage.Columns[0].Width = 40;
+                gridImage.Columns[1].Width = 90;
+                gridImage.Columns[2].Width = 290;
+                gridImage.Columns[3].Width = 100;
+                gridImage.Columns[4].Width = 100;
             }
             catch (Exception ex)
             {
                 gIMG.EndUpdate();
-                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableProductImage);
+                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
             }
         }
-        private IEnumerable<ViewCategoryImage> RebindCategory()
+        private IEnumerable<ViewCategoryImage> getCategoryImage()
         {
             using (var session = new DalSession())
             {
@@ -508,12 +541,13 @@ namespace Inventory.MainForm
                 }
                 catch (Exception)
                 {
-                    PopupNotification.PopUpMessages(0, Messages.ErrorInternal, Messages.TitleCategory);
+                    PopupNotification.PopUpMessages(0, Messages.ErrorInternal, Messages.TitleProducts);
                     throw;
                 }
             }
         }
-        private IEnumerable<ProductImages> RebindImages()
+
+        private IEnumerable<ProductImages> getProductImage()
         {
             using (var session = new DalSession())
             {
@@ -871,29 +905,40 @@ namespace Inventory.MainForm
             {
                 _cat = true;
                 _img = false;
-                gCON.Enabled = true;
+                gridControl.Enabled = true;
                 gIMG.Enabled = false;
             }
             if (tabCategory.SelectedTabPage == xImage)
             {
                 _img = true;
                 _cat = false;
-                gCON.Enabled = false;
+                gridControl.Enabled = false;
                 gIMG.Enabled = true;
             }
         }
 
-       
+        private ProductImages searchProductImageId(int image_id)
+        {
+            return listProductImage.FirstOrDefault(product_image => product_image.image_id == image_id);
+        }
 
         private void gridImage_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (gridImage.RowCount > 0)
             {
-                txtImageId.Text = ((GridView)sender).GetFocusedRowCellValue("ImageId").ToString();
-                txtImageCode.Text = ((GridView)sender).GetFocusedRowCellValue("ImageCode").ToString();
-                txtImageName.Text = ((GridView)sender).GetFocusedRowCellValue("Title").ToString();
-                txtImageLocation.Text = ((GridView)sender).GetFocusedRowCellValue("ImgLocation").ToString();
-                DisplayImage(Convert.ToInt32(txtImageId.Text));
+                var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                if (id.Length > 0)
+                {
+                    var image_id = int.Parse(id);
+                    var product_image = searchProductImageId(image_id);
+                    int imageId = product_image.image_id;
+                    txtImageId.Text = imageId.ToString();
+                    txtImageCode.Text = product_image.image_code;
+                    txtImageName.Text = product_image.title;
+                    txtImageLocation.Text = product_image.img_location;
+                    /*DisplayImage(Convert.ToInt32(txtImageId.Text));
+                     */
+                }               
             }
         }
 
@@ -922,7 +967,10 @@ namespace Inventory.MainForm
             InputDimGimg();
         }
 
-      
+        private ViewCategoryImage searchCategoryId(int id)
+        {
+            return listCategory.FirstOrDefault(view_category_image => view_category_image.category_id == id);
+        }
 
         private void gridCategory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
@@ -930,23 +978,29 @@ namespace Inventory.MainForm
             {
                 try
                 {
-                    txtCategoryId.Text = ((GridView)sender).GetFocusedRowCellValue("CategoryId").ToString();
-                    txtCategoryCode.Text = ((GridView)sender).GetFocusedRowCellValue("CategoryCode").ToString();
-                    txtCategoryDetails.Text = ((GridView)sender).GetFocusedRowCellValue("CategoryDetails").ToString();
-                    cmbProductImage.Text = ((GridView)sender).GetFocusedRowCellValue("Title").ToString();
-                    dkpDateRegister.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DateRegister");
-                    var imgId = ProductImageId(cmbProductImage.Text);
-                    DisplayCategory(imgId);
+                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (id.Length > 0)
+                    {
+                        var category_id = int.Parse(id);
+                        var category = searchCategoryId(category_id);
+                        int categoryId = category.category_id;
+                        txtCategoryId.Text = categoryId.ToString();
+                        txtCategoryCode.Text = category.category_code;
+                        txtCategoryDetails.Text = category.category_details;
+                        cmbProductImage.Text = category.title;
+                        dkpDateRegister.Value = category.date_register;
+                        
+                        /* var imgId = ProductImageId(cmbProductImage.Text);
+                        DisplayCategory(imgId);
+                        */
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                 }
-              
             }
         }
-
-       
 
         private void gridCategory_RowClick(object sender, RowClickEventArgs e)
         {
@@ -1019,12 +1073,12 @@ namespace Inventory.MainForm
                 if (que)
                 {
                     ButDel();
-                    gCON.Enabled = false;
+                    gridControl.Enabled = false;
                 }
                 else
                 {
                     ButCan();
-                    gCON.Enabled = true;
+                    gridControl.Enabled = true;
                 }
             }
             if (_cat == false && _img)
