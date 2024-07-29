@@ -101,6 +101,7 @@
     <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="Entities\ViewCreditParticular.cs" />
     <Compile Include="Entities\ViewDailySales.cs" />
+    <Compile Include="Entities\ViewImageProduct.cs" />
     <Compile Include="Entities\ViewPosEntity.cs" />
     <Compile Include="Entities\ViewProfile.cs" />
     <Compile Include="Entities\ViewSalesCredit.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\TargetClass.cs" />
     <Compile Include="Repository\UnitofWork.cs" />
+    <Compile Include="Utilities\ConstantUtils.cs" />
     <Compile Include="Utilities\EntityUtils.cs" />
     <Compile Include="Utilities\EnumerableUtils.cs" />
     <Compile Include="Utilities\FetchUtils.cs" />

@@ -45,7 +45,7 @@
             this.txtWholesale = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtRetailPrice = new System.Windows.Forms.TextBox();
-            this.imgPRO = new System.Windows.Forms.PictureBox();
+            this.imgProduct = new System.Windows.Forms.PictureBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbSupplier = new System.Windows.Forms.ComboBox();
@@ -86,8 +86,16 @@
             this.XtraEmployee = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabImage = new DevExpress.XtraTab.XtraTabPage();
             this.grpImage = new DevExpress.XtraEditors.GroupControl();
+            this.btnSaveImage = new System.Windows.Forms.Button();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtImageFilename = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtImageType = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtImageTitle = new System.Windows.Forms.TextBox();
             this.lblBarcode = new System.Windows.Forms.Label();
-            this.txtProductId = new System.Windows.Forms.TextBox();
+            this.txtProductBar = new System.Windows.Forms.TextBox();
             this.imgBigPreview = new System.Windows.Forms.PictureBox();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.lblMainTitle = new System.Windows.Forms.Label();
@@ -119,7 +127,7 @@
             this.XtrPerProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GbPersonal)).BeginInit();
             this.GbPersonal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPRO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).BeginInit();
             this.gbCON.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -237,7 +245,7 @@
             this.GbPersonal.Controls.Add(this.txtWholesale);
             this.GbPersonal.Controls.Add(this.label14);
             this.GbPersonal.Controls.Add(this.txtRetailPrice);
-            this.GbPersonal.Controls.Add(this.imgPRO);
+            this.GbPersonal.Controls.Add(this.imgProduct);
             this.GbPersonal.Controls.Add(this.cmbCategory);
             this.GbPersonal.Controls.Add(this.label11);
             this.GbPersonal.Controls.Add(this.cmbSupplier);
@@ -352,15 +360,15 @@
             this.txtRetailPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRetailPrice_KeyPress);
             this.txtRetailPrice.Leave += new System.EventHandler(this.txtRetailPrice_Leave);
             // 
-            // imgPRO
+            // imgProduct
             // 
-            this.imgPRO.BackColor = System.Drawing.Color.Gray;
-            this.imgPRO.Location = new System.Drawing.Point(772, 9);
-            this.imgPRO.Name = "imgPRO";
-            this.imgPRO.Size = new System.Drawing.Size(231, 237);
-            this.imgPRO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgPRO.TabIndex = 202;
-            this.imgPRO.TabStop = false;
+            this.imgProduct.BackColor = System.Drawing.Color.Gray;
+            this.imgProduct.Location = new System.Drawing.Point(772, 9);
+            this.imgProduct.Name = "imgProduct";
+            this.imgProduct.Size = new System.Drawing.Size(231, 237);
+            this.imgProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgProduct.TabIndex = 202;
+            this.imgProduct.TabStop = false;
             // 
             // cmbCategory
             // 
@@ -920,8 +928,16 @@
             this.grpImage.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.grpImage.Appearance.Options.UseBackColor = true;
             this.grpImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.grpImage.Controls.Add(this.btnSaveImage);
+            this.grpImage.Controls.Add(this.btnBrowse);
+            this.grpImage.Controls.Add(this.label16);
+            this.grpImage.Controls.Add(this.txtImageFilename);
+            this.grpImage.Controls.Add(this.label17);
+            this.grpImage.Controls.Add(this.txtImageType);
+            this.grpImage.Controls.Add(this.label15);
+            this.grpImage.Controls.Add(this.txtImageTitle);
             this.grpImage.Controls.Add(this.lblBarcode);
-            this.grpImage.Controls.Add(this.txtProductId);
+            this.grpImage.Controls.Add(this.txtProductBar);
             this.grpImage.Controls.Add(this.imgBigPreview);
             this.grpImage.Controls.Add(this.textBox23);
             this.grpImage.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -932,35 +948,137 @@
             this.grpImage.Size = new System.Drawing.Size(1010, 561);
             this.grpImage.TabIndex = 174;
             // 
+            // btnSaveImage
+            // 
+            this.btnSaveImage.BackColor = System.Drawing.Color.Fuchsia;
+            this.btnSaveImage.Enabled = false;
+            this.btnSaveImage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSaveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveImage.ForeColor = System.Drawing.Color.White;
+            this.btnSaveImage.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveImage.Image")));
+            this.btnSaveImage.Location = new System.Drawing.Point(888, 193);
+            this.btnSaveImage.Name = "btnSaveImage";
+            this.btnSaveImage.Size = new System.Drawing.Size(111, 104);
+            this.btnSaveImage.TabIndex = 60;
+            this.btnSaveImage.Text = "SAVE";
+            this.btnSaveImage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSaveImage.UseVisualStyleBackColor = false;
+            this.btnSaveImage.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.BackColor = System.Drawing.Color.Blue;
+            this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.ForeColor = System.Drawing.Color.White;
+            this.btnBrowse.Image = ((System.Drawing.Image)(resources.GetObject("btnBrowse.Image")));
+            this.btnBrowse.Location = new System.Drawing.Point(765, 193);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(117, 104);
+            this.btnBrowse.TabIndex = 60;
+            this.btnBrowse.Text = "BROWSE";
+            this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBrowse.UseVisualStyleBackColor = false;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(609, 148);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(110, 17);
+            this.label16.TabIndex = 211;
+            this.label16.Text = "Image Filename:";
+            // 
+            // txtImageFilename
+            // 
+            this.txtImageFilename.BackColor = System.Drawing.Color.White;
+            this.txtImageFilename.Enabled = false;
+            this.txtImageFilename.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImageFilename.ForeColor = System.Drawing.Color.Maroon;
+            this.txtImageFilename.Location = new System.Drawing.Point(730, 142);
+            this.txtImageFilename.Name = "txtImageFilename";
+            this.txtImageFilename.Size = new System.Drawing.Size(269, 29);
+            this.txtImageFilename.TabIndex = 210;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(609, 113);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(83, 17);
+            this.label17.TabIndex = 209;
+            this.label17.Text = "Image Type:";
+            // 
+            // txtImageType
+            // 
+            this.txtImageType.BackColor = System.Drawing.Color.White;
+            this.txtImageType.Enabled = false;
+            this.txtImageType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImageType.ForeColor = System.Drawing.Color.Maroon;
+            this.txtImageType.Location = new System.Drawing.Point(730, 107);
+            this.txtImageType.Name = "txtImageType";
+            this.txtImageType.Size = new System.Drawing.Size(269, 29);
+            this.txtImageType.TabIndex = 208;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(609, 77);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(82, 17);
+            this.label15.TabIndex = 207;
+            this.label15.Text = "Image Title:";
+            // 
+            // txtImageTitle
+            // 
+            this.txtImageTitle.BackColor = System.Drawing.Color.White;
+            this.txtImageTitle.Enabled = false;
+            this.txtImageTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImageTitle.ForeColor = System.Drawing.Color.Maroon;
+            this.txtImageTitle.Location = new System.Drawing.Point(730, 71);
+            this.txtImageTitle.Name = "txtImageTitle";
+            this.txtImageTitle.Size = new System.Drawing.Size(269, 29);
+            this.txtImageTitle.TabIndex = 206;
+            // 
             // lblBarcode
             // 
             this.lblBarcode.AutoSize = true;
             this.lblBarcode.BackColor = System.Drawing.Color.Transparent;
             this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
-            this.lblBarcode.Location = new System.Drawing.Point(36, 511);
+            this.lblBarcode.Location = new System.Drawing.Point(609, 42);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(78, 17);
+            this.lblBarcode.Size = new System.Drawing.Size(113, 17);
             this.lblBarcode.TabIndex = 205;
-            this.lblBarcode.Text = "Product ID:";
+            this.lblBarcode.Text = "Product Barcode:";
             // 
-            // txtProductId
+            // txtProductBar
             // 
-            this.txtProductId.BackColor = System.Drawing.Color.DimGray;
-            this.txtProductId.Enabled = false;
-            this.txtProductId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductId.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductId.Location = new System.Drawing.Point(157, 505);
-            this.txtProductId.Name = "txtProductId";
-            this.txtProductId.Size = new System.Drawing.Size(269, 29);
-            this.txtProductId.TabIndex = 204;
+            this.txtProductBar.BackColor = System.Drawing.Color.White;
+            this.txtProductBar.Enabled = false;
+            this.txtProductBar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductBar.ForeColor = System.Drawing.Color.Maroon;
+            this.txtProductBar.Location = new System.Drawing.Point(730, 36);
+            this.txtProductBar.Name = "txtProductBar";
+            this.txtProductBar.Size = new System.Drawing.Size(269, 29);
+            this.txtProductBar.TabIndex = 204;
             // 
             // imgBigPreview
             // 
             this.imgBigPreview.BackColor = System.Drawing.Color.Gray;
-            this.imgBigPreview.Location = new System.Drawing.Point(157, 21);
+            this.imgBigPreview.Location = new System.Drawing.Point(27, 21);
             this.imgBigPreview.Name = "imgBigPreview";
-            this.imgBigPreview.Size = new System.Drawing.Size(689, 478);
+            this.imgBigPreview.Size = new System.Drawing.Size(558, 478);
             this.imgBigPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgBigPreview.TabIndex = 203;
             this.imgBigPreview.TabStop = false;
@@ -1251,7 +1369,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GbPersonal)).EndInit();
             this.GbPersonal.ResumeLayout(false);
             this.GbPersonal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPRO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
             this.gbCON.ResumeLayout(false);
             this.gbCON.PerformLayout();
@@ -1351,7 +1469,7 @@
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmbSupplier;
-        private System.Windows.Forms.PictureBox imgPRO;
+        private System.Windows.Forms.PictureBox imgProduct;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridProductList;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
@@ -1366,7 +1484,15 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtRetailPrice;
         private System.Windows.Forms.Label lblBarcode;
-        private System.Windows.Forms.TextBox txtProductId;
         private DevExpress.XtraSplashScreen.SplashScreenManager splash;
+        private System.Windows.Forms.Button btnSaveImage;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtImageFilename;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtImageType;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtImageTitle;
+        private System.Windows.Forms.TextBox txtProductBar;
     }
 }

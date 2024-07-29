@@ -5,6 +5,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.Utils.About;
+using DevExpress.Utils.DirectXPaint;
 using DevExpress.XtraGrid.Views.Grid;
 using Inventory.Config;
 using ServeAll.Core.Entities;
@@ -20,6 +22,8 @@ namespace Inventory.MainForm
         private FirmMain _main;
         private bool _add, _edt, _del;
         private IEnumerable<ViewProducts> listProducts;
+        private IEnumerable<ViewImageProduct> imgList;
+        private int productId = 0;
         public FirmMain Main
         {
             get { return _main; }
@@ -31,6 +35,11 @@ namespace Inventory.MainForm
             InitializeComponent();
         }
 
+        private ViewImageProduct searchProductImg(string param)
+        {
+            return imgList.FirstOrDefault(img => img.image_code == param);
+        }
+
         private void FrmProducts_Load(object sender, EventArgs e)
         {
             
@@ -40,9 +49,9 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
-            listProducts = getProductList();
+            listProducts = EnumerableUtils.getProductList();
+            imgList = EnumerableUtils.getImgProductList();
             BindProductList();
-         
         }
 
         private void FrmProducts_MouseMove(object sender, MouseEventArgs e)
@@ -172,10 +181,10 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridControl.Enabled = false;
-            imgPRO.DataBindings.Clear();
+            imgProduct.DataBindings.Clear();
             imgBigPreview.DataBindings.Clear();
             imgBigPreview.Image = null;
-            imgPRO.Image = null;
+            imgProduct.Image = null;
             GenerateCode();
         }
         private void ButUpd()
@@ -250,10 +259,10 @@ namespace Inventory.MainForm
             gridControl.Enabled = true;
             cmbCategory.DataBindings.Clear();
             cmbSupplier.DataBindings.Clear();
-            imgPRO.DataBindings.Clear();
+            imgProduct.DataBindings.Clear();
             imgBigPreview.DataBindings.Clear();
             imgBigPreview.Image = null;
-            imgPRO.Image = null;
+            imgProduct.Image = null;
         }
         private void ButCan()
         {
@@ -269,18 +278,18 @@ namespace Inventory.MainForm
         #endregion
         private void DisplayImage(int imgId)
         {
-            imgPRO.DataBindings.Clear();
+            imgProduct.DataBindings.Clear();
             imgBigPreview.DataBindings.Clear();
             var img = GetByImage(imgId);
             if (img != null)
             {
                 MemoryStream memoryStream = new MemoryStream(img);
-                imgPRO.Image = Image.FromStream(memoryStream);
+                imgProduct.Image = Image.FromStream(memoryStream);
                 imgBigPreview.Image = Image.FromStream(memoryStream);
             }
             else
             {
-                imgPRO.Image = null;
+                imgProduct.Image = null;
                 imgBigPreview.Image = null;
             }
         }
@@ -432,7 +441,7 @@ namespace Inventory.MainForm
         }
         private ViewProducts Product()
         {
-            var productId = int.Parse(txtProductId.Text);
+            var productId = int.Parse(txtProductBar.Text);
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
@@ -469,27 +478,10 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private IEnumerable<ViewProducts> getProductList()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ViewProducts>(unWork);
-                    return repository.SelectAll(Query.AllViewProducts).ToList();
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, Messages.ErrorInternal, Messages.TitleProducts);
-                    throw;
-                }
-            }
-        }
+        
         private void InputWhit()
         {
-            txtProductId.BackColor = Color.White;
+            txtProductBar.BackColor = Color.White;
             txtProductBarcode.BackColor = Color.White;
             txtProductName.BackColor = Color.White;
             cmbCategory.BackColor = Color.White;
@@ -509,7 +501,7 @@ namespace Inventory.MainForm
         }
         private void InputEnab()
         {
-            txtProductId.Enabled = true;
+            txtProductBar.Enabled = true;
             txtProductBarcode.Enabled = true;
             txtProductName.Enabled = true;
             cmbCategory.Enabled = true;
@@ -529,7 +521,7 @@ namespace Inventory.MainForm
         }
         private void InputDisb()
         {
-            txtProductId.Enabled = false;
+            txtProductBar.Enabled = false;
             txtProductBarcode.Enabled = false;
             txtProductName.Enabled = false;
             cmbCategory.Enabled = false;
@@ -549,7 +541,7 @@ namespace Inventory.MainForm
         }
         private void InputClea()
         {
-            txtProductId.Clear();
+            txtProductBar.Clear();
             txtProductBarcode.Clear();
             txtProductName.Clear();
             cmbCategory.Text = "";
@@ -569,7 +561,7 @@ namespace Inventory.MainForm
             dkpDateRegister.Value = DateTime.Now.Date;
         }
         private void InputDimG() {
-            txtProductId.BackColor = Color.DimGray;
+            txtProductBar.BackColor = Color.DimGray;
             txtProductBarcode.BackColor = Color.DimGray;
             txtProductName.BackColor = Color.DimGray;
             cmbCategory.BackColor = Color.DimGray;
@@ -674,46 +666,37 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    splash.ShowWaitForm();
-                    var proId = Convert.ToInt32(txtProductId.Text);
                     var repository = new Repository<Products>(unWork);
-                    var que = repository.Id(proId);
-
-                    que.product_code        = txtProductBarcode.Text.Trim(' ');
-                    que.product_name        = txtProductName.Text.Trim(' ');
-                    que.category_id  = GetCategoryId(cmbCategory.Text);
-                    que.supplier_id  = GetSupplierId(cmbSupplier.Text);
-                    que.stock_code   = txtStockCode.Text.Trim(' ');
-                    que.brand       = txtProductBrand.Text.Trim(' ');
-                    que.model       = txtProductModel.Text.Trim(' ');
-                    que.made        = txtProductMade.Text.Trim(' ');
-                    que.serial_number      = txtSerialNumber.Text.Trim(' ');
-                    que.tare_weight  = Convert.ToDecimal(txtTareWeight.Text);
-                    que.net_weight   = Convert.ToDecimal(txtNetWeight.Text);
+                    var que = repository.Id(productId);
+                    que.product_code = txtProductBarcode.Text.Trim(' ');
+                    que.product_name = txtProductName.Text.Trim(' ');
+                    que.category_id = GetCategoryId(cmbCategory.Text);
+                    que.supplier_id = GetSupplierId(cmbSupplier.Text);
+                    que.stock_code = txtStockCode.Text.Trim(' ');
+                    que.brand = txtProductBrand.Text.Trim(' ');
+                    que.model = txtProductModel.Text.Trim(' ');
+                    que.made = txtProductMade.Text.Trim(' ');
+                    que.serial_number = txtSerialNumber.Text.Trim(' ');
+                    que.tare_weight = Convert.ToDecimal(txtTareWeight.Text);
+                    que.net_weight = Convert.ToDecimal(txtNetWeight.Text);
                     que.trade_price = Convert.ToDecimal(txtTradePrice.Text);
                     que.retail_price = Convert.ToDecimal(txtRetailPrice.Text);
                     que.wholesale = Convert.ToDecimal(txtWholesale.Text);
-                    que.status_id    = GetStatusId(cmbProductStatus.Text);
-             
-                    que.date_register    = dkpDateRegister.Value.Date;
-                    var result      = repository.Update(que);
+                    que.status_id = GetStatusId(cmbProductStatus.Text);
+                    que.date_register = dkpDateRegister.Value.Date;
+                    var result = repository.Update(que);
                     if (result)
                     {
-                        splash.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1,
-                            "Product Name: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
-                            Messages.TitleSuccessUpdate);
+                        PopupNotification.PopUpMessages(1, "Product Name: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
+                         Messages.TitleSuccessUpdate);
                         unWork.Commit();
-                    }
-                    else
-                    {
-                        splash.CloseWaitForm();
-                        unWork.Rollback();
+                        listProducts = EnumerableUtils.getProductList();
+                        BindProductList();
                     }
                 }
                 catch (Exception ex)
                 {
-                    
+                    unWork.Rollback();
                     PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedUpdate);
 
                 }
@@ -728,7 +711,7 @@ namespace Inventory.MainForm
                 try
                 {
                     splash.ShowWaitForm();
-                    var proId = Convert.ToInt32(txtProductId.Text);
+                    var proId = Convert.ToInt32(txtProductBar.Text);
                     var repository = new Repository<Products>(unWork);
                     var que = repository.Id(proId);
                     var result = repository.Delete(que);
@@ -763,9 +746,12 @@ namespace Inventory.MainForm
                     var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
                     if (id.Length > 0)
                     {
-                        var productId = int.Parse(id);
-                        var product = searchProductId(productId);
-                        txtProductBarcode.Text = product.product_code;
+                        productId = int.Parse(id);
+                        var product =  searchProductId(productId);
+                        var barcode = product.product_code;
+                        txtProductBar.Text = barcode;
+                        txtImageTitle.Text = product.product_name;
+                        txtProductBarcode.Text = barcode;
                         txtProductName.Text = product.product_name;
                         cmbCategory.Text = product.category_details;
                         cmbSupplier.Text = product.supplier_name;
@@ -781,13 +767,23 @@ namespace Inventory.MainForm
                         txtWholesale.Text = product.wholesale.ToString(CultureInfo.InvariantCulture);
                         cmbProductStatus.Text = product.status_details;
                         dkpDateRegister.Value = product.date_register;
+
+                        var img = searchProductImg(barcode);
+                        var imgLocation = img.img_location;
+                        
+                        if (imgLocation.Length > 0)
+                        {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            imgProduct.ImageLocation = location;
+                            imgBigPreview.ImageLocation = location;
+                        }
+                        else 
+                            imgProduct.Image = null;
+                            imgBigPreview.Image = null;
                     }
-                     
-                    
-                     
-                      /* var cat = cmbCategory.Text.Trim(' ');
-                      var imgId = GetProductImgId(cat);
-                      DisplayImage(imgId); */
+                    /* var cat = cmbCategory.Text.Trim(' ');
+                    var imgId = GetProductImgId(cat);
+                    DisplayImage(imgId); */
                 }
                 catch (Exception ex)
                 {
@@ -795,6 +791,14 @@ namespace Inventory.MainForm
                     Console.WriteLine(ex.ToString());
                 }
                 
+            }
+        }
+
+        public static class MediaUtils
+        {
+            public static Image loadImage(string path)
+            {
+                return Image.FromFile(path);
             }
         }
 
@@ -831,7 +835,7 @@ namespace Inventory.MainForm
 
         private void bntClear_Click(object sender, EventArgs e)
         {
-            ButClr();
+             ButClr(); 
         }
 
         private void bntCancel_Click(object sender, EventArgs e)
@@ -1145,6 +1149,54 @@ namespace Inventory.MainForm
             }
         }
 
+        private string getfileExntesion(string filePath)
+        {
+            return Path.GetFileName(filePath);
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)|*.bmp;*.jpg;*.jpeg;*.png;*.gif";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.Multiselect = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedFilePath = openFileDialog.FileName;
+
+                    string fileNameAndExtension = getfileExntesion(selectedFilePath);
+                    txtImageFilename.Text = fileNameAndExtension;
+                    btnSaveImage.Enabled = true;
+                    btnBrowse.Enabled = false;
+                }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var code = txtProductBar.Text.Trim(' ');
+            var title = txtImageTitle.Text.Trim(' ');
+            var imgtype = txtImageType.Text.Trim(' ');
+            var imgLocation = txtImageFilename.Text.Trim(' ');
+            if (code.Length > 0 && title.Length > 0 && imgtype.Length > 0 && imgLocation.Length > 0)
+            {
+                var result = saveProductImage();
+                if (result > 0)
+                {
+                    btnSaveImage.Enabled = false;
+                    btnBrowse.Enabled = true;
+                    listProducts = EnumerableUtils.getProductList();
+                    BindProductList();
+                }
+            }
+            else
+            {
+                PopupNotification.PopUpMessages(0, "Please fill all the entries!", Messages.TitleFailedInsert);
+            }
+        }
+
         private void dkpDateRegister_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -1153,6 +1205,52 @@ namespace Inventory.MainForm
             }
         }
         #endregion
+
+        private int saveProductImage()
+        {
+            var returnValue = 0;
+            using (var session = new DalSession())
+            {
+                var unitWorks = session.UnitofWrk;
+                unitWorks.Begin();
+                try
+                {
+                    var filePathLocation = txtImageFilename.Text.Trim(' ');
+                    var filePath = ExtractFileName(filePathLocation);
+                    var repository = new Repository<ProductImages>(unitWorks);
+                    var img = new ProductImages()
+                    {
+                        image_code = txtProductBar.Text.Trim(' '),
+                        title = txtImageTitle.Text.Trim(' '),
+                        img_type = txtImageType.Text.Trim(' '),
+                        img_location = filePath,
+                    };
+                    var result = repository.Add(img);
+                    if (result > 0)
+                    {
+                        PopupNotification.PopUpMessages(1, "Product image: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
+                         Messages.TitleSuccessInsert);
+                        unitWorks.Commit();
+                        returnValue = 1;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    unitWorks.Rollback();
+                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
+                    returnValue = 0;
+                }
+
+            }
+            return returnValue;
+        }
+
+        private string ExtractFileName(string filePath)
+        {
+            return Path.GetFileName(filePath);
+        }
+
 
         private int VerifyCode(string barcode)
         {

@@ -92,5 +92,43 @@ namespace ServeAll.Core.Utilities
         {
             return Enumerable.Empty<T>();
         }
+
+        public static IEnumerable<ViewProducts> getProductList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewProducts>(unWork);
+                    return repository.SelectAll(Query.AllViewProducts).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewProducts>();
+                }
+            }
+        }
+
+        public static IEnumerable<ViewImageProduct> getImgProductList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewImageProduct>(unWork);
+                    return repository.SelectAll(Query.AllViewImageProduct).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewImageProduct>();
+                }
+            }
+        }
     }
 }
