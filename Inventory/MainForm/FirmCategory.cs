@@ -504,12 +504,9 @@ namespace Inventory.MainForm
                 var listImage = listProductImage.Select(x => new {
                     Id = x.image_id,
                     ImageCode = x.image_code,
-                    Image = x.image,
                     Title = x.title,
                     ImgType = x.img_type,
-                    ImgLocation = x.img_location,
-                    ImgHeight = x.img_height,
-                    ImgWidth = x.img_width
+                    ImgLocation = x.img_location
                 });
 
                 gIMG.DataBindings.Clear();
@@ -645,12 +642,9 @@ namespace Inventory.MainForm
                     var img = new ProductImages()
                     {
                         image_code    = _code,
-                        image = image, 
                         title        = _title, 
                         img_type      = _type, 
-                        img_location  = _location, 
-                        img_height    = _imgHeight, 
-                        img_width     = _imgWidth
+                        img_location  = _location
                     };
                     var result = repository.Add(img);
                     if (result > 0)
@@ -685,12 +679,9 @@ namespace Inventory.MainForm
                     var image = binaryReader.ReadBytes((int)fileStream.Length);
                     var que = repository.Id(imgId);
                         que.image_code = _code;
-                        que.image = image;
                         que.title = _title;
                         que.img_type = _type;
                         que.img_location = _location;
-                        que.img_height = _imgHeight;
-                        que.img_width = _imgWidth;
                     
                     var result = repository.Update(que);
                     if (result)
@@ -845,54 +836,6 @@ namespace Inventory.MainForm
         #endregion
 
 
-        private void DisplayImage(int imgId)
-        {
-            var img = GetByImage(imgId);
-            if (img != null)
-            {
-                MemoryStream memoryStream = new MemoryStream(img);
-                imgImagePreview.Image = Image.FromStream(memoryStream);
-            }
-            else
-            {
-                imgImagePreview.Image = null;
-            }
-        }
-
-        private void DisplayCategory(int imgId)
-        {
-            var img = GetByImage(imgId);
-            if (img != null)
-            {
-                MemoryStream memoryStream = new MemoryStream(img);
-                imgCategoryImage.Image = Image.FromStream(memoryStream);
-            }
-            else
-            {
-                imgCategoryImage.Image = null;
-            }
-        }
-
-        private byte[] GetByImage(int imgId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk; 
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.image_id == imgId);
-                    return query.image;
-                }
-                catch (Exception ex)
-                {
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.ErrorInternal);
-                    throw;
-                }
-            }
-        }
-
       
 
         private void bntUpload_Click(object sender, EventArgs e)
@@ -1020,7 +963,6 @@ namespace Inventory.MainForm
             if (cmbProductImage.Text.Length > 0)
             {
                 var imgId = ProductImageId(cmbProductImage.Text);
-                DisplayCategory(imgId);
             }
         }
 

@@ -124,12 +124,10 @@
 
         public const string AllProductImage = @"SELECT	image_id, 
 		                                                image_code, 
-		                                                image, 
 		                                                title, 
 		                                                img_type, 
 		                                                img_location, 
-		                                                img_height, 
-		                                                img_width 
+		                                                branch_id 
                                                 FROM product_image";
         public const string AllCategory = @"SELECT category_id, 
 	                                               category_code, 

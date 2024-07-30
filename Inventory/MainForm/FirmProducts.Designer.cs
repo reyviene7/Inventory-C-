@@ -86,12 +86,12 @@
             this.XtraEmployee = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabImage = new DevExpress.XtraTab.XtraTabPage();
             this.grpImage = new DevExpress.XtraEditors.GroupControl();
+            this.txtImageType = new System.Windows.Forms.ComboBox();
             this.btnSaveImage = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.txtImageFilename = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.txtImageType = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtImageTitle = new System.Windows.Forms.TextBox();
             this.lblBarcode = new System.Windows.Forms.Label();
@@ -928,12 +928,12 @@
             this.grpImage.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.grpImage.Appearance.Options.UseBackColor = true;
             this.grpImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.grpImage.Controls.Add(this.txtImageType);
             this.grpImage.Controls.Add(this.btnSaveImage);
             this.grpImage.Controls.Add(this.btnBrowse);
             this.grpImage.Controls.Add(this.label16);
             this.grpImage.Controls.Add(this.txtImageFilename);
             this.grpImage.Controls.Add(this.label17);
-            this.grpImage.Controls.Add(this.txtImageType);
             this.grpImage.Controls.Add(this.label15);
             this.grpImage.Controls.Add(this.txtImageTitle);
             this.grpImage.Controls.Add(this.lblBarcode);
@@ -948,6 +948,24 @@
             this.grpImage.Size = new System.Drawing.Size(1010, 561);
             this.grpImage.TabIndex = 174;
             // 
+            // txtImageType
+            // 
+            this.txtImageType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtImageType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.txtImageType.BackColor = System.Drawing.Color.White;
+            this.txtImageType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImageType.ForeColor = System.Drawing.Color.Maroon;
+            this.txtImageType.FormattingEnabled = true;
+            this.txtImageType.Items.AddRange(new object[] {
+            "JPG",
+            "PNG",
+            "BMP"});
+            this.txtImageType.Location = new System.Drawing.Point(730, 107);
+            this.txtImageType.Name = "txtImageType";
+            this.txtImageType.Size = new System.Drawing.Size(269, 29);
+            this.txtImageType.TabIndex = 212;
+            this.txtImageType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxImageType_SelectedIndexChanged);
+
             // btnSaveImage
             // 
             this.btnSaveImage.BackColor = System.Drawing.Color.Fuchsia;
@@ -1015,17 +1033,6 @@
             this.label17.Size = new System.Drawing.Size(83, 17);
             this.label17.TabIndex = 209;
             this.label17.Text = "Image Type:";
-            // 
-            // txtImageType
-            // 
-            this.txtImageType.BackColor = System.Drawing.Color.White;
-            this.txtImageType.Enabled = false;
-            this.txtImageType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtImageType.ForeColor = System.Drawing.Color.Maroon;
-            this.txtImageType.Location = new System.Drawing.Point(730, 107);
-            this.txtImageType.Name = "txtImageType";
-            this.txtImageType.Size = new System.Drawing.Size(269, 29);
-            this.txtImageType.TabIndex = 208;
             // 
             // label15
             // 
@@ -1348,14 +1355,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1370, 767);
+            this.ClientSize = new System.Drawing.Size(1087, 425);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmProducts";
+            this.Text = "FirmProducts";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmProducts_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmProducts_MouseMove);
@@ -1404,7 +1411,7 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.ComboBox comboBoxImageType;
         private System.Windows.Forms.PictureBox pbExit;
         private System.Windows.Forms.PictureBox pcRight;
         private System.Windows.Forms.Panel pnlRightMain;
@@ -1490,9 +1497,9 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtImageFilename;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txtImageType;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtImageTitle;
         private System.Windows.Forms.TextBox txtProductBar;
+        private System.Windows.Forms.ComboBox txtImageType;
     }
 }

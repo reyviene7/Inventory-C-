@@ -78,7 +78,6 @@ namespace Inventory.MainForm
                 if (cmbNAM.Text.Length > 0)
                 {
                     var imgId = GetProductImgId(cmbNAM.Text);
-                    DisplayImage(imgId);
                 }
             }
         }
@@ -636,42 +635,6 @@ namespace Inventory.MainForm
             alphaNumeric.Increment();
             txtCOD.Text = alphaNumeric.ToString();
         }
-        private void DisplayImage(int imgId)
-        {
-
-            imgPRO.DataBindings.Clear();
-            var img = GetByImage(imgId);
-            if (img != null)
-            {
-                MemoryStream memoryStream = new MemoryStream(img);
-                imgPRO.Image = Image.FromStream(memoryStream);
-
-            }
-            else
-            {
-
-                imgPRO.Image = null;
-            }
-        }
-        private byte[] GetByImage(int imgId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.image_id == imgId);
-                    return query.image;
-                }
-                catch (Exception ex)
-                {
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.ErrorInternal);
-                    throw;
-                }
-            }
-        }
         private void BindWareHouse()
         {
             braWET.ShowWaitForm();
@@ -1195,7 +1158,6 @@ namespace Inventory.MainForm
                         var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
                         ShowValue(invId);
                         var imgId = GetProductImgId(cmbNAM.Text);
-                        DisplayImage(imgId);
                         txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
                         txtPRC.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                     }
@@ -1204,7 +1166,6 @@ namespace Inventory.MainForm
                         var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
                         ShowBranch(invId);
                         var imgId = GetProductImgId(cmbNAM.Text);
-                        DisplayImage(imgId);
                         txtBAR.Text = SearchBarcode(cmbNAM.Text).product_code;
                         txtPRC.Text = SearchBarcode(cmbNAM.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                     }

@@ -502,42 +502,6 @@ namespace Inventory.MainForm
             txtWarehouseId.Clear();
             txtStockOrigin.Clear();
         }
-        private void DisplayImage(int imgId)
-        {
-
-            imgPreview.DataBindings.Clear();
-            var img = GetByImage(imgId);
-            if (img != null)
-            {
-                MemoryStream memoryStream = new MemoryStream(img);
-                imgPreview.Image = Image.FromStream(memoryStream);
-
-            }
-            else
-            {
-
-                imgPreview.Image = null;
-            }
-        }
-        private byte[] GetByImage(int imgId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.image_id == imgId);
-                    return query.image;
-                }
-                catch (Exception ex)
-                {
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.ErrorInternal);
-                    throw;
-                }
-            }
-        }
         private void GenerateReturn()
         {
             var lastCode = GetLastReturnId();
@@ -649,15 +613,12 @@ namespace Inventory.MainForm
                     {
                         var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
                         ShowValue(invId);
-                        var imgId = GetProductImgId(cmbProductName.Text);
-                        DisplayImage(imgId);
                     }
                     if (_ret)
                     {
                         var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
                         ShowValueReturn(invId);
                         var imgId = GetProductImgId(cmbProductName.Text);
-                        DisplayImage(imgId);
                     }
                 }
                 catch (Exception ex)

@@ -276,42 +276,6 @@ namespace Inventory.MainForm
        
         }
         #endregion
-        private void DisplayImage(int imgId)
-        {
-            imgProduct.DataBindings.Clear();
-            imgBigPreview.DataBindings.Clear();
-            var img = GetByImage(imgId);
-            if (img != null)
-            {
-                MemoryStream memoryStream = new MemoryStream(img);
-                imgProduct.Image = Image.FromStream(memoryStream);
-                imgBigPreview.Image = Image.FromStream(memoryStream);
-            }
-            else
-            {
-                imgProduct.Image = null;
-                imgBigPreview.Image = null;
-            }
-        }
-        private byte[] GetByImage(int imgId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.image_id == imgId);
-                    return query.image;
-                }
-                catch (Exception ex)
-                {
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.ErrorInternal);
-                    throw;
-                }
-            }
-        }
         private void BindProductList()
         {
             gridControl.Update();
@@ -781,9 +745,6 @@ namespace Inventory.MainForm
                             imgProduct.Image = null;
                             imgBigPreview.Image = null;
                     }
-                    /* var cat = cmbCategory.Text.Trim(' ');
-                    var imgId = GetProductImgId(cat);
-                    DisplayImage(imgId); */
                 }
                 catch (Exception ex)
                 {
@@ -932,9 +893,22 @@ namespace Inventory.MainForm
         {
             if (_add || _edt)
             {
-                var cat = cmbCategory.Text.Trim(' ');
-                var imgId = GetProductImgId(cat);
-                DisplayImage(imgId);
+                var cat = cmbCategory.Text.Trim(' '); 
+            }
+        }
+
+
+
+
+        // Define the event handler method
+        private void ComboBoxImageType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedImageType = txtImageType.SelectedItem?.ToString();
+
+            if (selectedImageType != null)
+            {
+                // For demonstration, show a message box with the selected image type
+                MessageBox.Show("Selected Image Type: " + selectedImageType);
             }
         }
 
@@ -1224,6 +1198,7 @@ namespace Inventory.MainForm
                         title = txtImageTitle.Text.Trim(' '),
                         img_type = txtImageType.Text.Trim(' '),
                         img_location = filePath,
+                        branch_id = 1
                     };
                     var result = repository.Add(img);
                     if (result > 0)
@@ -1245,6 +1220,8 @@ namespace Inventory.MainForm
             }
             return returnValue;
         }
+
+        
 
         private string ExtractFileName(string filePath)
         {

@@ -250,23 +250,6 @@ namespace Inventory.MainForm
             imgPreview.Image = null;
         }
         #endregion
-        private void DisplayImage(int imgId)
-        {
-
-            imgPreview.DataBindings.Clear();
-            var img = GetByImage(imgId);
-            if (img != null)
-            {
-                MemoryStream memoryStream = new MemoryStream(img);
-                imgPreview.Image = Image.FromStream(memoryStream);
-             
-            }
-            else
-            {
-
-                imgPreview.Image = null;
-            }
-        }
         private void BindDepotList()
         {
             gCON.Update();
@@ -528,7 +511,6 @@ namespace Inventory.MainForm
             if (cmbProductName.Text.Length > 0)
             {
                 var imgId = GetProductImgId(cmbProductName.Text);
-                DisplayImage(imgId);
             }
         }
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -540,7 +522,6 @@ namespace Inventory.MainForm
                     var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
                     ShowValue(invId);
                     var imgId = GetProductImgId(cmbProductName.Text);
-                    DisplayImage(imgId);
                     txtProductBarcode.Text = SearchBarcode(cmbProductName.Text).product_code;
                     lblPRZ.Text = SearchBarcode(cmbProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                 }
@@ -1190,25 +1171,6 @@ namespace Inventory.MainForm
                 if (result != null) return result;
                 result = Query.DefaultCode;
                 return result;
-            }
-        }
-        private static byte[] GetByImage(int imgId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.image_id == imgId);
-                    return query.image;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                    return null;
-                }
             }
         }
     }
