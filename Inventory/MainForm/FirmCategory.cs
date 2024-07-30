@@ -910,6 +910,11 @@ namespace Inventory.MainForm
             InputDimGimg();
         }
 
+        private ViewImageCategory searchCategoryImg(string param)
+        {
+            return imgList.FirstOrDefault(img => img.image_code == param);
+        }
+
         private ViewCategoryImage searchCategoryId(int id)
         {
             return listCategory.FirstOrDefault(view_category_image => view_category_image.category_id == id);
@@ -926,16 +931,27 @@ namespace Inventory.MainForm
                     {
                         var category_id = int.Parse(id);
                         var category = searchCategoryId(category_id);
+                        var categoryCode = category.category_code;
                         int categoryId = category.category_id;
                         txtCategoryId.Text = categoryId.ToString();
-                        txtCategoryCode.Text = category.category_code;
+                        txtCategoryCode.Text = categoryCode;
                         txtCategoryDetails.Text = category.category_details;
                         cmbProductImage.Text = category.title;
                         dkpDateRegister.Value = category.date_register;
-                        
+
                         /* var imgId = ProductImageId(cmbProductImage.Text);
                         DisplayCategory(imgId);
                         */
+                        var img = searchCategoryImg(categoryCode);
+                        var imgLocation = img.img_location;
+
+                        if (imgLocation.Length > 0)
+                        {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            imgCategory.ImageLocation = location;
+                        }
+                        else
+                            imgCategory.Image = null;
                     }
                 }
                 catch (Exception ex)

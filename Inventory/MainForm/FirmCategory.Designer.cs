@@ -65,7 +65,7 @@
             this.cmbProductImage = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dkpDateRegister = new System.Windows.Forms.DateTimePicker();
-            this.imgCategoryImage = new System.Windows.Forms.PictureBox();
+            this.imgCategory = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCategoryDetails = new System.Windows.Forms.TextBox();
@@ -136,7 +136,7 @@
             this.xCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GbPersonal)).BeginInit();
             this.GbPersonal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCategoryImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCategory)).BeginInit();
             this.xImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GProfileImage)).BeginInit();
             this.GProfileImage.SuspendLayout();
@@ -579,7 +579,7 @@
             this.GbPersonal.Controls.Add(this.cmbProductImage);
             this.GbPersonal.Controls.Add(this.label4);
             this.GbPersonal.Controls.Add(this.dkpDateRegister);
-            this.GbPersonal.Controls.Add(this.imgCategoryImage);
+            this.GbPersonal.Controls.Add(this.imgCategory);
             this.GbPersonal.Controls.Add(this.label3);
             this.GbPersonal.Controls.Add(this.label2);
             this.GbPersonal.Controls.Add(this.txtCategoryDetails);
@@ -638,15 +638,15 @@
             this.dkpDateRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpREG_KeyDown);
             this.dkpDateRegister.Leave += new System.EventHandler(this.dkpREG_Leave);
             // 
-            // imgCategoryImage
+            // imgCategory
             // 
-            this.imgCategoryImage.BackColor = System.Drawing.Color.Gray;
-            this.imgCategoryImage.Location = new System.Drawing.Point(565, 21);
-            this.imgCategoryImage.Name = "imgCategoryImage";
-            this.imgCategoryImage.Size = new System.Drawing.Size(242, 256);
-            this.imgCategoryImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgCategoryImage.TabIndex = 181;
-            this.imgCategoryImage.TabStop = false;
+            this.imgCategory.BackColor = System.Drawing.Color.Gray;
+            this.imgCategory.Location = new System.Drawing.Point(565, 21);
+            this.imgCategory.Name = "imgCategory";
+            this.imgCategory.Size = new System.Drawing.Size(242, 256);
+            this.imgCategory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgCategory.TabIndex = 181;
+            this.imgCategory.TabStop = false;
             // 
             // label3
             // 
@@ -1272,7 +1272,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GbPersonal)).EndInit();
             this.GbPersonal.ResumeLayout(false);
             this.GbPersonal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCategoryImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCategory)).EndInit();
             this.xImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GProfileImage)).EndInit();
             this.GProfileImage.ResumeLayout(false);
@@ -1347,7 +1347,7 @@
         private System.Windows.Forms.Button bntSave;
         private System.Windows.Forms.Button bntUpdate;
         private System.Windows.Forms.Timer RightOptions;
-        private System.Windows.Forms.PictureBox imgCategoryImage;
+        private System.Windows.Forms.PictureBox imgCategory;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dkpDateRegister;
         private System.Windows.Forms.ComboBox cmbProductImage;
