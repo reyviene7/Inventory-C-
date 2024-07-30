@@ -525,7 +525,7 @@ namespace Inventory.MainForm
             dkpDateRegister.Value = DateTime.Now.Date;
         }
         private void InputDimG() {
-            txtProductBar.BackColor = Color.DimGray;
+            txtProductBar.BackColor = Color.White;
             txtProductBarcode.BackColor = Color.DimGray;
             txtProductName.BackColor = Color.DimGray;
             cmbCategory.BackColor = Color.DimGray;

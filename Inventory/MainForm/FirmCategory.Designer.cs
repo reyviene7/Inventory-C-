@@ -90,7 +90,7 @@
             this.label46 = new System.Windows.Forms.Label();
             this.txtImageName = new System.Windows.Forms.TextBox();
             this.txtImageLocation = new System.Windows.Forms.TextBox();
-            this.imgImagePreview = new System.Windows.Forms.PictureBox();
+            this.imgProduct = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.XtrAuthAccount = new DevExpress.XtraTab.XtraTabPage();
             this.GuserAccount = new DevExpress.XtraEditors.GroupControl();
@@ -147,7 +147,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgImagePreview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgProduct)).BeginInit();
             this.XtrAuthAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GuserAccount)).BeginInit();
             this.GuserAccount.SuspendLayout();
@@ -731,7 +731,7 @@
             this.GProfileImage.Controls.Add(this.label46);
             this.GProfileImage.Controls.Add(this.txtImageName);
             this.GProfileImage.Controls.Add(this.txtImageLocation);
-            this.GProfileImage.Controls.Add(this.imgImagePreview);
+            this.GProfileImage.Controls.Add(this.imgProduct);
             this.GProfileImage.Controls.Add(this.textBox2);
             this.GProfileImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GProfileImage.Location = new System.Drawing.Point(0, 0);
@@ -1021,15 +1021,15 @@
             this.txtImageLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImageLocation_KeyDown);
             this.txtImageLocation.Leave += new System.EventHandler(this.txtImageLocation_Leave);
             // 
-            // imgImagePreview
+            // imgProduct
             // 
-            this.imgImagePreview.BackColor = System.Drawing.Color.Gray;
-            this.imgImagePreview.Location = new System.Drawing.Point(741, 30);
-            this.imgImagePreview.Name = "imgImagePreview";
-            this.imgImagePreview.Size = new System.Drawing.Size(255, 247);
-            this.imgImagePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgImagePreview.TabIndex = 180;
-            this.imgImagePreview.TabStop = false;
+            this.imgProduct.BackColor = System.Drawing.Color.Gray;
+            this.imgProduct.Location = new System.Drawing.Point(741, 30);
+            this.imgProduct.Name = "imgProduct";
+            this.imgProduct.Size = new System.Drawing.Size(255, 247);
+            this.imgProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgProduct.TabIndex = 180;
+            this.imgProduct.TabStop = false;
             // 
             // textBox2
             // 
@@ -1285,7 +1285,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgImagePreview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgProduct)).EndInit();
             this.XtrAuthAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GuserAccount)).EndInit();
             this.GuserAccount.ResumeLayout(false);
@@ -1333,7 +1333,7 @@
         private System.Windows.Forms.TextBox txtCategoryCode;
         private DevExpress.XtraTab.XtraTabPage xImage;
         private DevExpress.XtraEditors.GroupControl GProfileImage;
-        private System.Windows.Forms.PictureBox imgImagePreview;
+        private System.Windows.Forms.PictureBox imgProduct;
         private System.Windows.Forms.TextBox textBox2;
         private DevExpress.XtraTab.XtraTabPage XtrAuthAccount;
         private DevExpress.XtraEditors.GroupControl GuserAccount;

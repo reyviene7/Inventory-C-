@@ -130,5 +130,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+
+        public static IEnumerable<ProductImages> getProductImage()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ProductImages>(unWork);
+                    return repository.SelectAll(Query.AllProductImage).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ProductImages>();
+                }
+            }
+        }
     }
 }

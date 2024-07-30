@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
 using Inventory.Config;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
@@ -20,6 +21,7 @@ namespace Inventory.MainForm
         private bool _add, _edt, _del, _img, _cat;
         private IEnumerable<ViewCategoryImage> listCategory;
         private IEnumerable<ProductImages> listProductImage;
+        private IEnumerable<ViewImageProduct> imgList;
         private string _title, _type, _location, _code;
         private int _imgHeight, _imgWidth;
 
@@ -44,7 +46,8 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             listCategory = getCategoryImage();
-            listProductImage = getProductImage();
+            listProductImage = EnumerableUtils.getProductImage();
+            imgList = EnumerableUtils.getImgProductList();
             BindCategoryList();
             BindImageList();
             _cat = true;
@@ -544,25 +547,6 @@ namespace Inventory.MainForm
             }
         }
 
-        private IEnumerable<ProductImages> getProductImage()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ProductImages>(unWork);
-                    return repository.SelectAll(Query.AllProductImage).ToList();
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, Messages.ErrorInternal, Messages.TitleProductImage);
-                    throw;
-                }
-            }
-        }
-
         //BINDING 
         private void BindImage()
         {
@@ -601,8 +585,8 @@ namespace Inventory.MainForm
         #region ImgBrowse
         private void BrwImage()
         {
-            imgImagePreview.DataBindings.Clear();
-            imgImagePreview.Image = null;
+            imgProduct.DataBindings.Clear();
+            imgProduct.Image = null;
             imgOFD.Title = @"Open Image";
             imgOFD.Filter = Messages.ImageFormat;
             imgOFD.DefaultExt = "*.jpg";
@@ -859,6 +843,10 @@ namespace Inventory.MainForm
                 gIMG.Enabled = true;
             }
         }
+        private ViewImageProduct searchProductImg(string param)
+        {
+            return imgList.FirstOrDefault(img => img.image_code == param);
+        }
 
         private ProductImages searchProductImageId(int image_id)
         {
@@ -874,13 +862,25 @@ namespace Inventory.MainForm
                 {
                     var image_id = int.Parse(id);
                     var product_image = searchProductImageId(image_id);
+                    var image = product_image.image_code;
                     int imageId = product_image.image_id;
                     txtImageId.Text = imageId.ToString();
-                    txtImageCode.Text = product_image.image_code;
+                    txtImageCode.Text = image;
                     txtImageName.Text = product_image.title;
                     txtImageLocation.Text = product_image.img_location;
                     /*DisplayImage(Convert.ToInt32(txtImageId.Text));
                      */
+                    var img = searchProductImg(image);
+                    var imgLocation = img.img_location;
+
+                    if (imgLocation.Length > 0)
+                    {
+                        var location = ConstantUtils.defaultImgLocation + imgLocation;
+                        imgProduct.ImageLocation = location;
+                    }
+                    else
+                        imgProduct.Image = null;
+
                 }               
             }
         }
