@@ -87,7 +87,7 @@
                                             FROM view_poscustomers";
         public const string PosProducts = @"SELECT code as Code, item as Item, qty as Qty, retail_price, wholesale, status, branch FROM view_product_inventory";
         public const string AllProductList = @"SELECT ProductId, Code, Name, RetailPrice, Status FROM view_productlist ORDER BY Code ASC";
-        public const string AllInventoryList = "SELECT Id, Barcode, Product, Quantity, Warranty, Status, Branch FROM view_inventorylist";
+        public const string AllInventoryList = "SELECT inventory_id, product_code, product_name, quantity, status_id, branch_details FROM view_inventoryList";
         public const string AllSupplier = @"SELECT supplier_id,
                                               supplier_code,
                                               supplier_name,
@@ -178,7 +178,7 @@
                                                         Status
                                                 FROM view_inventory";
         public const string AllProductCategory = @"SELECT * FROM view_product_category";
-        public const string AllProductStatus = @"SELECT StatusId, Status FROM ProductStatus";
+        public const string AllProductStatus = @"SELECT status_id, status FROM ProductStatus";
         public const string AllUsers = @"SELECT user_id,
                                                 user_code,
 		                                        username, 
@@ -242,9 +242,9 @@
         public const string SelectAllBranchDelivery = "SELECT Id, Code, Item, Qty, Delivery, Receipt, Branch, Warranty, Status,RefDate, WareHouseId FROM view_branchdelivery ORDER BY Id DESC";
         public const string SelectAllBranchExcWareH = "SELECT BranchDetails FROM Branch WHERE BranchId NOT IN (SELECT BranchId FROM Branch WHERE BranchDetails = 'Warehouse')";
         public const string SelectAllFingerPrints = "SELECT FingerId, EmployeeId, FingerIndex, FingerBytes FROM Finger ORDER BY FingerIndex DESC";
-        public const string SelectAllReturnWareHs = "SELECT Id, Code, Item, ReturnNo, ReturnQty, Origin, Destination, RetDate, RefDate, Status, Remarks, InventoryId FROM view_return_warehouse ORDER BY Id DESC";
-        public const string SelectAllLpgGasul = "SELECT ProductId FROM view_lpg_gasul";
-        public const string SelectCountReturnNo = "SELECT Id, ReturnNo FROM view_return_warehouse";
+        public const string SelectAllReturnWareHs = "SELECT return_id, return_code, product_code, return_number, return_quantity, branch_code, destination, return_date, status_id, remarks, inventory_code FROM view_return_warehouse ORDER BY return_id DESC";
+        public const string SelectAllProductId = "SELECT product_id FROM view_product_id";
+        public const string SelectCountReturnNo = "SELECT return_id, return_number FROM view_return_warehouse";
         public const string SelectCountDepotRet = "SELECT ReceiptNo FROM WareHouse";
         public const string SelectCountDepotDel = "SELECT DeliveryNo FROM WareHouse";
         public const string SelectCountDepotsId = "SELECT Id, Code, DeliveryNo FROM view_return_depot";
