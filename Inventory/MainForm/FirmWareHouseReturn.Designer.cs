@@ -42,29 +42,29 @@
             this.label10 = new System.Windows.Forms.Label();
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.txtGEN = new System.Windows.Forms.TextBox();
-            this.cmbDES = new System.Windows.Forms.ComboBox();
+            this.cmbToBranch = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtMAR = new System.Windows.Forms.TextBox();
-            this.cmbBRA = new System.Windows.Forms.ComboBox();
+            this.txtRemarks = new System.Windows.Forms.TextBox();
+            this.cmbFromBranch = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dkpREF = new System.Windows.Forms.DateTimePicker();
-            this.txtWER = new System.Windows.Forms.TextBox();
+            this.dkpInputDate = new System.Windows.Forms.DateTimePicker();
+            this.txtWarehouseQty = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtQTY = new System.Windows.Forms.TextBox();
+            this.txtReturnQty = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmbSAT = new System.Windows.Forms.ComboBox();
-            this.cmbNAM = new System.Windows.Forms.ComboBox();
-            this.imgPRO = new System.Windows.Forms.PictureBox();
+            this.cmbProductStatus = new System.Windows.Forms.ComboBox();
+            this.cmbProductName = new System.Windows.Forms.ComboBox();
+            this.imgPreview = new System.Windows.Forms.PictureBox();
             this.lblHiredate = new System.Windows.Forms.Label();
-            this.dkpPUR = new System.Windows.Forms.DateTimePicker();
+            this.dkpReturnDelivery = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtREN = new System.Windows.Forms.TextBox();
+            this.txtDeliveryNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCOD = new System.Windows.Forms.TextBox();
+            this.txtReturnCode = new System.Windows.Forms.TextBox();
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
             this.gCON = new DevExpress.XtraGrid.GridControl();
             this.gridReturn = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -73,7 +73,7 @@
             this.grdHIS = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.txtPRI = new System.Windows.Forms.TextBox();
             this.lblBarcode = new System.Windows.Forms.Label();
-            this.txtRID = new System.Windows.Forms.TextBox();
+            this.txtReturnId = new System.Windows.Forms.TextBox();
             this.tabHIS = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.label15 = new System.Windows.Forms.Label();
@@ -97,7 +97,7 @@
             this.tabINV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GbPersonal)).BeginInit();
             this.GbPersonal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPRO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).BeginInit();
             this.gbCON.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gCON)).BeginInit();
@@ -223,10 +223,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Inventory.Properties.Resources.Petron;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(33, 30);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 142);
+            this.pictureBox1.Size = new System.Drawing.Size(127, 159);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 127;
             this.pictureBox1.TabStop = false;
             // 
@@ -250,7 +251,7 @@
             this.tabINV.Appearance.PageClient.Options.UseBackColor = true;
             this.tabINV.Controls.Add(this.GbPersonal);
             this.tabINV.Name = "tabINV";
-            this.tabINV.Size = new System.Drawing.Size(1102, 736);
+            this.tabINV.Size = new System.Drawing.Size(1106, 739);
             this.tabINV.Text = "Stock From Depot";
             // 
             // GbPersonal
@@ -261,38 +262,38 @@
             this.GbPersonal.Controls.Add(this.label10);
             this.GbPersonal.Controls.Add(this.lblMainTitle);
             this.GbPersonal.Controls.Add(this.txtGEN);
-            this.GbPersonal.Controls.Add(this.cmbDES);
+            this.GbPersonal.Controls.Add(this.cmbToBranch);
             this.GbPersonal.Controls.Add(this.label7);
             this.GbPersonal.Controls.Add(this.label9);
-            this.GbPersonal.Controls.Add(this.txtMAR);
-            this.GbPersonal.Controls.Add(this.cmbBRA);
+            this.GbPersonal.Controls.Add(this.txtRemarks);
+            this.GbPersonal.Controls.Add(this.cmbFromBranch);
             this.GbPersonal.Controls.Add(this.label8);
             this.GbPersonal.Controls.Add(this.label3);
-            this.GbPersonal.Controls.Add(this.dkpREF);
-            this.GbPersonal.Controls.Add(this.txtWER);
+            this.GbPersonal.Controls.Add(this.dkpInputDate);
+            this.GbPersonal.Controls.Add(this.txtWarehouseQty);
             this.GbPersonal.Controls.Add(this.label14);
-            this.GbPersonal.Controls.Add(this.txtQTY);
+            this.GbPersonal.Controls.Add(this.txtReturnQty);
             this.GbPersonal.Controls.Add(this.label4);
-            this.GbPersonal.Controls.Add(this.cmbSAT);
-            this.GbPersonal.Controls.Add(this.cmbNAM);
-            this.GbPersonal.Controls.Add(this.imgPRO);
+            this.GbPersonal.Controls.Add(this.cmbProductStatus);
+            this.GbPersonal.Controls.Add(this.cmbProductName);
+            this.GbPersonal.Controls.Add(this.imgPreview);
             this.GbPersonal.Controls.Add(this.lblHiredate);
-            this.GbPersonal.Controls.Add(this.dkpPUR);
+            this.GbPersonal.Controls.Add(this.dkpReturnDelivery);
             this.GbPersonal.Controls.Add(this.label6);
             this.GbPersonal.Controls.Add(this.label5);
-            this.GbPersonal.Controls.Add(this.txtREN);
+            this.GbPersonal.Controls.Add(this.txtDeliveryNo);
             this.GbPersonal.Controls.Add(this.label2);
             this.GbPersonal.Controls.Add(this.label1);
-            this.GbPersonal.Controls.Add(this.txtCOD);
+            this.GbPersonal.Controls.Add(this.txtReturnCode);
             this.GbPersonal.Controls.Add(this.gbCON);
             this.GbPersonal.Controls.Add(this.lblBarcode);
-            this.GbPersonal.Controls.Add(this.txtRID);
+            this.GbPersonal.Controls.Add(this.txtReturnId);
             this.GbPersonal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GbPersonal.Location = new System.Drawing.Point(0, 0);
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1102, 736);
+            this.GbPersonal.Size = new System.Drawing.Size(1106, 739);
             this.GbPersonal.TabIndex = 173;
             // 
             // label10
@@ -330,19 +331,19 @@
             this.txtGEN.Size = new System.Drawing.Size(37, 29);
             this.txtGEN.TabIndex = 245;
             // 
-            // cmbDES
+            // cmbToBranch
             // 
-            this.cmbDES.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbDES.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbDES.BackColor = System.Drawing.Color.DimGray;
-            this.cmbDES.Enabled = false;
-            this.cmbDES.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDES.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbDES.FormattingEnabled = true;
-            this.cmbDES.Location = new System.Drawing.Point(529, 87);
-            this.cmbDES.Name = "cmbDES";
-            this.cmbDES.Size = new System.Drawing.Size(269, 29);
-            this.cmbDES.TabIndex = 243;
+            this.cmbToBranch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbToBranch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbToBranch.BackColor = System.Drawing.Color.DimGray;
+            this.cmbToBranch.Enabled = false;
+            this.cmbToBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbToBranch.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbToBranch.FormattingEnabled = true;
+            this.cmbToBranch.Location = new System.Drawing.Point(529, 87);
+            this.cmbToBranch.Name = "cmbToBranch";
+            this.cmbToBranch.Size = new System.Drawing.Size(269, 29);
+            this.cmbToBranch.TabIndex = 243;
             // 
             // label7
             // 
@@ -368,31 +369,31 @@
             this.label9.TabIndex = 242;
             this.label9.Text = "Remarks:";
             // 
-            // txtMAR
+            // txtRemarks
             // 
-            this.txtMAR.BackColor = System.Drawing.Color.DimGray;
-            this.txtMAR.Enabled = false;
-            this.txtMAR.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMAR.ForeColor = System.Drawing.Color.Maroon;
-            this.txtMAR.Location = new System.Drawing.Point(529, 208);
-            this.txtMAR.Name = "txtMAR";
-            this.txtMAR.Size = new System.Drawing.Size(269, 29);
-            this.txtMAR.TabIndex = 11;
-            this.txtMAR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMAR_KeyDown);
+            this.txtRemarks.BackColor = System.Drawing.Color.DimGray;
+            this.txtRemarks.Enabled = false;
+            this.txtRemarks.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRemarks.ForeColor = System.Drawing.Color.Maroon;
+            this.txtRemarks.Location = new System.Drawing.Point(529, 208);
+            this.txtRemarks.Name = "txtRemarks";
+            this.txtRemarks.Size = new System.Drawing.Size(269, 29);
+            this.txtRemarks.TabIndex = 11;
+            this.txtRemarks.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRemarks_KeyDown);
             // 
-            // cmbBRA
+            // cmbFromBranch
             // 
-            this.cmbBRA.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbBRA.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbBRA.BackColor = System.Drawing.Color.DimGray;
-            this.cmbBRA.Enabled = false;
-            this.cmbBRA.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBRA.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbBRA.FormattingEnabled = true;
-            this.cmbBRA.Location = new System.Drawing.Point(529, 57);
-            this.cmbBRA.Name = "cmbBRA";
-            this.cmbBRA.Size = new System.Drawing.Size(269, 29);
-            this.cmbBRA.TabIndex = 7;
+            this.cmbFromBranch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbFromBranch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbFromBranch.BackColor = System.Drawing.Color.DimGray;
+            this.cmbFromBranch.Enabled = false;
+            this.cmbFromBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFromBranch.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbFromBranch.FormattingEnabled = true;
+            this.cmbFromBranch.Location = new System.Drawing.Point(529, 57);
+            this.cmbFromBranch.Name = "cmbFromBranch";
+            this.cmbFromBranch.Size = new System.Drawing.Size(269, 29);
+            this.cmbFromBranch.TabIndex = 7;
             // 
             // label8
             // 
@@ -418,28 +419,28 @@
             this.label3.TabIndex = 236;
             this.label3.Text = "Input Date:";
             // 
-            // dkpREF
+            // dkpInputDate
             // 
-            this.dkpREF.CustomFormat = "dd-MM-yyyy";
-            this.dkpREF.Enabled = false;
-            this.dkpREF.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dkpREF.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpREF.Location = new System.Drawing.Point(529, 148);
-            this.dkpREF.Name = "dkpREF";
-            this.dkpREF.Size = new System.Drawing.Size(269, 29);
-            this.dkpREF.TabIndex = 9;
-            this.dkpREF.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpREF_KeyDown);
+            this.dkpInputDate.CustomFormat = "dd-MM-yyyy";
+            this.dkpInputDate.Enabled = false;
+            this.dkpInputDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dkpInputDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dkpInputDate.Location = new System.Drawing.Point(529, 148);
+            this.dkpInputDate.Name = "dkpInputDate";
+            this.dkpInputDate.Size = new System.Drawing.Size(269, 29);
+            this.dkpInputDate.TabIndex = 9;
+            this.dkpInputDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpInputDate_KeyDown);
             // 
-            // txtWER
+            // txtWarehouseQty
             // 
-            this.txtWER.BackColor = System.Drawing.Color.DimGray;
-            this.txtWER.Enabled = false;
-            this.txtWER.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWER.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWER.Location = new System.Drawing.Point(121, 177);
-            this.txtWER.Name = "txtWER";
-            this.txtWER.Size = new System.Drawing.Size(269, 29);
-            this.txtWER.TabIndex = 5;
+            this.txtWarehouseQty.BackColor = System.Drawing.Color.DimGray;
+            this.txtWarehouseQty.Enabled = false;
+            this.txtWarehouseQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWarehouseQty.ForeColor = System.Drawing.Color.Maroon;
+            this.txtWarehouseQty.Location = new System.Drawing.Point(121, 177);
+            this.txtWarehouseQty.Name = "txtWarehouseQty";
+            this.txtWarehouseQty.Size = new System.Drawing.Size(269, 29);
+            this.txtWarehouseQty.TabIndex = 5;
             // 
             // label14
             // 
@@ -453,19 +454,19 @@
             this.label14.TabIndex = 233;
             this.label14.Text = "Return Qty:";
             // 
-            // txtQTY
+            // txtReturnQty
             // 
-            this.txtQTY.BackColor = System.Drawing.Color.DimGray;
-            this.txtQTY.Enabled = false;
-            this.txtQTY.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQTY.ForeColor = System.Drawing.Color.Maroon;
-            this.txtQTY.Location = new System.Drawing.Point(121, 208);
-            this.txtQTY.Name = "txtQTY";
-            this.txtQTY.Size = new System.Drawing.Size(269, 29);
-            this.txtQTY.TabIndex = 6;
-            this.txtQTY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQTY_KeyDown);
-            this.txtQTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQTY_KeyPress);
-            this.txtQTY.Leave += new System.EventHandler(this.txtQTY_Leave);
+            this.txtReturnQty.BackColor = System.Drawing.Color.DimGray;
+            this.txtReturnQty.Enabled = false;
+            this.txtReturnQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReturnQty.ForeColor = System.Drawing.Color.Maroon;
+            this.txtReturnQty.Location = new System.Drawing.Point(121, 208);
+            this.txtReturnQty.Name = "txtReturnQty";
+            this.txtReturnQty.Size = new System.Drawing.Size(269, 29);
+            this.txtReturnQty.TabIndex = 6;
+            this.txtReturnQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReturnQTY_KeyDown);
+            this.txtReturnQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReturnQTY_KeyPress);
+            this.txtReturnQty.Leave += new System.EventHandler(this.txtReturnQTY_Leave);
             // 
             // label4
             // 
@@ -479,45 +480,45 @@
             this.label4.TabIndex = 225;
             this.label4.Text = "Product Status:";
             // 
-            // cmbSAT
+            // cmbProductStatus
             // 
-            this.cmbSAT.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbSAT.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbSAT.BackColor = System.Drawing.Color.DimGray;
-            this.cmbSAT.Enabled = false;
-            this.cmbSAT.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbSAT.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbSAT.FormattingEnabled = true;
-            this.cmbSAT.Location = new System.Drawing.Point(529, 178);
-            this.cmbSAT.Name = "cmbSAT";
-            this.cmbSAT.Size = new System.Drawing.Size(269, 29);
-            this.cmbSAT.TabIndex = 10;
-            this.cmbSAT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSAT_KeyDown);
+            this.cmbProductStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbProductStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbProductStatus.BackColor = System.Drawing.Color.DimGray;
+            this.cmbProductStatus.Enabled = false;
+            this.cmbProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProductStatus.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbProductStatus.FormattingEnabled = true;
+            this.cmbProductStatus.Location = new System.Drawing.Point(529, 178);
+            this.cmbProductStatus.Name = "cmbProductStatus";
+            this.cmbProductStatus.Size = new System.Drawing.Size(269, 29);
+            this.cmbProductStatus.TabIndex = 10;
+            this.cmbProductStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductStatus_KeyDown);
             // 
-            // cmbNAM
+            // cmbProductName
             // 
-            this.cmbNAM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbNAM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbNAM.BackColor = System.Drawing.Color.DimGray;
-            this.cmbNAM.Enabled = false;
-            this.cmbNAM.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbNAM.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbNAM.FormattingEnabled = true;
-            this.cmbNAM.Location = new System.Drawing.Point(121, 117);
-            this.cmbNAM.Name = "cmbNAM";
-            this.cmbNAM.Size = new System.Drawing.Size(269, 29);
-            this.cmbNAM.TabIndex = 3;
-            this.cmbNAM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbNAM_KeyDown);
+            this.cmbProductName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbProductName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbProductName.BackColor = System.Drawing.Color.DimGray;
+            this.cmbProductName.Enabled = false;
+            this.cmbProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProductName.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbProductName.FormattingEnabled = true;
+            this.cmbProductName.Location = new System.Drawing.Point(121, 117);
+            this.cmbProductName.Name = "cmbProductName";
+            this.cmbProductName.Size = new System.Drawing.Size(269, 29);
+            this.cmbProductName.TabIndex = 3;
+            this.cmbProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductName_KeyDown);
             // 
-            // imgPRO
+            // imgPreview
             // 
-            this.imgPRO.BackColor = System.Drawing.Color.Gray;
-            this.imgPRO.Location = new System.Drawing.Point(804, 3);
-            this.imgPRO.Name = "imgPRO";
-            this.imgPRO.Size = new System.Drawing.Size(298, 248);
-            this.imgPRO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgPRO.TabIndex = 223;
-            this.imgPRO.TabStop = false;
+            this.imgPreview.BackColor = System.Drawing.Color.Gray;
+            this.imgPreview.Location = new System.Drawing.Point(804, 3);
+            this.imgPreview.Name = "imgPreview";
+            this.imgPreview.Size = new System.Drawing.Size(298, 248);
+            this.imgPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgPreview.TabIndex = 223;
+            this.imgPreview.TabStop = false;
             // 
             // lblHiredate
             // 
@@ -531,17 +532,17 @@
             this.lblHiredate.TabIndex = 208;
             this.lblHiredate.Text = "Return Delivery:";
             // 
-            // dkpPUR
+            // dkpReturnDelivery
             // 
-            this.dkpPUR.CustomFormat = "dd-MM-yyyy";
-            this.dkpPUR.Enabled = false;
-            this.dkpPUR.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dkpPUR.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpPUR.Location = new System.Drawing.Point(529, 118);
-            this.dkpPUR.Name = "dkpPUR";
-            this.dkpPUR.Size = new System.Drawing.Size(269, 29);
-            this.dkpPUR.TabIndex = 8;
-            this.dkpPUR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpPUR_KeyDown);
+            this.dkpReturnDelivery.CustomFormat = "dd-MM-yyyy";
+            this.dkpReturnDelivery.Enabled = false;
+            this.dkpReturnDelivery.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dkpReturnDelivery.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dkpReturnDelivery.Location = new System.Drawing.Point(529, 118);
+            this.dkpReturnDelivery.Name = "dkpReturnDelivery";
+            this.dkpReturnDelivery.Size = new System.Drawing.Size(269, 29);
+            this.dkpReturnDelivery.TabIndex = 8;
+            this.dkpReturnDelivery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpReturnDelivery_KeyDown);
             // 
             // label6
             // 
@@ -567,17 +568,17 @@
             this.label5.TabIndex = 182;
             this.label5.Text = "Product Name:";
             // 
-            // txtREN
+            // txtDeliveryNo
             // 
-            this.txtREN.BackColor = System.Drawing.Color.DimGray;
-            this.txtREN.Enabled = false;
-            this.txtREN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtREN.ForeColor = System.Drawing.Color.Maroon;
-            this.txtREN.Location = new System.Drawing.Point(121, 147);
-            this.txtREN.Name = "txtREN";
-            this.txtREN.Size = new System.Drawing.Size(269, 29);
-            this.txtREN.TabIndex = 4;
-            this.txtREN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtREN_KeyDown);
+            this.txtDeliveryNo.BackColor = System.Drawing.Color.DimGray;
+            this.txtDeliveryNo.Enabled = false;
+            this.txtDeliveryNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryNo.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDeliveryNo.Location = new System.Drawing.Point(121, 147);
+            this.txtDeliveryNo.Name = "txtDeliveryNo";
+            this.txtDeliveryNo.Size = new System.Drawing.Size(269, 29);
+            this.txtDeliveryNo.TabIndex = 4;
+            this.txtDeliveryNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDeliveryNo_KeyDown);
             // 
             // label2
             // 
@@ -603,16 +604,16 @@
             this.label1.TabIndex = 174;
             this.label1.Text = "Return Code:";
             // 
-            // txtCOD
+            // txtReturnCode
             // 
-            this.txtCOD.BackColor = System.Drawing.Color.DimGray;
-            this.txtCOD.Enabled = false;
-            this.txtCOD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCOD.ForeColor = System.Drawing.Color.Maroon;
-            this.txtCOD.Location = new System.Drawing.Point(121, 87);
-            this.txtCOD.Name = "txtCOD";
-            this.txtCOD.Size = new System.Drawing.Size(269, 29);
-            this.txtCOD.TabIndex = 2;
+            this.txtReturnCode.BackColor = System.Drawing.Color.DimGray;
+            this.txtReturnCode.Enabled = false;
+            this.txtReturnCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReturnCode.ForeColor = System.Drawing.Color.Maroon;
+            this.txtReturnCode.Location = new System.Drawing.Point(121, 87);
+            this.txtReturnCode.Name = "txtReturnCode";
+            this.txtReturnCode.Size = new System.Drawing.Size(269, 29);
+            this.txtReturnCode.TabIndex = 2;
             // 
             // gbCON
             // 
@@ -784,22 +785,22 @@
             this.lblBarcode.TabIndex = 142;
             this.lblBarcode.Text = "Return Id:";
             // 
-            // txtRID
+            // txtReturnId
             // 
-            this.txtRID.BackColor = System.Drawing.Color.DimGray;
-            this.txtRID.Enabled = false;
-            this.txtRID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRID.ForeColor = System.Drawing.Color.Maroon;
-            this.txtRID.Location = new System.Drawing.Point(121, 57);
-            this.txtRID.Name = "txtRID";
-            this.txtRID.Size = new System.Drawing.Size(269, 29);
-            this.txtRID.TabIndex = 1;
+            this.txtReturnId.BackColor = System.Drawing.Color.DimGray;
+            this.txtReturnId.Enabled = false;
+            this.txtReturnId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReturnId.ForeColor = System.Drawing.Color.Maroon;
+            this.txtReturnId.Location = new System.Drawing.Point(121, 57);
+            this.txtReturnId.Name = "txtReturnId";
+            this.txtReturnId.Size = new System.Drawing.Size(269, 29);
+            this.txtReturnId.TabIndex = 1;
             // 
             // tabHIS
             // 
             this.tabHIS.Controls.Add(this.groupControl1);
             this.tabHIS.Name = "tabHIS";
-            this.tabHIS.Size = new System.Drawing.Size(1102, 736);
+            this.tabHIS.Size = new System.Drawing.Size(1106, 739);
             this.tabHIS.Text = "Delivery History";
             // 
             // groupControl1
@@ -814,7 +815,7 @@
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1102, 736);
+            this.groupControl1.Size = new System.Drawing.Size(1106, 739);
             this.groupControl1.TabIndex = 174;
             // 
             // label15
@@ -1084,7 +1085,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GbPersonal)).EndInit();
             this.GbPersonal.ResumeLayout(false);
             this.GbPersonal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPRO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
             this.gbCON.ResumeLayout(false);
             this.gbCON.PerformLayout();
@@ -1126,22 +1127,22 @@
         private DevExpress.XtraTab.XtraTabPage tabINV;
         private DevExpress.XtraEditors.GroupControl GbPersonal;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dkpREF;
-        private System.Windows.Forms.TextBox txtWER;
+        private System.Windows.Forms.DateTimePicker dkpInputDate;
+        private System.Windows.Forms.TextBox txtWarehouseQty;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtQTY;
+        private System.Windows.Forms.TextBox txtReturnQty;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbSAT;
-        private System.Windows.Forms.ComboBox cmbNAM;
-        private System.Windows.Forms.PictureBox imgPRO;
+        private System.Windows.Forms.ComboBox cmbProductStatus;
+        private System.Windows.Forms.ComboBox cmbProductName;
+        private System.Windows.Forms.PictureBox imgPreview;
         private System.Windows.Forms.Label lblHiredate;
-        private System.Windows.Forms.DateTimePicker dkpPUR;
+        private System.Windows.Forms.DateTimePicker dkpReturnDelivery;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtREN;
+        private System.Windows.Forms.TextBox txtDeliveryNo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCOD;
+        private System.Windows.Forms.TextBox txtReturnCode;
         private DevExpress.XtraEditors.GroupControl gbCON;
         private DevExpress.XtraGrid.GridControl gCON;
         private DevExpress.XtraGrid.Views.Grid.GridView gridReturn;
@@ -1150,7 +1151,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView grdHIS;
         private System.Windows.Forms.TextBox txtPRI;
         private System.Windows.Forms.Label lblBarcode;
-        private System.Windows.Forms.TextBox txtRID;
+        private System.Windows.Forms.TextBox txtReturnId;
         private DevExpress.XtraTab.XtraTabPage tabHIS;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.Label label15;
@@ -1167,12 +1168,12 @@
         private System.Windows.Forms.PictureBox pbHome;
         private System.Windows.Forms.PictureBox pbLogout;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtMAR;
-        private System.Windows.Forms.ComboBox cmbBRA;
+        private System.Windows.Forms.TextBox txtRemarks;
+        private System.Windows.Forms.ComboBox cmbFromBranch;
         private System.Windows.Forms.Label label8;
         private DevExpress.XtraSplashScreen.SplashScreenManager retWET;
         private System.Windows.Forms.Button bntADD;
-        private System.Windows.Forms.ComboBox cmbDES;
+        private System.Windows.Forms.ComboBox cmbToBranch;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblMainTitle;
         private System.Windows.Forms.TextBox txtGEN;
