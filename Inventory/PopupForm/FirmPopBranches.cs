@@ -46,27 +46,22 @@ namespace Inventory.PopupForm
         }
         private void bntSVA_Click(object sender, EventArgs e)
         {
-            if (_return == false)
+            var len = cmbDIS.Text.Length;
+            if (len > 0)
             {
-                var len = cmbDIS.Text.Length;
                 var val = cmbDIS.Text.Trim(' ');
-                if (len > 0)
+                if (_return)
+                {
+                    var branchId = GetBranchId(val);
+                    ReturnBranch.Branch = branchId;
+                }
+                else
                 {
                     Main.DeliveryBranches = val;
-                    Close();
                 }
+                Close();
             }
-            if (_return)
-            {
-                var len = cmbDIS.Text.Length;
-                if (len > 0)
-                {
-                    var branchId = GetBranchId(cmbDIS.Text);
-                    ReturnBranch.Branch = branchId;
-                    Close();
-                }
-            }
-           
+
         }
 
         private void bntCAN_Click(object sender, EventArgs e)
@@ -87,12 +82,12 @@ namespace Inventory.PopupForm
                 try
                 {
                     var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.BranchDetails == input);
+                    var query = repository.FindBy(x => x.branch_details == input);
                     return query.branch_id;
                 }
                 catch (Exception)
                 {
-                    PopupNotification.PopUpMessages(0, "Branch Id Error", "Inventory Details");
+                    PopupNotification.PopUpMessages(0, "Branch Id Error", "Branch Inventory Details");
                     throw;
                 }
             }
@@ -104,7 +99,7 @@ namespace Inventory.PopupForm
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 var repository = new Repository<Branch>(unWork);
-                var query = repository.SelectAll(ServeAll.Core.Queries.Query.AllBranch).Select(x => x.BranchDetails).Distinct().ToList();
+                var query = repository.SelectAll(ServeAll.Core.Queries.Query.AllBranch).Select(x => x.branch_details).Distinct().ToList();
                 cmbDIS.DataBindings.Clear();
                 cmbDIS.DataSource = query;
             }

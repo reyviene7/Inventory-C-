@@ -223,8 +223,8 @@ namespace Inventory.PopupForm
                 unitWork.Begin();
                 var repository = new Repository<ViewReturnWarehouse>(unitWork);
                 var result = (from b in repository.SelectAll(ServeAll.Core.Queries.Query.SelectAllReturnWareHs)
-                              orderby b.Id descending
-                              select b.Code).Take(1).SingleOrDefault();
+                              orderby b.return_id descending
+                              select b.return_code).Take(1).SingleOrDefault();
                 if (result != null)
                 {
                     return result;
@@ -261,8 +261,8 @@ namespace Inventory.PopupForm
                 try
                 {
                     var repository = new Repository<ProductStatus>(unWork);
-                    var query = repository.FindBy(x => x.Status == input);
-                    return query.StatusId;
+                    var query = repository.FindBy(x => x.status == input);
+                    return query.status_id;
                 }
                 catch (Exception)
                 {
@@ -280,8 +280,8 @@ namespace Inventory.PopupForm
                 {
                     var repository = new Repository<ViewReturnWarehouse>(unWork);
                     return repository.SelectAll(Query.SelectCountReturnNo)
-                        .Where(x => x.ReturnNo == returnNo)
-                        .Select(x => x.Id)
+                        .Where(x => x.return_number == returnNo)
+                        .Select(x => x.return_id)
                         .Count();
                 }
                 catch (Exception e)
