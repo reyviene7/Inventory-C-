@@ -149,5 +149,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ViewInventoryList> EnumerableBranches()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewInventoryList>(unWork);
+                    return repository.SelectAll(Query.AllInventoryList)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewInventoryList>();
+                }
+            }
+        }
     }
 }

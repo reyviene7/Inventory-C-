@@ -10,7 +10,7 @@ namespace ServeAll.Core.Entities
         public string product_code { get; set; }
         public string product_name { get; set; }
         public decimal quantity { get; set; }
-        public int status_id { get; set; }
+        public string status { get; set; }
         public string branch_details { get; set; }
     }
 }
