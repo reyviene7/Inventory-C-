@@ -217,7 +217,7 @@
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
             this.pnlRightOptions.Location = new System.Drawing.Point(1296, 1);
             this.pnlRightOptions.Name = "pnlRightOptions";
-            this.pnlRightOptions.Size = new System.Drawing.Size(77, 737);
+            this.pnlRightOptions.Size = new System.Drawing.Size(77, 764);
             this.pnlRightOptions.TabIndex = 74;
             // 
             // RightOptions
@@ -965,7 +965,7 @@
             this.txtImageType.Size = new System.Drawing.Size(269, 29);
             this.txtImageType.TabIndex = 212;
             this.txtImageType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxImageType_SelectedIndexChanged);
-
+            // 
             // btnSaveImage
             // 
             this.btnSaveImage.BackColor = System.Drawing.Color.Fuchsia;
@@ -1355,7 +1355,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1087, 425);
+            this.ClientSize = new System.Drawing.Size(1564, 872);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlOptions);

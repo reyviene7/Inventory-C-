@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
 using Inventory.Config;
 using Inventory.PopupForm;
- 
+
 using ServeAll.Core.Entities;
 using ServeAll.Core.Helper;
 using ServeAll.Core.Repository;
+using ServeAll.Core.Utilities;
 using Query = ServeAll.Core.Queries.Query;
 
 namespace Inventory.MainForm
@@ -22,6 +22,7 @@ namespace Inventory.MainForm
         private bool _edtItm, _edtLpg;
         private readonly int _userId;
         private readonly int _userTy;
+        private IEnumerable<ViewInventoryList> listInventory;
         private int _branch;
         public int Branch
         {
@@ -45,7 +46,29 @@ namespace Inventory.MainForm
         }
         private void FirmBranchesWareHouse_Load(object sender, EventArgs e)
         {
+            PanelInterface.SetFullScreen(this);
+            PanelInterface.SetMainPanelPosition(this, pnlMain);
+            PanelInterface.SetOptionsPanelPosition(this, pnlOptions, pbHide);
+            PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
+            Options.Start();
+            RightOptions.Start();
+            listInventory = EnumerableUtils.EnumerableBranches();
             ShowBranch();
+        }
+
+        private void FirmBranchesWareHouse_MouseMove(object sender, MouseEventArgs e)
+        {
+            PanelInterface.MouseMOve(this, pnlRightOptions, e);
+        }
+
+        private void Options_Tick(object sender, EventArgs e)
+        {
+            PanelInterface.OptionTick(this, pnlOptions);
+        }
+
+        private void RightOptions_Tick(object sender, EventArgs e)
+        {
+            PanelInterface.RightOptionTick(this, pnlRightOptions);
         }
         private void bntADD_Click(object sender, EventArgs e)
         {
@@ -581,7 +604,7 @@ namespace Inventory.MainForm
             gDEL.DataSource = "";
             gDEL.DataSource = null;
             gridReturn.Columns.Clear();
-            gridDEL.Columns.Clear();
+            gridDelivery.Columns.Clear();
 
         }
         private void BindWareHouse()
@@ -590,9 +613,9 @@ namespace Inventory.MainForm
             retWET.ShowWaitForm();
             ClearGrid();
             gDEL.DataSource = EnumerableWareHouse(branch);
-            if (gridDEL.RowCount > 0)
+            if (gridDelivery.RowCount > 0)
             {
-                gridDEL.Columns[0].Width = 40;
+                gridDelivery.Columns[0].Width = 40;
             }
             retWET.CloseWaitForm();
 
@@ -616,11 +639,23 @@ namespace Inventory.MainForm
         {
             retWET.ShowWaitForm();
             ClearGrid();
-            gCON.DataSource = EnumerableBranches(branch);
+             // gCON.DataSource = EnumerableBranches(branch);
+             gCON.DataSource = listInventory.Select(p => new { 
+                Id = p.inventory_id,
+                Item = p.product_name,
+                Qty = p.quantity,
+                Status = p.status,
+                Branch = p.branch_details
+
+            });  
             if (gridReturn.RowCount > 0)
             {
-                gridReturn.Columns[0].Width = 40;
-                gridReturn.Columns[2].Width = 170;
+                gridReturn.Columns[0].Width = 50;
+                gridReturn.Columns[1].Width = 400;
+                gridReturn.Columns[2].Width = 80;
+                gridReturn.Columns[3].Width = 120;
+                gridReturn.Columns[4].Width = 160;
+
             }
             retWET.CloseWaitForm();
 
@@ -663,26 +698,6 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private IEnumerable<ViewInventoryList> EnumerableBranches(string branch)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ViewInventoryList>(unWork);
-                    return repository.SelectAll(Query.AllInventoryList)
-                        .Where(x => x.branch_details == branch)
-                        .ToList();
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, Messages.ErrorInternal, Messages.TitleInventory);
-                    return null;
-                }
-            }
-        }
         private void ShowValue(int id)
         {
             var que = ShowEntity(id);
@@ -720,6 +735,7 @@ namespace Inventory.MainForm
                 txtReturnQty.Text = que.return_quantity.ToString(CultureInfo.InvariantCulture);
             }
         }
+
         private void ShowBranch()
         {
             var pop = new FirmPopBranches(_userId, _userTy)

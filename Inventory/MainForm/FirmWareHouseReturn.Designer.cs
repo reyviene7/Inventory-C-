@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmWareHouseReturn));
             this.bntCLR = new System.Windows.Forms.Button();
             this.bntCAN = new System.Windows.Forms.Button();
@@ -79,7 +80,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.gDEL = new DevExpress.XtraGrid.GridControl();
-            this.gridDEL = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridDelivery = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -91,6 +92,21 @@
             this.pbLogout = new System.Windows.Forms.PictureBox();
             this.retWET = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.WaitForm1), true, true);
             this.bntADD = new System.Windows.Forms.Button();
+            this.pnlOptions = new System.Windows.Forms.Panel();
+            this.pnlOptionsMain = new System.Windows.Forms.Panel();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.pcSettings = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pcSchedule = new System.Windows.Forms.PictureBox();
+            this.pcBL = new System.Windows.Forms.PictureBox();
+            this.pcList = new System.Windows.Forms.PictureBox();
+            this.pcUser = new System.Windows.Forms.PictureBox();
+            this.pcAdd = new System.Windows.Forms.PictureBox();
+            this.pcChangePassword = new System.Windows.Forms.PictureBox();
+            this.pbHide = new System.Windows.Forms.PictureBox();
+            this.pnlMain = new System.Windows.Forms.Panel();
+            this.Options = new System.Windows.Forms.Timer(this.components);
+            this.RightOptions = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xCON)).BeginInit();
             this.xCON.SuspendLayout();
@@ -111,7 +127,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gDEL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDEL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDelivery)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
@@ -120,6 +136,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogout)).BeginInit();
+            this.pnlOptions.SuspendLayout();
+            this.pnlOptionsMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSchedule)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcBL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHide)).BeginInit();
+            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // bntCLR
@@ -130,7 +159,7 @@
             this.bntCLR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntCLR.ForeColor = System.Drawing.Color.White;
             this.bntCLR.Image = ((System.Drawing.Image)(resources.GetObject("bntCLR.Image")));
-            this.bntCLR.Location = new System.Drawing.Point(1, 429);
+            this.bntCLR.Location = new System.Drawing.Point(8, 419);
             this.bntCLR.Name = "bntCLR";
             this.bntCLR.Size = new System.Drawing.Size(91, 104);
             this.bntCLR.TabIndex = 124;
@@ -147,7 +176,7 @@
             this.bntCAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntCAN.ForeColor = System.Drawing.Color.White;
             this.bntCAN.Image = ((System.Drawing.Image)(resources.GetObject("bntCAN.Image")));
-            this.bntCAN.Location = new System.Drawing.Point(93, 429);
+            this.bntCAN.Location = new System.Drawing.Point(100, 419);
             this.bntCAN.Name = "bntCAN";
             this.bntCAN.Size = new System.Drawing.Size(91, 104);
             this.bntCAN.TabIndex = 123;
@@ -164,7 +193,7 @@
             this.bntSAV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntSAV.ForeColor = System.Drawing.Color.White;
             this.bntSAV.Image = ((System.Drawing.Image)(resources.GetObject("bntSAV.Image")));
-            this.bntSAV.Location = new System.Drawing.Point(1, 324);
+            this.bntSAV.Location = new System.Drawing.Point(8, 314);
             this.bntSAV.Name = "bntSAV";
             this.bntSAV.Size = new System.Drawing.Size(183, 104);
             this.bntSAV.TabIndex = 122;
@@ -180,7 +209,7 @@
             this.bntUPD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntUPD.ForeColor = System.Drawing.Color.White;
             this.bntUPD.Image = ((System.Drawing.Image)(resources.GetObject("bntUPD.Image")));
-            this.bntUPD.Location = new System.Drawing.Point(93, 219);
+            this.bntUPD.Location = new System.Drawing.Point(100, 209);
             this.bntUPD.Name = "bntUPD";
             this.bntUPD.Size = new System.Drawing.Size(91, 104);
             this.bntUPD.TabIndex = 121;
@@ -196,7 +225,7 @@
             this.bntHOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntHOM.ForeColor = System.Drawing.Color.White;
             this.bntHOM.Image = ((System.Drawing.Image)(resources.GetObject("bntHOM.Image")));
-            this.bntHOM.Location = new System.Drawing.Point(93, 534);
+            this.bntHOM.Location = new System.Drawing.Point(100, 524);
             this.bntHOM.Name = "bntHOM";
             this.bntHOM.Size = new System.Drawing.Size(91, 104);
             this.bntHOM.TabIndex = 126;
@@ -212,7 +241,7 @@
             this.bntDEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntDEL.ForeColor = System.Drawing.Color.White;
             this.bntDEL.Image = ((System.Drawing.Image)(resources.GetObject("bntDEL.Image")));
-            this.bntDEL.Location = new System.Drawing.Point(1, 534);
+            this.bntDEL.Location = new System.Drawing.Point(8, 524);
             this.bntDEL.Name = "bntDEL";
             this.bntDEL.Size = new System.Drawing.Size(91, 104);
             this.bntDEL.TabIndex = 125;
@@ -224,7 +253,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(33, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(40, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(127, 159);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -235,10 +264,10 @@
             // 
             this.xCON.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.xCON.Appearance.Options.UseBackColor = true;
-            this.xCON.Location = new System.Drawing.Point(187, 5);
+            this.xCON.Location = new System.Drawing.Point(197, 8);
             this.xCON.Name = "xCON";
             this.xCON.SelectedTabPage = this.tabINV;
-            this.xCON.Size = new System.Drawing.Size(1108, 764);
+            this.xCON.Size = new System.Drawing.Size(1136, 779);
             this.xCON.TabIndex = 128;
             this.xCON.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabINV,
@@ -251,7 +280,7 @@
             this.tabINV.Appearance.PageClient.Options.UseBackColor = true;
             this.tabINV.Controls.Add(this.GbPersonal);
             this.tabINV.Name = "tabINV";
-            this.tabINV.Size = new System.Drawing.Size(1106, 739);
+            this.tabINV.Size = new System.Drawing.Size(1134, 754);
             this.tabINV.Text = "Stock From Depot";
             // 
             // GbPersonal
@@ -293,7 +322,7 @@
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1106, 739);
+            this.GbPersonal.Size = new System.Drawing.Size(1134, 754);
             this.GbPersonal.TabIndex = 173;
             // 
             // label10
@@ -513,7 +542,7 @@
             // imgPreview
             // 
             this.imgPreview.BackColor = System.Drawing.Color.Gray;
-            this.imgPreview.Location = new System.Drawing.Point(804, 3);
+            this.imgPreview.Location = new System.Drawing.Point(811, 3);
             this.imgPreview.Name = "imgPreview";
             this.imgPreview.Size = new System.Drawing.Size(298, 248);
             this.imgPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -626,7 +655,7 @@
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(1108, 484);
+            this.gbCON.Size = new System.Drawing.Size(1129, 484);
             this.gbCON.TabIndex = 172;
             this.gbCON.Text = "Press F1 = Show Item Return in Warehouse. F2 = Return to Inventory List. F3 = Bra" +
     "nch Menu Selection";
@@ -641,7 +670,7 @@
             this.gCON.Location = new System.Drawing.Point(3, 18);
             this.gCON.MainView = this.gridReturn;
             this.gCON.Name = "gCON";
-            this.gCON.Size = new System.Drawing.Size(1102, 463);
+            this.gCON.Size = new System.Drawing.Size(1123, 463);
             this.gCON.TabIndex = 102;
             this.gCON.TabStop = false;
             this.gCON.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -800,7 +829,7 @@
             // 
             this.tabHIS.Controls.Add(this.groupControl1);
             this.tabHIS.Name = "tabHIS";
-            this.tabHIS.Size = new System.Drawing.Size(1106, 739);
+            this.tabHIS.Size = new System.Drawing.Size(1134, 754);
             this.tabHIS.Text = "Delivery History";
             // 
             // groupControl1
@@ -815,7 +844,7 @@
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1106, 739);
+            this.groupControl1.Size = new System.Drawing.Size(1134, 754);
             this.groupControl1.TabIndex = 174;
             // 
             // label15
@@ -852,72 +881,72 @@
             this.gDEL.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
             this.gDEL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
             this.gDEL.Location = new System.Drawing.Point(3, 18);
-            this.gDEL.MainView = this.gridDEL;
+            this.gDEL.MainView = this.gridDelivery;
             this.gDEL.Name = "gDEL";
             this.gDEL.Size = new System.Drawing.Size(1102, 560);
             this.gDEL.TabIndex = 102;
             this.gDEL.TabStop = false;
             this.gDEL.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridDEL,
+            this.gridDelivery,
             this.gridView4,
             this.gridView5,
             this.gridView6});
             // 
-            // gridDEL
+            // gridDelivery
             // 
-            this.gridDEL.Appearance.Empty.BackColor = System.Drawing.Color.LightGray;
-            this.gridDEL.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridDEL.Appearance.Empty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridDEL.Appearance.Empty.Options.UseBackColor = true;
-            this.gridDEL.Appearance.Empty.Options.UseBorderColor = true;
-            this.gridDEL.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.gridDEL.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridDEL.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridDEL.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridDEL.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridDEL.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridDEL.Appearance.FocusedRow.Options.UseBorderColor = true;
-            this.gridDEL.Appearance.FocusedRow.Options.UseFont = true;
-            this.gridDEL.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.gridDEL.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridDEL.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridDEL.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.gridDEL.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.gridDEL.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridDEL.Appearance.HeaderPanel.Options.UseForeColor = true;
-            this.gridDEL.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
-            this.gridDEL.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridDEL.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridDEL.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridDEL.Appearance.Row.Options.UseBackColor = true;
-            this.gridDEL.Appearance.Row.Options.UseBorderColor = true;
-            this.gridDEL.Appearance.Row.Options.UseFont = true;
-            this.gridDEL.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridDEL.Appearance.ViewCaption.Options.UseFont = true;
-            this.gridDEL.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridDEL.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridDEL.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
-            this.gridDEL.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
-            this.gridDEL.AppearancePrint.HeaderPanel.Options.UseFont = true;
-            this.gridDEL.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
-            this.gridDEL.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
-            this.gridDEL.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridDEL.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridDEL.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
-            this.gridDEL.AppearancePrint.Row.Options.UseFont = true;
-            this.gridDEL.AppearancePrint.Row.Options.UseForeColor = true;
-            this.gridDEL.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.gridDEL.GridControl = this.gDEL;
-            this.gridDEL.Name = "gridDEL";
-            this.gridDEL.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridDEL.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridDEL.OptionsBehavior.Editable = false;
-            this.gridDEL.OptionsCustomization.AllowRowSizing = true;
-            this.gridDEL.OptionsDetail.AllowExpandEmptyDetails = true;
-            this.gridDEL.OptionsSelection.MultiSelect = true;
-            this.gridDEL.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridDEL.OptionsView.RowAutoHeight = true;
-            this.gridDEL.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridDelivery.Appearance.Empty.BackColor = System.Drawing.Color.LightGray;
+            this.gridDelivery.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridDelivery.Appearance.Empty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridDelivery.Appearance.Empty.Options.UseBackColor = true;
+            this.gridDelivery.Appearance.Empty.Options.UseBorderColor = true;
+            this.gridDelivery.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridDelivery.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridDelivery.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridDelivery.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridDelivery.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridDelivery.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridDelivery.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridDelivery.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridDelivery.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridDelivery.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridDelivery.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridDelivery.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.gridDelivery.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridDelivery.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridDelivery.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridDelivery.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
+            this.gridDelivery.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridDelivery.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridDelivery.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridDelivery.Appearance.Row.Options.UseBackColor = true;
+            this.gridDelivery.Appearance.Row.Options.UseBorderColor = true;
+            this.gridDelivery.Appearance.Row.Options.UseFont = true;
+            this.gridDelivery.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridDelivery.Appearance.ViewCaption.Options.UseFont = true;
+            this.gridDelivery.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridDelivery.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridDelivery.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridDelivery.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridDelivery.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridDelivery.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridDelivery.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
+            this.gridDelivery.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridDelivery.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridDelivery.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridDelivery.AppearancePrint.Row.Options.UseFont = true;
+            this.gridDelivery.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridDelivery.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.gridDelivery.GridControl = this.gDEL;
+            this.gridDelivery.Name = "gridDelivery";
+            this.gridDelivery.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridDelivery.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridDelivery.OptionsBehavior.Editable = false;
+            this.gridDelivery.OptionsCustomization.AllowRowSizing = true;
+            this.gridDelivery.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridDelivery.OptionsSelection.MultiSelect = true;
+            this.gridDelivery.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridDelivery.OptionsView.RowAutoHeight = true;
+            this.gridDelivery.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
             // 
             // gridView4
             // 
@@ -987,9 +1016,9 @@
             // 
             this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1295, 5);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1296, 1);
             this.pnlRightOptions.Name = "pnlRightOptions";
-            this.pnlRightOptions.Size = new System.Drawing.Size(77, 765);
+            this.pnlRightOptions.Size = new System.Drawing.Size(77, 764);
             this.pnlRightOptions.TabIndex = 129;
             // 
             // pnlRightMain
@@ -1047,7 +1076,7 @@
             this.bntADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntADD.ForeColor = System.Drawing.Color.White;
             this.bntADD.Image = ((System.Drawing.Image)(resources.GetObject("bntADD.Image")));
-            this.bntADD.Location = new System.Drawing.Point(1, 219);
+            this.bntADD.Location = new System.Drawing.Point(8, 209);
             this.bntADD.Name = "bntADD";
             this.bntADD.Size = new System.Drawing.Size(91, 104);
             this.bntADD.TabIndex = 130;
@@ -1056,28 +1085,179 @@
             this.bntADD.UseVisualStyleBackColor = false;
             this.bntADD.Click += new System.EventHandler(this.bntADD_Click);
             // 
+            // pnlOptions
+            // 
+            this.pnlOptions.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlOptions.Controls.Add(this.pnlOptionsMain);
+            this.pnlOptions.Controls.Add(this.pbHide);
+            this.pnlOptions.ForeColor = System.Drawing.Color.Black;
+            this.pnlOptions.Location = new System.Drawing.Point(-2, 691);
+            this.pnlOptions.Name = "pnlOptions";
+            this.pnlOptions.Size = new System.Drawing.Size(1298, 74);
+            this.pnlOptions.TabIndex = 131;
+            // 
+            // pnlOptionsMain
+            // 
+            this.pnlOptionsMain.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlOptionsMain.Controls.Add(this.pictureBox17);
+            this.pnlOptionsMain.Controls.Add(this.pcSettings);
+            this.pnlOptionsMain.Controls.Add(this.pictureBox2);
+            this.pnlOptionsMain.Controls.Add(this.pcSchedule);
+            this.pnlOptionsMain.Controls.Add(this.pcBL);
+            this.pnlOptionsMain.Controls.Add(this.pcList);
+            this.pnlOptionsMain.Controls.Add(this.pcUser);
+            this.pnlOptionsMain.Controls.Add(this.pcAdd);
+            this.pnlOptionsMain.Controls.Add(this.pcChangePassword);
+            this.pnlOptionsMain.Location = new System.Drawing.Point(19, 4);
+            this.pnlOptionsMain.Name = "pnlOptionsMain";
+            this.pnlOptionsMain.Size = new System.Drawing.Size(893, 67);
+            this.pnlOptionsMain.TabIndex = 21;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
+            this.pictureBox17.Location = new System.Drawing.Point(806, 3);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox17.TabIndex = 59;
+            this.pictureBox17.TabStop = false;
+            // 
+            // pcSettings
+            // 
+            this.pcSettings.BackColor = System.Drawing.Color.Transparent;
+            this.pcSettings.Image = ((System.Drawing.Image)(resources.GetObject("pcSettings.Image")));
+            this.pcSettings.Location = new System.Drawing.Point(714, 3);
+            this.pcSettings.Name = "pcSettings";
+            this.pcSettings.Size = new System.Drawing.Size(76, 61);
+            this.pcSettings.TabIndex = 58;
+            this.pcSettings.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(241, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox2.TabIndex = 29;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pcSchedule
+            // 
+            this.pcSchedule.BackColor = System.Drawing.Color.Transparent;
+            this.pcSchedule.Image = ((System.Drawing.Image)(resources.GetObject("pcSchedule.Image")));
+            this.pcSchedule.Location = new System.Drawing.Point(616, 3);
+            this.pcSchedule.Name = "pcSchedule";
+            this.pcSchedule.Size = new System.Drawing.Size(76, 64);
+            this.pcSchedule.TabIndex = 17;
+            this.pcSchedule.TabStop = false;
+            // 
+            // pcBL
+            // 
+            this.pcBL.BackColor = System.Drawing.Color.Transparent;
+            this.pcBL.Image = ((System.Drawing.Image)(resources.GetObject("pcBL.Image")));
+            this.pcBL.Location = new System.Drawing.Point(523, 2);
+            this.pcBL.Name = "pcBL";
+            this.pcBL.Size = new System.Drawing.Size(76, 64);
+            this.pcBL.TabIndex = 16;
+            this.pcBL.TabStop = false;
+            // 
+            // pcList
+            // 
+            this.pcList.BackColor = System.Drawing.Color.Transparent;
+            this.pcList.Image = ((System.Drawing.Image)(resources.GetObject("pcList.Image")));
+            this.pcList.Location = new System.Drawing.Point(428, 1);
+            this.pcList.Name = "pcList";
+            this.pcList.Size = new System.Drawing.Size(76, 64);
+            this.pcList.TabIndex = 15;
+            this.pcList.TabStop = false;
+            // 
+            // pcUser
+            // 
+            this.pcUser.BackColor = System.Drawing.Color.Transparent;
+            this.pcUser.Image = ((System.Drawing.Image)(resources.GetObject("pcUser.Image")));
+            this.pcUser.Location = new System.Drawing.Point(144, 2);
+            this.pcUser.Name = "pcUser";
+            this.pcUser.Size = new System.Drawing.Size(76, 64);
+            this.pcUser.TabIndex = 14;
+            this.pcUser.TabStop = false;
+            // 
+            // pcAdd
+            // 
+            this.pcAdd.BackColor = System.Drawing.Color.Transparent;
+            this.pcAdd.Image = ((System.Drawing.Image)(resources.GetObject("pcAdd.Image")));
+            this.pcAdd.Location = new System.Drawing.Point(37, 2);
+            this.pcAdd.Name = "pcAdd";
+            this.pcAdd.Size = new System.Drawing.Size(76, 64);
+            this.pcAdd.TabIndex = 13;
+            this.pcAdd.TabStop = false;
+            // 
+            // pcChangePassword
+            // 
+            this.pcChangePassword.BackColor = System.Drawing.Color.Transparent;
+            this.pcChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("pcChangePassword.Image")));
+            this.pcChangePassword.Location = new System.Drawing.Point(334, 2);
+            this.pcChangePassword.Name = "pcChangePassword";
+            this.pcChangePassword.Size = new System.Drawing.Size(76, 64);
+            this.pcChangePassword.TabIndex = 9;
+            this.pcChangePassword.TabStop = false;
+            // 
+            // pbHide
+            // 
+            this.pbHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbHide.Image = ((System.Drawing.Image)(resources.GetObject("pbHide.Image")));
+            this.pbHide.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pbHide.Location = new System.Drawing.Point(1154, 3);
+            this.pbHide.Name = "pbHide";
+            this.pbHide.Size = new System.Drawing.Size(38, 34);
+            this.pbHide.TabIndex = 14;
+            this.pbHide.TabStop = false;
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlMain.Controls.Add(this.pnlOptions);
+            this.pnlMain.Controls.Add(this.pnlRightOptions);
+            this.pnlMain.Controls.Add(this.xCON);
+            this.pnlMain.Controls.Add(this.pictureBox1);
+            this.pnlMain.Controls.Add(this.bntADD);
+            this.pnlMain.Controls.Add(this.bntDEL);
+            this.pnlMain.Controls.Add(this.bntHOM);
+            this.pnlMain.Controls.Add(this.bntCLR);
+            this.pnlMain.Controls.Add(this.bntUPD);
+            this.pnlMain.Controls.Add(this.bntCAN);
+            this.pnlMain.Controls.Add(this.bntSAV);
+            this.pnlMain.Location = new System.Drawing.Point(1, -4);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(1564, 872);
+            this.pnlMain.TabIndex = 132;
+            this.pnlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirmBranchesWareHouse_MouseMove);
+            // 
+            // Options
+            // 
+            this.Options.Interval = 1;
+            this.Options.Tick += new System.EventHandler(this.Options_Tick);
+            // 
+            // RightOptions
+            // 
+            this.RightOptions.Interval = 1;
+            this.RightOptions.Tick += new System.EventHandler(this.RightOptions_Tick);
+            // 
             // FirmWareHouseReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Blue;
-            this.ClientSize = new System.Drawing.Size(1370, 767);
-            this.Controls.Add(this.bntADD);
-            this.Controls.Add(this.pnlRightOptions);
-            this.Controls.Add(this.xCON);
-            this.Controls.Add(this.bntCLR);
-            this.Controls.Add(this.bntCAN);
-            this.Controls.Add(this.bntSAV);
-            this.Controls.Add(this.bntUPD);
-            this.Controls.Add(this.bntHOM);
-            this.Controls.Add(this.bntDEL);
-            this.Controls.Add(this.pictureBox1);
+            this.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.ClientSize = new System.Drawing.Size(1414, 865);
+            this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmWareHouseReturn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmBranchesWareHouse";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FirmBranchesWareHouse_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirmBranchesWareHouse_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xCON)).EndInit();
             this.xCON.ResumeLayout(false);
@@ -1102,7 +1282,7 @@
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gDEL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDEL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDelivery)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
@@ -1111,6 +1291,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogout)).EndInit();
+            this.pnlOptions.ResumeLayout(false);
+            this.pnlOptionsMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSchedule)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcBL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHide)).EndInit();
+            this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1157,7 +1350,7 @@
         private System.Windows.Forms.Label label15;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraGrid.GridControl gDEL;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridDEL;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridDelivery;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
@@ -1178,5 +1371,20 @@
         private System.Windows.Forms.Label lblMainTitle;
         private System.Windows.Forms.TextBox txtGEN;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel pnlOptions;
+        private System.Windows.Forms.Panel pnlOptionsMain;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.PictureBox pcSettings;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pcSchedule;
+        private System.Windows.Forms.PictureBox pcBL;
+        private System.Windows.Forms.PictureBox pcList;
+        private System.Windows.Forms.PictureBox pcUser;
+        private System.Windows.Forms.PictureBox pcAdd;
+        private System.Windows.Forms.PictureBox pcChangePassword;
+        private System.Windows.Forms.PictureBox pbHide;
+        private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.Timer Options;
+        private System.Windows.Forms.Timer RightOptions;
     }
 }
