@@ -2,10 +2,10 @@
 
 namespace ServeAll.Core.Entities
 {
-    [Table("view_lpg_gasul")]
-    public class ViewLpgGasul
+    [Table("view_product_id")]
+    public class ViewProductId
     {
         [Key]
-        public int ProductId { get; set; }
+        public int product_id { get; set; }
     }
 }

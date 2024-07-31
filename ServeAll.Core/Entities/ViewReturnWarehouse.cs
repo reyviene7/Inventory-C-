@@ -7,17 +7,16 @@ namespace ServeAll.Core.Entities
     public class ViewReturnWarehouse
     {
         [Key]
-        public int Id { get; set; }
-        public string Code { get; set; }
-        public string Item { get; set; }
-        public string ReturnNo { get; set; }
-        public decimal ReturnQty { get; set; }
-        public string Origin { get; set; }
-        public string Destination { get; set; }
-        public DateTime RetDate { get; set; }
-        public DateTime RefDate { get; set; }
-        public string Status { get; set; }
-        public string Remarks { get; set; }
-        public int InventoryId { get; set; }
+        public int return_id { get; set; }
+        public string return_code { get; set; }
+        public string product_code { get; set; }
+        public string return_number { get; set; }
+        public decimal return_quantity { get; set; }
+        public string branch_code { get; set; }
+        public string destination { get; set; }
+        public DateTime return_date { get; set; }
+        public string status_id { get; set; }
+        public string remarks { get; set; }
+        public int inventory_code { get; set; }
     }
 }

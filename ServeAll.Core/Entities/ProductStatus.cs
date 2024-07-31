@@ -2,11 +2,11 @@
 
 namespace ServeAll.Core.Entities
 {
-    [Table("ProductStatus")]
+    [Table("product_status")]
     public class ProductStatus
     {
         [Key]
-        public int StatusId { get; set; }
-        public string Status { get; set; }
+        public int status_id { get; set; }
+        public string status { get; set; }
     }
 }
