@@ -223,8 +223,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ProductStatus>(unWork);
-                    var query = repository.FindBy(x => x.Status == input);
-                    return query.StatusId;
+                    var query = repository.FindBy(x => x.status == input);
+                    return query.status_id;
                 }
                 catch (Exception)
                 {

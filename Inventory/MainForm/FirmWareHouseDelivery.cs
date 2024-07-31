@@ -688,7 +688,7 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 var repository = new Repository<ProductStatus>(unWork);
-                var query = repository.SelectAll(Query.AllProductStatus).Select(x => x.Status).Distinct().ToList();
+                var query = repository.SelectAll(Query.AllProductStatus).Select(x => x.status).Distinct().ToList();
                 cmbSAT.DataBindings.Clear();
                 cmbSAT.DataSource = query;
             }
@@ -724,7 +724,7 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 var repository = new Repository<ProductStatus>(unWork);
-                var query = repository.SelectAll(Query.AllProductStatus).Select(x => x.Status).Distinct().ToList();
+                var query = repository.SelectAll(Query.AllProductStatus).Select(x => x.status).Distinct().ToList();
                 cmbSAT.DataBindings.Clear();
                 cmbSAT.DataSource = query;
             }
@@ -805,7 +805,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.BranchDetails == input);
+                    var query = repository.FindBy(x => x.branch_details == input);
                     return query.branch_id;
                 }
                 catch (Exception)
@@ -843,8 +843,8 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ProductStatus>(unWork);
-                    var query = repository.FindBy(x => x.Status == input);
-                    return query.StatusId;
+                    var query = repository.FindBy(x => x.status == input);
+                    return query.status_id;
                 }
                 catch (Exception)
                 {
