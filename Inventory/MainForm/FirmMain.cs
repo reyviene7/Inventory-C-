@@ -327,5 +327,15 @@ namespace Inventory.MainForm
             view.ShowDialog();
 
         }
+
+        private void tileInventory_itemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            var ret = new FrmInventory(_userId, _usrTyp)
+            {
+                Main = this
+            };
+            Hide();
+            ret.Show();
+        }
     }
 }

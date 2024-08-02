@@ -310,6 +310,12 @@
     <Compile Include="MainForm\FirmWarehouse.Designer.cs">
       <DependentUpon>FirmWarehouse.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm\FrmInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FrmInventory.Designer.cs">
+      <DependentUpon>FrmInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm\FrmWait.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -327,6 +333,12 @@
     </Compile>
     <Compile Include="PopupForm\FirmPopAuthentication.Designer.cs">
       <DependentUpon>FirmPopAuthentication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopInventoryBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopInventoryBranch.Designer.cs">
+      <DependentUpon>FirmPopInventoryBranch.cs</DependentUpon>
     </Compile>
     <Compile Include="PopupForm\FirmPopBranches.cs">
       <SubType>Form</SubType>
@@ -458,6 +470,9 @@
     <EmbeddedResource Include="MainForm\FirmWarehouse.resx">
       <DependentUpon>FirmWarehouse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FrmInventory.resx">
+      <DependentUpon>FrmInventory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FrmWait.resx">
       <DependentUpon>FrmWait.cs</DependentUpon>
     </EmbeddedResource>
@@ -466,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopAuthentication.resx">
       <DependentUpon>FirmPopAuthentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopInventoryBranch.resx">
+      <DependentUpon>FirmPopInventoryBranch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopBranches.resx">
       <DependentUpon>FirmPopBranches.cs</DependentUpon>

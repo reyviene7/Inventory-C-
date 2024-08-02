@@ -343,5 +343,26 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+  
+
+        public static int GetLastId()
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Inventory>(unWork);
+                    return repository.SelectAll(Query.getLastInventoryQuery)
+                        .Select(x => x.product_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
     }
 }

@@ -703,16 +703,14 @@ namespace Inventory.MainForm
             var que = ShowEntity(id);
             if (que != null)
             {
-                txtReturnId.Text = que.InventoryId.ToString();
-                txtReturnCode.Text = que.Barcode;
-                cmbProductName.Text = que.Product;
-                txtDeliveryNo.Text = que.DeliveryNo;
-                txtWarehouseQty.Text = que.QtyStock.ToString(CultureInfo.InvariantCulture);
-                cmbFromBranch.Text = que.Branch;
-                dkpReturnDelivery.Value = que.PurDate.Date;
-                dkpInputDate.Value = que.InvDate.Date;
-                cmbProductStatus.Text = que.Status;
-                txtRemarks.Text = que.Warranty;
+                txtReturnId.Text = que.inventory_id.ToString();
+                txtReturnCode.Text = que.product_code;
+                cmbProductName.Text = que.product_name;
+                txtDeliveryNo.Text = que.delivery_code;
+                txtWarehouseQty.Text = que.quantity.ToString(CultureInfo.InvariantCulture);
+                cmbFromBranch.Text = que.branch_details;
+                dkpInputDate.Value = que.inventory_date.Date;
+                cmbProductStatus.Text = que.status;
             }
         }
         private void ShowValueReturn(int id)
@@ -783,7 +781,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ViewInventory>(unWork);
-                    return repository.FindBy(x => x.InventoryId == inventoryId);
+                    return repository.FindBy(x => x.inventory_id == inventoryId);
                 }
                 catch (Exception e)
                 {

@@ -722,8 +722,8 @@ namespace Inventory.MainForm
                 unitWork.Begin();
                 var repository = new Repository<ViewInventory>(unitWork);
                 var result = (from b in repository.SelectAll(Query.AllInventory)
-                              orderby b.InventoryId descending
-                              select b.Code).Take(1).SingleOrDefault();
+                              orderby b.inventory_id descending
+                              select b.inventory_code).Take(1).SingleOrDefault();
                 if (result != null)
                 {
                     return result;
