@@ -170,7 +170,6 @@
 		                                                delivery_code, 
 		                                                inventory_code, 
 		                                                retail_price, 
-		                                                on_order, 
 		                                                inventory_date, 
                                                         status
                                                 FROM view_inventory";
