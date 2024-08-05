@@ -1,20 +1,14 @@
-﻿using System;
+﻿using DevExpress.XtraGrid.Views.Grid;
+using Inventory.Config;
+using ServeAll.Core.Entities;
+using ServeAll.Core.Repository;
+using ServeAll.Core.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Windows.Forms;
-using DevExpress.Utils.About;
-using DevExpress.XtraGrid;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraReports.Expressions.Native;
-using DevExpress.XtraReports.UI;
-using Inventory.Config;
-using Inventory.PopupForm;
-using ServeAll.Core.Entities;
-using ServeAll.Core.Repository;
-using ServeAll.Core.Utilities;
 using Query = ServeAll.Core.Queries.Query;
 
 
@@ -34,13 +28,13 @@ namespace Inventory.MainForm
         private bool _extInvent;
         public bool ExiInven
         {
-            get{ return _extInvent; }
+            get { return _extInvent; }
             set
             {
-                _extInvent = value; 
-                if(_extInvent)
-                Close();
-               var main = new FirmMain(_userId, _usrTyp);
+                _extInvent = value;
+                if (_extInvent)
+                    Close();
+                var main = new FirmMain(_userId, _usrTyp);
                 main.Show();
             }
         }
@@ -50,8 +44,8 @@ namespace Inventory.MainForm
             set
             {
                 _branchId = value;
-                
-                 _branch   = GetBranchName(_branchId);
+
+                _branch = GetBranchName(_branchId);
                 cmbBranchName.Text = _branch;
                 BindProductList(_branch);
             }
@@ -137,6 +131,7 @@ namespace Inventory.MainForm
             InputWhit();
             InputClea();
             GenerateCode();
+            BindInventory();
             BindProducts();
             BindBranch();
             BindProductStatus();
@@ -147,7 +142,6 @@ namespace Inventory.MainForm
             gCON.Enabled = false;
             imgPreview.DataBindings.Clear();
             imgPreview.Image = null;
-            cmbProductName.Size = new Size(422, 29);
         }
         private void ButtonAdd()
         {
@@ -254,44 +248,47 @@ namespace Inventory.MainForm
             InputWhit();
             InputClea();
             gCON.Enabled = true;
-           cmbProductName.DataBindings.Clear();
-    
+            cmbProductName.DataBindings.Clear();
+
         }
         private void ButSav()
         {
 
             if (_add && _edt == false && _del == false)
             {
-               
+
                 DataInsert();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
                 InputClea();
                 BindProductList(_branch);
-                
+                BindInventory();
+
             }
             if (_add == false && _edt && _del == false)
             {
-                 
+
                 DataUpdate();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
                 InputClea();
                 BindProductList(_branch);
-                 
+                BindInventory();
+
             }
             if (_add == false && _edt == false && _del)
             {
-                
+
                 DataDelete();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
                 InputClea();
                 BindProductList(_branch);
-                
+                BindInventory();
+
             }
             _add = false;
             _edt = false;
@@ -313,8 +310,8 @@ namespace Inventory.MainForm
             imgPreview.Image = null;
         }
         #endregion
-        
-      
+
+
         private void BindProductList(string branchId)
         {
             gCON.Update();
@@ -346,7 +343,10 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 var repository = new Repository<Products>(unWork);
-                var query = repository.SelectAll(Query.AllProducts).Select(x => x.product_name).Distinct().ToList();
+                var query = repository.SelectAll(Query.AllViewProducts)
+                                      .Select(x => x.product_name)
+                                      .Distinct()
+                                      .ToList();
                 cmbProductName.DataBindings.Clear();
                 cmbProductName.DataSource = query;
             }
@@ -394,7 +394,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-       
+
         private static string GetBranchName(int branchId)
         {
             using (var session = new DalSession())
@@ -546,7 +546,8 @@ namespace Inventory.MainForm
             dkpInventoryDate.Enabled = false;
             cmbProductStatus.Enabled = false;
         }
-        private void InputClea() {
+        private void InputClea()
+        {
             txtInventoryId.Clear();
             txtInventoryCode.Clear();
             cmbProductName.Text = "";
@@ -569,7 +570,7 @@ namespace Inventory.MainForm
             dkpInventoryDate.BackColor = Color.DimGray;
             cmbProductStatus.BackColor = Color.DimGray;
         }
-       
+
         private void GenerateCode()
         {
             var lastProductId = FetchUtils.GetLastId();
@@ -586,19 +587,21 @@ namespace Inventory.MainForm
                 try
                 {
                     posWET.ShowWaitForm();
-                    var repository = new Repository<InventoryClass>(unWork);
-                    var product = new InventoryClass()
+                    var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
+                  
+                    ServeAll.Core.Entities.Inventory inventory = new ServeAll.Core.Entities.Inventory
                     {
-                                                        inventory_code        = txtInventoryCode.Text,
-                                                        product_id   = GetProductId(cmbProductName.Text),
-                                                        delivery_code  = txtDeliveryNumber.Text,
-                                                        quantity    = Convert.ToInt32(txtQty.Text),
-                                                        branch_id    = GetBranchId(cmbBranchName.Text),
-                                                        last_price_cost    = Convert.ToDecimal(txtLastCost.Text),
-                                                        inventory_date     = dkpInventoryDate.Value.Date,
-                                                        status_id    = GetProductStatus(cmbProductStatus.Text)
+                        inventory_code = txtInventoryCode.Text,
+                        product_id = GetProductId(cmbProductName.Text),
+                        delivery_code = txtDeliveryNumber.Text,
+                        quantity = Convert.ToInt32(txtQty.Text),
+                        branch_id = GetBranchId(cmbBranchName.Text),
+                        last_price_cost = Convert.ToDecimal(txtLastCost.Text),
+                        inventory_date = dkpInventoryDate.Value.Date,
+                        status_id = GetProductStatus(cmbProductStatus.Text),
+                        user_id = 3
                     };
-                    var result = repository.Add(product);
+                    var result = repository.Add(inventory);
                     if (result > 0)
                     {
                         posWET.CloseWaitForm();
@@ -626,18 +629,18 @@ namespace Inventory.MainForm
                 try
                 {
                     posWET.ShowWaitForm();
-                    var proId           = Convert.ToInt32(txtInventoryId.Text);
-                    var repository      = new Repository<InventoryClass>(unWork);
-                    var que             = repository.Id(proId);
-                        que.inventory_code        = txtInventoryCode.Text;
-                        que.product_id   = GetProductId(cmbProductName.Text);
-                        que.delivery_code  = txtDeliveryNumber.Text;
-                        que.quantity    = Convert.ToDecimal(txtQty.Text);
-                        que.branch_id    = GetBranchId(cmbBranchName.Text);
-                        que.last_price_cost    = Convert.ToDecimal(txtLastCost.Text);
-                        que.inventory_date     = dkpInventoryDate.Value.Date;
-                        que.status_id    = GetProductStatus(cmbProductStatus.Text);
-                        var result      = repository.Update(que);
+                    var proId = Convert.ToInt32(txtInventoryId.Text);
+                    var repository = new Repository<InventoryClass>(unWork);
+                    var que = repository.Id(proId);
+                    que.inventory_code = txtInventoryCode.Text;
+                    que.product_id = GetProductId(cmbProductName.Text);
+                    que.delivery_code = txtDeliveryNumber.Text;
+                    que.quantity = Convert.ToDecimal(txtQty.Text);
+                    que.branch_id = GetBranchId(cmbBranchName.Text);
+                    que.last_price_cost = Convert.ToDecimal(txtLastCost.Text);
+                    que.inventory_date = dkpInventoryDate.Value.Date;
+                    que.status_id = GetProductStatus(cmbProductStatus.Text);
+                    var result = repository.Update(que);
                     if (result)
                     {
                         posWET.CloseWaitForm();
@@ -697,7 +700,7 @@ namespace Inventory.MainForm
         {
             if (cmbProductName.Text.Length <= 0) return;
             var imgId = GetProductImgId(cmbProductName.Text);
-         
+
         }
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
@@ -727,13 +730,13 @@ namespace Inventory.MainForm
                         if (imgLocation.Length > 0)
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
-                            
+
                             imgPreview.ImageLocation = location;
                         }
                         else
                             imgPreview.Image = null;
                     }
-                
+
                 }
                 catch (Exception ex)
                 {
@@ -753,7 +756,8 @@ namespace Inventory.MainForm
             gCON.Update();
             try
             {
-                var list = listInventory.Select(x => new {
+                var list = listInventory.Select(x => new
+                {
                     Id = x.inventory_id,
                     InveCode = x.inventory_code,
                     Item = x.product_name,
@@ -833,7 +837,7 @@ namespace Inventory.MainForm
                 cmbProductName.BackColor = Color.White;
                 txtDeliveryNumber.BackColor = Color.Yellow;
                 txtDeliveryNumber.Focus();
-                  
+
                 txtBarcode.Text = SearchBarcode(cmbProductName.Text).product_code;
                 lblPrice.Text = SearchBarcode(cmbProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);
             }
