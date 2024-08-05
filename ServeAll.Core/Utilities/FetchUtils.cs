@@ -364,5 +364,21 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static void getProducts()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Products>(unWork);
+                    var query = repository.SelectAll(Query.AllBindProduct).Select(x => x.product_name).Distinct().ToList();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
+        }
     }
 }

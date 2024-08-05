@@ -82,7 +82,6 @@
     <Compile Include="Entities\Employees.cs" />
     <Compile Include="Entities\Exclusive.cs" />
     <Compile Include="Entities\Finger.cs" />
-    <Compile Include="Entities\InventoryClass.cs" />
     <Compile Include="Entities\Inventory.cs" />
     <Compile Include="Entities\Manufacturer.cs" />
     <Compile Include="Entities\MerchandiseStatus.cs" />
