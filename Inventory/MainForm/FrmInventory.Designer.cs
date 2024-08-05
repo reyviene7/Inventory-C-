@@ -191,6 +191,7 @@
             // 
             // RightOptions
             // 
+            this.RightOptions.Interval = 1;
             this.RightOptions.Tick += new System.EventHandler(this.RightOptions_Tick);
             // 
             // pnlMain
@@ -262,6 +263,7 @@
             this.bntDelete.Text = "DELETE";
             this.bntDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntDelete.UseVisualStyleBackColor = false;
+            this.bntDelete.Click += new System.EventHandler(this.bntDEL_Click);
             // 
             // xInventory
             // 
@@ -868,6 +870,7 @@
             this.bntClear.Text = "BRANCH";
             this.bntClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntClear.UseVisualStyleBackColor = false;
+            this.bntClear.Click += new System.EventHandler(this.bntCLR_Click);
             // 
             // bntAdd
             // 
@@ -883,6 +886,7 @@
             this.bntAdd.Text = "ADD";
             this.bntAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntAdd.UseVisualStyleBackColor = false;
+            this.bntAdd.Click += new System.EventHandler(this.bntADD_Click);
             // 
             // bntCancel
             // 
@@ -899,6 +903,7 @@
             this.bntCancel.Text = "CANCEL";
             this.bntCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntCancel.UseVisualStyleBackColor = false;
+            this.bntCancel.Click += new System.EventHandler(this.bntCAN_Click);
             // 
             // bntUpdate
             // 
@@ -914,6 +919,7 @@
             this.bntUpdate.Text = "EDIT";
             this.bntUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntUpdate.UseVisualStyleBackColor = false;
+            this.bntUpdate.Click += new System.EventHandler(this.bntUPD_Click);
             // 
             // bntSave
             // 
@@ -930,6 +936,7 @@
             this.bntSave.Text = "SAVE";
             this.bntSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSave.UseVisualStyleBackColor = false;
+            this.bntSave.Click += new System.EventHandler(this.bntSAV_Click);
             // 
             // gridView1
             // 
@@ -940,9 +947,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1455, 1114);
-            this.Controls.Add(this.pnlMain);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.pnlRightOptions);
+            this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmInventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

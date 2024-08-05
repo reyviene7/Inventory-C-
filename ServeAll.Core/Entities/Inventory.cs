@@ -10,7 +10,7 @@ namespace ServeAll.Core.Entities
         public int inventory_id { get; set; }
         public string inventory_code { get; set; }
         public int product_id { get; set; }
-        public decimal quantity { get; set; }
+        public int quantity { get; set; }
         public string delivery_code { get; set; }
         public int status_id { get; set; }
         public int user_id { get; set; }
