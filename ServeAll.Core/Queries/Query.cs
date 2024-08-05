@@ -153,7 +153,26 @@
 												  ,trade_price 
 												  ,retail_price
 												  ,wholesale
-                                                  ,status
+                                                  ,status_details
+                                                  ,date_register
+                                              FROM view_product";
+
+        public const string AllBindProduct = @"SELECT product_id
+                                                  ,product_code
+                                                  ,product_name
+                                                  ,category_details
+                                                  ,supplier_name
+                                                  ,stock_code
+                                                  ,brand
+                                                  ,model
+                                                  ,made
+                                                  ,serial_number
+                                                  ,tare_weight
+                                                  ,net_weight
+												  ,trade_price 
+												  ,retail_price
+												  ,wholesale
+                                                  ,status_details
                                                   ,date_register
                                               FROM view_product";
 
@@ -162,17 +181,7 @@
         public const string AllViewProducts = "SELECT * FROM view_product";
         public const string AllViewImageProduct = "SELECT * FROM view_image_product";
 
-        public const string AllInventory = @"SELECT     inventory_id, 
-		                                                product_code,
-                                                        product_name,  
-		                                                quantity, 
-                                                        branch_details, 
-		                                                delivery_code, 
-		                                                inventory_code, 
-		                                                retail_price, 
-		                                                inventory_date, 
-                                                        status
-                                                FROM view_inventory";
+        public const string AllInventory = @"SELECT * FROM view_inventory";
         public const string AllProductCategory = @"SELECT * FROM view_product_category";
         public const string AllProductStatus = @"SELECT status_id, status FROM product_status";
         public const string AllUsers = @"SELECT user_id,
