@@ -135,7 +135,8 @@ namespace Inventory.MainForm
             BindProducts();
             BindBranch();
             BindProductStatus();
-            cmbProductName.Focus();
+            BindFilteredProducts();
+
             _add = true;
             _edt = false;
             _del = false;
@@ -256,7 +257,10 @@ namespace Inventory.MainForm
 
             if (_add && _edt == false && _del == false)
             {
-
+                if (IsProductInInventory(cmbProductName.Text))
+                {
+                    PopupNotification.PopUpMessages(0, "Product Name: " + cmbProductName.Text.Trim() + " already exists in the inventory.", Messages.TitleFailedInsert);
+                }
                 DataInsert();
                 ButtonSav();
                 InputDisb();
@@ -264,6 +268,9 @@ namespace Inventory.MainForm
                 InputClea();
                 BindProductList(_branch);
                 BindInventory();
+                BindProducts();
+                BindBranch();
+                BindProductStatus();
 
             }
             if (_add == false && _edt && _del == false)
@@ -276,6 +283,9 @@ namespace Inventory.MainForm
                 InputClea();
                 BindProductList(_branch);
                 BindInventory();
+                BindProducts();
+                BindBranch();
+                BindProductStatus();
 
             }
             if (_add == false && _edt == false && _del)
@@ -288,6 +298,9 @@ namespace Inventory.MainForm
                 InputClea();
                 BindProductList(_branch);
                 BindInventory();
+                BindProducts();
+                BindBranch();
+                BindProductStatus();
 
             }
             _add = false;
@@ -310,7 +323,40 @@ namespace Inventory.MainForm
             imgPreview.Image = null;
         }
         #endregion
+        private bool IsProductInInventory(string productName)
+        {
+            // Check if the product already exists in the inventory
+            return listInventory.Any(x => x.product_name == productName);
+        }
+        private void BindFilteredProducts()
+        {
+            List<string> productNames;
+            List<string> inventoryProductNames;
 
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                var productRepository = new Repository<Products>(unWork);
+                productNames = productRepository.SelectAll(Query.AllViewProducts)
+                                                .Select(x => x.product_name)
+                                                .Distinct()
+                                                .ToList();
+            }
+
+            inventoryProductNames = listInventory.Select(x => x.product_name).Distinct().ToList();
+
+            // Filter product names that are not in the inventory
+            var filteredProductNames = productNames.Except(inventoryProductNames).ToList();
+
+            cmbProductName.DataBindings.Clear();
+            cmbProductName.DataSource = filteredProductNames;
+
+            if (filteredProductNames.Any())
+            {
+                cmbProductName.Focus();
+            }
+        }
 
         private void BindProductList(string branchId)
         {
@@ -630,12 +676,12 @@ namespace Inventory.MainForm
                 {
                     posWET.ShowWaitForm();
                     var proId = Convert.ToInt32(txtInventoryId.Text);
-                    var repository = new Repository<InventoryClass>(unWork);
+                    var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
                     var que = repository.Id(proId);
                     que.inventory_code = txtInventoryCode.Text;
                     que.product_id = GetProductId(cmbProductName.Text);
                     que.delivery_code = txtDeliveryNumber.Text;
-                    que.quantity = Convert.ToDecimal(txtQty.Text);
+                    que.quantity = Convert.ToInt32(txtQty.Text);
                     que.branch_id = GetBranchId(cmbBranchName.Text);
                     que.last_price_cost = Convert.ToDecimal(txtLastCost.Text);
                     que.inventory_date = dkpInventoryDate.Value.Date;
@@ -672,7 +718,7 @@ namespace Inventory.MainForm
                 {
                     posWET.ShowWaitForm();
                     var proId = Convert.ToInt32(txtInventoryId.Text);
-                    var repository = new Repository<InventoryClass>(unWork);
+                    var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
                     var que = repository.Id(proId);
                     var result = repository.Delete(que);
                     if (result)
