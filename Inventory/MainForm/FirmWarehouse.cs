@@ -123,7 +123,7 @@ namespace Inventory.MainForm
             try
             {
                 var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
-                ShowValue(invId);
+                //ShowValue(invId);
                 txtProductBarcode.Text = SearchBarcode(cmbProductName.Text).product_code;
                 txtItemPrice.Text = SearchBarcode(cmbProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                 bntClear.Enabled = true;
@@ -602,7 +602,7 @@ namespace Inventory.MainForm
                 cmbProductWarranty.DataBindings.Clear();
                 cmbProductWarranty.DataSource = query;
             }
-        }
+        }/*
         private void ShowValue(int inventoryId)
         {
             var ent = ShowEntity(inventoryId);
@@ -621,14 +621,14 @@ namespace Inventory.MainForm
             cmbProductStatus.Text = ent.Status;
             txtDepotControl.Text = ent.DepotId.ToString();
         }
-        private static ViewWareHouse ShowEntity(int inventoryId)
-        {
+        private static ViewWarehouse ShowEntity(int inventoryId)
+        { 
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<ViewWareHouse>(unWork);
+                    var repository = new Repository<ViewWarehouse>(unWork);
                     var query = repository.FindBy(x => x.Id == inventoryId);
                     return query;
                 }
@@ -638,7 +638,7 @@ namespace Inventory.MainForm
                     return null;
                 }
             }
-        }
+        }*/
         private static Products SearchBarcode(string input)
         {
             using (var session = new DalSession())
@@ -846,7 +846,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private static IEnumerable<ViewWareHouse> RebindInventory()
+        private static IEnumerable<ViewWarehouse> RebindInventory()
         {
             using (var session = new DalSession())
             {
@@ -854,7 +854,7 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<ViewWareHouse>(unWork);
+                    var repository = new Repository<ViewWarehouse>(unWork);
                     return repository.SelectAll(Query.SelectAllWareHouse)
                                      .ToList();
                 }

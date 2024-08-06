@@ -625,7 +625,7 @@
             this.gbCON.Name = "gbCON";
             this.gbCON.Size = new System.Drawing.Size(1108, 484);
             this.gbCON.TabIndex = 172;
-            this.gbCON.Text = "F1 = WareHouse List  F2 = Warehouse Delivery";
+            this.gbCON.Text = "F1 = Warehouse Delivery  F2 = Warehouse List ";
             // 
             // gridControl
             // 

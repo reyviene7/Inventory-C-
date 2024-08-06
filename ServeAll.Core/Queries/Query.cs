@@ -243,12 +243,14 @@
         public const string CountAllServiceNumber = "SELECT ServiceNumber FROM Credit";
         //DEPOT
         public const string SelectAllDepot = "SELECT Id, Code, Item, Qty, DeliveryNo, ReceiptNo, Branch, LastCost, OnOrder, Purchase, RefDate, Warranty, Status FROM view_depot ORDER BY Id DESC";
-        public const string SelectAllWareHouse = "SELECT Id, Code, Item, Delivery, Receipt, Qty, Branch, LastCost, OnOrder, Purchase, RefDate, Warranty, Status, DepotId FROM view_warehouse ORDER BY Id DESC";
+        public const string SelectAllWareHouse = "SELECT warehouse_code, warehouse_name, full_address, contact_name, telephone_number, mobile_number, mobile_secondary, email_address, web_url, fax_number FROM view_warehouse ORDER BY warehouse_code ASC;";
         public const string SelectAllBranchDelivery = "SELECT Id, Code, Item, Qty, Delivery, Receipt, Branch, Warranty, Status,RefDate, WareHouseId FROM view_branchdelivery ORDER BY Id DESC";
         public const string SelectAllBranchExcWareH = "SELECT BranchDetails FROM Branch WHERE BranchId NOT IN (SELECT BranchId FROM Branch WHERE BranchDetails = 'Warehouse')";
         public const string SelectAllFingerPrints = "SELECT FingerId, EmployeeId, FingerIndex, FingerBytes FROM Finger ORDER BY FingerIndex DESC";
         public const string SelectAllReturnWareHs = "SELECT return_id, return_code, product_code, return_number, return_quantity, branch_code, destination, return_date, status_id, remarks, inventory_code FROM view_return_warehouse ORDER BY return_id DESC";
         public const string SelectAllProductId = "SELECT product_id FROM view_product_id";
+        public const string SelectAllStockMovement = "SELECT * FROM stock_movement";
+        public const string SelectStockMovementList = "SELECT * FROM view_stock_movement";
         public const string SelectCountReturnNo = "SELECT return_id, return_number FROM view_return_warehouse";
         public const string SelectCountDepotRet = "SELECT ReceiptNo FROM WareHouse";
         public const string SelectCountDepotDel = "SELECT DeliveryNo FROM WareHouse";
