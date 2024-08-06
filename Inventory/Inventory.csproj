@@ -195,7 +195,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="ServeAll.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\ServeAll.Core.dll</HintPath>
+      <HintPath>..\ServeAll.Core\bin\Debug\ServeAll.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

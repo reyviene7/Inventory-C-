@@ -40,7 +40,7 @@ namespace Inventory.Config
         {
             FinalNumeric = Numeric + this.NumericStart;
             return
-                $"{this.FrontKeys}{Chars[Alpha]}{FinalNumeric.ToString().PadLeft(NumericLenght, '0')}";
+                $"{this.FrontKeys}{FinalNumeric.ToString().PadLeft(NumericLenght, '0')}";
         }
     }
 }
