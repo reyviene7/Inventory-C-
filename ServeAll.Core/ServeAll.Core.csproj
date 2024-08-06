@@ -97,6 +97,7 @@
     <Compile Include="Entities\RouteLog.cs" />
     <Compile Include="Entities\Sales.cs" />
     <Compile Include="Entities\SalesParticular.cs" />
+    <Compile Include="Entities\StockMovement.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="Entities\ViewCreditParticular.cs" />
@@ -130,11 +131,13 @@
     <Compile Include="Entities\ViewProducts.cs" />
     <Compile Include="Entities\ViewSales.cs" />
     <Compile Include="Entities\ViewSalesPart.cs" />
+    <Compile Include="Entities\ViewStockMovement.cs" />
     <Compile Include="Entities\ViewSupplier.cs" />
     <Compile Include="Entities\ViewTempSales.cs" />
     <Compile Include="Entities\ViewUnderWarranty.cs" />
     <Compile Include="Entities\ViewUser.cs" />
     <Compile Include="Entities\ViewUserEmployees.cs" />
+    <Compile Include="Entities\ViewWarehouse.cs" />
     <Compile Include="Entities\Warranty.cs" />
     <Compile Include="Entities\WarrantyStatus.cs" />
     <Compile Include="Helper\AppData.cs" />

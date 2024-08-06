@@ -88,10 +88,26 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static IEnumerable<T> GetEmptyList<T>()
+        public static IEnumerable<ViewStockMovement> getStockMovementList()
         {
-            return Enumerable.Empty<T>();
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewStockMovement>(unWork);
+                    return repository.SelectAll(Query.SelectStockMovementList)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewStockMovement>();
+                }
+            }
         }
+
 
         public static IEnumerable<ViewProducts> getProductList()
         {
@@ -186,6 +202,11 @@ namespace ServeAll.Core.Utilities
                     return GetEmptyList<ViewInventory>();
                 }
             }
+        }
+
+        public static IEnumerable<T> GetEmptyList<T>()
+        {
+            return Enumerable.Empty<T>();
         }
     }
 }

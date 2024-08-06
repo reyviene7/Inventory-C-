@@ -43,6 +43,7 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
+            BindStockMovementList();
             _bra = true;
             _wer = true;
         }
@@ -617,10 +618,10 @@ namespace Inventory.MainForm
             {
                 var unitWork = session.UnitofWrk;
                 unitWork.Begin();
-                var repository = new Repository<ViewWareHouse>(unitWork);
+                var repository = new Repository<ViewWarehouse>(unitWork);
                 var result = (from b in repository.SelectAll(Query.SelectAllWareHouse)
-                              orderby b.Id descending
-                              select b.Code).Take(1).SingleOrDefault();
+                              orderby b.warehouse_name descending
+                              select b.contact_name).Take(1).SingleOrDefault();
                 if (result != null)
                 {
                     return result;
@@ -655,21 +656,47 @@ namespace Inventory.MainForm
             alphaNumeric.Increment();
             txtDeliveryCode.Text = alphaNumeric.ToString();
         }
-        private void BindWareHouse()
+        private void BindWarehouse()
         {
             braWET.ShowWaitForm();
             ClearGrid();
-            gridControl.DataSource = EnumerableWareHouse();
+            gridControl.DataSource = EnumerableWarehouse();
             if (gridList.RowCount > 0)
             {
-                gridList.Columns[0].Width = 40;
-                gridList.Columns[1].Width = 90;
-                gridList.Columns[2].Width = 280;
+                gridList.Columns[0].Width = 100;
+                gridList.Columns[1].Width = 100;
+                gridList.Columns[2].Width = 100;
                 gridList.Columns[3].Width = 100;
-                gridList.Columns[3].Width = 120;
+                gridList.Columns[4].Width = 100;
             }
             braWET.CloseWaitForm();
         }
+        private void BindStockMovementList()
+        {
+            braWET.ShowWaitForm();
+            ClearGrid();
+            var list = EnumerableUtils.getStockMovementList().Select(p => new
+            {
+                ID = p.stock_movement_id,
+                Code = p.movement_code,
+                Destination = p.destination,
+                DeliveryDate = p.delivery_date,
+                MoveType = p.movement_type,
+                ProductCount = p.distinct_product_count
+            });
+            gridControl.DataSource = list;
+            if (gridList.RowCount > 0)
+            {
+                gridList.Columns[0].Width = 1;
+                gridList.Columns[1].Width = 60;
+                gridList.Columns[2].Width = 60;
+                gridList.Columns[3].Width = 40;
+                gridList.Columns[4].Width = 30;
+                gridList.Columns[5].Width = 30;
+            }
+            braWET.CloseWaitForm();
+        }
+
         private void BindBranchDel()
         {
             braWET.ShowWaitForm();
@@ -761,7 +788,7 @@ namespace Inventory.MainForm
                 cmbProductWarranty.DataSource = query;
             }
         }
-        private void ShowValue(int inventoryId)
+      /*  private void ShowValue(int inventoryId)
         {
             var ent = ShowEntity(inventoryId);
             txtDeliveryID.Text = ent.Id.ToString();
@@ -778,7 +805,7 @@ namespace Inventory.MainForm
             cmbProductWarranty.Text = ent.Warranty;
             cmbProductStatus.Text = ent.Status;
             txtDepotID.Text = ent.DepotId.ToString();
-        }
+        }*/
         private void ShowBranch(int inventoryId)
         {
             var ent = ShowDelivery(inventoryId);
@@ -931,15 +958,15 @@ namespace Inventory.MainForm
                 }
 
             }
-        }
-        private static ViewWareHouse ShowEntity(int inventoryId)
+        }/*
+        private static ViewWarehouse ShowEntity(int inventoryId)
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<ViewWareHouse>(unWork);
+                    var repository = new Repository<ViewWarehouse>(unWork);
                     var query = repository.FindBy(x => x.Id == inventoryId);
                     return query;
                 }
@@ -949,7 +976,7 @@ namespace Inventory.MainForm
                     return null;
                 }
             }
-        }
+        }*/
         private static ViewBranchDelivery ShowDelivery(int inventoryId)
         {
             using (var session = new DalSession())
@@ -986,7 +1013,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private static IEnumerable<ViewWareHouse> EnumerableWareHouse()
+        private static IEnumerable<ViewWarehouse> EnumerableWarehouse()
         {
             using (var session = new DalSession())
             {
@@ -994,7 +1021,7 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<ViewWareHouse>(unWork);
+                    var repository = new Repository<ViewWarehouse>(unWork);
                     return repository.SelectAll(Query.SelectAllWareHouse)
                         .ToList();
                 }
@@ -1005,6 +1032,8 @@ namespace Inventory.MainForm
                 }
             }
         }
+
+
         private static IEnumerable<ViewBranchDelivery> EnumerableBranch()
         {
             using (var session = new DalSession())
@@ -1150,15 +1179,6 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.F1)
             {
-                _wer = true;
-                _bra = false;
-                bntADD.BackColor = Color.Red;
-                bntADD.Enabled = true;
-                PopupNotification.PopUpMessages(1, "Warehouse Inventory List", Messages.GasulPos);
-                BindWareHouse();
-            }
-            if (e.KeyCode == Keys.F2)
-            {
                 ButCan();
                 _wer = false;
                 _bra = true;
@@ -1166,6 +1186,15 @@ namespace Inventory.MainForm
                 bntADD.Enabled = false;
                 PopupNotification.PopUpMessages(1, "Warehouse Delivery to Branches Inventory List", Messages.GasulPos);
                 BindBranchDel();
+            }
+            if (e.KeyCode == Keys.F2)
+            {
+                _wer = true;
+                _bra = false;
+                bntADD.BackColor = Color.Red;
+                bntADD.Enabled = true;
+                PopupNotification.PopUpMessages(1, "Warehouse Inventory List", Messages.GasulPos);
+                BindWarehouse();
             }
         }
         private void gridBranch_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -1177,7 +1206,7 @@ namespace Inventory.MainForm
                     if (_wer && _bra == false)
                     {
                         var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
-                        ShowValue(invId);
+                        //ShowValue(invId);
                         var imgId = GetProductImgId(cmbProductName.Text);
                         txtProductBarcode.Text = SearchBarcode(cmbProductName.Text).product_code;
                         txtItemPrice.Text = SearchBarcode(cmbProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);

@@ -243,7 +243,6 @@
     <Compile Include="Entities\ViewReportWareHousetItem.cs" />
     <Compile Include="Entities\ViewReturnDepot.cs" />
     <Compile Include="Entities\ViewReturnWareHouseDepot.cs" />
-    <Compile Include="Entities\ViewWareHouse.cs" />
     <Compile Include="Entities\WareHouse.cs" />
     <Compile Include="Interface\IDepotDelivery.cs" />
     <Compile Include="Interface\IProductList.cs" />
@@ -583,6 +582,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
