@@ -193,8 +193,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="ServeAll.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ServeAll.Core">
       <HintPath>..\ServeAll.Core\bin\Debug\ServeAll.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />

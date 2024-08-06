@@ -539,7 +539,7 @@
             this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
             this.pnlRightOptions.Controls.Add(this.pcRight);
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1296, 1);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1292, 1);
             this.pnlRightOptions.Name = "pnlRightOptions";
             this.pnlRightOptions.Size = new System.Drawing.Size(77, 765);
             this.pnlRightOptions.TabIndex = 68;
