@@ -130,7 +130,9 @@ namespace Inventory.MainForm
             InputEnab();
             InputWhit();
             InputClea();
-            GenerateCode();
+            GenerateInventoryCode();
+            GenerateInventoryId();
+            GenerateDeliveryCode();
             BindInventory();
             BindProducts();
             BindBranch();
@@ -250,7 +252,6 @@ namespace Inventory.MainForm
             InputClea();
             gCON.Enabled = true;
             cmbProductName.DataBindings.Clear();
-
         }
         private void ButSav()
         {
@@ -268,10 +269,6 @@ namespace Inventory.MainForm
                 InputClea();
                 BindProductList(_branch);
                 BindInventory();
-                BindProducts();
-                BindBranch();
-                BindProductStatus();
-
             }
             if (_add == false && _edt && _del == false)
             {
@@ -283,10 +280,6 @@ namespace Inventory.MainForm
                 InputClea();
                 BindProductList(_branch);
                 BindInventory();
-                BindProducts();
-                BindBranch();
-                BindProductStatus();
-
             }
             if (_add == false && _edt == false && _del)
             {
@@ -298,9 +291,6 @@ namespace Inventory.MainForm
                 InputClea();
                 BindProductList(_branch);
                 BindInventory();
-                BindProducts();
-                BindBranch();
-                BindProductStatus();
 
             }
             _add = false;
@@ -617,13 +607,53 @@ namespace Inventory.MainForm
             cmbProductStatus.BackColor = Color.DimGray;
         }
 
-        private void GenerateCode()
+        /* private void GenerateCode()
         {
             var lastProductId = FetchUtils.GetLastId();
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastProductId, "PR");
+            var alphaNumeric = new GenerateAlpaNum("INV", 3, lastProductId);
             alphaNumeric.Increment();
             txtInventoryCode.Text = alphaNumeric.ToString();
+        }*/
+        private void GenerateInventoryId()
+        {
+            int lastInventoryId = listInventory.Any() ? listInventory.Max(x => x.inventory_id) : 0;
+            int newInventoryId = lastInventoryId + 1;
+
+            txtInventoryId.Text = newInventoryId.ToString();
+            txtInventoryId.Focus();
         }
+        private void GenerateInventoryCode()
+        {
+            var lastInventoryCode = FetchUtils.GetLastInventoryCode();
+            int lastInventoryNumber;
+
+            if (string.IsNullOrEmpty(lastInventoryCode) || !int.TryParse(lastInventoryCode.Replace("INV", ""), out lastInventoryNumber))
+            {
+                lastInventoryNumber = 0;
+            }
+
+            var alphaNumeric = new GenerateAlpaNum("INV", 3, lastInventoryNumber);
+            alphaNumeric.Increment();
+            txtInventoryCode.Text = alphaNumeric.ToString();
+            txtInventoryCode.Focus();
+        }
+
+        private void GenerateDeliveryCode()
+        {
+            var lastDeliveryCode = FetchUtils.GetLastDeliveryCode();
+            int lastDeliveryNumber;
+
+            if (string.IsNullOrEmpty(lastDeliveryCode) || !int.TryParse(lastDeliveryCode.Replace("DC", ""), out lastDeliveryNumber))
+            {
+                lastDeliveryNumber = 0;
+            }
+
+            var alphaNumeric = new GenerateAlpaNum("DC", 3, lastDeliveryNumber);
+            alphaNumeric.Increment();
+            txtDeliveryNumber.Text = alphaNumeric.ToString();
+            txtDeliveryNumber.Focus();
+        }
+
         private void DataInsert()
         {
             using (var session = new DalSession())
@@ -655,7 +685,6 @@ namespace Inventory.MainForm
                          Messages.TitleSuccessInsert);
                         unWork.Commit();
                     }
-
                 }
                 catch (Exception ex)
                 {
