@@ -343,8 +343,6 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-  
-
         public static int GetLastId()
         {
 
@@ -361,6 +359,42 @@ namespace ServeAll.Core.Utilities
                 {
                     Console.WriteLine(e.ToString());
                     return 0;
+                }
+            }
+        }
+        public static string GetLastInventoryCode()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Inventory>(unWork);
+                    return repository.SelectAll(Query.getLastInventoryCodeQuery)
+                        .Select(x => x.inventory_code).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return string.Empty;
+                }
+            }
+        }
+        public static string GetLastDeliveryCode()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Inventory>(unWork);
+                    return repository.SelectAll(Query.getLastInventoryDeliveryQuery)
+                        .Select(x => x.delivery_code).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return string.Empty;
                 }
             }
         }

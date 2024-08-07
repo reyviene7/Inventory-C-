@@ -1,46 +1,28 @@
-﻿using System;
-using static System.Math;
-
-namespace Inventory.Config
+﻿namespace Inventory.Config
 {
     public class GenerateAlpaNum
     {
-        public int Alpha { get; protected set; }
         public int Numeric { get; protected set; }
-        public int FinalNumeric { get; protected set; }
         public int NumericStart { get; protected set; }
-        public int NumericLenght { get; protected set; }
-        public string FrontKeys { get; set; }
-        public string EndngKeys { get; set; }
-        public string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public int NumericLength { get; protected set; }
+        public string Prefix { get; set; }
 
-        public GenerateAlpaNum(int numericLength, int alphaStart, int numberStart, string endngkeys)
+        public GenerateAlpaNum(string prefix, int numericLength, int numberStart)
         {
-            FrontKeys = GetSettings.YearEnding("STK");
-            EndngKeys = endngkeys;
+            Prefix = prefix;
             NumericStart = numberStart;
-            NumericLenght = numericLength;
-            Alpha = alphaStart;
-            Numeric = 0;
-            FinalNumeric = 0;
+            NumericLength = numericLength;
+            Numeric = numberStart; // Start from the provided number
         }
 
         public void Increment()
         {
             Numeric++;
-            if (Numeric == Pow(10, NumericLenght))
-            {
-                Alpha++;
-                Numeric = 1;
-                if (Alpha == Chars.Length)
-                    throw new Exception("Overflow");
-            }
         }
+
         public override string ToString()
         {
-            FinalNumeric = Numeric + this.NumericStart;
-            return
-                $"{this.FrontKeys}{FinalNumeric.ToString().PadLeft(NumericLenght, '0')}";
+            return $"{Prefix}{Numeric.ToString().PadLeft(NumericLength, '0')}";
         }
     }
 }
