@@ -564,7 +564,7 @@ namespace Inventory.MainForm
         private void GenerateCode()
         {
             var lastProductId = FetchUtils.getLastProductId();
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastProductId, "P");
+            var alphaNumeric = new GenerateAlpaNum("P", 3, lastProductId);
             alphaNumeric.Increment();
             txtStockCode.Text = alphaNumeric.ToString();
         }

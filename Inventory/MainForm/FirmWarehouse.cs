@@ -223,7 +223,7 @@ namespace Inventory.MainForm
         {
             var lastCode = GetLastId();
             var lastId = GetSettings.GetLastBarcode(lastCode);
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastId, "PR");
+            var alphaNumeric = new GenerateAlpaNum("PR", 3, lastId);
             alphaNumeric.Increment();
             txtWarehouseCode.Text = alphaNumeric.ToString();
         }
