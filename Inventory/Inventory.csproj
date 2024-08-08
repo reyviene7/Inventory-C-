@@ -312,6 +312,12 @@
     <Compile Include="MainForm\FirmWarehouse.Designer.cs">
       <DependentUpon>FirmWarehouse.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm\FrmBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FrmBranch.Designer.cs">
+      <DependentUpon>FrmBranch.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm\FrmInventory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -471,6 +477,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FirmWarehouse.resx">
       <DependentUpon>FirmWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FrmBranch.resx">
+      <DependentUpon>FrmBranch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FrmInventory.resx">
       <DependentUpon>FrmInventory.cs</DependentUpon>

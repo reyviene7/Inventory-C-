@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\ViewBranch.cs" />
     <Compile Include="Entities\Branch.cs" />
     <Compile Include="Entities\BranchDelivery.cs" />
     <Compile Include="Entities\Category.cs" />

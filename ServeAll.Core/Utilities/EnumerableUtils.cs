@@ -208,5 +208,24 @@ namespace ServeAll.Core.Utilities
         {
             return Enumerable.Empty<T>();
         }
+
+        public static IEnumerable<ViewBranch> GetBranchList()
+        {
+            using (var session = new DalSession())
+            {
+                try
+                {
+                    var unWork = session.UnitofWrk;
+                    unWork.Begin();
+                    var repository = new Repository<ViewBranch>(unWork);
+                    return repository.SelectAll(Query.AllBranch).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewBranch>();
+                }
+            }
+        }
     }
 }
