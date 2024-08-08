@@ -54,6 +54,7 @@
             this.gbCON.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.gbCON.Appearance.Options.UseBackColor = true;
             this.gbCON.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.gbCON.ContentImageAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.gbCON.Controls.Add(this.txtPASS);
             this.gbCON.Controls.Add(this.pictureBox1);
             this.gbCON.Controls.Add(this.pbHide);
@@ -189,8 +190,9 @@
             this.ClientSize = new System.Drawing.Size(582, 254);
             this.Controls.Add(this.gbCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Location = new System.Drawing.Point(537, 447);
             this.Name = "FirmPopLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Load += new System.EventHandler(this.FirmPopLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
             this.gbCON.ResumeLayout(false);
