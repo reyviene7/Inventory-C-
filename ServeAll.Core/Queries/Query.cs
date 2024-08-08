@@ -3,13 +3,7 @@
     public class Query
     {
         public const string DefaultCode = @"00-00-00";
-        public const string AllBranch = @"select branch_id,
-	                                             branch_code,
-                                                 branch_details,
-                                                 address_id,
-                                                 contact_id,
-                                                 date_register
-                                          from branch;";
+        public const string AllBranch = @"select * FROM view_branch;";
         public const string AllSpecificBranch = @"SELECT  
                                                  BranchDetails FROM Branch";
         public const string AllSpecificCustomer = @"SELECT Name FROM view_customers";

@@ -3,6 +3,7 @@ using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace ServeAll.Core.Utilities
@@ -413,6 +414,14 @@ namespace ServeAll.Core.Utilities
                     Console.WriteLine(e.ToString());
                 }
             }
+        }
+        public static int GetLastBarcode(string barcode)
+        {
+            var parcode = barcode.Split('-')[1];
+            if (barcode.Length <= 0 || parcode.Length <= 0) return 0;
+            var number = Regex.Replace(parcode, @"\D", "");
+            var rt = int.Parse(number);
+            return rt;
         }
     }
 }
