@@ -25,4 +25,11 @@
             return $"{Prefix}{Numeric.ToString().PadLeft(NumericLength, '0')}";
         }
     }
+    public class GenerateAlpaInv : GenerateAlpaNum
+    {
+        public GenerateAlpaInv(string prefix, int numericLength, int numberStart)
+            : base(prefix, numericLength, numberStart)
+        {
+        }
+    }
 }

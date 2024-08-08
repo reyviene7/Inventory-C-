@@ -277,9 +277,9 @@
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
-        public const string getLastInventoryQuery = "SELECT COUNT(inventory_id) as inventory_id FROM inventory";
-        public const string getLastInventoryCodeQuery = "SELECT COUNT(inventory_code) as inventory_code FROM inventory";
-        public const string getLastInventoryDeliveryQuery = "SELECT COUNT(delivery_code) as delivery_code FROM inventory";
+        public const string getLastInventoryQuery = "SELECT MAX(inventory_id) as inventory_id FROM inventory";
+        public const string getLastInventoryCodeQuery = "SELECT MAX(inventory_code) AS inventory_code FROM inventory";
+        public const string getLastInventoryDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM inventory";
         public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
         public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
     }
