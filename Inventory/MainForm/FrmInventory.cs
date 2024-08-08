@@ -130,9 +130,8 @@ namespace Inventory.MainForm
             InputEnab();
             InputWhit();
             InputClea();
-            GenerateInventoryCode();
             GenerateInventoryId();
-            GenerateDeliveryCode();
+            CreateNewInventoryRecord();
             BindInventory();
             BindProducts();
             BindBranch();
@@ -315,7 +314,6 @@ namespace Inventory.MainForm
         #endregion
         private bool IsProductInInventory(string productName)
         {
-            // Check if the product already exists in the inventory
             return listInventory.Any(x => x.product_name == productName);
         }
         private void BindFilteredProducts()
@@ -335,10 +333,7 @@ namespace Inventory.MainForm
             }
 
             inventoryProductNames = listInventory.Select(x => x.product_name).Distinct().ToList();
-
-            // Filter product names that are not in the inventory
             var filteredProductNames = productNames.Except(inventoryProductNames).ToList();
-
             cmbProductName.DataBindings.Clear();
             cmbProductName.DataSource = filteredProductNames;
 
@@ -469,7 +464,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private static int GetWarrantyId(string input)
+        /*private static int GetWarrantyId(string input)
         {
             using (var session = new DalSession())
             {
@@ -487,7 +482,7 @@ namespace Inventory.MainForm
                     throw;
                 }
             }
-        }
+        }*/
         private static int GetProductStatus(string input)
         {
             using (var session = new DalSession())
@@ -560,7 +555,7 @@ namespace Inventory.MainForm
         }
         private void InputEnab()
         {
-            txtInventoryId.Enabled = true;
+            txtInventoryId.Enabled = false;
             txtInventoryCode.Enabled = true;
             cmbProductName.Enabled = true;
             txtDeliveryNumber.Enabled = true;
@@ -569,6 +564,7 @@ namespace Inventory.MainForm
             txtLastCost.Enabled = true;
             dkpInventoryDate.Enabled = true;
             cmbProductStatus.Enabled = true;
+            txtInventoryCode.Focus();
         }
         private void InputDisb()
         {
@@ -632,7 +628,7 @@ namespace Inventory.MainForm
                 lastInventoryNumber = 0;
             }
 
-            var alphaNumeric = new GenerateAlpaNum("INV", 3, lastInventoryNumber);
+            var alphaNumeric = new GenerateAlpaInv("INV", 3, lastInventoryNumber);
             alphaNumeric.Increment();
             txtInventoryCode.Text = alphaNumeric.ToString();
             txtInventoryCode.Focus();
@@ -653,9 +649,24 @@ namespace Inventory.MainForm
             txtDeliveryNumber.Text = alphaNumeric.ToString();
             txtDeliveryNumber.Focus();
         }
-
+        private void CreateNewInventoryRecord()
+        {
+            GenerateInventoryCode();
+            GenerateDeliveryCode();
+        }
         private void DataInsert()
         {
+            if (string.IsNullOrWhiteSpace(txtInventoryCode.Text) ||
+            string.IsNullOrWhiteSpace(cmbProductName.Text) ||
+            string.IsNullOrWhiteSpace(txtDeliveryNumber.Text) ||
+            string.IsNullOrWhiteSpace(txtQty.Text) ||
+            string.IsNullOrWhiteSpace(cmbBranchName.Text) ||
+            string.IsNullOrWhiteSpace(txtLastCost.Text) ||
+            string.IsNullOrWhiteSpace(cmbProductStatus.Text))
+            {
+                PopupNotification.PopUpMessages(0, "Please fill in all required fields.", "Incomplete Input");
+                return;
+            }
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
@@ -684,6 +695,8 @@ namespace Inventory.MainForm
                         PopupNotification.PopUpMessages(1, "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
                          Messages.TitleSuccessInsert);
                         unWork.Commit();
+                        listInventory = EnumerableUtils.getInventory(); 
+                        BindInventory();
                     }
                 }
                 catch (Exception ex)
@@ -723,6 +736,8 @@ namespace Inventory.MainForm
                             "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
                             Messages.TitleSuccessUpdate);
                         unWork.Commit();
+                        listInventory = EnumerableUtils.getInventory();
+                        BindInventory();
                     }
                     else
                     {
@@ -757,6 +772,8 @@ namespace Inventory.MainForm
                             "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.SuccessDelete,
                             Messages.TitleSuccessDelete);
                         unWork.Commit();
+                        listInventory = EnumerableUtils.getInventory();
+                        BindInventory();
                     }
                     else
                     {
@@ -1008,6 +1025,70 @@ namespace Inventory.MainForm
         private void RightOptions_Tick(object sender, EventArgs e)
         {
             PanelInterface.RightOptionTick(this, pnlRightOptions);
+        }
+
+        private void txtInventoryCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cmbProductName.Focus();
+            }
+        }
+
+        private void cmbProductName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtDeliveryNumber.Focus();
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txtInventoryCode.Focus();
+            }
+        }
+
+        private void txtDeliveryNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtQty.Focus();
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                cmbProductName.Focus();
+            }
+        }
+
+        private void txtQty_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cmbBranchName.Focus();
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txtDeliveryNumber.Focus();
+            }
+        }
+
+        private void cmbBranchName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtLastCost.Focus();
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txtQty.Focus();
+            }
+        }
+
+        private void txtLastCost_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                cmbBranchName.Focus();
+            }
         }
 
         private void cmbSAT_KeyDown(object sender, KeyEventArgs e)

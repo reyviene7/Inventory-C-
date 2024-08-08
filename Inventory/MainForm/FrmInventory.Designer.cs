@@ -427,10 +427,11 @@
             this.cmbProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductName.ForeColor = System.Drawing.Color.Maroon;
             this.cmbProductName.FormattingEnabled = true;
-            this.cmbProductName.Location = new System.Drawing.Point(109, 82);
+            this.cmbProductName.Location = new System.Drawing.Point(108, 82);
             this.cmbProductName.Name = "cmbProductName";
             this.cmbProductName.Size = new System.Drawing.Size(269, 29);
             this.cmbProductName.TabIndex = 112;
+            this.cmbProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductName_KeyDown);
             // 
             // imgPreview
             // 
@@ -451,10 +452,11 @@
             this.cmbBranchName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBranchName.ForeColor = System.Drawing.Color.Maroon;
             this.cmbBranchName.FormattingEnabled = true;
-            this.cmbBranchName.Location = new System.Drawing.Point(109, 172);
+            this.cmbBranchName.Location = new System.Drawing.Point(108, 172);
             this.cmbBranchName.Name = "cmbBranchName";
             this.cmbBranchName.Size = new System.Drawing.Size(269, 29);
             this.cmbBranchName.TabIndex = 116;
+            this.cmbBranchName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbBranchName_KeyDown);
             // 
             // label13
             // 
@@ -513,6 +515,7 @@
             this.txtLastCost.Name = "txtLastCost";
             this.txtLastCost.Size = new System.Drawing.Size(269, 29);
             this.txtLastCost.TabIndex = 120;
+            this.txtLastCost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLastCost_KeyDown);
             // 
             // label6
             // 
@@ -536,6 +539,7 @@
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(269, 29);
             this.txtQty.TabIndex = 115;
+            this.txtQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQty_KeyDown_1);
             // 
             // label5
             // 
@@ -559,6 +563,7 @@
             this.txtDeliveryNumber.Name = "txtDeliveryNumber";
             this.txtDeliveryNumber.Size = new System.Drawing.Size(269, 29);
             this.txtDeliveryNumber.TabIndex = 113;
+            this.txtDeliveryNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDeliveryNumber_KeyDown);
             // 
             // label2
             // 
@@ -594,6 +599,7 @@
             this.txtInventoryCode.Name = "txtInventoryCode";
             this.txtInventoryCode.Size = new System.Drawing.Size(269, 29);
             this.txtInventoryCode.TabIndex = 111;
+            this.txtInventoryCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInventoryCode_KeyDown);
             // 
             // gbCON
             // 
