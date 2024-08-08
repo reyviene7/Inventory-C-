@@ -210,7 +210,7 @@ namespace Inventory.MainForm
 
         private void tileDEV_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var dep = new FirmDepotReturn(_userId, _usrTyp)
+            var dep = new FrmBranch(_userId, _usrTyp)
             {
                 Main = this
             };
