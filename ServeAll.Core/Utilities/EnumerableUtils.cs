@@ -108,6 +108,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<ViewDeliveryList> getDeliveryList(string warehouse)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewDeliveryList>(unWork);
+                    return repository.SelectAll(Query.SelectDeliveryList)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    throw;
+                }
+            }
+        }
 
         public static IEnumerable<ViewProducts> getProductList()
         {

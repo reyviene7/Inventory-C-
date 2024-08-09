@@ -4,6 +4,7 @@
     {
         public const string DefaultCode = @"00-00-00";
         public const string AllBranch = @"select * FROM view_branch;";
+        public const string AllWarehouse = @"SELECT * FROM view_warehouse";
         public const string AllSpecificBranch = @"SELECT  
                                                  BranchDetails FROM Branch";
         public const string AllSpecificCustomer = @"SELECT Name FROM view_customers";
@@ -245,6 +246,7 @@
         public const string SelectAllProductId = "SELECT product_id FROM view_product_id";
         public const string SelectAllStockMovement = "SELECT * FROM stock_movement";
         public const string SelectStockMovementList = "SELECT * FROM view_stock_movement";
+        public const string SelectDeliveryList = "SELECT * FROM view_delivery_list";
         public const string SelectCountReturnNo = "SELECT return_id, return_number FROM view_return_warehouse";
         public const string SelectCountDepotRet = "SELECT ReceiptNo FROM WareHouse";
         public const string SelectCountDepotDel = "SELECT DeliveryNo FROM WareHouse";

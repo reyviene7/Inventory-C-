@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\Delivery.cs" />
     <Compile Include="Entities\ViewBranch.cs" />
     <Compile Include="Entities\Branch.cs" />
     <Compile Include="Entities\BranchDelivery.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Entities\ViewProducts.cs" />
     <Compile Include="Entities\ViewSales.cs" />
     <Compile Include="Entities\ViewSalesPart.cs" />
+    <Compile Include="Entities\ViewDeliveryList.cs" />
     <Compile Include="Entities\ViewStockMovement.cs" />
     <Compile Include="Entities\ViewSupplier.cs" />
     <Compile Include="Entities\ViewTempSales.cs" />
@@ -139,6 +141,7 @@
     <Compile Include="Entities\ViewUser.cs" />
     <Compile Include="Entities\ViewUserEmployees.cs" />
     <Compile Include="Entities\ViewWarehouse.cs" />
+    <Compile Include="Entities\Warehouse.cs" />
     <Compile Include="Entities\Warranty.cs" />
     <Compile Include="Entities\WarrantyStatus.cs" />
     <Compile Include="Helper\AppData.cs" />
