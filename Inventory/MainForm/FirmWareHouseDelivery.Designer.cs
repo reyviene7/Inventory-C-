@@ -94,24 +94,24 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Options = new System.Windows.Forms.Timer(this.components);
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
-            this.pbHide = new System.Windows.Forms.PictureBox();
-            this.pnlOptionsMain = new System.Windows.Forms.Panel();
-            this.pcChangePassword = new System.Windows.Forms.PictureBox();
-            this.pcAdd = new System.Windows.Forms.PictureBox();
-            this.pcUser = new System.Windows.Forms.PictureBox();
-            this.pcList = new System.Windows.Forms.PictureBox();
-            this.pcBL = new System.Windows.Forms.PictureBox();
-            this.pcSchedule = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pcSettings = new System.Windows.Forms.PictureBox();
-            this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.pnlOptions = new System.Windows.Forms.Panel();
-            this.pnlRightMain = new System.Windows.Forms.Panel();
-            this.pbLogout = new System.Windows.Forms.PictureBox();
-            this.pbHome = new System.Windows.Forms.PictureBox();
-            this.pbExit = new System.Windows.Forms.PictureBox();
-            this.pcRight = new System.Windows.Forms.PictureBox();
             this.pnlRightOptions = new System.Windows.Forms.Panel();
+            this.pcRight = new System.Windows.Forms.PictureBox();
+            this.pnlRightMain = new System.Windows.Forms.Panel();
+            this.pbExit = new System.Windows.Forms.PictureBox();
+            this.pbHome = new System.Windows.Forms.PictureBox();
+            this.pbLogout = new System.Windows.Forms.PictureBox();
+            this.pnlOptions = new System.Windows.Forms.Panel();
+            this.pnlOptionsMain = new System.Windows.Forms.Panel();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.pcSettings = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pcSchedule = new System.Windows.Forms.PictureBox();
+            this.pcBL = new System.Windows.Forms.PictureBox();
+            this.pcList = new System.Windows.Forms.PictureBox();
+            this.pcUser = new System.Windows.Forms.PictureBox();
+            this.pcAdd = new System.Windows.Forms.PictureBox();
+            this.pcChangePassword = new System.Windows.Forms.PictureBox();
+            this.pbHide = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabWarehouseDelivery)).BeginInit();
             this.tabWarehouseDelivery.SuspendLayout();
             this.tabDEL.SuspendLayout();
@@ -137,24 +137,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHide)).BeginInit();
-            this.pnlOptionsMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcBL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcSchedule)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
-            this.pnlOptions.SuspendLayout();
-            this.pnlRightMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogout)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcRight)).BeginInit();
             this.pnlRightOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcRight)).BeginInit();
+            this.pnlRightMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogout)).BeginInit();
+            this.pnlOptions.SuspendLayout();
+            this.pnlOptionsMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSchedule)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcBL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHide)).BeginInit();
             this.SuspendLayout();
             // 
             // bntADD
@@ -1097,16 +1097,90 @@
             this.pictureBox1.TabIndex = 123;
             this.pictureBox1.TabStop = false;
             // 
-            // pbHide
+            // Options
             // 
-            this.pbHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbHide.Image = ((System.Drawing.Image)(resources.GetObject("pbHide.Image")));
-            this.pbHide.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbHide.Location = new System.Drawing.Point(1154, 3);
-            this.pbHide.Name = "pbHide";
-            this.pbHide.Size = new System.Drawing.Size(38, 34);
-            this.pbHide.TabIndex = 14;
-            this.pbHide.TabStop = false;
+            this.Options.Interval = 1;
+            this.Options.Tick += new System.EventHandler(this.Options_Tick);
+            // 
+            // RightOptions
+            // 
+            this.RightOptions.Interval = 1;
+            this.RightOptions.Tick += new System.EventHandler(this.RightOptions_Tick);
+            // 
+            // pnlRightOptions
+            // 
+            this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlRightOptions.Controls.Add(this.pcRight);
+            this.pnlRightOptions.Controls.Add(this.pnlRightMain);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1382, 2);
+            this.pnlRightOptions.Name = "pnlRightOptions";
+            this.pnlRightOptions.Size = new System.Drawing.Size(77, 765);
+            this.pnlRightOptions.TabIndex = 122;
+            // 
+            // pcRight
+            // 
+            this.pcRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pcRight.Image = ((System.Drawing.Image)(resources.GetObject("pcRight.Image")));
+            this.pcRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pcRight.Location = new System.Drawing.Point(3, 64);
+            this.pcRight.Name = "pcRight";
+            this.pcRight.Size = new System.Drawing.Size(35, 34);
+            this.pcRight.TabIndex = 20;
+            this.pcRight.TabStop = false;
+            // 
+            // pnlRightMain
+            // 
+            this.pnlRightMain.Controls.Add(this.pbExit);
+            this.pnlRightMain.Controls.Add(this.pbHome);
+            this.pnlRightMain.Controls.Add(this.pbLogout);
+            this.pnlRightMain.Location = new System.Drawing.Point(3, 98);
+            this.pnlRightMain.Name = "pnlRightMain";
+            this.pnlRightMain.Size = new System.Drawing.Size(70, 529);
+            this.pnlRightMain.TabIndex = 1;
+            // 
+            // pbExit
+            // 
+            this.pbExit.Image = ((System.Drawing.Image)(resources.GetObject("pbExit.Image")));
+            this.pbExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pbExit.Location = new System.Drawing.Point(3, 448);
+            this.pbExit.Name = "pbExit";
+            this.pbExit.Size = new System.Drawing.Size(70, 76);
+            this.pbExit.TabIndex = 5;
+            this.pbExit.TabStop = false;
+            this.pbExit.Click += new System.EventHandler(this.pbExit_Click);
+            // 
+            // pbHome
+            // 
+            this.pbHome.Image = ((System.Drawing.Image)(resources.GetObject("pbHome.Image")));
+            this.pbHome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pbHome.Location = new System.Drawing.Point(-2, 269);
+            this.pbHome.Name = "pbHome";
+            this.pbHome.Size = new System.Drawing.Size(76, 76);
+            this.pbHome.TabIndex = 4;
+            this.pbHome.TabStop = false;
+            this.pbHome.Click += new System.EventHandler(this.pbHome_Click);
+            // 
+            // pbLogout
+            // 
+            this.pbLogout.Image = ((System.Drawing.Image)(resources.GetObject("pbLogout.Image")));
+            this.pbLogout.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pbLogout.Location = new System.Drawing.Point(-3, 65);
+            this.pbLogout.Name = "pbLogout";
+            this.pbLogout.Size = new System.Drawing.Size(76, 76);
+            this.pbLogout.TabIndex = 3;
+            this.pbLogout.TabStop = false;
+            this.pbLogout.Click += new System.EventHandler(this.pbLogout_Click);
+            // 
+            // pnlOptions
+            // 
+            this.pnlOptions.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlOptions.Controls.Add(this.pnlOptionsMain);
+            this.pnlOptions.Controls.Add(this.pbHide);
+            this.pnlOptions.ForeColor = System.Drawing.Color.Black;
+            this.pnlOptions.Location = new System.Drawing.Point(-2, 815);
+            this.pnlOptions.Name = "pnlOptions";
+            this.pnlOptions.Size = new System.Drawing.Size(1298, 74);
+            this.pnlOptions.TabIndex = 68;
             // 
             // pnlOptionsMain
             // 
@@ -1125,75 +1199,15 @@
             this.pnlOptionsMain.Size = new System.Drawing.Size(893, 67);
             this.pnlOptionsMain.TabIndex = 21;
             // 
-            // pcChangePassword
+            // pictureBox17
             // 
-            this.pcChangePassword.BackColor = System.Drawing.Color.Transparent;
-            this.pcChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("pcChangePassword.Image")));
-            this.pcChangePassword.Location = new System.Drawing.Point(334, 2);
-            this.pcChangePassword.Name = "pcChangePassword";
-            this.pcChangePassword.Size = new System.Drawing.Size(76, 64);
-            this.pcChangePassword.TabIndex = 9;
-            this.pcChangePassword.TabStop = false;
-            // 
-            // pcAdd
-            // 
-            this.pcAdd.BackColor = System.Drawing.Color.Transparent;
-            this.pcAdd.Image = ((System.Drawing.Image)(resources.GetObject("pcAdd.Image")));
-            this.pcAdd.Location = new System.Drawing.Point(37, 2);
-            this.pcAdd.Name = "pcAdd";
-            this.pcAdd.Size = new System.Drawing.Size(76, 64);
-            this.pcAdd.TabIndex = 13;
-            this.pcAdd.TabStop = false;
-            // 
-            // pcUser
-            // 
-            this.pcUser.BackColor = System.Drawing.Color.Transparent;
-            this.pcUser.Image = ((System.Drawing.Image)(resources.GetObject("pcUser.Image")));
-            this.pcUser.Location = new System.Drawing.Point(144, 2);
-            this.pcUser.Name = "pcUser";
-            this.pcUser.Size = new System.Drawing.Size(76, 64);
-            this.pcUser.TabIndex = 14;
-            this.pcUser.TabStop = false;
-            // 
-            // pcList
-            // 
-            this.pcList.BackColor = System.Drawing.Color.Transparent;
-            this.pcList.Image = ((System.Drawing.Image)(resources.GetObject("pcList.Image")));
-            this.pcList.Location = new System.Drawing.Point(428, 1);
-            this.pcList.Name = "pcList";
-            this.pcList.Size = new System.Drawing.Size(76, 64);
-            this.pcList.TabIndex = 15;
-            this.pcList.TabStop = false;
-            // 
-            // pcBL
-            // 
-            this.pcBL.BackColor = System.Drawing.Color.Transparent;
-            this.pcBL.Image = ((System.Drawing.Image)(resources.GetObject("pcBL.Image")));
-            this.pcBL.Location = new System.Drawing.Point(523, 2);
-            this.pcBL.Name = "pcBL";
-            this.pcBL.Size = new System.Drawing.Size(76, 64);
-            this.pcBL.TabIndex = 16;
-            this.pcBL.TabStop = false;
-            // 
-            // pcSchedule
-            // 
-            this.pcSchedule.BackColor = System.Drawing.Color.Transparent;
-            this.pcSchedule.Image = ((System.Drawing.Image)(resources.GetObject("pcSchedule.Image")));
-            this.pcSchedule.Location = new System.Drawing.Point(616, 3);
-            this.pcSchedule.Name = "pcSchedule";
-            this.pcSchedule.Size = new System.Drawing.Size(76, 64);
-            this.pcSchedule.TabIndex = 17;
-            this.pcSchedule.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(241, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(76, 64);
-            this.pictureBox2.TabIndex = 29;
-            this.pictureBox2.TabStop = false;
+            this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
+            this.pictureBox17.Location = new System.Drawing.Point(806, 3);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox17.TabIndex = 59;
+            this.pictureBox17.TabStop = false;
             // 
             // pcSettings
             // 
@@ -1205,87 +1219,86 @@
             this.pcSettings.TabIndex = 58;
             this.pcSettings.TabStop = false;
             // 
-            // pictureBox17
+            // pictureBox2
             // 
-            this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
-            this.pictureBox17.Location = new System.Drawing.Point(806, 3);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(76, 64);
-            this.pictureBox17.TabIndex = 59;
-            this.pictureBox17.TabStop = false;
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(241, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox2.TabIndex = 29;
+            this.pictureBox2.TabStop = false;
             // 
-            // pnlOptions
+            // pcSchedule
             // 
-            this.pnlOptions.BackColor = System.Drawing.Color.RoyalBlue;
-            this.pnlOptions.Controls.Add(this.pnlOptionsMain);
-            this.pnlOptions.Controls.Add(this.pbHide);
-            this.pnlOptions.ForeColor = System.Drawing.Color.Black;
-            this.pnlOptions.Location = new System.Drawing.Point(-2, 818);
-            this.pnlOptions.Name = "pnlOptions";
-            this.pnlOptions.Size = new System.Drawing.Size(1385, 74);
-            this.pnlOptions.TabIndex = 68;
+            this.pcSchedule.BackColor = System.Drawing.Color.Transparent;
+            this.pcSchedule.Image = ((System.Drawing.Image)(resources.GetObject("pcSchedule.Image")));
+            this.pcSchedule.Location = new System.Drawing.Point(616, 3);
+            this.pcSchedule.Name = "pcSchedule";
+            this.pcSchedule.Size = new System.Drawing.Size(76, 64);
+            this.pcSchedule.TabIndex = 17;
+            this.pcSchedule.TabStop = false;
             // 
-            // pnlRightMain
+            // pcBL
             // 
-            this.pnlRightMain.Controls.Add(this.pbExit);
-            this.pnlRightMain.Controls.Add(this.pbHome);
-            this.pnlRightMain.Controls.Add(this.pbLogout);
-            this.pnlRightMain.Location = new System.Drawing.Point(3, 98);
-            this.pnlRightMain.Name = "pnlRightMain";
-            this.pnlRightMain.Size = new System.Drawing.Size(70, 529);
-            this.pnlRightMain.TabIndex = 1;
+            this.pcBL.BackColor = System.Drawing.Color.Transparent;
+            this.pcBL.Image = ((System.Drawing.Image)(resources.GetObject("pcBL.Image")));
+            this.pcBL.Location = new System.Drawing.Point(523, 2);
+            this.pcBL.Name = "pcBL";
+            this.pcBL.Size = new System.Drawing.Size(76, 64);
+            this.pcBL.TabIndex = 16;
+            this.pcBL.TabStop = false;
             // 
-            // pbLogout
+            // pcList
             // 
-            this.pbLogout.Image = ((System.Drawing.Image)(resources.GetObject("pbLogout.Image")));
-            this.pbLogout.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbLogout.Location = new System.Drawing.Point(-3, 65);
-            this.pbLogout.Name = "pbLogout";
-            this.pbLogout.Size = new System.Drawing.Size(76, 76);
-            this.pbLogout.TabIndex = 3;
-            this.pbLogout.TabStop = false;
+            this.pcList.BackColor = System.Drawing.Color.Transparent;
+            this.pcList.Image = ((System.Drawing.Image)(resources.GetObject("pcList.Image")));
+            this.pcList.Location = new System.Drawing.Point(428, 1);
+            this.pcList.Name = "pcList";
+            this.pcList.Size = new System.Drawing.Size(76, 64);
+            this.pcList.TabIndex = 15;
+            this.pcList.TabStop = false;
             // 
-            // pbHome
+            // pcUser
             // 
-            this.pbHome.Image = ((System.Drawing.Image)(resources.GetObject("pbHome.Image")));
-            this.pbHome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbHome.Location = new System.Drawing.Point(-2, 269);
-            this.pbHome.Name = "pbHome";
-            this.pbHome.Size = new System.Drawing.Size(76, 76);
-            this.pbHome.TabIndex = 4;
-            this.pbHome.TabStop = false;
+            this.pcUser.BackColor = System.Drawing.Color.Transparent;
+            this.pcUser.Image = ((System.Drawing.Image)(resources.GetObject("pcUser.Image")));
+            this.pcUser.Location = new System.Drawing.Point(144, 2);
+            this.pcUser.Name = "pcUser";
+            this.pcUser.Size = new System.Drawing.Size(76, 64);
+            this.pcUser.TabIndex = 14;
+            this.pcUser.TabStop = false;
             // 
-            // pbExit
+            // pcAdd
             // 
-            this.pbExit.Image = ((System.Drawing.Image)(resources.GetObject("pbExit.Image")));
-            this.pbExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbExit.Location = new System.Drawing.Point(3, 448);
-            this.pbExit.Name = "pbExit";
-            this.pbExit.Size = new System.Drawing.Size(70, 76);
-            this.pbExit.TabIndex = 5;
-            this.pbExit.TabStop = false;
+            this.pcAdd.BackColor = System.Drawing.Color.Transparent;
+            this.pcAdd.Image = ((System.Drawing.Image)(resources.GetObject("pcAdd.Image")));
+            this.pcAdd.Location = new System.Drawing.Point(37, 2);
+            this.pcAdd.Name = "pcAdd";
+            this.pcAdd.Size = new System.Drawing.Size(76, 64);
+            this.pcAdd.TabIndex = 13;
+            this.pcAdd.TabStop = false;
             // 
-            // pcRight
+            // pcChangePassword
             // 
-            this.pcRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pcRight.Image = ((System.Drawing.Image)(resources.GetObject("pcRight.Image")));
-            this.pcRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pcRight.Location = new System.Drawing.Point(3, 64);
-            this.pcRight.Name = "pcRight";
-            this.pcRight.Size = new System.Drawing.Size(35, 34);
-            this.pcRight.TabIndex = 20;
-            this.pcRight.TabStop = false;
+            this.pcChangePassword.BackColor = System.Drawing.Color.Transparent;
+            this.pcChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("pcChangePassword.Image")));
+            this.pcChangePassword.Location = new System.Drawing.Point(334, 2);
+            this.pcChangePassword.Name = "pcChangePassword";
+            this.pcChangePassword.Size = new System.Drawing.Size(76, 64);
+            this.pcChangePassword.TabIndex = 9;
+            this.pcChangePassword.TabStop = false;
             // 
-            // pnlRightOptions
+            // pbHide
             // 
-            this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
-            this.pnlRightOptions.Controls.Add(this.pcRight);
-            this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1381, 1);
-            this.pnlRightOptions.Name = "pnlRightOptions";
-            this.pnlRightOptions.Size = new System.Drawing.Size(77, 815);
-            this.pnlRightOptions.TabIndex = 122;
+            this.pbHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbHide.Image = ((System.Drawing.Image)(resources.GetObject("pbHide.Image")));
+            this.pbHide.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pbHide.Location = new System.Drawing.Point(1154, 3);
+            this.pbHide.Name = "pbHide";
+            this.pbHide.Size = new System.Drawing.Size(38, 34);
+            this.pbHide.TabIndex = 14;
+            this.pbHide.TabStop = false;
             // 
             // FirmWareHouseDelivery
             // 
@@ -1307,7 +1320,7 @@
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmWareHouseDelivery";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmWareHouseDelivery";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FirmWarehouseDelivery_Load);
@@ -1341,24 +1354,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             this.pnlMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHide)).EndInit();
-            this.pnlOptionsMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcBL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcSchedule)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
-            this.pnlOptions.ResumeLayout(false);
-            this.pnlRightMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHome)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbExit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcRight)).EndInit();
             this.pnlRightOptions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcRight)).EndInit();
+            this.pnlRightMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHome)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogout)).EndInit();
+            this.pnlOptions.ResumeLayout(false);
+            this.pnlOptionsMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSchedule)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcBL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHide)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1430,7 +1443,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtLastCost;
-        private System.Windows.Forms.PictureBox pbHide;
+        private System.Windows.Forms.Panel pnlRightOptions;
+        private System.Windows.Forms.PictureBox pcRight;
+        private System.Windows.Forms.Panel pnlRightMain;
+        private System.Windows.Forms.PictureBox pbExit;
+        private System.Windows.Forms.PictureBox pbHome;
+        private System.Windows.Forms.PictureBox pbLogout;
+        private System.Windows.Forms.Panel pnlOptions;
         private System.Windows.Forms.Panel pnlOptionsMain;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pcSettings;
@@ -1441,12 +1460,6 @@
         private System.Windows.Forms.PictureBox pcUser;
         private System.Windows.Forms.PictureBox pcAdd;
         private System.Windows.Forms.PictureBox pcChangePassword;
-        private System.Windows.Forms.Panel pnlOptions;
-        private System.Windows.Forms.Panel pnlRightMain;
-        private System.Windows.Forms.PictureBox pbExit;
-        private System.Windows.Forms.PictureBox pbHome;
-        private System.Windows.Forms.PictureBox pbLogout;
-        private System.Windows.Forms.PictureBox pcRight;
-        private System.Windows.Forms.Panel pnlRightOptions;
+        private System.Windows.Forms.PictureBox pbHide;
     }
 }

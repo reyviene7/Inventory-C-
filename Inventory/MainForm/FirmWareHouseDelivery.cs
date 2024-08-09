@@ -51,7 +51,7 @@ namespace Inventory.MainForm
             InitializeComponent();
         }
         private void FirmWarehouseDelivery_Load(object sender, EventArgs e)
-        { 
+        {
             PanelInterface.SetFullScreen(this);
             PanelInterface.SetMainPanelPosition(this, pnlMain);
             PanelInterface.SetOptionsPanelPosition(this, pnlOptions, pbHide);
@@ -62,10 +62,30 @@ namespace Inventory.MainForm
             _wer = true;
             ShowWarehouse();
         }
-
+        private void Options_Tick(object sender, EventArgs e)
+        {
+            PanelInterface.OptionTick(this, pnlOptions);
+        }
+        private void RightOptions_Tick(object sender, EventArgs e)
+        {
+            PanelInterface.RightOptionTick(this, pnlRightOptions);
+        }
         private void FirmWareHouseDelivery_MouseMove(object sender, MouseEventArgs e)
         {
             PanelInterface.MouseMOve(this, pnlRightOptions, e);
+        }
+        private void pbExit_Click(object sender, EventArgs e)
+        {
+            PopupNotification.PopUpMessageExit();
+        } 
+        private void pbLogout_Click(object sender, EventArgs e)
+        {
+            PopupNotification.PopUpMassageLogOff();
+        }
+        private void pbHome_Click(object sender, EventArgs e)
+        {
+            Main.Show();
+            Close();
         }
         private void bntADD_Click(object sender, EventArgs e)
         {
@@ -1164,7 +1184,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-
+ 
         private void DeleteData()
         {
             var deliverId = int.Parse(txtDeliveryID.Text);
