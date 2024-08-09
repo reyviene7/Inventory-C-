@@ -275,7 +275,7 @@ namespace Inventory.MainForm
             txtBranchTel.Clear();
             txtBranchMobile.Clear();
             txtBranchFax.Clear();
-            cmbHED.Text = "";
+            //cmbHED.Text = "";
         }
         private void CleArInput()
         {
@@ -286,7 +286,7 @@ namespace Inventory.MainForm
             txtBranchTel.Clear();
             txtBranchMobile.Clear();
             txtBranchFax.Clear();
-            cmbHED.Text = "";
+            //cmbHED.Text = "";
         }
 
         private void DimInput()
@@ -299,7 +299,7 @@ namespace Inventory.MainForm
             txtBranchTel.BackColor = Color.DimGray;
             txtBranchMobile.BackColor = Color.DimGray;
             txtBranchFax.BackColor = Color.DimGray;
-            cmbHED.BackColor = Color.DimGray;
+            //cmbHED.BackColor = Color.DimGray;
             dkpDateRegister.BackColor = Color.DimGray;
         }
 
@@ -313,7 +313,7 @@ namespace Inventory.MainForm
             txtBranchTel.BackColor = Color.White;
             txtBranchMobile.BackColor = Color.White;
             txtBranchFax.BackColor = Color.White;
-            cmbHED.BackColor = Color.White;
+            //cmbHED.BackColor = Color.White;
 
         }
 
@@ -327,7 +327,7 @@ namespace Inventory.MainForm
             txtBranchTel.Enabled = true;
             txtBranchMobile.Enabled = true;
             txtBranchFax.Enabled = true;
-            cmbHED.Enabled = true;
+            //cmbHED.Enabled = true;
             dkpDateRegister.Enabled = true;
         }
 
@@ -341,7 +341,7 @@ namespace Inventory.MainForm
             txtBranchTel.Enabled = false;
             txtBranchMobile.Enabled = false;
             txtBranchFax.Enabled = false;
-            cmbHED.Enabled = false;
+            //cmbHED.Enabled = false;
             dkpDateRegister.Enabled = false;
         }
 
@@ -611,20 +611,21 @@ namespace Inventory.MainForm
                     if (id.Length > 0)
                     {
 
-                    txtBranchId.Text = ((GridView)sender).GetFocusedRowCellValue("BranchId").ToString();
-                    txtBranchCode.Text = ((GridView)sender).GetFocusedRowCellValue("BranchCode").ToString();
-                    txtBranchName.Text = ((GridView)sender).GetFocusedRowCellValue("BranchDetails").ToString();
-                    txtBranchBarangay.Text = ((GridView)sender).GetFocusedRowCellValue("BranchAddress").ToString();
-                    cmbProvincialAddress.Text = ((GridView)sender).GetFocusedRowCellValue("ProvincialAddress").ToString();
-                    txtBranchTel.Text = ((GridView)sender).GetFocusedRowCellValue("BranchNumber").ToString();
-                    txtBranchMobile.Text = ((GridView)sender).GetFocusedRowCellValue("BranchMobile").ToString();
-                    txtBranchFax.Text = ((GridView)sender).GetFocusedRowCellValue("BranchFax").ToString();
-                    cmbHED.Text = ((GridView)sender).GetFocusedRowCellValue("EmployeeId").ToString();
-                    dkpDateRegister.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DateRegister");
+                        txtBranchId.Text = ((GridView)sender).GetFocusedRowCellValue("BranchId").ToString();
+                        txtBranchCode.Text = ((GridView)sender).GetFocusedRowCellValue("BranchCode").ToString();
+                        txtBranchName.Text = ((GridView)sender).GetFocusedRowCellValue("BranchDetails").ToString();
+                        txtBranchBarangay.Text = ((GridView)sender).GetFocusedRowCellValue("BranchAddress").ToString();
+                        cmbProvincialAddress.Text = ((GridView)sender).GetFocusedRowCellValue("ProvincialAddress").ToString();
+                        txtBranchTel.Text = ((GridView)sender).GetFocusedRowCellValue("BranchNumber").ToString();
+                        txtBranchMobile.Text = ((GridView)sender).GetFocusedRowCellValue("BranchMobile").ToString();
+                        txtBranchFax.Text = ((GridView)sender).GetFocusedRowCellValue("BranchFax").ToString();
+                        //cmbHED.Text = ((GridView)sender).GetFocusedRowCellValue("EmployeeId").ToString();
+                        dkpDateRegister.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DateRegister");
+                    }
                 }
                 catch (Exception ex)
                 {
-                     Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.ToString());
                 }
            
             //txtBID.Text = GetSettings.CurrentCell(gridBranch, "Id");
@@ -717,14 +718,14 @@ namespace Inventory.MainForm
 
         private void txtFAX_Leave(object sender, EventArgs e)
         {
-            InputManipulation.InputEmpLeave(txtBranchFax, cmbHED, "Branch Fax Number", Messages.TitleBranch);
+            //InputManipulation.InputEmpLeave(txtBranchFax, cmbHED, "Branch Fax Number", Messages.TitleBranch);
         }
 
         private void txtFAX_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputEmpLeave(txtBranchFax, cmbHED, "Branch Fax Number", Messages.TitleBranch);
+                //InputManipulation.InputEmpLeave(txtBranchFax, cmbHED, "Branch Fax Number", Messages.TitleBranch);
             }
         }
 
@@ -732,14 +733,14 @@ namespace Inventory.MainForm
 
         private void cmbHED_Leave(object sender, EventArgs e)
         {
-            InputManipulation.InputEmpLeave(cmbHED, dkpDateRegister, "Branch Head", Messages.TitleBranch);
+            //InputManipulation.InputEmpLeave(cmbHED, dkpDateRegister, "Branch Head", Messages.TitleBranch);
         }
 
         private void cmbHED_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputEmpLeave(cmbHED, dkpDateRegister, "Branch Head", Messages.TitleBranch);
+                //InputManipulation.InputEmpLeave(cmbHED, dkpDateRegister, "Branch Head", Messages.TitleBranch);
             }
         }
 
