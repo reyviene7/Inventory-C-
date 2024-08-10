@@ -86,6 +86,7 @@ namespace Inventory.PopupForm
                     {
                         Login.UserId = GetUserId(userName);
                         Login.UserTy = _uTyp;
+                        Login._userName = userName;
                         Login.LoginSuccess = 1;
                         Close();
                     }

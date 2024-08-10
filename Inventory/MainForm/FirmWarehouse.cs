@@ -24,6 +24,7 @@ namespace Inventory.MainForm
         private int _close;
         private readonly int _userId;
         private readonly int _userTyp;
+        private readonly string _userName;
         public string DeliveryBranches
         {
             get { return _deliveryBranches; }
@@ -67,7 +68,7 @@ namespace Inventory.MainForm
                 _extInvent = value;
                 if (_extInvent)
                     Close();
-                var main = new FirmMain(_userId, _userTyp);
+                var main = new FirmMain(_userId, _userTyp, _userName);
                 main.Show();
             }
         }
@@ -84,12 +85,14 @@ namespace Inventory.MainForm
             }
         }
         private bool _add, _edt, _del;
+      
         public FirmMain Main { get; set; }
-        public FirmWarehouse(int userId, int userTy)
+        public FirmWarehouse(int userId, int userTy, string userName)
         {
             _userId = userId;
             _userTyp = userTy;
             InitializeComponent();
+            _userName = userName;   
         }
         private void FirmWarehouseInvetory_Load(object sender, EventArgs e)
         {
