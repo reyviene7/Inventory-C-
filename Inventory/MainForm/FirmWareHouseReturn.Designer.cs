@@ -1016,7 +1016,7 @@
             // 
             this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1296, 1);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1329, 1);
             this.pnlRightOptions.Name = "pnlRightOptions";
             this.pnlRightOptions.Size = new System.Drawing.Size(77, 764);
             this.pnlRightOptions.TabIndex = 129;
@@ -1091,7 +1091,7 @@
             this.pnlOptions.Controls.Add(this.pnlOptionsMain);
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
-            this.pnlOptions.Location = new System.Drawing.Point(-2, 691);
+            this.pnlOptions.Location = new System.Drawing.Point(0, 714);
             this.pnlOptions.Name = "pnlOptions";
             this.pnlOptions.Size = new System.Drawing.Size(1298, 74);
             this.pnlOptions.TabIndex = 131;
@@ -1217,7 +1217,6 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.pnlMain.Controls.Add(this.pnlOptions);
             this.pnlMain.Controls.Add(this.pnlRightOptions);
             this.pnlMain.Controls.Add(this.xCON);
             this.pnlMain.Controls.Add(this.pictureBox1);
@@ -1249,7 +1248,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1414, 865);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmWareHouseReturn";

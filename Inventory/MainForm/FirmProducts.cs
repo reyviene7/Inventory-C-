@@ -292,7 +292,7 @@ namespace Inventory.MainForm
                     Status = x.status_details 
                 });
 
-                splash.ShowWaitForm();
+                //splash.ShowWaitForm();
                 gridControl.DataBindings.Clear();
                 gridControl.DataSource = list;
 
@@ -302,7 +302,7 @@ namespace Inventory.MainForm
                 gridProductList.Columns[2].Width = 290;
                 gridProductList.Columns[3].Width = 100;
                 gridProductList.Columns[4].Width = 100;
-                splash.CloseWaitForm();
+                //splash.CloseWaitForm();
             }
             catch (Exception ex)
             {
@@ -564,7 +564,7 @@ namespace Inventory.MainForm
         private void GenerateCode()
         {
             var lastProductId = FetchUtils.getLastProductId();
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastProductId, "P");
+            var alphaNumeric = new GenerateAlpaNum("P", 3, lastProductId);
             alphaNumeric.Increment();
             txtStockCode.Text = alphaNumeric.ToString();
         }
@@ -576,7 +576,7 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    splash.ShowWaitForm();
+                    //splash.ShowWaitForm();
                     var repository = new Repository<Products>(unWork);
                     var product = new Products()
                     {
@@ -600,7 +600,7 @@ namespace Inventory.MainForm
                     var result = repository.Add(product);
                     if (result > 0)
                     {
-                        splash.ShowWaitForm();
+                        //splash.ShowWaitForm();
                         PopupNotification.PopUpMessages(1,
                             "Product Name: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
                             Messages.TitleSuccessInsert);
@@ -608,7 +608,7 @@ namespace Inventory.MainForm
                     }
                     else
                     {
-                        splash.ShowWaitForm();
+                        //splash.ShowWaitForm();
                         unWork.Rollback();
                     }
 

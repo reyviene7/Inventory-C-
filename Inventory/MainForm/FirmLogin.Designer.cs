@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmLogin));
             this.intWET = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.label3 = new System.Windows.Forms.Label();
-            this.lblVersion = new System.Windows.Forms.Label();
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.DgClock = new CalendarClock.CalendarClock();
@@ -56,33 +55,23 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label3.Location = new System.Drawing.Point(691, 111);
+            this.label3.Location = new System.Drawing.Point(650, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(344, 28);
             this.label3.TabIndex = 98;
             this.label3.Text = "INVENTORY MONITORING SYSTEM";
             // 
-            // lblVersion
-            // 
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.lblVersion.ForeColor = System.Drawing.Color.Black;
-            this.lblVersion.Location = new System.Drawing.Point(736, 65);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(269, 21);
-            this.lblVersion.TabIndex = 97;
-            this.lblVersion.Text = "Authorized Petron Gasul Distributor";
-            // 
             // lblMainTitle
             // 
             this.lblMainTitle.AutoSize = true;
-            this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 30.75F, System.Drawing.FontStyle.Bold);
+            this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(491, 6);
+            this.lblMainTitle.Location = new System.Drawing.Point(517, 29);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(757, 55);
+            this.lblMainTitle.Size = new System.Drawing.Size(615, 86);
             this.lblMainTitle.TabIndex = 96;
-            this.lblMainTitle.Text = "SERVE-ALL MARKETING ENTERPRISES";
+            this.lblMainTitle.Text = "THE WIZARDS INC.";
+            this.lblMainTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label1
             // 
@@ -116,7 +105,7 @@
             this.lblLicense.ForeColor = System.Drawing.Color.Black;
             this.lblLicense.Location = new System.Drawing.Point(53, 694);
             this.lblLicense.Name = "lblLicense";
-            this.lblLicense.Size = new System.Drawing.Size(240, 16);
+            this.lblLicense.Size = new System.Drawing.Size(239, 16);
             this.lblLicense.TabIndex = 94;
             this.lblLicense.Text = "295A10691CD571763D3340413A6F17A";
             // 
@@ -127,17 +116,17 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(108, 674);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 16);
+            this.label2.Size = new System.Drawing.Size(122, 16);
             this.label2.TabIndex = 93;
             this.label2.Text = "Product License:";
             // 
             // imgEmployees
             // 
-            this.imgEmployees.BackColor = System.Drawing.Color.Gray;
-            this.imgEmployees.Image = global::Inventory.Properties.Resources.Logo;
-            this.imgEmployees.Location = new System.Drawing.Point(431, 161);
+            this.imgEmployees.BackColor = System.Drawing.Color.White;
+            this.imgEmployees.Image = ((System.Drawing.Image)(resources.GetObject("imgEmployees.Image")));
+            this.imgEmployees.Location = new System.Drawing.Point(724, 174);
             this.imgEmployees.Name = "imgEmployees";
-            this.imgEmployees.Size = new System.Drawing.Size(887, 302);
+            this.imgEmployees.Size = new System.Drawing.Size(204, 261);
             this.imgEmployees.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgEmployees.TabIndex = 92;
             this.imgEmployees.TabStop = false;
@@ -257,7 +246,6 @@
             this.ClientSize = new System.Drawing.Size(1354, 733);
             this.Controls.Add(this.imgEmployees);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.lblMainTitle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bntONL);
@@ -284,7 +272,6 @@
 
         private System.Windows.Forms.PictureBox imgEmployees;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label lblMainTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bntONL;

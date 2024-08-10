@@ -392,7 +392,7 @@ namespace Inventory.MainForm
         {
             var lastCode = GetLastCode();
             var lastId = GetSettings.GetLastBarcode(lastCode);
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastId, "D");
+            var alphaNumeric = new GenerateAlpaNum("D", 3, lastId);
             alphaNumeric.Increment();
             txtInventoryCode.Text = alphaNumeric.ToString();
         }

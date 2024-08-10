@@ -193,6 +193,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="ServeAll.Core">
+      <HintPath>..\ServeAll.Core\bin\Debug\ServeAll.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -240,7 +243,6 @@
     <Compile Include="Entities\ViewReportWareHousetItem.cs" />
     <Compile Include="Entities\ViewReturnDepot.cs" />
     <Compile Include="Entities\ViewReturnWareHouseDepot.cs" />
-    <Compile Include="Entities\ViewWareHouse.cs" />
     <Compile Include="Entities\WareHouse.cs" />
     <Compile Include="Interface\IDepotDelivery.cs" />
     <Compile Include="Interface\IProductList.cs" />
@@ -309,6 +311,12 @@
     </Compile>
     <Compile Include="MainForm\FirmWarehouse.Designer.cs">
       <DependentUpon>FirmWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FrmBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FrmBranch.Designer.cs">
+      <DependentUpon>FrmBranch.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm\FrmInventory.cs">
       <SubType>Form</SubType>
@@ -381,6 +389,12 @@
     </Compile>
     <Compile Include="PopupForm\FirmPopServer.Designer.cs">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopWarehouses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopWarehouses.Designer.cs">
+      <DependentUpon>FirmPopWarehouses.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -470,6 +484,9 @@
     <EmbeddedResource Include="MainForm\FirmWarehouse.resx">
       <DependentUpon>FirmWarehouse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FrmBranch.resx">
+      <DependentUpon>FrmBranch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FrmInventory.resx">
       <DependentUpon>FrmInventory.cs</DependentUpon>
     </EmbeddedResource>
@@ -505,6 +522,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopServer.resx">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopWarehouses.resx">
+      <DependentUpon>FirmPopWarehouses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -576,16 +596,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ServeAll.Core\ServeAll.Core.csproj">
-      <Project>{D2A26968-BCA8-4332-98E3-4757F1C8D773}</Project>
-      <Name>ServeAll.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

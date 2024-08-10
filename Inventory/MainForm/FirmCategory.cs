@@ -288,14 +288,14 @@ namespace Inventory.MainForm
         private void GenerateCode()
         {
             var lastCategoryId = FetchUtils.getLastCategoryId();
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastCategoryId, "C");
+            var alphaNumeric = new GenerateAlpaNum("C", 3, lastCategoryId);
             alphaNumeric.Increment();
             txtCategoryCode.Text = alphaNumeric.ToString();
         }
         private void GenerateImgCode()
         {
             var lastImageId = FetchUtils.getLastImageId();
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastImageId, "IP");
+            var alphaNumeric = new GenerateAlpaNum("IP", 3, lastImageId);
             alphaNumeric.Increment();
             txtImageCode.Text = alphaNumeric.ToString();
         }

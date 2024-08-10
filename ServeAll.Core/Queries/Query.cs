@@ -3,13 +3,8 @@
     public class Query
     {
         public const string DefaultCode = @"00-00-00";
-        public const string AllBranch = @"select branch_id,
-	                                             branch_code,
-                                                 branch_details,
-                                                 address_id,
-                                                 contact_id,
-                                                 date_register
-                                          from branch;";
+        public const string AllBranch = @"select * FROM view_branch;";
+        public const string AllWarehouse = @"SELECT * FROM view_warehouse";
         public const string AllSpecificBranch = @"SELECT  
                                                  BranchDetails FROM Branch";
         public const string AllSpecificCustomer = @"SELECT Name FROM view_customers";
@@ -153,7 +148,26 @@
 												  ,trade_price 
 												  ,retail_price
 												  ,wholesale
-                                                  ,status
+                                                  ,status_details
+                                                  ,date_register
+                                              FROM view_product";
+
+        public const string AllBindProduct = @"SELECT product_id
+                                                  ,product_code
+                                                  ,product_name
+                                                  ,category_details
+                                                  ,supplier_name
+                                                  ,stock_code
+                                                  ,brand
+                                                  ,model
+                                                  ,made
+                                                  ,serial_number
+                                                  ,tare_weight
+                                                  ,net_weight
+												  ,trade_price 
+												  ,retail_price
+												  ,wholesale
+                                                  ,status_details
                                                   ,date_register
                                               FROM view_product";
 
@@ -162,18 +176,7 @@
         public const string AllViewProducts = "SELECT * FROM view_product";
         public const string AllViewImageProduct = "SELECT * FROM view_image_product";
 
-        public const string AllInventory = @"SELECT     inventory_id, 
-		                                                product_code,
-                                                        product_name,  
-		                                                quantity, 
-                                                        branch_details, 
-		                                                delivery_code, 
-		                                                inventory_code, 
-		                                                retail_price, 
-		                                                on_order, 
-		                                                inventory_date, 
-                                                        status
-                                                FROM view_inventory";
+        public const string AllInventory = @"SELECT * FROM view_inventory";
         public const string AllProductCategory = @"SELECT * FROM view_product_category";
         public const string AllProductStatus = @"SELECT status_id, status FROM product_status";
         public const string AllUsers = @"SELECT user_id,
@@ -235,12 +238,15 @@
         public const string CountAllServiceNumber = "SELECT ServiceNumber FROM Credit";
         //DEPOT
         public const string SelectAllDepot = "SELECT Id, Code, Item, Qty, DeliveryNo, ReceiptNo, Branch, LastCost, OnOrder, Purchase, RefDate, Warranty, Status FROM view_depot ORDER BY Id DESC";
-        public const string SelectAllWareHouse = "SELECT Id, Code, Item, Delivery, Receipt, Qty, Branch, LastCost, OnOrder, Purchase, RefDate, Warranty, Status, DepotId FROM view_warehouse ORDER BY Id DESC";
+        public const string SelectAllWareHouse = "SELECT warehouse_code, warehouse_name, full_address, contact_name, telephone_number, mobile_number, mobile_secondary, email_address, web_url, fax_number FROM view_warehouse ORDER BY warehouse_code ASC;";
         public const string SelectAllBranchDelivery = "SELECT Id, Code, Item, Qty, Delivery, Receipt, Branch, Warranty, Status,RefDate, WareHouseId FROM view_branchdelivery ORDER BY Id DESC";
         public const string SelectAllBranchExcWareH = "SELECT BranchDetails FROM Branch WHERE BranchId NOT IN (SELECT BranchId FROM Branch WHERE BranchDetails = 'Warehouse')";
         public const string SelectAllFingerPrints = "SELECT FingerId, EmployeeId, FingerIndex, FingerBytes FROM Finger ORDER BY FingerIndex DESC";
         public const string SelectAllReturnWareHs = "SELECT return_id, return_code, product_code, return_number, return_quantity, branch_code, destination, return_date, status_id, remarks, inventory_code FROM view_return_warehouse ORDER BY return_id DESC";
         public const string SelectAllProductId = "SELECT product_id FROM view_product_id";
+        public const string SelectAllStockMovement = "SELECT * FROM stock_movement";
+        public const string SelectStockMovementList = "SELECT * FROM view_stock_movement";
+        public const string SelectDeliveryList = "SELECT * FROM view_delivery_list";
         public const string SelectCountReturnNo = "SELECT return_id, return_number FROM view_return_warehouse";
         public const string SelectCountDepotRet = "SELECT ReceiptNo FROM WareHouse";
         public const string SelectCountDepotDel = "SELECT DeliveryNo FROM WareHouse";
@@ -267,7 +273,9 @@
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
-        public const string getLastInventoryQuery = "SELECT COUNT(product_id) as product_id FROM inventory";
+        public const string getLastInventoryQuery = "SELECT MAX(inventory_id) as inventory_id FROM inventory";
+        public const string getLastInventoryCodeQuery = "SELECT MAX(inventory_code) AS inventory_code FROM inventory";
+        public const string getLastInventoryDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM inventory";
         public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
         public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
     }

@@ -3,6 +3,7 @@ using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace ServeAll.Core.Utilities
@@ -343,8 +344,6 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-  
-
         public static int GetLastId()
         {
 
@@ -363,6 +362,66 @@ namespace ServeAll.Core.Utilities
                     return 0;
                 }
             }
+        }
+        public static string GetLastInventoryCode()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Inventory>(unWork);
+                    return repository.SelectAll(Query.getLastInventoryCodeQuery)
+                        .Select(x => x.inventory_code).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return string.Empty;
+                }
+            }
+        }
+        public static string GetLastDeliveryCode()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Inventory>(unWork);
+                    return repository.SelectAll(Query.getLastInventoryDeliveryQuery)
+                        .Select(x => x.delivery_code).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return string.Empty;
+                }
+            }
+        }
+        public static void getProducts()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Products>(unWork);
+                    var query = repository.SelectAll(Query.AllBindProduct).Select(x => x.product_name).Distinct().ToList();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
+        }
+        public static int GetLastBarcode(string barcode)
+        {
+            var parcode = barcode.Split('-')[1];
+            if (barcode.Length <= 0 || parcode.Length <= 0) return 0;
+            var number = Regex.Replace(parcode, @"\D", "");
+            var rt = int.Parse(number);
+            return rt;
         }
     }
 }

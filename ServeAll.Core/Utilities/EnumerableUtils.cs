@@ -88,9 +88,44 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static IEnumerable<T> GetEmptyList<T>()
+        public static IEnumerable<ViewStockMovement> getStockMovementList()
         {
-            return Enumerable.Empty<T>();
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewStockMovement>(unWork);
+                    return repository.SelectAll(Query.SelectStockMovementList)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewStockMovement>();
+                }
+            }
+        }
+
+        public static IEnumerable<ViewDeliveryList> getDeliveryList(string warehouse)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewDeliveryList>(unWork);
+                    return repository.SelectAll(Query.SelectDeliveryList)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    throw;
+                }
+            }
         }
 
         public static IEnumerable<ViewProducts> getProductList()
@@ -165,6 +200,49 @@ namespace ServeAll.Core.Utilities
                 {
                     Console.WriteLine(ex.Message);
                     return GetEmptyList<ViewInventoryList>();
+                }
+            }
+        }
+        public static IEnumerable<ViewInventory> getInventory()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewInventory>(unWork);
+                    return repository.SelectAll(Query.AllInventory)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewInventory>();
+                }
+            }
+        }
+
+        public static IEnumerable<T> GetEmptyList<T>()
+        {
+            return Enumerable.Empty<T>();
+        }
+
+        public static IEnumerable<ViewBranch> GetBranchList()
+        {
+            using (var session = new DalSession())
+            {
+                try
+                {
+                    var unWork = session.UnitofWrk;
+                    unWork.Begin();
+                    var repository = new Repository<ViewBranch>(unWork);
+                    return repository.SelectAll(Query.AllBranch).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewBranch>();
                 }
             }
         }
