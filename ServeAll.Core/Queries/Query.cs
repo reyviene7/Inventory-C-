@@ -279,5 +279,6 @@
         public const string getLastInventoryDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM inventory";
         public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
         public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
+        public const string getLastBranchCodeQuery = "SELECT MAX(branch_code) AS branch_code FROM branch";
     }
 }
