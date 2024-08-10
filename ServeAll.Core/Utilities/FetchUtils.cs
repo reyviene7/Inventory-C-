@@ -415,13 +415,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-        public static int GetLastBarcode(string barcode)
+
+        public static string GetLastBarcode()
         {
-            var parcode = barcode.Split('-')[1];
-            if (barcode.Length <= 0 || parcode.Length <= 0) return 0;
-            var number = Regex.Replace(parcode, @"\D", "");
-            var rt = int.Parse(number);
-            return rt;
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.Branch>(unWork);
+                    return repository.SelectAll(Query.getLastBranchCodeQuery)
+                        .Select(x => x.branch_code).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return string.Empty;
+                }
+            }
         }
     }
 }
