@@ -1,4 +1,5 @@
 ﻿using ServeAll.Core.Entities;
+using ServeAll.Core.Entities.request;
 using ServeAll.Core.Helper;
 using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
@@ -143,6 +144,25 @@ namespace ServeAll.Core.Utilities
                 {
                     Console.WriteLine(ex.Message);
                     return GetEmptyList<ViewProducts>();
+                }
+            }
+        }
+
+        public static IEnumerable<RequestProducts> getProductWarehouseList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<RequestProducts>(unWork);
+                    return repository.SelectAll(Query.AllProductWarehouse).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<RequestProducts>();
                 }
             }
         }
