@@ -10,7 +10,9 @@ using Query = ServeAll.Core.Queries.Query;
 using ServeAll.Core.Repository;
 using Inventory.Config;
 using ServeAll.Core.Utilities;
-using static DevExpress.XtraEditors.Mask.MaskSettings;
+using DevExpress.XtraReports.UI;
+using System.Globalization;
+
 
 namespace Inventory.MainForm
 {
@@ -21,6 +23,7 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _usrTyp;
         private IEnumerable<ViewBranch> listbranch;
+        private int BranchId = 0;
 
         public FirmMain Main
         {
@@ -309,9 +312,14 @@ namespace Inventory.MainForm
             txtBranchCode.BackColor = Color.White;
             txtBranchName.BackColor = Color.White;
             txtBranchBarangay.BackColor = Color.White;
+            txtBranchStreet.BackColor = Color.White;
+            txtBranchCity.BackColor = Color.White;
             cmbProvincialAddress.BackColor = Color.White;
+            txtBranchZip.BackColor = Color.White;
+            txtBranchCountry.BackColor = Color.White;
             txtBranchTel.BackColor = Color.White;
             txtBranchMobile.BackColor = Color.White;
+            txtBranchEmail.BackColor = Color.White;
             txtBranchFax.BackColor = Color.White;
             //cmbHED.BackColor = Color.White;
 
@@ -610,28 +618,33 @@ namespace Inventory.MainForm
                     var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
                     if (id.Length > 0)
                     {
-
-                        txtBranchId.Text = ((GridView)sender).GetFocusedRowCellValue("BranchId").ToString();
-                        txtBranchCode.Text = ((GridView)sender).GetFocusedRowCellValue("BranchCode").ToString();
-                        txtBranchName.Text = ((GridView)sender).GetFocusedRowCellValue("BranchDetails").ToString();
-                        txtBranchBarangay.Text = ((GridView)sender).GetFocusedRowCellValue("BranchAddress").ToString();
-                        cmbProvincialAddress.Text = ((GridView)sender).GetFocusedRowCellValue("ProvincialAddress").ToString();
-                        txtBranchTel.Text = ((GridView)sender).GetFocusedRowCellValue("BranchNumber").ToString();
-                        txtBranchMobile.Text = ((GridView)sender).GetFocusedRowCellValue("BranchMobile").ToString();
-                        txtBranchFax.Text = ((GridView)sender).GetFocusedRowCellValue("BranchFax").ToString();
-                        //cmbHED.Text = ((GridView)sender).GetFocusedRowCellValue("EmployeeId").ToString();
-                        dkpDateRegister.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DateRegister");
+                        BranchId = int.Parse(id);
+                        var ent = searchBranchId(BranchId);
+                        txtBranchId.Text = ent.branch_id.ToString();
+                        txtBranchCode.Text = ent.branch_code;
+                        txtBranchName.Text = ent.branch_details;
+                        txtBranchBarangay.Text = ent.barangay;
+                        txtBranchStreet.Text = ent.street;
+                        txtBranchCity.Text = ent.city;
+                        cmbProvincialAddress.Text = ent.province;
+                        txtBranchCountry.Text = ent.country;
+                        txtBranchTel.Text = ent.telephone_number;
+                        txtBranchMobile.Text = ent.mobile_number;
+                        txtBranchEmail.Text = ent.email_address;
+                        txtBranchFax.Text = ent.fax_number;
                     }
+
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                 }
-           
-            //txtBID.Text = GetSettings.CurrentCell(gridBranch, "Id");
         }
 
-        
+        private ViewBranch searchBranchId(int id)
+        {
+            return listbranch.FirstOrDefault(Branch => Branch.branch_id == id);
+        }
 
         //INPUT MANIPULATION
         private void txtBAC_Leave(object sender, EventArgs e)

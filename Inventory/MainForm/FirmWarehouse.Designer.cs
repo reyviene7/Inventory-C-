@@ -42,9 +42,9 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grdHIS = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl1 = new DevExpress.XtraEditors.DesignerGroupControl();
             this.label15 = new System.Windows.Forms.Label();
-            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl3 = new DevExpress.XtraEditors.DesignerGroupControl();
             this.gDEL = new DevExpress.XtraGrid.GridControl();
             this.gridDEL = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -58,7 +58,7 @@
             this.bntAdd = new System.Windows.Forms.Button();
             this.xCON = new DevExpress.XtraTab.XtraTabControl();
             this.tabINV = new DevExpress.XtraTab.XtraTabPage();
-            this.GbPersonal = new DevExpress.XtraEditors.GroupControl();
+            this.GbPersonal = new DevExpress.XtraEditors.DesignerGroupControl();
             this.txtWarehouseQty = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDepotControl = new System.Windows.Forms.TextBox();
@@ -82,12 +82,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtWarehouseCode = new System.Windows.Forms.TextBox();
-            this.gbCON = new DevExpress.XtraEditors.GroupControl();
+            this.gbCON = new DevExpress.XtraEditors.DesignerGroupControl();
             this.lblBarcode = new System.Windows.Forms.Label();
             this.txtWarehouseId = new System.Windows.Forms.TextBox();
             this.txtPIR = new System.Windows.Forms.TextBox();
             this.tabSEL = new DevExpress.XtraTab.XtraTabPage();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl2 = new DevExpress.XtraEditors.DesignerGroupControl();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.bntClear = new System.Windows.Forms.Button();
             this.bntCancel = new System.Windows.Forms.Button();
@@ -1289,7 +1289,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraGrid.Views.Grid.GridView grdHIS;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.DesignerGroupControl groupControl1;
         private System.Windows.Forms.TextBox textBox23;
         private DevExpress.XtraTab.XtraTabPage tabHIS;
         private System.Windows.Forms.TextBox txtPRI;
@@ -1297,7 +1297,7 @@
         private System.Windows.Forms.Button bntAdd;
         private DevExpress.XtraTab.XtraTabControl xCON;
         private DevExpress.XtraTab.XtraTabPage tabINV;
-        private DevExpress.XtraEditors.GroupControl GbPersonal;
+        private DevExpress.XtraEditors.DesignerGroupControl GbPersonal;
         private System.Windows.Forms.ComboBox cmbWarehouseBranch;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -1316,12 +1316,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtWarehouseCode;
-        private DevExpress.XtraEditors.GroupControl gbCON;
+        private DevExpress.XtraEditors.DesignerGroupControl gbCON;
         private System.Windows.Forms.Label lblBarcode;
         private System.Windows.Forms.TextBox txtWarehouseId;
         private System.Windows.Forms.TextBox txtPIR;
         private DevExpress.XtraTab.XtraTabPage tabSEL;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.DesignerGroupControl groupControl2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button bntClear;
         private System.Windows.Forms.Button bntCancel;
@@ -1342,7 +1342,7 @@
         private System.Windows.Forms.TextBox txtItemPrice;
         private System.Windows.Forms.TextBox txtWarehouseQty;
         private System.Windows.Forms.Label label15;
-        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.DesignerGroupControl groupControl3;
         private DevExpress.XtraGrid.GridControl gDEL;
         private DevExpress.XtraGrid.Views.Grid.GridView gridDEL;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
