@@ -299,6 +299,44 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ViewProductList> getWarehouseProduct()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewProductList>(unWork);
+                    return repository.SelectAll(Query.AllWarehouseProduct)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewProductList>();
+                }
+            }
+        }
+        public static IEnumerable<ViewSalesPart> getSalesParticular()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewSalesPart>(unWork);
+                    return repository.SelectAll(Query.AllSalesPart)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewSalesPart>();
+                }
+            }
+        }
         public static IEnumerable<ViewWareHouseInventory> getWareHouseInventoryList()
         {
             using (var session = new DalSession())

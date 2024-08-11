@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInventory));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlRightOptions = new System.Windows.Forms.Panel();
             this.pcRight = new System.Windows.Forms.PictureBox();
             this.pnlRightMain = new System.Windows.Forms.Panel();
@@ -80,16 +84,31 @@
             this.txtPIR = new System.Windows.Forms.TextBox();
             this.tabHistory = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.dataGridProducts = new System.Windows.Forms.DataGridView();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.tabSaleHis = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridSales = new System.Windows.Forms.DataGridView();
             this.bntClear = new System.Windows.Forms.Button();
             this.bntAdd = new System.Windows.Forms.Button();
             this.bntCancel = new System.Windows.Forms.Button();
             this.bntUpdate = new System.Windows.Forms.Button();
             this.bntSave = new System.Windows.Forms.Button();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.pnlOptions = new System.Windows.Forms.Panel();
+            this.pnlOptionsMain = new System.Windows.Forms.Panel();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.pcSettings = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pcSchedule = new System.Windows.Forms.PictureBox();
+            this.pcBL = new System.Windows.Forms.PictureBox();
+            this.pcList = new System.Windows.Forms.PictureBox();
+            this.pcUser = new System.Windows.Forms.PictureBox();
+            this.pcAdd = new System.Windows.Forms.PictureBox();
+            this.pcChangePassword = new System.Windows.Forms.PictureBox();
+            this.pbHide = new System.Windows.Forms.PictureBox();
+            this.Options = new System.Windows.Forms.Timer(this.components);
             this.pnlRightOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRight)).BeginInit();
             this.pnlRightMain.SuspendLayout();
@@ -116,10 +135,24 @@
             this.tabHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
             this.tabSaleHis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.pnlOptions.SuspendLayout();
+            this.pnlOptionsMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSchedule)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcBL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHide)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlRightOptions
@@ -127,7 +160,7 @@
             this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
             this.pnlRightOptions.Controls.Add(this.pcRight);
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1353, 1);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1307, 1);
             this.pnlRightOptions.Name = "pnlRightOptions";
             this.pnlRightOptions.Size = new System.Drawing.Size(77, 765);
             this.pnlRightOptions.TabIndex = 78;
@@ -157,7 +190,7 @@
             // 
             this.pbExit.Image = ((System.Drawing.Image)(resources.GetObject("pbExit.Image")));
             this.pbExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbExit.Location = new System.Drawing.Point(3, 448);
+            this.pbExit.Location = new System.Drawing.Point(-1, 448);
             this.pbExit.Name = "pbExit";
             this.pbExit.Size = new System.Drawing.Size(70, 76);
             this.pbExit.TabIndex = 5;
@@ -270,7 +303,7 @@
             this.xInventory.Location = new System.Drawing.Point(186, 3);
             this.xInventory.Name = "xInventory";
             this.xInventory.SelectedTabPage = this.tabInventory;
-            this.xInventory.Size = new System.Drawing.Size(1111, 764);
+            this.xInventory.Size = new System.Drawing.Size(1111, 758);
             this.xInventory.TabIndex = 228;
             this.xInventory.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabInventory,
@@ -283,7 +316,7 @@
             this.tabInventory.Appearance.PageClient.Options.UseBackColor = true;
             this.tabInventory.Controls.Add(this.GbPersonal);
             this.tabInventory.Name = "tabInventory";
-            this.tabInventory.Size = new System.Drawing.Size(1109, 739);
+            this.tabInventory.Size = new System.Drawing.Size(1109, 733);
             this.tabInventory.Text = "Inventory Details";
             // 
             // GbPersonal
@@ -320,7 +353,7 @@
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1109, 739);
+            this.GbPersonal.Size = new System.Drawing.Size(1109, 733);
             this.GbPersonal.TabIndex = 173;
             // 
             // gBAL
@@ -798,7 +831,7 @@
             // 
             this.tabHistory.Controls.Add(this.groupControl1);
             this.tabHistory.Name = "tabHistory";
-            this.tabHistory.Size = new System.Drawing.Size(1109, 739);
+            this.tabHistory.Size = new System.Drawing.Size(1109, 733);
             this.tabHistory.Text = "Product History";
             // 
             // groupControl1
@@ -806,14 +839,46 @@
             this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl1.Controls.Add(this.dataGridProducts);
             this.groupControl1.Controls.Add(this.textBox23);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1109, 739);
+            this.groupControl1.Size = new System.Drawing.Size(1109, 733);
             this.groupControl1.TabIndex = 174;
+            // 
+            // dataGridProducts
+            // 
+            this.dataGridProducts.AllowUserToAddRows = false;
+            this.dataGridProducts.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridProducts.ColumnHeadersHeight = 30;
+            this.dataGridProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LemonChiffon;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridProducts.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridProducts.EnableHeadersVisualStyles = false;
+            this.dataGridProducts.Location = new System.Drawing.Point(3, 19);
+            this.dataGridProducts.Name = "dataGridProducts";
+            this.dataGridProducts.RowHeadersVisible = false;
+            this.dataGridProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridProducts.Size = new System.Drawing.Size(1103, 711);
+            this.dataGridProducts.TabIndex = 110;
             // 
             // textBox23
             // 
@@ -832,7 +897,7 @@
             // 
             this.tabSaleHis.Controls.Add(this.groupControl2);
             this.tabSaleHis.Name = "tabSaleHis";
-            this.tabSaleHis.Size = new System.Drawing.Size(1109, 739);
+            this.tabSaleHis.Size = new System.Drawing.Size(1109, 733);
             this.tabSaleHis.Text = "Sales History";
             // 
             // groupControl2
@@ -841,12 +906,13 @@
             this.groupControl2.Appearance.Options.UseBackColor = true;
             this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.groupControl2.Controls.Add(this.textBox1);
+            this.groupControl2.Controls.Add(this.dataGridSales);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1109, 739);
+            this.groupControl2.Size = new System.Drawing.Size(1109, 733);
             this.groupControl2.TabIndex = 175;
             // 
             // textBox1
@@ -861,6 +927,37 @@
             this.textBox1.Size = new System.Drawing.Size(10, 10);
             this.textBox1.TabIndex = 109;
             this.textBox1.Visible = false;
+            // 
+            // dataGridSales
+            // 
+            this.dataGridSales.AllowUserToAddRows = false;
+            this.dataGridSales.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridSales.ColumnHeadersHeight = 30;
+            this.dataGridSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LemonChiffon;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridSales.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridSales.EnableHeadersVisualStyles = false;
+            this.dataGridSales.Location = new System.Drawing.Point(3, 19);
+            this.dataGridSales.Name = "dataGridSales";
+            this.dataGridSales.RowHeadersVisible = false;
+            this.dataGridSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridSales.Size = new System.Drawing.Size(1103, 711);
+            this.dataGridSales.TabIndex = 111;
             // 
             // bntClear
             // 
@@ -889,7 +986,7 @@
             this.bntAdd.Name = "bntAdd";
             this.bntAdd.Size = new System.Drawing.Size(91, 104);
             this.bntAdd.TabIndex = 229;
-            this.bntAdd.Text = "ADD";
+            this.bntAdd.Text = "ACCEPT";
             this.bntAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntAdd.UseVisualStyleBackColor = false;
             this.bntAdd.Click += new System.EventHandler(this.bntADD_Click);
@@ -948,12 +1045,147 @@
             // 
             this.gridView1.Name = "gridView1";
             // 
+            // pnlOptions
+            // 
+            this.pnlOptions.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlOptions.Controls.Add(this.pnlOptionsMain);
+            this.pnlOptions.Controls.Add(this.pbHide);
+            this.pnlOptions.ForeColor = System.Drawing.Color.Black;
+            this.pnlOptions.Location = new System.Drawing.Point(3, 772);
+            this.pnlOptions.Name = "pnlOptions";
+            this.pnlOptions.Size = new System.Drawing.Size(1298, 74);
+            this.pnlOptions.TabIndex = 228;
+            // 
+            // pnlOptionsMain
+            // 
+            this.pnlOptionsMain.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlOptionsMain.Controls.Add(this.pictureBox17);
+            this.pnlOptionsMain.Controls.Add(this.pcSettings);
+            this.pnlOptionsMain.Controls.Add(this.pictureBox1);
+            this.pnlOptionsMain.Controls.Add(this.pcSchedule);
+            this.pnlOptionsMain.Controls.Add(this.pcBL);
+            this.pnlOptionsMain.Controls.Add(this.pcList);
+            this.pnlOptionsMain.Controls.Add(this.pcUser);
+            this.pnlOptionsMain.Controls.Add(this.pcAdd);
+            this.pnlOptionsMain.Controls.Add(this.pcChangePassword);
+            this.pnlOptionsMain.Location = new System.Drawing.Point(19, 4);
+            this.pnlOptionsMain.Name = "pnlOptionsMain";
+            this.pnlOptionsMain.Size = new System.Drawing.Size(893, 67);
+            this.pnlOptionsMain.TabIndex = 21;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
+            this.pictureBox17.Location = new System.Drawing.Point(806, 3);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox17.TabIndex = 59;
+            this.pictureBox17.TabStop = false;
+            // 
+            // pcSettings
+            // 
+            this.pcSettings.BackColor = System.Drawing.Color.Transparent;
+            this.pcSettings.Image = ((System.Drawing.Image)(resources.GetObject("pcSettings.Image")));
+            this.pcSettings.Location = new System.Drawing.Point(714, 3);
+            this.pcSettings.Name = "pcSettings";
+            this.pcSettings.Size = new System.Drawing.Size(76, 61);
+            this.pcSettings.TabIndex = 58;
+            this.pcSettings.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(241, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pcSchedule
+            // 
+            this.pcSchedule.BackColor = System.Drawing.Color.Transparent;
+            this.pcSchedule.Image = ((System.Drawing.Image)(resources.GetObject("pcSchedule.Image")));
+            this.pcSchedule.Location = new System.Drawing.Point(616, 3);
+            this.pcSchedule.Name = "pcSchedule";
+            this.pcSchedule.Size = new System.Drawing.Size(76, 64);
+            this.pcSchedule.TabIndex = 17;
+            this.pcSchedule.TabStop = false;
+            // 
+            // pcBL
+            // 
+            this.pcBL.BackColor = System.Drawing.Color.Transparent;
+            this.pcBL.Image = ((System.Drawing.Image)(resources.GetObject("pcBL.Image")));
+            this.pcBL.Location = new System.Drawing.Point(523, 2);
+            this.pcBL.Name = "pcBL";
+            this.pcBL.Size = new System.Drawing.Size(76, 64);
+            this.pcBL.TabIndex = 16;
+            this.pcBL.TabStop = false;
+            // 
+            // pcList
+            // 
+            this.pcList.BackColor = System.Drawing.Color.Transparent;
+            this.pcList.Image = ((System.Drawing.Image)(resources.GetObject("pcList.Image")));
+            this.pcList.Location = new System.Drawing.Point(428, 1);
+            this.pcList.Name = "pcList";
+            this.pcList.Size = new System.Drawing.Size(76, 64);
+            this.pcList.TabIndex = 15;
+            this.pcList.TabStop = false;
+            // 
+            // pcUser
+            // 
+            this.pcUser.BackColor = System.Drawing.Color.Transparent;
+            this.pcUser.Image = ((System.Drawing.Image)(resources.GetObject("pcUser.Image")));
+            this.pcUser.Location = new System.Drawing.Point(144, 2);
+            this.pcUser.Name = "pcUser";
+            this.pcUser.Size = new System.Drawing.Size(76, 64);
+            this.pcUser.TabIndex = 14;
+            this.pcUser.TabStop = false;
+            // 
+            // pcAdd
+            // 
+            this.pcAdd.BackColor = System.Drawing.Color.Transparent;
+            this.pcAdd.Image = ((System.Drawing.Image)(resources.GetObject("pcAdd.Image")));
+            this.pcAdd.Location = new System.Drawing.Point(37, 2);
+            this.pcAdd.Name = "pcAdd";
+            this.pcAdd.Size = new System.Drawing.Size(76, 64);
+            this.pcAdd.TabIndex = 13;
+            this.pcAdd.TabStop = false;
+            // 
+            // pcChangePassword
+            // 
+            this.pcChangePassword.BackColor = System.Drawing.Color.Transparent;
+            this.pcChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("pcChangePassword.Image")));
+            this.pcChangePassword.Location = new System.Drawing.Point(334, 2);
+            this.pcChangePassword.Name = "pcChangePassword";
+            this.pcChangePassword.Size = new System.Drawing.Size(76, 64);
+            this.pcChangePassword.TabIndex = 9;
+            this.pcChangePassword.TabStop = false;
+            // 
+            // pbHide
+            // 
+            this.pbHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbHide.Image = ((System.Drawing.Image)(resources.GetObject("pbHide.Image")));
+            this.pbHide.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pbHide.Location = new System.Drawing.Point(1154, 3);
+            this.pbHide.Name = "pbHide";
+            this.pbHide.Size = new System.Drawing.Size(38, 34);
+            this.pbHide.TabIndex = 14;
+            this.pbHide.TabStop = false;
+            // 
+            // Options
+            // 
+            this.Options.Interval = 1;
+            this.Options.Tick += new System.EventHandler(this.Options_Tick);
+            // 
             // FrmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1480, 883);
+            this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -994,11 +1226,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).EndInit();
             this.tabSaleHis.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.pnlOptions.ResumeLayout(false);
+            this.pnlOptionsMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSchedule)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcBL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHide)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1065,5 +1311,20 @@
         private System.Windows.Forms.Button bntCancel;
         private System.Windows.Forms.Button bntUpdate;
         private System.Windows.Forms.Button bntSave;
+        private System.Windows.Forms.DataGridView dataGridProducts;
+        private System.Windows.Forms.Panel pnlOptions;
+        private System.Windows.Forms.Panel pnlOptionsMain;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.PictureBox pcSettings;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pcSchedule;
+        private System.Windows.Forms.PictureBox pcBL;
+        private System.Windows.Forms.PictureBox pcList;
+        private System.Windows.Forms.PictureBox pcUser;
+        private System.Windows.Forms.PictureBox pcAdd;
+        private System.Windows.Forms.PictureBox pcChangePassword;
+        private System.Windows.Forms.PictureBox pbHide;
+        private System.Windows.Forms.Timer Options;
+        private System.Windows.Forms.DataGridView dataGridSales;
     }
 }

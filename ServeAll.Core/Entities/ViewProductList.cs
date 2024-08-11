@@ -6,10 +6,10 @@ namespace ServeAll.Core.Entities
     public class ViewProductList
     {
         [Key]
-        public int ProductId { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
-        public decimal RetailPrice { get; set; }
-        public string Status { get; set; }
+        public int product_id { get; set; }
+        public string product_code { get; set; }
+        public string product_name { get; set; }
+        public decimal trade_price { get; set; }
+        public decimal retail_price { get; set; }
     }
 }

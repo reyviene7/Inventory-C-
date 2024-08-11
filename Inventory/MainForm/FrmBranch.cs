@@ -38,6 +38,7 @@ namespace Inventory.MainForm
 
         private void FrmBranch_Load(object sender, EventArgs e)
         {
+
             PanelInterface.SetFullScreen(this);
             PanelInterface.SetMainPanelPosition(this, pnlMain);
             PanelInterface.SetOptionsPanelPosition(this, pnlOptions, pbHide);
@@ -48,11 +49,20 @@ namespace Inventory.MainForm
             BindBranch();
         }
 
+        private void BindBranchClear()
+        {
+            gCON.DataBindings.Clear();
+            gCON.DataSource = null;
+            gCON.DataSource = "";
+            gridBranch.Columns.Clear();
+        }
         private void BindBranch()
         {
+
             gCON.Update();
             try
             {
+
                 var list = listbranch.Select(x => new
                 {
                     Id = x.branch_id,
@@ -70,7 +80,6 @@ namespace Inventory.MainForm
                     Date = x.date_register
                 });
 
-                gCON.DataBindings.Clear();
                 gCON.DataSource = list;
 
 
@@ -112,7 +121,7 @@ namespace Inventory.MainForm
         private void bntADD_Click(object sender, EventArgs e)
         {
             ButAdd();
-           
+
         }
 
         private void bntUPD_Click(object sender, EventArgs e)
@@ -122,8 +131,9 @@ namespace Inventory.MainForm
 
         private void bntSAV_Click(object sender, EventArgs e)
         {
+            BindBranchClear();
             ButSav();
-           
+
         }
 
         private void bntCLR_Click(object sender, EventArgs e)
@@ -141,12 +151,12 @@ namespace Inventory.MainForm
             WhtInput();
             var que =
                 PopupNotification.PopUpMessageQuestion(
-                    "Are you sure you want to Delete Branch Name: " + txtBranchName.Text.Trim(' ')+"?", "Branch Details");
+                    "Are you sure you want to Delete Branch Name: " + txtBranchName.Text.Trim(' ') + "?", "Branch Details");
             if (que)
             {
                 ButDel();
             }
-            else { ButCan();}
+            else { ButCan(); }
         }
 
         private void bntHOM_Click(object sender, EventArgs e)
@@ -158,7 +168,7 @@ namespace Inventory.MainForm
         private void pbLogout_Click(object sender, EventArgs e)
         {
             var que = PopupNotification.PopUpMassageLogOff();
-            if(que <= 0)return;
+            if (que <= 0) return;
             var log = new FirmLogin();
             log.Show();
             Close();
@@ -419,7 +429,7 @@ namespace Inventory.MainForm
                 DimInput();
                 CleInput();
                 DisInput();
-                BindBranch();
+
             }
             if (_add == false && _edt && _del == false)
             {
@@ -428,20 +438,21 @@ namespace Inventory.MainForm
                 DimInput();
                 CleInput();
                 DisInput();
-                BindBranch();
+
             }
-            if (_add == false && _edt==false && _del)
+            if (_add == false && _edt == false && _del)
             {
                 DataDelete();
                 ButtonSav();
                 DimInput();
                 CleInput();
                 DisInput();
-                BindBranch();
+
             }
             _add = false;
             _edt = false;
             _del = false;
+            BindBranch();
         }
 
         private void ButClr()
@@ -450,7 +461,7 @@ namespace Inventory.MainForm
             WhtInput();
             CleInput();
             EnbInput();
-           
+
         }
 
         private void ButCan()
@@ -459,7 +470,7 @@ namespace Inventory.MainForm
             DimInput();
             CleInput();
             DisInput();
-           
+
         }
 
         private void pcAdd_Click(object sender, EventArgs e)
@@ -614,7 +625,7 @@ namespace Inventory.MainForm
                         address.barangay = txtBranchBarangay.Text;
                         address.street = txtBranchStreet.Text;
                         address.city = txtBranchCity.Text;
-                        address.province = cmbProvincialAddress.Text; 
+                        address.province = cmbProvincialAddress.Text;
                         address.zip_code = txtBranchZip.Text;
 
                         if (branch.address_id > 0)
@@ -699,7 +710,7 @@ namespace Inventory.MainForm
 
                     unWork.Rollback();
                     PopupNotification.PopUpMessages(0, Messages.ErrorDelete + Messages.TableBranch + Messages.ErrorOccurred, Messages.TitleFialedDelete);
-                    
+
                 }
             }
         }
@@ -710,14 +721,14 @@ namespace Inventory.MainForm
             bntCAN.Enabled = true;
         }
 
-      
+
 
         private void gridBranch_LostFocus(object sender, EventArgs e)
         {
             DimInput();
         }
 
-        
+
         private void gridBranch_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (gridBranch.RowCount > 0)

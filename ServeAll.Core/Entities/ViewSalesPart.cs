@@ -3,21 +3,21 @@ using Dapper.Contrib.Extensions;
 
 namespace ServeAll.Core.Entities
 {
-    [Table("view_SalesPart")]
+    [Table("view_sales_particular")]
     public class ViewSalesPart
     {
         [Key]
-        public int      Id { get; set; }
-        public string   InvoiceId { get; set; }
-        public string   Barcode { get; set; }
-        public string   Name { get; set; }
-        public decimal  Qty { get; set; }
-        public decimal  UnitPrice { get; set; }
-        public decimal  Discount { get; set; }
-        public decimal  Gross { get; set; }
-        public  decimal NetSales { get; set; }
-        public string   CustomerId { get; set; }
-        public int      BranchId { get; set; }
-        public DateTime RefDate { get; set; }
+        public int      id { get; set; }
+        public string invoice { get; set; }
+        public string barcode { get; set; }
+        public string item { get; set; }
+        public decimal qty { get; set; }
+        public decimal price { get; set; }
+        public decimal discount { get; set; }
+        public decimal  gross { get; set; }
+        public  decimal net { get; set; }
+        public string customer { get; set; }
+        public string branch{ get; set; }
+        public DateTime date { get; set; }
     }
 }
