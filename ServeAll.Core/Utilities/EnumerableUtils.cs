@@ -109,7 +109,7 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static IEnumerable<ViewDeliveryList> getDeliveryList(string warehouse)
+        public static IEnumerable<ViewDeliveryList> getDeliveryList()
         {
             using (var session = new DalSession())
             {
