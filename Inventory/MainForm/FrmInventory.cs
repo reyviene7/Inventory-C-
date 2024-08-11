@@ -845,6 +845,7 @@ namespace Inventory.MainForm
         {
             return imgList.FirstOrDefault(img => img.image_code == param);
         }
+
         private void BindInventory()
         {
             gCON.Update();

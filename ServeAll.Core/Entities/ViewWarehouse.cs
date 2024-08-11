@@ -6,6 +6,7 @@ namespace ServeAll.Core.Entities
     [Table("view_warehouse")]
     public class ViewWarehouse
     {
+        [Key]
         public int warehouse_id { get; set; }
         public string warehouse_code { get; set; }
         public string warehouse_name {  get; set; }

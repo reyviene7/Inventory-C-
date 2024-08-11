@@ -68,7 +68,9 @@
   <ItemGroup>
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Delivery.cs" />
+    <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\request\RequestProducts.cs" />
+    <Compile Include="Entities\request\RequestSupplier.cs" />
     <Compile Include="Entities\ViewBranch.cs" />
     <Compile Include="Entities\Branch.cs" />
     <Compile Include="Entities\BranchDelivery.cs" />
@@ -142,7 +144,10 @@
     <Compile Include="Entities\ViewUser.cs" />
     <Compile Include="Entities\ViewUserEmployees.cs" />
     <Compile Include="Entities\ViewWarehouse.cs" />
+    <Compile Include="Entities\ViewWareHouseInventory.cs" />
     <Compile Include="Entities\Warehouse.cs" />
+    <Compile Include="Entities\WarehouseInventory.cs" />
+    <Compile Include="Entities\WarehouseStatus.cs" />
     <Compile Include="Entities\Warranty.cs" />
     <Compile Include="Entities\WarrantyStatus.cs" />
     <Compile Include="Helper\AppData.cs" />
@@ -155,6 +160,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\Query.cs" />
     <Compile Include="Queries\PosQuery.cs" />
+    <Compile Include="Repository\RepositoryEntity.cs" />
     <Compile Include="Repository\ConStr.cs" />
     <Compile Include="Repository\DalSession.cs" />
     <Compile Include="Repository\ServerSettings.cs" />

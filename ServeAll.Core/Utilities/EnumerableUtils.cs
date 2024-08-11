@@ -167,6 +167,63 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<RequestSupplier> getSupplierWarehouseList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<RequestSupplier>(unWork);
+                    return repository.SelectAll(Query.AllSupplierWarehouse).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<RequestSupplier>();
+                }
+            }
+        }
+
+        public static IEnumerable<WarehouseStatus> getStatusWarehouseList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<WarehouseStatus>(unWork);
+                    return repository.SelectAll(Query.AllWarehouseStatus).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<WarehouseStatus>();
+                }
+            }
+        }
+
+        public static IEnumerable<Location> getLocationWarehouseList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Location>(unWork);
+                    return repository.SelectAll(Query.AllWarehouseLocation).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<Location>();
+                }
+            }
+        }
+
         public static IEnumerable<ViewImageProduct> getImgProductList()
         {
             using (var session = new DalSession())
@@ -242,10 +299,23 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-
-        public static IEnumerable<T> GetEmptyList<T>()
+        public static IEnumerable<ViewWareHouseInventory> getWareHouseInventoryList()
         {
-            return Enumerable.Empty<T>();
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewWareHouseInventory>(unWork);
+                    return repository.SelectAll(Query.getWarehouseInventory).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewWareHouseInventory>();
+                }
+            }
         }
 
         public static IEnumerable<ViewBranch> GetBranchList()
@@ -265,6 +335,10 @@ namespace ServeAll.Core.Utilities
                     return GetEmptyList<ViewBranch>();
                 }
             }
+        }
+        public static IEnumerable<T> GetEmptyList<T>()
+        {
+            return Enumerable.Empty<T>();
         }
     }
 }

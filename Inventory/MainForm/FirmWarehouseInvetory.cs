@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraReports.UI;
 using Inventory.Config;
 using Inventory.Entities;
 using ServeAll.Core.Entities;
@@ -21,6 +22,11 @@ namespace Inventory.MainForm
         private readonly int _userTyp;
         private readonly string _userName;
         private IEnumerable<RequestProducts> _products;
+        private IEnumerable<RequestSupplier> _suppliers;
+        private IEnumerable<WarehouseStatus> _statuses;
+        private IEnumerable<Location> _locations;
+        private IEnumerable<ViewWareHouseInventory> _warehouse_list;
+        private IEnumerable<ViewImageProduct> imgList;
         public int Deliver
         {
             get { return _deliver; }
@@ -69,6 +75,8 @@ namespace Inventory.MainForm
             _userId = userId;
             _userTyp = userTy;
             InitializeComponent();
+            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            imgList = EnumerableUtils.getImgProductList();
         }
         private void FirmWarehouseInvetory_Load(object sender, EventArgs e)
         {
@@ -79,6 +87,91 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             _products = EnumerableUtils.getProductWarehouseList();
+            _suppliers = EnumerableUtils.getSupplierWarehouseList();
+            _statuses = EnumerableUtils.getStatusWarehouseList();
+            _locations = EnumerableUtils.getLocationWarehouseList();
+            bindWareHouse();
+        }
+        private ViewImageProduct searchProductImg(string param)
+        {
+            return imgList.FirstOrDefault(img => img.image_code == param);
+        }
+
+        private string selectedCode(int seletedIndex)
+        {
+            return _products.FirstOrDefault(i => i.product_id == seletedIndex).product_code;
+        }
+
+        private void bindWareHouse()
+        {
+            clearGrid();
+            var list = _warehouse_list.Select(p => new { 
+                Id = p.inventory_id,
+                Barcode = p.product_code,
+                SKU = p.sku,
+                QtyStock = p.quantity_in_stock,
+                ReOrder = p.reorder_level,
+                Location = p.location_code,
+                Supplier = p.supplier_name,
+                LastStocked = p.last_stocked_date,
+                LastOrder = p.last_ordered_date,
+                Expiration = p.expiration_date,
+                UnitCost = p.cost_per_unit,
+                LastCost = p.last_cost_per_unit,
+                Total = p.total_value,
+                Created = p.created_at,
+                Updated = p.updated_at
+            }).ToList();
+            gridController.DataSource = list;
+            gridController.Update();
+        }
+
+        private void addInventory()
+        {
+            var item = cmbProductName.Text.Trim(' ');
+            var supplier = cmbSupplier.Text.Trim(' ');
+            var location = cmbItemLocation.Text.Trim(' ');
+            var status = cmbStatus.Text.Trim(' ');
+            if (item.Length > 0)
+            {
+                var productId = FetchUtils.getProductId(item);
+                var supplierId = FetchUtils.getSupplierId(supplier);
+                var locationId = FetchUtils.getLocationId(location);
+                var statusId = FetchUtils.getStatusId(status);
+                var qtyStock = int.Parse(txtQuantityStock.Text.Trim(' '));
+                var reoderLevel = int.Parse(txtReorderLevel.Text.Trim(' '));
+                var unitCost = decimal.Parse(txtCostPerUnit.Text.Trim(' '));
+                var lastCost = decimal.Parse(txtLastCostPerUnit.Text.Trim(' '));
+                WarehouseInventory warehouse = new WarehouseInventory
+                {
+                    product_id = productId,
+                    sku = txtWarehouseSKU.Text.Trim(' '),
+                    quantity_in_stock = qtyStock,
+                    reorder_level = reoderLevel,
+                    location_id = locationId,
+                    warehouse_id = 1,
+                    user_id = _userId,
+                    supplier_id = supplierId,
+                    last_stocked_date = dkpLastStockedDate.Value.Date,
+                    last_ordered_date = dkpLastOrderDate.Value.Date,
+                    expiration_date = dpkExpirationDate.Value.Date,
+                    cost_per_unit = unitCost,
+                    last_cost_per_unit = lastCost,
+                    status_id = statusId,
+                    created_at = dpkCreatedDate.Value.Date,
+                    updated_at = dpkLastUpdated.Value.Date
+                };
+                var result = RepositoryEntity.AddEntity<WarehouseInventory>(warehouse);
+                if (result > 0L)
+                {
+                    PopupNotification.PopUpMessages(1, "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.SuccessInsert + " to warehouse inventory!", Messages.TitleSuccessInsert);
+                    _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+                    bindWareHouse();
+                } else
+                {
+                    PopupNotification.PopUpMessages(0, "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.TitleFailedInsert + " to warehouse inventory!", Messages.TitleFailedInsert);
+                }
+            }
         }
 
         private void bntHOM_Click(object sender, EventArgs e)
@@ -132,7 +225,7 @@ namespace Inventory.MainForm
             cmbSupplier.Enabled = true;
             txtCostPerUnit.Enabled = true;
             txtLastCostPerUnit.Enabled = true;
-            txtTotalValue.Enabled = true;
+            txtTotalValue.Enabled = false;
             cmbWarranty.Enabled = true;
             dkpLastStockedDate.Enabled = true;
             dkpLastOrderDate.Enabled = true;
@@ -208,51 +301,7 @@ namespace Inventory.MainForm
         {
             
         }
-        private void DataInsert()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-
-                    var repository = new Repository<WareHouse>(unWork);
-                    var product = new WareHouse()
-                    {
-                        Code        = txtWarehouseSKU.Text,
-                       
-                        DeliveryNo  = txtQuantityStock.Text,
-                        ReceiptNo   = txtReorderLevel.Text,
-                        QtyStock    = Convert.ToInt32(txtCostPerUnit.Text),
-                     
-                        LastCost    = Convert.ToDecimal(txtLastCostPerUnit.Text),
-                        OnOrder     = Convert.ToInt32(txtTotalValue.Text),
-                        PurDate     = dkpLastStockedDate.Value.Date,
-                        InvDate     = dkpLastOrderDate.Value.Date,
-                      
-                      
-                        DepotId     = Constant.DefaultZero
-                    };
-                    var result = repository.Add(product);
-                    if (result > 0)
-                    {
-
-                        PopupNotification.PopUpMessages(1, "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
-                         Messages.TitleSuccessInsert);
-                        unWork.Commit();
-                    }
-
-                }
-                catch (Exception ex)
-                {
-
-                    unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
-
-                }
-            }
-        }
+         
         private void DataUpdate()
         {
             using (var session = new DalSession())
@@ -320,11 +369,13 @@ namespace Inventory.MainForm
                 }
             }
         }
- 
-     
-        
-       
-   
+
+        private void clearGrid()
+        {
+            gridController.DataSource = null;
+            gridController.DataSource = "";
+            gridInventory.Columns.Clear();
+        }
         private void ButAdd()
         {
             ButtonAdd();
@@ -340,9 +391,15 @@ namespace Inventory.MainForm
             gridController.Enabled = false;
             imgProduct.DataBindings.Clear();
             imgProduct.Image = null;
-            cmbProductName.Size = new Size(422, 29);
+           // cmbProductName.Size = new Size(422, 29);
             cmbProductName.DataBindings.Clear();
+            cmbSupplier.DataBindings.Clear();
+            cmbStatus.DataBindings.Clear();
+            cmbItemLocation.DataBindings.Clear();
             cmbProductName.DataSource = _products.Select(p => p.product_name ).ToList();
+            cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
+            cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
+            cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
         }
         private void ButtonAdd()
         {
@@ -444,29 +501,16 @@ namespace Inventory.MainForm
             gridController.Enabled = false;
         
         }
-        //private void ButClr()
-        //{
-        //    ButtonClr();
-        //    InputEnab();
-        //    InputWhit();
-        //    InputClea();
-        //    gCON.Enabled = true;
-        //    cmbNAM.DataBindings.Clear();
-
-        //}
         private void ButSav()
         {
 
             if (_add && _edt == false && _del == false)
             {
-
-                DataInsert();
+                addInventory();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
                 InputClea();
-                BindProductList();
-
             }
             if (_add == false && _edt && _del == false)
             {
@@ -537,45 +581,6 @@ namespace Inventory.MainForm
             {
                 gridController.EndUpdate();
                 PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
-            }
-        }
-        private void BindProducts()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<Products>(unWork);
-                var query = repository.SelectAll(ServeAll.Core.Queries.Query.AllItemNotInDepot)
-                    .Select(x => x.product_name)
-                    .Distinct()
-                    .ToList();
-                cmbProductName.DataBindings.Clear();
-                cmbProductName.DataSource = query;
-            }
-        }
-        private void BindBranch()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<Branch>(unWork);
-                var query = repository.SelectAll(ServeAll.Core.Queries.Query.AllBranch).Select(x => x.BranchDetails).Distinct().ToList();
-                cmbItemLocation.DataBindings.Clear();
-                cmbItemLocation.DataSource = query;
-            }
-        }
-        private void BindProductStatus()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<ProductStatus>(unWork);
-                var query = repository.SelectAll(ServeAll.Core.Queries.Query.AllProductStatus).Select(x => x.status).Distinct().ToList();
-                cmbUser.DataBindings.Clear();
-                cmbUser.DataSource = query;
             }
         }
       
@@ -675,7 +680,7 @@ namespace Inventory.MainForm
             }
             if (e.KeyCode == Keys.F1)
             {
-                BindBranch();
+                 
             }
         }
         private void txtLST_KeyDown(object sender, KeyEventArgs e)
@@ -764,7 +769,7 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.F1)
             {
-                BindProductStatus();
+              
             }
             if (e.KeyCode == Keys.Enter)
             {
@@ -853,6 +858,20 @@ namespace Inventory.MainForm
             {
                 ButCan();
             }
+        }
+
+        private void bindImage(string barcode)
+        {
+            var img = searchProductImg(barcode);
+            var imgLocation = img.img_location;
+            if (imgLocation.Length > 0)
+            {
+                var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                imgProduct.ImageLocation = location;
+            }
+            else
+                imgProduct.Image = null;
         }
 
         private void txtReorderLevel_KeyDown(object sender, KeyEventArgs e)
@@ -949,5 +968,23 @@ namespace Inventory.MainForm
         {
 
         }
+
+        private void cmbProductName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = cmbProductName.SelectedIndex;
+            var productCode = _products.ElementAt(selectedIndex).product_code;
+            bindImage(productCode);
+        }
+
+        private void cmbProductName_Leave(object sender, EventArgs e)
+        {
+            cmbProductName.Size = new Size(285, 29);
+        }
+
+        private void cmbProductName_MouseClick(object sender, MouseEventArgs e)
+        {
+            cmbProductName.Size = new Size(422, 29);
+        }
+
     }
 }
