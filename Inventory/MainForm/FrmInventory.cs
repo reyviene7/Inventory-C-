@@ -898,21 +898,14 @@ namespace Inventory.MainForm
                     ID = x.product_id,
                     BARCODE = x.product_code,
                     PRODUCT = x.product_name,
-                    QUANTITY = 0,  // Placeholder value for Quantity; replace with actual value if available
+                    QUANTITY = 0,  
                     TRADE = x.trade_price,
                     RETAIL = x.retail_price
                 }).ToList();
 
-                dataGridProducts.DataSource = null; // Reset the DataSource to clear previous bindings
+                dataGridProducts.DataSource = null; 
                 dataGridProducts.DataSource = list;
-
-                // Map existing DataGridView columns to the corresponding properties
-                dataGridProducts.Columns["ID"].DataPropertyName = "ID";
-                dataGridProducts.Columns["BARCODE"].DataPropertyName = "BARCODE";
-                dataGridProducts.Columns["PRODUCT"].DataPropertyName = "PRODUCT";
-                dataGridProducts.Columns["QUANTITY"].DataPropertyName = "QUANTITY";
-                dataGridProducts.Columns["TRADE"].DataPropertyName = "TRADE";
-                dataGridProducts.Columns["RETAIL"].DataPropertyName = "RETAIL";
+                
                 dataGridProducts.Columns[0].Width = 80;
                 dataGridProducts.Columns[1].Width = 180;
                 dataGridProducts.Columns[2].Width = 480;
@@ -922,7 +915,6 @@ namespace Inventory.MainForm
             }
             catch (Exception ex)
             {
-                // Handle exceptions
                 PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
             }
         }
@@ -937,7 +929,7 @@ namespace Inventory.MainForm
                     INVOICE = x.invoice,
                     BARCODE = x.barcode,
                     PRODUCT = x.item,
-                    QUANTITY = x.qty,  // Placeholder value for Quantity; replace with actual value if available
+                    QUANTITY = x.qty,  
                     UNITPRICE = x.price,
                     DISCOUNT = x.discount,
                     GROSS = x.gross,
@@ -947,22 +939,9 @@ namespace Inventory.MainForm
                     DATE = x.date,
                 }).ToList();
 
-                dataGridSales.DataSource = null; // Reset the DataSource to clear previous bindings
+                dataGridSales.DataSource = null; 
                 dataGridSales.DataSource = list;
 
-                // Map existing DataGridView columns to the corresponding properties
-                dataGridSales.Columns["ID"].DataPropertyName = "ID";
-                dataGridSales.Columns["INVOICE"].DataPropertyName = "INVOICE";
-                dataGridSales.Columns["BARCODE"].DataPropertyName = "BARCODE";
-                dataGridSales.Columns["PRODUCT"].DataPropertyName = "PRODUCT";
-                dataGridSales.Columns["QUANTITY"].DataPropertyName = "QUANTITY";
-                dataGridSales.Columns["UNITPRICE"].DataPropertyName = "UNITPRICE";
-                dataGridSales.Columns["DISCOUNT"].DataPropertyName = "DISCOUNT";
-                dataGridSales.Columns["GROSS"].DataPropertyName = "GROSS";
-                dataGridSales.Columns["NET"].DataPropertyName = "NET";
-                dataGridSales.Columns["CUSTOMER"].DataPropertyName = "CUSTOMER";
-                dataGridSales.Columns["BRANCH"].DataPropertyName = "BRANCH";
-                dataGridSales.Columns["DATE"].DataPropertyName = "DATE";
                 dataGridSales.Columns[0].Width = 40;
                 dataGridSales.Columns[1].Width = 50;
                 dataGridSales.Columns[2].Width = 100;
@@ -978,7 +957,6 @@ namespace Inventory.MainForm
             }
             catch (Exception ex)
             {
-                // Handle exceptions
                 PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
             }
         }

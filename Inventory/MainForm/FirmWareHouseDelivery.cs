@@ -5,8 +5,10 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
 using Inventory.Config;
 using Inventory.Entities;
 using Inventory.PopupForm;
@@ -14,6 +16,7 @@ using Inventory.Services;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Query = ServeAll.Core.Queries.Query;
 
 namespace Inventory.MainForm
@@ -24,20 +27,8 @@ namespace Inventory.MainForm
         private bool _add, _del, _edt, _wer, _bra;
         private readonly int _userId;
         private readonly int _userTy;
-        private int _warehouse;
-        public int Warehouse
-        {
-            get { return _warehouse; }
-            set
-            {
-                _warehouse = value;
-                if (_warehouse > 0)
-                {
-                    var warehouse = GetWarehouse(_warehouse);
-                    BindDeliveryList(warehouse);
-                }
-            }
-        }
+        private IEnumerable<ViewWareHouseInventory> _warehouse_list;
+
         public FirmMain Main
         {
             get { return _main; }
@@ -49,8 +40,9 @@ namespace Inventory.MainForm
             _userId = userId;
             _userTy = userTy;
             InitializeComponent();
+            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
         }
-        private void FirmWarehouseDelivery_Load(object sender, EventArgs e)
+        private async void FirmWarehouseDelivery_Load(object sender, EventArgs e)
         {
             PanelInterface.SetFullScreen(this);
             PanelInterface.SetMainPanelPosition(this, pnlMain);
@@ -60,8 +52,73 @@ namespace Inventory.MainForm
             RightOptions.Start();
             _bra = true;
             _wer = true;
-            ShowWarehouse();
+
+            try
+            {
+                // Start showing the wait form
+                braWET.ShowWaitForm();
+
+                // Bind the other lists
+                BindDeliveryList();
+            }
+            finally
+            {
+                // Ensure the wait form is closed
+                if (braWET.IsSplashFormVisible)
+                {
+                    braWET.CloseWaitForm();
+                }
+
+                // Bind the warehouse data after closing the wait form
+                BindWareHouse();
+            }
         }
+
+
+        private void BindWareHouse()
+        {
+            clearGrid();
+
+            var list = _warehouse_list.Select(p => new {
+                Id = p.inventory_id,
+                Barcode = p.product_code,
+                SKU = p.sku,
+                Qty = p.quantity_in_stock,
+                ReQty = p.reorder_level,
+                Location = p.location_code,
+                Supplier = p.supplier_name,
+                LStocked = p.last_stocked_date,
+                LOrder = p.last_ordered_date,
+                Expire = p.expiration_date,
+                Price = p.cost_per_unit,
+                LastCost = p.last_cost_per_unit,
+                Total = p.total_value,
+                Status = p.status_details,
+                Created = p.created_at,
+                Updated = p.updated_at
+            }).ToList();
+
+            gridControl.DataSource = list;
+            gridControl.Update();
+
+            if (gridList.RowCount > 0)
+            {
+                gridList.Columns[0].Width = 40;
+                gridList.Columns[1].Width = 90;
+                gridList.Columns[2].Width = 65;
+                gridList.Columns[3].Width = 40;
+                gridList.Columns[4].Width = 40;
+                gridList.Columns[6].Width = 180;
+            }
+        }
+
+        private void clearGrid()
+        {
+            gridControl.DataSource = null;
+            gridControl.DataSource = "";
+            gridList.Columns.Clear();
+        }
+
         private void Options_Tick(object sender, EventArgs e)
         {
             PanelInterface.OptionTick(this, pnlOptions);
@@ -657,21 +714,6 @@ namespace Inventory.MainForm
             alphaNumeric.Increment();
             txtDeliveryCode.Text = alphaNumeric.ToString();
         }
-        private void BindWarehouse()
-        {
-            braWET.ShowWaitForm();
-            ClearGrid();
-            gridControl.DataSource = EnumerableWarehouse();
-            if (gridList.RowCount > 0)
-            {
-                gridList.Columns[0].Width = 100;
-                gridList.Columns[1].Width = 100;
-                gridList.Columns[2].Width = 100;
-                gridList.Columns[3].Width = 100;
-                gridList.Columns[4].Width = 100;
-            }
-            braWET.CloseWaitForm();
-        }
         private void BindStockMovementList()
         {
             braWET.ShowWaitForm();
@@ -697,11 +739,10 @@ namespace Inventory.MainForm
             }
             braWET.CloseWaitForm();
         }
-        private void BindDeliveryList(string warehouse)
+        private void BindDeliveryList()
         {
-            braWET.ShowWaitForm();
             ClearGrid();
-            var list = EnumerableUtils.getDeliveryList(warehouse).Select(p => new
+            var list = EnumerableUtils.getDeliveryList().Select(p => new
             {
                 ID = p.delivery_id,
                 Code = p.delivery_code,
@@ -710,7 +751,7 @@ namespace Inventory.MainForm
                 ProductCount = p.distinct_product_count,
                 DeliveryDate = p.delivery_date
             });
-            gridControl.DataSource = list;
+            gridControl1.DataSource = list;
             if (gridList.RowCount > 0)
             {
                 gridList.Columns[0].Width = 10;
@@ -720,7 +761,6 @@ namespace Inventory.MainForm
                 gridList.Columns[4].Width = 30;
                 gridList.Columns[5].Width = 30;
             }
-            braWET.CloseWaitForm();
         }
 
         private void BindBranchDel()
@@ -839,16 +879,6 @@ namespace Inventory.MainForm
             cmbProductStatus.Text = ent.Status;
             txtDeliveryQty.Text = ent.WareHouseId.ToString();
         }
-        private void ShowWarehouse()
-        {
-            var pop = new FirmPopWarehouses(_userId, _userTy)
-            {
-                ReturnWarehouse = this,
-                Return = true
-            };
-            pop.ShowDialog();
-        }
-
         private static int GetProductId(string input)
         {
             using (var session = new DalSession())
@@ -1184,7 +1214,7 @@ namespace Inventory.MainForm
                 }
             }
         }
- 
+
         private void DeleteData()
         {
             var deliverId = int.Parse(txtDeliveryID.Text);
@@ -1236,7 +1266,7 @@ namespace Inventory.MainForm
                 bntADD.BackColor = Color.Red;
                 bntADD.Enabled = true;
                 PopupNotification.PopUpMessages(1, "Warehouse Inventory List", Messages.GasulPos);
-                BindWarehouse();
+                BindWareHouse();
             }
         }
         private void gridBranch_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
