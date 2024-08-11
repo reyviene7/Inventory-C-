@@ -657,7 +657,10 @@
             this.cmbProductName.Name = "cmbProductName";
             this.cmbProductName.Size = new System.Drawing.Size(285, 29);
             this.cmbProductName.TabIndex = 3;
+            this.cmbProductName.SelectedIndexChanged += new System.EventHandler(this.cmbProductName_SelectedIndexChanged);
             this.cmbProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductName_KeyDown);
+            this.cmbProductName.Leave += new System.EventHandler(this.cmbProductName_Leave);
+            this.cmbProductName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbProductName_MouseClick);
             // 
             // imgProduct
             // 

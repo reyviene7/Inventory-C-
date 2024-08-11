@@ -38,7 +38,6 @@ namespace Inventory.MainForm
 
         private void FrmBranch_Load(object sender, EventArgs e)
         {
-         
             PanelInterface.SetFullScreen(this);
             PanelInterface.SetMainPanelPosition(this, pnlMain);
             PanelInterface.SetOptionsPanelPosition(this, pnlOptions, pbHide);
