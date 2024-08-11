@@ -29,7 +29,7 @@ namespace Inventory.MainForm
                 _extInvent = value; 
                 if(_extInvent)
                 Close();
-               var main = new FirmMain(_userId, _usrTyp);
+                var main = new FirmMain(_userId, _usrTyp, "");
                 main.Show();
             }
         }

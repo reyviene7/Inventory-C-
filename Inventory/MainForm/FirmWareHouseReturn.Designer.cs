@@ -1091,7 +1091,7 @@
             this.pnlOptions.Controls.Add(this.pnlOptionsMain);
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
-            this.pnlOptions.Location = new System.Drawing.Point(0, 714);
+            this.pnlOptions.Location = new System.Drawing.Point(-2, 768);
             this.pnlOptions.Name = "pnlOptions";
             this.pnlOptions.Size = new System.Drawing.Size(1298, 74);
             this.pnlOptions.TabIndex = 131;

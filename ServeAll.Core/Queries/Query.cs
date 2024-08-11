@@ -174,8 +174,11 @@
         public const string AllItemNotInDepot = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE ProductId NOT IN(SELECT ProductId FROM Products WHERE Name LIKE '%LPG%')";
         public const string AllItemFromDepots = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE Name LIKE '%LPG%'";
         public const string AllViewProducts = "SELECT * FROM view_product";
+        public const string AllProductWarehouse = @"SELECT * FROM view_request_product";
+        public const string AllSupplierWarehouse = @"SELECT * FROM view_request_supplier";
         public const string AllViewImageProduct = "SELECT * FROM view_image_product";
-
+        public const string AllWarehouseStatus = @"SELECT * FROM warehouse_status ORDER BY status_details ASC";
+        public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
         public const string AllInventory = @"SELECT * FROM view_inventory";
         public const string AllProductCategory = @"SELECT * FROM view_product_category";
         public const string AllProductStatus = @"SELECT status_id, status FROM product_status";
@@ -278,5 +281,24 @@
         public const string getLastInventoryDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM inventory";
         public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
         public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
+        public const string getLastBranchCodeQuery = "SELECT MAX(branch_code) AS branch_code FROM branch";
+        public const string getWarehouseInventory = @"SELECT inventory_id,
+                                                        product_code,
+                                                        sku,
+                                                        quantity_in_stock,
+                                                        reorder_level,
+                                                        location_code,
+                                                        warehouse_name,
+                                                        supplier_name,
+                                                        last_stocked_date,
+                                                        last_ordered_date,
+                                                        expiration_date,
+                                                        cost_per_unit,
+                                                        last_cost_per_unit,
+                                                        total_value,
+                                                        status_details,
+                                                        created_at,
+                                                        updated_at
+                                                    FROM view_warehouse_inventory ORDER BY inventory_id DESC";
     }
 }

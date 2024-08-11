@@ -21,7 +21,6 @@ namespace Inventory.MainForm
         private string _branch;
         private readonly int _userId;
         private readonly int _usrTyp;
-        private readonly string _userName;
         private IEnumerable<ViewInventory> listInventory;
         private IEnumerable<ViewImageProduct> imgList;
         private int InventoryId = 0;
@@ -35,7 +34,7 @@ namespace Inventory.MainForm
                 _extInvent = value;
                 if (_extInvent)
                     Close();
-                var main = new FirmMain(_userId, _usrTyp, _userName);
+                var main = new FirmMain(_userId, _usrTyp);
                 main.Show();
             }
         }
@@ -66,12 +65,11 @@ namespace Inventory.MainForm
 
         private bool _add, _edt, _del;
         public FirmMain Main { get; set; }
-        public FrmInventory(int userId, int usrTyp, string userName)
+        public FrmInventory(int userId, int usrTyp)
         {
             _userId = userId;
             _usrTyp = usrTyp;
             InitializeComponent();
-            _userName = userName;   
         }
         private void FrmInventory_Load(object sender, EventArgs e)
         {
@@ -845,7 +843,6 @@ namespace Inventory.MainForm
         {
             return imgList.FirstOrDefault(img => img.image_code == param);
         }
-
         private void BindInventory()
         {
             gCON.Update();

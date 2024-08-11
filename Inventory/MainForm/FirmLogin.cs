@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using DevExpress.CodeParser;
 using Inventory.Config;
 using Inventory.PopupForm;
-using ServeAll.Core.Repository;
 using Constant = Inventory.Config.Constant;
 
 namespace Inventory.MainForm
@@ -13,7 +11,7 @@ namespace Inventory.MainForm
         private int _loginSuccess;
         public int UserId { get; set; }
         public int UserTy { get; set; }
-
+        public string _userName { get; set; }
         public int LoginSuccess
         {
             get { return _loginSuccess; }
@@ -22,7 +20,7 @@ namespace Inventory.MainForm
                 _loginSuccess = value;
                 if (_loginSuccess > 0 && UserId>0 && UserTy>0)
                 {
-                    LaunchMain();
+                    LaunchMain(_userName);
                 }
             }
         }
@@ -42,9 +40,9 @@ namespace Inventory.MainForm
             log.ShowDialog();
         }
 
-        private void LaunchMain()
+        private void LaunchMain(string userName)
         {
-            var main = new FirmMain(UserId, UserTy);
+            var main = new FirmMain(UserId, UserTy, userName);
             main.Show();
             Hide();
         }

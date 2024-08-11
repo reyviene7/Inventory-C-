@@ -16,7 +16,7 @@ namespace Inventory.MainForm
         public FirmMain Main;
         private readonly int _userId;
         private readonly int _usrTyp;
-       
+        private readonly string _userName;
         private   string _optionsDirection = "down";
         private   string _toastDirection = "down";
         private   string _rightDirection = "right";
@@ -32,8 +32,9 @@ namespace Inventory.MainForm
         private int optionsY;
         private int rightX;
         private readonly int _rightY;
-        public FirmMain(int userId, int usrTyp)
+        public FirmMain(int userId, int usrTyp, string username)
         {
+            _userName = username;
             _userId = userId;
             _usrTyp = usrTyp;
             InitializeComponent();
@@ -174,23 +175,23 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            Hide();
             proc.Show();
+            Hide();
         }
 
         private void tileDEP_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var dep = new FirmDepot(_userId, _usrTyp)
+            var warehouseInventory = new FirmWarehouseInvetory(_userId, _usrTyp, _userName)
             {
                 Main = this
             };
+            warehouseInventory.Show();
             Hide();
-            dep.Show();
         }
 
         private void tileWAR_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var dep = new FirmWarehouse(_userId, _usrTyp)
+            var dep = new FirmWarehouse(_userId, _usrTyp, _userName)
             {
                 Main = this
             };
@@ -330,7 +331,7 @@ namespace Inventory.MainForm
 
         private void tileInventory_itemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var ret = new FrmInventory(_userId, _usrTyp)
+            var ret = new FrmInventory(_userId, _usrTyp, _userName)
             {
                 Main = this
             };

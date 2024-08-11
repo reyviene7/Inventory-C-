@@ -128,6 +128,69 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getSupplierId(string supplier)
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Supplier>(unWork);
+                    var query = repository.FindBy(x => x.supplier_name == supplier);
+                    return query.supplier_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public static int getLocationId(string locationCode)
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Location>(unWork);
+                    var query = repository.FindBy(x => x.location_code == locationCode);
+                    return query.location_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public static int getStatusId(string status)
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<WarehouseStatus>(unWork);
+                    var query = repository.FindBy(x => x.status_details == status);
+                    return query.status_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
         public static int getCustomerCreditId(int customerId)
         {
             using (var session = new DalSession())
@@ -415,13 +478,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-        public static int GetLastBarcode(string barcode)
+
+        public static string GetLastBarcode()
         {
-            var parcode = barcode.Split('-')[1];
-            if (barcode.Length <= 0 || parcode.Length <= 0) return 0;
-            var number = Regex.Replace(parcode, @"\D", "");
-            var rt = int.Parse(number);
-            return rt;
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.Branch>(unWork);
+                    return repository.SelectAll(Query.getLastBranchCodeQuery)
+                        .Select(x => x.branch_code).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return string.Empty;
+                }
+            }
         }
     }
 }

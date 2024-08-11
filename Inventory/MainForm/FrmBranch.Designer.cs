@@ -38,6 +38,16 @@
             this.pbLogout = new System.Windows.Forms.PictureBox();
             this.XtrPerProfile = new DevExpress.XtraTab.XtraTabPage();
             this.GbPersonal = new DevExpress.XtraEditors.GroupControl();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtBranchEmail = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtBranchCountry = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtBranchZip = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtBranchCity = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtBranchStreet = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtBranchFax = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -89,16 +99,6 @@
             this.pcAdd = new System.Windows.Forms.PictureBox();
             this.pcChangePassword = new System.Windows.Forms.PictureBox();
             this.pbHide = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtBranchZip = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtBranchCity = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtBranchStreet = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtBranchCountry = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtBranchEmail = new System.Windows.Forms.TextBox();
             this.pnlRightOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRight)).BeginInit();
             this.pnlRightMain.SuspendLayout();
@@ -249,6 +249,126 @@
             this.GbPersonal.Size = new System.Drawing.Size(1010, 561);
             this.GbPersonal.TabIndex = 173;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(446, 171);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(92, 17);
+            this.label12.TabIndex = 203;
+            this.label12.Text = "Branch Email:";
+            // 
+            // txtBranchEmail
+            // 
+            this.txtBranchEmail.BackColor = System.Drawing.Color.DimGray;
+            this.txtBranchEmail.Enabled = false;
+            this.txtBranchEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBranchEmail.ForeColor = System.Drawing.Color.Maroon;
+            this.txtBranchEmail.Location = new System.Drawing.Point(581, 165);
+            this.txtBranchEmail.Name = "txtBranchEmail";
+            this.txtBranchEmail.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchEmail.TabIndex = 121;
+            this.txtBranchEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBranchEmail_KeyDown);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(446, 31);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(62, 17);
+            this.label8.TabIndex = 201;
+            this.label8.Text = "Country:";
+            // 
+            // txtBranchCountry
+            // 
+            this.txtBranchCountry.BackColor = System.Drawing.Color.DimGray;
+            this.txtBranchCountry.Enabled = false;
+            this.txtBranchCountry.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBranchCountry.ForeColor = System.Drawing.Color.Maroon;
+            this.txtBranchCountry.Location = new System.Drawing.Point(581, 25);
+            this.txtBranchCountry.Name = "txtBranchCountry";
+            this.txtBranchCountry.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchCountry.TabIndex = 118;
+            this.txtBranchCountry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBranchCountry_KeyDown);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(18, 276);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 17);
+            this.label9.TabIndex = 199;
+            this.label9.Text = "Zipcode:";
+            // 
+            // txtBranchZip
+            // 
+            this.txtBranchZip.BackColor = System.Drawing.Color.DimGray;
+            this.txtBranchZip.Enabled = false;
+            this.txtBranchZip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBranchZip.ForeColor = System.Drawing.Color.Maroon;
+            this.txtBranchZip.Location = new System.Drawing.Point(153, 270);
+            this.txtBranchZip.Name = "txtBranchZip";
+            this.txtBranchZip.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchZip.TabIndex = 117;
+            this.txtBranchZip.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBranchZip_KeyDown);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(18, 206);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 17);
+            this.label10.TabIndex = 198;
+            this.label10.Text = "City:";
+            // 
+            // txtBranchCity
+            // 
+            this.txtBranchCity.BackColor = System.Drawing.Color.DimGray;
+            this.txtBranchCity.Enabled = false;
+            this.txtBranchCity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBranchCity.ForeColor = System.Drawing.Color.Maroon;
+            this.txtBranchCity.Location = new System.Drawing.Point(153, 200);
+            this.txtBranchCity.Name = "txtBranchCity";
+            this.txtBranchCity.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchCity.TabIndex = 115;
+            this.txtBranchCity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBranchCity_KeyDown);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(18, 171);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(48, 17);
+            this.label11.TabIndex = 197;
+            this.label11.Text = "Street:";
+            // 
+            // txtBranchStreet
+            // 
+            this.txtBranchStreet.BackColor = System.Drawing.Color.DimGray;
+            this.txtBranchStreet.Enabled = false;
+            this.txtBranchStreet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBranchStreet.ForeColor = System.Drawing.Color.Maroon;
+            this.txtBranchStreet.Location = new System.Drawing.Point(153, 165);
+            this.txtBranchStreet.Name = "txtBranchStreet";
+            this.txtBranchStreet.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchStreet.TabIndex = 114;
+            this.txtBranchStreet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBranchStreet_KeyDown);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -270,7 +390,7 @@
             this.txtBranchFax.Location = new System.Drawing.Point(581, 200);
             this.txtBranchFax.Name = "txtBranchFax";
             this.txtBranchFax.Size = new System.Drawing.Size(269, 29);
-            this.txtBranchFax.TabIndex = 117;
+            this.txtBranchFax.TabIndex = 122;
             this.txtBranchFax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFAX_KeyDown);
             // 
             // label6
@@ -294,7 +414,7 @@
             this.txtBranchMobile.Location = new System.Drawing.Point(581, 130);
             this.txtBranchMobile.Name = "txtBranchMobile";
             this.txtBranchMobile.Size = new System.Drawing.Size(269, 29);
-            this.txtBranchMobile.TabIndex = 116;
+            this.txtBranchMobile.TabIndex = 120;
             this.txtBranchMobile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBAM_KeyDown);
             // 
             // label5
@@ -318,7 +438,7 @@
             this.txtBranchTel.Location = new System.Drawing.Point(581, 95);
             this.txtBranchTel.Name = "txtBranchTel";
             this.txtBranchTel.Size = new System.Drawing.Size(269, 29);
-            this.txtBranchTel.TabIndex = 115;
+            this.txtBranchTel.TabIndex = 119;
             this.txtBranchTel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBAT_KeyDown);
             // 
             // cmbProvincialAddress
@@ -416,7 +536,7 @@
             this.cmbProvincialAddress.Location = new System.Drawing.Point(153, 235);
             this.cmbProvincialAddress.Name = "cmbProvincialAddress";
             this.cmbProvincialAddress.Size = new System.Drawing.Size(269, 29);
-            this.cmbProvincialAddress.TabIndex = 114;
+            this.cmbProvincialAddress.TabIndex = 116;
             this.cmbProvincialAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPRV_KeyDown);
             // 
             // lblProvicen
@@ -452,7 +572,7 @@
             this.dkpDateRegister.Location = new System.Drawing.Point(581, 60);
             this.dkpDateRegister.Name = "dkpDateRegister";
             this.dkpDateRegister.Size = new System.Drawing.Size(269, 29);
-            this.dkpDateRegister.TabIndex = 119;
+            this.dkpDateRegister.TabIndex = 123;
             this.dkpDateRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpREG_KeyDown);
             // 
             // label3
@@ -1024,121 +1144,6 @@
             this.pbHide.Size = new System.Drawing.Size(38, 34);
             this.pbHide.TabIndex = 14;
             this.pbHide.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(18, 276);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 17);
-            this.label9.TabIndex = 199;
-            this.label9.Text = "Zipcode:";
-            // 
-            // txtBranchZip
-            // 
-            this.txtBranchZip.BackColor = System.Drawing.Color.DimGray;
-            this.txtBranchZip.Enabled = false;
-            this.txtBranchZip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBranchZip.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchZip.Location = new System.Drawing.Point(153, 270);
-            this.txtBranchZip.Name = "txtBranchZip";
-            this.txtBranchZip.Size = new System.Drawing.Size(269, 29);
-            this.txtBranchZip.TabIndex = 196;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(18, 206);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 17);
-            this.label10.TabIndex = 198;
-            this.label10.Text = "City:";
-            // 
-            // txtBranchCity
-            // 
-            this.txtBranchCity.BackColor = System.Drawing.Color.DimGray;
-            this.txtBranchCity.Enabled = false;
-            this.txtBranchCity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBranchCity.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchCity.Location = new System.Drawing.Point(153, 200);
-            this.txtBranchCity.Name = "txtBranchCity";
-            this.txtBranchCity.Size = new System.Drawing.Size(269, 29);
-            this.txtBranchCity.TabIndex = 195;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(18, 171);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 17);
-            this.label11.TabIndex = 197;
-            this.label11.Text = "Street:";
-            // 
-            // txtBranchStreet
-            // 
-            this.txtBranchStreet.BackColor = System.Drawing.Color.DimGray;
-            this.txtBranchStreet.Enabled = false;
-            this.txtBranchStreet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBranchStreet.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchStreet.Location = new System.Drawing.Point(153, 165);
-            this.txtBranchStreet.Name = "txtBranchStreet";
-            this.txtBranchStreet.Size = new System.Drawing.Size(269, 29);
-            this.txtBranchStreet.TabIndex = 194;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(446, 31);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 17);
-            this.label8.TabIndex = 201;
-            this.label8.Text = "Country:";
-            // 
-            // txtBranchCountry
-            // 
-            this.txtBranchCountry.BackColor = System.Drawing.Color.DimGray;
-            this.txtBranchCountry.Enabled = false;
-            this.txtBranchCountry.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBranchCountry.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchCountry.Location = new System.Drawing.Point(581, 25);
-            this.txtBranchCountry.Name = "txtBranchCountry";
-            this.txtBranchCountry.Size = new System.Drawing.Size(269, 29);
-            this.txtBranchCountry.TabIndex = 200;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(446, 171);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(92, 17);
-            this.label12.TabIndex = 203;
-            this.label12.Text = "Branch Email:";
-            // 
-            // txtBranchEmail
-            // 
-            this.txtBranchEmail.BackColor = System.Drawing.Color.DimGray;
-            this.txtBranchEmail.Enabled = false;
-            this.txtBranchEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBranchEmail.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchEmail.Location = new System.Drawing.Point(581, 165);
-            this.txtBranchEmail.Name = "txtBranchEmail";
-            this.txtBranchEmail.Size = new System.Drawing.Size(269, 29);
-            this.txtBranchEmail.TabIndex = 202;
             // 
             // FrmBranch
             // 
