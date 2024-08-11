@@ -299,6 +299,6 @@
                                                         status_details,
                                                         created_at,
                                                         updated_at
-                                                    FROM view_warehouse_inventory";
+                                                    FROM view_warehouse_inventory ORDER BY inventory_id DESC";
     }
 }

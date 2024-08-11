@@ -23,5 +23,36 @@ namespace ServeAll.Core.Repository
             }
             return 0L;
         }
+
+        public static int UpdateEntity<T>(int entityId, Action<T> updateAction) where T : class
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<T>(unWork);
+                    var entity = repository.Id(entityId);
+                    if (entity != null)
+                    {
+                        updateAction(entity);
+                        var result = repository.Update(entity);
+                        if (result)
+                        {
+                            unWork.Commit();
+                            return 1; 
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    unWork.Rollback();
+                }
+                return 0; 
+            }
+        }
+
     }
 }

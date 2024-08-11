@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraSplashScreen.SplashScreenManager werWET = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmWarehouseInvetory));
+            this.inventoryScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.pnlRightOptions = new System.Windows.Forms.Panel();
             this.pnlRightMain = new System.Windows.Forms.Panel();
             this.pbExit = new System.Windows.Forms.PictureBox();
@@ -65,8 +65,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtCostPerUnit = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbWarranty = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbUser = new System.Windows.Forms.ComboBox();
             this.cmbProductName = new System.Windows.Forms.ComboBox();
@@ -113,6 +111,8 @@
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
             this.Options = new System.Windows.Forms.Timer(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
             this.pnlRightOptions.SuspendLayout();
             this.pnlRightMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
@@ -405,6 +405,8 @@
             this.GbPersonal.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.GbPersonal.Appearance.Options.UseBackColor = true;
             this.GbPersonal.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.GbPersonal.Controls.Add(this.label7);
+            this.GbPersonal.Controls.Add(this.txtBarcode);
             this.GbPersonal.Controls.Add(this.cmbStatus);
             this.GbPersonal.Controls.Add(this.label17);
             this.GbPersonal.Controls.Add(this.dpkLastUpdated);
@@ -416,8 +418,6 @@
             this.GbPersonal.Controls.Add(this.label15);
             this.GbPersonal.Controls.Add(this.txtCostPerUnit);
             this.GbPersonal.Controls.Add(this.label9);
-            this.GbPersonal.Controls.Add(this.label7);
-            this.GbPersonal.Controls.Add(this.cmbWarranty);
             this.GbPersonal.Controls.Add(this.label4);
             this.GbPersonal.Controls.Add(this.cmbUser);
             this.GbPersonal.Controls.Add(this.cmbProductName);
@@ -547,7 +547,7 @@
             this.cmbSupplier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSupplier.ForeColor = System.Drawing.Color.Maroon;
             this.cmbSupplier.FormattingEnabled = true;
-            this.cmbSupplier.Location = new System.Drawing.Point(120, 171);
+            this.cmbSupplier.Location = new System.Drawing.Point(120, 201);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(285, 29);
             this.cmbSupplier.TabIndex = 6;
@@ -559,7 +559,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(5, 177);
+            this.label15.Location = new System.Drawing.Point(5, 201);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(64, 17);
             this.label15.TabIndex = 236;
@@ -571,7 +571,7 @@
             this.txtCostPerUnit.Enabled = false;
             this.txtCostPerUnit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCostPerUnit.ForeColor = System.Drawing.Color.Maroon;
-            this.txtCostPerUnit.Location = new System.Drawing.Point(120, 201);
+            this.txtCostPerUnit.Location = new System.Drawing.Point(120, 231);
             this.txtCostPerUnit.Name = "txtCostPerUnit";
             this.txtCostPerUnit.Size = new System.Drawing.Size(285, 29);
             this.txtCostPerUnit.TabIndex = 7;
@@ -588,34 +588,6 @@
             this.label9.Size = new System.Drawing.Size(68, 17);
             this.label9.TabIndex = 229;
             this.label9.Text = "Operator:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(423, 28);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(120, 17);
-            this.label7.TabIndex = 227;
-            this.label7.Text = "Product Warranty:";
-            // 
-            // cmbWarranty
-            // 
-            this.cmbWarranty.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbWarranty.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbWarranty.BackColor = System.Drawing.Color.DimGray;
-            this.cmbWarranty.Enabled = false;
-            this.cmbWarranty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbWarranty.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbWarranty.FormattingEnabled = true;
-            this.cmbWarranty.Location = new System.Drawing.Point(554, 22);
-            this.cmbWarranty.Name = "cmbWarranty";
-            this.cmbWarranty.Size = new System.Drawing.Size(248, 29);
-            this.cmbWarranty.TabIndex = 10;
-            this.cmbWarranty.Text = "NO WARRANTY";
-            this.cmbWarranty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbWarranty_KeyDown);
             // 
             // label4
             // 
@@ -653,7 +625,7 @@
             this.cmbProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductName.ForeColor = System.Drawing.Color.Maroon;
             this.cmbProductName.FormattingEnabled = true;
-            this.cmbProductName.Location = new System.Drawing.Point(120, 81);
+            this.cmbProductName.Location = new System.Drawing.Point(120, 111);
             this.cmbProductName.Name = "cmbProductName";
             this.cmbProductName.Size = new System.Drawing.Size(285, 29);
             this.cmbProductName.TabIndex = 3;
@@ -665,9 +637,9 @@
             // imgProduct
             // 
             this.imgProduct.BackColor = System.Drawing.Color.Gray;
-            this.imgProduct.Location = new System.Drawing.Point(805, 0);
+            this.imgProduct.Location = new System.Drawing.Point(814, 15);
             this.imgProduct.Name = "imgProduct";
-            this.imgProduct.Size = new System.Drawing.Size(299, 313);
+            this.imgProduct.Size = new System.Drawing.Size(285, 286);
             this.imgProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgProduct.TabIndex = 223;
             this.imgProduct.TabStop = false;
@@ -693,7 +665,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(3, 204);
+            this.label13.Location = new System.Drawing.Point(3, 234);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(93, 17);
             this.label13.TabIndex = 214;
@@ -729,7 +701,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(3, 267);
+            this.label11.Location = new System.Drawing.Point(426, 27);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(81, 17);
             this.label11.TabIndex = 210;
@@ -741,9 +713,9 @@
             this.txtTotalValue.Enabled = false;
             this.txtTotalValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalValue.ForeColor = System.Drawing.Color.Maroon;
-            this.txtTotalValue.Location = new System.Drawing.Point(120, 261);
+            this.txtTotalValue.Location = new System.Drawing.Point(554, 21);
             this.txtTotalValue.Name = "txtTotalValue";
-            this.txtTotalValue.Size = new System.Drawing.Size(285, 29);
+            this.txtTotalValue.Size = new System.Drawing.Size(248, 29);
             this.txtTotalValue.TabIndex = 9;
             this.txtTotalValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalValue_KeyDown);
             // 
@@ -777,7 +749,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(3, 237);
+            this.label8.Location = new System.Drawing.Point(3, 267);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 17);
             this.label8.TabIndex = 206;
@@ -789,7 +761,7 @@
             this.txtLastCostPerUnit.Enabled = false;
             this.txtLastCostPerUnit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastCostPerUnit.ForeColor = System.Drawing.Color.Maroon;
-            this.txtLastCostPerUnit.Location = new System.Drawing.Point(120, 231);
+            this.txtLastCostPerUnit.Location = new System.Drawing.Point(120, 261);
             this.txtLastCostPerUnit.Name = "txtLastCostPerUnit";
             this.txtLastCostPerUnit.Size = new System.Drawing.Size(285, 29);
             this.txtLastCostPerUnit.TabIndex = 8;
@@ -801,7 +773,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 147);
+            this.label3.Location = new System.Drawing.Point(3, 177);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 17);
             this.label3.TabIndex = 200;
@@ -825,7 +797,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(3, 87);
+            this.label5.Location = new System.Drawing.Point(3, 117);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 17);
             this.label5.TabIndex = 182;
@@ -837,7 +809,7 @@
             this.txtReorderLevel.Enabled = false;
             this.txtReorderLevel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReorderLevel.ForeColor = System.Drawing.Color.Maroon;
-            this.txtReorderLevel.Location = new System.Drawing.Point(120, 141);
+            this.txtReorderLevel.Location = new System.Drawing.Point(120, 171);
             this.txtReorderLevel.Name = "txtReorderLevel";
             this.txtReorderLevel.Size = new System.Drawing.Size(285, 29);
             this.txtReorderLevel.TabIndex = 5;
@@ -849,7 +821,7 @@
             this.txtQuantityStock.Enabled = false;
             this.txtQuantityStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantityStock.ForeColor = System.Drawing.Color.Maroon;
-            this.txtQuantityStock.Location = new System.Drawing.Point(120, 111);
+            this.txtQuantityStock.Location = new System.Drawing.Point(120, 141);
             this.txtQuantityStock.Name = "txtQuantityStock";
             this.txtQuantityStock.Size = new System.Drawing.Size(285, 29);
             this.txtQuantityStock.TabIndex = 4;
@@ -861,7 +833,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 117);
+            this.label2.Location = new System.Drawing.Point(3, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 17);
             this.label2.TabIndex = 176;
@@ -873,7 +845,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 57);
+            this.label1.Location = new System.Drawing.Point(3, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 17);
             this.label1.TabIndex = 174;
@@ -885,7 +857,7 @@
             this.txtWarehouseSKU.Enabled = false;
             this.txtWarehouseSKU.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWarehouseSKU.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWarehouseSKU.Location = new System.Drawing.Point(120, 51);
+            this.txtWarehouseSKU.Location = new System.Drawing.Point(120, 81);
             this.txtWarehouseSKU.Name = "txtWarehouseSKU";
             this.txtWarehouseSKU.Size = new System.Drawing.Size(285, 29);
             this.txtWarehouseSKU.TabIndex = 2;
@@ -1257,6 +1229,29 @@
             this.Options.Interval = 1;
             this.Options.Tick += new System.EventHandler(this.Options_Tick);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(3, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 17);
+            this.label7.TabIndex = 244;
+            this.label7.Text = "Barcode:";
+            // 
+            // txtBarcode
+            // 
+            this.txtBarcode.BackColor = System.Drawing.Color.DimGray;
+            this.txtBarcode.Enabled = false;
+            this.txtBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarcode.ForeColor = System.Drawing.Color.Maroon;
+            this.txtBarcode.Location = new System.Drawing.Point(120, 51);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(285, 29);
+            this.txtBarcode.TabIndex = 243;
+            // 
             // FirmWarehouseInvetory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1355,8 +1350,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCostPerUnit;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cmbWarranty;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbUser;
         private System.Windows.Forms.ComboBox cmbProductName;
@@ -1403,5 +1396,8 @@
         private System.Windows.Forms.Label lblMainTitle;
         private System.Windows.Forms.Timer RightOptions;
         private System.Windows.Forms.Timer Options;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBarcode;
+        private DevExpress.XtraSplashScreen.SplashScreenManager inventoryScreen;
     }
 }
