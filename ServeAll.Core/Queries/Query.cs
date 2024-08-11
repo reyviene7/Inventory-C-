@@ -129,7 +129,7 @@
 	                                               category_details, 
 	                                               image_id, 
 	                                               date_register
-                                             FROM category";
+                                             FROM category ORDER BY category_id DESC";
 
         public const string AllCategoryImage = @"SELECT * FROM view_category_image";
 
@@ -173,13 +173,15 @@
 
         public const string AllItemNotInDepot = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE ProductId NOT IN(SELECT ProductId FROM Products WHERE Name LIKE '%LPG%')";
         public const string AllItemFromDepots = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE Name LIKE '%LPG%'";
-        public const string AllViewProducts = "SELECT * FROM view_product";
+        public const string AllViewProducts = "SELECT * FROM view_product ORDER BY product_id DESC";
         public const string AllProductWarehouse = @"SELECT * FROM view_request_product";
         public const string AllSupplierWarehouse = @"SELECT * FROM view_request_supplier";
         public const string AllViewImageProduct = "SELECT * FROM view_image_product";
         public const string AllWarehouseStatus = @"SELECT * FROM warehouse_status ORDER BY status_details ASC";
         public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
-        public const string AllInventory = @"SELECT * FROM view_inventory";
+        public const string AllInventory = @"SELECT * FROM view_inventory ORDER BY inventory_id DESC";
+        public const string AllWarehouseProduct = @"SELECT * FROM view_productlist ORDER BY product_id DESC";
+        public const string AllSalesPart = @"SELECT * FROM view_sales_particular ORDER BY id DESC";
         public const string AllProductCategory = @"SELECT * FROM view_product_category";
         public const string AllProductStatus = @"SELECT status_id, status FROM product_status";
         public const string AllUsers = @"SELECT user_id,
