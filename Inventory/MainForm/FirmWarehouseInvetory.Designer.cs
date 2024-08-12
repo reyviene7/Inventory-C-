@@ -54,6 +54,8 @@
             this.xInventory = new DevExpress.XtraTab.XtraTabControl();
             this.tabInventory = new DevExpress.XtraTab.XtraTabPage();
             this.GbPersonal = new DevExpress.XtraEditors.GroupControl();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.dpkLastUpdated = new System.Windows.Forms.DateTimePicker();
@@ -111,8 +113,6 @@
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
             this.Options = new System.Windows.Forms.Timer(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtBarcode = new System.Windows.Forms.TextBox();
             this.pnlRightOptions.SuspendLayout();
             this.pnlRightMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
@@ -398,7 +398,7 @@
             this.tabInventory.Controls.Add(this.GbPersonal);
             this.tabInventory.Name = "tabInventory";
             this.tabInventory.Size = new System.Drawing.Size(1106, 739);
-            this.tabInventory.Text = "Stock From Depot";
+            this.tabInventory.Text = "Warehouse Inventory";
             // 
             // GbPersonal
             // 
@@ -450,6 +450,29 @@
             this.GbPersonal.Name = "GbPersonal";
             this.GbPersonal.Size = new System.Drawing.Size(1106, 739);
             this.GbPersonal.TabIndex = 173;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(3, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 17);
+            this.label7.TabIndex = 244;
+            this.label7.Text = "Barcode:";
+            // 
+            // txtBarcode
+            // 
+            this.txtBarcode.BackColor = System.Drawing.Color.DimGray;
+            this.txtBarcode.Enabled = false;
+            this.txtBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarcode.ForeColor = System.Drawing.Color.Maroon;
+            this.txtBarcode.Location = new System.Drawing.Point(120, 51);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(285, 29);
+            this.txtBarcode.TabIndex = 243;
             // 
             // cmbStatus
             // 
@@ -1228,29 +1251,6 @@
             // 
             this.Options.Interval = 1;
             this.Options.Tick += new System.EventHandler(this.Options_Tick);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(3, 58);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 17);
-            this.label7.TabIndex = 244;
-            this.label7.Text = "Barcode:";
-            // 
-            // txtBarcode
-            // 
-            this.txtBarcode.BackColor = System.Drawing.Color.DimGray;
-            this.txtBarcode.Enabled = false;
-            this.txtBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBarcode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBarcode.Location = new System.Drawing.Point(120, 51);
-            this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(285, 29);
-            this.txtBarcode.TabIndex = 243;
             // 
             // FirmWarehouseInvetory
             // 
