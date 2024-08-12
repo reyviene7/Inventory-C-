@@ -49,7 +49,7 @@ namespace Inventory.MainForm
             listProductImage = EnumerableUtils.getProductImage();
             imgList = EnumerableUtils.getImgProductList();
             BindCategoryList();
-            BindImageList();
+       
             _cat = true;
         }
         private void Options_Tick(object sender, EventArgs e)
@@ -213,20 +213,20 @@ namespace Inventory.MainForm
             txtImageCode.BackColor = Color.White;
             txtImageName.BackColor = Color.White;
             txtImageLocation.BackColor = Color.White;
-            bntImageImport.BackColor = Color.White;
+   
         }
         private void InputEnabimg() {
             txtImageCode.Enabled = true;
             txtImageName.Enabled = true;
             txtImageLocation.Enabled = false;
-            bntImageImport.Enabled = true;
+     
         }
         private void InputDisbimg()
         {
             txtImageCode.Enabled = false;
             txtImageName.Enabled = false;
             txtImageLocation.Enabled = false;
-            bntImageImport.Enabled = false;
+         
         }
         private void InputCleaimg()
         {
@@ -245,7 +245,7 @@ namespace Inventory.MainForm
             txtImageCode.BackColor = Color.DimGray;
             txtImageName.BackColor = Color.DimGray;
             txtImageLocation.BackColor = Color.DimGray;
-            bntImageImport.BackColor = Color.DimGray;
+ 
         }
 
 
@@ -345,7 +345,7 @@ namespace Inventory.MainForm
             {
                 InputEnabimg();
                 InputWhitimg();
-                gIMG.Enabled = false;
+           
             }
         }
         private void ButDel()
@@ -435,12 +435,11 @@ namespace Inventory.MainForm
         {
             if (_add && _img && _edt == false && _del == false && _cat == false)
             {
-                DataImgInsert();
                 ButtonSav();
                 InputDisbimg();
                 InputDimGimg();
                 InputCleaimg();
-                BindImageList();
+           
             }
             if (_add == false && _edt && _img && _del == false && _cat == false)
             {
@@ -449,7 +448,7 @@ namespace Inventory.MainForm
                 InputDisbimg();
                 InputDimG();
                 InputCleaimg();
-                BindImageList();
+             
             }
             if (_add == false && _edt == false && _del && _img && _cat == false)
             {
@@ -458,14 +457,14 @@ namespace Inventory.MainForm
                 InputDisbimg();
                 InputDimGimg();
                 InputCleaimg();
-                BindImageList();
+            
             }
             _add = false;
             _edt = false;
             _del = false;
             _img = true;
             _cat = false;
-            gIMG.Enabled = true;
+          
         }
 #endregion  
 
@@ -479,17 +478,16 @@ namespace Inventory.MainForm
                     CategoryCode = x.category_code,
                     Category = x.category_details,
                     Title = x.title,
+                  
                     DateRegister = x.date_register
                 });
 
                 gridControl.DataBindings.Clear();
                 gridControl.DataSource = listCat;
-
-
                 gridCategory.Columns[0].Width = 40;
                 gridCategory.Columns[1].Width = 90;
-                gridCategory.Columns[2].Width = 290;
-                gridCategory.Columns[3].Width = 100;
+                gridCategory.Columns[2].Width = 140;
+                gridCategory.Columns[3].Width = 250;
                 gridCategory.Columns[4].Width = 100;
             }
             catch (Exception ex)
@@ -499,35 +497,7 @@ namespace Inventory.MainForm
             }
         }
 
-        private void BindImageList()
-        {
-            gIMG.Update();
-            try
-            {
-                var listImage = listProductImage.Select(x => new {
-                    Id = x.image_id,
-                    ImageCode = x.image_code,
-                    Title = x.title,
-                    ImgType = x.img_type,
-                    ImgLocation = x.img_location
-                });
-
-                gIMG.DataBindings.Clear();
-                gIMG.DataSource = listImage;
-
-
-                gridImage.Columns[0].Width = 40;
-                gridImage.Columns[1].Width = 90;
-                gridImage.Columns[2].Width = 290;
-                gridImage.Columns[3].Width = 100;
-                gridImage.Columns[4].Width = 100;
-            }
-            catch (Exception ex)
-            {
-                gIMG.EndUpdate();
-                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
-            }
-        }
+       
         private IEnumerable<ViewCategoryImage> getCategoryImage()
         {
             using (var session = new DalSession())
@@ -585,8 +555,7 @@ namespace Inventory.MainForm
         #region ImgBrowse
         private void BrwImage()
         {
-            imgProduct.DataBindings.Clear();
-            imgProduct.Image = null;
+          
             imgOFD.Title = @"Open Image";
             imgOFD.Filter = Messages.ImageFormat;
             imgOFD.DefaultExt = "*.jpg";
@@ -611,42 +580,6 @@ namespace Inventory.MainForm
         #endregion
 
 #region ImgCRUD
-        private void DataImgInsert()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ProductImages>(unWork);
-                    var fileStream = new FileStream(_location, FileMode.Open);
-                    var binaryReader = new BinaryReader(fileStream);
-                    var image = binaryReader.ReadBytes((int) fileStream.Length);
-                    var img = new ProductImages()
-                    {
-                        image_code    = _code,
-                        title        = _title, 
-                        img_type      = _type, 
-                        img_location  = _location
-                    };
-                    var result = repository.Add(img);
-                    if (result > 0)
-                    {
-                        PopupNotification.PopUpMessages(1, "Image Name: " + txtImageName.Text.Trim(' ') + " " + Messages.SuccessInsert,
-                        Messages.TitleSuccessInsert);
-                        unWork.Commit();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
-                }
-            }
-        }
-
-      
 
         private void DataImgUpdate()
         {
@@ -815,7 +748,7 @@ namespace Inventory.MainForm
 
         private void BntEnabled()
         {
-            bntImageImport.Enabled = true;
+            
         }
         #endregion
 
@@ -828,20 +761,14 @@ namespace Inventory.MainForm
         }
         private void tabCategory_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if (tabCategory.SelectedTabPage == xCategory)
+            if (tabCategory.SelectedTabPage == xtraCategory)
             {
                 _cat = true;
                 _img = false;
                 gridControl.Enabled = true;
-                gIMG.Enabled = false;
+             
             }
-            if (tabCategory.SelectedTabPage == xImage)
-            {
-                _img = true;
-                _cat = false;
-                gridControl.Enabled = false;
-                gIMG.Enabled = true;
-            }
+          
         }
         private ViewImageProduct searchProductImg(string param)
         {
@@ -853,37 +780,7 @@ namespace Inventory.MainForm
             return listProductImage.FirstOrDefault(product_image => product_image.image_id == image_id);
         }
 
-        private void gridImage_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            if (gridImage.RowCount > 0)
-            {
-                var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                if (id.Length > 0)
-                {
-                    var image_id = int.Parse(id);
-                    var product_image = searchProductImageId(image_id);
-                    var image = product_image.image_code;
-                    int imageId = product_image.image_id;
-                    txtImageId.Text = imageId.ToString();
-                    txtImageCode.Text = image;
-                    txtImageName.Text = product_image.title;
-                    txtImageLocation.Text = product_image.img_location;
-                    /*DisplayImage(Convert.ToInt32(txtImageId.Text));
-                     */
-                    var img = searchProductImg(image);
-                    var imgLocation = img.img_location;
-
-                    if (imgLocation.Length > 0)
-                    {
-                        var location = ConstantUtils.defaultImgLocation + imgLocation;
-                        imgProduct.ImageLocation = location;
-                    }
-                    else
-                        imgProduct.Image = null;
-
-                }               
-            }
-        }
+        
 
         private void gridImage_RowClick(object sender, RowClickEventArgs e)
         {
@@ -931,12 +828,7 @@ namespace Inventory.MainForm
                         txtCategoryId.Text = categoryId.ToString();
                         txtCategoryCode.Text = categoryCode;
                         txtCategoryDetails.Text = category.category_details;
-                        cmbProductImage.Text = category.title;
                         dkpDateRegister.Value = category.date_register;
-
-                        /* var imgId = ProductImageId(cmbProductImage.Text);
-                        DisplayCategory(imgId);
-                        */
                     }
                 }
                 catch (Exception ex)
@@ -1033,12 +925,12 @@ namespace Inventory.MainForm
                 if (que)
                 {
                     ButDel();
-                    gIMG.Enabled = false;
+                  
                 }
                 else
                 {
                     ButCan();
-                    gIMG.Enabled = true;
+                   
                 }
             }
         }
@@ -1065,32 +957,6 @@ namespace Inventory.MainForm
         private void cmbProductImage_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
-        }
-
-        private void txtImageLocation_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtImageLocation, bntImageImport, "Image Location", Messages.TitleProductImage);
-            }
-        }
-
-        private void txtImageLocation_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(txtImageLocation, bntImageImport, "Image Location", Messages.TitleProductImage);
-        }
-
-        private void bntImageImport_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(bntImageImport, bntSave, "Image Upload", Messages.TitleProductImage);
-            }
-        }
-
-        private void bntImageImport_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(bntImageImport, bntSave, "Image Upload", Messages.TitleProductImage);
         }
 
         private void txtCategoryDetails_KeyDown(object sender, KeyEventArgs e)

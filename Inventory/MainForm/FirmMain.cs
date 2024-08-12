@@ -312,9 +312,9 @@ namespace Inventory.MainForm
         }
         private void tileLPG_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var name = GetUseFullName(_userId);
-            ReportSetting.ListofProductLpgs(name);
-
+            //  var name = GetUseFullName(_userId);
+            // ReportSetting.ListofProductLpgs(name);
+            Constant.ApplicationExit();
         }
 
         private void tileSBD_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
