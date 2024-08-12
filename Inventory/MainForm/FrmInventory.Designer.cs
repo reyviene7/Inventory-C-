@@ -317,7 +317,7 @@
             this.tabInventory.Controls.Add(this.GbPersonal);
             this.tabInventory.Name = "tabInventory";
             this.tabInventory.Size = new System.Drawing.Size(1109, 733);
-            this.tabInventory.Text = "Inventory Details";
+            this.tabInventory.Text = "Inventory Intake";
             // 
             // GbPersonal
             // 
@@ -832,7 +832,7 @@
             this.tabHistory.Controls.Add(this.groupControl1);
             this.tabHistory.Name = "tabHistory";
             this.tabHistory.Size = new System.Drawing.Size(1109, 733);
-            this.tabHistory.Text = "Product History";
+            this.tabHistory.Text = "Delivery Received";
             // 
             // groupControl1
             // 
@@ -898,7 +898,7 @@
             this.tabSaleHis.Controls.Add(this.groupControl2);
             this.tabSaleHis.Name = "tabSaleHis";
             this.tabSaleHis.Size = new System.Drawing.Size(1109, 733);
-            this.tabSaleHis.Text = "Sales History";
+            this.tabSaleHis.Text = "Transaction History";
             // 
             // groupControl2
             // 
