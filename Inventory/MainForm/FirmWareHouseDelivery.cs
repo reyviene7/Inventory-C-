@@ -1,22 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
 using Inventory.Config;
 using Inventory.Entities;
-using Inventory.PopupForm;
-using Inventory.Services;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Query = ServeAll.Core.Queries.Query;
 
 namespace Inventory.MainForm
@@ -28,7 +23,8 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userTy;
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
-
+        private IEnumerable<ViewImageProduct> imgList;
+        private int InventoryId = 0;
         public FirmMain Main
         {
             get { return _main; }
@@ -41,8 +37,9 @@ namespace Inventory.MainForm
             _userTy = userTy;
             InitializeComponent();
             _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            imgList = EnumerableUtils.getImgProductList();
         }
-        private async void FirmWarehouseDelivery_Load(object sender, EventArgs e)
+        private void FirmWarehouseDelivery_Load(object sender, EventArgs e)
         {
             PanelInterface.SetFullScreen(this);
             PanelInterface.SetMainPanelPosition(this, pnlMain);
@@ -55,21 +52,15 @@ namespace Inventory.MainForm
 
             try
             {
-                // Start showing the wait form
                 braWET.ShowWaitForm();
-
-                // Bind the other lists
                 BindDeliveryList();
             }
             finally
             {
-                // Ensure the wait form is closed
                 if (braWET.IsSplashFormVisible)
                 {
                     braWET.CloseWaitForm();
                 }
-
-                // Bind the warehouse data after closing the wait form
                 BindWareHouse();
             }
         }
@@ -1269,37 +1260,58 @@ namespace Inventory.MainForm
                 BindWareHouse();
             }
         }
-        private void gridBranch_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        private void gridList_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (gridList.RowCount > 0)
-            {
                 try
                 {
-                    if (_wer && _bra == false)
+                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (id.Length > 0)
                     {
-                        var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
-                        //ShowValue(invId);
-                        var imgId = GetProductImgId(cmbProductName.Text);
-                        txtProductBarcode.Text = SearchBarcode(cmbProductName.Text).product_code;
-                        txtItemPrice.Text = SearchBarcode(cmbProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);
-                    }
-                    if (_wer == false && _bra)
-                    {
-                        var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
-                        ShowBranch(invId);
-                        var imgId = GetProductImgId(cmbProductName.Text);
-                        txtProductBarcode.Text = SearchBarcode(cmbProductName.Text).product_code;
-                        txtItemPrice.Text = SearchBarcode(cmbProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);
-                    }
+                        InventoryId = int.Parse(id);
+                        var ent = searchWarehouseInventoryId(InventoryId);
+                        var barcode = ent.product_code;
+                        txtDeliveryID.Text = ent.inventory_id.ToString();
+                        txtDeliveryCode.Text = ent.product_code;
+                        cmbProductName.Text = ent.product_name;
+                        txtLastItemCost.Text = ent.delivery_code;
+                        txtReceiptNum.Text = ent.quantity.ToString(CultureInfo.InvariantCulture);
+                        txtWarehouseQty.Text = ent.branch_details;
+                        cmbWarehouseBranch.Value = ent.inventory_date;
+                        txtLastCost.Text = ent.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtOnOrder.Text = ent.retail_price.ToString(CultureInfo.InvariantCulture);
+                        dkpDeliveryDate.Text = ent.retail_price.ToString(CultureInfo.InvariantCulture);
+                        cmbProductStatus.Text = ent.status;
+                        txtProductBarcode.Text = barcode;
+                        txtItemPrice.Text = ent.cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtDeliveryQty.Text = ent.retail_price.ToString(CultureInfo.InvariantCulture);
+                        txtRemarks.Text = ent.retail_price.ToString(CultureInfo.InvariantCulture);
 
+                        var img = searchProductImg(barcode);
+                        var imgLocation = img.img_location;
+                        if (imgLocation.Length > 0)
+                        {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                            imgPRO.ImageLocation = location;
+                        }
+                        else
+                            imgPRO.Image = null;
+                    }
 
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                 }
-
-            }
+        }
+        private ViewWareHouseInventory searchWarehouseInventoryId(int id)
+        {
+            return _warehouse_list.FirstOrDefault(Inventory => Inventory.inventory_id == id);
+        }
+        private ViewImageProduct searchProductImg(string param)
+        {
+            return imgList.FirstOrDefault(img => img.image_code == param);
         }
         private void gridBranch_RowClick(object sender, RowClickEventArgs e)
         {
