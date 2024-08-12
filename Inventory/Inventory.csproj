@@ -194,6 +194,12 @@
     <Compile Include="MainForm\FirmWareHouseDelivery.Designer.cs">
       <DependentUpon>FirmWareHouseDelivery.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm\FrmServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FrmServices.Designer.cs">
+      <DependentUpon>FrmServices.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm\FirmWarehouseInvetory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -393,6 +399,9 @@
     <EmbeddedResource Include="MainForm\FirmWareHouseDelivery.resx">
       <DependentUpon>FirmWareHouseDelivery.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FrmServices.resx">
+      <DependentUpon>FrmServices.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FirmWarehouseInvetory.resx">
       <DependentUpon>FirmWarehouseInvetory.cs</DependentUpon>
     </EmbeddedResource>
@@ -516,6 +525,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Graph.ico" />
+    <None Include="Resources\graph.histogram.description.png" />
     <None Include="Resources\transit.bus.png" />
     <None Include="Resources\Petron.jpg" />
   </ItemGroup>
