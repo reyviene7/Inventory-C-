@@ -121,7 +121,7 @@
   <data name="bntADD.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAA4JJREFUeF7tmjFoE2EUx4uDRQRxqZvgoFOxgxCk6FBcigjFpVsHsVvdhA6iQ3AR
+        vAAADrwBlbxySQAAA4JJREFUeF7tmjFoE2EUx4uDRQRxqZvgoFOxgxCk6FBcigjFpVsHsVvdhA6iQ3AR
         HQoK3UoRunWyiNDJFjpoHQSRIJQupRRCKYIES9Kmif/3vf8ll9QOPe8SXnw/eFzyvt57//+ld/flu/Q5
         juM4juM4juM4juM4juM4zn9IvV6/Uq1WH2L7CvG+Vqt9R+wgfiMOELuIDcT60dHRW/zNNCKXz+fPsETv
         IwcJ5p/jIGzidSKw7x42s4ghlu09SqXSJRicg9mamE4LlHu3v79/mW16g8PDwxEY26XHiDJOx3uVSmXw
@@ -14346,7 +14346,7 @@
     <value>111, 17</value>
   </metadata>
   <metadata name="RightOptions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>206, 17</value>
+    <value>207, 17</value>
   </metadata>
   <data name="pcRight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

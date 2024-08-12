@@ -102,7 +102,8 @@
     <Compile Include="Entities\RouteLog.cs" />
     <Compile Include="Entities\Sales.cs" />
     <Compile Include="Entities\SalesParticular.cs" />
-    <Compile Include="Entities\StockMovement.cs" />
+    <Compile Include="Entities\ViewWarehouseDelivery.cs" />
+    <Compile Include="Entities\WarehouseDelivery.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="Entities\ViewCreditParticular.cs" />
