@@ -685,7 +685,7 @@
             this.gridList.OptionsView.RowAutoHeight = true;
             this.gridList.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
             this.gridList.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridBranch_RowClick);
-            this.gridList.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridBranch_FocusedRowChanged);
+            this.gridList.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridList_FocusedRowChanged);
             this.gridList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridBranch_KeyDown);
             // 
             // gridView2
@@ -1305,7 +1305,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1458, 889);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.bntADD);
