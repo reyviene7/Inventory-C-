@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
+using Inventory.Class;
 using Inventory.Config;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
@@ -23,6 +24,8 @@ namespace Inventory.MainForm
         private readonly int _usrTyp;
         private readonly string _userName;
         private IEnumerable<ViewInventory> listInventory;
+        private IEnumerable<ViewProductList> listWarehouseProduct;
+        private IEnumerable<ViewSalesPart> listSalesPart;
         private IEnumerable<ViewImageProduct> imgList;
         private int InventoryId = 0;
 
@@ -71,17 +74,23 @@ namespace Inventory.MainForm
             _userId = userId;
             _usrTyp = usrTyp;
             InitializeComponent();
-            _userName = userName;   
+            _userName = userName;
         }
         private void FrmInventory_Load(object sender, EventArgs e)
         {
             PanelInterface.SetFullScreen(this);
             PanelInterface.SetMainPanelPosition(this, pnlMain);
+            PanelInterface.SetOptionsPanelPosition(this, pnlOptions, pbHide);
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             RightOptions.Start();
+            Options.Start();
             listInventory = EnumerableUtils.getInventory();
+            listWarehouseProduct = EnumerableUtils.getWarehouseProduct();
+            listSalesPart = EnumerableUtils.getSalesParticular();
             imgList = EnumerableUtils.getImgProductList();
             BindInventory();
+            BindWarehouseProduct();
+            BindSalesPart();
         }
         private void bntADD_Click(object sender, EventArgs e)
         {
@@ -677,7 +686,7 @@ namespace Inventory.MainForm
                 {
                     posWET.ShowWaitForm();
                     var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
-                  
+
                     ServeAll.Core.Entities.Inventory inventory = new ServeAll.Core.Entities.Inventory
                     {
                         inventory_code = txtInventoryCode.Text,
@@ -697,7 +706,7 @@ namespace Inventory.MainForm
                         PopupNotification.PopUpMessages(1, "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
                          Messages.TitleSuccessInsert);
                         unWork.Commit();
-                        listInventory = EnumerableUtils.getInventory(); 
+                        listInventory = EnumerableUtils.getInventory();
                         BindInventory();
                     }
                 }
@@ -845,7 +854,6 @@ namespace Inventory.MainForm
         {
             return imgList.FirstOrDefault(img => img.image_code == param);
         }
-
         private void BindInventory()
         {
             gCON.Update();
@@ -880,6 +888,80 @@ namespace Inventory.MainForm
                 PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
             }
         }
+        private void BindWarehouseProduct()
+        {
+            dataGridProducts.Update();
+            try
+            {
+                var list = listWarehouseProduct.Select(x => new
+                {
+                    ID = x.product_id,
+                    BARCODE = x.product_code,
+                    PRODUCT = x.product_name,
+                    QUANTITY = 0,  
+                    TRADE = x.trade_price,
+                    RETAIL = x.retail_price
+                }).ToList();
+
+                dataGridProducts.DataSource = null; 
+                dataGridProducts.DataSource = list;
+                
+                dataGridProducts.Columns[0].Width = 80;
+                dataGridProducts.Columns[1].Width = 180;
+                dataGridProducts.Columns[2].Width = 480;
+                dataGridProducts.Columns[3].Width = 100;
+                dataGridProducts.Columns[4].Width = 125;
+                dataGridProducts.Columns[5].Width = 125;
+            }
+            catch (Exception ex)
+            {
+                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
+            }
+        }
+        private void BindSalesPart()
+        {
+            dataGridSales.Update();
+            try
+            {
+                var list = listSalesPart.Select(x => new
+                {
+                    ID = x.id,
+                    INVOICE = x.invoice,
+                    BARCODE = x.barcode,
+                    PRODUCT = x.item,
+                    QUANTITY = x.qty,  
+                    UNITPRICE = x.price,
+                    DISCOUNT = x.discount,
+                    GROSS = x.gross,
+                    NET = x.net,
+                    CUSTOMER = x.customer,
+                    BRANCH = x.branch,
+                    DATE = x.date,
+                }).ToList();
+
+                dataGridSales.DataSource = null; 
+                dataGridSales.DataSource = list;
+
+                dataGridSales.Columns[0].Width = 40;
+                dataGridSales.Columns[1].Width = 50;
+                dataGridSales.Columns[2].Width = 100;
+                dataGridSales.Columns[3].Width = 340;
+                dataGridSales.Columns[4].Width = 50;
+                dataGridSales.Columns[5].Width = 50;
+                dataGridSales.Columns[6].Width = 50;
+                dataGridSales.Columns[7].Width = 50;
+                dataGridSales.Columns[8].Width = 50;
+                dataGridSales.Columns[9].Width = 110;
+                dataGridSales.Columns[10].Width = 90;
+                dataGridSales.Columns[11].Width = 100;
+            }
+            catch (Exception ex)
+            {
+                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
+            }
+        }
+
+
         private void gridInventory_RowClick(object sender, RowClickEventArgs e)
         {
             InputWhit();
@@ -1092,6 +1174,11 @@ namespace Inventory.MainForm
             {
                 cmbBranchName.Focus();
             }
+        }
+
+        private void Options_Tick(object sender, EventArgs e)
+        {
+            PanelInterface.OptionTick(this, pnlOptions);
         }
 
         private void cmbSAT_KeyDown(object sender, KeyEventArgs e)

@@ -129,7 +129,7 @@
 	                                               category_details, 
 	                                               image_id, 
 	                                               date_register
-                                             FROM category";
+                                             FROM category ORDER BY category_id DESC";
 
         public const string AllCategoryImage = @"SELECT * FROM view_category_image";
 
@@ -173,13 +173,15 @@
 
         public const string AllItemNotInDepot = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE ProductId NOT IN(SELECT ProductId FROM Products WHERE Name LIKE '%LPG%')";
         public const string AllItemFromDepots = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE Name LIKE '%LPG%'";
-        public const string AllViewProducts = "SELECT * FROM view_product";
+        public const string AllViewProducts = "SELECT * FROM view_product ORDER BY product_id DESC";
         public const string AllProductWarehouse = @"SELECT * FROM view_request_product";
         public const string AllSupplierWarehouse = @"SELECT * FROM view_request_supplier";
         public const string AllViewImageProduct = "SELECT * FROM view_image_product";
         public const string AllWarehouseStatus = @"SELECT * FROM warehouse_status ORDER BY status_details ASC";
         public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
-        public const string AllInventory = @"SELECT * FROM view_inventory";
+        public const string AllInventory = @"SELECT * FROM view_inventory ORDER BY inventory_id DESC";
+        public const string AllWarehouseProduct = @"SELECT * FROM view_productlist ORDER BY product_id DESC";
+        public const string AllSalesPart = @"SELECT * FROM view_sales_particular ORDER BY id DESC";
         public const string AllProductCategory = @"SELECT * FROM view_product_category";
         public const string AllProductStatus = @"SELECT status_id, status FROM product_status";
         public const string AllUsers = @"SELECT user_id,
@@ -243,13 +245,12 @@
         public const string SelectAllDepot = "SELECT Id, Code, Item, Qty, DeliveryNo, ReceiptNo, Branch, LastCost, OnOrder, Purchase, RefDate, Warranty, Status FROM view_depot ORDER BY Id DESC";
         public const string SelectAllWareHouse = "SELECT warehouse_code, warehouse_name, full_address, contact_name, telephone_number, mobile_number, mobile_secondary, email_address, web_url, fax_number FROM view_warehouse ORDER BY warehouse_code ASC;";
         public const string SelectAllBranchDelivery = "SELECT Id, Code, Item, Qty, Delivery, Receipt, Branch, Warranty, Status,RefDate, WareHouseId FROM view_branchdelivery ORDER BY Id DESC";
-        public const string SelectAllBranchExcWareH = "SELECT BranchDetails FROM Branch WHERE BranchId NOT IN (SELECT BranchId FROM Branch WHERE BranchDetails = 'Warehouse')";
+        public const string SelectAllBranchExcWareH = "SELECT branch_details FROM branch WHERE branch_id NOT IN (SELECT branch_id FROM branch WHERE branch_details = 'warehouse')";
         public const string SelectAllFingerPrints = "SELECT FingerId, EmployeeId, FingerIndex, FingerBytes FROM Finger ORDER BY FingerIndex DESC";
         public const string SelectAllReturnWareHs = "SELECT return_id, return_code, product_code, return_number, return_quantity, branch_code, destination, return_date, status_id, remarks, inventory_code FROM view_return_warehouse ORDER BY return_id DESC";
         public const string SelectAllProductId = "SELECT product_id FROM view_product_id";
         public const string SelectAllStockMovement = "SELECT * FROM stock_movement";
         public const string SelectStockMovementList = "SELECT * FROM view_stock_movement";
-        public const string SelectDeliveryList = "SELECT * FROM view_delivery_list";
         public const string SelectCountReturnNo = "SELECT return_id, return_number FROM view_return_warehouse";
         public const string SelectCountDepotRet = "SELECT ReceiptNo FROM WareHouse";
         public const string SelectCountDepotDel = "SELECT DeliveryNo FROM WareHouse";
@@ -300,5 +301,6 @@
                                                         created_at,
                                                         updated_at
                                                     FROM view_warehouse_inventory ORDER BY inventory_id DESC";
+        public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
     }
 }

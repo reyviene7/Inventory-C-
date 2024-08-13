@@ -85,6 +85,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.Utils.v19.2.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.XtraBars.v19.2.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.XtraCharts.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.XtraCharts.v19.2.dll</HintPath>
@@ -108,6 +112,10 @@
     <Reference Include="DevExpress.XtraReports.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.XtraReports.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.XtraRichEdit.v19.2.dll</HintPath>
     </Reference>
     <Reference Include="DigitalClock">
       <HintPath>..\..\..\dll\DigitalClock.dll</HintPath>
@@ -193,6 +201,18 @@
     </Compile>
     <Compile Include="MainForm\FirmWareHouseDelivery.Designer.cs">
       <DependentUpon>FirmWareHouseDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FrmManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FrmManagement.Designer.cs">
+      <DependentUpon>FrmManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\FrmServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\FrmServices.Designer.cs">
+      <DependentUpon>FrmServices.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm\FirmWarehouseInvetory.cs">
       <SubType>Form</SubType>
@@ -332,14 +352,13 @@
     <Compile Include="PopupForm\FirmPopServer.Designer.cs">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
     </Compile>
-    <Compile Include="PopupForm\FirmPopWarehouses.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PopupForm\FirmPopWarehouses.Designer.cs">
-      <DependentUpon>FirmPopWarehouses.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Report\RepAllItem.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -398,6 +417,12 @@
     <Compile Include="Services\ServWarehouseItem.cs" />
     <EmbeddedResource Include="MainForm\FirmWareHouseDelivery.resx">
       <DependentUpon>FirmWareHouseDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FrmManagement.resx">
+      <DependentUpon>FrmManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\FrmServices.resx">
+      <DependentUpon>FrmServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FirmWarehouseInvetory.resx">
       <DependentUpon>FirmWarehouseInvetory.cs</DependentUpon>
@@ -468,20 +493,12 @@
     <EmbeddedResource Include="PopupForm\FirmPopServer.resx">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PopupForm\FirmPopWarehouses.resx">
-      <DependentUpon>FirmPopWarehouses.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Report\RepAllItem.resx">
       <DependentUpon>RepAllItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -521,12 +538,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Logo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Graph.ico" />
+    <None Include="Resources\list.gear.png" />
+    <None Include="Resources\graph.histogram.description.png" />
     <None Include="Resources\transit.bus.png" />
-    <None Include="Resources\Petron.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

@@ -1,6 +1,6 @@
 ﻿namespace Inventory.MainForm
 {
-    partial class FirmWarehouseInvetory
+    partial class FrmServices
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmWarehouseInvetory));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmServices));
             this.inventoryScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.pnlRightOptions = new System.Windows.Forms.Panel();
             this.pnlRightMain = new System.Windows.Forms.Panel();
@@ -101,9 +101,6 @@
             this.tabHistory = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.textBox23 = new System.Windows.Forms.TextBox();
-            this.tabSaleHis = new DevExpress.XtraTab.XtraTabPage();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.bntClear = new System.Windows.Forms.Button();
             this.bntCancel = new System.Windows.Forms.Button();
             this.bntSave = new System.Windows.Forms.Button();
@@ -148,9 +145,6 @@
             this.tabHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            this.tabSaleHis.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlRightOptions
@@ -213,7 +207,7 @@
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
             this.pnlOptions.Location = new System.Drawing.Point(-2, 768);
             this.pnlOptions.Name = "pnlOptions";
-            this.pnlOptions.Size = new System.Drawing.Size(1432, 74);
+            this.pnlOptions.Size = new System.Drawing.Size(1372, 74);
             this.pnlOptions.TabIndex = 129;
             // 
             // pnlOptionsMain
@@ -388,8 +382,7 @@
             this.xInventory.TabIndex = 137;
             this.xInventory.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabInventory,
-            this.tabHistory,
-            this.tabSaleHis});
+            this.tabHistory});
             // 
             // tabInventory
             // 
@@ -398,7 +391,7 @@
             this.tabInventory.Controls.Add(this.GbPersonal);
             this.tabInventory.Name = "tabInventory";
             this.tabInventory.Size = new System.Drawing.Size(1106, 739);
-            this.tabInventory.Text = "Warehouse Inventory";
+            this.tabInventory.Text = "Services";
             // 
             // GbPersonal
             // 
@@ -582,7 +575,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(5, 201);
+            this.label15.Location = new System.Drawing.Point(3, 208);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(64, 17);
             this.label15.TabIndex = 236;
@@ -1047,9 +1040,9 @@
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
             this.lblBarcode.Location = new System.Drawing.Point(7, 27);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(88, 17);
+            this.lblBarcode.Size = new System.Drawing.Size(78, 17);
             this.lblBarcode.TabIndex = 142;
-            this.lblBarcode.Text = "Inventory Id:";
+            this.lblBarcode.Text = "Services Id:";
             // 
             // txtInventoryId
             // 
@@ -1067,7 +1060,7 @@
             this.tabHistory.Controls.Add(this.groupControl1);
             this.tabHistory.Name = "tabHistory";
             this.tabHistory.Size = new System.Drawing.Size(1106, 739);
-            this.tabHistory.Text = "Delivery History";
+            this.tabHistory.Text = "Services History";
             // 
             // groupControl1
             // 
@@ -1095,42 +1088,6 @@
             this.textBox23.Size = new System.Drawing.Size(10, 10);
             this.textBox23.TabIndex = 109;
             this.textBox23.Visible = false;
-            // 
-            // tabSaleHis
-            // 
-            this.tabSaleHis.Appearance.PageClient.BackColor = System.Drawing.Color.BurlyWood;
-            this.tabSaleHis.Appearance.PageClient.Options.UseBackColor = true;
-            this.tabSaleHis.Controls.Add(this.groupControl2);
-            this.tabSaleHis.Name = "tabSaleHis";
-            this.tabSaleHis.Size = new System.Drawing.Size(1106, 739);
-            this.tabSaleHis.Text = "Sales History";
-            // 
-            // groupControl2
-            // 
-            this.groupControl2.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.groupControl2.Appearance.Options.UseBackColor = true;
-            this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupControl2.Controls.Add(this.textBox1);
-            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(0, 0);
-            this.groupControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
-            this.groupControl2.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1106, 739);
-            this.groupControl2.TabIndex = 175;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Maroon;
-            this.textBox1.Location = new System.Drawing.Point(-8, 19);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(10, 10);
-            this.textBox1.TabIndex = 109;
-            this.textBox1.Visible = false;
             // 
             // bntClear
             // 
@@ -1236,11 +1193,11 @@
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(-4, 166);
+            this.lblMainTitle.Location = new System.Drawing.Point(11, 169);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(203, 47);
+            this.lblMainTitle.Size = new System.Drawing.Size(154, 47);
             this.lblMainTitle.TabIndex = 136;
-            this.lblMainTitle.Text = "Warehouse";
+            this.lblMainTitle.Text = "Services";
             // 
             // RightOptions
             // 
@@ -1252,17 +1209,17 @@
             this.Options.Interval = 1;
             this.Options.Tick += new System.EventHandler(this.Options_Tick);
             // 
-            // FirmWarehouseInvetory
+            // FrmServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1491, 834);
+            this.ClientSize = new System.Drawing.Size(1370, 834);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlRightOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FirmWarehouseInvetory";
+            this.Name = "FrmServices";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmWarehouseInvetory";
             this.Load += new System.EventHandler(this.FirmWarehouseInvetory_Load);
@@ -1306,10 +1263,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            this.tabSaleHis.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.groupControl2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1384,9 +1337,6 @@
         private DevExpress.XtraTab.XtraTabPage tabHistory;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.TextBox textBox23;
-        private DevExpress.XtraTab.XtraTabPage tabSaleHis;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button bntClear;
         private System.Windows.Forms.Button bntCancel;
         private System.Windows.Forms.Button bntSave;

@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
 using Inventory.Config;
 using Inventory.Entities;
-using Inventory.PopupForm;
-using Inventory.Services;
 using ServeAll.Core.Entities;
+using ServeAll.Core.Entities.request;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
 using Query = ServeAll.Core.Queries.Query;
@@ -24,20 +23,11 @@ namespace Inventory.MainForm
         private bool _add, _del, _edt, _wer, _bra;
         private readonly int _userId;
         private readonly int _userTy;
-        private int _warehouse;
-        public int Warehouse
-        {
-            get { return _warehouse; }
-            set
-            {
-                _warehouse = value;
-                if (_warehouse > 0)
-                {
-                    var warehouse = GetWarehouse(_warehouse);
-                    BindDeliveryList(warehouse);
-                }
-            }
-        }
+        private IEnumerable<RequestProducts> _products;
+        private IEnumerable<ViewWareHouseInventory> _warehouse_list;
+        private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
+        private IEnumerable<ViewImageProduct> imgList;
+        private int InventoryId = 0; 
         public FirmMain Main
         {
             get { return _main; }
@@ -49,6 +39,9 @@ namespace Inventory.MainForm
             _userId = userId;
             _userTy = userTy;
             InitializeComponent();
+            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+            imgList = EnumerableUtils.getImgProductList();
         }
         private void FirmWarehouseDelivery_Load(object sender, EventArgs e)
         {
@@ -58,10 +51,62 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
-            _bra = true;
-            _wer = true;
-            ShowWarehouse();
+            _products = EnumerableUtils.getProductWarehouseList();
+            try
+            {
+                braWET.ShowWaitForm();
+                BindDeliveryList();
+            }
+            finally
+            {
+                if (braWET.IsSplashFormVisible)
+                {
+                    braWET.CloseWaitForm();
+                }
+                BindWareHouse();
+            }
         }
+
+
+        private void BindWareHouse()
+        {
+            clearGrid();
+
+            var list = _warehouse_list.Select(p => new {
+                Id = p.inventory_id,
+                Barcode = p.product_code,
+                SKU = p.sku,
+                Qty = p.quantity_in_stock,
+                Location = p.location_code,
+                Supplier = p.supplier_name,
+                Price = p.cost_per_unit,
+                LastCost = p.last_cost_per_unit,
+                Total = p.total_value,
+                Expire = p.expiration_date,
+                Status = p.status_details
+            }).ToList();
+
+            gridControl.DataSource = list;
+            gridControl.Update();
+
+            if (gridInventory.RowCount > 0)
+            {
+                gridInventory.Columns[0].Width = 40;
+                gridInventory.Columns[1].Width = 130;
+                gridInventory.Columns[2].Width = 65;
+                gridInventory.Columns[3].Width = 40;
+                gridInventory.Columns[4].Width = 100;
+                gridInventory.Columns[5].Width = 180;
+            }
+        }
+
+        private void clearGrid()
+        {
+            gridControl.DataSource = null;
+            gridControl.DataSource = "";
+            gridInventory.Columns.Clear();
+        }
+
         private void Options_Tick(object sender, EventArgs e)
         {
             PanelInterface.OptionTick(this, pnlOptions);
@@ -114,7 +159,7 @@ namespace Inventory.MainForm
                 InputWhit();
                 var que =
                     PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delivery No: " + txtLastItemCost.Text.Trim(' ') + " " + "?", "Delivery Details");
+                        "Are you sure you want to Delivery No: " + txtLastCost.Text.Trim(' ') + " " + "?", "Delivery Details");
                 if (que)
                 {
                     ButDel();
@@ -131,9 +176,9 @@ namespace Inventory.MainForm
         {
             if (_wer && _bra == false)
             {
-                if (cmbProductName.Text.Length > 0)
+                if (txtProductName.Text.Length > 0)
                 {
-                    var imgId = GetProductImgId(cmbProductName.Text);
+                    var imgId = GetProductImgId(txtProductName.Text);
                 }
             }
         }
@@ -170,12 +215,12 @@ namespace Inventory.MainForm
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtOnOrder.Focus();
-                txtOnOrder.BackColor = Color.Yellow;
+                cmbWarehouse.Focus();
+                cmbWarehouse.BackColor = Color.Yellow;
             }
             else
             {
-                txtOnOrder.BackColor = Color.White;
+                cmbWarehouse.BackColor = Color.White;
             }
         }
 //KEY DOWN
@@ -190,20 +235,20 @@ namespace Inventory.MainForm
             {
                 if (_wer && _bra == false)
                 {
-                    var len = cmbProductName.Text.Length;
+                    var len = txtProductName.Text.Length;
                     if (len > 0)
                     {
-                        cmbProductName.BackColor = Color.White;
-                        txtLastItemCost.BackColor = Color.Yellow;
-                        txtLastItemCost.Focus();
-                        txtProductBarcode.Text = SearchBarcode(cmbProductName.Text).product_code;
-                        txtItemPrice.Text = SearchBarcode(cmbProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);
+                        txtProductName.BackColor = Color.White;
+                        txtLastCost.BackColor = Color.Yellow;
+                        txtLastCost.Focus();
+                        txtProductBarcode.Text = SearchBarcode(txtProductName.Text).product_code;
+                        txtItemPrice.Text = SearchBarcode(txtProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);
                     }
                     else
                     {
                         PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.GasulPos);
-                        cmbProductName.BackColor = Color.Yellow;
-                        cmbProductName.Focus();
+                        txtProductName.BackColor = Color.Yellow;
+                        txtProductName.Focus();
                     }
                 }
             }
@@ -212,18 +257,18 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                var len = txtLastItemCost.Text.Length;
+                var len = txtLastCost.Text.Length;
                 if (len > 0)
                 {
-                    txtLastItemCost.BackColor = Color.White;
+                    txtLastCost.BackColor = Color.White;
                     txtReceiptNum.Focus();
                     txtReceiptNum.BackColor = Color.Yellow;
                 }
                 else
                 {
                     PopupNotification.PopUpMessages(0, "Delivery No must not be empty!", Messages.GasulPos);
-                    txtLastItemCost.BackColor = Color.Yellow;
-                    txtLastItemCost.Focus();
+                    txtLastCost.BackColor = Color.Yellow;
+                    txtLastCost.Focus();
                 }
             }
         }
@@ -292,8 +337,8 @@ namespace Inventory.MainForm
                 if (len > 0)
                 {
                     txtLastCost.BackColor = Color.White;
-                    txtOnOrder.Focus();
-                    txtOnOrder.BackColor = Color.Yellow;
+                    cmbWarehouse.Focus();
+                    cmbWarehouse.BackColor = Color.Yellow;
                 }
                 else
                 {
@@ -307,18 +352,18 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                var len = txtOnOrder.Text.Length;
+                var len = cmbWarehouse.Text.Length;
                 if (len > 0)
                 {
-                    txtOnOrder.BackColor = Color.White;
+                    cmbWarehouse.BackColor = Color.White;
                     dkpDeliveryDate.Focus();
                     dkpDeliveryDate.BackColor = Color.Yellow;
                 }
                 else
                 {
                     PopupNotification.PopUpMessages(0, "On Order must not be empty!", Messages.GasulPos);
-                    txtOnOrder.BackColor = Color.Yellow;
-                    txtOnOrder.Focus();
+                    cmbWarehouse.BackColor = Color.Yellow;
+                    cmbWarehouse.Focus();
                 }
             }
         }
@@ -362,26 +407,18 @@ namespace Inventory.MainForm
         }
         private void ButAdd()
         {
-            if (_wer && _bra == false)
-            {
-                ButtonAdd();
-                txtLastItemCost.Enabled = true;
-                txtReceiptNum.Enabled = true;
-                txtWarehouseQty.Enabled = true;
-                cmbWarehouseBranch.Enabled = true;
-                dkpDeliveryDate.Enabled = true;
-                cmbProductStatus.Enabled = true;
-                txtLastItemCost.Clear();
-                txtReceiptNum.Clear();
-                InputWhit();
-                GenerateWareHouseCode();
-            }
+            
+            ButtonAdd();
+            InputEnab();
+            InputWhit();
+            //GenerateWareHouseCode();
+            
             //indProducts();
-            cmbProductName.Enabled = false;
+            txtProductName.Enabled = false;
             BindBranch();
-            BindProductStatus();
-            txtLastItemCost.BackColor = Color.Yellow;
-            txtLastItemCost.Focus();
+            BindWarehouseStatus();
+            txtLastCost.BackColor = Color.Yellow;
+            txtLastCost.Focus();
             _add = true;
             _edt = false;
             _del = false;
@@ -394,7 +431,7 @@ namespace Inventory.MainForm
             ButtonUpd();
             InputEnab();
             InputWhit();
-            _add = false;
+            _add = true;
             _edt = true;
             _del = false;
             gridControl.Enabled = false;
@@ -416,7 +453,7 @@ namespace Inventory.MainForm
             InputDimG();
             InputClea();
             gridControl.Enabled = true;
-            cmbProductName.DataBindings.Clear();
+            txtProductName.DataBindings.Clear();
             imgPRO.DataBindings.Clear();
             imgPRO.Image = null;
         }
@@ -440,7 +477,7 @@ namespace Inventory.MainForm
 
                 if (_bra && _wer == false)
                 {
-                   UpdateBranch();
+                    UpdateDelivery();
                     ButtonSav();
                     InputDisb();
                     InputDimG();
@@ -465,7 +502,7 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridControl.Enabled = true;
-            cmbProductName.DataBindings.Clear();
+            txtProductName.DataBindings.Clear();
             imgPRO.DataBindings.Clear();
             imgPRO.Image = null;
         }
@@ -493,7 +530,7 @@ namespace Inventory.MainForm
         }
         private void ButtonDel()
         {
-            bntADD.Enabled = false;
+            bntADD.Enabled = true;
             bntUPDATE.Enabled = false;
             bntDELETE.Enabled = true;
             bntSAVE.Enabled = true;
@@ -538,79 +575,98 @@ namespace Inventory.MainForm
         private void InputWhit()
         {
             txtDeliveryID.BackColor = Color.White;
+            txtProductBarcode.BackColor = Color.White;
             txtDeliveryCode.BackColor = Color.White;
-            cmbProductName.BackColor = Color.White;
-            txtLastItemCost.BackColor = Color.White;
+            txtProductName.BackColor = Color.White;
+            txtLastCost.BackColor = Color.White;
             txtReceiptNum.BackColor = Color.White;
             txtWarehouseQty.BackColor = Color.White;
             cmbWarehouseBranch.BackColor = Color.White;
             txtLastCost.BackColor = Color.White;
-            txtOnOrder.BackColor = Color.White;
+            cmbWarehouse.BackColor = Color.White;
             dkpDeliveryDate.BackColor = Color.White;
+            txtItemPrice.BackColor = Color.White;
+            txtDeliveryQty.BackColor = Color.White;
             cmbProductStatus.BackColor = Color.White;
+            cmbDeliveryStatus.BackColor = Color.White;
+            txtRemarks.BackColor = Color.White;
         }
         private void InputEnab()
         {
-            txtDeliveryID.Enabled = true;
             txtDeliveryCode.Enabled = true;
-            cmbProductName.Enabled = true;
-            txtLastItemCost.Enabled = true;
-            txtReceiptNum.Enabled = true;
-            txtWarehouseQty.Enabled = true;
-            cmbWarehouseBranch.Enabled = true;
+            cmbWarehouse.Enabled = true;
+            txtProductName.Enabled = true;
             txtLastCost.Enabled = true;
-            txtOnOrder.Enabled = true;
+            txtReceiptNum.Enabled = true;
+            cmbWarehouseBranch.Enabled = true;
             dkpDeliveryDate.Enabled = true;
+            txtItemPrice.Enabled = true;
+            txtDeliveryQty.Enabled = true;
             cmbProductStatus.Enabled = true;
+            cmbDeliveryStatus.Enabled = true;
+            txtRemarks.Enabled = true;
         }
         private void InputDisb()
         {
             txtDeliveryID.Enabled = false;
+            txtProductBarcode.Enabled = false;
             txtDeliveryCode.Enabled = false;
-            cmbProductName.Enabled = false;
-            txtLastItemCost.Enabled = false;
+            cmbWarehouse.Enabled = false;
+            txtProductName.Enabled = false;
+            txtLastCost.Enabled = false;
             txtReceiptNum.Enabled = false;
             txtWarehouseQty.Enabled = false;
             cmbWarehouseBranch.Enabled = false;
-            txtLastCost.Enabled = false;
-            txtOnOrder.Enabled = false;
             dkpDeliveryDate.Enabled = false;
             cmbProductStatus.Enabled = false;
+            txtItemPrice.Enabled = false;
+            txtDeliveryQty.Enabled = false;
+            cmbDeliveryStatus.Enabled = false;
+            txtRemarks.Enabled = false;
         }
         private void InputClea()
         {
             txtDeliveryID.Clear();
+            txtProductBarcode.Clear();
             txtDeliveryCode.Clear();
-            cmbProductName.Text = "";
-            txtLastItemCost.Clear();
+            cmbWarehouse.Text = "";
+            txtProductName.Clear();
+            txtLastCost.Clear();
             txtReceiptNum.Clear();
             txtWarehouseQty.Clear();
             cmbWarehouseBranch.Text = "";
             //cmbProductWarranty.Text = @"NO WARRANTY";
-            txtLastCost.Clear();
-            txtOnOrder.Clear();
             dkpDeliveryDate.Value = DateTime.Now.Date;
             cmbProductStatus.Text = "";
+            txtItemPrice.Clear();
+            txtDeliveryQty.Clear();
+            cmbDeliveryStatus.Text = "";
+            txtRemarks.Clear();
         }
         private void InputDimG()
         {
             txtDeliveryID.BackColor = Color.DimGray;
+            txtProductBarcode.BackColor = Color.DimGray;
             txtDeliveryCode.BackColor = Color.DimGray;
-            cmbProductName.BackColor = Color.DimGray;
-            txtLastItemCost.BackColor = Color.DimGray;
+            cmbWarehouse.BackColor = Color.DimGray;
+            txtProductName.BackColor = Color.DimGray;
+            txtLastCost.BackColor = Color.DimGray;
             txtReceiptNum.BackColor = Color.DimGray;
             txtWarehouseQty.BackColor = Color.DimGray;
             cmbWarehouseBranch.BackColor = Color.DimGray;
             txtLastCost.BackColor = Color.DimGray;
-            txtOnOrder.BackColor = Color.DimGray;
             dkpDeliveryDate.BackColor = Color.DimGray;
             cmbProductStatus.BackColor = Color.DimGray;
+            txtItemPrice.BackColor = Color.DimGray;
+            txtDeliveryQty.BackColor = Color.DimGray;
+            cmbDeliveryStatus.BackColor = Color.DimGray;
+            txtRemarks.BackColor = Color.DimGray;
         }
         private void ClearGrid()
         {
             gridControl.DataSource = null;
             gridControl.DataSource = "";
-            gridList.Columns.Clear();
+            gridInventory.Columns.Clear();
 
         }
         private string GetLastWareHouseId()
@@ -657,70 +713,37 @@ namespace Inventory.MainForm
             alphaNumeric.Increment();
             txtDeliveryCode.Text = alphaNumeric.ToString();
         }
-        private void BindWarehouse()
+        private void BindDeliveryList()
         {
-            braWET.ShowWaitForm();
             ClearGrid();
-            gridControl.DataSource = EnumerableWarehouse();
-            if (gridList.RowCount > 0)
-            {
-                gridList.Columns[0].Width = 100;
-                gridList.Columns[1].Width = 100;
-                gridList.Columns[2].Width = 100;
-                gridList.Columns[3].Width = 100;
-                gridList.Columns[4].Width = 100;
-            }
-            braWET.CloseWaitForm();
-        }
-        private void BindStockMovementList()
-        {
-            braWET.ShowWaitForm();
-            ClearGrid();
-            var list = EnumerableUtils.getStockMovementList().Select(p => new
-            {
-                ID = p.stock_movement_id,
-                Code = p.movement_code,
-                Destination = p.destination,
-                DeliveryDate = p.delivery_date,
-                MoveType = p.movement_type,
-                ProductCount = p.distinct_product_count
-            });
-            gridControl.DataSource = list;
-            if (gridList.RowCount > 0)
-            {
-                gridList.Columns[0].Width = 10;
-                gridList.Columns[1].Width = 60;
-                gridList.Columns[2].Width = 60;
-                gridList.Columns[3].Width = 40;
-                gridList.Columns[4].Width = 30;
-                gridList.Columns[5].Width = 30;
-            }
-            braWET.CloseWaitForm();
-        }
-        private void BindDeliveryList(string warehouse)
-        {
-            braWET.ShowWaitForm();
-            ClearGrid();
-            var list = EnumerableUtils.getDeliveryList(warehouse).Select(p => new
+            var list = EnumerableUtils.getWareHouseDeliveryList().Select(p => new
             {
                 ID = p.delivery_id,
+                Barcode = p.product_code,
                 Code = p.delivery_code,
-                Destination = p.destination,
-                Status = p.delivery_status,
-                ProductCount = p.distinct_product_count,
-                DeliveryDate = p.delivery_date
-            });
-            gridControl.DataSource = list;
-            if (gridList.RowCount > 0)
+                Product = p.product_name,
+                Destination = p.branch_details,
+                DeliveryDate = p.delivery_date,
+                Status = p.status_details,
+                CostPerItem = p.cost_per_unit,
+                DeliverQty = p.delivery_qty,
+                DeliveryStatus = p.delivery_status,
+
+        });
+            gridControl1.DataSource = list;
+            if (gridView1.RowCount > 0)
             {
-                gridList.Columns[0].Width = 10;
-                gridList.Columns[1].Width = 60;
-                gridList.Columns[2].Width = 60;
-                gridList.Columns[3].Width = 40;
-                gridList.Columns[4].Width = 30;
-                gridList.Columns[5].Width = 30;
+                gridView1.Columns[0].Width = 10;
+                gridView1.Columns[1].Width = 100;
+                gridView1.Columns[2].Width = 40;
+                gridView1.Columns[3].Width = 300;
+                gridView1.Columns[4].Width = 80;
+                gridView1.Columns[5].Width = 80;
+                gridView1.Columns[6].Width = 80;
+                gridView1.Columns[7].Width = 50;
+                gridView1.Columns[8].Width = 50;
+                gridView1.Columns[9].Width = 100;
             }
-            braWET.CloseWaitForm();
         }
 
         private void BindBranchDel()
@@ -728,13 +751,13 @@ namespace Inventory.MainForm
             braWET.ShowWaitForm();
             ClearGrid();
             gridControl.DataSource = EnumerableBranch();
-            if (gridList.RowCount > 0)
+            if (gridInventory.RowCount > 0)
             {
-                gridList.Columns[0].Width = 40;
-                gridList.Columns[1].Width = 90;
-                gridList.Columns[2].Width = 280;
-                gridList.Columns[3].Width = 100;
-                gridList.Columns[3].Width = 120;
+                gridInventory.Columns[0].Width = 40;
+                gridInventory.Columns[1].Width = 90;
+                gridInventory.Columns[2].Width = 280;
+                gridInventory.Columns[3].Width = 100;
+                gridInventory.Columns[3].Width = 120;
             }
             braWET.CloseWaitForm();
 
@@ -750,8 +773,8 @@ namespace Inventory.MainForm
                     where r.product_name.Contains(Constant.AddFilterLpg)
                     where !r.product_name.Contains(Constant.AddFilterEmp)
                     select r.product_name.Distinct()).ToList();
-                cmbProductName.DataBindings.Clear();
-                cmbProductName.DataSource = query;
+                txtProductName.DataBindings.Clear();
+                //txtProductName.DataSource = query;
             }
         }
         private void BindStatus()
@@ -774,19 +797,19 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 var repository = new Repository<Branch>(unWork);
-                var query = repository.SelectAll(Query.SelectAllBranchExcWareH).Select(x => x.BranchDetails).Distinct().ToList();
+                var query = repository.SelectAll(Query.SelectAllBranchExcWareH).Select(x => x.branch_details).Distinct().ToList();
                 cmbWarehouseBranch.DataBindings.Clear();
                 cmbWarehouseBranch.DataSource = query;
             }
         }
-        private void BindProductStatus()
+        private void BindWarehouseStatus()
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
-                var repository = new Repository<ProductStatus>(unWork);
-                var query = repository.SelectAll(Query.AllProductStatus).Select(x => x.status).Distinct().ToList();
+                var repository = new Repository<WarehouseStatus>(unWork);
+                var query = repository.SelectAll(Query.AllWarehouseStatus).Select(x => x.status_details).Distinct().ToList();
                 cmbProductStatus.DataBindings.Clear();
                 cmbProductStatus.DataSource = query;
             }
@@ -828,27 +851,17 @@ namespace Inventory.MainForm
             var ent = ShowDelivery(inventoryId);
             txtDeliveryID.Text = ent.Id.ToString();
             txtDeliveryCode.Text = ent.Code;
-            cmbProductName.Text = ent.Item;
-            txtLastItemCost.Text = ent.Delivery;
+            txtProductName.Text = ent.Item;
+            txtLastCost.Text = ent.Delivery;
             txtReceiptNum.Text = ent.Receipt;
             txtWarehouseQty.Text = ent.Qty.ToString(CultureInfo.InvariantCulture);
             cmbWarehouseBranch.Text = ent.Branch;
             txtLastCost.Text = Constant.DefaultZero.ToString();
-            txtOnOrder.Text = Constant.DefaultZero.ToString();
+            cmbWarehouse.Text = Constant.DefaultZero.ToString();
             dkpDeliveryDate.Value = ent.RefDate;
             cmbProductStatus.Text = ent.Status;
             txtDeliveryQty.Text = ent.WareHouseId.ToString();
         }
-        private void ShowWarehouse()
-        {
-            var pop = new FirmPopWarehouses(_userId, _userTy)
-            {
-                ReturnWarehouse = this,
-                Return = true
-            };
-            pop.ShowDialog();
-        }
-
         private static int GetProductId(string input)
         {
             using (var session = new DalSession())
@@ -1108,19 +1121,19 @@ namespace Inventory.MainForm
                     var branchDel = new BranchDelivery
                     {
                         Code         = txtDeliveryCode.Text.Trim(' '),
-                        ProductId    = GetProductId(cmbProductName.Text),
+                        ProductId    = GetProductId(txtProductName.Text),
                         WareHouseId  = int.Parse(txtDeliveryID.Text),
                         QtyStock     = decimal.Parse(txtWarehouseQty.Text),
-                        DeliveryNo   = txtLastItemCost.Text.Trim(' '),
+                        DeliveryNo   = txtLastCost.Text.Trim(' '),
                         ReceiptNo    = txtReceiptNum.Text.Trim(' '),
                         BranchId     = GetBranchId(cmbWarehouseBranch.Text),
                         LastCost     = decimal.Parse(txtLastCost.Text),
-                        OnOrder      = int.Parse(txtOnOrder.Text),
+                        OnOrder      = int.Parse(cmbWarehouse.Text),
                         StatusId     = GetProductStatus(cmbProductStatus.Text),
                         DeliveryDate = dkpDeliveryDate.Value.Date
                     };
                     var quantity = txtWarehouseQty.Text.Trim(' ');
-                    var product = cmbProductName.Text.Trim(' ');
+                    var product = txtProductName.Text.Trim(' ');
                     var branch = cmbWarehouseBranch.Text.Trim(' ');
                     unWork.Begin();
                     var repository = new Repository<BranchDelivery>(unWork);
@@ -1140,7 +1153,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private void UpdateBranch()
+        private void UpdateDelivery()
         {
             using (var session = new DalSession())
             {
@@ -1150,17 +1163,18 @@ namespace Inventory.MainForm
                 {
                 braWET.ShowWaitForm();
                 unWork.Begin();
-                var repository = new Repository<BranchDelivery>(unWork);
-                var que = repository.FindBy(x => x.BranchDeliveryId == deliveryId);
-                que.Code        = txtDeliveryCode.Text;
-                que.ProductId   = GetProductId(cmbProductName.Text);
-                que.WareHouseId = int.Parse(txtDeliveryQty.Text);
-                que.QtyStock    = decimal.Parse(txtWarehouseQty.Text);
-                que.DeliveryNo  = txtLastItemCost.Text.Trim(' ');
+                var repository = new Repository<WarehouseDelivery>(unWork);
+                var que = repository.FindBy(x => x.delivery_id == deliveryId);
+                que.delivery_code        = txtDeliveryCode.Text;
+                que.product_id   = GetProductId(txtProductName.Text);
+                que.delivery_qty = int.Parse(txtDeliveryQty.Text);
+                    /*
+                que.3    = decimal.Parse(txtWarehouseQty.Text);
+                que.last  = txtLastCost.Text.Trim(' ');
                 que.ReceiptNo   = txtReceiptNum.Text.Trim(' ');
                 que.BranchId    = GetBranchId(cmbWarehouseBranch.Text);
                 que.LastCost    = decimal.Parse(txtLastCost.Text);
-                que.OnOrder     = int.Parse(txtOnOrder.Text);
+                que.OnOrder     = int.Parse(cmbWarehouse.Text);
                 que.StatusId    = GetProductStatus(cmbProductStatus.Text);
                 que.DeliveryDate = dkpDeliveryDate.Value.Date;
                 var result      = repository.Update(que);
@@ -1176,6 +1190,7 @@ namespace Inventory.MainForm
                         braWET.CloseWaitForm();
                         unWork.Rollback();
                     }
+                    */
 
                 }
                 catch (Exception e)
@@ -1184,7 +1199,7 @@ namespace Inventory.MainForm
                 }
             }
         }
- 
+
         private void DeleteData()
         {
             var deliverId = int.Parse(txtDeliveryID.Text);
@@ -1203,7 +1218,7 @@ namespace Inventory.MainForm
                         braWET.CloseWaitForm();
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
-                            "Delivery No: " + txtLastItemCost.Text.Trim(' ') + " successfully Deleted!", Messages.GasulPos);
+                            "Delivery No: " + txtLastCost.Text.Trim(' ') + " successfully Deleted!", Messages.GasulPos);
                     }
                     else
                     {
@@ -1217,63 +1232,70 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private void gridBranch_KeyDown(object sender, KeyEventArgs e)
+        private void gridList_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (e.KeyCode == Keys.F1)
-            {
-                ButCan();
-                _wer = false;
-                _bra = true;
-                bntADD.BackColor = Color.DimGray;
-                bntADD.Enabled = false;
-                PopupNotification.PopUpMessages(1, "Warehouse Delivery to Branches Inventory List", Messages.GasulPos);
-                BindBranchDel();
-            }
-            if (e.KeyCode == Keys.F2)
-            {
-                _wer = true;
-                _bra = false;
-                bntADD.BackColor = Color.Red;
-                bntADD.Enabled = true;
-                PopupNotification.PopUpMessages(1, "Warehouse Inventory List", Messages.GasulPos);
-                BindWarehouse();
-            }
-        }
-        private void gridBranch_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            if (gridList.RowCount > 0)
-            {
+            if (gridInventory.RowCount > 0)
                 try
                 {
-                    if (_wer && _bra == false)
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
+                    var inventoryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (barcode.Length > 0)
                     {
-                        var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
-                        //ShowValue(invId);
-                        var imgId = GetProductImgId(cmbProductName.Text);
-                        txtProductBarcode.Text = SearchBarcode(cmbProductName.Text).product_code;
-                        txtItemPrice.Text = SearchBarcode(cmbProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);
-                    }
-                    if (_wer == false && _bra)
-                    {
-                        var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
-                        ShowBranch(invId);
-                        var imgId = GetProductImgId(cmbProductName.Text);
-                        txtProductBarcode.Text = SearchBarcode(cmbProductName.Text).product_code;
-                        txtItemPrice.Text = SearchBarcode(cmbProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);
-                    }
 
+                        var ent = searchWarehouseInventoryId(barcode);
+                          txtDeliveryID.Text = inventoryId;
+                          txtProductBarcode.Text = barcode;
+                          //txtDeliveryCode.Text = ent.delivery_code;
+                          cmbWarehouse.Text = ent.warehouse_name;
+                          txtProductName.Text = _products.FirstOrDefault(p => p.product_code == barcode).product_name; ;
+                          txtLastCost.Text = ent.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                          //txtReceiptNum.Text = ent.receipt_number;
+                          txtWarehouseQty.Text = ent.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
+                          //cmbWarehouseBranch.Text = ent.branch_details;
+                          //dkpDeliveryDate.Text = ent.delivery_date.ToString(CultureInfo.InvariantCulture);
+                          cmbProductStatus.Text = ent.status_details;
+                          txtItemPrice.Text = ent.cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                          //txtDeliveryQty.Text = ent.delivery_qty.ToString(CultureInfo.InvariantCulture);
+                          //cmbDeliveryStatus.Text = dev.delivery_status;
+                          //txtRemarks.Text = ent.remarks; 
+
+                          var img = searchProductImg(barcode);
+                          var imgLocation = img.img_location;
+                          if (imgLocation.Length > 0)
+                          {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                            imgPRO.ImageLocation = location;
+                          }
+                          else
+                            imgPRO.Image = null;
+                    }
 
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                 }
-
-            }
+        }
+        private ViewWareHouseInventory searchWarehouseInventoryId(string barcode)
+        {
+            return _warehouse_list.FirstOrDefault(Inventory => Inventory.product_code == barcode);
+        }
+        private ViewWarehouseDelivery searchWarehouseDeliveryId(string barcode)
+        {
+            return _warehouse_delivery.FirstOrDefault(Inventory => Inventory.product_code == barcode);
+        }
+        private ViewImageProduct searchProductImg(string param)
+        {
+            return imgList.FirstOrDefault(img => img.image_code == param);
+        }
+        private string selectedCode(int seletedIndex)
+        {
+            return _products.FirstOrDefault(i => i.product_id == seletedIndex).product_code;
         }
         private void gridBranch_RowClick(object sender, RowClickEventArgs e)
         {
-            if (gridList.RowCount > 0)
+            if (gridInventory.RowCount > 0)
             {
                 InputWhit();
             }
