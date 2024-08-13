@@ -71,7 +71,7 @@
             this.gbCON.Name = "gbCON";
             this.gbCON.Size = new System.Drawing.Size(582, 254);
             this.gbCON.TabIndex = 6;
-            this.gbCON.Text = "LOGIN AUTHENTICATION";
+            this.gbCON.Text = "Authentication";
             // 
             // txtPASS
             // 
@@ -192,7 +192,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(537, 447);
             this.Name = "FirmPopLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.FirmPopLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
             this.gbCON.ResumeLayout(false);

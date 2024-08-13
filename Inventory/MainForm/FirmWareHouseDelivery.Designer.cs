@@ -80,7 +80,6 @@
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
             this.bntCLEAR = new System.Windows.Forms.Button();
             this.bntCANCEL = new System.Windows.Forms.Button();
             this.bntSAVE = new System.Windows.Forms.Button();
@@ -163,7 +162,7 @@
             this.bntADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntADD.ForeColor = System.Drawing.Color.White;
             this.bntADD.Image = ((System.Drawing.Image)(resources.GetObject("bntADD.Image")));
-            this.bntADD.Location = new System.Drawing.Point(40, 190);
+            this.bntADD.Location = new System.Drawing.Point(1, 189);
             this.bntADD.Name = "bntADD";
             this.bntADD.Size = new System.Drawing.Size(91, 104);
             this.bntADD.TabIndex = 113;
@@ -174,10 +173,10 @@
             // 
             // tabWarehouseDelivery
             // 
-            this.tabWarehouseDelivery.Location = new System.Drawing.Point(228, 2);
+            this.tabWarehouseDelivery.Location = new System.Drawing.Point(185, 0);
             this.tabWarehouseDelivery.Name = "tabWarehouseDelivery";
             this.tabWarehouseDelivery.SelectedTabPage = this.tabDEL;
-            this.tabWarehouseDelivery.Size = new System.Drawing.Size(1108, 810);
+            this.tabWarehouseDelivery.Size = new System.Drawing.Size(1108, 764);
             this.tabWarehouseDelivery.TabIndex = 1;
             this.tabWarehouseDelivery.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabDEL,
@@ -185,11 +184,14 @@
             // 
             // tabDEL
             // 
+            this.tabDEL.Appearance.Header.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabDEL.Appearance.Header.Options.UseFont = true;
             this.tabDEL.Appearance.PageClient.BackColor = System.Drawing.Color.Black;
             this.tabDEL.Appearance.PageClient.Options.UseBackColor = true;
             this.tabDEL.Controls.Add(this.GbPersonal);
+            this.tabDEL.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tabDEL.ImageOptions.Image")));
             this.tabDEL.Name = "tabDEL";
-            this.tabDEL.Size = new System.Drawing.Size(1106, 785);
+            this.tabDEL.Size = new System.Drawing.Size(1106, 736);
             this.tabDEL.Text = "Warehouse Delivery to Branch";
             // 
             // GbPersonal
@@ -229,12 +231,11 @@
             this.GbPersonal.Controls.Add(this.gbCON);
             this.GbPersonal.Controls.Add(this.lblBarcode);
             this.GbPersonal.Controls.Add(this.txtDeliveryID);
-            this.GbPersonal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GbPersonal.Location = new System.Drawing.Point(0, 0);
+            this.GbPersonal.Location = new System.Drawing.Point(0, -8);
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1106, 785);
+            this.GbPersonal.Size = new System.Drawing.Size(1106, 742);
             this.GbPersonal.TabIndex = 173;
             // 
             // txtProductName
@@ -438,7 +439,7 @@
             this.cmbWarehouseBranch.BackColor = System.Drawing.Color.DimGray;
             this.cmbWarehouseBranch.Enabled = false;
             this.cmbWarehouseBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbWarehouseBranch.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbWarehouseBranch.ForeColor = System.Drawing.Color.Black;
             this.cmbWarehouseBranch.FormattingEnabled = true;
             this.cmbWarehouseBranch.Location = new System.Drawing.Point(536, 24);
             this.cmbWarehouseBranch.Name = "cmbWarehouseBranch";
@@ -600,7 +601,7 @@
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(1108, 517);
+            this.gbCON.Size = new System.Drawing.Size(1108, 478);
             this.gbCON.TabIndex = 172;
             // 
             // gridControl
@@ -613,7 +614,7 @@
             this.gridControl.Location = new System.Drawing.Point(3, 18);
             this.gridControl.MainView = this.gridInventory;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1102, 496);
+            this.gridControl.Size = new System.Drawing.Size(1102, 457);
             this.gridControl.TabIndex = 102;
             this.gridControl.TabStop = false;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -756,9 +757,12 @@
             // 
             // tabHIS
             // 
+            this.tabHIS.Appearance.Header.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabHIS.Appearance.Header.Options.UseFont = true;
             this.tabHIS.Controls.Add(this.groupControl1);
+            this.tabHIS.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tabHIS.ImageOptions.Image")));
             this.tabHIS.Name = "tabHIS";
-            this.tabHIS.Size = new System.Drawing.Size(1106, 785);
+            this.tabHIS.Size = new System.Drawing.Size(1106, 736);
             this.tabHIS.Text = "Delivery History";
             // 
             // groupControl1
@@ -767,13 +771,12 @@
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.groupControl1.Controls.Add(this.groupControl2);
-            this.groupControl1.Controls.Add(this.textBox23);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1106, 785);
+            this.groupControl1.Size = new System.Drawing.Size(1106, 736);
             this.groupControl1.TabIndex = 174;
             // 
             // groupControl2
@@ -929,19 +932,6 @@
             this.textBox1.TabIndex = 99;
             this.textBox1.Visible = false;
             // 
-            // textBox23
-            // 
-            this.textBox23.BackColor = System.Drawing.Color.White;
-            this.textBox23.Enabled = false;
-            this.textBox23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox23.ForeColor = System.Drawing.Color.Maroon;
-            this.textBox23.Location = new System.Drawing.Point(-8, 19);
-            this.textBox23.Multiline = true;
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(10, 10);
-            this.textBox23.TabIndex = 109;
-            this.textBox23.Visible = false;
-            // 
             // bntCLEAR
             // 
             this.bntCLEAR.BackColor = System.Drawing.Color.Firebrick;
@@ -950,7 +940,7 @@
             this.bntCLEAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntCLEAR.ForeColor = System.Drawing.Color.White;
             this.bntCLEAR.Image = ((System.Drawing.Image)(resources.GetObject("bntCLEAR.Image")));
-            this.bntCLEAR.Location = new System.Drawing.Point(40, 400);
+            this.bntCLEAR.Location = new System.Drawing.Point(1, 399);
             this.bntCLEAR.Name = "bntCLEAR";
             this.bntCLEAR.Size = new System.Drawing.Size(91, 104);
             this.bntCLEAR.TabIndex = 117;
@@ -967,7 +957,7 @@
             this.bntCANCEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntCANCEL.ForeColor = System.Drawing.Color.White;
             this.bntCANCEL.Image = ((System.Drawing.Image)(resources.GetObject("bntCANCEL.Image")));
-            this.bntCANCEL.Location = new System.Drawing.Point(132, 400);
+            this.bntCANCEL.Location = new System.Drawing.Point(93, 399);
             this.bntCANCEL.Name = "bntCANCEL";
             this.bntCANCEL.Size = new System.Drawing.Size(91, 104);
             this.bntCANCEL.TabIndex = 116;
@@ -984,7 +974,7 @@
             this.bntSAVE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntSAVE.ForeColor = System.Drawing.Color.White;
             this.bntSAVE.Image = ((System.Drawing.Image)(resources.GetObject("bntSAVE.Image")));
-            this.bntSAVE.Location = new System.Drawing.Point(40, 295);
+            this.bntSAVE.Location = new System.Drawing.Point(1, 294);
             this.bntSAVE.Name = "bntSAVE";
             this.bntSAVE.Size = new System.Drawing.Size(183, 104);
             this.bntSAVE.TabIndex = 115;
@@ -1000,7 +990,7 @@
             this.bntUPDATE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntUPDATE.ForeColor = System.Drawing.Color.White;
             this.bntUPDATE.Image = ((System.Drawing.Image)(resources.GetObject("bntUPDATE.Image")));
-            this.bntUPDATE.Location = new System.Drawing.Point(132, 190);
+            this.bntUPDATE.Location = new System.Drawing.Point(93, 189);
             this.bntUPDATE.Name = "bntUPDATE";
             this.bntUPDATE.Size = new System.Drawing.Size(91, 104);
             this.bntUPDATE.TabIndex = 114;
@@ -1016,7 +1006,7 @@
             this.bntHOME.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntHOME.ForeColor = System.Drawing.Color.White;
             this.bntHOME.Image = ((System.Drawing.Image)(resources.GetObject("bntHOME.Image")));
-            this.bntHOME.Location = new System.Drawing.Point(132, 505);
+            this.bntHOME.Location = new System.Drawing.Point(93, 504);
             this.bntHOME.Name = "bntHOME";
             this.bntHOME.Size = new System.Drawing.Size(91, 104);
             this.bntHOME.TabIndex = 119;
@@ -1032,7 +1022,7 @@
             this.bntDELETE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntDELETE.ForeColor = System.Drawing.Color.White;
             this.bntDELETE.Image = ((System.Drawing.Image)(resources.GetObject("bntDELETE.Image")));
-            this.bntDELETE.Location = new System.Drawing.Point(40, 505);
+            this.bntDELETE.Location = new System.Drawing.Point(1, 504);
             this.bntDELETE.Name = "bntDELETE";
             this.bntDELETE.Size = new System.Drawing.Size(91, 104);
             this.bntDELETE.TabIndex = 118;
@@ -1046,7 +1036,7 @@
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(35, 143);
+            this.lblMainTitle.Location = new System.Drawing.Point(-6, 142);
             this.lblMainTitle.Name = "lblMainTitle";
             this.lblMainTitle.Size = new System.Drawing.Size(203, 47);
             this.lblMainTitle.TabIndex = 111;
@@ -1058,17 +1048,27 @@
             // 
             // pnlMain
             // 
+            this.pnlMain.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlMain.BackColor = System.Drawing.SystemColors.HotTrack;
             this.pnlMain.Controls.Add(this.pictureBox1);
-            this.pnlMain.Location = new System.Drawing.Point(-2, 1);
+            this.pnlMain.Controls.Add(this.bntHOME);
+            this.pnlMain.Controls.Add(this.tabWarehouseDelivery);
+            this.pnlMain.Controls.Add(this.bntADD);
+            this.pnlMain.Controls.Add(this.lblMainTitle);
+            this.pnlMain.Controls.Add(this.bntDELETE);
+            this.pnlMain.Controls.Add(this.bntCLEAR);
+            this.pnlMain.Controls.Add(this.bntUPDATE);
+            this.pnlMain.Controls.Add(this.bntCANCEL);
+            this.pnlMain.Controls.Add(this.bntSAVE);
+            this.pnlMain.Location = new System.Drawing.Point(1, 1);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1338, 765);
+            this.pnlMain.Size = new System.Drawing.Size(1301, 764);
             this.pnlMain.TabIndex = 121;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(89, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(66, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(93, 119);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1090,7 +1090,7 @@
             this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
             this.pnlRightOptions.Controls.Add(this.pcRight);
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1382, 2);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1353, 1);
             this.pnlRightOptions.Name = "pnlRightOptions";
             this.pnlRightOptions.Size = new System.Drawing.Size(77, 765);
             this.pnlRightOptions.TabIndex = 122;
@@ -1155,9 +1155,9 @@
             this.pnlOptions.Controls.Add(this.pnlOptionsMain);
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
-            this.pnlOptions.Location = new System.Drawing.Point(-2, 815);
+            this.pnlOptions.Location = new System.Drawing.Point(-2, 768);
             this.pnlOptions.Name = "pnlOptions";
-            this.pnlOptions.Size = new System.Drawing.Size(1298, 74);
+            this.pnlOptions.Size = new System.Drawing.Size(1432, 74);
             this.pnlOptions.TabIndex = 68;
             // 
             // pnlOptionsMain
@@ -1283,22 +1283,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1497, 989);
+            this.ClientSize = new System.Drawing.Size(1491, 834);
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlRightOptions);
-            this.Controls.Add(this.bntADD);
-            this.Controls.Add(this.tabWarehouseDelivery);
-            this.Controls.Add(this.bntCLEAR);
-            this.Controls.Add(this.bntCANCEL);
-            this.Controls.Add(this.bntSAVE);
-            this.Controls.Add(this.bntUPDATE);
-            this.Controls.Add(this.bntHOME);
-            this.Controls.Add(this.bntDELETE);
-            this.Controls.Add(this.lblMainTitle);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmWareHouseDelivery";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FirmWareHouseDelivery";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FirmWarehouseDelivery_Load);
@@ -1320,7 +1311,6 @@
             this.tabHIS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
@@ -1330,6 +1320,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlRightOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcRight)).EndInit();
@@ -1350,7 +1341,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHide)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1391,7 +1381,6 @@
         private System.Windows.Forms.TextBox txtDeliveryID;
         private DevExpress.XtraTab.XtraTabPage tabHIS;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private System.Windows.Forms.TextBox textBox23;
         private System.Windows.Forms.Button bntCLEAR;
         private System.Windows.Forms.Button bntCANCEL;
         private System.Windows.Forms.Button bntSAVE;
