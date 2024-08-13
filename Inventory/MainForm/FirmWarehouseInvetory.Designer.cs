@@ -213,7 +213,7 @@
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
             this.pnlOptions.Location = new System.Drawing.Point(-2, 768);
             this.pnlOptions.Name = "pnlOptions";
-            this.pnlOptions.Size = new System.Drawing.Size(1372, 74);
+            this.pnlOptions.Size = new System.Drawing.Size(1432, 74);
             this.pnlOptions.TabIndex = 129;
             // 
             // pnlOptionsMain
@@ -1257,7 +1257,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1370, 834);
+            this.ClientSize = new System.Drawing.Size(1491, 834);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlRightOptions);

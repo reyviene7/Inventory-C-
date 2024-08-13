@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmLogin));
             this.intWET = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblSubTitle = new System.Windows.Forms.Label();
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.DgClock = new CalendarClock.CalendarClock();
@@ -43,47 +43,50 @@
             this.bntExit = new System.Windows.Forms.Button();
             this.bntAdmin = new System.Windows.Forms.Button();
             this.bntUser = new System.Windows.Forms.Button();
+            this.pnlMain = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgEmployees)).BeginInit();
+            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // intWET
             // 
             this.intWET.ClosingDelay = 500;
             // 
-            // label3
+            // lblSubTitle
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label3.Location = new System.Drawing.Point(650, 115);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(344, 28);
-            this.label3.TabIndex = 98;
-            this.label3.Text = "INVENTORY MONITORING SYSTEM";
+            this.lblSubTitle.AutoSize = true;
+            this.lblSubTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.lblSubTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
+            this.lblSubTitle.Location = new System.Drawing.Point(556, 162);
+            this.lblSubTitle.Name = "lblSubTitle";
+            this.lblSubTitle.Size = new System.Drawing.Size(309, 28);
+            this.lblSubTitle.TabIndex = 98;
+            this.lblSubTitle.Text = "Inventory Management System";
             // 
             // lblMainTitle
             // 
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(517, 29);
+            this.lblMainTitle.Location = new System.Drawing.Point(449, 51);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(615, 86);
+            this.lblMainTitle.Size = new System.Drawing.Size(532, 86);
             this.lblMainTitle.TabIndex = 96;
-            this.lblMainTitle.Text = "THE WIZARDS INC.";
+            this.lblMainTitle.Text = "The Wizards Inc.";
             this.lblMainTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(93, 712);
+            this.label1.Location = new System.Drawing.Point(38, 683);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 15);
+            this.label1.Size = new System.Drawing.Size(185, 19);
             this.label1.TabIndex = 95;
-            this.label1.Text = "© 2017 All rights reserved";
+            this.label1.Text = "© 2024 All rights reserved";
             // 
             // DgClock
             // 
@@ -91,11 +94,11 @@
             this.DgClock.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DgClock.ForeColor = System.Drawing.Color.Red;
             this.DgClock.ImeMode = System.Windows.Forms.ImeMode.Katakana;
-            this.DgClock.Location = new System.Drawing.Point(36, 189);
+            this.DgClock.Location = new System.Drawing.Point(4, 162);
             this.DgClock.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.DgClock.Name = "DgClock";
             this.DgClock.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.DgClock.Size = new System.Drawing.Size(272, 259);
+            this.DgClock.Size = new System.Drawing.Size(272, 251);
             this.DgClock.TabIndex = 87;
             // 
             // lblLicense
@@ -103,9 +106,9 @@
             this.lblLicense.AutoSize = true;
             this.lblLicense.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLicense.ForeColor = System.Drawing.Color.Black;
-            this.lblLicense.Location = new System.Drawing.Point(53, 694);
+            this.lblLicense.Location = new System.Drawing.Point(11, 657);
             this.lblLicense.Name = "lblLicense";
-            this.lblLicense.Size = new System.Drawing.Size(239, 16);
+            this.lblLicense.Size = new System.Drawing.Size(240, 16);
             this.lblLicense.TabIndex = 94;
             this.lblLicense.Text = "295A10691CD571763D3340413A6F17A";
             // 
@@ -114,9 +117,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(108, 674);
+            this.label2.Location = new System.Drawing.Point(64, 637);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 16);
+            this.label2.Size = new System.Drawing.Size(123, 16);
             this.label2.TabIndex = 93;
             this.label2.Text = "Product License:";
             // 
@@ -124,7 +127,7 @@
             // 
             this.imgEmployees.BackColor = System.Drawing.Color.White;
             this.imgEmployees.Image = ((System.Drawing.Image)(resources.GetObject("imgEmployees.Image")));
-            this.imgEmployees.Location = new System.Drawing.Point(724, 174);
+            this.imgEmployees.Location = new System.Drawing.Point(603, 235);
             this.imgEmployees.Name = "imgEmployees";
             this.imgEmployees.Size = new System.Drawing.Size(204, 261);
             this.imgEmployees.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -140,7 +143,7 @@
             this.bntONL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntONL.ForeColor = System.Drawing.Color.White;
             this.bntONL.Image = ((System.Drawing.Image)(resources.GetObject("bntONL.Image")));
-            this.bntONL.Location = new System.Drawing.Point(172, 450);
+            this.bntONL.Location = new System.Drawing.Point(140, 415);
             this.bntONL.Name = "bntONL";
             this.bntONL.Size = new System.Drawing.Size(136, 109);
             this.bntONL.TabIndex = 89;
@@ -158,7 +161,7 @@
             this.bntLCL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntLCL.ForeColor = System.Drawing.Color.White;
             this.bntLCL.Image = ((System.Drawing.Image)(resources.GetObject("bntLCL.Image")));
-            this.bntLCL.Location = new System.Drawing.Point(36, 450);
+            this.bntLCL.Location = new System.Drawing.Point(4, 415);
             this.bntLCL.Name = "bntLCL";
             this.bntLCL.Size = new System.Drawing.Size(135, 109);
             this.bntLCL.TabIndex = 88;
@@ -176,7 +179,7 @@
             this.bntConf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntConf.ForeColor = System.Drawing.Color.White;
             this.bntConf.Image = ((System.Drawing.Image)(resources.GetObject("bntConf.Image")));
-            this.bntConf.Location = new System.Drawing.Point(36, 560);
+            this.bntConf.Location = new System.Drawing.Point(4, 525);
             this.bntConf.Name = "bntConf";
             this.bntConf.Size = new System.Drawing.Size(135, 109);
             this.bntConf.TabIndex = 90;
@@ -193,7 +196,7 @@
             this.bntExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntExit.ForeColor = System.Drawing.Color.White;
             this.bntExit.Image = ((System.Drawing.Image)(resources.GetObject("bntExit.Image")));
-            this.bntExit.Location = new System.Drawing.Point(172, 560);
+            this.bntExit.Location = new System.Drawing.Point(140, 525);
             this.bntExit.Name = "bntExit";
             this.bntExit.Size = new System.Drawing.Size(136, 109);
             this.bntExit.TabIndex = 91;
@@ -211,7 +214,7 @@
             this.bntAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntAdmin.ForeColor = System.Drawing.Color.White;
             this.bntAdmin.Image = ((System.Drawing.Image)(resources.GetObject("bntAdmin.Image")));
-            this.bntAdmin.Location = new System.Drawing.Point(172, 78);
+            this.bntAdmin.Location = new System.Drawing.Point(140, 51);
             this.bntAdmin.Name = "bntAdmin";
             this.bntAdmin.Size = new System.Drawing.Size(136, 109);
             this.bntAdmin.TabIndex = 86;
@@ -229,7 +232,7 @@
             this.bntUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntUser.ForeColor = System.Drawing.Color.White;
             this.bntUser.Image = ((System.Drawing.Image)(resources.GetObject("bntUser.Image")));
-            this.bntUser.Location = new System.Drawing.Point(36, 78);
+            this.bntUser.Location = new System.Drawing.Point(4, 51);
             this.bntUser.Name = "bntUser";
             this.bntUser.Size = new System.Drawing.Size(135, 109);
             this.bntUser.TabIndex = 85;
@@ -238,40 +241,63 @@
             this.bntUser.UseVisualStyleBackColor = false;
             this.bntUser.Click += new System.EventHandler(this.bntUser_Click);
             // 
+            // pnlMain
+            // 
+            this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.Controls.Add(this.label3);
+            this.pnlMain.Controls.Add(this.imgEmployees);
+            this.pnlMain.Controls.Add(this.label1);
+            this.pnlMain.Controls.Add(this.lblMainTitle);
+            this.pnlMain.Controls.Add(this.bntONL);
+            this.pnlMain.Controls.Add(this.lblSubTitle);
+            this.pnlMain.Controls.Add(this.bntLCL);
+            this.pnlMain.Controls.Add(this.bntUser);
+            this.pnlMain.Controls.Add(this.DgClock);
+            this.pnlMain.Controls.Add(this.label2);
+            this.pnlMain.Controls.Add(this.bntConf);
+            this.pnlMain.Controls.Add(this.lblLicense);
+            this.pnlMain.Controls.Add(this.bntExit);
+            this.pnlMain.Controls.Add(this.bntAdmin);
+            this.pnlMain.Location = new System.Drawing.Point(1, -2);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(1354, 735);
+            this.pnlMain.TabIndex = 99;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
+            this.label3.Location = new System.Drawing.Point(510, 542);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(394, 28);
+            this.label3.TabIndex = 99;
+            this.label3.Text = "Enchanting Efficiency in Every Stock Check";
+            // 
             // FirmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1354, 733);
-            this.Controls.Add(this.imgEmployees);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblMainTitle);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.bntONL);
-            this.Controls.Add(this.bntLCL);
-            this.Controls.Add(this.DgClock);
-            this.Controls.Add(this.bntConf);
-            this.Controls.Add(this.bntExit);
-            this.Controls.Add(this.bntAdmin);
-            this.Controls.Add(this.bntUser);
-            this.Controls.Add(this.lblLicense);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmLogin";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FirmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgEmployees)).EndInit();
+            this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox imgEmployees;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblSubTitle;
         private System.Windows.Forms.Label lblMainTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bntONL;
@@ -284,5 +310,7 @@
         private System.Windows.Forms.Label lblLicense;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraSplashScreen.SplashScreenManager intWET;
+        private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -29,6 +29,11 @@ namespace Inventory.MainForm
             InitializeComponent();
         }
 
+        private void FirmLogin_Load(object sender, EventArgs e)
+        {
+            PanelInterface.SetMainPanelPosition(this, pnlMain);
+        }
+
         private void Login(int utyp)
         {
             intWET.ShowWaitForm();
@@ -80,5 +85,7 @@ namespace Inventory.MainForm
             };
             auth.ShowDialog();
         }
+
+
     }
 }

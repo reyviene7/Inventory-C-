@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using DevExpress.XtraReports.UI;
 using Inventory.PopupForm;
-using Inventory.Report;
-using Inventory.Services;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
 using Inventory.Config;
@@ -45,8 +42,11 @@ namespace Inventory.MainForm
             PanelInterface.SetFullScreen(this);
             // PanelInterface.SetMainPanelPosition(this, pnlMain);
             SetMainPanelPosition();
+            PanelInterface.SetMainPanelPosition(this, tileControl);
             PanelInterface.SetOptionsPanelPosition(this, pnlOptions, pbHide);
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
+            pnlRightOptions.BringToFront();
+            pnlOptions.BringToFront();
             Options.Start();
             RightOptions.Start();
             FirstColumn.Start();
@@ -54,11 +54,11 @@ namespace Inventory.MainForm
         }
         private void Options_Tick(object sender, EventArgs e)
         {
-            if (_optionsTimeOut < 1000)
+            if (_optionsTimeOut < 500)
             {
                 _optionsTimeOut++;
             }
-            if (_optionsTimeOut == 1000)
+            if (_optionsTimeOut == 500)
             {
                 if (_optionsDirection == "up")
                 {
@@ -114,11 +114,11 @@ namespace Inventory.MainForm
 
         private void RightOptions_Tick(object sender, EventArgs e)
         {
-            if (_rightTimeOut < 1000)
+            if (_rightTimeOut < 500)
             {
                 _rightTimeOut++;
             }
-            if (_rightTimeOut == 1000)
+            if (_rightTimeOut == 500)
             {
                 if (_rightDirection == "left")
                 {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.35027.167
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServeAll.Core", "ServeAll.Core\ServeAll.Core.csproj", "{D2A26968-BCA8-4332-98E3-4757F1C8D773}"
 EndProject
@@ -26,6 +26,7 @@ Global
 		{D2A26968-BCA8-4332-98E3-4757F1C8D773}.CD_ROM|x64.ActiveCfg = Debug|Any CPU
 		{D2A26968-BCA8-4332-98E3-4757F1C8D773}.CD_ROM|x64.Build.0 = Debug|Any CPU
 		{D2A26968-BCA8-4332-98E3-4757F1C8D773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A26968-BCA8-4332-98E3-4757F1C8D773}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2A26968-BCA8-4332-98E3-4757F1C8D773}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{D2A26968-BCA8-4332-98E3-4757F1C8D773}.Debug|x64.Build.0 = Debug|Any CPU
 		{D2A26968-BCA8-4332-98E3-4757F1C8D773}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
@@ -45,6 +46,7 @@ Global
 		{132CC3A8-D043-40BD-9435-62EFD107AB37}.CD_ROM|x64.ActiveCfg = Debug|Any CPU
 		{132CC3A8-D043-40BD-9435-62EFD107AB37}.CD_ROM|x64.Build.0 = Debug|Any CPU
 		{132CC3A8-D043-40BD-9435-62EFD107AB37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{132CC3A8-D043-40BD-9435-62EFD107AB37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{132CC3A8-D043-40BD-9435-62EFD107AB37}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{132CC3A8-D043-40BD-9435-62EFD107AB37}.Debug|x64.Build.0 = Debug|Any CPU
 		{132CC3A8-D043-40BD-9435-62EFD107AB37}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU

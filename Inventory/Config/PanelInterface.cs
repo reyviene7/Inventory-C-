@@ -34,6 +34,14 @@ namespace Inventory.Config
             int mY = (frm.Height - pnl.Height) / 2;
             pnl.Location = new Point(mX, mY);
         }
+
+        public static void SetMainPanelPosition(Form frm, DevExpress.XtraEditors.TileControl pnl)
+        {
+            int mX = (frm.Width - pnl.Width) / 2;
+            int mY = (frm.Height - pnl.Height) / 2;
+            pnl.Location = new Point(mX, mY);
+        }
+
         //Panel Option Down
         public static void SetOptionsPanelPosition(Form frm, Panel Opnl, PictureBox Hpnl)
         {
@@ -64,11 +72,11 @@ namespace Inventory.Config
         //CLOCK DOWN OPTION TICK
         public static void OptionTick(Form frm, Panel pnlOpn)
         {
-            if (OptionsTimeOut < 1000)
+            if (OptionsTimeOut < 500)
             {
                 OptionsTimeOut++;
             }
-            if (OptionsTimeOut == 1000)
+            if (OptionsTimeOut == 500)
             {
                 if (OptionsDirection == "up")
                 {
@@ -95,11 +103,11 @@ namespace Inventory.Config
         // CLOCK RIGHT OPTION TICK
         public static void RightOptionTick(Form frm, Panel pnlRighOp)
         {
-            if (RightTimeOut < 1000)
+            if (RightTimeOut < 500)
             {
                 RightTimeOut++;
             }
-            if (RightTimeOut == 1000)
+            if (RightTimeOut == 500)
             {
                 if (RightDirection == "left")
                 {
