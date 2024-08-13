@@ -32,4 +32,18 @@
         {
         }
     }
+    public class GenerateAlpaDev : GenerateAlpaNum
+    {
+        public GenerateAlpaDev(string prefix, int numericLength, int numberStart)
+            : base(prefix, numericLength, numberStart)
+        {
+        }
+    }
+    public class GenerateAlpaRcpt : GenerateAlpaNum
+    {
+        public GenerateAlpaRcpt(string prefix, int numericLength, int numberStart)
+            : base(prefix, numericLength, numberStart)
+        {
+        }
+    }
 }

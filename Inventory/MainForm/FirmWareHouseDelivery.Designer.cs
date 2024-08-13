@@ -73,6 +73,37 @@
             this.txtDeliveryID = new System.Windows.Forms.TextBox();
             this.tabHIS = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtDelProductName = new System.Windows.Forms.TextBox();
+            this.cmbDelWarehouseCode = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbDelDeliveryStatus = new System.Windows.Forms.ComboBox();
+            this.txtDelRemarks = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtDelRemainQty = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtDelQty = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtDelItemPrice = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtDelProduct = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cmbDelProductStatus = new System.Windows.Forms.ComboBox();
+            this.ImagePreview = new System.Windows.Forms.PictureBox();
+            this.cmbDelBranch = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.dkpDelDeliveryDate = new System.Windows.Forms.DateTimePicker();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtDelReceipt = new System.Windows.Forms.TextBox();
+            this.txtDelLastCost = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtDelWarehouseCode = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtDelWarehouseId = new System.Windows.Forms.TextBox();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -126,6 +157,7 @@
             this.tabHIS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImagePreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -157,7 +189,7 @@
             // 
             // bntADD
             // 
-            this.bntADD.BackColor = System.Drawing.Color.DimGray;
+            this.bntADD.BackColor = System.Drawing.Color.Red;
             this.bntADD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bntADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntADD.ForeColor = System.Drawing.Color.White;
@@ -165,7 +197,7 @@
             this.bntADD.Location = new System.Drawing.Point(1, 189);
             this.bntADD.Name = "bntADD";
             this.bntADD.Size = new System.Drawing.Size(91, 104);
-            this.bntADD.TabIndex = 113;
+            this.bntADD.TabIndex = 12;
             this.bntADD.Text = "Delivery";
             this.bntADD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntADD.UseVisualStyleBackColor = false;
@@ -261,7 +293,7 @@
             this.cmbWarehouse.Location = new System.Drawing.Point(132, 114);
             this.cmbWarehouse.Name = "cmbWarehouse";
             this.cmbWarehouse.Size = new System.Drawing.Size(269, 29);
-            this.cmbWarehouse.TabIndex = 238;
+            this.cmbWarehouse.TabIndex = 2;
             // 
             // label12
             // 
@@ -287,7 +319,7 @@
             this.cmbDeliveryStatus.Location = new System.Drawing.Point(536, 174);
             this.cmbDeliveryStatus.Name = "cmbDeliveryStatus";
             this.cmbDeliveryStatus.Size = new System.Drawing.Size(269, 29);
-            this.cmbDeliveryStatus.TabIndex = 236;
+            this.cmbDeliveryStatus.TabIndex = 10;
             // 
             // txtRemarks
             // 
@@ -298,8 +330,7 @@
             this.txtRemarks.Location = new System.Drawing.Point(536, 204);
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(269, 29);
-            this.txtRemarks.TabIndex = 13;
-            this.txtRemarks.UseSystemPasswordChar = true;
+            this.txtRemarks.TabIndex = 11;
             // 
             // label7
             // 
@@ -322,7 +353,7 @@
             this.txtWarehouseQty.Location = new System.Drawing.Point(132, 234);
             this.txtWarehouseQty.Name = "txtWarehouseQty";
             this.txtWarehouseQty.Size = new System.Drawing.Size(269, 29);
-            this.txtWarehouseQty.TabIndex = 5;
+            this.txtWarehouseQty.TabIndex = 200;
             this.txtWarehouseQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQTY_KeyDown);
             this.txtWarehouseQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQTY_KeyPress);
             // 
@@ -347,7 +378,8 @@
             this.txtDeliveryQty.Location = new System.Drawing.Point(536, 144);
             this.txtDeliveryQty.Name = "txtDeliveryQty";
             this.txtDeliveryQty.Size = new System.Drawing.Size(269, 29);
-            this.txtDeliveryQty.TabIndex = 12;
+            this.txtDeliveryQty.TabIndex = 9;
+            this.txtDeliveryQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDeliveryQty_KeyDown);
             // 
             // label10
             // 
@@ -370,7 +402,7 @@
             this.txtItemPrice.Location = new System.Drawing.Point(536, 114);
             this.txtItemPrice.Name = "txtItemPrice";
             this.txtItemPrice.Size = new System.Drawing.Size(269, 29);
-            this.txtItemPrice.TabIndex = 11;
+            this.txtItemPrice.TabIndex = 8;
             // 
             // label9
             // 
@@ -419,7 +451,7 @@
             this.cmbProductStatus.Location = new System.Drawing.Point(536, 84);
             this.cmbProductStatus.Name = "cmbProductStatus";
             this.cmbProductStatus.Size = new System.Drawing.Size(269, 29);
-            this.cmbProductStatus.TabIndex = 10;
+            this.cmbProductStatus.TabIndex = 7;
             this.cmbProductStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSAT_KeyDown);
             // 
             // imgPRO
@@ -444,7 +476,7 @@
             this.cmbWarehouseBranch.Location = new System.Drawing.Point(536, 24);
             this.cmbWarehouseBranch.Name = "cmbWarehouseBranch";
             this.cmbWarehouseBranch.Size = new System.Drawing.Size(269, 29);
-            this.cmbWarehouseBranch.TabIndex = 6;
+            this.cmbWarehouseBranch.TabIndex = 5;
             this.cmbWarehouseBranch.Text = "SELECT BRANCH";
             this.cmbWarehouseBranch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbDIS_KeyDown);
             // 
@@ -493,7 +525,7 @@
             this.dkpDeliveryDate.Location = new System.Drawing.Point(536, 54);
             this.dkpDeliveryDate.Name = "dkpDeliveryDate";
             this.dkpDeliveryDate.Size = new System.Drawing.Size(269, 29);
-            this.dkpDeliveryDate.TabIndex = 9;
+            this.dkpDeliveryDate.TabIndex = 6;
             this.dkpDeliveryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpPUR_KeyDown);
             // 
             // label3
@@ -770,6 +802,37 @@
             this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl1.Controls.Add(this.txtDelProductName);
+            this.groupControl1.Controls.Add(this.cmbDelWarehouseCode);
+            this.groupControl1.Controls.Add(this.label8);
+            this.groupControl1.Controls.Add(this.cmbDelDeliveryStatus);
+            this.groupControl1.Controls.Add(this.txtDelRemarks);
+            this.groupControl1.Controls.Add(this.label14);
+            this.groupControl1.Controls.Add(this.txtDelRemainQty);
+            this.groupControl1.Controls.Add(this.label15);
+            this.groupControl1.Controls.Add(this.txtDelQty);
+            this.groupControl1.Controls.Add(this.label16);
+            this.groupControl1.Controls.Add(this.txtDelItemPrice);
+            this.groupControl1.Controls.Add(this.label17);
+            this.groupControl1.Controls.Add(this.txtDelProduct);
+            this.groupControl1.Controls.Add(this.label18);
+            this.groupControl1.Controls.Add(this.cmbDelProductStatus);
+            this.groupControl1.Controls.Add(this.ImagePreview);
+            this.groupControl1.Controls.Add(this.cmbDelBranch);
+            this.groupControl1.Controls.Add(this.label19);
+            this.groupControl1.Controls.Add(this.label20);
+            this.groupControl1.Controls.Add(this.label21);
+            this.groupControl1.Controls.Add(this.dkpDelDeliveryDate);
+            this.groupControl1.Controls.Add(this.label22);
+            this.groupControl1.Controls.Add(this.label23);
+            this.groupControl1.Controls.Add(this.label24);
+            this.groupControl1.Controls.Add(this.txtDelReceipt);
+            this.groupControl1.Controls.Add(this.txtDelLastCost);
+            this.groupControl1.Controls.Add(this.label25);
+            this.groupControl1.Controls.Add(this.label26);
+            this.groupControl1.Controls.Add(this.txtDelWarehouseCode);
+            this.groupControl1.Controls.Add(this.label27);
+            this.groupControl1.Controls.Add(this.txtDelWarehouseId);
             this.groupControl1.Controls.Add(this.groupControl2);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
@@ -779,6 +842,374 @@
             this.groupControl1.Size = new System.Drawing.Size(1106, 736);
             this.groupControl1.TabIndex = 174;
             // 
+            // txtDelProductName
+            // 
+            this.txtDelProductName.BackColor = System.Drawing.Color.DimGray;
+            this.txtDelProductName.Enabled = false;
+            this.txtDelProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelProductName.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDelProductName.Location = new System.Drawing.Point(130, 141);
+            this.txtDelProductName.Name = "txtDelProductName";
+            this.txtDelProductName.Size = new System.Drawing.Size(269, 29);
+            this.txtDelProductName.TabIndex = 270;
+            // 
+            // cmbDelWarehouseCode
+            // 
+            this.cmbDelWarehouseCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDelWarehouseCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbDelWarehouseCode.BackColor = System.Drawing.Color.DimGray;
+            this.cmbDelWarehouseCode.Enabled = false;
+            this.cmbDelWarehouseCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDelWarehouseCode.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbDelWarehouseCode.FormattingEnabled = true;
+            this.cmbDelWarehouseCode.Location = new System.Drawing.Point(130, 111);
+            this.cmbDelWarehouseCode.Name = "cmbDelWarehouseCode";
+            this.cmbDelWarehouseCode.Size = new System.Drawing.Size(269, 29);
+            this.cmbDelWarehouseCode.TabIndex = 269;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(407, 177);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 17);
+            this.label8.TabIndex = 268;
+            this.label8.Text = "Delivery Status:";
+            // 
+            // cmbDelDeliveryStatus
+            // 
+            this.cmbDelDeliveryStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDelDeliveryStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbDelDeliveryStatus.BackColor = System.Drawing.Color.DimGray;
+            this.cmbDelDeliveryStatus.Enabled = false;
+            this.cmbDelDeliveryStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDelDeliveryStatus.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbDelDeliveryStatus.FormattingEnabled = true;
+            this.cmbDelDeliveryStatus.Location = new System.Drawing.Point(534, 171);
+            this.cmbDelDeliveryStatus.Name = "cmbDelDeliveryStatus";
+            this.cmbDelDeliveryStatus.Size = new System.Drawing.Size(269, 29);
+            this.cmbDelDeliveryStatus.TabIndex = 267;
+            // 
+            // txtDelRemarks
+            // 
+            this.txtDelRemarks.BackColor = System.Drawing.Color.DimGray;
+            this.txtDelRemarks.Enabled = false;
+            this.txtDelRemarks.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelRemarks.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDelRemarks.Location = new System.Drawing.Point(534, 201);
+            this.txtDelRemarks.Name = "txtDelRemarks";
+            this.txtDelRemarks.Size = new System.Drawing.Size(269, 29);
+            this.txtDelRemarks.TabIndex = 249;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(407, 207);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(64, 17);
+            this.label14.TabIndex = 266;
+            this.label14.Text = "Remarks:";
+            // 
+            // txtDelRemainQty
+            // 
+            this.txtDelRemainQty.BackColor = System.Drawing.Color.DimGray;
+            this.txtDelRemainQty.Enabled = false;
+            this.txtDelRemainQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelRemainQty.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDelRemainQty.Location = new System.Drawing.Point(130, 231);
+            this.txtDelRemainQty.Name = "txtDelRemainQty";
+            this.txtDelRemainQty.Size = new System.Drawing.Size(269, 29);
+            this.txtDelRemainQty.TabIndex = 243;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(407, 147);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(90, 17);
+            this.label15.TabIndex = 265;
+            this.label15.Text = "Delivery Qty:";
+            // 
+            // txtDelQty
+            // 
+            this.txtDelQty.BackColor = System.Drawing.Color.DimGray;
+            this.txtDelQty.Enabled = false;
+            this.txtDelQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelQty.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDelQty.Location = new System.Drawing.Point(534, 141);
+            this.txtDelQty.Name = "txtDelQty";
+            this.txtDelQty.Size = new System.Drawing.Size(269, 29);
+            this.txtDelQty.TabIndex = 248;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(407, 117);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(74, 17);
+            this.label16.TabIndex = 264;
+            this.label16.Text = "Item Price:";
+            // 
+            // txtDelItemPrice
+            // 
+            this.txtDelItemPrice.BackColor = System.Drawing.Color.DimGray;
+            this.txtDelItemPrice.Enabled = false;
+            this.txtDelItemPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelItemPrice.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDelItemPrice.Location = new System.Drawing.Point(534, 111);
+            this.txtDelItemPrice.Name = "txtDelItemPrice";
+            this.txtDelItemPrice.Size = new System.Drawing.Size(269, 29);
+            this.txtDelItemPrice.TabIndex = 247;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(7, 57);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(113, 17);
+            this.label17.TabIndex = 263;
+            this.label17.Text = "Product Barcode:";
+            // 
+            // txtDelProduct
+            // 
+            this.txtDelProduct.BackColor = System.Drawing.Color.DimGray;
+            this.txtDelProduct.Enabled = false;
+            this.txtDelProduct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelProduct.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDelProduct.Location = new System.Drawing.Point(130, 51);
+            this.txtDelProduct.Name = "txtDelProduct";
+            this.txtDelProduct.Size = new System.Drawing.Size(269, 29);
+            this.txtDelProduct.TabIndex = 262;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(407, 87);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(102, 17);
+            this.label18.TabIndex = 261;
+            this.label18.Text = "Product Status:";
+            // 
+            // cmbDelProductStatus
+            // 
+            this.cmbDelProductStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDelProductStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbDelProductStatus.BackColor = System.Drawing.Color.DimGray;
+            this.cmbDelProductStatus.Enabled = false;
+            this.cmbDelProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDelProductStatus.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbDelProductStatus.FormattingEnabled = true;
+            this.cmbDelProductStatus.Location = new System.Drawing.Point(534, 81);
+            this.cmbDelProductStatus.Name = "cmbDelProductStatus";
+            this.cmbDelProductStatus.Size = new System.Drawing.Size(269, 29);
+            this.cmbDelProductStatus.TabIndex = 246;
+            // 
+            // ImagePreview
+            // 
+            this.ImagePreview.BackColor = System.Drawing.Color.Gray;
+            this.ImagePreview.Location = new System.Drawing.Point(829, 21);
+            this.ImagePreview.Name = "ImagePreview";
+            this.ImagePreview.Size = new System.Drawing.Size(271, 239);
+            this.ImagePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ImagePreview.TabIndex = 260;
+            this.ImagePreview.TabStop = false;
+            // 
+            // cmbDelBranch
+            // 
+            this.cmbDelBranch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDelBranch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbDelBranch.BackColor = System.Drawing.Color.DimGray;
+            this.cmbDelBranch.Enabled = false;
+            this.cmbDelBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDelBranch.ForeColor = System.Drawing.Color.Black;
+            this.cmbDelBranch.FormattingEnabled = true;
+            this.cmbDelBranch.Location = new System.Drawing.Point(534, 21);
+            this.cmbDelBranch.Name = "cmbDelBranch";
+            this.cmbDelBranch.Size = new System.Drawing.Size(269, 29);
+            this.cmbDelBranch.TabIndex = 244;
+            this.cmbDelBranch.Text = "SELECT BRANCH";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(407, 25);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(84, 17);
+            this.label19.TabIndex = 259;
+            this.label19.Text = "Destination:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(6, 117);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(115, 17);
+            this.label20.TabIndex = 258;
+            this.label20.Text = "Warehouse Code:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(407, 57);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(97, 17);
+            this.label21.TabIndex = 257;
+            this.label21.Text = "Delivery Date:";
+            // 
+            // dkpDelDeliveryDate
+            // 
+            this.dkpDelDeliveryDate.CustomFormat = "dd-MM-yyyy";
+            this.dkpDelDeliveryDate.Enabled = false;
+            this.dkpDelDeliveryDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dkpDelDeliveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dkpDelDeliveryDate.Location = new System.Drawing.Point(534, 51);
+            this.dkpDelDeliveryDate.Name = "dkpDelDeliveryDate";
+            this.dkpDelDeliveryDate.Size = new System.Drawing.Size(269, 29);
+            this.dkpDelDeliveryDate.TabIndex = 245;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(5, 207);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(112, 17);
+            this.label22.TabIndex = 256;
+            this.label22.Text = "Receipt Number:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(5, 237);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(104, 17);
+            this.label23.TabIndex = 255;
+            this.label23.Text = "Remaining Qty:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.Location = new System.Drawing.Point(7, 147);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(100, 17);
+            this.label24.TabIndex = 254;
+            this.label24.Text = "Product Name:";
+            // 
+            // txtDelReceipt
+            // 
+            this.txtDelReceipt.BackColor = System.Drawing.Color.DimGray;
+            this.txtDelReceipt.Enabled = false;
+            this.txtDelReceipt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelReceipt.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDelReceipt.Location = new System.Drawing.Point(130, 201);
+            this.txtDelReceipt.Name = "txtDelReceipt";
+            this.txtDelReceipt.Size = new System.Drawing.Size(269, 29);
+            this.txtDelReceipt.TabIndex = 242;
+            // 
+            // txtDelLastCost
+            // 
+            this.txtDelLastCost.BackColor = System.Drawing.Color.DimGray;
+            this.txtDelLastCost.Enabled = false;
+            this.txtDelLastCost.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelLastCost.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDelLastCost.Location = new System.Drawing.Point(130, 171);
+            this.txtDelLastCost.Name = "txtDelLastCost";
+            this.txtDelLastCost.Size = new System.Drawing.Size(269, 29);
+            this.txtDelLastCost.TabIndex = 241;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(7, 177);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(100, 17);
+            this.label25.TabIndex = 253;
+            this.label25.Text = "Last Item Cost:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(6, 87);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(99, 17);
+            this.label26.TabIndex = 252;
+            this.label26.Text = "Delivery Code:";
+            // 
+            // txtDelWarehouseCode
+            // 
+            this.txtDelWarehouseCode.BackColor = System.Drawing.Color.DimGray;
+            this.txtDelWarehouseCode.Enabled = false;
+            this.txtDelWarehouseCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelWarehouseCode.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDelWarehouseCode.Location = new System.Drawing.Point(130, 81);
+            this.txtDelWarehouseCode.Name = "txtDelWarehouseCode";
+            this.txtDelWarehouseCode.Size = new System.Drawing.Size(269, 29);
+            this.txtDelWarehouseCode.TabIndex = 240;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.White;
+            this.label27.Location = new System.Drawing.Point(6, 27);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(80, 17);
+            this.label27.TabIndex = 251;
+            this.label27.Text = "Delivery Id:";
+            // 
+            // txtDelWarehouseId
+            // 
+            this.txtDelWarehouseId.BackColor = System.Drawing.Color.DimGray;
+            this.txtDelWarehouseId.Enabled = false;
+            this.txtDelWarehouseId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelWarehouseId.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDelWarehouseId.Location = new System.Drawing.Point(130, 21);
+            this.txtDelWarehouseId.Name = "txtDelWarehouseId";
+            this.txtDelWarehouseId.Size = new System.Drawing.Size(269, 29);
+            this.txtDelWarehouseId.TabIndex = 250;
+            // 
             // groupControl2
             // 
             this.groupControl2.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -786,11 +1217,11 @@
             this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.groupControl2.Controls.Add(this.gridControl1);
             this.groupControl2.Controls.Add(this.textBox1);
-            this.groupControl2.Location = new System.Drawing.Point(-1, 148);
+            this.groupControl2.Location = new System.Drawing.Point(-1, 267);
             this.groupControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1108, 634);
+            this.groupControl2.Size = new System.Drawing.Size(1108, 515);
             this.groupControl2.TabIndex = 173;
             // 
             // gridControl1
@@ -803,7 +1234,7 @@
             this.gridControl1.Location = new System.Drawing.Point(3, 18);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1102, 613);
+            this.gridControl1.Size = new System.Drawing.Size(1102, 494);
             this.gridControl1.TabIndex = 102;
             this.gridControl1.TabStop = false;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -867,6 +1298,8 @@
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.RowAutoHeight = true;
             this.gridView1.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView_RowClick);
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView_FocusedRowChanged);
             // 
             // gridView4
             // 
@@ -943,7 +1376,7 @@
             this.bntCLEAR.Location = new System.Drawing.Point(1, 399);
             this.bntCLEAR.Name = "bntCLEAR";
             this.bntCLEAR.Size = new System.Drawing.Size(91, 104);
-            this.bntCLEAR.TabIndex = 117;
+            this.bntCLEAR.TabIndex = 15;
             this.bntCLEAR.Text = "CLEAR";
             this.bntCLEAR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntCLEAR.UseVisualStyleBackColor = false;
@@ -960,7 +1393,7 @@
             this.bntCANCEL.Location = new System.Drawing.Point(93, 399);
             this.bntCANCEL.Name = "bntCANCEL";
             this.bntCANCEL.Size = new System.Drawing.Size(91, 104);
-            this.bntCANCEL.TabIndex = 116;
+            this.bntCANCEL.TabIndex = 16;
             this.bntCANCEL.Text = "CANCEL";
             this.bntCANCEL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntCANCEL.UseVisualStyleBackColor = false;
@@ -977,7 +1410,7 @@
             this.bntSAVE.Location = new System.Drawing.Point(1, 294);
             this.bntSAVE.Name = "bntSAVE";
             this.bntSAVE.Size = new System.Drawing.Size(183, 104);
-            this.bntSAVE.TabIndex = 115;
+            this.bntSAVE.TabIndex = 14;
             this.bntSAVE.Text = "SAVE";
             this.bntSAVE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSAVE.UseVisualStyleBackColor = false;
@@ -993,7 +1426,7 @@
             this.bntUPDATE.Location = new System.Drawing.Point(93, 189);
             this.bntUPDATE.Name = "bntUPDATE";
             this.bntUPDATE.Size = new System.Drawing.Size(91, 104);
-            this.bntUPDATE.TabIndex = 114;
+            this.bntUPDATE.TabIndex = 13;
             this.bntUPDATE.Text = "EDIT";
             this.bntUPDATE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntUPDATE.UseVisualStyleBackColor = false;
@@ -1009,7 +1442,7 @@
             this.bntHOME.Location = new System.Drawing.Point(93, 504);
             this.bntHOME.Name = "bntHOME";
             this.bntHOME.Size = new System.Drawing.Size(91, 104);
-            this.bntHOME.TabIndex = 119;
+            this.bntHOME.TabIndex = 18;
             this.bntHOME.Text = "HOME";
             this.bntHOME.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntHOME.UseVisualStyleBackColor = false;
@@ -1025,7 +1458,7 @@
             this.bntDELETE.Location = new System.Drawing.Point(1, 504);
             this.bntDELETE.Name = "bntDELETE";
             this.bntDELETE.Size = new System.Drawing.Size(91, 104);
-            this.bntDELETE.TabIndex = 118;
+            this.bntDELETE.TabIndex = 17;
             this.bntDELETE.Text = "DELETE";
             this.bntDELETE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntDELETE.UseVisualStyleBackColor = false;
@@ -1311,6 +1744,8 @@
             this.tabHIS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImagePreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
@@ -1426,5 +1861,36 @@
         private System.Windows.Forms.TextBox txtProductBarcode;
         private System.Windows.Forms.ComboBox cmbWarehouse;
         private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.TextBox txtDelProductName;
+        private System.Windows.Forms.ComboBox cmbDelWarehouseCode;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbDelDeliveryStatus;
+        private System.Windows.Forms.TextBox txtDelRemarks;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtDelRemainQty;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtDelQty;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtDelItemPrice;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtDelProduct;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cmbDelProductStatus;
+        private System.Windows.Forms.PictureBox ImagePreview;
+        private System.Windows.Forms.ComboBox cmbDelBranch;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.DateTimePicker dkpDelDeliveryDate;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtDelReceipt;
+        private System.Windows.Forms.TextBox txtDelLastCost;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtDelWarehouseCode;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox txtDelWarehouseId;
     }
 }
