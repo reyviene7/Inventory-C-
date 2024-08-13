@@ -175,8 +175,8 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            proc.Show();
             Hide();
+            proc.Show();
         }
 
         private void tileDEP_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
@@ -185,8 +185,9 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            warehouseInventory.Show();
             Hide();
+            warehouseInventory.Show();
+          
         }
 
         private void tileWAR_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
@@ -217,6 +218,8 @@ namespace Inventory.MainForm
             };
             Hide();
             dep.Show();
+           
+          
         }
 
         private void tileDTW_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
@@ -335,8 +338,17 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            Hide();
             ret.Show();
+            Hide();
+        }
+
+        private void tileManagement_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            var view = new FrmManagement()
+            {
+                Main = this
+            };
+            view.ShowDialog();
         }
     }
 }
