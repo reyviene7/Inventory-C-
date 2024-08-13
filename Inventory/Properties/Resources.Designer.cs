@@ -73,6 +73,16 @@ namespace Inventory.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap list_gear {
+            get {
+                object obj = ResourceManager.GetObject("list.gear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap transit_bus {
             get {
                 object obj = ResourceManager.GetObject("transit.bus", resourceCulture);
