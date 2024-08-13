@@ -462,6 +462,43 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static string GetLastWarehouseDeliveryCode()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<WarehouseDelivery>(unWork);
+                    return repository.SelectAll(Query.getLastWarehouseDeliveryQuery)
+                        .Select(x => x.delivery_code).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return string.Empty;
+                }
+            }
+        }
+        public static string GetLastReceiptCode()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<WarehouseDelivery>(unWork);
+                    return repository.SelectAll(Query.getLastReceiptQuery)
+                        .Select(x => x.receipt_number).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return string.Empty;
+                }
+            }
+        }
+
         public static void getProducts()
         {
             using (var session = new DalSession())

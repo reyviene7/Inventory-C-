@@ -11,6 +11,8 @@ namespace ServeAll.Core.Entities
         public int product_id { get; set; }
         public string delivery_code { get; set; }
         public int warehouse_id { get; set; }
+        public decimal last_cost_per_unit { get; set; }
+        public decimal item_price { get; set; }
         public int inventory_id { get; set; }
         public string receipt_number { get; set; }
         public int branch_id { get;set; }
