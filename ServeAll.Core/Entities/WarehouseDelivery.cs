@@ -15,6 +15,7 @@ namespace ServeAll.Core.Entities
         public decimal item_price { get; set; }
         public int inventory_id { get; set; }
         public string receipt_number { get; set; }
+        public int user_id { get; set; }
         public int branch_id { get;set; }
         public DateTime delivery_date { get; set; }
         public int status_id { get; set; }

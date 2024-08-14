@@ -34,40 +34,6 @@ namespace Inventory.MainForm
             Close();
         }
 
-        private void bindDeliveryList()
-        {
-            ClearGrid();
-            var list = _warehouse_delivery.Select(p => new
-            {
-                Id = p.delivery_id,
-                Barcode = p.product_code,
-                Code = p.delivery_code,
-                Product = p.product_name,
-                Destination = p.branch_details,
-                DeliveryDate = p.delivery_date,
-                Status = p.status_details,
-                CostPerItem = p.cost_per_unit,
-                DeliverQty = p.delivery_qty,
-                DeliveryStatus = p.delivery_status,
-
-            });
-            gridControl.DataSource = list;
-            if (gridInventory.RowCount > 0)
-            {
-                gridInventory.Columns[0].Width = 10;
-                gridInventory.Columns[1].Width = 100;
-                gridInventory.Columns[2].Width = 40;
-                gridInventory.Columns[3].Width = 300;
-                gridInventory.Columns[4].Width = 80;
-                gridInventory.Columns[5].Width = 80;
-                gridInventory.Columns[6].Width = 80;
-                gridInventory.Columns[7].Width = 50;
-                gridInventory.Columns[8].Width = 50;
-                gridInventory.Columns[9].Width = 100;
-            }
-            gridControl.Update();
-        }
-
         private ViewImageProduct searchProductImg(string param)
         {
             return _imgList.FirstOrDefault(img => img.image_code == param);
@@ -80,7 +46,40 @@ namespace Inventory.MainForm
             gridInventory.Columns.Clear();
         }
 
-       
+        private void bindDeliveryList()
+        {
+            ClearGrid();
+            var list = _warehouse_delivery.Select(p => new
+            {
+                Id = p.delivery_id,
+                Barcode = p.product_code,
+                Delivery = p.delivery_code,
+                Product = p.product_name,
+                Destination = p.branch_details,
+                Price = p.cost_per_unit,
+                LastCost = p.last_cost_per_unit,
+                Qty = p.delivery_qty,
+                Status = p.status_details,
+                DeliveryStatus = p.delivery_status,
+                DeliveryDate = p.delivery_date
+            });
+            gridControl.DataSource = list;
+            if (gridInventory.RowCount > 0)
+            {
+                gridInventory.Columns[0].Width = 65;
+                gridInventory.Columns[1].Width = 130;
+                gridInventory.Columns[2].Width = 95;
+                gridInventory.Columns[3].Width = 320;
+                gridInventory.Columns[4].Width = 100;
+                gridInventory.Columns[5].Width = 100;
+                gridInventory.Columns[6].Width = 100;
+                gridInventory.Columns[7].Width = 65;
+                gridInventory.Columns[8].Width = 100;
+                gridInventory.Columns[9].Width = 140;
+                gridInventory.Columns[10].Width = 120;
+            }
+            gridControl.Update();
+        }
 
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
@@ -91,34 +90,19 @@ namespace Inventory.MainForm
                     var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
                     if (barcode.Length > 0)
                     {
-                       /* txtDelWarehouseId.Text = deliveryId;
-                        txtDelProduct.Text = barcode;
-                        txtDelWarehouseCode.Text = w.delivery_code;
-                        cmbDelWarehouseCode.Text = w.warehouse_name;
-                        txtDelProductName.Text = w.product_name;
-                        txtDelLastCost.Text = w.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtDelReceipt.Text = w.receipt_number;
-                        txtDelRemainQty.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
-                        cmbDelBranch.Text = w.branch_details;
-                        dkpDelDeliveryDate.Text = w.delivery_date.ToString(CultureInfo.InvariantCulture);
-                        cmbDelProductStatus.Text = w.status_details;
-                        txtDelItemPrice.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtDelQty.Text = w.delivery_qty.ToString(CultureInfo.InvariantCulture);
-                        cmbDelDeliveryStatus.Text = w.delivery_status;
-                        txtDelRemarks.Text = w.remarks; */
-
+                        /** dkpDelDeliveryDate.Text = w.delivery_date.ToString(CultureInfo.InvariantCulture);
+                         txtDelRemarks.Text = w.remarks; */
+                        txtBarcode.Text = barcode;
                         var img = searchProductImg(barcode);
                         var imgLocation = img.img_location;
                         if (imgLocation.Length > 0)
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
-
                             imgPreview.ImageLocation = location;
                         }
                         else
                             imgPreview.Image = null;
                     }
-
                 }
                 catch (Exception ex)
                 {

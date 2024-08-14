@@ -14,6 +14,7 @@ namespace ServeAll.Core.Entities
         public string product_name { get; set; }
         public decimal last_cost_per_unit { get; set; }
         public string receipt_number { get; set; }
+        public string username { get; set; }
         public int quantity_in_stock { get; set; }
         public string branch_details { get;set; }
         public DateTime delivery_date { get; set; }
