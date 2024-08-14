@@ -236,13 +236,7 @@ namespace Inventory.MainForm
 
         private void tileDEL_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var name = GetUseFullName(_userId);
-            const int type = Config.Constant.ReportDepotDelivery;
-            var view = new FirmPopDateEntries(name, type)
-            {
-                Main = this
-            };
-            view.ShowDialog();
+          
         }
 
         private string GetUseFullName(int userId)
@@ -345,6 +339,16 @@ namespace Inventory.MainForm
         private void tileManagement_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var view = new FrmManagement()
+            {
+                Main = this
+            };
+            view.ShowDialog();
+        }
+
+        private void tileServices_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            const int type = Config.Constant.ReportDepotDelivery;
+            var view = new FrmServices(_userId, type, _userName)
             {
                 Main = this
             };

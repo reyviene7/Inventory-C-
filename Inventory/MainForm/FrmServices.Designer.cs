@@ -61,30 +61,20 @@
             this.dpkLastUpdated = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
             this.dpkCreatedDate = new System.Windows.Forms.DateTimePicker();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dpkExpirationDate = new System.Windows.Forms.DateTimePicker();
             this.cmbSupplier = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtCostPerUnit = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbUser = new System.Windows.Forms.ComboBox();
-            this.cmbProductName = new System.Windows.Forms.ComboBox();
             this.imgProduct = new System.Windows.Forms.PictureBox();
-            this.cmbItemLocation = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.dkpLastOrderDate = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.txtTotalValue = new System.Windows.Forms.TextBox();
             this.lblHiredate = new System.Windows.Forms.Label();
             this.dkpLastStockedDate = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.txtLastCostPerUnit = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtReorderLevel = new System.Windows.Forms.TextBox();
             this.txtQuantityStock = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -110,6 +100,10 @@
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
             this.Options = new System.Windows.Forms.Timer(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtReorderLevel = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbItemLocation = new System.Windows.Forms.ComboBox();
             this.pnlRightOptions.SuspendLayout();
             this.pnlRightMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
@@ -405,20 +399,15 @@
             this.GbPersonal.Controls.Add(this.dpkLastUpdated);
             this.GbPersonal.Controls.Add(this.label18);
             this.GbPersonal.Controls.Add(this.dpkCreatedDate);
-            this.GbPersonal.Controls.Add(this.label16);
-            this.GbPersonal.Controls.Add(this.dpkExpirationDate);
             this.GbPersonal.Controls.Add(this.cmbSupplier);
             this.GbPersonal.Controls.Add(this.label15);
             this.GbPersonal.Controls.Add(this.txtCostPerUnit);
             this.GbPersonal.Controls.Add(this.label9);
             this.GbPersonal.Controls.Add(this.label4);
             this.GbPersonal.Controls.Add(this.cmbUser);
-            this.GbPersonal.Controls.Add(this.cmbProductName);
             this.GbPersonal.Controls.Add(this.imgProduct);
             this.GbPersonal.Controls.Add(this.cmbItemLocation);
             this.GbPersonal.Controls.Add(this.label13);
-            this.GbPersonal.Controls.Add(this.label12);
-            this.GbPersonal.Controls.Add(this.dkpLastOrderDate);
             this.GbPersonal.Controls.Add(this.label11);
             this.GbPersonal.Controls.Add(this.txtTotalValue);
             this.GbPersonal.Controls.Add(this.lblHiredate);
@@ -427,7 +416,6 @@
             this.GbPersonal.Controls.Add(this.txtLastCostPerUnit);
             this.GbPersonal.Controls.Add(this.label3);
             this.GbPersonal.Controls.Add(this.label6);
-            this.GbPersonal.Controls.Add(this.label5);
             this.GbPersonal.Controls.Add(this.txtReorderLevel);
             this.GbPersonal.Controls.Add(this.txtQuantityStock);
             this.GbPersonal.Controls.Add(this.label2);
@@ -450,11 +438,11 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(3, 58);
+            this.label7.Location = new System.Drawing.Point(3, 67);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 17);
+            this.label7.Size = new System.Drawing.Size(109, 17);
             this.label7.TabIndex = 244;
-            this.label7.Text = "Barcode:";
+            this.label7.Text = "Service Barcode:";
             // 
             // txtBarcode
             // 
@@ -462,7 +450,7 @@
             this.txtBarcode.Enabled = false;
             this.txtBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarcode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBarcode.Location = new System.Drawing.Point(120, 51);
+            this.txtBarcode.Location = new System.Drawing.Point(120, 60);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(285, 29);
             this.txtBarcode.TabIndex = 243;
@@ -476,7 +464,7 @@
             this.cmbStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStatus.ForeColor = System.Drawing.Color.Maroon;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(554, 261);
+            this.cmbStatus.Location = new System.Drawing.Point(554, 210);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(248, 29);
             this.cmbStatus.TabIndex = 18;
@@ -488,7 +476,7 @@
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(426, 178);
+            this.label17.Location = new System.Drawing.Point(426, 127);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 17);
             this.label17.TabIndex = 242;
@@ -500,7 +488,7 @@
             this.dpkLastUpdated.Enabled = false;
             this.dpkLastUpdated.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkLastUpdated.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpkLastUpdated.Location = new System.Drawing.Point(554, 172);
+            this.dpkLastUpdated.Location = new System.Drawing.Point(554, 121);
             this.dpkLastUpdated.Name = "dpkLastUpdated";
             this.dpkLastUpdated.Size = new System.Drawing.Size(248, 29);
             this.dpkLastUpdated.TabIndex = 15;
@@ -512,7 +500,7 @@
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(426, 148);
+            this.label18.Location = new System.Drawing.Point(426, 97);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(92, 17);
             this.label18.TabIndex = 240;
@@ -524,35 +512,11 @@
             this.dpkCreatedDate.Enabled = false;
             this.dpkCreatedDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkCreatedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpkCreatedDate.Location = new System.Drawing.Point(554, 142);
+            this.dpkCreatedDate.Location = new System.Drawing.Point(554, 91);
             this.dpkCreatedDate.Name = "dpkCreatedDate";
             this.dpkCreatedDate.Size = new System.Drawing.Size(248, 29);
             this.dpkCreatedDate.TabIndex = 14;
             this.dpkCreatedDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpkCreatedDate_KeyDown);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(426, 118);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(108, 17);
-            this.label16.TabIndex = 238;
-            this.label16.Text = "Expiration Date:";
-            // 
-            // dpkExpirationDate
-            // 
-            this.dpkExpirationDate.CustomFormat = "dd-MM-yyyy";
-            this.dpkExpirationDate.Enabled = false;
-            this.dpkExpirationDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpkExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpkExpirationDate.Location = new System.Drawing.Point(554, 112);
-            this.dpkExpirationDate.Name = "dpkExpirationDate";
-            this.dpkExpirationDate.Size = new System.Drawing.Size(248, 29);
-            this.dpkExpirationDate.TabIndex = 13;
-            this.dpkExpirationDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpkExpirationDate_KeyDown);
             // 
             // cmbSupplier
             // 
@@ -563,7 +527,7 @@
             this.cmbSupplier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSupplier.ForeColor = System.Drawing.Color.Maroon;
             this.cmbSupplier.FormattingEnabled = true;
-            this.cmbSupplier.Location = new System.Drawing.Point(120, 201);
+            this.cmbSupplier.Location = new System.Drawing.Point(120, 181);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(285, 29);
             this.cmbSupplier.TabIndex = 6;
@@ -575,11 +539,11 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(3, 208);
+            this.label15.Location = new System.Drawing.Point(3, 188);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(64, 17);
+            this.label15.Size = new System.Drawing.Size(68, 17);
             this.label15.TabIndex = 236;
-            this.label15.Text = "Supplier:";
+            this.label15.Text = "Category:";
             // 
             // txtCostPerUnit
             // 
@@ -587,7 +551,7 @@
             this.txtCostPerUnit.Enabled = false;
             this.txtCostPerUnit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCostPerUnit.ForeColor = System.Drawing.Color.Maroon;
-            this.txtCostPerUnit.Location = new System.Drawing.Point(120, 231);
+            this.txtCostPerUnit.Location = new System.Drawing.Point(120, 211);
             this.txtCostPerUnit.Name = "txtCostPerUnit";
             this.txtCostPerUnit.Size = new System.Drawing.Size(285, 29);
             this.txtCostPerUnit.TabIndex = 7;
@@ -599,7 +563,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(426, 208);
+            this.label9.Location = new System.Drawing.Point(426, 157);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 17);
             this.label9.TabIndex = 229;
@@ -611,7 +575,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(426, 267);
+            this.label4.Location = new System.Drawing.Point(426, 216);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 17);
             this.label4.TabIndex = 225;
@@ -626,29 +590,11 @@
             this.cmbUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUser.ForeColor = System.Drawing.Color.Maroon;
             this.cmbUser.FormattingEnabled = true;
-            this.cmbUser.Location = new System.Drawing.Point(554, 202);
+            this.cmbUser.Location = new System.Drawing.Point(554, 151);
             this.cmbUser.Name = "cmbUser";
             this.cmbUser.Size = new System.Drawing.Size(248, 29);
             this.cmbUser.TabIndex = 16;
             this.cmbUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbUser_KeyDown);
-            // 
-            // cmbProductName
-            // 
-            this.cmbProductName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbProductName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbProductName.BackColor = System.Drawing.Color.DimGray;
-            this.cmbProductName.Enabled = false;
-            this.cmbProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProductName.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbProductName.FormattingEnabled = true;
-            this.cmbProductName.Location = new System.Drawing.Point(120, 111);
-            this.cmbProductName.Name = "cmbProductName";
-            this.cmbProductName.Size = new System.Drawing.Size(285, 29);
-            this.cmbProductName.TabIndex = 3;
-            this.cmbProductName.SelectedIndexChanged += new System.EventHandler(this.cmbProductName_SelectedIndexChanged);
-            this.cmbProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductName_KeyDown);
-            this.cmbProductName.Leave += new System.EventHandler(this.cmbProductName_Leave);
-            this.cmbProductName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbProductName_MouseClick);
             // 
             // imgProduct
             // 
@@ -660,56 +606,17 @@
             this.imgProduct.TabIndex = 223;
             this.imgProduct.TabStop = false;
             // 
-            // cmbItemLocation
-            // 
-            this.cmbItemLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbItemLocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbItemLocation.BackColor = System.Drawing.Color.DimGray;
-            this.cmbItemLocation.Enabled = false;
-            this.cmbItemLocation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbItemLocation.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbItemLocation.FormattingEnabled = true;
-            this.cmbItemLocation.Location = new System.Drawing.Point(554, 231);
-            this.cmbItemLocation.Name = "cmbItemLocation";
-            this.cmbItemLocation.Size = new System.Drawing.Size(248, 29);
-            this.cmbItemLocation.TabIndex = 17;
-            this.cmbItemLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbItemLocation_KeyDown);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(3, 234);
+            this.label13.Location = new System.Drawing.Point(3, 217);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(93, 17);
+            this.label13.Size = new System.Drawing.Size(115, 17);
             this.label13.TabIndex = 214;
-            this.label13.Text = "Cost Per Unit:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(426, 88);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(124, 17);
-            this.label12.TabIndex = 212;
-            this.label12.Text = "Last Ordered Date:";
-            // 
-            // dkpLastOrderDate
-            // 
-            this.dkpLastOrderDate.CustomFormat = "dd-MM-yyyy";
-            this.dkpLastOrderDate.Enabled = false;
-            this.dkpLastOrderDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dkpLastOrderDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpLastOrderDate.Location = new System.Drawing.Point(554, 82);
-            this.dkpLastOrderDate.Name = "dkpLastOrderDate";
-            this.dkpLastOrderDate.Size = new System.Drawing.Size(248, 29);
-            this.dkpLastOrderDate.TabIndex = 12;
-            this.dkpLastOrderDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpLastOrderDate_KeyDown);
+            this.label13.Text = "Service Duration:";
             // 
             // label11
             // 
@@ -717,7 +624,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(426, 27);
+            this.label11.Location = new System.Drawing.Point(426, 35);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(81, 17);
             this.label11.TabIndex = 210;
@@ -729,7 +636,7 @@
             this.txtTotalValue.Enabled = false;
             this.txtTotalValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalValue.ForeColor = System.Drawing.Color.Maroon;
-            this.txtTotalValue.Location = new System.Drawing.Point(554, 21);
+            this.txtTotalValue.Location = new System.Drawing.Point(554, 29);
             this.txtTotalValue.Name = "txtTotalValue";
             this.txtTotalValue.Size = new System.Drawing.Size(248, 29);
             this.txtTotalValue.TabIndex = 9;
@@ -741,11 +648,11 @@
             this.lblHiredate.BackColor = System.Drawing.Color.Transparent;
             this.lblHiredate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHiredate.ForeColor = System.Drawing.Color.White;
-            this.lblHiredate.Location = new System.Drawing.Point(426, 58);
+            this.lblHiredate.Location = new System.Drawing.Point(426, 66);
             this.lblHiredate.Name = "lblHiredate";
-            this.lblHiredate.Size = new System.Drawing.Size(122, 17);
+            this.lblHiredate.Size = new System.Drawing.Size(89, 17);
             this.lblHiredate.TabIndex = 208;
-            this.lblHiredate.Text = "Last Stocked Date:";
+            this.lblHiredate.Text = "Service Date:";
             // 
             // dkpLastStockedDate
             // 
@@ -753,7 +660,7 @@
             this.dkpLastStockedDate.Enabled = false;
             this.dkpLastStockedDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpLastStockedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpLastStockedDate.Location = new System.Drawing.Point(554, 52);
+            this.dkpLastStockedDate.Location = new System.Drawing.Point(554, 60);
             this.dkpLastStockedDate.Name = "dkpLastStockedDate";
             this.dkpLastStockedDate.Size = new System.Drawing.Size(248, 29);
             this.dkpLastStockedDate.TabIndex = 11;
@@ -765,11 +672,11 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(3, 267);
+            this.label8.Location = new System.Drawing.Point(3, 247);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 17);
+            this.label8.Size = new System.Drawing.Size(82, 17);
             this.label8.TabIndex = 206;
-            this.label8.Text = "Last Cost/Unit:";
+            this.label8.Text = "Commision:";
             // 
             // txtLastCostPerUnit
             // 
@@ -777,59 +684,11 @@
             this.txtLastCostPerUnit.Enabled = false;
             this.txtLastCostPerUnit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastCostPerUnit.ForeColor = System.Drawing.Color.Maroon;
-            this.txtLastCostPerUnit.Location = new System.Drawing.Point(120, 261);
+            this.txtLastCostPerUnit.Location = new System.Drawing.Point(120, 241);
             this.txtLastCostPerUnit.Name = "txtLastCostPerUnit";
             this.txtLastCostPerUnit.Size = new System.Drawing.Size(285, 29);
             this.txtLastCostPerUnit.TabIndex = 8;
             this.txtLastCostPerUnit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLastCostPerUnit_KeyDown);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 177);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 17);
-            this.label3.TabIndex = 200;
-            this.label3.Text = "Reorder-Level:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(426, 237);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 17);
-            this.label6.TabIndex = 184;
-            this.label6.Text = "Item Location:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(3, 117);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 17);
-            this.label5.TabIndex = 182;
-            this.label5.Text = "Product Name:";
-            // 
-            // txtReorderLevel
-            // 
-            this.txtReorderLevel.BackColor = System.Drawing.Color.DimGray;
-            this.txtReorderLevel.Enabled = false;
-            this.txtReorderLevel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReorderLevel.ForeColor = System.Drawing.Color.Maroon;
-            this.txtReorderLevel.Location = new System.Drawing.Point(120, 171);
-            this.txtReorderLevel.Name = "txtReorderLevel";
-            this.txtReorderLevel.Size = new System.Drawing.Size(285, 29);
-            this.txtReorderLevel.TabIndex = 5;
-            this.txtReorderLevel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReorderLevel_KeyDown);
             // 
             // txtQuantityStock
             // 
@@ -837,7 +696,7 @@
             this.txtQuantityStock.Enabled = false;
             this.txtQuantityStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantityStock.ForeColor = System.Drawing.Color.Maroon;
-            this.txtQuantityStock.Location = new System.Drawing.Point(120, 141);
+            this.txtQuantityStock.Location = new System.Drawing.Point(120, 121);
             this.txtQuantityStock.Name = "txtQuantityStock";
             this.txtQuantityStock.Size = new System.Drawing.Size(285, 29);
             this.txtQuantityStock.TabIndex = 4;
@@ -849,11 +708,11 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 141);
+            this.label2.Location = new System.Drawing.Point(3, 127);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 17);
+            this.label2.Size = new System.Drawing.Size(83, 17);
             this.label2.TabIndex = 176;
-            this.label2.Text = "Qty Stock:";
+            this.label2.Text = "Description:";
             // 
             // label1
             // 
@@ -861,11 +720,11 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 87);
+            this.label1.Location = new System.Drawing.Point(3, 96);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 17);
+            this.label1.Size = new System.Drawing.Size(96, 17);
             this.label1.TabIndex = 174;
-            this.label1.Text = "Warehouse SKU:";
+            this.label1.Text = "Service Name:";
             // 
             // txtWarehouseSKU
             // 
@@ -873,7 +732,7 @@
             this.txtWarehouseSKU.Enabled = false;
             this.txtWarehouseSKU.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWarehouseSKU.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWarehouseSKU.Location = new System.Drawing.Point(120, 81);
+            this.txtWarehouseSKU.Location = new System.Drawing.Point(120, 90);
             this.txtWarehouseSKU.Name = "txtWarehouseSKU";
             this.txtWarehouseSKU.Size = new System.Drawing.Size(285, 29);
             this.txtWarehouseSKU.TabIndex = 2;
@@ -1038,7 +897,7 @@
             this.lblBarcode.BackColor = System.Drawing.Color.Transparent;
             this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
-            this.lblBarcode.Location = new System.Drawing.Point(7, 27);
+            this.lblBarcode.Location = new System.Drawing.Point(3, 36);
             this.lblBarcode.Name = "lblBarcode";
             this.lblBarcode.Size = new System.Drawing.Size(78, 17);
             this.lblBarcode.TabIndex = 142;
@@ -1050,7 +909,7 @@
             this.txtInventoryId.Enabled = false;
             this.txtInventoryId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInventoryId.ForeColor = System.Drawing.Color.Maroon;
-            this.txtInventoryId.Location = new System.Drawing.Point(120, 21);
+            this.txtInventoryId.Location = new System.Drawing.Point(120, 30);
             this.txtInventoryId.Name = "txtInventoryId";
             this.txtInventoryId.Size = new System.Drawing.Size(285, 29);
             this.txtInventoryId.TabIndex = 1;
@@ -1209,6 +1068,57 @@
             this.Options.Interval = 1;
             this.Options.Tick += new System.EventHandler(this.Options_Tick);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(3, 157);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 17);
+            this.label3.TabIndex = 200;
+            this.label3.Text = "Service Charge:";
+            // 
+            // txtReorderLevel
+            // 
+            this.txtReorderLevel.BackColor = System.Drawing.Color.DimGray;
+            this.txtReorderLevel.Enabled = false;
+            this.txtReorderLevel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReorderLevel.ForeColor = System.Drawing.Color.Maroon;
+            this.txtReorderLevel.Location = new System.Drawing.Point(120, 151);
+            this.txtReorderLevel.Name = "txtReorderLevel";
+            this.txtReorderLevel.Size = new System.Drawing.Size(285, 29);
+            this.txtReorderLevel.TabIndex = 5;
+            this.txtReorderLevel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReorderLevel_KeyDown);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(426, 186);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 17);
+            this.label6.TabIndex = 184;
+            this.label6.Text = "Staff Id:";
+            // 
+            // cmbItemLocation
+            // 
+            this.cmbItemLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbItemLocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbItemLocation.BackColor = System.Drawing.Color.DimGray;
+            this.cmbItemLocation.Enabled = false;
+            this.cmbItemLocation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbItemLocation.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbItemLocation.FormattingEnabled = true;
+            this.cmbItemLocation.Location = new System.Drawing.Point(554, 180);
+            this.cmbItemLocation.Name = "cmbItemLocation";
+            this.cmbItemLocation.Size = new System.Drawing.Size(248, 29);
+            this.cmbItemLocation.TabIndex = 17;
+            this.cmbItemLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbItemLocation_KeyDown);
+            // 
             // FrmServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1297,30 +1207,20 @@
         private System.Windows.Forms.DateTimePicker dpkLastUpdated;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DateTimePicker dpkCreatedDate;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DateTimePicker dpkExpirationDate;
         private System.Windows.Forms.ComboBox cmbSupplier;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCostPerUnit;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbUser;
-        private System.Windows.Forms.ComboBox cmbProductName;
         private System.Windows.Forms.PictureBox imgProduct;
-        private System.Windows.Forms.ComboBox cmbItemLocation;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker dkpLastOrderDate;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtTotalValue;
         private System.Windows.Forms.Label lblHiredate;
         private System.Windows.Forms.DateTimePicker dkpLastStockedDate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtLastCostPerUnit;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtReorderLevel;
         private System.Windows.Forms.TextBox txtQuantityStock;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -1349,5 +1249,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtBarcode;
         private DevExpress.XtraSplashScreen.SplashScreenManager inventoryScreen;
+        private System.Windows.Forms.ComboBox cmbItemLocation;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtReorderLevel;
     }
 }

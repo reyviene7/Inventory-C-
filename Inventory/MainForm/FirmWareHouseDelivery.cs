@@ -57,14 +57,14 @@ namespace Inventory.MainForm
 
             try
             {
-                braWET.ShowWaitForm();
+                splashDelivery.ShowWaitForm();
                 BindDeliveryList();
             }
             finally
             {
-                if (braWET.IsSplashFormVisible)
+                if (splashDelivery.IsSplashFormVisible)
                 {
-                    braWET.CloseWaitForm();
+                    splashDelivery.CloseWaitForm();
                 }
                 BindWareHouse();
             }
@@ -149,7 +149,12 @@ namespace Inventory.MainForm
         }
         private void bntCLR_Click(object sender, EventArgs e)
         {
-           ButtonClr();
+            splashDelivery.ShowWaitForm();
+            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+            imgList = EnumerableUtils.getImgProductList();
+            ButtonClr();
+            splashDelivery.CloseWaitForm();
         }
         private void bntCAN_Click(object sender, EventArgs e)
         {
@@ -736,9 +741,9 @@ namespace Inventory.MainForm
         private void BindDeliveryList()
         {
             ClearGrid();
-            var list = EnumerableUtils.getWareHouseDeliveryList().Select(p => new
+            var list = _warehouse_delivery.Select(p => new
             {
-                ID = p.delivery_id,
+                Id = p.delivery_id,
                 Barcode = p.product_code,
                 Code = p.delivery_code,
                 Product = p.product_name,
@@ -751,24 +756,24 @@ namespace Inventory.MainForm
 
         });
             gridControl1.DataSource = list;
-            if (gridView1.RowCount > 0)
+            if (gridDelivery.RowCount > 0)
             {
-                gridView1.Columns[0].Width = 10;
-                gridView1.Columns[1].Width = 100;
-                gridView1.Columns[2].Width = 40;
-                gridView1.Columns[3].Width = 300;
-                gridView1.Columns[4].Width = 80;
-                gridView1.Columns[5].Width = 80;
-                gridView1.Columns[6].Width = 80;
-                gridView1.Columns[7].Width = 50;
-                gridView1.Columns[8].Width = 50;
-                gridView1.Columns[9].Width = 100;
+                gridDelivery.Columns[0].Width = 10;
+                gridDelivery.Columns[1].Width = 100;
+                gridDelivery.Columns[2].Width = 40;
+                gridDelivery.Columns[3].Width = 300;
+                gridDelivery.Columns[4].Width = 80;
+                gridDelivery.Columns[5].Width = 80;
+                gridDelivery.Columns[6].Width = 80;
+                gridDelivery.Columns[7].Width = 50;
+                gridDelivery.Columns[8].Width = 50;
+                gridDelivery.Columns[9].Width = 100;
             }
         }
 
         private void BindBranchDel()
         {
-            braWET.ShowWaitForm();
+            splashDelivery.ShowWaitForm();
             ClearGrid();
             gridControl.DataSource = EnumerableBranch();
             if (gridInventory.RowCount > 0)
@@ -779,7 +784,7 @@ namespace Inventory.MainForm
                 gridInventory.Columns[3].Width = 100;
                 gridInventory.Columns[3].Width = 120;
             }
-            braWET.CloseWaitForm();
+            splashDelivery.CloseWaitForm();
 
         }
         private void BindProducts()
@@ -1139,7 +1144,7 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    braWET.ShowWaitForm();
+                    splashDelivery.ShowWaitForm();
                     var repository = new Repository<WarehouseDelivery>(unWork);
                     WarehouseDelivery warehouseDel = new WarehouseDelivery
                     {
@@ -1160,7 +1165,7 @@ namespace Inventory.MainForm
                     var result = repository.Add(warehouseDel);
                     if (result > 0)
                     {
-                        braWET.CloseWaitForm();
+                        splashDelivery.CloseWaitForm();
                         PopupNotification.PopUpMessages(1, "Product Name: " + txtProductName.Text.Trim() + " " + Messages.SuccessInsert,
                          Messages.TitleSuccessInsert);
                         unWork.Commit();
@@ -1170,7 +1175,7 @@ namespace Inventory.MainForm
                 }
                 catch (Exception e)
                 {
-                    braWET.CloseWaitForm();
+                    splashDelivery.CloseWaitForm();
                     unWork.Rollback();
                     Console.WriteLine(e.ToString());
                 }
@@ -1185,7 +1190,7 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 try
                 {
-                braWET.ShowWaitForm();
+                splashDelivery.ShowWaitForm();
                 unWork.Begin();
                 var repository = new Repository<WarehouseDelivery>(unWork);
                 var que = repository.FindBy(x => x.delivery_id == deliveryId);
@@ -1232,21 +1237,21 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    braWET.ShowWaitForm();
+                    splashDelivery.ShowWaitForm();
                     unWork.Begin();
                     var repository = new Repository<BranchDelivery>(unWork);
                     var query = repository.FindBy(x => x.BranchDeliveryId == deliverId);
                     var result = repository.Delete(query);
                     if (result)
                     {
-                        braWET.CloseWaitForm();
+                        splashDelivery.CloseWaitForm();
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
                             "Delivery No: " + txtLastCost.Text.Trim(' ') + " successfully Deleted!", Messages.GasulPos);
                     }
                     else
                     {
-                        braWET.CloseWaitForm();
+                        splashDelivery.CloseWaitForm();
                         unWork.Rollback();
                     }
                 }
@@ -1303,47 +1308,7 @@ namespace Inventory.MainForm
         }
         private void gridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (gridView1.RowCount > 0)
-                try
-                {
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                    var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    if (barcode.Length > 0)
-                    {
-                        var w = searchWarehouseDeliveryId(barcode);
-                        txtDelWarehouseId.Text = deliveryId;
-                        txtDelProduct.Text = barcode;
-                        txtDelWarehouseCode.Text = w.delivery_code;
-                        cmbDelWarehouseCode.Text = w.warehouse_name;
-                        txtDelProductName.Text = w.product_name;
-                        txtDelLastCost.Text = w.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtDelReceipt.Text = w.receipt_number;
-                        txtDelRemainQty.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
-                        cmbDelBranch.Text = w.branch_details;
-                        dkpDelDeliveryDate.Text = w.delivery_date.ToString(CultureInfo.InvariantCulture);
-                        cmbDelProductStatus.Text = w.status_details;
-                        txtDelItemPrice.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtDelQty.Text = w.delivery_qty.ToString(CultureInfo.InvariantCulture);
-                        cmbDelDeliveryStatus.Text = w.delivery_status;
-                        txtDelRemarks.Text = w.remarks; 
-
-                        var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
-                        {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-
-                            ImagePreview.ImageLocation = location;
-                        }
-                        else
-                            ImagePreview.Image = null;
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
+           
         }
         private ViewWareHouseInventory searchWarehouseInventoryId(string barcode)
         {
@@ -1379,6 +1344,60 @@ namespace Inventory.MainForm
         {
             return _warehouse_delivery.FirstOrDefault(Warehouse => Warehouse.product_code == barcode);
         }
+
+        private void gridDelivery_RowClick(object sender, RowClickEventArgs e)
+        {
+            if (gridDelivery.RowCount > 0)
+            {
+                InputWhit();
+            }
+        }
+
+        private void gridDelivery_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (gridDelivery.RowCount > 0)
+                try
+                {
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
+                    var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (barcode.Length > 0)
+                    {
+                        var w = searchWarehouseDeliveryId(barcode);
+                        txtDelWarehouseId.Text = deliveryId;
+                        txtDelProduct.Text = barcode;
+                        txtDelWarehouseCode.Text = w.delivery_code;
+                        cmbDelWarehouseCode.Text = w.warehouse_name;
+                        txtDelProductName.Text = w.product_name;
+                        txtDelLastCost.Text = w.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtDelReceipt.Text = w.receipt_number;
+                        txtDelRemainQty.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
+                        cmbDelBranch.Text = w.branch_details;
+                        dkpDelDeliveryDate.Text = w.delivery_date.ToString(CultureInfo.InvariantCulture);
+                        cmbDelProductStatus.Text = w.status_details;
+                        txtDelItemPrice.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtDelQty.Text = w.delivery_qty.ToString(CultureInfo.InvariantCulture);
+                        cmbDelDeliveryStatus.Text = w.delivery_status;
+                        txtDelRemarks.Text = w.remarks;
+
+                        var img = searchProductImg(barcode);
+                        var imgLocation = img.img_location;
+                        if (imgLocation.Length > 0)
+                        {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                            ImagePreview.ImageLocation = location;
+                        }
+                        else
+                            ImagePreview.Image = null;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+        }
+
         private ViewImageProduct searchProductImg(string param)
         {
             return imgList.FirstOrDefault(img => img.image_code == param);
@@ -1394,12 +1413,6 @@ namespace Inventory.MainForm
                 InputWhit();
             }
         }
-        private void gridView_RowClick(object sender, RowClickEventArgs e)
-        {
-            if (gridView1.RowCount > 0)
-            {
-                InputWhit();
-            }
-        }
+        
     }
 }
