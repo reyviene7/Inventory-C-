@@ -392,6 +392,26 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+
+        public static IEnumerable<ViewWarehouse> getWarehouseList()
+        {
+            using (var session = new DalSession())
+            {
+                try
+                {
+                    var unWork = session.UnitofWrk;
+                    unWork.Begin();
+                    var repository = new Repository<ViewWarehouse>(unWork);
+                    return repository.SelectAll(Query.AllWarehouse).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewWarehouse>();
+                }
+            }
+        }
+
         public static IEnumerable<T> GetEmptyList<T>()
         {
             return Enumerable.Empty<T>();

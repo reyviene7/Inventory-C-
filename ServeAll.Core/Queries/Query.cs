@@ -286,6 +286,7 @@
         public const string getLastReceiptQuery = "SELECT MAX(receipt_number) AS receipt_number FROM warehouse_delivery";
         public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
         public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
+        public const string getLastWarehouseIdQuery = "SELECT warehouse_id as warehouse_id FROM warehouse ORDER BY warehouse_id DESC limit 1";
         public const string getLastBranchCodeQuery = "SELECT MAX(branch_code) AS branch_code FROM branch";
         public const string getWarehouseInventory = @"SELECT inventory_id,
                                                         product_code,
