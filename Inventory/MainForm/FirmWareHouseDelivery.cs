@@ -73,8 +73,7 @@ namespace Inventory.MainForm
 
         private void BindWareHouse()
         {
-            clearGrid();
-
+            clearGridWarehouse();
             var list = _warehouse_list.Select(p => new {
                 Id = p.inventory_id,
                 Barcode = p.product_code,
@@ -103,11 +102,18 @@ namespace Inventory.MainForm
             }
         }
 
-        private void clearGrid()
+        private void clearGridWarehouse()
         {
             gridControl.DataSource = null;
             gridControl.DataSource = "";
             gridInventory.Columns.Clear();
+        }
+
+        private void clearGridDelivery()
+        {
+            gridControlDelivery.DataSource = null;
+            gridControlDelivery.DataSource = "";
+            gridDelivery.Columns.Clear();
         }
 
         private void Options_Tick(object sender, EventArgs e)
@@ -408,7 +414,6 @@ namespace Inventory.MainForm
         }
         private void ButAdd()
         {
-            
             ButtonAdd();
             InputEnab();
             InputWhit();
@@ -425,6 +430,8 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridControl.Enabled = false;
+            cmbDeliveryStatus.Text = "Processing";
+            txtRemarks.Text = "N/A";
         }
         private void ButUpd()
         {
@@ -459,33 +466,31 @@ namespace Inventory.MainForm
         }
         private void ButSav()
         {
-            if (_add && _edt == false && _del == false)
+            if (_add && !_edt && !_del)
             {
                     InsertData();
                     ButtonSav();
                     InputDisb();
                     InputDimG();
                     InputClea();
-                    BindWareHouse();
-                    BindDeliveryList();
+                    _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+                    _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
             }
-            if (_add == false && _edt && _del == false)
+            if (!_add && _edt && !_del)
             {
                     UpdateDelivery();
                     ButtonSav();
                     InputDisb();
                     InputDimG();
-                    ClearGrid();
                     InputClea();
             }
-            if (_add == false && _edt == false && _del)
+            if (!_add && !_edt && _del)
             {
                     DeleteData();
                     ButtonSav();
                     InputDisb();
                     InputDimG();
                     InputClea();
-                    ClearGrid();
             }
             BindWareHouse();
             BindDeliveryList();
@@ -565,7 +570,7 @@ namespace Inventory.MainForm
         }
         private void InputWhit()
         {
-            txtDeliveryID.BackColor = Color.White;
+            txtInventoryId.BackColor = Color.White;
             txtProductBarcode.BackColor = Color.White;
             txtDeliveryCode.BackColor = Color.White;
             txtProductName.BackColor = Color.White;
@@ -614,7 +619,7 @@ namespace Inventory.MainForm
         }
         private void InputDisb()
         {
-            txtDeliveryID.Enabled = false;
+            txtInventoryId.Enabled = false;
             txtProductBarcode.Enabled = false;
             txtDeliveryCode.Enabled = false;
             cmbWarehouse.Enabled = false;
@@ -632,7 +637,7 @@ namespace Inventory.MainForm
         }
         private void InputClea()
         {
-            txtDeliveryID.Clear();
+            txtInventoryId.Clear();
             txtProductBarcode.Clear();
             txtDeliveryCode.Clear();
             cmbWarehouse.Text = "";
@@ -651,7 +656,7 @@ namespace Inventory.MainForm
         }
         private void InputDimG()
         {
-            txtDeliveryID.BackColor = Color.DimGray;
+            txtInventoryId.BackColor = Color.DimGray;
             txtProductBarcode.BackColor = Color.DimGray;
             txtDeliveryCode.BackColor = Color.DimGray;
             cmbWarehouse.BackColor = Color.DimGray;
@@ -682,31 +687,6 @@ namespace Inventory.MainForm
             txtDelQty.BackColor = Color.DimGray;
             cmbDelDeliveryStatus.BackColor = Color.DimGray;
             txtDelRemarks.BackColor = Color.DimGray;
-        }
-        private void ClearGrid()
-        {
-            gridControl.DataSource = null;
-            gridControl.DataSource = "";
-            gridInventory.Columns.Clear();
-
-        }
-        private string GetLastBranchesId()
-        {
-            using (var session = new DalSession())
-            {
-                var unitWork = session.UnitofWrk;
-                unitWork.Begin();
-                var repository = new Repository<ViewBranchDelivery>(unitWork);
-                var result = (from b in repository.SelectAll(Query.SelectAllBranchDelivery)
-                              orderby b.Id descending
-                              select b.Code).Take(1).SingleOrDefault();
-                if (result != null)
-                {
-                    return result;
-                }
-                result = Query.DefaultCode;
-                return result;
-            }
         }
         private void GenerateWareHouseCode()
         {
@@ -740,7 +720,7 @@ namespace Inventory.MainForm
         }
         private void BindDeliveryList()
         {
-            ClearGrid();
+            clearGridDelivery();
             var list = _warehouse_delivery.Select(p => new
             {
                 Id = p.delivery_id,
@@ -755,7 +735,7 @@ namespace Inventory.MainForm
                 DeliveryStatus = p.delivery_status,
 
         });
-            gridControl1.DataSource = list;
+            gridControlDelivery.DataSource = list;
             if (gridDelivery.RowCount > 0)
             {
                 gridDelivery.Columns[0].Width = 10;
@@ -771,22 +751,6 @@ namespace Inventory.MainForm
             }
         }
 
-        private void BindBranchDel()
-        {
-            splashDelivery.ShowWaitForm();
-            ClearGrid();
-            gridControl.DataSource = EnumerableBranch();
-            if (gridInventory.RowCount > 0)
-            {
-                gridInventory.Columns[0].Width = 40;
-                gridInventory.Columns[1].Width = 90;
-                gridInventory.Columns[2].Width = 280;
-                gridInventory.Columns[3].Width = 100;
-                gridInventory.Columns[3].Width = 120;
-            }
-            splashDelivery.CloseWaitForm();
-
-        }
         private void BindProducts()
         {
             using (var session = new DalSession())
@@ -886,7 +850,7 @@ namespace Inventory.MainForm
         private void ShowBranch(int inventoryId)
         {
             var ent = ShowDelivery(inventoryId);
-            txtDeliveryID.Text = ent.Id.ToString();
+            txtInventoryId.Text = ent.Id.ToString();
             txtDeliveryCode.Text = ent.Code;
             txtProductName.Text = ent.Item;
             txtLastCost.Text = ent.Delivery;
@@ -1131,55 +1095,45 @@ namespace Inventory.MainForm
         {
             int warehouseQty = int.Parse(txtWarehouseQty.Text);
             int deliveryQty = int.Parse(txtDeliveryQty.Text);
-
+            int inventoryId = int.Parse(txtInventoryId.Text);
             if (warehouseQty <= deliveryQty)
             {
                 PopupNotification.PopUpMessages(0, "Delivery quantity must be less than the warehouse quantity.", "Invalid Input");
                 return;
             }
-
-            using (var session = new DalSession())
+            if (deliveryQty > 0)
             {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
+                splashDelivery.ShowWaitForm();
+                WarehouseDelivery warehouseDel = new WarehouseDelivery
                 {
-                    splashDelivery.ShowWaitForm();
-                    var repository = new Repository<WarehouseDelivery>(unWork);
-                    WarehouseDelivery warehouseDel = new WarehouseDelivery
-                    {
-                        product_id = GetProductId(txtProductBarcode.Text),
-                        delivery_code = txtDeliveryCode.Text.Trim(),
-                        warehouse_id = GetWarehouseCode(cmbWarehouse.Text),
-                        last_cost_per_unit = decimal.Parse(txtLastCost.Text),
-                        receipt_number = txtReceiptNum.Text.Trim(),
-                        inventory_id = warehouseQty,
-                        branch_id = GetBranchId(cmbWarehouseBranch.Text),
-                        status_id = GetProductStatus(cmbProductStatus.Text),
-                        user_id = _userId,
-                        item_price = decimal.Parse(txtItemPrice.Text),
-                        delivery_qty = deliveryQty,
-                        delivery_status_id = GetDeliveryStatus(cmbDeliveryStatus.Text),
-                        remarks = txtRemarks.Text.Trim(),
-                        delivery_date = dkpDeliveryDate.Value.Date
-                    };
-                    var result = repository.Add(warehouseDel);
-                    if (result > 0)
-                    {
-                        splashDelivery.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Product Name: " + txtProductName.Text.Trim() + " " + Messages.SuccessInsert,
-                         Messages.TitleSuccessInsert);
-                        unWork.Commit();
-                        _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
-                        BindWareHouse();
-                    }
-                }
-                catch (Exception e)
+                    product_id = GetProductId(txtProductBarcode.Text),
+                    delivery_code = txtDeliveryCode.Text.Trim(),
+                    warehouse_id = GetWarehouseCode(cmbWarehouse.Text),
+                    last_cost_per_unit = decimal.Parse(txtLastCost.Text),
+                    receipt_number = txtReceiptNum.Text.Trim(),
+                    inventory_id = inventoryId,
+                    branch_id = GetBranchId(cmbWarehouseBranch.Text),
+                    status_id = GetProductStatus(cmbProductStatus.Text),
+                    user_id = _userId,
+                    item_price = decimal.Parse(txtItemPrice.Text),
+                    delivery_qty = deliveryQty,
+                    delivery_status_id = GetDeliveryStatus(cmbDeliveryStatus.Text),
+                    remarks = txtRemarks.Text.Trim(),
+                    delivery_date = dkpDeliveryDate.Value.Date
+                };
+                var result = RepositoryEntity.AddEntity<WarehouseDelivery>(warehouseDel);
+                if (result > 0L)
                 {
                     splashDelivery.CloseWaitForm();
-                    unWork.Rollback();
-                    Console.WriteLine(e.ToString());
+                    PopupNotification.PopUpMessages(1, "Product Name: " + txtProductName.Text.Trim() + " " + Messages.SuccessInsert,
+                     Messages.TitleSuccessInsert);
                 }
+                else
+                {
+                    splashDelivery.CloseWaitForm();
+                    PopupNotification.PopUpMessages(0, "Product Name: " + txtProductName.Text.Trim() + " " + Messages.ErrorInsert,
+                        Messages.TitleFailedInsert);
+                } 
             }
         }
 
@@ -1187,7 +1141,7 @@ namespace Inventory.MainForm
         {
             using (var session = new DalSession())
             {
-                var deliveryId = int.Parse(txtDeliveryID.Text);
+                var deliveryId = int.Parse(txtInventoryId.Text);
                 var unWork = session.UnitofWrk;
                 try
                 {
@@ -1232,7 +1186,7 @@ namespace Inventory.MainForm
 
         private void DeleteData()
         {
-            var deliverId = int.Parse(txtDeliveryID.Text);
+            var deliverId = int.Parse(txtInventoryId.Text);
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
@@ -1273,7 +1227,7 @@ namespace Inventory.MainForm
                     {
 
                         var ent = searchWarehouseInventoryId(barcode);
-                          txtDeliveryID.Text = inventoryId;
+                          txtInventoryId.Text = inventoryId;
                           txtProductBarcode.Text = barcode;
                           //txtDeliveryCode.Text = ent.delivery_code;
                           cmbWarehouse.Text = ent.warehouse_name;

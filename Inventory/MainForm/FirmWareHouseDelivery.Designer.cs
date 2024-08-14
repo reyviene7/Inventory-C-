@@ -70,7 +70,7 @@
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grdHIS = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.lblBarcode = new System.Windows.Forms.Label();
-            this.txtDeliveryID = new System.Windows.Forms.TextBox();
+            this.txtInventoryId = new System.Windows.Forms.TextBox();
             this.tabHIS = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.txtDelProductName = new System.Windows.Forms.TextBox();
@@ -105,7 +105,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txtDelWarehouseId = new System.Windows.Forms.TextBox();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridControlDelivery = new DevExpress.XtraGrid.GridControl();
             this.gridDelivery = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -160,7 +160,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ImagePreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlDelivery)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDelivery)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
@@ -262,7 +262,7 @@
             this.GbPersonal.Controls.Add(this.txtDeliveryCode);
             this.GbPersonal.Controls.Add(this.gbCON);
             this.GbPersonal.Controls.Add(this.lblBarcode);
-            this.GbPersonal.Controls.Add(this.txtDeliveryID);
+            this.GbPersonal.Controls.Add(this.txtInventoryId);
             this.GbPersonal.Location = new System.Drawing.Point(0, -8);
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -772,20 +772,20 @@
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
             this.lblBarcode.Location = new System.Drawing.Point(8, 30);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(80, 17);
+            this.lblBarcode.Size = new System.Drawing.Size(88, 17);
             this.lblBarcode.TabIndex = 142;
-            this.lblBarcode.Text = "Delivery Id:";
+            this.lblBarcode.Text = "Inventory Id:";
             // 
-            // txtDeliveryID
+            // txtInventoryId
             // 
-            this.txtDeliveryID.BackColor = System.Drawing.Color.DimGray;
-            this.txtDeliveryID.Enabled = false;
-            this.txtDeliveryID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveryID.ForeColor = System.Drawing.Color.Maroon;
-            this.txtDeliveryID.Location = new System.Drawing.Point(132, 24);
-            this.txtDeliveryID.Name = "txtDeliveryID";
-            this.txtDeliveryID.Size = new System.Drawing.Size(269, 29);
-            this.txtDeliveryID.TabIndex = 110;
+            this.txtInventoryId.BackColor = System.Drawing.Color.DimGray;
+            this.txtInventoryId.Enabled = false;
+            this.txtInventoryId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInventoryId.ForeColor = System.Drawing.Color.Maroon;
+            this.txtInventoryId.Location = new System.Drawing.Point(132, 24);
+            this.txtInventoryId.Name = "txtInventoryId";
+            this.txtInventoryId.Size = new System.Drawing.Size(269, 29);
+            this.txtInventoryId.TabIndex = 110;
             // 
             // tabHIS
             // 
@@ -1215,7 +1215,7 @@
             this.groupControl2.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.groupControl2.Appearance.Options.UseBackColor = true;
             this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupControl2.Controls.Add(this.gridControl1);
+            this.groupControl2.Controls.Add(this.gridControlDelivery);
             this.groupControl2.Controls.Add(this.textBox1);
             this.groupControl2.Location = new System.Drawing.Point(-1, 267);
             this.groupControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
@@ -1224,20 +1224,20 @@
             this.groupControl2.Size = new System.Drawing.Size(1108, 515);
             this.groupControl2.TabIndex = 173;
             // 
-            // gridControl1
+            // gridControlDelivery
             // 
-            this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.gridControl1.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
-            this.gridControl1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.gridControl1.Location = new System.Drawing.Point(3, 18);
-            this.gridControl1.MainView = this.gridDelivery;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1102, 494);
-            this.gridControl1.TabIndex = 102;
-            this.gridControl1.TabStop = false;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridControlDelivery.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridControlDelivery.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlDelivery.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.gridControlDelivery.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridControlDelivery.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.gridControlDelivery.Location = new System.Drawing.Point(3, 18);
+            this.gridControlDelivery.MainView = this.gridDelivery;
+            this.gridControlDelivery.Name = "gridControlDelivery";
+            this.gridControlDelivery.Size = new System.Drawing.Size(1102, 494);
+            this.gridControlDelivery.TabIndex = 102;
+            this.gridControlDelivery.TabStop = false;
+            this.gridControlDelivery.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridDelivery,
             this.gridView4,
             this.gridView5,
@@ -1287,7 +1287,7 @@
             this.gridDelivery.AppearancePrint.Row.Options.UseFont = true;
             this.gridDelivery.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridDelivery.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.gridDelivery.GridControl = this.gridControl1;
+            this.gridDelivery.GridControl = this.gridControlDelivery;
             this.gridDelivery.Name = "gridDelivery";
             this.gridDelivery.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridDelivery.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1303,7 +1303,7 @@
             // 
             // gridView4
             // 
-            this.gridView4.GridControl = this.gridControl1;
+            this.gridView4.GridControl = this.gridControlDelivery;
             this.gridView4.Name = "gridView4";
             // 
             // gridView5
@@ -1336,7 +1336,7 @@
             this.gridView5.AppearancePrint.Row.Options.UseFont = true;
             this.gridView5.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridView5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.gridView5.GridControl = this.gridControl1;
+            this.gridView5.GridControl = this.gridControlDelivery;
             this.gridView5.Name = "gridView5";
             this.gridView5.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView5.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1349,7 +1349,7 @@
             // 
             // gridView6
             // 
-            this.gridView6.GridControl = this.gridControl1;
+            this.gridView6.GridControl = this.gridControlDelivery;
             this.gridView6.Name = "gridView6";
             // 
             // textBox1
@@ -1377,7 +1377,7 @@
             this.bntCLEAR.Name = "bntCLEAR";
             this.bntCLEAR.Size = new System.Drawing.Size(91, 104);
             this.bntCLEAR.TabIndex = 15;
-            this.bntCLEAR.Text = "CLEAR";
+            this.bntCLEAR.Text = "DATA";
             this.bntCLEAR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntCLEAR.UseVisualStyleBackColor = false;
             this.bntCLEAR.Click += new System.EventHandler(this.bntCLR_Click);
@@ -1749,7 +1749,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlDelivery)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDelivery)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
@@ -1813,7 +1813,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraGrid.Views.Grid.GridView grdHIS;
         private System.Windows.Forms.Label lblBarcode;
-        private System.Windows.Forms.TextBox txtDeliveryID;
+        private System.Windows.Forms.TextBox txtInventoryId;
         private DevExpress.XtraTab.XtraTabPage tabHIS;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.Button bntCLEAR;
@@ -1829,7 +1829,7 @@
         private System.Windows.Forms.Timer RightOptions;
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl gridControlDelivery;
         private DevExpress.XtraGrid.Views.Grid.GridView gridDelivery;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
