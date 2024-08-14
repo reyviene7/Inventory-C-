@@ -198,6 +198,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -1532,9 +1534,9 @@
             // 
             this.txtLimit.Enabled = false;
             this.txtLimit.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLimit.Location = new System.Drawing.Point(840, 35);
+            this.txtLimit.Location = new System.Drawing.Point(764, 35);
             this.txtLimit.Name = "txtLimit";
-            this.txtLimit.Size = new System.Drawing.Size(256, 31);
+            this.txtLimit.Size = new System.Drawing.Size(147, 31);
             this.txtLimit.TabIndex = 246;
             this.txtLimit.Text = "0.00";
             // 
@@ -1717,6 +1719,8 @@
             this.groupOperator.Appearance.Options.UseBorderColor = true;
             this.groupOperator.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.groupOperator.CaptionLocation = DevExpress.Utils.Locations.Left;
+            this.groupOperator.Controls.Add(this.textBox1);
+            this.groupOperator.Controls.Add(this.textBox2);
             this.groupOperator.Controls.Add(this.txtLimit);
             this.groupOperator.Controls.Add(this.label7);
             this.groupOperator.Controls.Add(this.lblInvoice);
@@ -1741,11 +1745,11 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label7.Location = new System.Drawing.Point(1111, 6);
+            this.label7.Location = new System.Drawing.Point(917, 7);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(126, 28);
+            this.label7.Size = new System.Drawing.Size(76, 28);
             this.label7.TabIndex = 244;
-            this.label7.Text = "Credit Used:";
+            this.label7.Text = "Status:";
             // 
             // lblInvoice
             // 
@@ -1753,7 +1757,7 @@
             this.lblInvoice.BackColor = System.Drawing.Color.Transparent;
             this.lblInvoice.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.lblInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.lblInvoice.Location = new System.Drawing.Point(1111, 34);
+            this.lblInvoice.Location = new System.Drawing.Point(917, 35);
             this.lblInvoice.Name = "lblInvoice";
             this.lblInvoice.Size = new System.Drawing.Size(109, 28);
             this.lblInvoice.TabIndex = 241;
@@ -1765,19 +1769,19 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label5.Location = new System.Drawing.Point(696, 34);
+            this.label5.Location = new System.Drawing.Point(630, 31);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 28);
+            this.label5.Size = new System.Drawing.Size(123, 28);
             this.label5.TabIndex = 240;
-            this.label5.Text = "Credit Limit:";
+            this.label5.Text = "Whole Sale:";
             // 
             // txtBalance
             // 
             this.txtBalance.Enabled = false;
             this.txtBalance.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBalance.Location = new System.Drawing.Point(840, 3);
+            this.txtBalance.Location = new System.Drawing.Point(764, 3);
             this.txtBalance.Name = "txtBalance";
-            this.txtBalance.Size = new System.Drawing.Size(256, 31);
+            this.txtBalance.Size = new System.Drawing.Size(147, 31);
             this.txtBalance.TabIndex = 238;
             this.txtBalance.Text = "0.00";
             // 
@@ -1787,11 +1791,11 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label4.Location = new System.Drawing.Point(670, 4);
+            this.label4.Location = new System.Drawing.Point(630, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(154, 28);
+            this.label4.Size = new System.Drawing.Size(125, 28);
             this.label4.TabIndex = 237;
-            this.label4.Text = "Credit Balance:";
+            this.label4.Text = "Retail Price:";
             // 
             // txtCustomers
             // 
@@ -1833,6 +1837,25 @@
             this.barSubItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.Image")));
             this.barSubItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.LargeImage")));
             this.barSubItem3.Name = "barSubItem3";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(1049, 35);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(122, 31);
+            this.textBox1.TabIndex = 248;
+            this.textBox1.Text = "0.00";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(1049, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(147, 31);
+            this.textBox2.TabIndex = 247;
             // 
             // FrmManagement
             // 
@@ -2048,5 +2071,7 @@
         private DevExpress.XtraBars.BarSubItem barSubItem3;
         private System.Windows.Forms.PictureBox imgPreview;
         private DevExpress.XtraEditors.GroupControl groupImage;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

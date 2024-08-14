@@ -1156,6 +1156,7 @@ namespace Inventory.MainForm
                         inventory_id = warehouseQty,
                         branch_id = GetBranchId(cmbWarehouseBranch.Text),
                         status_id = GetProductStatus(cmbProductStatus.Text),
+                        user_id = _userId,
                         item_price = decimal.Parse(txtItemPrice.Text),
                         delivery_qty = deliveryQty,
                         delivery_status_id = GetDeliveryStatus(cmbDeliveryStatus.Text),
