@@ -314,18 +314,6 @@ namespace Inventory.MainForm
             Constant.ApplicationExit();
         }
 
-        private void tileSBD_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
-        {
-            var name = GetUseFullName(_userId);
-            const int type = Constant.ReportSummarWareBra;
-            var view = new FirmPopCategoryReport(name, type)
-            {
-                Main = this
-            };
-            view.ShowDialog();
-
-        }
-
         private void tileInventory_itemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var ret = new FrmInventory(_userId, _usrTyp, _userName)
@@ -353,6 +341,11 @@ namespace Inventory.MainForm
                 Main = this
             };
             view.ShowDialog();
+        }
+
+        private void tileStaffRegistration_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+
         }
     }
 }
