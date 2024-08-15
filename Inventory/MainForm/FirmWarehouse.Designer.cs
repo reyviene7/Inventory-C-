@@ -168,9 +168,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(59, 52);
+            this.pictureBox1.Location = new System.Drawing.Point(59, 32);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 142);
+            this.pictureBox1.Size = new System.Drawing.Size(127, 162);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 110;
             this.pictureBox1.TabStop = false;
@@ -179,10 +179,10 @@
             // 
             this.XtraWarehouse.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.XtraWarehouse.Appearance.Options.UseBackColor = true;
-            this.XtraWarehouse.Location = new System.Drawing.Point(217, 29);
+            this.XtraWarehouse.Location = new System.Drawing.Point(217, 32);
             this.XtraWarehouse.Name = "XtraWarehouse";
             this.XtraWarehouse.SelectedTabPage = this.XtabWHdetails;
-            this.XtraWarehouse.Size = new System.Drawing.Size(1056, 677);
+            this.XtraWarehouse.Size = new System.Drawing.Size(1133, 674);
             this.XtraWarehouse.TabIndex = 111;
             this.XtraWarehouse.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.XtabWHdetails,
@@ -194,7 +194,7 @@
             this.XtabWHdetails.Appearance.PageClient.Options.UseBackColor = true;
             this.XtabWHdetails.Controls.Add(this.GbWHDetails);
             this.XtabWHdetails.Name = "XtabWHdetails";
-            this.XtabWHdetails.Size = new System.Drawing.Size(1054, 652);
+            this.XtabWHdetails.Size = new System.Drawing.Size(1131, 649);
             this.XtabWHdetails.Text = "Warehouse Details";
             // 
             // GbWHDetails
@@ -237,7 +237,7 @@
             this.GbWHDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbWHDetails.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GbWHDetails.Name = "GbWHDetails";
-            this.GbWHDetails.Size = new System.Drawing.Size(1054, 652);
+            this.GbWHDetails.Size = new System.Drawing.Size(1131, 649);
             this.GbWHDetails.TabIndex = 173;
             // 
             // label12
@@ -248,9 +248,9 @@
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(446, 171);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(92, 17);
+            this.label12.Size = new System.Drawing.Size(99, 17);
             this.label12.TabIndex = 203;
-            this.label12.Text = "Branch Email:";
+            this.label12.Text = "Email Address:";
             // 
             // txtEmail
             // 
@@ -262,6 +262,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(269, 29);
             this.txtEmail.TabIndex = 121;
+            this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             // 
             // label8
             // 
@@ -285,6 +286,7 @@
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(269, 29);
             this.txtCountry.TabIndex = 118;
+            this.txtCountry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCountry_KeyDown);
             // 
             // label9
             // 
@@ -308,6 +310,7 @@
             this.txtZipCode.Name = "txtZipCode";
             this.txtZipCode.Size = new System.Drawing.Size(269, 29);
             this.txtZipCode.TabIndex = 117;
+            this.txtZipCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtZipCode_KeyDown);
             // 
             // label10
             // 
@@ -331,6 +334,7 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(269, 29);
             this.txtCity.TabIndex = 115;
+            this.txtCity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCity_KeyDown);
             // 
             // label11
             // 
@@ -354,6 +358,7 @@
             this.txtBarangay.Name = "txtBarangay";
             this.txtBarangay.Size = new System.Drawing.Size(269, 29);
             this.txtBarangay.TabIndex = 114;
+            this.txtBarangay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarangay_KeyDown);
             // 
             // label7
             // 
@@ -363,9 +368,9 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(446, 206);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 17);
+            this.label7.Size = new System.Drawing.Size(88, 17);
             this.label7.TabIndex = 191;
-            this.label7.Text = "Branch Fax:";
+            this.label7.Text = "Fax Number:";
             // 
             // txtFax
             // 
@@ -377,6 +382,7 @@
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(269, 29);
             this.txtFax.TabIndex = 122;
+            this.txtFax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFax_KeyDown);
             // 
             // label6
             // 
@@ -386,9 +392,9 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(446, 136);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 17);
+            this.label6.Size = new System.Drawing.Size(110, 17);
             this.label6.TabIndex = 189;
-            this.label6.Text = "Branch Mobile:";
+            this.label6.Text = "Mobile Number:";
             // 
             // txtMobile
             // 
@@ -400,6 +406,7 @@
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(269, 29);
             this.txtMobile.TabIndex = 120;
+            this.txtMobile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMobile_KeyDown);
             // 
             // label5
             // 
@@ -409,9 +416,9 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(446, 101);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 17);
+            this.label5.Size = new System.Drawing.Size(76, 17);
             this.label5.TabIndex = 187;
-            this.label5.Text = "Branch Telephone:";
+            this.label5.Text = "Telephone:";
             // 
             // txtTelephone
             // 
@@ -423,6 +430,7 @@
             this.txtTelephone.Name = "txtTelephone";
             this.txtTelephone.Size = new System.Drawing.Size(269, 29);
             this.txtTelephone.TabIndex = 119;
+            this.txtTelephone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelephone_KeyDown);
             // 
             // cmbProvincialAddress
             // 
@@ -520,6 +528,7 @@
             this.cmbProvincialAddress.Name = "cmbProvincialAddress";
             this.cmbProvincialAddress.Size = new System.Drawing.Size(269, 29);
             this.cmbProvincialAddress.TabIndex = 116;
+            this.cmbProvincialAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProvincialAddress_KeyDown);
             // 
             // lblProvicen
             // 
@@ -555,6 +564,7 @@
             this.dkpDateRegister.Name = "dkpDateRegister";
             this.dkpDateRegister.Size = new System.Drawing.Size(269, 29);
             this.dkpDateRegister.TabIndex = 123;
+            this.dkpDateRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDateRegister_KeyDown);
             // 
             // label3
             // 
@@ -578,6 +588,7 @@
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(269, 29);
             this.txtStreet.TabIndex = 113;
+            this.txtStreet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStreet_KeyDown);
             // 
             // label2
             // 
@@ -601,6 +612,7 @@
             this.txtWarehouseName.Name = "txtWarehouseName";
             this.txtWarehouseName.Size = new System.Drawing.Size(269, 29);
             this.txtWarehouseName.TabIndex = 112;
+            this.txtWarehouseName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWarehouseName_KeyDown);
             // 
             // label1
             // 
@@ -632,11 +644,11 @@
             this.gbCON.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.gbCON.Controls.Add(this.gridControl);
             this.gbCON.Controls.Add(this.txtPRI);
-            this.gbCON.Location = new System.Drawing.Point(-1, 317);
+            this.gbCON.Location = new System.Drawing.Point(-1, 318);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(1055, 336);
+            this.gbCON.Size = new System.Drawing.Size(1133, 335);
             this.gbCON.TabIndex = 172;
             this.gbCON.Text = "Warehouse List:";
             // 
@@ -650,7 +662,7 @@
             this.gridControl.Location = new System.Drawing.Point(3, 18);
             this.gridControl.MainView = this.gridWarehouse;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1049, 315);
+            this.gridControl.Size = new System.Drawing.Size(1127, 314);
             this.gridControl.TabIndex = 100;
             this.gridControl.TabStop = false;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -711,6 +723,7 @@
             this.gridWarehouse.OptionsCustomization.AllowRowSizing = true;
             this.gridWarehouse.OptionsDetail.AllowExpandEmptyDetails = true;
             this.gridWarehouse.OptionsSelection.MultiSelect = true;
+            this.gridWarehouse.OptionsView.ShowGroupPanel = false;
             this.gridWarehouse.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridWarehouse_FocusedRowChanged);
             this.gridWarehouse.Click += new System.EventHandler(this.gridWarehouse_Click);
             // 
@@ -1013,9 +1026,9 @@
             this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
             this.pnlRightOptions.Controls.Add(this.pcRight);
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1292, 1);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1375, 1);
             this.pnlRightOptions.Name = "pnlRightOptions";
-            this.pnlRightOptions.Size = new System.Drawing.Size(77, 792);
+            this.pnlRightOptions.Size = new System.Drawing.Size(77, 810);
             this.pnlRightOptions.TabIndex = 112;
             // 
             // pcRight
@@ -1078,9 +1091,9 @@
             this.pnlOptions.Controls.Add(this.pnlOptionsMain);
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
-            this.pnlOptions.Location = new System.Drawing.Point(0, 719);
+            this.pnlOptions.Location = new System.Drawing.Point(2, 737);
             this.pnlOptions.Name = "pnlOptions";
-            this.pnlOptions.Size = new System.Drawing.Size(1292, 74);
+            this.pnlOptions.Size = new System.Drawing.Size(1377, 74);
             this.pnlOptions.TabIndex = 71;
             // 
             // pnlOptionsMain
@@ -1328,9 +1341,9 @@
             this.pnlMain.Controls.Add(this.bntClear);
             this.pnlMain.Controls.Add(this.lblMainTitle);
             this.pnlMain.Controls.Add(this.bntCancel);
-            this.pnlMain.Location = new System.Drawing.Point(2, 9);
+            this.pnlMain.Location = new System.Drawing.Point(12, 12);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1284, 711);
+            this.pnlMain.Size = new System.Drawing.Size(1357, 719);
             this.pnlMain.TabIndex = 113;
             // 
             // FirmWarehouse
@@ -1338,7 +1351,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1366, 791);
+            this.ClientSize = new System.Drawing.Size(1450, 813);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlRightOptions);

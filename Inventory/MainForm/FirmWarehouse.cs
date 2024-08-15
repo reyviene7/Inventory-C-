@@ -27,7 +27,7 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userTyp;
         private readonly string _userName;
-        private IEnumerable<ViewWarehouse> _warehousel_list;
+        private IEnumerable<ViewWarehouse> _warehouse_list;
         private bool _add, _edt, _del;
         public string DeliveryBranches
         {
@@ -83,7 +83,7 @@ namespace Inventory.MainForm
             _userId = userId;
             _userTyp = userTy;
             InitializeComponent();
-            _warehousel_list = EnumerableUtils.getWarehouseList();   
+            _warehouse_list = EnumerableUtils.getWarehouseList();   
         }
         private void FirmWarehouseInvetory_Load(object sender, EventArgs e)
         {
@@ -94,7 +94,7 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
-            _warehousel_list = EnumerableUtils.getWarehouseList();
+            _warehouse_list = EnumerableUtils.getWarehouseList();
             BindWarehouse();
             wareWet.CloseWaitForm();
         } 
@@ -110,7 +110,7 @@ namespace Inventory.MainForm
             gridControl.Update();
             try
             { 
-                var list = _warehousel_list.Select(x => new
+                var list = _warehouse_list.Select(x => new
                 {
                     Id = x.warehouse_id,
                     Code = x.warehouse_code,
@@ -159,7 +159,7 @@ namespace Inventory.MainForm
             PopupNotification.PopUpMessageExit();
         }
         private void bntAdd_Click(object sender, EventArgs e)
-        {
+        {  
             ButAdd();
         }
 
@@ -189,7 +189,7 @@ namespace Inventory.MainForm
             InputWhite();
             var que =
                 PopupNotification.PopUpMessageQuestion(
-                    "Are you sure you want to Delete Inventory: " + txtWarehouseCode.Text.Trim(' ') + " " + "?", "Inventory Details");
+                    "Are you sure you want to Delete Warehouse: " + txtWarehouseCode.Text.Trim(' ') + " " + "?", "Warehouse Details");
             if (que)
             {
                 ButDel();
@@ -207,106 +207,22 @@ namespace Inventory.MainForm
             if (gridWarehouse.RowCount > 0)
                 InputWhite();
                 bntClear.Enabled = true;
-        }
-        private void InputWhite()
-        {
-            txtWarehouseId.BackColor = Color.White;
-            txtWarehouseCode.BackColor = Color.White;
-            txtWarehouseName.BackColor = Color.White;
-            txtStreet.BackColor = Color.White;
-            txtBarangay.BackColor = Color.White;
-            txtCity.BackColor = Color.White;
-            cmbProvincialAddress.BackColor = Color.White;
-            txtZipCode.BackColor = Color.White;
-            txtCountry.BackColor = Color.White;
-            dkpDateRegister.BackColor = Color.White;
-            txtTelephone.BackColor = Color.White;
-            txtMobile.BackColor = Color.White;
-            txtEmail.BackColor = Color.White;
-            txtFax.BackColor = Color.White;
-        }
-        private void InputEnable()
-        {
-            txtWarehouseId.Enabled = true;
-            txtWarehouseCode.Enabled = true;
-            txtWarehouseName.Enabled = true;
-            txtStreet.Enabled = true;
-            txtBarangay.Enabled = true;
-            txtCity.Enabled = true;
-            cmbProvincialAddress.Enabled = true;
-            txtZipCode.Enabled = true;
-            txtCountry.Enabled = true;
-            dkpDateRegister.Enabled = true;
-            txtTelephone.Enabled = true;
-            txtMobile.Enabled = true;
-            txtEmail.Enabled = true;
-            txtFax.Enabled = true;
-        }
-        private void InputDisable()
-        {
-            txtWarehouseId.Enabled = false;
-            txtWarehouseCode.Enabled = false;
-            txtWarehouseName.Enabled = false;
-            txtStreet.Enabled = false;
-            txtBarangay.Enabled = false;
-            txtCity.Enabled = false;
-            cmbProvincialAddress.Enabled = false;
-            txtZipCode.Enabled = false;
-            txtCountry.Enabled = false;
-            dkpDateRegister.Enabled = false;
-            txtTelephone.Enabled = false;
-            txtMobile.Enabled = false;
-            txtEmail.Enabled = false;
-            txtFax.Enabled = false;
-        }
-        private void InputClear()
-        {
-            txtWarehouseId.Clear();
-            txtWarehouseCode.Clear();
-            txtWarehouseName.Clear();
-            txtStreet.Clear();
-            txtBarangay.Clear();
-            txtCity.Clear();
-            cmbProvincialAddress.Text = "";
-            txtZipCode.Clear();
-            txtCountry.Clear();  
-            dkpDateRegister.Value = DateTime.Now.Date;
-            txtTelephone.Clear();
-            txtMobile.Clear();
-            txtEmail.Clear();
-            txtFax.Clear();
-        }
-        private void InputDimGray()
-        {
-            txtWarehouseId.BackColor = Color.DimGray;
-            txtWarehouseCode.BackColor = Color.DimGray;
-            txtWarehouseName.BackColor = Color.DimGray;
-            txtStreet.BackColor = Color.DimGray;
-            txtBarangay.BackColor = Color.DimGray;
-            txtCity.BackColor = Color.DimGray;
-            cmbProvincialAddress.BackColor = Color.DimGray;
-            txtZipCode.BackColor = Color.DimGray;
-            txtCountry.BackColor = Color.DimGray;
-            dkpDateRegister.BackColor = Color.DimGray;
-            txtTelephone.BackColor = Color.DimGray;
-            txtMobile.BackColor = Color.DimGray;
-            txtEmail.BackColor = Color.DimGray;
-            txtFax.BackColor = Color.DimGray;
         } 
         private void ButAdd()
-        {
-            gridControl.Enabled = false;
+        { 
             ButtonAdd();
+            InputClear(); 
             InputWhite();
-            InputEnable();
-            InputClear();
-            BindWarehouse();
+            InputEnable(); 
             GenerateWarehouseCode();
-            GenerateNewWarehouseId();
-            txtWarehouseName.Focus();
+            GenerateNewWarehouseId(); 
             _add = true;
             _edt = false;
             _del = false;
+            gridControl.Enabled = false;
+            txtWarehouseId.Enabled = false;
+            txtWarehouseCode.Enabled = false;
+            txtWarehouseName.Focus();
         }
 
         private void ButUpd()
@@ -314,6 +230,10 @@ namespace Inventory.MainForm
             ButtonUpd();
             InputEnable();
             InputWhite();
+
+            txtWarehouseId.Enabled = false;
+            txtWarehouseCode.Enabled = false;
+            txtWarehouseName.Focus();
             _add = false;
             _edt = true;
             _del = false;
@@ -346,38 +266,32 @@ namespace Inventory.MainForm
             {
                 addWarehouse();
                 ButtonSav();
-                InputDisable();
                 InputDimGray();
+                InputDisable();
                 InputClear();
                 BindWarehouse();
             }
             if (_add == false && _edt && _del == false)
             {
-
-                DataUpdate();
+                UpdateWarehouse();
                 ButtonSav();
-                InputDisable();
                 InputDimGray();
+                InputDisable();
                 InputClear();
-
             }
             if (_add == false && _edt == false && _del)
-            {
-
+            { 
                 DataDelete();
                 ButtonSav();
                 InputDisable();
                 InputDimGray();
-                InputClear();
-
+                InputClear(); 
             }
             _add = false;
             _edt = false;
             _del = false;
             gridControl.Enabled = true;
-            //cmbProductName.DataBindings.Clear();
-            //imgPreview.DataBindings.Clear();
-            //imgPreview.Image = null;
+            BindWarehouse();
         }
         private void ButCan()
         {
@@ -385,10 +299,7 @@ namespace Inventory.MainForm
             InputDisable();
             InputDimGray();
             InputClear();
-            gridControl.Enabled = true;
-            //cmbProductName.DataBindings.Clear();
-            //imgPreview.DataBindings.Clear();
-            //imgPreview.Image = null;
+            gridControl.Enabled = true; 
         }
         private void ButtonAdd()
         {
@@ -468,37 +379,108 @@ namespace Inventory.MainForm
             pbLogout.Enabled = true;
             pbExit.Enabled = true;
         }
-
+        private void InputWhite()
+        {
+            txtWarehouseId.BackColor = Color.White;
+            txtWarehouseCode.BackColor = Color.White;
+            txtWarehouseName.BackColor = Color.White;
+            txtStreet.BackColor = Color.White;
+            txtBarangay.BackColor = Color.White;
+            txtCity.BackColor = Color.White;
+            cmbProvincialAddress.BackColor = Color.White;
+            txtZipCode.BackColor = Color.White;
+            txtCountry.BackColor = Color.White;
+            dkpDateRegister.BackColor = Color.White;
+            txtTelephone.BackColor = Color.White;
+            txtMobile.BackColor = Color.White;
+            txtEmail.BackColor = Color.White;
+            txtFax.BackColor = Color.White;
+        }
+        private void InputEnable()
+        {
+            txtWarehouseId.Enabled = true;
+            txtWarehouseCode.Enabled = true;
+            txtWarehouseName.Enabled = true;
+            txtStreet.Enabled = true;
+            txtBarangay.Enabled = true;
+            txtCity.Enabled = true;
+            cmbProvincialAddress.Enabled = true;
+            txtZipCode.Enabled = true;
+            txtCountry.Enabled = true;
+            dkpDateRegister.Enabled = true;
+            txtTelephone.Enabled = true;
+            txtMobile.Enabled = true;
+            txtEmail.Enabled = true;
+            txtFax.Enabled = true;
+        }
+        private void InputDisable()
+        {
+            txtWarehouseId.Enabled = false;
+            txtWarehouseCode.Enabled = false;
+            txtWarehouseName.Enabled = false;
+            txtStreet.Enabled = false;
+            txtBarangay.Enabled = false;
+            txtCity.Enabled = false;
+            cmbProvincialAddress.Enabled = false;
+            txtZipCode.Enabled = false;
+            txtCountry.Enabled = false;
+            dkpDateRegister.Enabled = false;
+            txtTelephone.Enabled = false;
+            txtMobile.Enabled = false;
+            txtEmail.Enabled = false;
+            txtFax.Enabled = false;
+        }
+        private void InputClear()
+        {
+            txtWarehouseId.Clear();
+            txtWarehouseCode.Clear();
+            txtWarehouseName.Clear();
+            txtStreet.Clear();
+            txtBarangay.Clear();
+            txtCity.Clear();
+            cmbProvincialAddress.Text = "";
+            txtZipCode.Clear();
+            txtCountry.Clear();
+            dkpDateRegister.Value = DateTime.Now.Date;
+            txtTelephone.Clear();
+            txtMobile.Clear();
+            txtEmail.Clear();
+            txtFax.Clear();
+        }
+        private void InputDimGray()
+        {
+            txtWarehouseId.BackColor = Color.DimGray;
+            txtWarehouseCode.BackColor = Color.DimGray;
+            txtWarehouseName.BackColor = Color.DimGray;
+            txtStreet.BackColor = Color.DimGray;
+            txtBarangay.BackColor = Color.DimGray;
+            txtCity.BackColor = Color.DimGray;
+            cmbProvincialAddress.BackColor = Color.DimGray;
+            txtZipCode.BackColor = Color.DimGray;
+            txtCountry.BackColor = Color.DimGray;
+            dkpDateRegister.BackColor = Color.DimGray;
+            txtTelephone.BackColor = Color.DimGray;
+            txtMobile.BackColor = Color.DimGray;
+            txtEmail.BackColor = Color.DimGray;
+            txtFax.BackColor = Color.DimGray;
+        }
         private void GenerateNewWarehouseId()
         {
-            int lastId = _warehousel_list.Any() ? _warehousel_list.Max(x => x.warehouse_id) : 0;
+            int lastId = _warehouse_list.Any() ? _warehouse_list.Max(x => x.warehouse_id) : 0;
             int newId = lastId + 1;
 
             txtWarehouseId.Text = newId.ToString();
-        }
-
+        } 
         private void GenerateWarehouseCode()
         {
             var lastWarehouseId = FetchUtils.getLastWarehouseId();
             var alphaNumeric = new GenerateAlpaNum("WH", 3, lastWarehouseId);
             alphaNumeric.Increment();
             txtWarehouseCode.Text = alphaNumeric.ToString();
-        }
-        /*
-        private static int addAddress(string street, string barangay, string city, string province, string zipcode, string country)
-        {
-            if (street.Length > 0)
-            {
-                Address address = new Address
-                {
-                    
-                }
-            }
-        }*/
-
+        }  
         private void addWarehouse()
         {
-            var wh = new Warehouse()
+            var warehouse = new Warehouse()
             {
                 warehouse_id = int.Parse(txtWarehouseId.Text.Trim(' ')),
                 warehouse_code = txtWarehouseCode.Text.Trim(' '),
@@ -523,7 +505,7 @@ namespace Inventory.MainForm
                     };
 
                     addressRepository.Add(address);
-                    wh.address_id = address.address_id;
+                    warehouse.address_id = address.address_id;
 
                     var contactRepository = new Repository<Contact>(unit);
                     var contact = new Contact()
@@ -534,16 +516,16 @@ namespace Inventory.MainForm
                         fax_number = txtFax.Text.Trim(' ')
                     };
                     contactRepository.Add(contact);
-                    wh.contact_id = contact.contact_id;
+                    warehouse.contact_id = contact.contact_id;
 
                     var repository = new Repository<Warehouse>(unit);
-                    var que = repository.Add(wh); 
+                    var que = repository.Add(warehouse); 
 
                     if (que > 0)
                     {
                         wareWet.ShowWaitForm();
                         unit.Commit();
-                        _warehousel_list = EnumerableUtils.getWarehouseList();
+                        _warehouse_list = EnumerableUtils.getWarehouseList();
                         BindWarehouse();
                         wareWet.CloseWaitForm();
                         PopupNotification.PopUpMessages(1, "Warehouse Name: " + txtWarehouseName.Text.Trim() + " " + Messages.SuccessInsert, Messages.TitleSuccessInsert);
@@ -566,44 +548,134 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private void DataUpdate()
+        private void UpdateWarehouse()
         {
+            var warehouseId = Convert.ToInt32(txtWarehouseId.Text);
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 try
-                {/*
-                    var proId       = Convert.ToInt32(txtWarehouseId.Text);
-                    var repository  = new Repository<WareHouse>(unWork);
-                    var que         = repository.Id(proId);
-                    que.Code        = txtWarehouseCode.Text;
-                    que.ProductId   = GetProductId(cmbProductName.Text);
-                    que.DeliveryNo  = txtDeliveryNo.Text;
-                    que.ReceiptNo   = txtReceiptNo.Text;
-                    que.QtyStock    = Convert.ToDecimal(txtWarehouseQty.Text);
-                    que.BranchId    = GetBranchId(cmbWarehouseBranch.Text);
-                    que.LastCost    = Convert.ToDecimal(txtLastCost.Text);
-                    que.OnOrder     = Convert.ToInt32(txtOnOrder.Text);
-                    que.PurDate     = dkpDepotDelivery.Value.Date;
-                    que.InvDate     = dkpInputDate.Value.Date;
-                    que.WarrantyId  = GetWarrantyId(cmbProductWarranty.Text);
-                    que.StatusId    = GetProductStatus(cmbProductStatus.Text);
-                    que.DepotId     = int.Parse(txtDepotControl.Text);
-                    var result      = repository.Update(que);
-                    if (result)
+                {
+                    var warehouseRepository = new Repository<Warehouse>(unWork);
+                    var warehouse = warehouseRepository.Id(warehouseId);
+
+                    if (warehouse != null)
                     {
-                        PopupNotification.PopUpMessages(1, "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
-                         Messages.TitleSuccessUpdate);
-                        unWork.Commit();
+                        bool isUpdated = false;
+                         
+                        if (warehouse.warehouse_code != txtWarehouseCode.Text.Trim(' '))
+                        {
+                            warehouse.warehouse_code = txtWarehouseCode.Text.Trim(' ');
+                            isUpdated = true;
+                        }
+
+                        if (warehouse.warehouse_name != txtWarehouseName.Text.Trim(' '))
+                        {
+                            warehouse.warehouse_name = txtWarehouseName.Text.Trim(' ');
+                            isUpdated = true;
+                        }
+
+                        var addressRepository = new Repository<Address>(unWork);
+                        var address = warehouse.address_id > 0 ? addressRepository.Id(warehouse.address_id) : new Address();
+                         
+                        if (address.street != txtStreet.Text.Trim(' ') ||
+                            address.barangay != txtBarangay.Text.Trim(' ') ||
+                            address.city != txtCity.Text.Trim(' ') ||
+                            address.province != cmbProvincialAddress.Text.Trim(' ') ||
+                            address.zip_code != txtZipCode.Text.Trim(' ') ||
+                            address.country != txtCountry.Text.Trim(' '))
+                        {
+                            address.street = txtStreet.Text.Trim(' ');
+                            address.barangay = txtBarangay.Text.Trim(' ');
+                            address.city = txtCity.Text.Trim(' ');
+                            address.province = cmbProvincialAddress.Text.Trim(' ');
+                            address.zip_code = txtZipCode.Text.Trim(' ');
+                            address.country = txtCountry.Text.Trim(' ');
+                            isUpdated = true;
+                        }
+
+                        var contactRepository = new Repository<Contact>(unWork);
+                        var contact = warehouse.contact_id > 0 ? contactRepository.Id(warehouse.contact_id) : new Contact();
+                         
+                        if (contact.telephone_number != txtTelephone.Text.Trim(' ') ||
+                            contact.mobile_number != txtMobile.Text.Trim(' ') ||
+                            contact.email_address != txtEmail.Text.Trim(' ') ||
+                            contact.fax_number != txtFax.Text.Trim(' '))
+                        {
+                            contact.telephone_number = txtTelephone.Text.Trim(' ');
+                            contact.mobile_number = txtMobile.Text.Trim(' ');
+                            contact.email_address = txtEmail.Text.Trim(' ');
+                            contact.fax_number = txtFax.Text.Trim(' ');
+                            isUpdated = true;
+                        }
+ 
+                        if (warehouse.date_added != dkpDateRegister.Value.Date)
+                        {
+                            warehouse.date_added = dkpDateRegister.Value.Date;
+                            isUpdated = true;
+                        }
+
+                        if (!isUpdated)
+                        {
+                            PopupNotification.PopUpMessages(1, "No Changes", "Fields Error");
+                            return;  
+                        }
+                         
+                        try
+                        {
+                            if (warehouse.address_id > 0)
+                            {
+                                addressRepository.Update(address);
+                            }
+                            else
+                            {
+                                addressRepository.Add(address);
+                                warehouse.address_id = address.address_id;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Error updating address: " + ex.Message);
+                        }
+
+                        try
+                        {
+                            if (warehouse.contact_id > 0)
+                            {
+                                contactRepository.Update(contact);
+                            }
+                            else
+                            {
+                                contactRepository.Add(contact);
+                                warehouse.contact_id = contact.contact_id;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Error updating contact: " + ex.Message);
+                        }
+                         
+                        var result = warehouseRepository.Update(warehouse);
+                        if (result)
+                        {
+                            wareWet.ShowWaitForm();
+                            unWork.Commit();
+                            _warehouse_list = EnumerableUtils.getWarehouseList();
+                            BindWarehouse();
+                            wareWet.CloseWaitForm();
+                            PopupNotification.PopUpMessages(1, $"{Messages.TableWarehouse} {Messages.CodeName} {txtWarehouseName.Text.Trim()} {Messages.SuccessUpdate}", Messages.TitleSuccessUpdate);
+                        }
                     }
-                    */
+                    else
+                    {
+                        throw new Exception("Warehouse not found.");
+                    }
                 }
                 catch (Exception ex)
                 {
                     unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedUpdate);
-
+                    PopupNotification.PopUpMessages(0, $"{Messages.ErrorUpdate}Warehouse: " + txtWarehouseName.Text + $" {Messages.ErrorOccurred} : {ex.Message}", Messages.TitleFialedUpdate);
                 }
             }
         }
@@ -695,10 +767,238 @@ namespace Inventory.MainForm
             if (gridWarehouse.RowCount > 0)
                 InputWhite();
             bntClear.Enabled = true;
-        }
+        } 
         private ViewWarehouse searchWarehouseId(int id)
         {
-            return _warehousel_list.FirstOrDefault(Branch => Branch.warehouse_id == id);
+            return _warehouse_list.FirstOrDefault(Branch => Branch.warehouse_id == id);
+        }
+         
+        //KeyDown
+        private void txtWarehouseName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var len = txtWarehouseName.Text.Length;
+                if (len > 0)
+                {
+                    txtWarehouseName.BackColor = Color.White;
+                    txtStreet.Focus();
+                    txtStreet.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Warehouse Name must not be empty!", Messages.TableWarehouse);
+                    txtWarehouseName.BackColor = Color.Yellow;
+                    txtWarehouseName.Focus();
+                }
+            }
         } 
+        private void txtStreet_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtStreet.Text.Length;
+                if (len > 0)
+                {
+                    txtStreet.BackColor = Color.White;
+                    txtBarangay.Focus();
+                    txtBarangay.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Street must not be empty!", Messages.TableWarehouse);
+                    txtStreet.BackColor = Color.Yellow;
+                    txtStreet.Focus();
+                }
+            }
+        } 
+        private void txtBarangay_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtBarangay.Text.Length;
+                if (len > 0)
+                {
+                    txtBarangay.BackColor = Color.White;
+                    txtCity.Focus();
+                    txtCity.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Barangay must not be empty!", Messages.TableWarehouse);
+                    txtBarangay.BackColor = Color.Yellow;
+                    txtBarangay.Focus();
+                }
+            }
+        } 
+        private void txtCity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtCity.Text.Length;
+                if (len > 0)
+                {
+                    txtCity.BackColor = Color.White;
+                    cmbProvincialAddress.Focus();
+                    cmbProvincialAddress.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "City to deliver must not be empty!", Messages.TableWarehouse);
+                    txtCity.BackColor = Color.Yellow;
+                    txtCity.Focus();
+                }
+            }
+        }
+        private void cmbProvincialAddress_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = cmbProvincialAddress.Text.Length;
+                if (len > 0)
+                {
+                    cmbProvincialAddress.BackColor = Color.White;
+                    txtZipCode.Focus();
+                    txtZipCode.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Provincial Address must not be empty!", Messages.TableWarehouse);
+                    cmbProvincialAddress.BackColor = Color.Yellow;
+                    cmbProvincialAddress.Focus();
+                }
+            }
+        }
+        private void txtZipCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtZipCode.Text.Length;
+                if (len > 0)
+                {
+                    txtZipCode.BackColor = Color.White;
+                    txtCountry.Focus();
+                    txtCountry.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Zip Code must not be empty!", Messages.TableWarehouse);
+                    txtZipCode.BackColor = Color.Yellow;
+                    txtZipCode.Focus();
+                }
+            }
+        }
+        private void txtCountry_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtCountry.Text.Length;
+                if (len > 0)
+                {
+                    txtCountry.BackColor = Color.White;
+                    dkpDateRegister.Focus();
+                    dkpDateRegister.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Country must not be empty!", Messages.TableWarehouse);
+                    txtCountry.BackColor = Color.Yellow;
+                    txtCountry.Focus();
+                }
+            }
+        } 
+        private void dkpDateRegister_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = dkpDateRegister.Text.Length;
+                if (len > 0)
+                {
+                    dkpDateRegister.BackColor = Color.White;
+                    txtTelephone.Focus();
+                    txtTelephone.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Date Register must not be empty!", Messages.TableWarehouse);
+                    dkpDateRegister.BackColor = Color.Yellow;
+                    dkpDateRegister.Focus();
+                }
+            }
+        } 
+        private void txtTelephone_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtTelephone.Text.Length;
+                if (len > 0)
+                {
+                    txtTelephone.BackColor = Color.White;
+                    txtMobile.Focus();
+                    txtMobile.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Telephone must not be empty!", Messages.TableWarehouse);
+                    txtTelephone.BackColor = Color.Yellow;
+                    txtTelephone.Focus();
+                }
+            }
+        } 
+        private void txtMobile_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtMobile.Text.Length;
+                if (len > 0)
+                {
+                    txtMobile.BackColor = Color.White;
+                    txtEmail.Focus();
+                    txtEmail.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Mobile Number must not be empty!", Messages.TableWarehouse);
+                    txtMobile.BackColor = Color.Yellow;
+                    txtMobile.Focus();
+                }
+            }
+        } 
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtEmail.Text.Length;
+                if (len > 0)
+                {
+                    txtEmail.BackColor = Color.White;
+                    txtFax.Focus();
+                    txtFax.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Email must not be empty!", Messages.TableWarehouse);
+                    txtEmail.BackColor = Color.Yellow;
+                    txtEmail.Focus();
+                }
+            }
+        } 
+        private void txtFax_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtFax.Text.Length;
+                if (len > 0)
+                {
+                    txtFax.BackColor = Color.White; 
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Fax must not be empty!", Messages.TableWarehouse);
+                    txtFax.BackColor = Color.Yellow;
+                    _ = txtFax.Focus();
+                }
+            }
+        }
     }
 }
