@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
 using Inventory.Config;
 using Inventory.Entities;
 using ServeAll.Core.Entities;
@@ -22,6 +23,7 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userTy;
         private IEnumerable<RequestProducts> _products;
+        private IEnumerable<RequestQuantity> _quantity;
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewImageProduct> imgList;
@@ -51,6 +53,7 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             _products = EnumerableUtils.getProductWarehouseList();
+            _quantity = EnumerableUtils.getProductWarehouseQuantity();
             try
             {
                 splashDelivery.ShowWaitForm();
@@ -433,7 +436,7 @@ namespace Inventory.MainForm
             ButtonUpd();
             InputEnabDel();
             InputWhit();
-            _add = true;
+            _add = false;
             _edt = true;
             _del = false;
             gridControlDelivery.Enabled = false;
@@ -498,9 +501,12 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridControl.Enabled = true;
+            gridControlDelivery.Enabled = true;
             txtProductName.DataBindings.Clear();
             imgPRO.DataBindings.Clear();
             imgPRO.Image = null;
+            ImagePreview.DataBindings.Clear();
+            ImagePreview.Image = null;
         }
         private void ButtonAdd()
         {
@@ -780,9 +786,10 @@ namespace Inventory.MainForm
                 DeliveryDate = p.delivery_date,
                 Status = p.status_details,
                 CostPerItem = p.cost_per_unit,
-                DeliverQty = p.delivery_qty,
+                Qty = p.delivery_qty,
+                Total = p.total_value,
                 DeliveryStatus = p.delivery_status,
-
+                Update = p.update_on,
         });
             gridControlDelivery.DataSource = list;
             if (gridDelivery.RowCount > 0)
@@ -790,13 +797,14 @@ namespace Inventory.MainForm
                 gridDelivery.Columns[0].Width = 10;
                 gridDelivery.Columns[1].Width = 100;
                 gridDelivery.Columns[2].Width = 40;
-                gridDelivery.Columns[3].Width = 300;
-                gridDelivery.Columns[4].Width = 80;
-                gridDelivery.Columns[5].Width = 80;
-                gridDelivery.Columns[6].Width = 80;
+                gridDelivery.Columns[3].Width = 250;
+                gridDelivery.Columns[4].Width = 70;
+                gridDelivery.Columns[5].Width = 70;
+                gridDelivery.Columns[6].Width = 70;
                 gridDelivery.Columns[7].Width = 50;
-                gridDelivery.Columns[8].Width = 50;
-                gridDelivery.Columns[9].Width = 100;
+                gridDelivery.Columns[8].Width = 30;
+                gridDelivery.Columns[9].Width = 70;
+                gridDelivery.Columns[10].Width = 80;
             }
         }
 
@@ -1048,30 +1056,24 @@ namespace Inventory.MainForm
                 int warehouseQty = int.Parse(txtDelRemainQty.Text);
                 int deliveryQty = int.Parse(txtDelQty.Text);
                 var deliveryId = int.Parse(txtDelWarehouseId.Text);
-
-                if (warehouseQty <= deliveryQty)
-                {
-                    PopupNotification.PopUpMessages(0, "Delivery quantity must be less than the warehouse quantity.", "Invalid Input");
-                    return;
-                }
                 if (deliveryQty > 0)
                 {
                 splashDelivery.ShowWaitForm();
                 using (var session = new DalSession())
                 {
                     var unWork = session.UnitofWrk;
-                    try
-                    {
-                        splashDelivery.ShowWaitForm();
+                    
                         unWork.Begin();
                         var repository = new Repository<WarehouseDelivery>(unWork);
                         var que = repository.FindBy(x => x.delivery_id == deliveryId);
+                        int oldDeliveryQty = que.delivery_qty;
+                        int qtyDifference = deliveryQty - oldDeliveryQty;
                         que.delivery_code = txtDelWarehouseCode.Text;
                         que.product_id = GetProductId(txtDelProduct.Text);
                         que.warehouse_id = GetWarehouseCode(cmbDelWarehouseCode.Text);
                         que.last_cost_per_unit = decimal.Parse(txtDelLastCost.Text);
                         que.receipt_number = txtDelReceipt.Text.Trim();
-                        que.inventory_id = warehouseQty;
+                        que.inventory_id = que.inventory_id;
                         que.branch_id = GetBranchId(cmbDelBranch.Text);
                         que.status_id = GetProductStatus(cmbDelProductStatus.Text);
                         que.user_id = _userId;
@@ -1080,10 +1082,18 @@ namespace Inventory.MainForm
                         que.delivery_status_id = GetDeliveryStatus(cmbDelDeliveryStatus.Text);
                         que.remarks = txtDelRemarks.Text.Trim();
                         que.delivery_date = dkpDeliveryDate.Value.Date;
+                        que.update_on = DateTime.Now;
 
                         var result = repository.Update(que);
                         if (result)
                         {
+                            var quantityRepo = new Repository<RequestQuantity>(unWork);
+                            var requestQuantity = quantityRepo.FindBy(x => x.inventory_id == que.inventory_id);
+                            if (requestQuantity != null)
+                            {
+                                requestQuantity.quantity_in_stock -= qtyDifference; // Update the quantity in stock
+                                quantityRepo.Update(requestQuantity);
+                            }
                             splashDelivery.CloseWaitForm();
                             unWork.Commit();
                             PopupNotification.PopUpMessages(1, "Delivery Id: " + deliveryId + " successfully Updated!",
@@ -1095,11 +1105,6 @@ namespace Inventory.MainForm
                             unWork.Rollback();
                             PopupNotification.PopUpMessages(0, "Failed to update delivery.", "Error");
                         }
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
                 }
             }
         }
