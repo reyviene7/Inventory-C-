@@ -177,8 +177,10 @@
         public const string AllProductWarehouse = @"SELECT * FROM view_request_product";
         public const string AllQuantityWarehouse = @"SELECT * FROM view_request_quantity";
         public const string AllSupplierWarehouse = @"SELECT * FROM view_request_supplier";
+        public const string AllRequestCategory = @"SELECT * FROM view_request_category";
         public const string AllViewImageProduct = "SELECT * FROM view_image_product";
         public const string AllWarehouseStatus = @"SELECT * FROM warehouse_status ORDER BY status_details ASC";
+        public const string AllUserNames = @"SELECT username FROM users ORDER BY username ASC";
         public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
         public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
         public const string AllInventory = @"SELECT * FROM view_inventory ORDER BY inventory_id DESC";
@@ -279,6 +281,7 @@
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
+        public const string getLastServiceIdQuery = "SELECT COUNT(service_id) as service_id FROM services";
         public const string getLastInventoryQuery = "SELECT MAX(inventory_id) as inventory_id FROM inventory";
         public const string getLastInventoryCodeQuery = "SELECT MAX(inventory_code) AS inventory_code FROM inventory";
         public const string getLastInventoryDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM inventory";
@@ -305,6 +308,7 @@
                                                         created_at,
                                                         updated_at
                                                     FROM view_warehouse_inventory ORDER BY inventory_id DESC";
+        public const string getServices = "SELECT * FROM view_services ORDER BY service_id DESC";
         public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
     }
 }
