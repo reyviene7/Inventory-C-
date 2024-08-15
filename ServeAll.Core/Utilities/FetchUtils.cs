@@ -144,6 +144,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getLastWarehouseId()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Warehouse>(unWork);
+                    return repository.SelectAll(Query.getLastWarehouseIdQuery)
+                        .Select(x => x.warehouse_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
         public static int getProductId(string productName) {
             using (var session = new DalSession())
             {
