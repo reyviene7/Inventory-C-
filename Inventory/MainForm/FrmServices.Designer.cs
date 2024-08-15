@@ -463,6 +463,7 @@
             this.cmbServiceStatus.Name = "cmbServiceStatus";
             this.cmbServiceStatus.Size = new System.Drawing.Size(248, 29);
             this.cmbServiceStatus.TabIndex = 18;
+            this.cmbServiceStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbServiceStatus_KeyDown);
             // 
             // label17
             // 
@@ -523,6 +524,7 @@
             this.cmbServiceCategory.Name = "cmbServiceCategory";
             this.cmbServiceCategory.Size = new System.Drawing.Size(285, 29);
             this.cmbServiceCategory.TabIndex = 6;
+            this.cmbServiceCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbServiceCategory_KeyDown);
             // 
             // label15
             // 
@@ -608,6 +610,7 @@
             this.cmbStaff.Name = "cmbStaff";
             this.cmbStaff.Size = new System.Drawing.Size(248, 29);
             this.cmbStaff.TabIndex = 17;
+            this.cmbStaff.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbStaff_KeyDown);
             // 
             // label13
             // 
@@ -747,6 +750,7 @@
             this.txtServiceName.Name = "txtServiceName";
             this.txtServiceName.Size = new System.Drawing.Size(285, 29);
             this.txtServiceName.TabIndex = 2;
+            this.txtServiceName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtServiceName_KeyDown);
             // 
             // gbCON
             // 

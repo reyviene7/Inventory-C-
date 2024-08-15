@@ -261,6 +261,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<ServiceStatus> getServiceStatusList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServiceStatus>(unWork);
+                    return repository.SelectAll(Query.AllServiceStatus).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ServiceStatus>();
+                }
+            }
+        }
+
         public static IEnumerable<ViewImageProduct> getImgProductList()
         {
             using (var session = new DalSession())

@@ -183,6 +183,7 @@
         public const string AllUserNames = @"SELECT username FROM users ORDER BY username ASC";
         public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
         public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
+        public const string AllServiceStatus = @"SELECT * FROM service_status order by status_name ASC";
         public const string AllInventory = @"SELECT * FROM view_inventory ORDER BY inventory_id DESC";
         public const string AllWarehouseProduct = @"SELECT * FROM view_productlist ORDER BY product_id DESC";
         public const string AllSalesPart = @"SELECT * FROM view_sales_particular ORDER BY id DESC";

@@ -17,7 +17,7 @@ namespace ServeAll.Core.Entities
         public decimal service_commission { get; set; }
         public string username { get; set; }
         public string staff { get; set; }
-        public string service_status { get; set; }
+        public string status { get; set; }
         public DateTime service_date { get; set; }
         public DateTime created_date { get; set; }
         public DateTime updated_date { get; set; }
