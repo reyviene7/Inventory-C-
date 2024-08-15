@@ -23,7 +23,7 @@ namespace Inventory.MainForm
         private IEnumerable<RequestProducts> _products;
         private IEnumerable<ViewRequestCategory> _category;
         private IEnumerable<users> _staff;
-        private IEnumerable<Location> _locations;
+        private IEnumerable<ServiceStatus> _service_statuses;
         private IEnumerable<ViewServices> _services_list;
         private IEnumerable<ViewImageProduct> imgList;
         public int Deliver
@@ -81,7 +81,7 @@ namespace Inventory.MainForm
             _products = EnumerableUtils.getProductWarehouseList();
             _category = EnumerableUtils.getRequestCategoryList();
             _staff = EnumerableUtils.getUserNameList();
-            _locations = EnumerableUtils.getLocationWarehouseList();
+            _service_statuses = EnumerableUtils.getServiceStatusList();
             bindWareHouse();
         }
         private ViewImageProduct searchProductImg(string param)
@@ -115,7 +115,7 @@ namespace Inventory.MainForm
                 Duration = p.service_duration,
                 User = p.username,
                 Staff = p.staff,
-                Status = p.service_status,
+                Status = p.status,
                 Date = p.service_date,
                 Created = p.created_date,
                 Updated = p.updated_date
@@ -192,83 +192,80 @@ namespace Inventory.MainForm
             var category = cmbServiceCategory.Text.Trim(' ');
             var staff = cmbStaff.Text.Trim(' ');
             var operators = cmbOperator.Text.Trim(' ');
-            if (category.Length > 0)
+            var statusId = FetchUtils.getServiceStatusId(cmbServiceStatus.Text.Trim(' '));
+            if (statusId > 0)
             {
                 var categoryId = FetchUtils.getCategoryId(category);
                 var staffId = FetchUtils.getUserId(staff);
                 var operatorId = FetchUtils.getUserId(operators);
-  
+
                 ServeAll.Core.Entities.Services services = new ServeAll.Core.Entities.Services
                 {
-                        service_code = txtBarcode.Text.Trim(' '),
-                        service_name = txtServiceName.Text.Trim(' '),
-                        service_details = txtServiceDescription.Text.Trim(' '),
-                        service_charges = decimal.Parse(txtServiceCharges.Text.Trim(' ')),
-                        category_id = categoryId,
-                        service_duration = int.Parse(txtServiceDuration.Text.Trim(' ')),
-                        service_commission = int.Parse(txtServiceCommision.Text.Trim(' ')),
-                        user_id = operatorId,
-                        staff_id = staffId,
-                        service_status = cmbServiceStatus.Text.Trim(' '),
-                        service_date = dpkServiceDate.Value.Date,
-                        created_date = dpkCreatedDate.Value.Date,
-                        updated_date = dpkUpdated.Value.Date
+                    service_code = txtBarcode.Text.Trim(' '),
+                    service_name = txtServiceName.Text.Trim(' '),
+                    service_details = txtServiceDescription.Text.Trim(' '),
+                    service_charges = decimal.Parse(txtServiceCharges.Text.Trim(' ')),
+                    category_id = categoryId,
+                    service_duration = int.Parse(txtServiceDuration.Text.Trim(' ')),
+                    service_commission = int.Parse(txtServiceCommision.Text.Trim(' ')),
+                    user_id = operatorId,
+                    staff_id = staffId,
+                    status_id = statusId,
+                    service_date = dpkServiceDate.Value.Date,
+                    created_date = dpkCreatedDate.Value.Date,
+                    updated_date = dpkUpdated.Value.Date
                 };
                 var result = RepositoryEntity.AddEntity<ServeAll.Core.Entities.Services>(services);
                 if (result > 0L)
                 {
                     PopupNotification.PopUpMessages(1, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.SuccessInsert,
                          Messages.TitleSuccessInsert);
-                } else
+                }
+                else
                 {
                     PopupNotification.PopUpMessages(0, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.ErrorInsert,
                             Messages.TitleFailedInsert);
                 }
             }
+            else {
+                inventoryScreen.CloseWaitForm();
+                PopupNotification.PopUpMessages(0, "Status Id must not be null!",
+                            Messages.TitleFailedInsert);
+                
+            }
         }
 
         private void editInventory()
         {
-            var inventoryId = int.Parse(txtServiceId.Text.Trim(' '));
-            if (inventoryId > 0)
+            var serviceId = int.Parse(txtServiceId.Text.Trim(' '));
+            if (serviceId > 0)
             {
-               
-                var supplier = cmbServiceCategory.Text.Trim(' ');
-                var location = cmbStaff.Text.Trim(' ');
-                var status = cmbServiceStatus.Text.Trim(' ');
-              
-                var supplierId = FetchUtils.getSupplierId(supplier);
-                var locationId = FetchUtils.getLocationId(location);
-                var statusId = FetchUtils.getStatusId(status);
-                var qtyStock = int.Parse(txtServiceDescription.Text.Trim(' '));
-                var reoderLevel = int.Parse(txtServiceCharges.Text.Trim(' '));
-                var unitCost = decimal.Parse(txtServiceDuration.Text.Trim(' '));
-                var lastCost = decimal.Parse(txtServiceCommision.Text.Trim(' '));
-                int result = RepositoryEntity.UpdateEntity<WarehouseInventory>(inventoryId, entity =>
+                int result = RepositoryEntity.UpdateEntity<ServeAll.Core.Entities.Services>(serviceId, entity =>
                 {
-                    entity.product_id = 1;
-                    entity.sku = txtServiceName.Text.Trim(' ');
-                    entity.quantity_in_stock = qtyStock;
-                    entity.reorder_level = reoderLevel;
-                    entity.location_id = locationId;
-                    entity.warehouse_id = 1;
-                    entity.user_id = _userId;
-                    entity.supplier_id = supplierId;
-                    entity.last_stocked_date = dpkServiceDate.Value.Date;
-                   
-                    entity.cost_per_unit = unitCost;
-                    entity.last_cost_per_unit = lastCost;
-                    entity.status_id = statusId;
-                    entity.created_at = dpkCreatedDate.Value.Date;
-                    entity.updated_at = dpkUpdated.Value.Date;
+                    entity.service_code = txtBarcode.Text.Trim(' ');
+                    entity.service_name = txtServiceName.Text.Trim(' ');
+                    entity.service_charges = decimal.Parse(txtServiceCharges.Text);
+                    entity.category_id = FetchUtils.getCategoryId(cmbServiceCategory.Text.Trim(' '));
+                    entity.service_duration = int.Parse(txtServiceDuration.Text);
+                    entity.service_commission = decimal.Parse(txtServiceCommision.Text);
+                    entity.user_id = FetchUtils.getUserId(cmbOperator.Text);
+                    entity.staff_id = FetchUtils.getUserId(cmbStaff.Text);
+                    entity.status_id = FetchUtils.getServiceStatusId(cmbServiceStatus.Text);
+                    entity.service_date = dpkServiceDate.Value.Date;
+                    entity.created_date = dpkCreatedDate.Value.Date;
+                    entity.updated_date = dpkUpdated.Value.Date;
                 });
                 if (result > 0)
                 {
-                  
+                    inventoryScreen.CloseWaitForm();
+                    PopupNotification.PopUpMessages(1, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
+                           Messages.TitleSuccessUpdate);
                 }
                 else
                 {
-                   
+                    inventoryScreen.CloseWaitForm();
+                    PopupNotification.PopUpMessages(1, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.ErrorUpdate,
+                            Messages.TitleFialedUpdate);
                 }
             }
         }
@@ -376,11 +373,6 @@ namespace Inventory.MainForm
             cmbServiceStatus.BackColor = Color.DimGray;
         }
        
-        private void GenerateCode()
-        {
-            
-        }
-         
          
         private void DataDelete()
         {
@@ -429,9 +421,11 @@ namespace Inventory.MainForm
             imgProduct.DataBindings.Clear();
             imgProduct.Image = null;
             cmbServiceCategory.DataBindings.Clear();
+            cmbServiceStatus.DataBindings.Clear();
             cmbStaff.DataBindings.Clear();
             cmbServiceCategory.DataSource = _category.Select(p => p.category_details).ToList();
             cmbStaff.DataSource = _staff.Select(p => p.username).ToList();
+            cmbServiceStatus.DataSource = _service_statuses.Select(p => p.status_name).ToList();
             txtServiceName.Focus();
             generateLastServiceCode();
         }
@@ -557,7 +551,6 @@ namespace Inventory.MainForm
             }
             if (_add == false && _edt == false && _del)
             {
-
                 DataDelete();
                 ButtonSav();
                 InputDisb();
@@ -568,10 +561,10 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridController.Enabled = true;
-        
             imgProduct.DataBindings.Clear();
             imgProduct.Image = null;
-           
+            _services_list = EnumerableUtils.getServicesList();
+            bindWareHouse();
         }
         private void ButCan()
         {
@@ -651,12 +644,42 @@ namespace Inventory.MainForm
             PanelInterface.RightOptionTick(this, pnlRightOptions);
         }
 
+        private void cmbServiceStatus_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbServiceStatus.DataBindings.Clear();
+                cmbServiceStatus.DataSource = _service_statuses.Select(p => p.status_name).ToList();
+            }
+        }
+        private void cmbServiceCategory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbServiceCategory.DataBindings.Clear();
+                cmbServiceCategory.DataSource = _category.Select(p => p.category_details).ToList();
+            }
+        }
+
+        private void cmbStaff_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbStaff.DataBindings.Clear();
+                cmbStaff.DataSource = _staff.Select(p => p.username).ToList();
+            }
+        }
+
         private void Options_Tick(object sender, EventArgs e)
         {
             PanelInterface.OptionTick(this, pnlOptions);
         }
-
-     
+        private void txtServiceName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab) {
+                txtServiceDescription.Focus();
+            }
+        }
 
     }
 }
