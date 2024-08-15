@@ -147,6 +147,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<RequestQuantity> getProductWarehouseQuantity()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<RequestQuantity>(unWork);
+                    return repository.SelectAll(Query.AllQuantityWarehouse).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<RequestQuantity>();
+                }
+            }
+        }
+
         public static IEnumerable<RequestSupplier> getSupplierWarehouseList()
         {
             using (var session = new DalSession())

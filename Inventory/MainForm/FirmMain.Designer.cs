@@ -1285,7 +1285,7 @@
             this.tileServices.Id = 58;
             this.tileServices.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileServices.Name = "tileServices";
-            this.tileServices.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileDEL_ItemClick);
+            this.tileServices.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileServices_ItemClick);
             // 
             // tileManagement
             // 

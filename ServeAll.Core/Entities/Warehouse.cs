@@ -7,7 +7,7 @@ namespace ServeAll.Core.Entities
     public class Warehouse
     {
         [Key]
-        public int warehouse_Id { get; set; }
+        public int warehouse_id { get; set; }
         public string warehouse_name { get; set; }
         public int contact_id { get; set; }
         public int address_id { get; set; }

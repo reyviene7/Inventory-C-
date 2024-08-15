@@ -69,6 +69,7 @@
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Delivery.cs" />
     <Compile Include="Entities\Location.cs" />
+    <Compile Include="Entities\request\RequestQuantity.cs" />
     <Compile Include="Entities\request\RequestProducts.cs" />
     <Compile Include="Entities\request\RequestSupplier.cs" />
     <Compile Include="Entities\ViewBranch.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Entities\ViewWareHouseInventory.cs" />
     <Compile Include="Entities\Warehouse.cs" />
     <Compile Include="Entities\WarehouseInventory.cs" />
+    <Compile Include="Entities\DeliveryStatus.cs" />
     <Compile Include="Entities\WarehouseStatus.cs" />
     <Compile Include="Entities\Warranty.cs" />
     <Compile Include="Entities\WarrantyStatus.cs" />

@@ -175,9 +175,11 @@
         public const string AllItemFromDepots = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE Name LIKE '%LPG%'";
         public const string AllViewProducts = "SELECT * FROM view_product ORDER BY product_id DESC";
         public const string AllProductWarehouse = @"SELECT * FROM view_request_product";
+        public const string AllQuantityWarehouse = @"SELECT * FROM view_request_quantity";
         public const string AllSupplierWarehouse = @"SELECT * FROM view_request_supplier";
         public const string AllViewImageProduct = "SELECT * FROM view_image_product";
         public const string AllWarehouseStatus = @"SELECT * FROM warehouse_status ORDER BY status_details ASC";
+        public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
         public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
         public const string AllInventory = @"SELECT * FROM view_inventory ORDER BY inventory_id DESC";
         public const string AllWarehouseProduct = @"SELECT * FROM view_productlist ORDER BY product_id DESC";
@@ -280,6 +282,8 @@
         public const string getLastInventoryQuery = "SELECT MAX(inventory_id) as inventory_id FROM inventory";
         public const string getLastInventoryCodeQuery = "SELECT MAX(inventory_code) AS inventory_code FROM inventory";
         public const string getLastInventoryDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM inventory";
+        public const string getLastWarehouseDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM warehouse_delivery";
+        public const string getLastReceiptQuery = "SELECT MAX(receipt_number) AS receipt_number FROM warehouse_delivery";
         public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
         public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
         public const string getLastBranchCodeQuery = "SELECT MAX(branch_code) AS branch_code FROM branch";
