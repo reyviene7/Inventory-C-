@@ -200,7 +200,7 @@
             this.bntADD.Name = "bntADD";
             this.bntADD.Size = new System.Drawing.Size(91, 104);
             this.bntADD.TabIndex = 17;
-            this.bntADD.Text = "Delivery";
+             this.bntADD.Text = "Delivery";
             this.bntADD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntADD.UseVisualStyleBackColor = false;
             this.bntADD.Click += new System.EventHandler(this.bntADD_Click);
@@ -855,7 +855,7 @@
             this.txtDelProductName.Location = new System.Drawing.Point(130, 141);
             this.txtDelProductName.Name = "txtDelProductName";
             this.txtDelProductName.Size = new System.Drawing.Size(269, 29);
-            this.txtDelProductName.TabIndex = 270;
+            this.txtDelProductName.TabIndex = 242;
             // 
             // cmbDelWarehouseCode
             // 
@@ -869,7 +869,7 @@
             this.cmbDelWarehouseCode.Location = new System.Drawing.Point(130, 111);
             this.cmbDelWarehouseCode.Name = "cmbDelWarehouseCode";
             this.cmbDelWarehouseCode.Size = new System.Drawing.Size(269, 29);
-            this.cmbDelWarehouseCode.TabIndex = 269;
+            this.cmbDelWarehouseCode.TabIndex = 241;
             // 
             // label8
             // 
@@ -895,7 +895,7 @@
             this.cmbDelDeliveryStatus.Location = new System.Drawing.Point(534, 171);
             this.cmbDelDeliveryStatus.Name = "cmbDelDeliveryStatus";
             this.cmbDelDeliveryStatus.Size = new System.Drawing.Size(269, 29);
-            this.cmbDelDeliveryStatus.TabIndex = 267;
+            this.cmbDelDeliveryStatus.TabIndex = 246;
             // 
             // txtDelRemarks
             // 
@@ -906,7 +906,7 @@
             this.txtDelRemarks.Location = new System.Drawing.Point(534, 201);
             this.txtDelRemarks.Name = "txtDelRemarks";
             this.txtDelRemarks.Size = new System.Drawing.Size(269, 29);
-            this.txtDelRemarks.TabIndex = 249;
+            this.txtDelRemarks.TabIndex = 247;
             // 
             // label14
             // 
@@ -929,7 +929,7 @@
             this.txtDelRemainQty.Location = new System.Drawing.Point(130, 231);
             this.txtDelRemainQty.Name = "txtDelRemainQty";
             this.txtDelRemainQty.Size = new System.Drawing.Size(269, 29);
-            this.txtDelRemainQty.TabIndex = 243;
+            this.txtDelRemainQty.TabIndex = 261;
             // 
             // label15
             // 
@@ -952,7 +952,8 @@
             this.txtDelQty.Location = new System.Drawing.Point(534, 141);
             this.txtDelQty.Name = "txtDelQty";
             this.txtDelQty.Size = new System.Drawing.Size(269, 29);
-            this.txtDelQty.TabIndex = 248;
+            this.txtDelQty.TabIndex = 245;
+            this.txtDelQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDelQty_KeyDown);
             // 
             // label16
             // 
@@ -975,7 +976,7 @@
             this.txtDelItemPrice.Location = new System.Drawing.Point(534, 111);
             this.txtDelItemPrice.Name = "txtDelItemPrice";
             this.txtDelItemPrice.Size = new System.Drawing.Size(269, 29);
-            this.txtDelItemPrice.TabIndex = 247;
+            this.txtDelItemPrice.TabIndex = 244;
             // 
             // label17
             // 
@@ -1024,7 +1025,7 @@
             this.cmbDelProductStatus.Location = new System.Drawing.Point(534, 81);
             this.cmbDelProductStatus.Name = "cmbDelProductStatus";
             this.cmbDelProductStatus.Size = new System.Drawing.Size(269, 29);
-            this.cmbDelProductStatus.TabIndex = 246;
+            this.cmbDelProductStatus.TabIndex = 263;
             // 
             // ImagePreview
             // 
@@ -1048,7 +1049,7 @@
             this.cmbDelBranch.Location = new System.Drawing.Point(534, 21);
             this.cmbDelBranch.Name = "cmbDelBranch";
             this.cmbDelBranch.Size = new System.Drawing.Size(269, 29);
-            this.cmbDelBranch.TabIndex = 244;
+            this.cmbDelBranch.TabIndex = 262;
             this.cmbDelBranch.Text = "SELECT BRANCH";
             // 
             // label19
@@ -1143,7 +1144,7 @@
             this.txtDelReceipt.Location = new System.Drawing.Point(130, 201);
             this.txtDelReceipt.Name = "txtDelReceipt";
             this.txtDelReceipt.Size = new System.Drawing.Size(269, 29);
-            this.txtDelReceipt.TabIndex = 242;
+            this.txtDelReceipt.TabIndex = 260;
             // 
             // txtDelLastCost
             // 
@@ -1154,7 +1155,7 @@
             this.txtDelLastCost.Location = new System.Drawing.Point(130, 171);
             this.txtDelLastCost.Name = "txtDelLastCost";
             this.txtDelLastCost.Size = new System.Drawing.Size(269, 29);
-            this.txtDelLastCost.TabIndex = 241;
+            this.txtDelLastCost.TabIndex = 243;
             // 
             // label25
             // 
@@ -1497,7 +1498,7 @@
             this.pnlMain.Controls.Add(this.bntUPDATE);
             this.pnlMain.Controls.Add(this.bntCANCEL);
             this.pnlMain.Controls.Add(this.bntSAVE);
-            this.pnlMain.Location = new System.Drawing.Point(1, 1);
+            this.pnlMain.Location = new System.Drawing.Point(-51, -22);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1301, 764);
             this.pnlMain.TabIndex = 121;
@@ -1743,7 +1744,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1491, 834);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
