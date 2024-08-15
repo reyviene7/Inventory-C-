@@ -18,9 +18,11 @@ namespace ServeAll.Core.Entities
         public int quantity_in_stock { get; set; }
         public string branch_details { get;set; }
         public DateTime delivery_date { get; set; }
+        public DateTime update_on { get; set; }
         public string status_details { get; set; }
         public decimal cost_per_unit { get; set; }
         public int delivery_qty { get; set; }
+        public decimal total_value { get; set; }
         public string delivery_status { get; set; }
         public string remarks { get; set; }
     }
