@@ -13,6 +13,7 @@ namespace Inventory.Config
         public const string ErrorInputEmpty = " must not be empty!";
         public const string PosPending = "Pending";
 
+        public const string TableWarehouse = " Warehouse ";
         public const string TableBranch = " Branch ";
         public const string TableEmployees = "Employee ";
         public const string TableCompany = "Company ";

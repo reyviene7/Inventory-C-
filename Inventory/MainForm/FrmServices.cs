@@ -17,15 +17,14 @@ namespace Inventory.MainForm
     {
         private int _branchId;
         private int _deliver;
-        private string _branch;
         private readonly int _userId;
         private readonly int _userTyp;
         private readonly string _userName;
         private IEnumerable<RequestProducts> _products;
-        private IEnumerable<RequestSupplier> _suppliers;
-        private IEnumerable<WarehouseStatus> _statuses;
+        private IEnumerable<ViewRequestCategory> _category;
+        private IEnumerable<users> _staff;
         private IEnumerable<Location> _locations;
-        private IEnumerable<ViewWareHouseInventory> _warehouse_list;
+        private IEnumerable<ViewServices> _services_list;
         private IEnumerable<ViewImageProduct> imgList;
         public int Deliver
         {
@@ -52,16 +51,6 @@ namespace Inventory.MainForm
                 main.Show();
             }
         }
-        public int BranchId
-        {
-            get { return _branchId; }
-            set
-            {
-                _branchId = value;
-                cmbItemLocation.Text = _branch;
-               
-            }
-        }
         private FirmMain _main;
         private bool _add, _edt, _del;
         public FirmMain Main
@@ -75,7 +64,7 @@ namespace Inventory.MainForm
             _userId = userId;
             _userTyp = userTy;
             InitializeComponent();
-            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            _services_list = EnumerableUtils.getServicesList();
             imgList = EnumerableUtils.getImgProductList();
             gridInventory.FocusedRowChanged += gridInventory_FocusedRowChanged;
             gridInventory.Click += gridInventory_Click;
@@ -90,8 +79,8 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             _products = EnumerableUtils.getProductWarehouseList();
-            _suppliers = EnumerableUtils.getSupplierWarehouseList();
-            _statuses = EnumerableUtils.getStatusWarehouseList();
+            _category = EnumerableUtils.getRequestCategoryList();
+            _staff = EnumerableUtils.getUserNameList();
             _locations = EnumerableUtils.getLocationWarehouseList();
             bindWareHouse();
         }
@@ -105,36 +94,48 @@ namespace Inventory.MainForm
             return _products.FirstOrDefault(i => i.product_id == seletedIndex).product_code;
         }
 
+        private void generateLastServiceCode()
+        {
+            var lastProductId = FetchUtils.getLastServiceId();
+            var alphaNumeric = new GenerateAlpaNum("S", 3, lastProductId);
+            alphaNumeric.Increment();
+            txtBarcode.Text = alphaNumeric.ToString();
+        }
+
         private void bindWareHouse()
         {
             clearGrid();
-            var list = _warehouse_list.Select(p => new { 
-                Id = p.inventory_id,
-                Barcode = p.product_code,
-                SKU = p.sku,
-                Qty = p.quantity_in_stock,
-                ReQty = p.reorder_level,
-                Location = p.location_code,
-                Supplier = p.supplier_name,
-                LStocked = p.last_stocked_date,
-                LOrder = p.last_ordered_date,
-                Expire = p.expiration_date,
-                Price = p.cost_per_unit,
-                LastCost = p.last_cost_per_unit,
-                Total = p.total_value,
-                Status = p.status_details,
-                Created = p.created_at,
-                Updated = p.updated_at
+            var list = _services_list.Select(p => new { 
+                Id = p.service_id,
+                Barcode = p.service_code,
+                ServiceName = p.service_name,
+                Category = p.category,
+                Charges = p.service_charges,
+                Commision = p.service_commission,
+                Duration = p.service_duration,
+                User = p.username,
+                Staff = p.staff,
+                Status = p.service_status,
+                Date = p.service_date,
+                Created = p.created_date,
+                Updated = p.updated_date
             }).ToList();
             gridController.DataSource = list;
             gridController.Update();
             if(gridInventory.RowCount > 0)
                 gridInventory.Columns[0].Width = 40;
                 gridInventory.Columns[1].Width = 90;
-                gridInventory.Columns[2].Width = 65;
-                gridInventory.Columns[3].Width = 40;
-                gridInventory.Columns[4].Width = 40;
-                gridInventory.Columns[6].Width = 180;
+                gridInventory.Columns[2].Width = 200;
+                gridInventory.Columns[3].Width = 140;
+                gridInventory.Columns[4].Width = 90;
+                gridInventory.Columns[5].Width = 100;
+                gridInventory.Columns[6].Width = 100;
+                gridInventory.Columns[7].Width = 90;
+                gridInventory.Columns[8].Width = 90;
+                gridInventory.Columns[9].Width = 100;
+                gridInventory.Columns[10].Width = 100;
+                gridInventory.Columns[11].Width = 100;
+                gridInventory.Columns[12].Width = 100;
         }
 
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -146,21 +147,20 @@ namespace Inventory.MainForm
                     if (id.Length > 0)
                     {
                         var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                        cmbUser.Text = _userName;
-                        txtInventoryId.Text = id;
-                        txtWarehouseSKU.Text = ((GridView)sender).GetFocusedRowCellValue("SKU").ToString(); ;
+                        cmbOperator.Text = _userName;
+                        txtServiceId.Text = id;
+                        txtServiceName.Text = ((GridView)sender).GetFocusedRowCellValue("ServiceName").ToString();
+                        cmbServiceCategory.Text = ((GridView)sender).GetFocusedRowCellValue("Category").ToString();
+                        txtServiceCharges.Text = ((GridView)sender).GetFocusedRowCellValue("Charges").ToString();
+                        txtServiceCommision.Text = ((GridView)sender).GetFocusedRowCellValue("Commision").ToString();
+                        txtServiceDuration.Text = ((GridView)sender).GetFocusedRowCellValue("Duration").ToString();
+                        cmbOperator.Text = ((GridView)sender).GetFocusedRowCellValue("User").ToString();
+                        cmbStaff.Text = ((GridView)sender).GetFocusedRowCellValue("Staff").ToString();
+                        cmbServiceStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status").ToString();
                         txtBarcode.Text = barcode;
-                        txtQuantityStock.Text = ((GridView)sender).GetFocusedRowCellValue("Qty").ToString();
-                
-                        txtReorderLevel.Text = ((GridView)sender).GetFocusedRowCellValue("ReQty").ToString();
-                        cmbSupplier.Text = ((GridView)sender).GetFocusedRowCellValue("Supplier").ToString();
-                        txtCostPerUnit.Text = ((GridView)sender).GetFocusedRowCellValue("Price").ToString();
-                        txtLastCostPerUnit.Text = ((GridView)sender).GetFocusedRowCellValue("LastCost").ToString();
-                        txtTotalValue.Text = ((GridView)sender).GetFocusedRowCellValue("Total").ToString();
-                        cmbStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status").ToString();
-                        cmbItemLocation.Text = ((GridView)sender).GetFocusedRowCellValue("Location").ToString();
-                        dkpLastStockedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("LStocked");
-                      
+                        dpkServiceDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Date");
+                        dpkCreatedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Created");
+                        dpkUpdated.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Updated");
                         var img = searchProductImg(barcode);
                         var imgLocation = img.img_location;
                         if (imgLocation.Length > 0)
@@ -189,83 +189,78 @@ namespace Inventory.MainForm
 
         private void addInventory()
         {
-            var item = "";
-            var supplier = cmbSupplier.Text.Trim(' ');
-            var location = cmbItemLocation.Text.Trim(' ');
-            var status = cmbStatus.Text.Trim(' ');
-            if (item.Length > 0)
+            var category = cmbServiceCategory.Text.Trim(' ');
+            var staff = cmbStaff.Text.Trim(' ');
+            var operators = cmbOperator.Text.Trim(' ');
+            if (category.Length > 0)
             {
-                var productId = FetchUtils.getProductId(item);
-                var supplierId = FetchUtils.getSupplierId(supplier);
-                var locationId = FetchUtils.getLocationId(location);
-                var statusId = FetchUtils.getStatusId(status);
-                var qtyStock = int.Parse(txtQuantityStock.Text.Trim(' '));
-                var reoderLevel = int.Parse(txtReorderLevel.Text.Trim(' '));
-                var unitCost = decimal.Parse(txtCostPerUnit.Text.Trim(' '));
-                var lastCost = decimal.Parse(txtLastCostPerUnit.Text.Trim(' '));
-                WarehouseInventory warehouse = new WarehouseInventory
+                var categoryId = FetchUtils.getCategoryId(category);
+                var staffId = FetchUtils.getUserId(staff);
+                var operatorId = FetchUtils.getUserId(operators);
+  
+                ServeAll.Core.Entities.Services services = new ServeAll.Core.Entities.Services
                 {
-                    product_id = productId,
-                    sku = txtWarehouseSKU.Text.Trim(' '),
-                    quantity_in_stock = qtyStock,
-                    reorder_level = reoderLevel,
-                    location_id = locationId,
-                    warehouse_id = 1,
-                    user_id = _userId,
-                    supplier_id = supplierId,
-                    last_stocked_date = dkpLastStockedDate.Value.Date,
-           
-                    cost_per_unit = unitCost,
-                    last_cost_per_unit = lastCost,
-                    status_id = statusId,
-                    created_at = dpkCreatedDate.Value.Date,
-                    updated_at = dpkLastUpdated.Value.Date
+                        service_code = txtBarcode.Text.Trim(' '),
+                        service_name = txtServiceName.Text.Trim(' '),
+                        service_details = txtServiceDescription.Text.Trim(' '),
+                        service_charges = decimal.Parse(txtServiceCharges.Text.Trim(' ')),
+                        category_id = categoryId,
+                        service_duration = int.Parse(txtServiceDuration.Text.Trim(' ')),
+                        service_commission = int.Parse(txtServiceCommision.Text.Trim(' ')),
+                        user_id = operatorId,
+                        staff_id = staffId,
+                        service_status = cmbServiceStatus.Text.Trim(' '),
+                        service_date = dpkServiceDate.Value.Date,
+                        created_date = dpkCreatedDate.Value.Date,
+                        updated_date = dpkUpdated.Value.Date
                 };
-                var result = RepositoryEntity.AddEntity<WarehouseInventory>(warehouse);
+                var result = RepositoryEntity.AddEntity<ServeAll.Core.Entities.Services>(services);
                 if (result > 0L)
                 {
-                  
+                    PopupNotification.PopUpMessages(1, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.SuccessInsert,
+                         Messages.TitleSuccessInsert);
                 } else
                 {
-                 
+                    PopupNotification.PopUpMessages(0, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.ErrorInsert,
+                            Messages.TitleFailedInsert);
                 }
             }
         }
 
         private void editInventory()
         {
-            var inventoryId = int.Parse(txtInventoryId.Text.Trim(' '));
+            var inventoryId = int.Parse(txtServiceId.Text.Trim(' '));
             if (inventoryId > 0)
             {
                
-                var supplier = cmbSupplier.Text.Trim(' ');
-                var location = cmbItemLocation.Text.Trim(' ');
-                var status = cmbStatus.Text.Trim(' ');
+                var supplier = cmbServiceCategory.Text.Trim(' ');
+                var location = cmbStaff.Text.Trim(' ');
+                var status = cmbServiceStatus.Text.Trim(' ');
               
                 var supplierId = FetchUtils.getSupplierId(supplier);
                 var locationId = FetchUtils.getLocationId(location);
                 var statusId = FetchUtils.getStatusId(status);
-                var qtyStock = int.Parse(txtQuantityStock.Text.Trim(' '));
-                var reoderLevel = int.Parse(txtReorderLevel.Text.Trim(' '));
-                var unitCost = decimal.Parse(txtCostPerUnit.Text.Trim(' '));
-                var lastCost = decimal.Parse(txtLastCostPerUnit.Text.Trim(' '));
+                var qtyStock = int.Parse(txtServiceDescription.Text.Trim(' '));
+                var reoderLevel = int.Parse(txtServiceCharges.Text.Trim(' '));
+                var unitCost = decimal.Parse(txtServiceDuration.Text.Trim(' '));
+                var lastCost = decimal.Parse(txtServiceCommision.Text.Trim(' '));
                 int result = RepositoryEntity.UpdateEntity<WarehouseInventory>(inventoryId, entity =>
                 {
                     entity.product_id = 1;
-                    entity.sku = txtWarehouseSKU.Text.Trim(' ');
+                    entity.sku = txtServiceName.Text.Trim(' ');
                     entity.quantity_in_stock = qtyStock;
                     entity.reorder_level = reoderLevel;
                     entity.location_id = locationId;
                     entity.warehouse_id = 1;
                     entity.user_id = _userId;
                     entity.supplier_id = supplierId;
-                    entity.last_stocked_date = dkpLastStockedDate.Value.Date;
+                    entity.last_stocked_date = dpkServiceDate.Value.Date;
                    
                     entity.cost_per_unit = unitCost;
                     entity.last_cost_per_unit = lastCost;
                     entity.status_id = statusId;
                     entity.created_at = dpkCreatedDate.Value.Date;
-                    entity.updated_at = dpkLastUpdated.Value.Date;
+                    entity.updated_at = dpkUpdated.Value.Date;
                 });
                 if (result > 0)
                 {
@@ -299,86 +294,86 @@ namespace Inventory.MainForm
 
         private void InputWhit()
         {
-            txtInventoryId.BackColor = Color.White;
-            txtWarehouseSKU.BackColor = Color.White;
-            txtQuantityStock.BackColor = Color.White;
-            txtReorderLevel.BackColor = Color.White;
-            cmbSupplier.BackColor = Color.White;
-            txtCostPerUnit.BackColor = Color.White;
-            txtLastCostPerUnit.BackColor = Color.White;
-            txtTotalValue.BackColor = Color.White;
+            txtServiceId.BackColor = Color.White;
+            txtServiceName.BackColor = Color.White;
+            txtServiceDescription.BackColor = Color.White;
+            txtServiceCharges.BackColor = Color.White;
+            cmbServiceCategory.BackColor = Color.White;
+            txtServiceDuration.BackColor = Color.White;
+            txtServiceCommision.BackColor = Color.White;
+            
             txtBarcode.BackColor = Color.White;
-            cmbUser.BackColor = Color.White;
-            cmbItemLocation.BackColor = Color.White;
-            cmbStatus.BackColor = Color.White;
+            cmbOperator.BackColor = Color.White;
+            cmbStaff.BackColor = Color.White;
+            cmbServiceStatus.BackColor = Color.White;
         }
         private void InputEnab()
         {
-            txtWarehouseSKU.Enabled = true;
-            txtQuantityStock.Enabled = true;
-            txtReorderLevel.Enabled = true;
-            cmbSupplier.Enabled = true;
-            txtCostPerUnit.Enabled = true;
-            txtLastCostPerUnit.Enabled = true;
-            txtTotalValue.Enabled = false;
-            dkpLastStockedDate.Enabled = true;
+            txtServiceName.Enabled = true;
+            txtServiceDescription.Enabled = true;
+            txtServiceCharges.Enabled = true;
+            cmbServiceCategory.Enabled = true;
+            txtServiceDuration.Enabled = true;
+            txtServiceCommision.Enabled = true;
+      
+            dpkServiceDate.Enabled = true;
             dpkCreatedDate.Enabled = true;
-            dpkLastUpdated.Enabled = true;
-            cmbUser.Enabled = true;
-            cmbItemLocation.Enabled = true;
-            cmbStatus.Enabled = true;
+            dpkUpdated.Enabled = true;
+            cmbOperator.Enabled = true;
+            cmbStaff.Enabled = true;
+            cmbServiceStatus.Enabled = true;
         }
         private void InputDisb()
         {
-            txtWarehouseSKU.Enabled = false;
-            txtQuantityStock.Enabled = false;
-            txtReorderLevel.Enabled = false;
-            cmbSupplier.Enabled = false;
-            txtCostPerUnit.Enabled = false;
-            txtLastCostPerUnit.Enabled = false;
-            txtTotalValue.Enabled = false;
+            txtServiceName.Enabled = false;
+            txtServiceDescription.Enabled = false;
+            txtServiceCharges.Enabled = false;
+            cmbServiceCategory.Enabled = false;
+            txtServiceDuration.Enabled = false;
+            txtServiceCommision.Enabled = false;
+           
             txtBarcode.Enabled = false;
-            dkpLastStockedDate.Enabled = false;
+            dpkServiceDate.Enabled = false;
             dpkCreatedDate.Enabled = false;
-            dpkLastUpdated.Enabled = false;
-            cmbUser.Enabled = false;
-            cmbItemLocation.Enabled = false;
-            cmbStatus.Enabled = false;
+            dpkUpdated.Enabled = false;
+            cmbOperator.Enabled = false;
+            cmbStaff.Enabled = false;
+            cmbServiceStatus.Enabled = false;
         }
         private void InputClea()
         {
-            txtInventoryId.Clear();
-            txtWarehouseSKU.Clear();
-            txtQuantityStock.Clear();
-            txtReorderLevel.Clear();
-            cmbSupplier.Text = "";
-            txtCostPerUnit.Clear();
-            txtLastCostPerUnit.Clear();
-            txtTotalValue.Clear();
+            txtServiceId.Clear();
+            txtServiceName.Clear();
+            txtServiceDescription.Clear();
+            txtServiceCharges.Clear();
+            cmbServiceCategory.Text = "";
+            txtServiceDuration.Clear();
+            txtServiceCommision.Clear();
+         
             txtBarcode.Text = "";
-            dkpLastStockedDate.Value = DateTime.Now.Date;
+            dpkServiceDate.Value = DateTime.Now.Date;
             dpkCreatedDate.Value = DateTime.Now.Date;
-            dpkLastUpdated.Value = DateTime.Now.Date;
-            cmbUser.Text = "";
-            cmbItemLocation.Text = "";
-            cmbStatus.Text = "";
-            dkpLastStockedDate.Value = DateTime.Now.Date;
-            cmbUser.Text = "";
+            dpkUpdated.Value = DateTime.Now.Date;
+            cmbOperator.Text = "";
+            cmbStaff.Text = "";
+            cmbServiceStatus.Text = "";
+            dpkServiceDate.Value = DateTime.Now.Date;
+            cmbOperator.Text = "";
         }
         private void InputDimG()
         {
-            txtInventoryId.BackColor = Color.DimGray;
-            txtWarehouseSKU.BackColor = Color.DimGray;
-            txtQuantityStock.BackColor = Color.DimGray;
-            txtReorderLevel.BackColor = Color.DimGray;
-            cmbSupplier.BackColor = Color.DimGray;
-            txtCostPerUnit.BackColor = Color.DimGray;
-            txtLastCostPerUnit.BackColor = Color.DimGray;
-            txtTotalValue.BackColor = Color.DimGray;
+            txtServiceId.BackColor = Color.DimGray;
+            txtServiceName.BackColor = Color.DimGray;
+            txtServiceDescription.BackColor = Color.DimGray;
+            txtServiceCharges.BackColor = Color.DimGray;
+            cmbServiceCategory.BackColor = Color.DimGray;
+            txtServiceDuration.BackColor = Color.DimGray;
+            txtServiceCommision.BackColor = Color.DimGray;
+       
             txtBarcode.BackColor = Color.DimGray;
-            cmbUser.BackColor = Color.DimGray;
-            cmbItemLocation.BackColor = Color.DimGray;
-            cmbStatus.BackColor = Color.DimGray;
+            cmbOperator.BackColor = Color.DimGray;
+            cmbStaff.BackColor = Color.DimGray;
+            cmbServiceStatus.BackColor = Color.DimGray;
         }
        
         private void GenerateCode()
@@ -395,7 +390,7 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var proId = Convert.ToInt32(txtInventoryId.Text);
+                    var proId = Convert.ToInt32(txtServiceId.Text);
                     var repository = new Repository<WareHouse>(unWork);
                     var que = repository.Id(proId);
                     var result = repository.Delete(que);
@@ -425,21 +420,20 @@ namespace Inventory.MainForm
             InputEnab();
             InputWhit();
             InputClea();
-            cmbUser.Text = _userName;
-            cmbItemLocation.Text = Constant.DefaultSource;
+            cmbOperator.Text = _userName;
+            cmbStaff.Text = Constant.DefaultSource;
             _add = true;
             _edt = false;
             _del = false;
             gridController.Enabled = false;
             imgProduct.DataBindings.Clear();
             imgProduct.Image = null;
-            cmbSupplier.DataBindings.Clear();
-            cmbStatus.DataBindings.Clear();
-            cmbItemLocation.DataBindings.Clear();
-            cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
-            cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
-            cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
-            txtWarehouseSKU.Focus();
+            cmbServiceCategory.DataBindings.Clear();
+            cmbStaff.DataBindings.Clear();
+            cmbServiceCategory.DataSource = _category.Select(p => p.category_details).ToList();
+            cmbStaff.DataSource = _staff.Select(p => p.username).ToList();
+            txtServiceName.Focus();
+            generateLastServiceCode();
         }
         private void ButtonAdd()
         {
@@ -591,213 +585,6 @@ namespace Inventory.MainForm
             imgProduct.Image = null;
          
         }
-        private void cmbNAM_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-            }
-        }
-        private void cmbNAM_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-        private void cmbNAM_Leave(object sender, EventArgs e)
-        {
-           
-            
-        }
-        private void cmbNAM_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-        private void txtDEL_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtQuantityStock, txtReorderLevel, "Inventory Delivery No.",
-                Messages.TitleInventory);
-            }
-        }
-        private void txtREC_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtReorderLevel, txtCostPerUnit, "Inventory Receipt No.",
-                Messages.TitleInventory);
-            }
-        }
-        private void txtQTY_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = txtCostPerUnit.Text.Length;
-                if (len > 0)
-                {
-                    txtCostPerUnit.BackColor = Color.White;
-                    cmbItemLocation.BackColor = Color.Yellow;
-                    cmbItemLocation.Focus();
-                }
-                else
-                {
-                    txtCostPerUnit.Text = @"0";
-                    txtCostPerUnit.BackColor = Color.White;
-                    cmbItemLocation.BackColor = Color.Yellow;
-                    cmbItemLocation.Focus();
-                }
-            }
-        }
-        private void txtQTY_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtCostPerUnit.Focus();
-                txtCostPerUnit.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtCostPerUnit.BackColor = Color.White;
-            }
-        }
-        private void cmbDIS_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputCaseLeave(cmbItemLocation, txtLastCostPerUnit, "Branch Name",
-                Messages.TitleInventory);
-            }
-            if (e.KeyCode == Keys.F1)
-            {
-                 
-            }
-        }
-        private void txtLST_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = txtLastCostPerUnit.Text.Length;
-                if (len > 0)
-                {
-                    txtLastCostPerUnit.BackColor = Color.White;
-                    txtTotalValue.BackColor = Color.Yellow;
-                    txtTotalValue.Focus();
-                }
-                else
-                {
-                    txtLastCostPerUnit.Text = @"0";
-                    txtLastCostPerUnit.BackColor = Color.White;
-                    txtTotalValue.BackColor = Color.Yellow;
-                    txtTotalValue.Focus();
-                }
-
-
-            }
-        }
-        private void txtLST_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtLastCostPerUnit.Focus();
-                txtLastCostPerUnit.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtLastCostPerUnit.BackColor = Color.White;
-            }
-        }
-        private void txtORD_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = txtTotalValue.Text.Length;
-                if (len > 0)
-                {
-                    txtTotalValue.BackColor = Color.White;
-                    dkpLastStockedDate.Focus();
-                }
-                else
-                {
-                    txtTotalValue.Text = @"0";
-                    txtTotalValue.BackColor = Color.White;
-                    dkpLastStockedDate.Focus();
-                }
-
-            }
-        }
-        private void txtORD_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtTotalValue.Focus();
-                txtTotalValue.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtTotalValue.BackColor = Color.White;
-            }
-        }
-        private void dkpPUR_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-              
-            }
-        }
-        private void dkpDET_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                cmbUser.Focus();
-            }
-        }
-        private void cmbSAT_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-              
-            }
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = cmbUser.Text.Length;
-                if (len > 0)
-                {
-                    cmbUser.BackColor = Color.White;
-                }
-            }
-        }
-        private void cmbWAR_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-             
-            }
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputCaseLeave(cmbUser, bntSave, "Product Warranty",
-                    Messages.TitleInventory);
-            }
-        }
-        private Products ProductWareH(int productId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    var repository = new Repository<Products>(unWork);
-                    return repository.FindBy(x => x.product_id == productId);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                    return null;
-                }
-            }
-        }
 
         private void bntHome_Click(object sender, EventArgs e)
         {
@@ -853,76 +640,7 @@ namespace Inventory.MainForm
                 imgProduct.Image = null;
         }
 
-        private void txtReorderLevel_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void cmbSupplier_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void txtCostPerUnit_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void txtLastCostPerUnit_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void txtTotalValue_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void cmbWarranty_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void dkpLastStockedDate_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void dkpLastOrderDate_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void dpkExpirationDate_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void dpkCreatedDate_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void dpkLastUpdated_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void cmbUser_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void cmbItemLocation_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void cmbStatus_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
+     
         private void FirmWarehouseInvetory_MouseMove(object sender, MouseEventArgs e)
         {
             PanelInterface.MouseMOve(this, pnlRightOptions, e);
@@ -938,30 +656,7 @@ namespace Inventory.MainForm
             PanelInterface.OptionTick(this, pnlOptions);
         }
 
-        private void cmbProductName_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void txtQuantityStock_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void cmbProductName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-             
-        }
-
-        private void cmbProductName_Leave(object sender, EventArgs e)
-        {
-             
-        }
-
-        private void cmbProductName_MouseClick(object sender, MouseEventArgs e)
-        {
-            
-        }
+     
 
     }
 }
