@@ -29,6 +29,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getWarehouseId(string input)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Warehouse>(unWork);
+                    var query = repository.FindBy(x => x.warehouse_name == input);
+                    return query.warehouse_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
         public static int getBranchId(string branchName) {
             using (var session = new DalSession())
             {
@@ -68,9 +87,27 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getLastServiceId()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Services>(unWork);
+                    return repository.SelectAll(Query.getLastServiceIdQuery)
+                        .Select(x => x.service_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
         public static int getLastCategoryId()
         {
-
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
@@ -90,7 +127,6 @@ namespace ServeAll.Core.Utilities
 
         public static int getLastImageId()
         {
-
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
@@ -109,7 +145,6 @@ namespace ServeAll.Core.Utilities
         }
 
         public static int getProductId(string productName) {
-
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
@@ -130,7 +165,6 @@ namespace ServeAll.Core.Utilities
 
         public static int getSupplierId(string supplier)
         {
-
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
@@ -140,6 +174,46 @@ namespace ServeAll.Core.Utilities
                     var repository = new Repository<Supplier>(unWork);
                     var query = repository.FindBy(x => x.supplier_name == supplier);
                     return query.supplier_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public static int getCategoryId(string categoryName)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Category>(unWork);
+                    var query = repository.FindBy(x => x.category_details == categoryName);
+                    return query.category_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public static int getUserId(string userName)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<users>(unWork);
+                    var query = repository.FindBy(x => x.username == userName);
+                    return query.user_id;
                 }
                 catch (Exception ex)
                 {

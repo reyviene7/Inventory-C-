@@ -18,6 +18,7 @@ namespace ServeAll.Core.Entities
         public int user_id { get; set; }
         public int branch_id { get;set; }
         public DateTime delivery_date { get; set; }
+        public DateTime update_on { get; set; }
         public int status_id { get; set; }
         public int delivery_qty { get; set; }
         public int delivery_status_id { get; set; }

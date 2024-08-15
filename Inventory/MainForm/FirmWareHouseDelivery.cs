@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraReports.UI;
 using Inventory.Config;
 using Inventory.Entities;
 using ServeAll.Core.Entities;
@@ -28,7 +26,6 @@ namespace Inventory.MainForm
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewImageProduct> imgList;
-        private int InventoryId = 0; 
         public FirmMain Main
         {
             get { return _main; }
@@ -473,8 +470,7 @@ namespace Inventory.MainForm
                     InputDisb();
                     InputDimG();
                     InputClea();
-                    _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
-                    _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+                   
             }
             if (!_add && _edt && !_del)
             {
@@ -492,6 +488,8 @@ namespace Inventory.MainForm
                     InputDimG();
                     InputClea();
             }
+            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
             BindWareHouse();
             BindDeliveryList();
             _add = false;
@@ -882,44 +880,8 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private static int GetWarehouseCode(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<Warehouse>(unWork);
-                    var query = repository.FindBy(x => x.warehouse_name == input);
-                    return query.warehouse_id;
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Warehouse Id Error", "Warehouse Details");
-                    throw;
-                }
-            }
-        }
-        private static int GetBranchId(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.branch_details == input);
-                    return query.branch_id;
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Branch Id Error", "Inventory Details");
-                    throw;
-                }
-            }
-        }
+
+ 
         private string GetWarehouse(int input)
         {
             using (var session = new DalSession())
@@ -1108,11 +1070,11 @@ namespace Inventory.MainForm
                 {
                     product_id = GetProductId(txtProductBarcode.Text),
                     delivery_code = txtDeliveryCode.Text.Trim(),
-                    warehouse_id = GetWarehouseCode(cmbWarehouse.Text),
+                    warehouse_id = FetchUtils.getWarehouseId(cmbWarehouse.Text),
                     last_cost_per_unit = decimal.Parse(txtLastCost.Text),
                     receipt_number = txtReceiptNum.Text.Trim(),
                     inventory_id = inventoryId,
-                    branch_id = GetBranchId(cmbWarehouseBranch.Text),
+                    branch_id = FetchUtils.getBranchId(cmbWarehouseBranch.Text),
                     status_id = GetProductStatus(cmbProductStatus.Text),
                     user_id = _userId,
                     item_price = decimal.Parse(txtItemPrice.Text),
@@ -1139,47 +1101,47 @@ namespace Inventory.MainForm
 
         private void UpdateDelivery()
         {
-            using (var session = new DalSession())
+            int warehouseQty = int.Parse(txtInventoryId.Text);
+            int deliveryQty = int.Parse(txtDeliveryQty.Text);
+            int inventoryId = int.Parse(txtInventoryId.Text);
+            if (warehouseQty <= deliveryQty)
             {
-                var deliveryId = int.Parse(txtInventoryId.Text);
-                var unWork = session.UnitofWrk;
-                try
-                {
+                PopupNotification.PopUpMessages(0, "Delivery quantity must be less than the warehouse quantity.", "Invalid Input");
+                return;
+            }
+            if (deliveryQty > 0)
+            {
                 splashDelivery.ShowWaitForm();
-                unWork.Begin();
-                var repository = new Repository<WarehouseDelivery>(unWork);
-                var que = repository.FindBy(x => x.delivery_id == deliveryId);
-                que.delivery_code        = txtDeliveryCode.Text;
-                que.product_id   = GetProductId(txtProductName.Text);
-                que.delivery_qty = int.Parse(txtDeliveryQty.Text);
-                    /*
-                que.3    = decimal.Parse(txtWarehouseQty.Text);
-                que.last  = txtLastCost.Text.Trim(' ');
-                que.ReceiptNo   = txtReceiptNum.Text.Trim(' ');
-                que.BranchId    = GetBranchId(cmbWarehouseBranch.Text);
-                que.LastCost    = decimal.Parse(txtLastCost.Text);
-                que.OnOrder     = int.Parse(cmbWarehouse.Text);
-                que.StatusId    = GetProductStatus(cmbProductStatus.Text);
-                que.DeliveryDate = dkpDeliveryDate.Value.Date;
-                var result      = repository.Update(que);
-                    if (result)
-                    {
-                        braWET.CloseWaitForm();
-                        unWork.Commit();
-                        PopupNotification.PopUpMessages(1, "Delivery Id: " + deliveryId + " successfully Updated!",
-                            Messages.GasulPos);
-                    }
-                    else
-                    {
-                        braWET.CloseWaitForm();
-                        unWork.Rollback();
-                    }
-                    */
 
-                }
-                catch (Exception e)
+                int result = RepositoryEntity.UpdateEntity<WarehouseDelivery>(inventoryId, entity =>
                 {
-                    Console.WriteLine(e.ToString());
+                    entity.product_id = GetProductId(txtProductBarcode.Text);
+                    entity.delivery_code = txtDeliveryCode.Text.Trim();
+                    entity.warehouse_id = FetchUtils.getWarehouseId(cmbWarehouse.Text);
+                    entity.last_cost_per_unit = decimal.Parse(txtLastCost.Text);
+                    entity.receipt_number = txtReceiptNum.Text.Trim();
+                    entity.inventory_id = inventoryId;
+                    entity.branch_id = FetchUtils.getBranchId(cmbWarehouseBranch.Text);
+                    entity.status_id = GetProductStatus(cmbProductStatus.Text);
+                    entity.user_id = _userId;
+                    entity.item_price = decimal.Parse(txtItemPrice.Text);
+                    entity.delivery_qty = deliveryQty;
+                    entity.delivery_status_id = GetDeliveryStatus(cmbDeliveryStatus.Text);
+                    entity.remarks = txtRemarks.Text.Trim();
+                    entity.delivery_date = dkpDeliveryDate.Value.Date;
+                    entity.update_on = DateTime.Now;
+                });
+                if (result > 0L)
+                {
+                    splashDelivery.CloseWaitForm();
+                    PopupNotification.PopUpMessages(1, "Product Name: " + txtProductName.Text.Trim() + " " + Messages.SuccessUpdate,
+                     Messages.TitleSuccessUpdate);
+                }
+                else
+                {
+                    splashDelivery.CloseWaitForm();
+                    PopupNotification.PopUpMessages(0, "Product Name: " + txtProductName.Text.Trim() + " " + Messages.ErrorInsert,
+                        Messages.TitleFialedUpdate);
                 }
             }
         }
