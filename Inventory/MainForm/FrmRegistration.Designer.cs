@@ -1,4 +1,4 @@
-﻿namespace ServeAll.Employee
+﻿namespace Inventory.MainForm
 {
     partial class FrmRegistration
     {
@@ -228,15 +228,14 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1207, 627);
             this.pnlMain.TabIndex = 63;
-            this.pnlMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMain_Paint);
             // 
             // pcLOG
             // 
             this.pcLOG.BackColor = System.Drawing.Color.Gray;
-            this.pcLOG.Image = global::ServeAll.Properties.Resources.wizard;
-            this.pcLOG.Location = new System.Drawing.Point(48, 56);
+            this.pcLOG.Image = ((System.Drawing.Image)(resources.GetObject("pcLOG.Image")));
+            this.pcLOG.Location = new System.Drawing.Point(48, 50);
             this.pcLOG.Name = "pcLOG";
-            this.pcLOG.Size = new System.Drawing.Size(81, 104);
+            this.pcLOG.Size = new System.Drawing.Size(90, 110);
             this.pcLOG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcLOG.TabIndex = 205;
             this.pcLOG.TabStop = false;
