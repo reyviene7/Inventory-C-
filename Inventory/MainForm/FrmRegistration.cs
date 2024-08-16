@@ -87,6 +87,8 @@ namespace Inventory.MainForm
             whiteProfile();
             clearProfile();
             generateProfileCode();
+            generateAddressCode();
+            generateContactCode();
             txtFirstName.Focus();
             _add = true;
             _edt = false;
@@ -115,14 +117,15 @@ namespace Inventory.MainForm
         }
         private void buttonSave()
         {
+            addProfile();
             if (_add && _edt == false && _del == false)
             {
-                DataInsert();
+               // addProfile();
                 ButtonSav();
                 disabledProfile();
                 grayProfile();
                 clearProfile();
-                bindProfileList();
+          
             }
             if (_add == false && _edt && _del == false)
             {
@@ -131,8 +134,7 @@ namespace Inventory.MainForm
                 disabledProfile();
                 grayProfile();
                 clearProfile();
-
-                bindProfileList();
+                
             }
             if (_add == false && _edt == false && _del)
             {
@@ -141,11 +143,13 @@ namespace Inventory.MainForm
                 disabledProfile();
                 grayProfile();
                 clearProfile();
-                bindProfileList();
+              
             }
             _add = false;
             _edt = false;
             _del = false;
+            xtraControl.SelectedTabPage = xtraProfile;
+            bindProfileList();
             gridCtlProfile.Enabled = true;
         }
 
@@ -564,7 +568,7 @@ namespace Inventory.MainForm
             }
         }
 
-        private void DataInsert()
+        private void addProfile()
         {
             var address = new Address()
             {
@@ -750,10 +754,26 @@ namespace Inventory.MainForm
 
         private void generateProfileCode()
         {
-            var lastProductId = FetchUtils.getLastProfileId();
-            var alphaNumeric = new GenerateAlpaNum("P", 3, lastProductId);
+            var profileId = FetchUtils.getLastProfileId();
+            var alphaNumeric = new GenerateAlpaNum("P", 3, profileId);
             alphaNumeric.Increment();
             txtBarcode.Text = alphaNumeric.ToString();
+        }
+
+        private void generateAddressCode()
+        {
+            var addressId = FetchUtils.getLastAddressId();
+            var alphaNumeric = new GenerateAlpaNum("A", 3, addressId);
+            alphaNumeric.Increment();
+            txtBarcodeAddress.Text = alphaNumeric.ToString();
+        }
+
+        private void generateContactCode()
+        {
+            var contactId = FetchUtils.getLastContactId();
+            var alphaNumeric = new GenerateAlpaNum("P", 3, contactId);
+            alphaNumeric.Increment();
+            txtContactBarcode.Text = alphaNumeric.ToString();
         }
 
         //STRING MANIPULATION
@@ -954,6 +974,7 @@ namespace Inventory.MainForm
         }
         private void bntSave_Click(object sender, EventArgs e)
         {
+            
             buttonSave();
         }
         private void bntCancel_Click(object sender, EventArgs e)
@@ -998,19 +1019,22 @@ namespace Inventory.MainForm
                
                 bindContact();
                 enableContact();
-                grayContact();
+                whiteContact();
                 disabledAddress();
                 disabledProfile();
                 grayAddress();
                 grayProfile();
+                txtProfileName.Text = txtFirstName.Text + " " + txtMiddleInitial.Text + " " + txtLastName.Text;
+                txtPositionName.Text = cmbPosition.Text;
                 gridContact.Focus();
             }
             if(e.Page == xtraProfile)
             {
+              
                 enabledProfile();
                 disabledContact();
                 disabledAddress();
-                grayProfile();
+                whiteProfile();
                 grayContact();
                 grayAddress();
                 gridProfile.Focus();
@@ -1019,11 +1043,10 @@ namespace Inventory.MainForm
             {
                 enabledAddress();
                 bindAddress();
-                grayAddress();
+                whiteAddress();
                 grayProfile();
                 grayContact();
                 disabledContact();
-                disabledAddress();
                 gridAddress.Focus();
             }
         }

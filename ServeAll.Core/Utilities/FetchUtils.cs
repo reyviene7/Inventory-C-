@@ -107,6 +107,46 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getLastContactId()
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Contact>(unWork);
+                    return repository.SelectAll(Query.getLastContactIdQuery)
+                        .Select(x => x.contact_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
+        public static int getLastAddressId()
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Address>(unWork);
+                    return repository.SelectAll(Query.getLastAddressIdQuery)
+                        .Select(x => x.address_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
         public static int getLastServiceId()
         {
             using (var session = new DalSession())
