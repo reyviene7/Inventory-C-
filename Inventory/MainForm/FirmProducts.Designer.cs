@@ -97,7 +97,6 @@
             this.lblBarcode = new System.Windows.Forms.Label();
             this.txtProductBar = new System.Windows.Forms.TextBox();
             this.imgBigPreview = new System.Windows.Forms.PictureBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.bntHome = new System.Windows.Forms.Button();
             this.bntDelete = new System.Windows.Forms.Button();
@@ -939,7 +938,6 @@
             this.grpImage.Controls.Add(this.lblBarcode);
             this.grpImage.Controls.Add(this.txtProductBar);
             this.grpImage.Controls.Add(this.imgBigPreview);
-            this.grpImage.Controls.Add(this.textBox23);
             this.grpImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpImage.Location = new System.Drawing.Point(0, 0);
             this.grpImage.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
@@ -1083,25 +1081,12 @@
             // imgBigPreview
             // 
             this.imgBigPreview.BackColor = System.Drawing.Color.Gray;
-            this.imgBigPreview.Location = new System.Drawing.Point(27, 21);
+            this.imgBigPreview.Location = new System.Drawing.Point(5, 24);
             this.imgBigPreview.Name = "imgBigPreview";
-            this.imgBigPreview.Size = new System.Drawing.Size(558, 478);
+            this.imgBigPreview.Size = new System.Drawing.Size(546, 531);
             this.imgBigPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgBigPreview.TabIndex = 203;
             this.imgBigPreview.TabStop = false;
-            // 
-            // textBox23
-            // 
-            this.textBox23.BackColor = System.Drawing.Color.White;
-            this.textBox23.Enabled = false;
-            this.textBox23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox23.ForeColor = System.Drawing.Color.Maroon;
-            this.textBox23.Location = new System.Drawing.Point(-8, 19);
-            this.textBox23.Multiline = true;
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(10, 10);
-            this.textBox23.TabIndex = 109;
-            this.textBox23.Visible = false;
             // 
             // lblMainTitle
             // 
@@ -1287,6 +1272,7 @@
             this.pcAdd.Size = new System.Drawing.Size(76, 64);
             this.pcAdd.TabIndex = 13;
             this.pcAdd.TabStop = false;
+            this.pcAdd.Click += new System.EventHandler(this.pcAdd_Click);
             // 
             // pcChangePassword
             // 
@@ -1453,7 +1439,6 @@
         private DevExpress.XtraTab.XtraTabControl XtraEmployee;
         private DevExpress.XtraTab.XtraTabPage xtraTabImage;
         private DevExpress.XtraEditors.GroupControl grpImage;
-        private System.Windows.Forms.TextBox textBox23;
         private System.Windows.Forms.Label lblMainTitle;
         private System.Windows.Forms.Button bntHome;
         private System.Windows.Forms.Button bntDelete;

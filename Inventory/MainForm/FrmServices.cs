@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
@@ -15,17 +16,17 @@ namespace Inventory.MainForm
 {
     public partial class FrmServices : Form
     {
-        private int _branchId;
         private int _deliver;
         private readonly int _userId;
         private readonly int _userTyp;
         private readonly string _userName;
         private IEnumerable<RequestProducts> _products;
         private IEnumerable<ViewRequestCategory> _category;
-        private IEnumerable<users> _staff;
+        private IEnumerable<ViewRequestStaff> _staff;
         private IEnumerable<ServiceStatus> _service_statuses;
         private IEnumerable<ViewServices> _services_list;
-        private IEnumerable<ViewImageProduct> imgList;
+        private IEnumerable<ViewServiceImages> _service_image_list;
+        private IEnumerable<Warehouse> _warehouse;
         public int Deliver
         {
             get { return _deliver; }
@@ -65,7 +66,7 @@ namespace Inventory.MainForm
             _userTyp = userTy;
             InitializeComponent();
             _services_list = EnumerableUtils.getServicesList();
-            imgList = EnumerableUtils.getImgProductList();
+            _service_image_list = EnumerableUtils.getServiceImgList();
             gridInventory.FocusedRowChanged += gridInventory_FocusedRowChanged;
             gridInventory.Click += gridInventory_Click;
         }
@@ -80,62 +81,22 @@ namespace Inventory.MainForm
             RightOptions.Start();
             _products = EnumerableUtils.getProductWarehouseList();
             _category = EnumerableUtils.getRequestCategoryList();
-            _staff = EnumerableUtils.getUserNameList();
+            _staff = EnumerableUtils.getStaffList();
             _service_statuses = EnumerableUtils.getServiceStatusList();
-            bindWareHouse();
+            _warehouse = EnumerableUtils.getWarehouse();
+            cmbWarehouse.DataBindings.Clear();
+            cmbWarehouse.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
+            bindServices();
+            bindServiceImgList();
         }
-        private ViewImageProduct searchProductImg(string param)
+        private ViewServiceImages searchProductImg(string param)
         {
-            return imgList.FirstOrDefault(img => img.image_code == param);
+            return _service_image_list.FirstOrDefault(img => img.image_code == param);
         }
 
         private string selectedCode(int seletedIndex)
         {
             return _products.FirstOrDefault(i => i.product_id == seletedIndex).product_code;
-        }
-
-        private void generateLastServiceCode()
-        {
-            var lastProductId = FetchUtils.getLastServiceId();
-            var alphaNumeric = new GenerateAlpaNum("S", 3, lastProductId);
-            alphaNumeric.Increment();
-            txtBarcode.Text = alphaNumeric.ToString();
-        }
-
-        private void bindWareHouse()
-        {
-            clearGrid();
-            var list = _services_list.Select(p => new { 
-                Id = p.service_id,
-                Barcode = p.service_code,
-                ServiceName = p.service_name,
-                Category = p.category,
-                Charges = p.service_charges,
-                Commision = p.service_commission,
-                Duration = p.service_duration,
-                User = p.username,
-                Staff = p.staff,
-                Status = p.status,
-                Date = p.service_date,
-                Created = p.created_date,
-                Updated = p.updated_date
-            }).ToList();
-            gridController.DataSource = list;
-            gridController.Update();
-            if(gridInventory.RowCount > 0)
-                gridInventory.Columns[0].Width = 40;
-                gridInventory.Columns[1].Width = 90;
-                gridInventory.Columns[2].Width = 200;
-                gridInventory.Columns[3].Width = 140;
-                gridInventory.Columns[4].Width = 90;
-                gridInventory.Columns[5].Width = 100;
-                gridInventory.Columns[6].Width = 100;
-                gridInventory.Columns[7].Width = 90;
-                gridInventory.Columns[8].Width = 90;
-                gridInventory.Columns[9].Width = 100;
-                gridInventory.Columns[10].Width = 100;
-                gridInventory.Columns[11].Width = 100;
-                gridInventory.Columns[12].Width = 100;
         }
 
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -150,10 +111,10 @@ namespace Inventory.MainForm
                         cmbOperator.Text = _userName;
                         txtServiceId.Text = id;
                         txtServiceName.Text = ((GridView)sender).GetFocusedRowCellValue("ServiceName").ToString();
+                        txtServiceDescription.Text = ((GridView)sender).GetFocusedRowCellValue("Details").ToString();
                         cmbServiceCategory.Text = ((GridView)sender).GetFocusedRowCellValue("Category").ToString();
                         txtServiceCharges.Text = ((GridView)sender).GetFocusedRowCellValue("Charges").ToString();
                         txtServiceCommision.Text = ((GridView)sender).GetFocusedRowCellValue("Commision").ToString();
-                        txtServiceDuration.Text = ((GridView)sender).GetFocusedRowCellValue("Duration").ToString();
                         cmbOperator.Text = ((GridView)sender).GetFocusedRowCellValue("User").ToString();
                         cmbStaff.Text = ((GridView)sender).GetFocusedRowCellValue("Staff").ToString();
                         cmbServiceStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status").ToString();
@@ -170,14 +131,43 @@ namespace Inventory.MainForm
                             imgProduct.ImageLocation = location;
                         }
                         else
-                            imgProduct.Image = null;
+                            imgProduct.ImageLocation = ConstantUtils.defaultImgLocation + "empty-image.jpg"; ;
                     }
-
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                 }
+        }
+
+        private void gridImages_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (gridImages.RowCount > 0)
+            {
+                try
+                {
+                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (id.Length > 0)
+                    {
+                        var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
+                        var img = searchProductImg(barcode);
+                        var imgLocation = img.img_location;
+                        if (imgLocation.Length > 0)
+                        {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                            imgServiceImages.ImageLocation = location;
+                        }
+                        else
+                            imgServiceImages.ImageLocation = ConstantUtils.defaultImgLocation + "empty-image.jpg";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+                
         }
 
         private void gridInventory_Click(object sender, EventArgs e)
@@ -193,12 +183,11 @@ namespace Inventory.MainForm
             var staff = cmbStaff.Text.Trim(' ');
             var operators = cmbOperator.Text.Trim(' ');
             var statusId = FetchUtils.getServiceStatusId(cmbServiceStatus.Text.Trim(' '));
-            if (statusId > 0)
+            var staffId = FetchUtils.getStaffId(staff);
+            if (staffId > 0 || statusId > 0)
             {
                 var categoryId = FetchUtils.getCategoryId(category);
-                var staffId = FetchUtils.getUserId(staff);
                 var operatorId = FetchUtils.getUserId(operators);
-
                 ServeAll.Core.Entities.Services services = new ServeAll.Core.Entities.Services
                 {
                     service_code = txtBarcode.Text.Trim(' '),
@@ -206,10 +195,9 @@ namespace Inventory.MainForm
                     service_details = txtServiceDescription.Text.Trim(' '),
                     service_charges = decimal.Parse(txtServiceCharges.Text.Trim(' ')),
                     category_id = categoryId,
-                    service_duration = int.Parse(txtServiceDuration.Text.Trim(' ')),
-                    service_commission = int.Parse(txtServiceCommision.Text.Trim(' ')),
+                    service_commission = decimal.Parse(txtServiceCommision.Text.Trim(' ')),
                     user_id = operatorId,
-                    staff_id = staffId,
+                    employee_id = staffId,
                     status_id = statusId,
                     service_date = dpkServiceDate.Value.Date,
                     created_date = dpkCreatedDate.Value.Date,
@@ -218,20 +206,21 @@ namespace Inventory.MainForm
                 var result = RepositoryEntity.AddEntity<ServeAll.Core.Entities.Services>(services);
                 if (result > 0L)
                 {
+                    inventoryScreen.CloseWaitForm();
                     PopupNotification.PopUpMessages(1, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.SuccessInsert,
                          Messages.TitleSuccessInsert);
                 }
                 else
                 {
+                    inventoryScreen.CloseWaitForm();
                     PopupNotification.PopUpMessages(0, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.ErrorInsert,
                             Messages.TitleFailedInsert);
                 }
             }
             else {
                 inventoryScreen.CloseWaitForm();
-                PopupNotification.PopUpMessages(0, "Status Id must not be null!",
+                PopupNotification.PopUpMessages(0, "Status Id and Staff Id must not be null!",
                             Messages.TitleFailedInsert);
-                
             }
         }
 
@@ -246,10 +235,9 @@ namespace Inventory.MainForm
                     entity.service_name = txtServiceName.Text.Trim(' ');
                     entity.service_charges = decimal.Parse(txtServiceCharges.Text);
                     entity.category_id = FetchUtils.getCategoryId(cmbServiceCategory.Text.Trim(' '));
-                    entity.service_duration = int.Parse(txtServiceDuration.Text);
                     entity.service_commission = decimal.Parse(txtServiceCommision.Text);
                     entity.user_id = FetchUtils.getUserId(cmbOperator.Text);
-                    entity.staff_id = FetchUtils.getUserId(cmbStaff.Text);
+                    entity.employee_id = FetchUtils.getStaffId(cmbStaff.Text);
                     entity.status_id = FetchUtils.getServiceStatusId(cmbServiceStatus.Text);
                     entity.service_date = dpkServiceDate.Value.Date;
                     entity.created_date = dpkCreatedDate.Value.Date;
@@ -286,7 +274,8 @@ namespace Inventory.MainForm
         }
         private void pbExit_Click(object sender, EventArgs e)
         {
-
+            Main.Show();
+            Close();
         }
 
         private void InputWhit()
@@ -296,9 +285,7 @@ namespace Inventory.MainForm
             txtServiceDescription.BackColor = Color.White;
             txtServiceCharges.BackColor = Color.White;
             cmbServiceCategory.BackColor = Color.White;
-            txtServiceDuration.BackColor = Color.White;
             txtServiceCommision.BackColor = Color.White;
-            
             txtBarcode.BackColor = Color.White;
             cmbOperator.BackColor = Color.White;
             cmbStaff.BackColor = Color.White;
@@ -310,7 +297,7 @@ namespace Inventory.MainForm
             txtServiceDescription.Enabled = true;
             txtServiceCharges.Enabled = true;
             cmbServiceCategory.Enabled = true;
-            txtServiceDuration.Enabled = true;
+   
             txtServiceCommision.Enabled = true;
       
             dpkServiceDate.Enabled = true;
@@ -326,9 +313,7 @@ namespace Inventory.MainForm
             txtServiceDescription.Enabled = false;
             txtServiceCharges.Enabled = false;
             cmbServiceCategory.Enabled = false;
-            txtServiceDuration.Enabled = false;
             txtServiceCommision.Enabled = false;
-           
             txtBarcode.Enabled = false;
             dpkServiceDate.Enabled = false;
             dpkCreatedDate.Enabled = false;
@@ -344,9 +329,7 @@ namespace Inventory.MainForm
             txtServiceDescription.Clear();
             txtServiceCharges.Clear();
             cmbServiceCategory.Text = "";
-            txtServiceDuration.Clear();
             txtServiceCommision.Clear();
-         
             txtBarcode.Text = "";
             dpkServiceDate.Value = DateTime.Now.Date;
             dpkCreatedDate.Value = DateTime.Now.Date;
@@ -364,9 +347,7 @@ namespace Inventory.MainForm
             txtServiceDescription.BackColor = Color.DimGray;
             txtServiceCharges.BackColor = Color.DimGray;
             cmbServiceCategory.BackColor = Color.DimGray;
-            txtServiceDuration.BackColor = Color.DimGray;
             txtServiceCommision.BackColor = Color.DimGray;
-       
             txtBarcode.BackColor = Color.DimGray;
             cmbOperator.BackColor = Color.DimGray;
             cmbStaff.BackColor = Color.DimGray;
@@ -406,6 +387,13 @@ namespace Inventory.MainForm
             gridController.DataSource = "";
             gridInventory.Columns.Clear();
         }
+
+        private void clearGridImg()
+        {
+            gridImageControl.DataSource = null;
+            gridImageControl.DataSource = "";
+            gridImages.Columns.Clear();
+        }
         private void ButAdd()
         {
             ButtonAdd();
@@ -424,7 +412,7 @@ namespace Inventory.MainForm
             cmbServiceStatus.DataBindings.Clear();
             cmbStaff.DataBindings.Clear();
             cmbServiceCategory.DataSource = _category.Select(p => p.category_details).ToList();
-            cmbStaff.DataSource = _staff.Select(p => p.username).ToList();
+            cmbStaff.DataSource = _staff.Select(p => p.staff).ToList();
             cmbServiceStatus.DataSource = _service_statuses.Select(p => p.status_name).ToList();
             txtServiceName.Focus();
             generateLastServiceCode();
@@ -564,7 +552,7 @@ namespace Inventory.MainForm
             imgProduct.DataBindings.Clear();
             imgProduct.Image = null;
             _services_list = EnumerableUtils.getServicesList();
-            bindWareHouse();
+            bindServices();
         }
         private void ButCan()
         {
@@ -632,7 +620,6 @@ namespace Inventory.MainForm
             else
                 imgProduct.Image = null;
         }
-
      
         private void FirmWarehouseInvetory_MouseMove(object sender, MouseEventArgs e)
         {
@@ -666,8 +653,71 @@ namespace Inventory.MainForm
             if (e.KeyCode == Keys.F1)
             {
                 cmbStaff.DataBindings.Clear();
-                cmbStaff.DataSource = _staff.Select(p => p.username).ToList();
+                cmbStaff.DataSource = _staff.Select(p => p.staff).ToList();
             }
+        }
+        private void cmbWarehouse_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbWarehouse.DataBindings.Clear();
+                cmbWarehouse.DataSource = _warehouse.Select(p => p.warehouse_name);
+            }
+        }
+
+        private void pcUser_Click(object sender, EventArgs e)
+        {
+            ButUpd();
+        }
+
+        private void bntBrowseImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)|*.bmp;*.jpg;*.jpeg;*.png;*.gif";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.Multiselect = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedFilePath = openFileDialog.FileName;
+
+                    string fileNameAndExtension = getfileExntesion(selectedFilePath);
+                    txtServiceImgFileName.Text = fileNameAndExtension;
+                    bntSaveImages.Enabled = true;
+                    bntBrowseImage.Enabled = false;
+                }
+            }
+        }
+
+        private string getfileExntesion(string filePath)
+        {
+            return Path.GetFileName(filePath);
+        }
+
+        private void bntSaveImages_Click(object sender, EventArgs e)
+        {
+            var code = txtServiceImgBarcode.Text.Trim(' ');
+            var title = txtServiceImgTitle.Text.Trim(' ');
+            var imgtype = cmbServiceImgType.Text.Trim(' ');
+            var imgLocation = txtServiceImgFileName.Text.Trim(' ');
+            if (code.Length > 0 && title.Length > 0 && imgtype.Length > 0 && imgLocation.Length > 0)
+            {
+                saveProductImage();
+                bntSaveImages.Enabled = false;
+                bntBrowseImage.Enabled = true;
+                _service_image_list = EnumerableUtils.getServiceImgList();
+                bindServiceImgList();
+            }
+            else
+            {
+                PopupNotification.PopUpMessages(0, "Please fill all the entries!", Messages.TitleFailedInsert);
+            }
+        }
+
+        private string ExtractFileName(string filePath)
+        {
+            return Path.GetFileName(filePath);
         }
 
         private void Options_Tick(object sender, EventArgs e)
@@ -679,6 +729,111 @@ namespace Inventory.MainForm
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab) {
                 txtServiceDescription.Focus();
             }
+        }
+        private void saveProductImage()
+        {
+            var filePathLocation = txtServiceImgFileName.Text.Trim(' ');
+            var filePath = ExtractFileName(filePathLocation);
+            var img = new ServiceImages()
+            {
+                image_code = txtServiceImgBarcode.Text.Trim(' '),
+                title = txtServiceImgTitle.Text.Trim(' '),
+                img_type = cmbServiceImgType.Text.Trim(' '),
+                img_location = filePath,
+                warehouse_id = FetchUtils.getWarehouseId(cmbWarehouse.Text),
+                created_on = dkpImgCreadOn.Value.Date,
+                updated_on = dkpImgUpdatedOn.Value.Date
+            };
+            var result = RepositoryEntity.AddEntity<ServiceImages>(img);
+            if (result > 0)
+            {
+                PopupNotification.PopUpMessages(1, "Service image: " + txtServiceImgTitle.Text.Trim(' ') + " " + Messages.SuccessInsert,
+                 Messages.TitleSuccessInsert);
+            }
+            else
+            {
+                PopupNotification.PopUpMessages(0, "Service image: " + txtServiceImgTitle.Text.Trim(' ') + " " + Messages.ErrorInsert,
+                 Messages.TitleFailedInsert);
+            }
+        }
+
+        private void generateLastServiceCode()
+        {
+            var lastProductId = FetchUtils.getLastServiceId();
+            var alphaNumeric = new GenerateAlpaNum("S", 3, lastProductId);
+            alphaNumeric.Increment();
+            txtBarcode.Text = alphaNumeric.ToString();
+        }
+
+        private void generateLastServiceImgCode()
+        {
+            var lastProductId = FetchUtils.getLastServiceImgId();
+            var alphaNumeric = new GenerateAlpaNum("S", 3, lastProductId);
+            alphaNumeric.Increment();
+            txtBarcode.Text = alphaNumeric.ToString();
+        }
+
+
+
+        private void bindServiceImgList()
+        {
+            clearGridImg();
+            var list = _service_image_list.Select(p => new {
+                Id = p.image_id,
+                Barcode = p.image_code,
+                Title = p.title,
+                ImageType = p.img_type,
+                Location = p.img_location,
+                Warehouse = p.warehouse,
+                Created = p.created_on,
+                Updated = p.updated_on
+            }).ToList();
+            gridImageControl.DataSource = list;
+            gridImageControl.Update();
+            if (gridImages.RowCount > 0)
+                gridImages.Columns[0].Width = 50;
+                gridImages.Columns[1].Width = 120;
+                gridImages.Columns[2].Width = 200;
+                gridImages.Columns[3].Width = 140;
+                gridImages.Columns[4].Width = 180;
+                gridImages.Columns[5].Width = 100;
+                gridImages.Columns[6].Width = 100;
+                gridImages.Columns[7].Width = 100;
+        }
+        private void bindServices()
+        {
+            clearGrid();
+            var list = _services_list.Select(p => new {
+                Id = p.service_id,
+                Barcode = p.service_code,
+                ServiceName = p.service_name,
+                Details = p.service_details,
+                Category = p.category,
+                Charges = p.service_charges,
+                Commision = p.service_commission,
+                User = p.username,
+                Staff = p.staff,
+                Status = p.status,
+                Date = p.service_date,
+                Created = p.created_date,
+                Updated = p.updated_date
+            }).ToList();
+            gridController.DataSource = list;
+            gridController.Update();
+            if (gridInventory.RowCount > 0)
+                gridInventory.Columns[0].Width = 40;
+            gridInventory.Columns[1].Width = 90;
+            gridInventory.Columns[2].Width = 200;
+            gridInventory.Columns[3].Width = 140;
+            gridInventory.Columns[4].Width = 90;
+            gridInventory.Columns[5].Width = 100;
+            gridInventory.Columns[6].Width = 100;
+            gridInventory.Columns[7].Width = 90;
+            gridInventory.Columns[8].Width = 90;
+            gridInventory.Columns[9].Width = 100;
+            gridInventory.Columns[10].Width = 100;
+            gridInventory.Columns[11].Width = 100;
+            gridInventory.Columns[12].Width = 100;
         }
 
     }

@@ -5,9 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraReports.UI;
 using Inventory.Config;
-using Inventory.Entities;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Entities.request;
 using ServeAll.Core.Repository;
@@ -19,7 +17,7 @@ namespace Inventory.MainForm
     public partial class FirmWareHouseDelivery : Form
     {
         private FirmMain _main;
-        private bool _add, _del, _edt, _wer, _bra;
+        private bool _add, _del, _edt, _bra, _wer;
         private readonly int _userId;
         private readonly int _userTy;
         private IEnumerable<RequestProducts> _products;
@@ -27,8 +25,6 @@ namespace Inventory.MainForm
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewImageProduct> imgList;
-        private int InventoryId = 0;
-        private int previousDelQty = 0;
         public FirmMain Main
         {
             get { return _main; }
@@ -1224,6 +1220,7 @@ namespace Inventory.MainForm
 
         private void txtDelQty_KeyDown(object sender, KeyEventArgs e)
         {
+            var previousDelQty = 0;
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 var warehouseDelItem = int.Parse(txtDelRemainQty.Text);

@@ -106,6 +106,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getLastServiceImgId()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ServiceImages>(unWork);
+                    return repository.SelectAll(Query.getLastServiceImgQuery)
+                        .Select(x => x.image_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
         public static int getLastCategoryId()
         {
             using (var session = new DalSession())
@@ -233,6 +252,26 @@ namespace ServeAll.Core.Utilities
                     var repository = new Repository<users>(unWork);
                     var query = repository.FindBy(x => x.username == userName);
                     return query.user_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public static int getStaffId(string name)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewRequestStaff>(unWork);
+                    var query = repository.FindBy(x => x.staff == name);
+                    return query.employee_id;
                 }
                 catch (Exception ex)
                 {

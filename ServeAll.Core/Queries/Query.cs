@@ -174,6 +174,7 @@
         public const string AllItemNotInDepot = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE ProductId NOT IN(SELECT ProductId FROM Products WHERE Name LIKE '%LPG%')";
         public const string AllItemFromDepots = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE Name LIKE '%LPG%'";
         public const string AllViewProducts = "SELECT * FROM view_product ORDER BY product_id DESC";
+        public const string AllViewServiceImages = "SELECT * FROM view_service_images ORDER BY image_id DESC";
         public const string AllProductWarehouse = @"SELECT * FROM view_request_product";
         public const string AllQuantityWarehouse = @"SELECT * FROM view_request_quantity";
         public const string AllSupplierWarehouse = @"SELECT * FROM view_request_supplier";
@@ -181,9 +182,11 @@
         public const string AllViewImageProduct = "SELECT * FROM view_image_product";
         public const string AllWarehouseStatus = @"SELECT * FROM warehouse_status ORDER BY status_details ASC";
         public const string AllUserNames = @"SELECT username FROM users ORDER BY username ASC";
+        public const string AllStaff = @"SELECT * FROM view_request_staff ORDER BY staff ASC";
         public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
         public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
         public const string AllServiceStatus = @"SELECT * FROM service_status order by status_name ASC";
+        public const string AllWarehouseList = @"SELECT warehouse_id, warehouse_name FROM warehouse";
         public const string AllInventory = @"SELECT * FROM view_inventory ORDER BY inventory_id DESC";
         public const string AllWarehouseProduct = @"SELECT * FROM view_productlist ORDER BY product_id DESC";
         public const string AllSalesPart = @"SELECT * FROM view_sales_particular ORDER BY id DESC";
@@ -283,6 +286,7 @@
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
         public const string getLastServiceIdQuery = "SELECT COUNT(service_id) as service_id FROM services";
+        public const string getLastServiceImgQuery = "SELECT COUNT(image_id) as image_id FROM service_image";
         public const string getLastInventoryQuery = "SELECT MAX(inventory_id) as inventory_id FROM inventory";
         public const string getLastInventoryCodeQuery = "SELECT MAX(inventory_code) AS inventory_code FROM inventory";
         public const string getLastInventoryDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM inventory";
