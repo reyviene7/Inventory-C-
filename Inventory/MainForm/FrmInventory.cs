@@ -17,7 +17,6 @@ namespace Inventory.MainForm
 {
     public partial class FrmInventory : Form
     {
-
         private int _branchId;
         private string _branch;
         private readonly int _userId;
@@ -27,7 +26,7 @@ namespace Inventory.MainForm
         private IEnumerable<ViewProductList> listWarehouseProduct;
         private IEnumerable<ViewSalesPart> listSalesPart;
         private IEnumerable<ViewImageProduct> imgList;
-        private int InventoryId = 0;
+        private int InventoryId;
 
         private bool _extInvent;
         public bool ExiInven
@@ -38,7 +37,7 @@ namespace Inventory.MainForm
                 _extInvent = value;
                 if (_extInvent)
                     Close();
-                var main = new FirmMain(_userId, _usrTyp, _userName);
+                FirmMain main = new FirmMain(_userId, _usrTyp, _userName);
                 main.Show();
             }
         }
@@ -372,7 +371,7 @@ namespace Inventory.MainForm
 
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 gCON.EndUpdate();
                 PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
@@ -692,7 +691,7 @@ namespace Inventory.MainForm
                         inventory_code = txtInventoryCode.Text,
                         product_id = GetProductId(cmbProductName.Text),
                         delivery_code = txtDeliveryNumber.Text,
-                        quantity = Convert.ToInt32(txtQty.Text),
+                        quantity = int.Parse(txtQty.Text),
                         branch_id = GetBranchId(cmbBranchName.Text),
                         last_price_cost = Convert.ToDecimal(txtLastCost.Text),
                         inventory_date = dkpInventoryDate.Value.Date,

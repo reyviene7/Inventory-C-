@@ -23,7 +23,7 @@ namespace Inventory.MainForm
         private bool _add, _edt, _del;
         private IEnumerable<ViewProducts> listProducts;
         private IEnumerable<ViewImageProduct> imgList;
-        private int productId = 0;
+        private int productId;
         public FirmMain Main
         {
             get { return _main; }
@@ -752,14 +752,6 @@ namespace Inventory.MainForm
                     Console.WriteLine(ex.ToString());
                 }
                 
-            }
-        }
-
-        public static class MediaUtils
-        {
-            public static Image loadImage(string path)
-            {
-                return Image.FromFile(path);
             }
         }
 
