@@ -4,7 +4,6 @@ using ServeAll.Core.Helper;
 using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -156,13 +155,54 @@ namespace ServeAll.Core.Utilities
                 try
                 {
                     var repository = new Repository<ViewProfile>(unWork);
-                    return repository.SelectAll(ServeAll.Core.Queries.Query.viewProfile).ToList();
+                    return repository.SelectAll(Query.viewProfile).ToList();
 
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     return Enumerable.Empty<ViewProfile>();
+                }
+            }
+        }
+
+        public static IEnumerable<Contact> getContactList(int contactId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Contact>(unWork);
+                    var parameter = new { contact = contactId };
+                    return repository.SelectAll(Query.getContactById, parameter).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return Enumerable.Empty<Contact>();
+                }
+            }
+        }
+
+        public static IEnumerable<Address> getAddressList(int addressId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var parameter = new { address = addressId };
+                    var repository = new Repository<Address>(unWork);
+                    return repository.SelectAll(Query.getAddressById, parameter).ToList();
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return Enumerable.Empty<Address>();
                 }
             }
         }

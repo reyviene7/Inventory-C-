@@ -87,6 +87,26 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getLastProfileId()
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Employees>(unWork);
+                    return repository.SelectAll(Query.getLastProfileIdQuery)
+                        .Select(x => x.employee_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
         public static int getLastServiceId()
         {
             using (var session = new DalSession())

@@ -31,6 +31,10 @@ namespace ServeAll.Core.Repository
              return _iunitofworks.Connection.Query<T>(query, null, _iunitofworks.Transaction);
         }
 
+        public IEnumerable<T> SelectAll(string query, object parameters)
+        {
+            return _iunitofworks.Connection.Query<T>(query, parameters, _iunitofworks.Transaction);
+        }
 
         public IEnumerable<T> CreateQuery(string query)
         {
