@@ -332,7 +332,7 @@
             this.lblDept.BackColor = System.Drawing.Color.Transparent;
             this.lblDept.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDept.ForeColor = System.Drawing.Color.White;
-            this.lblDept.Location = new System.Drawing.Point(375, 219);
+            this.lblDept.Location = new System.Drawing.Point(374, 219);
             this.lblDept.Name = "lblDept";
             this.lblDept.Size = new System.Drawing.Size(86, 17);
             this.lblDept.TabIndex = 144;

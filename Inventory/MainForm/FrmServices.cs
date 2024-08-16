@@ -48,7 +48,7 @@ namespace Inventory.MainForm
                 _extInvent = value;
                 if (_extInvent)
                     Close();
-                var main = new FirmMain(_userId, _userTyp, _userName);
+                FirmMain main = new FirmMain(_userId, _userTyp, _userName);
                 main.Show();
             }
         }
@@ -134,7 +134,7 @@ namespace Inventory.MainForm
                             imgProduct.ImageLocation = ConstantUtils.defaultImgLocation + "empty-image.jpg"; ;
                     }
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                 }

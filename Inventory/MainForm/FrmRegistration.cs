@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
@@ -9,7 +8,6 @@ using Inventory.Config;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ServeAll.Core.Entities;
-using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
 
@@ -19,8 +17,6 @@ namespace Inventory.MainForm
     {
         private FirmMain _main;
         private bool _add, _edt, _del;
-        private readonly ILogger<FrmRegistration> _logger;
-        private readonly ILoggerFactory _loggerFactory;
         private string profileIdz = "";
         public FirmMain Main
         {
@@ -28,10 +24,8 @@ namespace Inventory.MainForm
 
             set { _main = value; }
         }
-        public FrmRegistration(ILoggerFactory loggerFactory)
+        public FrmRegistration()
         {
-            _loggerFactory = loggerFactory;
-            _logger = _loggerFactory.CreateLogger<FrmRegistration>();
             InitializeComponent();
         }
         private void FrmRegistration_Load(object sender, EventArgs e)
@@ -369,7 +363,7 @@ namespace Inventory.MainForm
             {
                 gridCtlProfile.DataBindings.Clear();
                 
-                var data = RebindEmployees().Select(p => new
+                var data = EnumerableUtils.getProfileList().Select(p => new
                 {
                   Id = p.profile_id,
                   Code = p.profile_code,
@@ -391,11 +385,7 @@ namespace Inventory.MainForm
                   Hire = p.hire_date,
                   Reg = p.date_register
                 });
-                //string json = JsonConvert.SerializeObject(data, Formatting.Indented);
-                string json = JsonConvert.SerializeObject(data, (Newtonsoft.Json.Formatting)System.Xml.Formatting.Indented);
-                _logger.LogInformation(json);
                 gridCtlProfile.DataSource = data;
-
             }
             catch (Exception)
             {
@@ -404,26 +394,6 @@ namespace Inventory.MainForm
             }
         }
 
-
-        private IEnumerable<ViewProfile> RebindEmployees()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk; 
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ViewProfile>(unWork);
-                    return repository.SelectAll(ServeAll.Core.Queries.Query.viewProfile).ToList();
-
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, Messages.ErrorInternal, Messages.TitleEmployees);
-                    return Enumerable.Empty<ViewProfile>();
-                }
-            }
-        }
 
         //DAL INSERT 
         /*private void DataInsert()
@@ -474,76 +444,49 @@ namespace Inventory.MainForm
 
         private void DataInsert()
         {
-            using (var session = new DalSession())
+            var address = new Address()
             {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    // Insert into Address table
-                    var addressRepository = new Repository<Address>(unWork);
-                    var address = new Address()
-                    {
-                        barangay = "Tambacan",
-                        street = "Purok 6A",
-                        city = txtAddress.Text.Trim(' '),
-                        province = cmbProvince.Text.Trim(' '),
-                        zip_code = "9200",
-                        country = "Philippines",
-                    };
-                    var addressId = addressRepository.Add(address);
-
-                    // Insert into Contact table
-                    var contactRepository = new Repository<Contact>(unWork);
-                    var contact = new Contact()
-                    {
-                        contact_name = txtLastName.Text.Trim(' ') + ", " + txtFirstName.Text.Trim(' ') + " " + txtMiddleInitial.Text.Trim(' ') + ".",
-                        position = "n/a",
-                        telephone_number = txtPhone.Text.Trim(' '),
-                        mobile_number = txtMobile.Text.Trim(' '),
-                        mobile_secondary = "0",
-                        email_address = txtEmail.Text.Trim(' '),
-                        web_url = "n/a",
-                        fax_number = "0"
-                    };
-                    var contactId = contactRepository.Add(contact);
-
-                    Thread.Sleep(5000);
-                    // Insert into Profile table
-                    var profileRepository = new Repository<Profile>(unWork);
-                    var profile = new Profile()
-                    {
-                        profile_code = lblEmpCode.Text.Trim(),
-                        first_name = txtFirstName.Text.Trim(),
-                        last_name = txtLastName.Text.Trim(),
-                        middle_initial = txtMiddleInitial.Text.Trim(),
-                        gender = cmbgender.Text.Trim(),
-                        birthdate = dkpBirthdate.Value.Date,
-                        civil_status = cmbCivilStatus.Text.Trim(),
-                        contact_id = (int)contactId,
-                        address_id = (int)addressId,
-                        sss_number = txtSSSNumber.Text.Trim(),
-                        phil_health = txtPhilhealthNumber.Text.Trim(),
-                        position = cmbPosition.Text.Trim(),
-                        department_id = 1, // FK from Department table
-                        hire_date = dkpDateHired.Value.Date,
-                        date_register = dkpDateRegistered.Value.Date,
-                        user_id = 1 
-                    };
-                    var profileId = profileRepository.Add(profile);
-
-                    if (profileId > 0 && addressId > 0 && contactId > 0)
-                    {
-                        unWork.Commit();
-                        PopupNotification.PopUpMessages(1, "Profile Code: " + lblEmpCode.Text.Trim() + " " + Messages.SuccessInsert, Messages.TitleSuccessInsert);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
-                }
-            }
+                barangay = "Tambacan",
+                street = "Purok 6A",
+                city = txtAddress.Text.Trim(' '),
+                province = cmbProvince.Text.Trim(' '),
+                zip_code = "9200",
+                country = "Philippines",
+            };
+            var addressResult = RepositoryEntity.AddEntity<Address>(address);
+            var contact = new Contact()
+            {
+                contact_name = txtLastName.Text.Trim(' ') + ", " + txtFirstName.Text.Trim(' ') + " " + txtMiddleInitial.Text.Trim(' ') + ".",
+                position = "n/a",
+                telephone_number = txtPhone.Text.Trim(' '),
+                mobile_number = txtMobile.Text.Trim(' '),
+                mobile_secondary = "0",
+                email_address = txtEmail.Text.Trim(' '),
+                web_url = "n/a",
+                fax_number = "0"
+            };
+            var contactResult = RepositoryEntity.AddEntity<Contact>(contact);
+            Thread.Sleep(1000);
+            var profile = new Profile()
+            {
+                profile_code = lblEmpCode.Text.Trim(),
+                first_name = txtFirstName.Text.Trim(),
+                last_name = txtLastName.Text.Trim(),
+                middle_initial = txtMiddleInitial.Text.Trim(),
+                gender = cmbgender.Text.Trim(),
+                birthdate = dkpBirthdate.Value.Date,
+                civil_status = cmbCivilStatus.Text.Trim(),
+                contact_id = (int)contactResult,
+                address_id = (int)addressResult,
+                sss_number = txtSSSNumber.Text.Trim(),
+                phil_health = txtPhilhealthNumber.Text.Trim(),
+                position = cmbPosition.Text.Trim(),
+                department_id = 1, // FK from Department table
+                hire_date = dkpDateHired.Value.Date,
+                date_register = dkpDateRegistered.Value.Date,
+                user_id = 1
+            };
+            var profileResult = RepositoryEntity.AddEntity<Profile>(profile);
         }
 
         //DAL UPDATE 
@@ -957,8 +900,7 @@ namespace Inventory.MainForm
         }
         private void bntHome_Click(object sender, EventArgs e)
         {
-            //HomePage();
-            PopupNotification.PopUpMessageExit();
+           HomePage();
         }
 
         private void dkpREG_Leave(object sender, EventArgs e)
