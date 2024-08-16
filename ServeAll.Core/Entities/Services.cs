@@ -13,10 +13,9 @@ namespace ServeAll.Core.Entities
         public string service_details { get; set; }
         public decimal service_charges { get; set; }
         public int category_id { get; set; }
-        public int service_duration { get; set; }
         public decimal service_commission { get; set; }
         public int user_id { get; set; }
-        public int staff_id { get; set; }
+        public int employee_id { get; set; }
         public int status_id { get; set; }
         public DateTime service_date { get; set; }
         public DateTime created_date { get; set; }

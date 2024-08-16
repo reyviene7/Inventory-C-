@@ -1221,6 +1221,11 @@ namespace Inventory.MainForm
             return returnValue;
         }
 
+        private void pcAdd_Click(object sender, EventArgs e)
+        {
+            ButAdd();
+        }
+
         private string ExtractFileName(string filePath)
         {
             return Path.GetFileName(filePath);
