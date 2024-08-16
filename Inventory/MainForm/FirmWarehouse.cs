@@ -17,12 +17,9 @@ using Query = ServeAll.Core.Queries.Query;
 namespace Inventory.MainForm
 {
     public partial class FirmWarehouse : Form
-    {
-        private int _branchId;
-        private int _warehouseId;
+    { 
         private int _deliver;
-        private string _deliveryBranches;
-        private string _branch;
+        private string _deliveryBranches; 
         private int _close;
         private readonly int _userId;
         private readonly int _userTyp;
@@ -192,7 +189,7 @@ namespace Inventory.MainForm
                     "Are you sure you want to Delete Warehouse: " + txtWarehouseCode.Text.Trim(' ') + " " + "?", "Warehouse Details");
             if (que)
             {
-                ButDel();
+                ButDel(); 
             }
             else { ButCan(); }
         }
@@ -247,9 +244,7 @@ namespace Inventory.MainForm
             InputWhite();
             _add = false;
             _edt = false;
-            _del = true;
-            gridControl.Enabled = false;
-
+            _del = true;  
         }
         private void ButClr()
         {
@@ -281,11 +276,11 @@ namespace Inventory.MainForm
             }
             if (_add == false && _edt == false && _del)
             { 
-                DataDelete();
+                DeleteWarehouse();
                 ButtonSav();
                 InputDisable();
                 InputDimGray();
-                InputClear(); 
+                InputClear();  
             }
             _add = false;
             _edt = false;
@@ -466,14 +461,14 @@ namespace Inventory.MainForm
         }
         private void GenerateNewWarehouseId()
         {
-            int lastId = _warehouse_list.Any() ? _warehouse_list.Max(x => x.warehouse_id) : 0;
+            int lastId = FetchUtils.getNumberOfWarehouses();
             int newId = lastId + 1;
 
             txtWarehouseId.Text = newId.ToString();
-        } 
+        }  
         private void GenerateWarehouseCode()
         {
-            var lastWarehouseId = FetchUtils.getLastWarehouseId();
+            var lastWarehouseId = FetchUtils.getNumberOfWarehouses();
             var alphaNumeric = new GenerateAlpaNum("WH", 3, lastWarehouseId);
             alphaNumeric.Increment();
             txtWarehouseCode.Text = alphaNumeric.ToString();
@@ -539,7 +534,7 @@ namespace Inventory.MainForm
                         wareWet.CloseWaitForm();
                     }
                 }
-                catch (Exception ex)
+                catch  
                 {
                     wareWet.ShowWaitForm();
                     unit.Rollback();
@@ -679,35 +674,58 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private void DataDelete()
+        private void DeleteWarehouse()
         {
+            var ctrlId = Convert.ToInt32(txtWarehouseId.Text);
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 try
-                {
-                    /*
-                    var proId = Convert.ToInt32(txtWarehouseId.Text);
-                    var repository = new Repository<WareHouse>(unWork);
-                    var que = repository.Id(proId);
-                    var result = repository.Delete(que);
-                    if (result)
-                    {
-                        PopupNotification.PopUpMessages(1, "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.SuccessDelete,
-                         Messages.TitleSuccessDelete);
-                        unWork.Commit();
-                    }
-                    */
-                }
-                catch (Exception ex)
-                {
-                    unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedDelete);
+                { 
+                    var warehouseRepository = new Repository<Warehouse>(unWork);
+                    var warehouse = warehouseRepository.Id(ctrlId);
+                    if (warehouse == null) return;
 
+                    var contactId = warehouse.contact_id;
+                    var addressId = warehouse.address_id;
+                     
+                    var result = warehouseRepository.Delete(warehouse);
+                    if (!result) return;
+                     
+                    if (contactId > 0)
+                    {
+                        var contactRepository = new Repository<Contact>(unWork);
+                        var contact = contactRepository.Id(contactId);
+                        if (contact != null)
+                        {
+                            contactRepository.Delete(contact);
+                        }
+                    }
+                     
+                    if (addressId > 0)
+                    {
+                        var addressRepository = new Repository<Address>(unWork);
+                        var address = addressRepository.Id(addressId);
+                        if (address != null)
+                        {
+                            addressRepository.Delete(address);
+                        }
+                    }
+                    wareWet.ShowWaitForm();
+                    unWork.Commit();
+                    _warehouse_list = EnumerableUtils.getWarehouseList();
+                    BindWarehouse();
+                    wareWet.CloseWaitForm();
+                    PopupNotification.PopUpMessages(1, Messages.TableBranch + Messages.CodeName + txtWarehouseName.Text.Trim(' ') + " " + Messages.SuccessDelete, Messages.TitleSuccessDelete);
+                }
+                catch (Exception)
+                { 
+                    unWork.Rollback(); 
+                    PopupNotification.PopUpMessages(0, Messages.ErrorDelete + Messages.TableBranch + Messages.ErrorOccurred, Messages.TitleFialedDelete);
                 }
             }
-        }
+        } 
         private void BindBranchDeliverList(string branch)
         {
             /*

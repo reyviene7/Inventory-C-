@@ -249,7 +249,9 @@
         public const string AllCredit = "SELECT * FROM Credit";
         public const string CountAllCreditCustomer = "SELECT customer_credit_id FROM customer_credit";
         public const string CountAllServiceNumber = "SELECT ServiceNumber FROM Credit";
+
         //DEPOT
+        public const string CountAllWarehouses = "SELECT COUNT(warehouse_id) as warehouse_id FROM warehouse";
         public const string SelectAllDepot = "SELECT Id, Code, Item, Qty, DeliveryNo, ReceiptNo, Branch, LastCost, OnOrder, Purchase, RefDate, Warranty, Status FROM view_depot ORDER BY Id DESC";
         public const string SelectAllWareHouse = "SELECT warehouse_code, warehouse_name, full_address, contact_name, telephone_number, mobile_number, mobile_secondary, email_address, web_url, fax_number FROM view_warehouse ORDER BY warehouse_code ASC;";
         public const string SelectAllBranchDelivery = "SELECT Id, Code, Item, Qty, Delivery, Receipt, Branch, Warranty, Status,RefDate, WareHouseId FROM view_branchdelivery ORDER BY Id DESC";
@@ -271,7 +273,7 @@
         public const string SelectReportWareHouseDelr = "SELECT Id, Item, Qty, Delivery, Branch, LastCost, RetailPrice, RefDate, Warranty, Status FROM report_branch_delivery";
         public const string SelectReportReturnWarehos = "SELECT  Id,Item, Delivery, Qty, Origin, RetailPrice, RetDate, Status, Remarks FROM report_return_warehouse";
         public const string SelectReportReturnDepotDl = "SELECT * FROM report_return_delivery_depot";
-        public const string SelectReportAllItem = "SELECT ProductId, Code, Name, RetailPrice, TradePrice FROM Products";
+        public const string SelectReportAllItem = "SELECT ProductId, Code, Name, RetailPrice, TradePrice FROM Products"; 
         public const string getContactId = @"SELECT contact_id FROM contact";
         public const string getAddressId = @"SELECT address_id FROM address";
         public const string getCustomerId = @"SELECT customer_id FROM customers";
@@ -293,8 +295,7 @@
         public const string getLastWarehouseDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM warehouse_delivery";
         public const string getLastReceiptQuery = "SELECT MAX(receipt_number) AS receipt_number FROM warehouse_delivery";
         public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
-        public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
-        public const string getLastWarehouseIdQuery = "SELECT COUNT(warehouse_id) as warehouse_id FROM warehouse";
+        public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image"; 
         public const string getLastBranchCodeQuery = "SELECT MAX(branch_code) AS branch_code FROM branch";
         public const string getWarehouseInventory = @"SELECT inventory_id,
                                                         product_code,
