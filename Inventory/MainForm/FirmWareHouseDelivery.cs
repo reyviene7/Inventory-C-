@@ -1139,8 +1139,9 @@ namespace Inventory.MainForm
                         splashDelivery.CloseWaitForm();
                     }
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     unWork.Rollback();
                 }
             }

@@ -19,16 +19,17 @@ namespace Inventory.MainForm
         private   string _rightDirection = "right";
 
         //For animated panels timeout
-        private int _optionsTimeOut = 0;
-
-        private readonly int toastTimeOut = 0;
-        private int _rightTimeOut = 0;
+        private int _optionsTimeOut;
+        private int _rightTimeOut;
         //For animated panels position
         private readonly int _optionsX;
 
         private int optionsY;
         private int rightX;
         private readonly int _rightY;
+
+        public string ToastDirection { get => _toastDirection; set => _toastDirection = value; }
+
         public FirmMain(int userId, int usrTyp, string username)
         {
             _userName = username;
@@ -345,7 +346,11 @@ namespace Inventory.MainForm
 
         private void tileStaffRegistration_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-
+            var view = new FrmRegistration()
+            {
+                Main = this
+            };
+            view.ShowDialog();
         }
     }
 }

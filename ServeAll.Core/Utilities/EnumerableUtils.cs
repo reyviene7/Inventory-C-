@@ -147,6 +147,26 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<ViewProfile> getProfileList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewProfile>(unWork);
+                    return repository.SelectAll(ServeAll.Core.Queries.Query.viewProfile).ToList();
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return Enumerable.Empty<ViewProfile>();
+                }
+            }
+        }
+
         public static IEnumerable<RequestProducts> getProductWarehouseList()
         {
             using (var session = new DalSession())
