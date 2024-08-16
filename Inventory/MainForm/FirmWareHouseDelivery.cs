@@ -5,9 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraReports.UI;
 using Inventory.Config;
-using Inventory.Entities;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Entities.request;
 using ServeAll.Core.Repository;
@@ -19,7 +17,7 @@ namespace Inventory.MainForm
     public partial class FirmWareHouseDelivery : Form
     {
         private FirmMain _main;
-        private bool _add, _del, _edt, _wer, _bra;
+        private bool _add, _del, _edt, _bra, _wer;
         private readonly int _userId;
         private readonly int _userTy;
         private IEnumerable<RequestProducts> _products;
@@ -27,8 +25,6 @@ namespace Inventory.MainForm
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewImageProduct> imgList;
-        private int InventoryId = 0;
-        private int previousDelQty = 0;
         public FirmMain Main
         {
             get { return _main; }
@@ -387,27 +383,7 @@ namespace Inventory.MainForm
         }
         private void cmbSAT_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1)
-            {
-                BindStatus();
-            }
 
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = cmbProductStatus.Text.Length;
-                if (len > 0)
-                {
-                    cmbProductStatus.BackColor = Color.White;
-                    //cmbProductWarranty.Focus();
-                    //cmbProductWarranty.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    PopupNotification.PopUpMessages(0, "Product Status must not be empty!", Messages.GasulPos);
-                    cmbProductStatus.BackColor = Color.Yellow;
-                    cmbProductStatus.Focus();
-                }
-            }
         }
         private void ButAdd()
         {
@@ -418,8 +394,9 @@ namespace Inventory.MainForm
             GenerateReceiptCode();
             txtProductName.Enabled = false;
             BindBranch();
-            BindWarehouseStatus();
             BindDeliveryStatus();
+            BindWarehouseStatus();
+            BindWarehouseName();
             txtLastCost.BackColor = Color.Yellow;
             txtLastCost.Focus();
             _add = true;
@@ -434,6 +411,10 @@ namespace Inventory.MainForm
             ButtonUpd();
             InputEnabDel();
             InputWhit();
+            BindBranch();
+            BindDeliveryStatus();
+            BindWarehouseStatus();
+            BindWarehouseName();
             _add = false;
             _edt = true;
             _del = false;
@@ -823,19 +804,6 @@ namespace Inventory.MainForm
                 //txtProductName.DataSource = query;
             }
         }
-        private void BindStatus()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<ProductStatus>(unWork);
-                var query = repository.SelectAll(Query.AllProductStatus).Select(x => x.status).Distinct().ToList();
-                cmbProductStatus.DataBindings.Clear();
-                cmbProductStatus.DataSource = query;
-            }
-        }
-
         private void BindBranch()
         {
             using (var session = new DalSession())
@@ -846,6 +814,22 @@ namespace Inventory.MainForm
                 var query = repository.SelectAll(Query.SelectAllBranchExcWareH).Select(x => x.branch_details).Distinct().ToList();
                 cmbWarehouseBranch.DataBindings.Clear();
                 cmbWarehouseBranch.DataSource = query;
+                cmbDelBranch.DataBindings.Clear();
+                cmbDelBranch.DataSource = query;
+            }
+        }
+        private void BindWarehouseName()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                var repository = new Repository<Warehouse>(unWork);
+                var query = repository.SelectAll(Query.AllWarehouse).Select(x => x.warehouse_name).Distinct().ToList();
+                cmbWarehouse.DataBindings.Clear();
+                cmbWarehouse.DataSource = query;
+                cmbDelWarehouseCode.DataBindings.Clear();
+                cmbDelWarehouseCode.DataSource = query;
             }
         }
         private void BindWarehouseStatus()
@@ -858,6 +842,8 @@ namespace Inventory.MainForm
                 var query = repository.SelectAll(Query.AllWarehouseStatus).Select(x => x.status_details).Distinct().ToList();
                 cmbProductStatus.DataBindings.Clear();
                 cmbProductStatus.DataSource = query;
+                cmbDelProductStatus.DataBindings.Clear();
+                cmbDelProductStatus.DataSource = query;
             }
         }
         private void BindDeliveryStatus()
@@ -870,6 +856,8 @@ namespace Inventory.MainForm
                 var query = repository.SelectAll(Query.AllDeliveryStatus).Select(x => x.delivery_status).Distinct().ToList();
                 cmbDeliveryStatus.DataBindings.Clear();
                 cmbDeliveryStatus.DataSource = query;
+                cmbDelDeliveryStatus.DataBindings.Clear();
+                cmbDelDeliveryStatus.DataSource = query;
             }
         }
         private static int GetProductId(string input)
@@ -1046,7 +1034,7 @@ namespace Inventory.MainForm
                         var requestQuantity = quantityRepo.FindBy(x => x.inventory_id == warehouseDel.inventory_id);
                         if (requestQuantity != null)
                         {
-                            requestQuantity.quantity_in_stock -= deliveryQty; // Update the quantity in stock
+                            requestQuantity.quantity_in_stock -= deliveryQty; 
                             quantityRepo.Update(requestQuantity);
                         }
                         splashDelivery.CloseWaitForm();
@@ -1170,19 +1158,12 @@ namespace Inventory.MainForm
                         var ent = searchWarehouseInventoryId(barcode);
                         txtInventoryId.Text = inventoryId;
                         txtProductBarcode.Text = barcode;
-                        //txtDeliveryCode.Text = ent.delivery_code;
                         cmbWarehouse.Text = ent.warehouse_name;
                         txtProductName.Text = _products.FirstOrDefault(p => p.product_code == barcode).product_name;
                         txtLastCost.Text = ent.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        //txtReceiptNum.Text = ent.receipt_number;
                         txtWarehouseQty.Text = ent.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
-                        //cmbWarehouseBranch.Text = ent.branch_details;
-                        //dkpDeliveryDate.Text = ent.delivery_date.ToString(CultureInfo.InvariantCulture);
                         cmbProductStatus.Text = ent.status_details;
                         txtItemPrice.Text = ent.cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        //txtDeliveryQty.Text = ent.delivery_qty.ToString(CultureInfo.InvariantCulture);
-                        //cmbDeliveryStatus.Text = dev.delivery_status;
-                        //txtRemarks.Text = ent.remarks; 
 
                         var img = searchProductImg(barcode);
                         var imgLocation = img.img_location;
@@ -1225,7 +1206,7 @@ namespace Inventory.MainForm
                     else
                     {
                         PopupNotification.PopUpMessages(0, "Insufficient warehouse quantity!", "INVALID ENTRY");
-                        e.Handled = true; // Prevents the invalid operation
+                        e.Handled = true; 
                         txtWarehouseQty.Focus();
                     }
                 }
@@ -1239,11 +1220,12 @@ namespace Inventory.MainForm
 
         private void txtDelQty_KeyDown(object sender, KeyEventArgs e)
         {
+            var previousDelQty = 0;
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 var warehouseDelItem = int.Parse(txtDelRemainQty.Text);
                 var deliveryDelQty = int.Parse(txtDelQty.Text);
-                var qtyDifference = deliveryDelQty - previousDelQty; // Calculate the difference between new and old values
+                var qtyDifference = deliveryDelQty - previousDelQty; 
                 if (warehouseDelItem > 0)
                 {
                     if (warehouseDelItem >= qtyDifference)
@@ -1256,17 +1238,16 @@ namespace Inventory.MainForm
                     else
                     {
                         PopupNotification.PopUpMessages(0, "Insufficient warehouse quantity!", "INVALID ENTRY");
-                        e.Handled = true; // Prevents the invalid operation
+                        e.Handled = true; 
                         txtDelRemainQty.Focus();
                     }
                 }
             }
             else
             {
-                previousDelQty = int.Parse(txtDelQty.Text); // Update previousDelQty on any other key event
+                previousDelQty = int.Parse(txtDelQty.Text); 
             }
         }
-
         private void gridDelivery_RowClick(object sender, RowClickEventArgs e)
         {
             if (gridDelivery.RowCount > 0)

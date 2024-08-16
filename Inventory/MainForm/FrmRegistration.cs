@@ -5,25 +5,24 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
+using Inventory.Config;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using ServeAll.Configuration;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
+using ServeAll.Core.Utilities;
 
-using ServeAll.MainForm;
-
-namespace ServeAll.Employee
+namespace Inventory.MainForm
 {
     public partial class FrmRegistration : Form
     {
-        private FrmMain _main;
+        private FirmMain _main;
         private bool _add, _edt, _del;
         private readonly ILogger<FrmRegistration> _logger;
         private readonly ILoggerFactory _loggerFactory;
         private string profileIdz = "";
-        public FrmMain Main
+        public FirmMain Main
         {
             get { return _main; }
 
@@ -78,7 +77,7 @@ namespace ServeAll.Employee
         {
             var que = PopupNotification.PopUpMassageLogOff();
             if (que <= 0) return;
-            var log = new FrmLogin();
+            var log = new FirmLogin();
             log.Show();
             Close();
         }
@@ -415,7 +414,7 @@ namespace ServeAll.Employee
                 try
                 {
                     var repository = new Repository<ViewProfile>(unWork);
-                    return repository.SelectAll(Query.viewProfile).ToList();
+                    return repository.SelectAll(ServeAll.Core.Queries.Query.viewProfile).ToList();
 
                 }
                 catch (Exception)
@@ -683,14 +682,14 @@ namespace ServeAll.Employee
                 var unitWork = session.UnitofWrk;
                 unitWork.Begin();
                 var repository = new Repository<ViewProfile>(unitWork);
-                var result = (from b in repository.SelectAll(Query.viewProfile)
+                var result = (from b in repository.SelectAll(ServeAll.Core.Queries.Query.viewProfile)
                               orderby b.profile_id descending
                               select b.profile_code).Take(1).SingleOrDefault();
                 if (result != null)
                 {
                     return result;
                 }
-                result = Query.DefaultCode;
+                result = ServeAll.Core.Queries.Query.DefaultCode;
                 return result;
             }
         }
@@ -702,7 +701,7 @@ namespace ServeAll.Employee
                 var unitWork = session.UnitofWrk;
                 unitWork.Begin();
                 var repository = new Repository<Contact>(unitWork);
-                var result = (from b in repository.SelectAll(Query.getContactId)
+                var result = (from b in repository.SelectAll(ServeAll.Core.Queries.Query.getContactId)
                               orderby b.contact_id descending
                               select b.contact_id).Take(1).SingleOrDefault();
                 if (result > 0)
@@ -721,7 +720,7 @@ namespace ServeAll.Employee
                 var unitWork = session.UnitofWrk;
                 unitWork.Begin();
                 var repository = new Repository<Address>(unitWork);
-                var result = (from b in repository.SelectAll(Query.getAddressId)
+                var result = (from b in repository.SelectAll(ServeAll.Core.Queries.Query.getAddressId)
                               orderby b.address_id descending
                               select b.address_id).Take(1).SingleOrDefault();
                 if (result > 0)
@@ -732,17 +731,20 @@ namespace ServeAll.Employee
                 return 0;
             }
         }
-
-
         private void GenerateCode()
         {
             var lastCode = GetLastId();
-            var lastId = ConfigSettings.GetLastBarcode(lastCode);
-            var alphaNumeric = new GenerateAlpaNum(3, 2, lastId, "EN");
-            alphaNumeric.Increment();
-            lblEmpCode.Text = alphaNumeric.ToString();  
-        }
+            int lastWarehouseDeliveryNumber;
 
+            if (string.IsNullOrEmpty(lastCode) || !int.TryParse(lastCode.Replace("DC", ""), out lastWarehouseDeliveryNumber))
+            {
+                lastWarehouseDeliveryNumber = 0;
+            }
+            var alphaNumeric = new GenerateAlpaDev("DC", 3, lastWarehouseDeliveryNumber);
+            alphaNumeric.Increment();
+            lblEmpCode.Text = alphaNumeric.ToString();
+            lblEmpCode.Focus();
+        }
 
         //STRING MANIPULATION
         private void txtFNM_Leave(object sender, EventArgs e)
@@ -761,7 +763,6 @@ namespace ServeAll.Employee
         {
             InputManipulation.InputBoxLeave(txtLastName, txtMiddleInitial, "Last Name", Messages.TitleEmployees);
         }
-
         private void txtLSN_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -769,9 +770,6 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(txtLastName, txtMiddleInitial, "Last Name", Messages.TitleEmployees);
             }
         }
-
-      
-
         private void txtMID_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(txtMiddleInitial, cmbgender, "Middle Initial", Messages.TitleEmployees);
@@ -784,14 +782,10 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(txtMiddleInitial, cmbgender, "Middle Initial", Messages.TitleEmployees);
             }
         }
-
-       
-
         private void cmbGEN_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(cmbgender, dkpBirthdate, "Gender", Messages.TitleEmployees);
         }
-
         private void cmbGEN_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -800,14 +794,10 @@ namespace ServeAll.Employee
                 
             }
         }
-
-      
-
         private void dkpDOB_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(dkpBirthdate, cmbCivilStatus, "Date of Birth", Messages.TitleEmployees);
         }
-
         private void dkpDOB_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -815,14 +805,10 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(dkpBirthdate, cmbCivilStatus, "Date of Birth", Messages.TitleEmployees);
             }
         }
-
-    
-
         private void cmbCIV_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(cmbCivilStatus, txtPhone, "Civil Status", Messages.TitleEmployees);
         }
-
         private void cmbCIV_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -830,9 +816,6 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(cmbCivilStatus, txtPhone, "Civil Status", Messages.TitleEmployees);
             }
         }
-
-     
-
         private void txtPON_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(txtPhone, txtMobile, "Phone Number", Messages.TitleEmployees);
@@ -845,14 +828,10 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(txtPhone, txtMobile, "Phone Number", Messages.TitleEmployees);
             }
         }
-
-       
-
         private void txtMON_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(txtMobile, txtEmail, "Mobile Number", Messages.TitleEmployees);
         }
-
         private void txtMON_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -860,14 +839,10 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(txtMobile, txtEmail, "Mobile Number", Messages.TitleEmployees);
             }
         }
-
-    
-
         private void txtEML_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(txtEmail, txtAddress, "Email Address", Messages.TitleEmployees);
         }
-
         private void txtEML_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -875,14 +850,10 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(txtEmail, txtAddress, "Email Address", Messages.TitleEmployees);
             }
         }
-
-       
-
         private void txtADD_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(txtAddress, cmbProvince, "Address", Messages.TitleEmployees);
         }
-
         private void txtADD_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -890,14 +861,10 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(txtAddress, cmbProvince, "Address", Messages.TitleEmployees);
             }
         }
-
-      
-
         private void cmbPRV_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(cmbProvince, txtSSSNumber, "Provencial Address", Messages.TitleEmployees);
         }
-
         private void cmbPRV_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -906,13 +873,10 @@ namespace ServeAll.Employee
 
             }
         }
-
-       
         private void txtSSS_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(txtSSSNumber, txtPhilhealthNumber, "SSS Number", Messages.TitleEmployees);
         }
-
         private void txtSSS_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -920,14 +884,10 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(txtSSSNumber, txtPhilhealthNumber, "SSS Number", Messages.TitleEmployees);
             }
         }
-
-      
-
         private void txtPHH_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(txtPhilhealthNumber, cmbPosition, "PhilHealth Number", Messages.TitleEmployees);
         }
-
         private void txtPHH_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -935,9 +895,6 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(txtPhilhealthNumber, cmbPosition, "PhilHealth Number", Messages.TitleEmployees);
             }
         }
-
-     
-
         private void cmbPOS_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(cmbPosition, cmbDepartment, "Position", Messages.TitleEmployees);
@@ -950,14 +907,10 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(cmbPosition, cmbDepartment, "Position", Messages.TitleEmployees);
             }
         }
-
-      
-
         private void cmbDEP_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(cmbDepartment, dkpDateHired, "Department", Messages.TitleEmployees);
         }
-
         private void cmbDEP_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -965,9 +918,6 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(cmbDepartment, dkpDateHired, "Department", Messages.TitleEmployees);
             }
         }
-
-     
-
         private void dkpHIR_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(dkpDateHired, dkpDateRegistered, "Hire Date", Messages.TitleEmployees);
@@ -980,32 +930,22 @@ namespace ServeAll.Employee
                 InputManipulation.InputBoxLeave(dkpDateHired, dkpDateRegistered, "Hire Date", Messages.TitleEmployees);
             }
         }
-
-        private void pnlMain_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void bntUpdate_Click(object sender, EventArgs e)
         {
             buttonUpdate();
         }
-
         private void bntInsert_Click(object sender, EventArgs e)
         {
             buttonInsert();
         }
-
         private void bntSave_Click(object sender, EventArgs e)
         {
             buttonSave();
         }
-
         private void bntCancel_Click(object sender, EventArgs e)
         {
             buttonCancel();
         }
-
         private void bntClear_Click(object sender, EventArgs e)
         {
             buttonClear();
@@ -1015,7 +955,6 @@ namespace ServeAll.Employee
         {
 
         }
-
         private void bntHome_Click(object sender, EventArgs e)
         {
             //HomePage();

@@ -128,6 +128,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<ViewServiceImages> getServiceImgList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewServiceImages>(unWork);
+                    return repository.SelectAll(Query.AllViewServiceImages).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewServiceImages>();
+                }
+            }
+        }
+
         public static IEnumerable<RequestProducts> getProductWarehouseList()
         {
             using (var session = new DalSession())
@@ -242,6 +261,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<ViewRequestStaff> getStaffList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewRequestStaff>(unWork);
+                    return repository.SelectAll(Query.AllStaff).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewRequestStaff>();
+                }
+            }
+        }
+
         public static IEnumerable<Location> getLocationWarehouseList()
         {
             using (var session = new DalSession())
@@ -261,7 +299,7 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static IEnumerable<ServiceStatus> getServiceStatusList()
+        public static IEnumerable<ServiceStatus>getServiceStatusList()
         {
             using (var session = new DalSession())
             {
@@ -276,6 +314,25 @@ namespace ServeAll.Core.Utilities
                 {
                     Console.WriteLine(ex.Message);
                     return GetEmptyList<ServiceStatus>();
+                }
+            }
+        }
+
+        public static IEnumerable<Warehouse>getWarehouse()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Warehouse>(unWork);
+                    return repository.SelectAll(Query.AllWarehouseList).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<Warehouse>();
                 }
             }
         }

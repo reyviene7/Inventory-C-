@@ -72,6 +72,7 @@
     <Compile Include="Entities\request\RequestQuantity.cs" />
     <Compile Include="Entities\request\RequestProducts.cs" />
     <Compile Include="Entities\request\RequestSupplier.cs" />
+    <Compile Include="Entities\ServiceImages.cs" />
     <Compile Include="Entities\Services.cs" />
     <Compile Include="Entities\ServiceStatus.cs" />
     <Compile Include="Entities\ViewBranch.cs" />
@@ -106,6 +107,8 @@
     <Compile Include="Entities\Sales.cs" />
     <Compile Include="Entities\SalesParticular.cs" />
     <Compile Include="Entities\ViewRequestCategory .cs" />
+    <Compile Include="Entities\ViewRequestStaff.cs" />
+    <Compile Include="Entities\ViewServiceImages.cs" />
     <Compile Include="Entities\ViewServices.cs" />
     <Compile Include="Entities\ViewWarehouseDelivery.cs" />
     <Compile Include="Entities\WarehouseDelivery.cs" />

@@ -13,7 +13,6 @@ namespace ServeAll.Core.Entities
         public string service_details { get; set; }
         public decimal service_charges { get; set; }
         public string category { get; set; }
-        public int service_duration { get; set; }
         public decimal service_commission { get; set; }
         public string username { get; set; }
         public string staff { get; set; }
