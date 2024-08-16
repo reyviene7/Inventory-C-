@@ -67,8 +67,8 @@ namespace Inventory.MainForm
             InitializeComponent();
             _services_list = EnumerableUtils.getServicesList();
             _service_image_list = EnumerableUtils.getServiceImgList();
-            gridInventory.FocusedRowChanged += gridInventory_FocusedRowChanged;
-            gridInventory.Click += gridInventory_Click;
+            gridServices.FocusedRowChanged += gridInventory_FocusedRowChanged;
+            gridServices.Click += gridInventory_Click;
         }
 
         private void FirmWarehouseInvetory_Load(object sender, EventArgs e)
@@ -101,7 +101,7 @@ namespace Inventory.MainForm
 
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (gridInventory.RowCount > 0)
+            if (gridServices.RowCount > 0)
                 try
                 {
                     var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
@@ -172,7 +172,7 @@ namespace Inventory.MainForm
 
         private void gridInventory_Click(object sender, EventArgs e)
         {
-            if (gridInventory.RowCount > 0)
+            if (gridServices.RowCount > 0)
                 InputWhit();
             bntClear.Enabled = true;
         }
@@ -385,7 +385,7 @@ namespace Inventory.MainForm
         {
             gridController.DataSource = null;
             gridController.DataSource = "";
-            gridInventory.Columns.Clear();
+            gridServices.Columns.Clear();
         }
 
         private void clearGridImg()
@@ -773,7 +773,10 @@ namespace Inventory.MainForm
             txtBarcode.Text = alphaNumeric.ToString();
         }
 
+        private void gridProfile_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
 
+        }
 
         private void bindServiceImgList()
         {
@@ -820,20 +823,20 @@ namespace Inventory.MainForm
             }).ToList();
             gridController.DataSource = list;
             gridController.Update();
-            if (gridInventory.RowCount > 0)
-                gridInventory.Columns[0].Width = 40;
-            gridInventory.Columns[1].Width = 90;
-            gridInventory.Columns[2].Width = 200;
-            gridInventory.Columns[3].Width = 140;
-            gridInventory.Columns[4].Width = 90;
-            gridInventory.Columns[5].Width = 100;
-            gridInventory.Columns[6].Width = 100;
-            gridInventory.Columns[7].Width = 90;
-            gridInventory.Columns[8].Width = 90;
-            gridInventory.Columns[9].Width = 100;
-            gridInventory.Columns[10].Width = 100;
-            gridInventory.Columns[11].Width = 100;
-            gridInventory.Columns[12].Width = 100;
+            if (gridServices.RowCount > 0)
+                gridServices.Columns[0].Width = 40;
+            gridServices.Columns[1].Width = 90;
+            gridServices.Columns[2].Width = 200;
+            gridServices.Columns[3].Width = 140;
+            gridServices.Columns[4].Width = 90;
+            gridServices.Columns[5].Width = 100;
+            gridServices.Columns[6].Width = 100;
+            gridServices.Columns[7].Width = 90;
+            gridServices.Columns[8].Width = 90;
+            gridServices.Columns[9].Width = 100;
+            gridServices.Columns[10].Width = 100;
+            gridServices.Columns[11].Width = 100;
+            gridServices.Columns[12].Width = 100;
         }
 
     }

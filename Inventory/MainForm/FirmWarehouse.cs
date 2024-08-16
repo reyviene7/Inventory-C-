@@ -543,6 +543,7 @@ namespace Inventory.MainForm
                 {
                     wareWet.ShowWaitForm();
                     unit.Rollback();
+                    Console.WriteLine(ex.Message);
                     PopupNotification.PopUpMessages(0, $"{Messages.ErrorInsert}{Messages.TableWarehouse}{Messages.ErrorOccurred}", Messages.TitleFailedInsert);
                     wareWet.CloseWaitForm();
                 }
