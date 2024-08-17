@@ -223,7 +223,7 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static int getLastWarehouseId()
+        public static int getNumberOfWarehouses()
         {
             using (var session = new DalSession())
             {
@@ -231,7 +231,26 @@ namespace ServeAll.Core.Utilities
                 try
                 {
                     var repository = new Repository<Warehouse>(unWork);
-                    return repository.SelectAll(Query.getLastWarehouseIdQuery)
+                    return repository.SelectAll(Query.CountAllWarehouses)
+                        .Select(x => x.warehouse_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
+        public static int getLastWarehousId()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<Warehouse>(unWork);
+                    return repository.SelectAll(Query.SelectLastWarhouseId)
                         .Select(x => x.warehouse_id).FirstOrDefault();
                 }
                 catch (Exception e)
