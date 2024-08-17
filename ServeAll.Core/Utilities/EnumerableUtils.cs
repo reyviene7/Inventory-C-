@@ -146,6 +146,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<ProfileImages> getProfileImgList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ProfileImages>(unWork);
+                    return repository.SelectAll(Query.AllViewProfileImages).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ProfileImages>();
+                }
+            }
+        }
+
         public static IEnumerable<ViewProfile> getProfileList()
         {
             using (var session = new DalSession())

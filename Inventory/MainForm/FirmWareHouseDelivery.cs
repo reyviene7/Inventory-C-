@@ -727,7 +727,7 @@ namespace Inventory.MainForm
             gridControlDelivery.DataSource = list;
             if (gridDelivery.RowCount > 0)
             {
-                gridDelivery.Columns[0].Width = 10;
+                gridDelivery.Columns[0].Width = 50;
                 gridDelivery.Columns[1].Width = 100;
                 gridDelivery.Columns[2].Width = 40;
                 gridDelivery.Columns[3].Width = 250;

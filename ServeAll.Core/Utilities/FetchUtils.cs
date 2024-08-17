@@ -89,15 +89,33 @@ namespace ServeAll.Core.Utilities
 
         public static int getLastProfileId()
         {
-
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<Employees>(unWork);
+                    var repository = new Repository<Profile>(unWork);
                     return repository.SelectAll(Query.getLastProfileIdQuery)
-                        .Select(x => x.employee_id).FirstOrDefault();
+                        .Select(x => x.profile_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
+        public static int getLastProfileImageId()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ProfileImages>(unWork);
+                    return repository.SelectAll(Query.getLastProfileImgQuery)
+                        .Select(x => x.image_id).FirstOrDefault();
                 }
                 catch (Exception e)
                 {
