@@ -635,7 +635,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.InventorySystem);
                     cmbProductName.BackColor = Color.Yellow;
                     cmbProductName.Focus();
                 }

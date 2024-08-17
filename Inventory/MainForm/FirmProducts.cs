@@ -829,7 +829,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Product Barcode already exist!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Product Barcode already exist!", Messages.InventorySystem);
                     txtProductBarcode.Focus();
                 }
             }
@@ -850,12 +850,12 @@ namespace Inventory.MainForm
             //    }
             //    else
             //    {
-            //        PopupNotification.PopUpMessages(0, "Product Barcode already exist!", Messages.GasulPos);
+            //        PopupNotification.PopUpMessages(0, "Product Barcode already exist!", Messages.InventorySystem);
             //        txtCOD.Focus();
             //    }
             //}
             //else
-            //    PopupNotification.PopUpMessages(0, "Product Barcode must not be empty!", Messages.GasulPos);
+            //    PopupNotification.PopUpMessages(0, "Product Barcode must not be empty!", Messages.InventorySystem);
             //txtCOD.Focus();
         }
 

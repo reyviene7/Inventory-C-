@@ -684,7 +684,7 @@ namespace Inventory.MainForm
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
                             "Item :" + item + " with Quantity: " + qty + " successfully added to Return to Depot!",
-                            Messages.GasulPos);
+                            Messages.InventorySystem);
                     }
                     else
                     {
@@ -745,25 +745,7 @@ namespace Inventory.MainForm
 
         private void txtDeliveryNo_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = txtDeliveryNo.Text.Length;
-                if (len > 0)
-                {
-                    var capz = txtDeliveryNo.Text.Trim(' ');
-                    capz = string.Format(capz).ToUpper();
-                    txtDeliveryNo.BackColor = Color.White;
-                    txtDeliveryNo.Text = capz;
-                    txtReturnQty.BackColor = Color.Yellow;
-                    txtReturnQty.Focus();
-                }
-                else
-                {
-                    PopupNotification.PopUpMessages(0, "Return Delivery No must not be empty!", Messages.GasulPos);
-                    txtDeliveryNo.BackColor = Color.Yellow;
-                    txtDeliveryNo.Focus();
-                }
-            }
+            
         }
 
         private void txtReturnQty_KeyDown(object sender, KeyEventArgs e)
@@ -811,7 +793,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Return item quantity must not be greater than item number in Inventory!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Return item quantity must not be greater than item number in Inventory!", Messages.InventorySystem);
                     txtReturnQty.Focus();
                     txtReturnQty.BackColor = Color.Yellow;
                 }
@@ -890,7 +872,7 @@ namespace Inventory.MainForm
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
                             "Item :" + item + " with Quantity: " + qty + " successfully updated to Return to Depot!",
-                            Messages.GasulPos);
+                            Messages.InventorySystem);
                     }
                     else
                     {
@@ -925,7 +907,7 @@ namespace Inventory.MainForm
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
                             "Item :" + item + " with Quantity: " + qty + " successfully deleted to Return to Depot!",
-                            Messages.GasulPos);
+                            Messages.InventorySystem);
                     }
                     else
                     {

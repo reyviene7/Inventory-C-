@@ -98,7 +98,7 @@ namespace Inventory.PopupForm
                     {
                         delWET.CloseWaitForm();
                         unWork.Commit();
-                        PopupNotification.PopUpMessages(1, "Item Name: "+product+ " with quantity "+quantity+" successfully delivered to branch "+branch, Messages.GasulPos);
+                        PopupNotification.PopUpMessages(1, "Item Name: "+product+ " with quantity "+quantity+" successfully delivered to branch "+branch, Messages.InventorySystem);
                         Close();
                     }
                 }
@@ -276,7 +276,7 @@ namespace Inventory.PopupForm
                 var len = txtDEC.Text.Length;
                 if (len > 0)
                 {
-                    var capz = string.Format(txtDEC.Text).ToUpper();
+                    string capz = string.Format(txtDEC.Text).ToUpper();
                     txtDEC.BackColor = Color.White;
                     txtDEC.Text = capz;
                     txtREC.Focus();
@@ -284,7 +284,7 @@ namespace Inventory.PopupForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Delivery Number must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Delivery Number must not be empty!", Messages.InventorySystem);
                     txtDEC.Focus();
                     txtDEC.BackColor = Color.Yellow;
                 }
@@ -306,7 +306,7 @@ namespace Inventory.PopupForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Receipt Number must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Receipt Number must not be empty!", Messages.InventorySystem);
                     txtREC.Focus();
                     txtREC.BackColor = Color.Yellow;
                 }
@@ -326,7 +326,7 @@ namespace Inventory.PopupForm
                     {
                         PopupNotification.PopUpMessages(0,
                             "The delivery Quantity must not be greater than quantity available in Warehouse!",
-                            Messages.GasulPos);
+                            Messages.InventorySystem);
                         txtQTY.Clear();
                         txtQTY.Focus();
                         txtQTY.BackColor = Color.Yellow;
@@ -342,7 +342,7 @@ namespace Inventory.PopupForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Receipt Number must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Receipt Number must not be empty!", Messages.InventorySystem);
                     txtQTY.Focus();
                     txtQTY.BackColor = Color.Yellow;
                 }
@@ -360,7 +360,7 @@ namespace Inventory.PopupForm
                 {
                     PopupNotification.PopUpMessages(0,
                         "The delivery Quantity must not be greater than quantity available in Warehouse!",
-                        Messages.GasulPos);
+                        Messages.InventorySystem);
                     txtQTY.Clear();
                     txtQTY.Focus();
                     txtQTY.BackColor = Color.Yellow;
@@ -376,7 +376,7 @@ namespace Inventory.PopupForm
             }
             else
             {
-                PopupNotification.PopUpMessages(0, "Receipt Number must not be empty!", Messages.GasulPos);
+                PopupNotification.PopUpMessages(0, "Receipt Number must not be empty!", Messages.InventorySystem);
                 txtQTY.Focus();
                 txtQTY.BackColor = Color.Yellow;
             }
@@ -482,7 +482,7 @@ namespace Inventory.PopupForm
                 var verify = VerifyReceiptNo(receipt);
                 if (verify > 0)
                 {
-                    PopupNotification.PopUpMessages(0, "Receipt No: "+receipt+" already exist in Inventory!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Receipt No: "+receipt+" already exist in Inventory!", Messages.InventorySystem);
                     txtREC.BackColor = Color.Yellow;
                     cmbDIS.BackColor = Color.White;
                     txtREC.Focus();
@@ -499,7 +499,7 @@ namespace Inventory.PopupForm
                 var verify = VerifyDelNo(delivery);
                 if (verify > 0)
                 {
-                    PopupNotification.PopUpMessages(0, "Delivery No: " + delivery + " already exist in Inventory!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Delivery No: " + delivery + " already exist in Inventory!", Messages.InventorySystem);
                     txtDEC.BackColor = Color.Yellow;
                     txtREC.BackColor = Color.White;
                     txtDEC.Focus();

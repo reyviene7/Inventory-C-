@@ -17,3 +17,15 @@ dotnet_diagnostic.CA2119.severity = none
 
 # CA1051: Do not declare visible instance fields
 dotnet_diagnostic.CA1051.severity = none
+
+# CA1044: Properties should not be write only
+dotnet_diagnostic.CA1044.severity = none
+
+# CA1707: Identifiers should not contain underscores
+dotnet_diagnostic.CA1707.severity = none
+
+# CA1304: Specify CultureInfo
+dotnet_diagnostic.CA1304.severity = none
+
+# CA2007: Consider calling ConfigureAwait on the awaited task
+dotnet_diagnostic.CA2007.severity = none

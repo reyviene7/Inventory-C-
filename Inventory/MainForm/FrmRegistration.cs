@@ -875,6 +875,14 @@ namespace Inventory.MainForm
                 InputManipulation.InputBoxLeave(dkpDateHired, dkpDateRegistered, "Hire Date", Messages.TitleEmployees);
             }
         }
+
+        private void dkpREG_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                xtraControl.SelectedTabPage = xtraAddress;
+            }
+        }
         private void bntUpdate_Click(object sender, EventArgs e)
         {
             buttonUpdate();
@@ -906,13 +914,7 @@ namespace Inventory.MainForm
         }
 
 
-        private void dkpREG_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
-            {
-                xtraControl.SelectedTabPage = xtraAddress;
-            }
-        }
+
 
         private ProfileImages searchProfileImg(string param)
         {

@@ -48,6 +48,25 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static int getDeliveryStatus(string input)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<DeliveryStatus>(unWork);
+                    var query = repository.FindBy(x => x.delivery_status == input);
+                    return query.delivery_status_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
         public static int getBranchId(string branchName) {
             using (var session = new DalSession())
             {
@@ -617,7 +636,6 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-
         public static string getCustomerName(int customerId) {
             using (var session = new DalSession())
             {
