@@ -21,7 +21,10 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userTy;
         private IEnumerable<RequestProducts> _products;
-        private IEnumerable<RequestQuantity> _quantity;
+        private IEnumerable<WarehouseStatus> _warehouseStatus;
+        private IEnumerable<Warehouse> _warehouse;
+        private IEnumerable<DeliveryStatus> _delivery;
+        private IEnumerable<Branch> _branch;
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewImageProduct> imgList;
@@ -36,8 +39,12 @@ namespace Inventory.MainForm
             _userId = userId;
             _userTy = userTy;
             InitializeComponent();
+            _warehouse = EnumerableUtils.getWarehouse();
             _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+            _warehouseStatus = EnumerableUtils.getStatusWarehouseList();
+            _delivery = EnumerableUtils.getWarehouseDelivery();
+            _branch = EnumerableUtils.getBranchDetails();
             imgList = EnumerableUtils.getImgProductList();
         }
         private void FirmWarehouseDelivery_Load(object sender, EventArgs e)
@@ -49,7 +56,6 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             _products = EnumerableUtils.getProductWarehouseList();
-            _quantity = EnumerableUtils.getProductWarehouseQuantity();
             try
             {
                 splashDelivery.ShowWaitForm();
@@ -189,70 +195,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-
-
-        private void txtQTY_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-
-        private void txtLST_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtLastCost.Focus();
-                txtLastCost.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtLastCost.BackColor = Color.White;
-            }
-        }
-        private void txtORD_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                cmbWarehouse.Focus();
-                cmbWarehouse.BackColor = Color.Yellow;
-            }
-            else
-            {
-                cmbWarehouse.BackColor = Color.White;
-            }
-        }
         //KEY DOWN
-        private void cmbNAM_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                BindProducts();
-            }
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (_wer && _bra == false)
-                {
-                    var len = txtProductName.Text.Length;
-                    if (len > 0)
-                    {
-                        txtProductName.BackColor = Color.White;
-                        txtLastCost.BackColor = Color.Yellow;
-                        txtLastCost.Focus();
-                        txtProductBarcode.Text = SearchBarcode(txtProductName.Text).product_code;
-                        txtItemPrice.Text = SearchBarcode(txtProductName.Text).retail_price.ToString(CultureInfo.InvariantCulture);
-                    }
-                    else
-                    {
-                        PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.GasulPos);
-                        txtProductName.BackColor = Color.Yellow;
-                        txtProductName.Focus();
-                    }
-                }
-            }
-        }
         private void txtDEL_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -328,6 +271,11 @@ namespace Inventory.MainForm
                     cmbWarehouseBranch.Focus();
                 }
             }
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbWarehouseBranch.DataBindings.Clear();
+                cmbWarehouseBranch.DataSource = _branch.Select(p => p.branch_details).ToList();
+            }
         }
         private void txtLST_KeyDown(object sender, KeyEventArgs e)
         {
@@ -393,10 +341,12 @@ namespace Inventory.MainForm
             GenerateWareHouseCode();
             GenerateReceiptCode();
             txtProductName.Enabled = false;
-            BindBranch();
-            BindDeliveryStatus();
-            BindWarehouseStatus();
-            BindWarehouseName();
+            cmbProductStatus.DataBindings.Clear();
+            cmbWarehouse.DataBindings.Clear();
+            cmbDeliveryStatus.DataBindings.Clear();
+            cmbProductStatus.DataSource = _warehouseStatus.Select(p => p.status_details).ToList();
+            cmbWarehouse.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
+            cmbDeliveryStatus.DataSource = _delivery.Select(p => p.delivery_status).ToList();
             txtLastCost.BackColor = Color.Yellow;
             txtLastCost.Focus();
             _add = true;
@@ -411,10 +361,12 @@ namespace Inventory.MainForm
             ButtonUpd();
             InputEnabDel();
             InputWhit();
-            BindBranch();
-            BindDeliveryStatus();
-            BindWarehouseStatus();
-            BindWarehouseName();
+            cmbDelProductStatus.DataBindings.Clear();
+            cmbDelWarehouseCode.DataBindings.Clear();
+            cmbDelDeliveryStatus.DataBindings.Clear();
+            cmbDelProductStatus.DataSource = _warehouseStatus.Select(p => p.status_details).ToList();
+            cmbDelWarehouseCode.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
+            cmbDelDeliveryStatus.DataSource = _delivery.Select(p => p.delivery_status).ToList();
             _add = false;
             _edt = true;
             _del = false;
@@ -786,78 +738,6 @@ namespace Inventory.MainForm
                 gridDelivery.Columns[8].Width = 30;
                 gridDelivery.Columns[9].Width = 70;
                 gridDelivery.Columns[10].Width = 80;
-            }
-        }
-
-        private void BindProducts()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<Products>(unWork);
-                var query = (from r in repository.SelectAll(Query.AllProducts)
-                             where r.product_name.Contains(Constant.AddFilterLpg)
-                             where !r.product_name.Contains(Constant.AddFilterEmp)
-                             select r.product_name.Distinct()).ToList();
-                txtProductName.DataBindings.Clear();
-                //txtProductName.DataSource = query;
-            }
-        }
-        private void BindBranch()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<Branch>(unWork);
-                var query = repository.SelectAll(Query.SelectAllBranchExcWareH).Select(x => x.branch_details).Distinct().ToList();
-                cmbWarehouseBranch.DataBindings.Clear();
-                cmbWarehouseBranch.DataSource = query;
-                cmbDelBranch.DataBindings.Clear();
-                cmbDelBranch.DataSource = query;
-            }
-        }
-        private void BindWarehouseName()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<Warehouse>(unWork);
-                var query = repository.SelectAll(Query.AllWarehouse).Select(x => x.warehouse_name).Distinct().ToList();
-                cmbWarehouse.DataBindings.Clear();
-                cmbWarehouse.DataSource = query;
-                cmbDelWarehouseCode.DataBindings.Clear();
-                cmbDelWarehouseCode.DataSource = query;
-            }
-        }
-        private void BindWarehouseStatus()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<WarehouseStatus>(unWork);
-                var query = repository.SelectAll(Query.AllWarehouseStatus).Select(x => x.status_details).Distinct().ToList();
-                cmbProductStatus.DataBindings.Clear();
-                cmbProductStatus.DataSource = query;
-                cmbDelProductStatus.DataBindings.Clear();
-                cmbDelProductStatus.DataSource = query;
-            }
-        }
-        private void BindDeliveryStatus()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<DeliveryStatus>(unWork);
-                var query = repository.SelectAll(Query.AllDeliveryStatus).Select(x => x.delivery_status).Distinct().ToList();
-                cmbDeliveryStatus.DataBindings.Clear();
-                cmbDeliveryStatus.DataSource = query;
-                cmbDelDeliveryStatus.DataBindings.Clear();
-                cmbDelDeliveryStatus.DataSource = query;
             }
         }
         private static int GetProductId(string input)
@@ -1249,6 +1129,70 @@ namespace Inventory.MainForm
                 previousDelQty = int.Parse(txtDelQty.Text); 
             }
         }
+
+        private void cmbDelProductStatus_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbDelProductStatus.DataBindings.Clear();
+                cmbDelProductStatus.DataSource = _warehouseStatus.Select(p => p.status_details).ToList();
+            }
+        }
+
+        private void cmbProductStatus_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbProductStatus.DataBindings.Clear();
+                cmbProductStatus.DataSource = _warehouseStatus.Select(p => p.status_details).ToList();
+            }
+        }
+
+        private void cmbWarehouse_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbWarehouse.DataBindings.Clear();
+                cmbWarehouse.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
+            }
+        }
+
+        private void cmbDelWarehouseCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbDelWarehouseCode.DataBindings.Clear();
+                cmbDelWarehouseCode.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
+            }
+        }
+
+        private void cmbDeliveryStatus_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbDeliveryStatus.DataBindings.Clear();
+                cmbDeliveryStatus.DataSource = _delivery.Select(p => p.delivery_status).ToList();
+            }
+        }
+
+        private void cmbDelDeliveryStatus_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbDelDeliveryStatus.DataBindings.Clear();
+                cmbDelDeliveryStatus.DataSource = _delivery.Select(p => p.delivery_status).ToList();
+            }
+        }
+
+        private void cmbDelBranch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbDelBranch.DataBindings.Clear();
+                cmbDelBranch.DataSource = _branch.Select(p => p.branch_details).ToList();
+            }
+        }
+
         private void gridDelivery_RowClick(object sender, RowClickEventArgs e)
         {
             if (gridDelivery.RowCount > 0)
@@ -1282,6 +1226,7 @@ namespace Inventory.MainForm
                         txtDelQty.Text = w.delivery_qty.ToString(CultureInfo.InvariantCulture);
                         cmbDelDeliveryStatus.Text = w.delivery_status;
                         txtDelRemarks.Text = w.remarks;
+                        dkpDelUpdate.Text = w.update_on.ToString(CultureInfo.InvariantCulture);
 
                         var img = searchProductImg(barcode);
                         var imgLocation = img.img_location;

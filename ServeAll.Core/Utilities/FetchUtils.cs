@@ -250,7 +250,7 @@ namespace ServeAll.Core.Utilities
                 try
                 {
                     var repository = new Repository<Warehouse>(unWork);
-                    return repository.SelectAll(Query.SelectLastWarhouseId)
+                    return repository.SelectAll(Query.getLastWarehousId)
                         .Select(x => x.warehouse_id).FirstOrDefault();
                 }
                 catch (Exception e)
