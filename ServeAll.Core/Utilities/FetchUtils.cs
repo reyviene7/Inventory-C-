@@ -106,6 +106,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getLastProfileImageId()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ProfileImages>(unWork);
+                    return repository.SelectAll(Query.getLastProfileImgQuery)
+                        .Select(x => x.image_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
         public static int getLastContactId()
         {
 

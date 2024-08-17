@@ -72,6 +72,7 @@
     <Compile Include="Entities\request\RequestQuantity.cs" />
     <Compile Include="Entities\request\RequestProducts.cs" />
     <Compile Include="Entities\request\RequestSupplier.cs" />
+    <Compile Include="Entities\ProfileImages.cs" />
     <Compile Include="Entities\ServiceImages.cs" />
     <Compile Include="Entities\Services.cs" />
     <Compile Include="Entities\ServiceStatus.cs" />

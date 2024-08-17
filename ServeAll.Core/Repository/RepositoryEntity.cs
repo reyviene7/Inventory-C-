@@ -26,11 +26,11 @@ namespace ServeAll.Core.Repository
         {
             using (var session = new DalSession())
             {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
+                var unitWork = session.UnitofWrk;
+                unitWork.Begin();
                 try
                 {
-                    var repository = new Repository<T>(unWork);
+                    var repository = new Repository<T>(unitWork);
                     var entity = repository.Id(entityId);
                     if (entity != null)
                     {
@@ -38,7 +38,7 @@ namespace ServeAll.Core.Repository
                         var result = repository.Update(entity);
                         if (result)
                         {
-                            unWork.Commit();
+                            unitWork.Commit();
                             return 1; 
                         }
                     }
@@ -46,29 +46,29 @@ namespace ServeAll.Core.Repository
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    unWork.Rollback();
+                    unitWork.Rollback();
                 }
                 return 0; 
             }
         }
 
-        public static int DeleteEntity<T>(int entityId, Action<T> updateAction) where T : class
+        public static int DeleteEntity<T>(int entityId, Action<T> deleteAction) where T : class
         {
             using (var session = new DalSession())
             {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
+                var unitWork = session.UnitofWrk;
+                unitWork.Begin();
                 try
                 {
-                    var repository = new Repository<T>(unWork);
+                    var repository = new Repository<T>(unitWork);
                     var entity = repository.Id(entityId);
                     if (entity != null)
                     {
-                        updateAction(entity);
+                        deleteAction(entity);
                         var result = repository.Delete(entity);
                         if (result)
                         {
-                            unWork.Commit();
+                            unitWork.Commit();
                             return 1;
                         }
                     }
@@ -76,7 +76,7 @@ namespace ServeAll.Core.Repository
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    unWork.Rollback();
+                    unitWork.Rollback();
                 }
                 return 0;
             }

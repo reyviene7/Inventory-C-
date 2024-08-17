@@ -58,7 +58,7 @@
             this.txtProfileID = new System.Windows.Forms.TextBox();
             this.lblCivilStatus = new System.Windows.Forms.Label();
             this.cmbCivilStatus = new System.Windows.Forms.ComboBox();
-            this.imgEmployees = new System.Windows.Forms.PictureBox();
+            this.imgProfile = new System.Windows.Forms.PictureBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtPhilhealthNumber = new System.Windows.Forms.TextBox();
@@ -136,14 +136,12 @@
             this.txtPositionName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraImage = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.label19 = new System.Windows.Forms.Label();
             this.dkpImgUpdatedOn = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
             this.dkpImgCreadOn = new System.Windows.Forms.DateTimePicker();
-            this.cmbWarehouse = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.txtProfileImgId = new System.Windows.Forms.TextBox();
             this.bntBrowseImage = new DevExpress.XtraEditors.SimpleButton();
@@ -158,7 +156,7 @@
             this.txtProfileImgBarcode = new System.Windows.Forms.TextBox();
             this.imgProfileImages = new System.Windows.Forms.PictureBox();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.gridControlImage = new DevExpress.XtraGrid.GridControl();
+            this.gridImageControl = new DevExpress.XtraGrid.GridControl();
             this.gridImage = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -204,7 +202,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridCtlProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgEmployees)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgProfile)).BeginInit();
             this.xtraAddress.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupAddress)).BeginInit();
             this.groupAddress.SuspendLayout();
@@ -221,13 +219,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            this.xtraTabPage1.SuspendLayout();
+            this.xtraImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgProfileImages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridImageControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
@@ -292,7 +290,7 @@
             this.xtraProfile,
             this.xtraAddress,
             this.xtraContact,
-            this.xtraTabPage1});
+            this.xtraImage});
             this.xtraControl.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraControl_SelectedPageChanged);
             // 
             // xtraProfile
@@ -329,7 +327,7 @@
             this.GbPersonal.Controls.Add(this.txtProfileID);
             this.GbPersonal.Controls.Add(this.lblCivilStatus);
             this.GbPersonal.Controls.Add(this.cmbCivilStatus);
-            this.GbPersonal.Controls.Add(this.imgEmployees);
+            this.GbPersonal.Controls.Add(this.imgProfile);
             this.GbPersonal.Controls.Add(this.lblEmail);
             this.GbPersonal.Controls.Add(this.txtAddress);
             this.GbPersonal.Controls.Add(this.txtPhilhealthNumber);
@@ -417,7 +415,6 @@
             this.dkpDateRegistered.Size = new System.Drawing.Size(239, 29);
             this.dkpDateRegistered.TabIndex = 19;
             this.dkpDateRegistered.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpREG_KeyDown);
-            this.dkpDateRegistered.Leave += new System.EventHandler(this.dkpREG_Leave);
             // 
             // gbCON
             // 
@@ -540,7 +537,6 @@
             this.cmbDepartment.Size = new System.Drawing.Size(239, 29);
             this.cmbDepartment.TabIndex = 17;
             this.cmbDepartment.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbDEP_KeyDown);
-            this.cmbDepartment.Leave += new System.EventHandler(this.cmbDEP_Leave);
             // 
             // txtMobile
             // 
@@ -553,7 +549,6 @@
             this.txtMobile.Size = new System.Drawing.Size(268, 29);
             this.txtMobile.TabIndex = 10;
             this.txtMobile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMON_KeyDown);
-            this.txtMobile.Leave += new System.EventHandler(this.txtMON_Leave);
             // 
             // lblBarcode
             // 
@@ -590,7 +585,6 @@
             this.dkpDateHired.Size = new System.Drawing.Size(239, 29);
             this.dkpDateHired.TabIndex = 18;
             this.dkpDateHired.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpHIR_KeyDown);
-            this.dkpDateHired.Leave += new System.EventHandler(this.dkpHIR_Leave);
             // 
             // lblPostion
             // 
@@ -651,7 +645,6 @@
             this.cmbPosition.TabIndex = 16;
             this.cmbPosition.Text = "Staff";
             this.cmbPosition.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPOS_KeyDown);
-            this.cmbPosition.Leave += new System.EventHandler(this.cmbPOS_Leave);
             // 
             // txtPhone
             // 
@@ -664,7 +657,6 @@
             this.txtPhone.Size = new System.Drawing.Size(269, 29);
             this.txtPhone.TabIndex = 9;
             this.txtPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPON_KeyDown);
-            this.txtPhone.Leave += new System.EventHandler(this.txtPON_Leave);
             // 
             // txtProfileID
             // 
@@ -712,17 +704,16 @@
             this.cmbCivilStatus.Size = new System.Drawing.Size(269, 29);
             this.cmbCivilStatus.TabIndex = 8;
             this.cmbCivilStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCIV_KeyDown);
-            this.cmbCivilStatus.Leave += new System.EventHandler(this.cmbCIV_Leave);
             // 
-            // imgEmployees
+            // imgProfile
             // 
-            this.imgEmployees.BackColor = System.Drawing.Color.Gray;
-            this.imgEmployees.Location = new System.Drawing.Point(705, 23);
-            this.imgEmployees.Name = "imgEmployees";
-            this.imgEmployees.Size = new System.Drawing.Size(300, 291);
-            this.imgEmployees.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgEmployees.TabIndex = 139;
-            this.imgEmployees.TabStop = false;
+            this.imgProfile.BackColor = System.Drawing.Color.Gray;
+            this.imgProfile.Location = new System.Drawing.Point(705, 23);
+            this.imgProfile.Name = "imgProfile";
+            this.imgProfile.Size = new System.Drawing.Size(300, 291);
+            this.imgProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgProfile.TabIndex = 139;
+            this.imgProfile.TabStop = false;
             // 
             // lblEmail
             // 
@@ -747,7 +738,6 @@
             this.txtAddress.Size = new System.Drawing.Size(239, 29);
             this.txtAddress.TabIndex = 12;
             this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtADD_KeyDown);
-            this.txtAddress.Leave += new System.EventHandler(this.txtADD_Leave);
             // 
             // txtPhilhealthNumber
             // 
@@ -760,7 +750,6 @@
             this.txtPhilhealthNumber.Size = new System.Drawing.Size(239, 29);
             this.txtPhilhealthNumber.TabIndex = 15;
             this.txtPhilhealthNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPHH_KeyDown);
-            this.txtPhilhealthNumber.Leave += new System.EventHandler(this.txtPHH_Leave);
             // 
             // lblPhilhealth
             // 
@@ -871,7 +860,6 @@
             this.cmbProvince.Size = new System.Drawing.Size(239, 29);
             this.cmbProvince.TabIndex = 13;
             this.cmbProvince.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPRV_KeyDown);
-            this.cmbProvince.Leave += new System.EventHandler(this.cmbPRV_Leave);
             // 
             // txtEmail
             // 
@@ -884,7 +872,6 @@
             this.txtEmail.Size = new System.Drawing.Size(239, 29);
             this.txtEmail.TabIndex = 11;
             this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEML_KeyDown);
-            this.txtEmail.Leave += new System.EventHandler(this.txtEML_Leave);
             // 
             // txtSSSNumber
             // 
@@ -897,7 +884,6 @@
             this.txtSSSNumber.Size = new System.Drawing.Size(239, 29);
             this.txtSSSNumber.TabIndex = 14;
             this.txtSSSNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSSS_KeyDown);
-            this.txtSSSNumber.Leave += new System.EventHandler(this.txtSSS_Leave);
             // 
             // lblSSS
             // 
@@ -958,7 +944,6 @@
             this.dkpBirthdate.Size = new System.Drawing.Size(268, 29);
             this.dkpBirthdate.TabIndex = 6;
             this.dkpBirthdate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDOB_KeyDown);
-            this.dkpBirthdate.Leave += new System.EventHandler(this.dkpDOB_Leave);
             // 
             // lblGender
             // 
@@ -992,7 +977,6 @@
             this.cmbgender.Size = new System.Drawing.Size(269, 29);
             this.cmbgender.TabIndex = 5;
             this.cmbgender.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGEN_KeyDown);
-            this.cmbgender.Leave += new System.EventHandler(this.cmbGEN_Leave);
             // 
             // txtMiddleInitial
             // 
@@ -1006,7 +990,6 @@
             this.txtMiddleInitial.Size = new System.Drawing.Size(268, 29);
             this.txtMiddleInitial.TabIndex = 4;
             this.txtMiddleInitial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMID_KeyDown);
-            this.txtMiddleInitial.Leave += new System.EventHandler(this.txtMID_Leave);
             // 
             // lblMiddleInitial
             // 
@@ -1031,7 +1014,6 @@
             this.txtLastName.Size = new System.Drawing.Size(268, 29);
             this.txtLastName.TabIndex = 3;
             this.txtLastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLSN_KeyDown);
-            this.txtLastName.Leave += new System.EventHandler(this.txtLSN_Leave);
             // 
             // lblLastName
             // 
@@ -1056,7 +1038,6 @@
             this.txtFirstName.Size = new System.Drawing.Size(268, 29);
             this.txtFirstName.TabIndex = 2;
             this.txtFirstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFNM_KeyDown);
-            this.txtFirstName.Leave += new System.EventHandler(this.txtFNM_Leave);
             // 
             // lblFName
             // 
@@ -1547,7 +1528,7 @@
             this.txtFaxNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFaxNumber.ForeColor = System.Drawing.Color.Black;
             this.txtFaxNumber.Location = new System.Drawing.Point(100, 287);
-            this.txtFaxNumber.MaxLength = 2;
+            this.txtFaxNumber.MaxLength = 100;
             this.txtFaxNumber.Name = "txtFaxNumber";
             this.txtFaxNumber.Size = new System.Drawing.Size(268, 29);
             this.txtFaxNumber.TabIndex = 43;
@@ -1572,7 +1553,7 @@
             this.txtWebUrl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWebUrl.ForeColor = System.Drawing.Color.Black;
             this.txtWebUrl.Location = new System.Drawing.Point(101, 257);
-            this.txtWebUrl.MaxLength = 2;
+            this.txtWebUrl.MaxLength = 100;
             this.txtWebUrl.Name = "txtWebUrl";
             this.txtWebUrl.Size = new System.Drawing.Size(268, 29);
             this.txtWebUrl.TabIndex = 42;
@@ -1597,7 +1578,7 @@
             this.txtEmailAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmailAddress.ForeColor = System.Drawing.Color.Black;
             this.txtEmailAddress.Location = new System.Drawing.Point(101, 227);
-            this.txtEmailAddress.MaxLength = 2;
+            this.txtEmailAddress.MaxLength = 100;
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(268, 29);
             this.txtEmailAddress.TabIndex = 41;
@@ -1622,7 +1603,7 @@
             this.txtSecondMobile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSecondMobile.ForeColor = System.Drawing.Color.Black;
             this.txtSecondMobile.Location = new System.Drawing.Point(101, 197);
-            this.txtSecondMobile.MaxLength = 2;
+            this.txtSecondMobile.MaxLength = 50;
             this.txtSecondMobile.Name = "txtSecondMobile";
             this.txtSecondMobile.Size = new System.Drawing.Size(268, 29);
             this.txtSecondMobile.TabIndex = 40;
@@ -1823,7 +1804,7 @@
             this.txtFirstMobile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstMobile.ForeColor = System.Drawing.Color.Black;
             this.txtFirstMobile.Location = new System.Drawing.Point(101, 167);
-            this.txtFirstMobile.MaxLength = 2;
+            this.txtFirstMobile.MaxLength = 50;
             this.txtFirstMobile.Name = "txtFirstMobile";
             this.txtFirstMobile.Size = new System.Drawing.Size(268, 29);
             this.txtFirstMobile.TabIndex = 39;
@@ -1899,13 +1880,13 @@
             this.textBox10.TabIndex = 109;
             this.textBox10.Visible = false;
             // 
-            // xtraTabPage1
+            // xtraImage
             // 
-            this.xtraTabPage1.Controls.Add(this.groupControl1);
-            this.xtraTabPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.ImageOptions.Image")));
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1013, 558);
-            this.xtraTabPage1.Text = "Profile Picture";
+            this.xtraImage.Controls.Add(this.groupControl1);
+            this.xtraImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraImage.ImageOptions.Image")));
+            this.xtraImage.Name = "xtraImage";
+            this.xtraImage.Size = new System.Drawing.Size(1013, 558);
+            this.xtraImage.Text = "Profile Picture";
             // 
             // groupControl1
             // 
@@ -1916,8 +1897,6 @@
             this.groupControl1.Controls.Add(this.dkpImgUpdatedOn);
             this.groupControl1.Controls.Add(this.label20);
             this.groupControl1.Controls.Add(this.dkpImgCreadOn);
-            this.groupControl1.Controls.Add(this.cmbWarehouse);
-            this.groupControl1.Controls.Add(this.label21);
             this.groupControl1.Controls.Add(this.label27);
             this.groupControl1.Controls.Add(this.txtProfileImgId);
             this.groupControl1.Controls.Add(this.bntBrowseImage);
@@ -1946,7 +1925,7 @@
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(6, 239);
+            this.label19.Location = new System.Drawing.Point(6, 223);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(97, 17);
             this.label19.TabIndex = 246;
@@ -1957,7 +1936,7 @@
             this.dkpImgUpdatedOn.CustomFormat = "dd-MM-yyyy";
             this.dkpImgUpdatedOn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpImgUpdatedOn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpImgUpdatedOn.Location = new System.Drawing.Point(145, 230);
+            this.dkpImgUpdatedOn.Location = new System.Drawing.Point(145, 214);
             this.dkpImgUpdatedOn.Name = "dkpImgUpdatedOn";
             this.dkpImgUpdatedOn.Size = new System.Drawing.Size(296, 29);
             this.dkpImgUpdatedOn.TabIndex = 107;
@@ -1968,7 +1947,7 @@
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(7, 209);
+            this.label20.Location = new System.Drawing.Point(7, 193);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(92, 17);
             this.label20.TabIndex = 245;
@@ -1979,35 +1958,10 @@
             this.dkpImgCreadOn.CustomFormat = "dd-MM-yyyy";
             this.dkpImgCreadOn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpImgCreadOn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpImgCreadOn.Location = new System.Drawing.Point(145, 200);
+            this.dkpImgCreadOn.Location = new System.Drawing.Point(145, 184);
             this.dkpImgCreadOn.Name = "dkpImgCreadOn";
             this.dkpImgCreadOn.Size = new System.Drawing.Size(296, 29);
             this.dkpImgCreadOn.TabIndex = 106;
-            // 
-            // cmbWarehouse
-            // 
-            this.cmbWarehouse.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbWarehouse.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbWarehouse.BackColor = System.Drawing.Color.White;
-            this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbWarehouse.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbWarehouse.FormattingEnabled = true;
-            this.cmbWarehouse.Location = new System.Drawing.Point(145, 140);
-            this.cmbWarehouse.Name = "cmbWarehouse";
-            this.cmbWarehouse.Size = new System.Drawing.Size(296, 29);
-            this.cmbWarehouse.TabIndex = 104;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(7, 146);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(80, 17);
-            this.label21.TabIndex = 237;
-            this.label21.Text = "Warehouse:";
             // 
             // label27
             // 
@@ -2015,7 +1969,7 @@
             this.label27.BackColor = System.Drawing.Color.Transparent;
             this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(6, 26);
+            this.label27.Location = new System.Drawing.Point(6, 39);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(111, 17);
             this.label27.TabIndex = 236;
@@ -2027,7 +1981,7 @@
             this.txtProfileImgId.Enabled = false;
             this.txtProfileImgId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgId.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProfileImgId.Location = new System.Drawing.Point(145, 20);
+            this.txtProfileImgId.Location = new System.Drawing.Point(145, 33);
             this.txtProfileImgId.Name = "txtProfileImgId";
             this.txtProfileImgId.Size = new System.Drawing.Size(296, 29);
             this.txtProfileImgId.TabIndex = 100;
@@ -2041,6 +1995,7 @@
             this.bntBrowseImage.Size = new System.Drawing.Size(140, 37);
             this.bntBrowseImage.TabIndex = 108;
             this.bntBrowseImage.ToolTip = "User Manual";
+            this.bntBrowseImage.Click += new System.EventHandler(this.bntBrowseImage_Click);
             // 
             // bntSaveImages
             // 
@@ -2051,6 +2006,7 @@
             this.bntSaveImages.Size = new System.Drawing.Size(157, 37);
             this.bntSaveImages.TabIndex = 109;
             this.bntSaveImages.ToolTip = "Service Manual";
+            this.bntSaveImages.Click += new System.EventHandler(this.bntSaveImages_Click);
             // 
             // cmbProfileImgType
             // 
@@ -2064,7 +2020,7 @@
             "JPG",
             "PNG",
             "BMP"});
-            this.cmbProfileImgType.Location = new System.Drawing.Point(145, 110);
+            this.cmbProfileImgType.Location = new System.Drawing.Point(145, 123);
             this.cmbProfileImgType.Name = "cmbProfileImgType";
             this.cmbProfileImgType.Size = new System.Drawing.Size(296, 29);
             this.cmbProfileImgType.TabIndex = 103;
@@ -2075,7 +2031,7 @@
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(6, 176);
+            this.label28.Location = new System.Drawing.Point(6, 160);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(115, 17);
             this.label28.TabIndex = 231;
@@ -2086,7 +2042,7 @@
             this.txtProfileImgFileName.BackColor = System.Drawing.Color.White;
             this.txtProfileImgFileName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgFileName.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProfileImgFileName.Location = new System.Drawing.Point(145, 170);
+            this.txtProfileImgFileName.Location = new System.Drawing.Point(145, 154);
             this.txtProfileImgFileName.Name = "txtProfileImgFileName";
             this.txtProfileImgFileName.Size = new System.Drawing.Size(296, 29);
             this.txtProfileImgFileName.TabIndex = 105;
@@ -2097,7 +2053,7 @@
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(7, 116);
+            this.label29.Location = new System.Drawing.Point(7, 129);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(128, 17);
             this.label29.TabIndex = 229;
@@ -2109,7 +2065,7 @@
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(6, 86);
+            this.label30.Location = new System.Drawing.Point(6, 99);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(127, 17);
             this.label30.TabIndex = 228;
@@ -2120,7 +2076,7 @@
             this.txtProfileImgTitle.BackColor = System.Drawing.Color.White;
             this.txtProfileImgTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgTitle.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProfileImgTitle.Location = new System.Drawing.Point(145, 80);
+            this.txtProfileImgTitle.Location = new System.Drawing.Point(145, 93);
             this.txtProfileImgTitle.Name = "txtProfileImgTitle";
             this.txtProfileImgTitle.Size = new System.Drawing.Size(296, 29);
             this.txtProfileImgTitle.TabIndex = 102;
@@ -2131,7 +2087,7 @@
             this.label31.BackColor = System.Drawing.Color.Transparent;
             this.label31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(6, 56);
+            this.label31.Location = new System.Drawing.Point(6, 69);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(130, 17);
             this.label31.TabIndex = 226;
@@ -2140,9 +2096,10 @@
             // txtProfileImgBarcode
             // 
             this.txtProfileImgBarcode.BackColor = System.Drawing.Color.White;
+            this.txtProfileImgBarcode.Enabled = false;
             this.txtProfileImgBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgBarcode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProfileImgBarcode.Location = new System.Drawing.Point(145, 50);
+            this.txtProfileImgBarcode.Location = new System.Drawing.Point(145, 63);
             this.txtProfileImgBarcode.Name = "txtProfileImgBarcode";
             this.txtProfileImgBarcode.Size = new System.Drawing.Size(296, 29);
             this.txtProfileImgBarcode.TabIndex = 101;
@@ -2162,7 +2119,7 @@
             this.groupControl4.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.groupControl4.Appearance.Options.UseBackColor = true;
             this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupControl4.Controls.Add(this.gridControlImage);
+            this.groupControl4.Controls.Add(this.gridImageControl);
             this.groupControl4.Location = new System.Drawing.Point(-1, 299);
             this.groupControl4.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl4.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -2171,20 +2128,20 @@
             this.groupControl4.TabIndex = 173;
             this.groupControl4.Text = "Profile Pictures:";
             // 
-            // gridControlImage
+            // gridImageControl
             // 
-            this.gridControlImage.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridControlImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlImage.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.gridControlImage.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
-            this.gridControlImage.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.gridControlImage.Location = new System.Drawing.Point(3, 18);
-            this.gridControlImage.MainView = this.gridImage;
-            this.gridControlImage.Name = "gridControlImage";
-            this.gridControlImage.Size = new System.Drawing.Size(1006, 238);
-            this.gridControlImage.TabIndex = 27;
-            this.gridControlImage.TabStop = false;
-            this.gridControlImage.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridImageControl.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridImageControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridImageControl.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.gridImageControl.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridImageControl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.gridImageControl.Location = new System.Drawing.Point(3, 18);
+            this.gridImageControl.MainView = this.gridImage;
+            this.gridImageControl.Name = "gridImageControl";
+            this.gridImageControl.Size = new System.Drawing.Size(1006, 238);
+            this.gridImageControl.TabIndex = 27;
+            this.gridImageControl.TabStop = false;
+            this.gridImageControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridImage,
             this.gridView4,
             this.gridView5,
@@ -2234,7 +2191,7 @@
             this.gridImage.AppearancePrint.Row.Options.UseFont = true;
             this.gridImage.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.gridImage.GridControl = this.gridControlImage;
+            this.gridImage.GridControl = this.gridImageControl;
             this.gridImage.Name = "gridImage";
             this.gridImage.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridImage.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -2245,10 +2202,11 @@
             this.gridImage.OptionsView.EnableAppearanceEvenRow = true;
             this.gridImage.OptionsView.RowAutoHeight = true;
             this.gridImage.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridImage.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridImage_FocusedRowChanged);
             // 
             // gridView4
             // 
-            this.gridView4.GridControl = this.gridControlImage;
+            this.gridView4.GridControl = this.gridImageControl;
             this.gridView4.Name = "gridView4";
             // 
             // gridView5
@@ -2281,7 +2239,7 @@
             this.gridView5.AppearancePrint.Row.Options.UseFont = true;
             this.gridView5.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridView5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.gridView5.GridControl = this.gridControlImage;
+            this.gridView5.GridControl = this.gridImageControl;
             this.gridView5.Name = "gridView5";
             this.gridView5.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView5.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -2294,7 +2252,7 @@
             // 
             // gridView6
             // 
-            this.gridView6.GridControl = this.gridControlImage;
+            this.gridView6.GridControl = this.gridImageControl;
             this.gridView6.Name = "gridView6";
             // 
             // lblMainTitle
@@ -2667,7 +2625,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridCtlProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgEmployees)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgProfile)).EndInit();
             this.xtraAddress.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupAddress)).EndInit();
             this.groupAddress.ResumeLayout(false);
@@ -2688,14 +2646,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlContact)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridContact)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            this.xtraTabPage1.ResumeLayout(false);
+            this.xtraImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgProfileImages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridImageControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
@@ -2764,7 +2722,7 @@
         private System.Windows.Forms.TextBox txtProfileID;
         private System.Windows.Forms.Label lblCivilStatus;
         private System.Windows.Forms.ComboBox cmbCivilStatus;
-        private System.Windows.Forms.PictureBox imgEmployees;
+        private System.Windows.Forms.PictureBox imgProfile;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtAddress;
@@ -2858,14 +2816,12 @@
         private System.Windows.Forms.TextBox txtContactBarcode;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtBarcodeAddress;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraTab.XtraTabPage xtraImage;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dkpImgUpdatedOn;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.DateTimePicker dkpImgCreadOn;
-        private System.Windows.Forms.ComboBox cmbWarehouse;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox txtProfileImgId;
         private DevExpress.XtraEditors.SimpleButton bntBrowseImage;
@@ -2880,7 +2836,7 @@
         private System.Windows.Forms.TextBox txtProfileImgBarcode;
         private System.Windows.Forms.PictureBox imgProfileImages;
         private DevExpress.XtraEditors.GroupControl groupControl4;
-        private DevExpress.XtraGrid.GridControl gridControlImage;
+        private DevExpress.XtraGrid.GridControl gridImageControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridImage;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;

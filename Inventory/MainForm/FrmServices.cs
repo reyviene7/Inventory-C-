@@ -89,7 +89,7 @@ namespace Inventory.MainForm
             bindServices();
             bindServiceImgList();
         }
-        private ViewServiceImages searchProductImg(string param)
+        private ViewServiceImages searchServiceImg(string param)
         {
             return _service_image_list.FirstOrDefault(img => img.image_code == param);
         }
@@ -122,7 +122,7 @@ namespace Inventory.MainForm
                         dpkServiceDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Date");
                         dpkCreatedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Created");
                         dpkUpdated.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Updated");
-                        var img = searchProductImg(barcode);
+                        var img = searchServiceImg(barcode);
                         var imgLocation = img.img_location;
                         if (imgLocation.Length > 0)
                         {
@@ -131,7 +131,7 @@ namespace Inventory.MainForm
                             imgProduct.ImageLocation = location;
                         }
                         else
-                            imgProduct.ImageLocation = ConstantUtils.defaultImgLocation + "empty-image.jpg"; ;
+                            imgProduct.ImageLocation = ConstantUtils.defaultImgLocation + "empty-image.jpg";
                     }
                 }
                 catch(Exception ex)
@@ -150,7 +150,7 @@ namespace Inventory.MainForm
                     if (id.Length > 0)
                     {
                         var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                        var img = searchProductImg(barcode);
+                        var img = searchServiceImg(barcode);
                         var imgLocation = img.img_location;
                         if (imgLocation.Length > 0)
                         {
@@ -167,7 +167,6 @@ namespace Inventory.MainForm
                     Console.WriteLine(ex.ToString());
                 }
             }
-                
         }
 
         private void gridInventory_Click(object sender, EventArgs e)
@@ -605,20 +604,6 @@ namespace Inventory.MainForm
         {
 
            
-        }
-
-        private void bindImage(string barcode)
-        {
-            var img = searchProductImg(barcode);
-            var imgLocation = img.img_location;
-            if (imgLocation.Length > 0)
-            {
-                var location = ConstantUtils.defaultImgLocation + imgLocation;
-
-                imgProduct.ImageLocation = location;
-            }
-            else
-                imgProduct.Image = null;
         }
      
         private void FirmWarehouseInvetory_MouseMove(object sender, MouseEventArgs e)
