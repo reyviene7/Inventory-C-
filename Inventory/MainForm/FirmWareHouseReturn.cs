@@ -822,7 +822,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Please Select branch first!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Please Select branch first!", Messages.InventorySystem);
                 }
                
             }
@@ -994,7 +994,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Item name must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Item name must not be empty!", Messages.InventorySystem);
                     cmbProductName.BackColor = Color.Yellow;
                     cmbProductName.Focus();
                 }
@@ -1018,7 +1018,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Return Delivery No must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Return Delivery No must not be empty!", Messages.InventorySystem);
                     txtDeliveryNo.BackColor = Color.Yellow;
                     txtDeliveryNo.Focus();
                 }
@@ -1072,7 +1072,7 @@ namespace Inventory.MainForm
                     }
                     else
                     {
-                        PopupNotification.PopUpMessages(0, "Return item quantity must not be greater than item number in Inventory!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(0, "Return item quantity must not be greater than item number in Inventory!", Messages.InventorySystem);
                         txtReturnQty.Focus();
                         txtReturnQty.BackColor = Color.Yellow;
                     }
@@ -1159,7 +1159,7 @@ namespace Inventory.MainForm
                     {
                         retWET.CloseWaitForm();
                         unWork.Commit();
-                        PopupNotification.PopUpMessages(1,"Return Delivery No: "+txtDeliveryNo.Text.Trim(' ')+" successfully return to Warehouse!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(1,"Return Delivery No: "+txtDeliveryNo.Text.Trim(' ')+" successfully return to Warehouse!", Messages.InventorySystem);
                     }
                     else
                     {
@@ -1209,7 +1209,7 @@ namespace Inventory.MainForm
                     if (result > 0)
                     {
                         retWET.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Item: "+cmbProductName.Text.Trim(' ')+" successfully return to Warehouse!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(1, "Item: "+cmbProductName.Text.Trim(' ')+" successfully return to Warehouse!", Messages.InventorySystem);
                     }
                 }
                 catch (Exception e)
@@ -1257,7 +1257,7 @@ namespace Inventory.MainForm
                         retWET.CloseWaitForm();
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
-                            "Item: " + cmbProductName.Text.Trim(' ') + " successfully updated to Warehouse!", Messages.GasulPos);
+                            "Item: " + cmbProductName.Text.Trim(' ') + " successfully updated to Warehouse!", Messages.InventorySystem);
                     }
                     else
                     {
@@ -1307,7 +1307,7 @@ namespace Inventory.MainForm
                     if (result > 0)
                     {
                         retWET.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Item: " + cmbProductName.Text.Trim(' ') + " successfully updated!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(1, "Item: " + cmbProductName.Text.Trim(' ') + " successfully updated!", Messages.InventorySystem);
                     }
                 }
                 catch (Exception e)
@@ -1335,7 +1335,7 @@ namespace Inventory.MainForm
                         retWET.CloseWaitForm();
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
-                            "Item: " + cmbProductName.Text.Trim(' ') + " successfully deleted!", Messages.GasulPos);
+                            "Item: " + cmbProductName.Text.Trim(' ') + " successfully deleted!", Messages.InventorySystem);
                     }
                     else
                     {
@@ -1368,7 +1368,7 @@ namespace Inventory.MainForm
                     if (result > 0)
                     {
                         retWET.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Item: " + cmbProductName.Text.Trim(' ') + " successfully deleted!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(1, "Item: " + cmbProductName.Text.Trim(' ') + " successfully deleted!", Messages.InventorySystem);
                     }
                 }
                 catch (Exception e)

@@ -59,7 +59,7 @@ namespace Inventory.PopupForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Admin Username must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Admin Username must not be empty!", Messages.InventorySystem);
                     txtUSR.Focus();
                 }
             }

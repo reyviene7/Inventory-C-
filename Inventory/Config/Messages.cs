@@ -2,7 +2,7 @@
 
 namespace Inventory.Config
 {
-    public class Messages
+    public static class Messages
     {
         public const string AssignDefault = "None";
         public const string ErrorInsert = "While trying to add ";
@@ -34,7 +34,7 @@ namespace Inventory.Config
         public const string AdminAccount = "Admin";
         public const string TitleDefaultAccount = "POS DEFAULT ADMIN";
         public const string HassPass = "@hassPass";
-        public const string GasulPos = "Inventory Monitoring System";
+        public const string InventorySystem = "Inventory Monitoring System";
 
         public const string SuccessInsert = "Successfully inserted!";
         public const string SuccessUpdate = "Successfully updated!";

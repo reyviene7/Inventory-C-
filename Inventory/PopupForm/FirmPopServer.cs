@@ -36,7 +36,7 @@ namespace Inventory.PopupForm
             Registry.SetValue(Constant.RegKey, Constant.DefaultEmptyValue, Constant.DefaultEmptyValue);
             Registry.SetValue(Constant.RegKey, Constant.Server, EncryptedServer, RegistryValueKind.String);
             regWET.CloseWaitForm();
-            PopupNotification.PopUpMessages(1, "Registry Server Key Successfully Updated!", Messages.GasulPos);
+            PopupNotification.PopUpMessages(1, "Registry Server Key Successfully Updated!", Messages.InventorySystem);
             Close();
         }
         private void bntCLR_Click(object sender, EventArgs e)

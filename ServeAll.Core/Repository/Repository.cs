@@ -20,7 +20,6 @@ namespace ServeAll.Core.Repository
             _iunitofworks = iunitofworks;
         }
 
-
         public IQueryable<T> All(string query)
         {
           return (IQueryable<T>) _iunitofworks.Connection.Query<T>(query, null, _iunitofworks.Transaction);

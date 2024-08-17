@@ -25,7 +25,7 @@ namespace Inventory.PopupForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Username must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Username must not be empty!", Messages.InventorySystem);
                     txtUSR.Focus();
                 }
             }
@@ -36,7 +36,7 @@ namespace Inventory.PopupForm
             var len = txtPSS.Text.Length;
             if (len <= 0)
             {
-                PopupNotification.PopUpMessages(0, "Password must not be empty!", Messages.GasulPos);
+                PopupNotification.PopUpMessages(0, "Password must not be empty!", Messages.InventorySystem);
                 txtUSR.Focus();
             }
             else
@@ -67,7 +67,7 @@ namespace Inventory.PopupForm
                 else
                 {
                     logWET.CloseWaitForm();
-                    PopupNotification.PopUpMessages(0, "Username or Password is incorrect! ", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Username or Password is incorrect! ", Messages.InventorySystem);
                 }
                 
             }
