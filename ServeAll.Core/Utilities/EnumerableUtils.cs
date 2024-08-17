@@ -359,7 +359,7 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static IEnumerable<ServiceStatus>getServiceStatusList()
+        public static IEnumerable<ServiceStatus> getServiceStatusList()
         {
             using (var session = new DalSession())
             {
@@ -378,7 +378,7 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static IEnumerable<Warehouse>getWarehouse()
+        public static IEnumerable<Warehouse> getWarehouse()
         {
             using (var session = new DalSession())
             {
@@ -393,6 +393,43 @@ namespace ServeAll.Core.Utilities
                 {
                     Console.WriteLine(ex.Message);
                     return GetEmptyList<Warehouse>();
+                }
+            }
+        }
+
+        public static IEnumerable<DeliveryStatus> getWarehouseDelivery()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<DeliveryStatus>(unWork);
+                    return repository.SelectAll(Query.AllDeliveryStatus).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<DeliveryStatus>();
+                }
+            }
+        }
+        public static IEnumerable<Branch> getBranchDetails()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Branch>(unWork);
+                    return repository.SelectAll(Query.SelectAllBranchExcWareH).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<Branch>();
                 }
             }
         }
