@@ -8,6 +8,7 @@ namespace ServeAll.Core.Entities
     {
         [Key]
         public int contact_id { get; set; }
+        public string contact_code { get; set; }
         public string contact_name { get; set; }
         public string position { get; set; }
         public string telephone_number { get; set; }
@@ -16,5 +17,6 @@ namespace ServeAll.Core.Entities
         public string email_address { get; set; }
         public string web_url { get; set; }
         public string fax_number { get; set; }
+        public DateTime date_register { get; set; }
     }
 }

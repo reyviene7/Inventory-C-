@@ -81,7 +81,7 @@
             this.txtServiceName = new System.Windows.Forms.TextBox();
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
             this.gridController = new DevExpress.XtraGrid.GridControl();
-            this.gridInventory = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridServices = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grdHIS = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -151,7 +151,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).BeginInit();
             this.gbCON.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridController)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridServices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).BeginInit();
@@ -411,8 +411,9 @@
             this.tabServices.Appearance.PageClient.BackColor = System.Drawing.Color.Black;
             this.tabServices.Appearance.PageClient.Options.UseBackColor = true;
             this.tabServices.Controls.Add(this.GbPersonal);
+            this.tabServices.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tabServices.ImageOptions.Image")));
             this.tabServices.Name = "tabServices";
-            this.tabServices.Size = new System.Drawing.Size(1106, 739);
+            this.tabServices.Size = new System.Drawing.Size(1106, 736);
             this.tabServices.Text = "Services Details";
             // 
             // GbPersonal
@@ -453,7 +454,7 @@
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1106, 739);
+            this.GbPersonal.Size = new System.Drawing.Size(1106, 736);
             this.GbPersonal.TabIndex = 173;
             // 
             // label7
@@ -780,72 +781,73 @@
             this.gridController.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
             this.gridController.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
             this.gridController.Location = new System.Drawing.Point(3, 18);
-            this.gridController.MainView = this.gridInventory;
+            this.gridController.MainView = this.gridServices;
             this.gridController.Name = "gridController";
             this.gridController.Size = new System.Drawing.Size(1102, 423);
             this.gridController.TabIndex = 26;
             this.gridController.TabStop = false;
             this.gridController.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridInventory,
+            this.gridServices,
             this.gridView2,
             this.gridView3,
             this.grdHIS});
             // 
-            // gridInventory
+            // gridServices
             // 
-            this.gridInventory.Appearance.Empty.BackColor = System.Drawing.Color.LightGray;
-            this.gridInventory.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridInventory.Appearance.Empty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridInventory.Appearance.Empty.Options.UseBackColor = true;
-            this.gridInventory.Appearance.Empty.Options.UseBorderColor = true;
-            this.gridInventory.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.gridInventory.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridInventory.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridInventory.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridInventory.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridInventory.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridInventory.Appearance.FocusedRow.Options.UseBorderColor = true;
-            this.gridInventory.Appearance.FocusedRow.Options.UseFont = true;
-            this.gridInventory.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.gridInventory.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridInventory.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridInventory.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.gridInventory.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.gridInventory.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridInventory.Appearance.HeaderPanel.Options.UseForeColor = true;
-            this.gridInventory.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
-            this.gridInventory.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridInventory.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridInventory.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridInventory.Appearance.Row.Options.UseBackColor = true;
-            this.gridInventory.Appearance.Row.Options.UseBorderColor = true;
-            this.gridInventory.Appearance.Row.Options.UseFont = true;
-            this.gridInventory.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridInventory.Appearance.ViewCaption.Options.UseFont = true;
-            this.gridInventory.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridInventory.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridInventory.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
-            this.gridInventory.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
-            this.gridInventory.AppearancePrint.HeaderPanel.Options.UseFont = true;
-            this.gridInventory.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
-            this.gridInventory.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
-            this.gridInventory.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridInventory.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridInventory.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
-            this.gridInventory.AppearancePrint.Row.Options.UseFont = true;
-            this.gridInventory.AppearancePrint.Row.Options.UseForeColor = true;
-            this.gridInventory.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.gridInventory.GridControl = this.gridController;
-            this.gridInventory.Name = "gridInventory";
-            this.gridInventory.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridInventory.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridInventory.OptionsBehavior.Editable = false;
-            this.gridInventory.OptionsCustomization.AllowRowSizing = true;
-            this.gridInventory.OptionsDetail.AllowExpandEmptyDetails = true;
-            this.gridInventory.OptionsSelection.MultiSelect = true;
-            this.gridInventory.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridInventory.OptionsView.RowAutoHeight = true;
-            this.gridInventory.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridServices.Appearance.Empty.BackColor = System.Drawing.Color.LightGray;
+            this.gridServices.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridServices.Appearance.Empty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridServices.Appearance.Empty.Options.UseBackColor = true;
+            this.gridServices.Appearance.Empty.Options.UseBorderColor = true;
+            this.gridServices.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridServices.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridServices.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridServices.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridServices.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridServices.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridServices.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridServices.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridServices.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridServices.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridServices.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridServices.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.gridServices.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridServices.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridServices.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridServices.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
+            this.gridServices.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridServices.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridServices.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridServices.Appearance.Row.Options.UseBackColor = true;
+            this.gridServices.Appearance.Row.Options.UseBorderColor = true;
+            this.gridServices.Appearance.Row.Options.UseFont = true;
+            this.gridServices.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridServices.Appearance.ViewCaption.Options.UseFont = true;
+            this.gridServices.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridServices.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridServices.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridServices.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridServices.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridServices.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridServices.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
+            this.gridServices.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridServices.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridServices.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridServices.AppearancePrint.Row.Options.UseFont = true;
+            this.gridServices.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridServices.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.gridServices.GridControl = this.gridController;
+            this.gridServices.Name = "gridServices";
+            this.gridServices.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridServices.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridServices.OptionsBehavior.Editable = false;
+            this.gridServices.OptionsCustomization.AllowRowSizing = true;
+            this.gridServices.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridServices.OptionsSelection.MultiSelect = true;
+            this.gridServices.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridServices.OptionsView.RowAutoHeight = true;
+            this.gridServices.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridServices.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridProfile_FocusedRowChanged);
             // 
             // gridView2
             // 
@@ -924,8 +926,9 @@
             // tabImage
             // 
             this.tabImage.Controls.Add(this.groupControl1);
+            this.tabImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tabImage.ImageOptions.Image")));
             this.tabImage.Name = "tabImage";
-            this.tabImage.Size = new System.Drawing.Size(1106, 739);
+            this.tabImage.Size = new System.Drawing.Size(1106, 736);
             this.tabImage.Text = "Service Image Details";
             // 
             // groupControl1
@@ -958,7 +961,7 @@
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1106, 739);
+            this.groupControl1.Size = new System.Drawing.Size(1106, 736);
             this.groupControl1.TabIndex = 174;
             // 
             // label14
@@ -1487,7 +1490,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
             this.gbCON.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridController)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridServices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).EndInit();
@@ -1553,7 +1556,7 @@
         private System.Windows.Forms.TextBox txtServiceName;
         private DevExpress.XtraEditors.GroupControl gbCON;
         private DevExpress.XtraGrid.GridControl gridController;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridInventory;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridServices;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraGrid.Views.Grid.GridView grdHIS;
