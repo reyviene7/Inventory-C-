@@ -285,7 +285,7 @@
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
-        public const string getLastProfileIdQuery = "SELECT COUNT(employee_id) as employee_id FROM employees";
+        public const string getLastProfileIdQuery = "SELECT COUNT(profile_id) as profile_id FROM profile";
         public const string getLastContactIdQuery = "SELECT COUNT(contact_id) as contact_id FROM contact";
         public const string getLastAddressIdQuery = "SELECT COUNT(address_id) as address_id FROM address";
         public const string getLastServiceIdQuery = "SELECT COUNT(service_id) as service_id FROM services";

@@ -16,6 +16,7 @@ namespace Inventory.MainForm
     {
         private FirmMain _main;
         private bool _add, _edt, _del;
+        private readonly int _userId;
         private ViewProfile _profile;
         private IEnumerable<ViewProfile> _profileList;
         public FirmMain Main
@@ -24,9 +25,10 @@ namespace Inventory.MainForm
 
             set { _main = value; }
         }
-        public FrmRegistration()
+        public FrmRegistration(int userId)
         {
             InitializeComponent();
+            _userId = userId;
         }
         private void FrmRegistration_Load(object sender, EventArgs e)
         {
@@ -38,6 +40,9 @@ namespace Inventory.MainForm
             RightOptions.Start();
             _profileList = EnumerableUtils.getProfileList();
             bindProfileList();
+            _add = false;
+            _edt = false;
+            _del = false;
         }
         private void Options_Tick(object sender, EventArgs e)
         {
@@ -117,15 +122,21 @@ namespace Inventory.MainForm
         }
         private void buttonSave()
         {
-            addProfile();
-            if (_add && _edt == false && _del == false)
+            
+            if (_add && !_edt && !_del)
             {
+                splashManager.ShowWaitForm();
+                addProfile();
                 ButtonSav();
                 disabledProfile();
                 grayProfile();
+                grayContact();
+                grayAddress();
+                clearAddress();
+                clearContact();
                 clearProfile();
             }
-            if (_add == false && _edt && _del == false)
+            if (!_add && _edt && !_del)
             {
                 updateProfile();
                 ButtonSav();
@@ -133,7 +144,7 @@ namespace Inventory.MainForm
                 grayProfile();
                 clearProfile();
             }
-            if (_add == false && _edt == false && _del)
+            if (!_add && !_edt && _del)
             {
                 deleteProfile();
                 ButtonSav();
@@ -145,8 +156,8 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             xtraControl.SelectedTabPage = xtraProfile;
-            bindProfileList();
             gridCtlProfile.Enabled = true;
+            bindProfileList();
         }
 
         private void buttonClear()
@@ -160,6 +171,9 @@ namespace Inventory.MainForm
 
         private void buttonCancel()
         {
+            _add = false;
+            _edt = false;
+            _del = false;
             ButtonCan();
             disabledProfile();
             grayProfile();
@@ -506,10 +520,10 @@ namespace Inventory.MainForm
                 date_register = dkpContactDateReg.Value.Date
             };
             var contactResult = RepositoryEntity.AddEntity<Contact>(contact);
-            Thread.Sleep(1000);
+            Thread.Sleep(50);
             var profile = new Profile()
             {
-                profile_code = lblEmpCode.Text.Trim(),
+                profile_code = txtBarcode.Text.Trim(' '),
                 first_name = txtFirstName.Text.Trim(),
                 last_name = txtLastName.Text.Trim(),
                 middle_initial = txtMiddleInitial.Text.Trim(),
@@ -524,9 +538,20 @@ namespace Inventory.MainForm
                 department_id = 1,
                 hire_date = dkpDateHired.Value.Date,
                 date_register = dkpDateRegistered.Value.Date,
-                user_id = 1
+                user_id = _userId
             };
             var profileResult = RepositoryEntity.AddEntity<Profile>(profile);
+            var profileCode = txtBarcode.Text.Trim(' ');
+            if (profileResult > 0 && profileCode.Length > 0)
+            {
+                splashManager.CloseWaitForm();
+                PopupNotification.PopUpMessages(1, "Profile barcode:" + profileCode + " successfully added!", "ADD PROFILE");
+                _profileList = EnumerableUtils.getProfileList();
+            }
+            else {
+                splashManager.CloseWaitForm();
+                PopupNotification.PopUpMessages(0, "Profile barcode:" + profileCode + " was not added to profile!", "INSERT FAILED");
+            }
         }
 
         private void updateProfile()
@@ -822,7 +847,6 @@ namespace Inventory.MainForm
         private void xtraControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             if (e.Page == xtraContact) {
-               
                 bindContact();
                 enableContact();
                 whiteContact();
@@ -836,7 +860,6 @@ namespace Inventory.MainForm
             }
             if(e.Page == xtraProfile)
             {
-              
                 enabledProfile();
                 disabledContact();
                 disabledAddress();
@@ -863,14 +886,11 @@ namespace Inventory.MainForm
             try
             {
                 gridCtlProfile.DataBindings.Clear();
-
                 var list = _profileList.Select(p => new
                 {
                     Id = p.profile_id,
                     Code = p.profile_code,
-                    LName = p.last_name,
-                    FName = p.first_name,
-                    Mid = p.middle_initial,
+                    Name = p.first_name + " " + p.middle_initial + " " + p.last_name,
                     Sex = p.gender,
                     DOB = p.birthdate,
                     Status = p.civil_status,
@@ -882,9 +902,9 @@ namespace Inventory.MainForm
                     SSS = p.sss_number,
                     PH = p.phil_health,
                     Pos = p.position,
-                    Dept = p.department_name,
                     Hire = p.hire_date,
-                    Reg = p.date_register
+                    Reg = p.date_register,
+                    Dept = p.department_name
                 }).ToList();
                 gridCtlProfile.DataSource = list;
             }
@@ -898,50 +918,55 @@ namespace Inventory.MainForm
         private void bindContact()
         {
             var profileId = txtProfileID.Text.Trim(' ');
-            _profile = _profileList.FirstOrDefault(p => p.profile_id == int.Parse(profileId));
-            if (_profile != null)
+            if (!_add && !_edt && !_del)
             {
-                gridControlContact.DataSource = null;
-                gridControlContact.DataSource = "";
-                gridContact.Columns.Clear();
-                var list = EnumerableUtils.getContactList(_profile.contact_id).ToList();
-                gridControlContact.DataSource = list.Select(p => new {
-                    Id = p.contact_id,
-                    Barcode = p.contact_code,
-                    Name = p.contact_name,
-                    Position = p.position,
-                    Telephone = p.telephone_number,
-                    MobileNo1 = p.mobile_number,
-                    MobileNo2 = p.mobile_secondary,
-                    EmailAdd = p.email_address,
-                    WebSite = p.web_url,
-                    FaxNo = p.fax_number,
-                    Registered = p.date_register
-                });
-                gridControlContact.Update();
+                _profile = _profileList.FirstOrDefault(p => p.profile_id == int.Parse(profileId));
+                if (_profile != null)
+                {
+                    gridControlContact.DataSource = null;
+                    gridControlContact.DataSource = "";
+                    gridContact.Columns.Clear();
+                    var list = EnumerableUtils.getContactList(_profile.contact_id).ToList();
+                    gridControlContact.DataSource = list.Select(p => new {
+                        Id = p.contact_id,
+                        Barcode = p.contact_code,
+                        Name = p.contact_name,
+                        Position = p.position,
+                        Telephone = p.telephone_number,
+                        MobileNo1 = p.mobile_number,
+                        MobileNo2 = p.mobile_secondary,
+                        EmailAdd = p.email_address,
+                        WebSite = p.web_url,
+                        FaxNo = p.fax_number,
+                        Registered = p.date_register
+                    });
+                    gridControlContact.Update();
+                }
             }
         }
 
         private void bindAddress()
         {
             var profileId = txtProfileID.Text.Trim(' ');
-            _profile = _profileList.FirstOrDefault(p => p.profile_id == int.Parse(profileId));
-            if (_profile != null)
-            {
-                gridControlAddress.DataSource = null;
-                gridControlAddress.DataSource = "";
-                gridAddress.Columns.Clear();
-                var list = EnumerableUtils.getAddressList(_profile.address_id).ToList();
-                gridControlAddress.DataSource = list.Select(p => new {
-                    Id = p.address_id,
-                    Barangay = p.barangay,
-                    Street = p.street,
-                    City = p.city,
-                    Province = p.province,
-                    ZipCode = p.zip_code,
-                    Country = p.country
-                }).ToList();
-                gridControlAddress.Update();
+            if (!_add && !_edt && !_del) {
+                _profile = _profileList.FirstOrDefault(p => p.profile_id == int.Parse(profileId));
+                if (_profile != null)
+                {
+                    gridControlAddress.DataSource = null;
+                    gridControlAddress.DataSource = "";
+                    gridAddress.Columns.Clear();
+                    var list = EnumerableUtils.getAddressList(_profile.address_id).ToList();
+                    gridControlAddress.DataSource = list.Select(p => new {
+                        Id = p.address_id,
+                        Barangay = p.barangay,
+                        Street = p.street,
+                        City = p.city,
+                        Province = p.province,
+                        ZipCode = p.zip_code,
+                        Country = p.country
+                    }).ToList();
+                    gridControlAddress.Update();
+                }
             }
         }
 
@@ -985,12 +1010,15 @@ namespace Inventory.MainForm
             if (grid.RowCount > 0)
                 try
                 {
-                    var profileIdz = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    txtProfileID.Text = profileIdz;
+                    txtProfileID.Text = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var profileId = txtProfileID.Text.Trim(' ');
+                    if (!_add && !_edt && !_del) {
+                        _profile = _profileList.FirstOrDefault(p => p.profile_id == int.Parse(profileId));
+                        txtFirstName.Text = _profile.first_name;
+                        txtLastName.Text = _profile.last_name;
+                        txtMiddleInitial.Text = _profile.middle_initial;
+                    }
                     txtBarcode.Text = ((GridView)sender).GetFocusedRowCellValue("Code").ToString();
-                    txtFirstName.Text = ((GridView)sender).GetFocusedRowCellValue("FName").ToString();
-                    txtLastName.Text = ((GridView)sender).GetFocusedRowCellValue("LName").ToString();
-                    txtMiddleInitial.Text = ((GridView)sender).GetFocusedRowCellValue("Mid").ToString();
                     cmbgender.Text = ((GridView)sender).GetFocusedRowCellValue("Sex").ToString();
                     dkpBirthdate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DOB");
                     cmbCivilStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status").ToString();
@@ -1005,7 +1033,6 @@ namespace Inventory.MainForm
                     cmbDepartment.Text = ((GridView)sender).GetFocusedRowCellValue("Dept").ToString();
                     dkpDateHired.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Hire");
                     dkpDateRegistered.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Reg");
-                    txtProfileID.Text = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
                 }
                 catch (Exception ex)
                 {

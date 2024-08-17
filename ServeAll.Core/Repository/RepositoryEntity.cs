@@ -18,8 +18,6 @@ namespace ServeAll.Core.Repository
                         unWork.Commit();
                         return result;
                     }
-          
-                
             }
             return 0L;
         }
