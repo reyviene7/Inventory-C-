@@ -40,7 +40,7 @@ namespace Inventory.PopupForm
             }
             else
             {
-                PopupNotification.PopUpMessages(0, "It requires administrator privillege to access warehouse delivery to branches!", Messages.GasulPos);
+                PopupNotification.PopUpMessages(0, "It requires administrator privillege to access warehouse delivery to branches!", Messages.InventorySystem);
                 Close();
             }
         }

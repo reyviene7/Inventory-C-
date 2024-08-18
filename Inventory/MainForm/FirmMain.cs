@@ -151,7 +151,7 @@ namespace Inventory.MainForm
 
         private void pbLogout_Click(object sender, EventArgs e)
         {
-            var que = PopupNotification.PopUpMessageQuestion("Are you sure you want to Logoff?", Messages.GasulPos);
+            var que = PopupNotification.PopUpMessageQuestion("Are you sure you want to Logoff?", Messages.InventorySystem);
             if (que)
             {
                 var log = new FirmLogin();
@@ -346,7 +346,7 @@ namespace Inventory.MainForm
 
         private void tileStaffRegistration_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var view = new FrmRegistration()
+            var view = new FrmRegistration(_userId)
             {
                 Main = this
             };

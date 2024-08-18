@@ -719,7 +719,6 @@ namespace Inventory.MainForm
             if (que != null)
             {
                 txtReturnId.Text = que.return_id.ToString();
-                txtGEN.Text = que.return_code;
                 txtReturnCode.Text = que.return_code;
                 cmbProductName.Text = que.product_code;
                 txtDeliveryNo.Text = que.return_number;
@@ -811,7 +810,7 @@ namespace Inventory.MainForm
         }
         private void xCON_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if(xCON.SelectedTabPage == tabHIS)
+            if(xCON.SelectedTabPage == xtraDelivery)
             {
                 if (_branch > 0)
                 {
@@ -822,11 +821,11 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Please Select branch first!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Please Select branch first!", Messages.InventorySystem);
                 }
                
             }
-            if (xCON.SelectedTabPage == tabINV)
+            if (xCON.SelectedTabPage == xtraReturn)
             {
                 ShowBranch();
             }
@@ -994,7 +993,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Item name must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Item name must not be empty!", Messages.InventorySystem);
                     cmbProductName.BackColor = Color.Yellow;
                     cmbProductName.Focus();
                 }
@@ -1018,7 +1017,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Return Delivery No must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Return Delivery No must not be empty!", Messages.InventorySystem);
                     txtDeliveryNo.BackColor = Color.Yellow;
                     txtDeliveryNo.Focus();
                 }
@@ -1072,7 +1071,7 @@ namespace Inventory.MainForm
                     }
                     else
                     {
-                        PopupNotification.PopUpMessages(0, "Return item quantity must not be greater than item number in Inventory!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(0, "Return item quantity must not be greater than item number in Inventory!", Messages.InventorySystem);
                         txtReturnQty.Focus();
                         txtReturnQty.BackColor = Color.Yellow;
                     }
@@ -1139,7 +1138,7 @@ namespace Inventory.MainForm
                 {
                     var item = new ReturnWareHouse
                     {
-                        ReturnCode = txtGEN.Text.Trim(' '),
+                        ReturnCode = "",
                         ProductId = GetProductId(cmbProductName.Text),
                         ReturnNo = txtDeliveryNo.Text.Trim(' '),
                         ReturnQty = decimal.Parse(txtReturnQty.Text),
@@ -1159,7 +1158,7 @@ namespace Inventory.MainForm
                     {
                         retWET.CloseWaitForm();
                         unWork.Commit();
-                        PopupNotification.PopUpMessages(1,"Return Delivery No: "+txtDeliveryNo.Text.Trim(' ')+" successfully return to Warehouse!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(1,"Return Delivery No: "+txtDeliveryNo.Text.Trim(' ')+" successfully return to Warehouse!", Messages.InventorySystem);
                     }
                     else
                     {
@@ -1182,7 +1181,7 @@ namespace Inventory.MainForm
                 {
                     retWET.ShowWaitForm();
                     var returnId = int.Parse(txtReturnId.Text);
-                    var returnCd = txtGEN.Text.Trim(' ');
+                    var returnCd = "";
                     var prodctId = GetProductId(cmbProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);
@@ -1209,7 +1208,7 @@ namespace Inventory.MainForm
                     if (result > 0)
                     {
                         retWET.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Item: "+cmbProductName.Text.Trim(' ')+" successfully return to Warehouse!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(1, "Item: "+cmbProductName.Text.Trim(' ')+" successfully return to Warehouse!", Messages.InventorySystem);
                     }
                 }
                 catch (Exception e)
@@ -1229,7 +1228,7 @@ namespace Inventory.MainForm
                     retWET.ShowWaitForm();
                     unWork.Begin();
                     var returnId = int.Parse(txtReturnId.Text);
-                    var returnCd = txtGEN.Text.Trim(' ');
+                    var returnCd = "";
                     var prodctId = GetProductId(cmbProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);
@@ -1257,7 +1256,7 @@ namespace Inventory.MainForm
                         retWET.CloseWaitForm();
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
-                            "Item: " + cmbProductName.Text.Trim(' ') + " successfully updated to Warehouse!", Messages.GasulPos);
+                            "Item: " + cmbProductName.Text.Trim(' ') + " successfully updated to Warehouse!", Messages.InventorySystem);
                     }
                     else
                     {
@@ -1281,7 +1280,7 @@ namespace Inventory.MainForm
                 {
                     retWET.ShowWaitForm();
                     var returnId = int.Parse(txtReturnId.Text);
-                    var returnCd = txtGEN.Text.Trim(' ');
+                    var returnCd = "";
                     var prodctId = GetProductId(cmbProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);
@@ -1307,7 +1306,7 @@ namespace Inventory.MainForm
                     if (result > 0)
                     {
                         retWET.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Item: " + cmbProductName.Text.Trim(' ') + " successfully updated!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(1, "Item: " + cmbProductName.Text.Trim(' ') + " successfully updated!", Messages.InventorySystem);
                     }
                 }
                 catch (Exception e)
@@ -1335,7 +1334,7 @@ namespace Inventory.MainForm
                         retWET.CloseWaitForm();
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
-                            "Item: " + cmbProductName.Text.Trim(' ') + " successfully deleted!", Messages.GasulPos);
+                            "Item: " + cmbProductName.Text.Trim(' ') + " successfully deleted!", Messages.InventorySystem);
                     }
                     else
                     {
@@ -1368,7 +1367,7 @@ namespace Inventory.MainForm
                     if (result > 0)
                     {
                         retWET.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Item: " + cmbProductName.Text.Trim(' ') + " successfully deleted!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(1, "Item: " + cmbProductName.Text.Trim(' ') + " successfully deleted!", Messages.InventorySystem);
                     }
                 }
                 catch (Exception e)

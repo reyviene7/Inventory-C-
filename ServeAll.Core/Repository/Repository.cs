@@ -20,7 +20,6 @@ namespace ServeAll.Core.Repository
             _iunitofworks = iunitofworks;
         }
 
-
         public IQueryable<T> All(string query)
         {
           return (IQueryable<T>) _iunitofworks.Connection.Query<T>(query, null, _iunitofworks.Transaction);
@@ -339,7 +338,9 @@ namespace ServeAll.Core.Repository
             return param.Get<int>(StoredProcedure.ReturnResult);
         }
 
-        public int ExecuteReturnWarehouse(string procName, string inReturnId, int returnId, string inReturnCd, string returnCd,
+        public int ExecuteReturnWarehouse(
+            string procName, 
+            string inReturnId, int returnId, string inReturnCd, string returnCd,
             string inProdctId, int productId, string inReturnNo, string returnNo, string inReturnQt, decimal returnQty,
             string inBranchId, int branchId, string inDestines, int destination, string inRetrnDet, DateTime returnDate,
             string inRefeDate, DateTime referDate, string inStatusId, int statusId, string inRermarks, string remarks,

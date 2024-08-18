@@ -1019,7 +1019,7 @@ namespace Inventory.MainForm
             }
             else
             {
-                PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.GasulPos);
+                PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.InventorySystem);
                 cmbProductName.BackColor = Color.Yellow;
                 cmbProductName.Focus();
             }
@@ -1178,6 +1178,11 @@ namespace Inventory.MainForm
         private void Options_Tick(object sender, EventArgs e)
         {
             PanelInterface.OptionTick(this, pnlOptions);
+        }
+
+        private void groupImage_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void cmbSAT_KeyDown(object sender, KeyEventArgs e)

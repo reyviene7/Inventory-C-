@@ -587,7 +587,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Product status must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Product status must not be empty!", Messages.InventorySystem);
                     cmbProductStatus.Focus();
                     cmbProductStatus.BackColor = Color.Yellow;
                 }
@@ -845,7 +845,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.InventorySystem);
                     cmbProductName.BackColor = Color.Yellow;
                     cmbProductName.Focus();
                 }
@@ -870,26 +870,7 @@ namespace Inventory.MainForm
 
         private void txtDeliveryNo_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = txtDeliveryNo.Text.Length;
-                if (len > 0)
-                {
-                    var inpt = string.Format(txtDeliveryNo.Text).ToUpper();
-                    txtDeliveryNo.BackColor = Color.White;
-                    txtRecepitNo.Focus();
-                    txtRecepitNo.BackColor = Color.Yellow;
-                    txtDeliveryNo.Text = inpt;
-                }
-                else
-                {
-                    txtDeliveryNo.BackColor = Color.White;
-                    txtDeliveryNo.Text = Constant.DefaultNone;
-                    txtRecepitNo.BackColor = Color.Yellow;
-                    txtRecepitNo.Focus();
-                }
-
-            }
+            
         }
 
         private void txtDeliveryNo_Leave(object sender, EventArgs e)
@@ -901,25 +882,7 @@ namespace Inventory.MainForm
 
         private void txtReceiptNo_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = txtRecepitNo.Text.Length;
-                if (len > 0)
-                {
-                    var inpt = string.Format(txtRecepitNo.Text).ToUpper();
-                    txtRecepitNo.Text = inpt;
-                    txtRecepitNo.BackColor = Color.White;
-                    txtQtyStock.BackColor = Color.Yellow;
-                    txtQtyStock.Focus();
-                }
-                else
-                {
-                    txtRecepitNo.Text = Constant.DefaultNone;
-                    txtRecepitNo.BackColor = Color.White;
-                    txtQtyStock.BackColor = Color.Yellow;
-                    txtQtyStock.Focus();
-                }
-            }
+            
         }
 
         private void txtQtyStock_KeyDown(object sender, KeyEventArgs e)
@@ -1074,7 +1037,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Product status must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Product status must not be empty!", Messages.InventorySystem);
                     cmbProductStatus.Focus();
                     cmbProductStatus.BackColor = Color.Yellow;
                 }
@@ -1108,7 +1071,7 @@ namespace Inventory.MainForm
                 {
                     txtProductBarcode.BackColor = Color.Yellow;
                     txtProductBarcode.Focus();
-                    PopupNotification.PopUpMessages(0, "Product Barcode must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Product Barcode must not be empty!", Messages.InventorySystem);
                 }
 
             }

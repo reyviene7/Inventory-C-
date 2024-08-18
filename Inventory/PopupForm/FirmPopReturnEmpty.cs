@@ -83,7 +83,7 @@ namespace Inventory.PopupForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Return No must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Return No must not be empty!", Messages.InventorySystem);
                     txtRET.BackColor = Color.Yellow;
                     txtRET.Focus();
                 }
@@ -99,7 +99,7 @@ namespace Inventory.PopupForm
                 var verify = VerifyReturnNo(value);
                 if (verify > 0)
                 {
-                    PopupNotification.PopUpMessages(0, "Return No: " + value + " already exist!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Return No: " + value + " already exist!", Messages.InventorySystem);
                     txtRET.BackColor = Color.Yellow;
                     txtRET.Focus();
                 }
@@ -193,7 +193,7 @@ namespace Inventory.PopupForm
                     {
                         retWET.CloseWaitForm();
                         unWork.Commit();
-                        PopupNotification.PopUpMessages(1, "Return Delivery No: " + txtRET.Text.Trim(' ') + " successfully return to Warehouse!", Messages.GasulPos);
+                        PopupNotification.PopUpMessages(1, "Return Delivery No: " + txtRET.Text.Trim(' ') + " successfully return to Warehouse!", Messages.InventorySystem);
                     }
                     else
                     {
@@ -321,7 +321,7 @@ namespace Inventory.PopupForm
             }
             else
             {
-                PopupNotification.PopUpMessages(0, "Product Name must not be empty!", Messages.GasulPos);
+                PopupNotification.PopUpMessages(0, "Product Name must not be empty!", Messages.InventorySystem);
                 cmbNAM.Focus();
             }
         }

@@ -175,6 +175,7 @@
         public const string AllItemFromDepots = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE Name LIKE '%LPG%'";
         public const string AllViewProducts = "SELECT * FROM view_product ORDER BY product_id DESC";
         public const string AllViewServiceImages = "SELECT * FROM view_service_images ORDER BY image_id DESC";
+        public const string AllViewProfileImages = @"SELECT * FROM profile_image ORDER BY image_id DESC";
         public const string AllProductWarehouse = @"SELECT * FROM view_request_product";
         public const string AllQuantityWarehouse = @"SELECT * FROM view_request_quantity";
         public const string AllSupplierWarehouse = @"SELECT * FROM view_request_supplier";
@@ -287,7 +288,8 @@
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
-        public const string getLastProfileIdQuery = "SELECT COUNT(employee_id) as employee_id FROM employees";
+        public const string getLastProfileIdQuery = "SELECT COUNT(profile_id) as profile_id FROM profile";
+        public const string getLastProfileImgQuery = "SELECT COUNT(image_id) as image_id FROM profile_image";
         public const string getLastContactIdQuery = "SELECT COUNT(contact_id) as contact_id FROM contact";
         public const string getLastAddressIdQuery = "SELECT COUNT(address_id) as address_id FROM address";
         public const string getLastServiceIdQuery = "SELECT COUNT(service_id) as service_id FROM services";
@@ -298,7 +300,8 @@
         public const string getLastWarehouseDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM warehouse_delivery";
         public const string getLastReceiptQuery = "SELECT MAX(receipt_number) AS receipt_number FROM warehouse_delivery";
         public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
-        public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image"; 
+        public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
+        public const string getLastWarehousId = "SELECT COUNT(warehouse_id) as warehouse_id FROM warehouse";
         public const string getLastBranchCodeQuery = "SELECT MAX(branch_code) AS branch_code FROM branch";
         public const string getWarehouseInventory = @"SELECT inventory_id,
                                                         product_code,

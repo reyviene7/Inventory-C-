@@ -169,10 +169,10 @@ namespace Inventory.MainForm
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
-                            imgProduct.ImageLocation = location;
+                            imgInventory.ImageLocation = location;
                         }
                         else
-                            imgProduct.Image = null;
+                            imgInventory.Image = null;
                     }
 
                 }
@@ -458,8 +458,8 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridController.Enabled = false;
-            imgProduct.DataBindings.Clear();
-            imgProduct.Image = null;
+            imgInventory.DataBindings.Clear();
+            imgInventory.Image = null;
             cmbProductName.DataBindings.Clear();
             cmbSupplier.DataBindings.Clear();
             cmbStatus.DataBindings.Clear();
@@ -604,8 +604,8 @@ namespace Inventory.MainForm
             _del = false;
             gridController.Enabled = true;
             cmbProductName.DataBindings.Clear();
-            imgProduct.DataBindings.Clear();
-            imgProduct.Image = null;
+            imgInventory.DataBindings.Clear();
+            imgInventory.Image = null;
            
         }
         private void ButCan()
@@ -616,8 +616,8 @@ namespace Inventory.MainForm
             InputClea();
             gridController.Enabled = true;
             cmbProductName.DataBindings.Clear();
-            imgProduct.DataBindings.Clear();
-            imgProduct.Image = null;
+            imgInventory.DataBindings.Clear();
+            imgInventory.Image = null;
             cmbProductName.Size = new System.Drawing.Size(285, 29);
         }
         private void cmbNAM_KeyDown(object sender, KeyEventArgs e)
@@ -635,7 +635,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.GasulPos);
+                    PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.InventorySystem);
                     cmbProductName.BackColor = Color.Yellow;
                     cmbProductName.Focus();
                 }
@@ -903,10 +903,10 @@ namespace Inventory.MainForm
             {
                 var location = ConstantUtils.defaultImgLocation + imgLocation;
 
-                imgProduct.ImageLocation = location;
+                imgInventory.ImageLocation = location;
             }
             else
-                imgProduct.Image = null;
+                imgInventory.Image = null;
         }
 
         private void txtReorderLevel_KeyDown(object sender, KeyEventArgs e)
