@@ -186,9 +186,8 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            Hide();
             warehouseInventory.Show();
-          
+            Hide();
         }
 
         private void tileWAR_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
