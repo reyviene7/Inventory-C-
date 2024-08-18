@@ -577,7 +577,7 @@ namespace Inventory.MainForm
             var lastId = GetSettings.GetLastBarcode(lastCode);
             var alphaNumeric = new GenerateAlpaNum("D", 3, lastId);
             alphaNumeric.Increment();
-            txtGEN.Text = alphaNumeric.ToString();
+            txtReturnCode.Text = alphaNumeric.ToString();
         }
         private string GetLastReturnId()
         {
