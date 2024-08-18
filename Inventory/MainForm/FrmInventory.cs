@@ -1180,6 +1180,11 @@ namespace Inventory.MainForm
             PanelInterface.OptionTick(this, pnlOptions);
         }
 
+        private void groupImage_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void cmbSAT_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)

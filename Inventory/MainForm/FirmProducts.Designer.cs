@@ -79,7 +79,6 @@
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grdHIS = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.txtPRI = new System.Windows.Forms.TextBox();
-            this.txtPIR = new System.Windows.Forms.TextBox();
             this.pbHide = new System.Windows.Forms.PictureBox();
             this.Options = new System.Windows.Forms.Timer(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
@@ -272,7 +271,6 @@
             this.GbPersonal.Controls.Add(this.label1);
             this.GbPersonal.Controls.Add(this.txtProductBarcode);
             this.GbPersonal.Controls.Add(this.gbCON);
-            this.GbPersonal.Controls.Add(this.txtPIR);
             this.GbPersonal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GbPersonal.Location = new System.Drawing.Point(0, 0);
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
@@ -858,19 +856,6 @@
             this.txtPRI.TabIndex = 99;
             this.txtPRI.Visible = false;
             // 
-            // txtPIR
-            // 
-            this.txtPIR.BackColor = System.Drawing.Color.White;
-            this.txtPIR.Enabled = false;
-            this.txtPIR.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPIR.ForeColor = System.Drawing.Color.Maroon;
-            this.txtPIR.Location = new System.Drawing.Point(-8, 19);
-            this.txtPIR.Multiline = true;
-            this.txtPIR.Name = "txtPIR";
-            this.txtPIR.Size = new System.Drawing.Size(10, 10);
-            this.txtPIR.TabIndex = 109;
-            this.txtPIR.Visible = false;
-            // 
             // pbHide
             // 
             this.pbHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -1432,7 +1417,6 @@
         private System.Windows.Forms.TextBox txtProductBarcode;
         private DevExpress.XtraEditors.GroupControl gbCON;
         private System.Windows.Forms.TextBox txtPRI;
-        private System.Windows.Forms.TextBox txtPIR;
         private System.Windows.Forms.PictureBox pbHide;
         private System.Windows.Forms.Timer Options;
         private System.Windows.Forms.Panel pnlMain;
