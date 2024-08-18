@@ -7,7 +7,7 @@ namespace ServeAll.Core.Entities
     public class ViewSalesPart
     {
         [Key]
-        public int      id { get; set; }
+        public int id { get; set; }
         public string invoice { get; set; }
         public string barcode { get; set; }
         public string item { get; set; }
