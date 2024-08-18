@@ -665,5 +665,24 @@ namespace ServeAll.Core.Utilities
         {
             return Enumerable.Empty<T>();
         }
+        public static IEnumerable<ViewReturnWarehouse> getEnumerableWareHouse(string branch)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewReturnWarehouse>(unWork);
+                    return repository.SelectAll(Query.SelectAllReturnWareHs)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewReturnWarehouse>();
+                }
+            }
+        }
     }
 }

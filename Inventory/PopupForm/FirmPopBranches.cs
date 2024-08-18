@@ -46,18 +46,19 @@ namespace Inventory.PopupForm
         }
         private void bntSVA_Click(object sender, EventArgs e)
         {
-            var len = cmbDIS.Text.Length;
-            if (len > 0)
+            var branch = cmbDIS.Text.Trim(' ');
+            if (branch.Length > 0)
             {
-                var val = cmbDIS.Text.Trim(' ');
+               
                 if (_return)
                 {
-                    var branchId = GetBranchId(val);
-                    ReturnBranch.Branch = branchId;
+                    var branchId = GetBranchId(branch);
+                    ReturnBranch.BranchId = branchId;
+                    ReturnBranch.branch = branch;
                 }
                 else
                 {
-                    Main.DeliveryBranches = val;
+                    Main.DeliveryBranches = branch;
                 }
                 Close();
             }

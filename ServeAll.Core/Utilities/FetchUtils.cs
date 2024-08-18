@@ -437,6 +437,25 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static int getProductStatus(string input)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ProductStatus>(unWork);
+                    var query = repository.FindBy(x => x.status == input);
+                    return query.status_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
 
         public static int getStatusId(string status)
         {
@@ -672,6 +691,41 @@ namespace ServeAll.Core.Utilities
                     Console.WriteLine(ex.Message);
                     return "";
                 }
+            }
+        }
+        public static ViewReturnWarehouse getShowReturn(int returnId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewReturnWarehouse>(unWork);
+                    return repository.FindBy(x => x.return_id == returnId);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null; // Return null if an exception occurs
+                }
+            }
+        }
+        public static ViewInventory getShowEntity(int inventoryId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewInventory>(unWork);
+                    return repository.FindBy(x => x.inventory_id == inventoryId);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+
             }
         }
         public static int GetLastId()
