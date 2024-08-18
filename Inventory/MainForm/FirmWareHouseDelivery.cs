@@ -27,6 +27,7 @@ namespace Inventory.MainForm
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewImageProduct> imgList;
+        private int previousDelQty = 0;
         public FirmMain Main
         {
             get { return _main; }
@@ -612,7 +613,6 @@ namespace Inventory.MainForm
         }
         private void txtDelQty_KeyDown(object sender, KeyEventArgs e)
         {
-            var previousDelQty = 0;
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 var warehouseDelItem = int.Parse(txtDelRemainQty.Text);
@@ -640,6 +640,8 @@ namespace Inventory.MainForm
                 previousDelQty = int.Parse(txtDelQty.Text); 
             }
         }
+
+
         private void cmbDelProductStatus_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -978,96 +980,108 @@ namespace Inventory.MainForm
 
         private void UpdateDelivery()
         {
+            var deliveryId = int.Parse(txtDelWarehouseId.Text.Trim());
             int warehouseQty = int.Parse(txtDelRemainQty.Text);
-            int deliveryQty = int.Parse(txtDelQty.Text);
-            var deliveryId = int.Parse(txtDelWarehouseId.Text);
-            if (deliveryQty > 0)
+            int deliveryQty = int.Parse(txtDelQty.Text.Trim());
+            var warehouseId = FetchUtils.getWarehouseId(cmbDelWarehouseCode.Text);
+            var productId = FetchUtils.getProductIdBarcode(txtDelProduct.Text.Trim());
+            int qtyDifference = 0;
+            if (deliveryId > 0)
             {
                 splashDelivery.ShowWaitForm();
-                using (var session = new DalSession())
-                {
-                    var unWork = session.UnitofWrk;
 
-                    unWork.Begin();
-                    var repository = new Repository<WarehouseDelivery>(unWork);
-                    var que = repository.FindBy(x => x.delivery_id == deliveryId);
-                    int oldDeliveryQty = que.delivery_qty;
-                    int qtyDifference = deliveryQty - oldDeliveryQty;
-                    que.delivery_code = txtDelWarehouseCode.Text;
-                    que.product_id = FetchUtils.getProductIdBarcode(txtDelProduct.Text);
-                    que.warehouse_id = FetchUtils.getWarehouseId(cmbDelWarehouseCode.Text);
-                    que.last_cost_per_unit = decimal.Parse(txtDelLastCost.Text);
-                    que.receipt_number = txtDelReceipt.Text.Trim();
-                    que.inventory_id = que.inventory_id;
-                    que.branch_id = FetchUtils.getBranchId(cmbDelBranch.Text);
-                    que.status_id = FetchUtils.getStatusId(cmbDelProductStatus.Text);
-                    que.user_id = _userId;
-                    que.item_price = decimal.Parse(txtDelItemPrice.Text);
-                    que.delivery_qty = deliveryQty;
-                    que.delivery_status_id = FetchUtils.getDeliveryStatus(cmbDelDeliveryStatus.Text);
-                    que.remarks = txtDelRemarks.Text.Trim();
-                    que.delivery_date = dkpDeliveryDate.Value.Date;
-                    que.update_on = DateTime.Now;
-
-                    var result = repository.Update(que);
-                    if (result)
+                    int deliveryResult = RepositoryEntity.UpdateEntity<WarehouseDelivery>(deliveryId, entity =>
                     {
-                        var quantityRepo = new Repository<RequestQuantity>(unWork);
-                        var requestQuantity = quantityRepo.FindBy(x => x.inventory_id == que.inventory_id);
-                        if (requestQuantity != null)
+                        int oldDeliveryQty = entity.delivery_qty;
+                        qtyDifference = deliveryQty - oldDeliveryQty;
+
+                        entity.delivery_code = txtDelWarehouseCode.Text.Trim();
+                        entity.product_id = productId;
+                        entity.warehouse_id = warehouseId;
+                        entity.last_cost_per_unit = decimal.Parse(txtDelLastCost.Text.Trim());
+                        entity.receipt_number = txtDelReceipt.Text.Trim();
+                        // Keep the same inventory ID
+                        entity.inventory_id = entity.inventory_id;
+                        entity.branch_id = FetchUtils.getBranchId(cmbDelBranch.Text.Trim());
+                        entity.status_id = FetchUtils.getStatusId(cmbDelProductStatus.Text.Trim());
+                        entity.user_id = _userId;
+                        entity.item_price = decimal.Parse(txtDelItemPrice.Text.Trim());
+                        entity.delivery_qty = deliveryQty;
+                        entity.delivery_status_id = FetchUtils.getDeliveryStatus(cmbDelDeliveryStatus.Text.Trim());
+                        entity.remarks = txtDelRemarks.Text.Trim();
+                        entity.delivery_date = dkpDeliveryDate.Value.Date;
+                        entity.update_on = DateTime.Now;
+                    });
+                    if (deliveryResult > 0)
+                    {
+                    
+                    // Update the request quantity in stock
+                    var inventoryResult = RepositoryEntity.UpdateEntity<WarehouseDelivery>(deliveryId, entity =>
+                    {
+                        var inventoryId = entity.inventory_id; 
+                        var quantityResult = RepositoryEntity.UpdateEntity<RequestQuantity>(inventoryId, reqEntity =>
                         {
-                            requestQuantity.quantity_in_stock -= qtyDifference;
-                            quantityRepo.Update(requestQuantity);
-                        }
-                        splashDelivery.CloseWaitForm();
-                        unWork.Commit();
-                        PopupNotification.PopUpMessages(1, "Delivery Id: " + deliveryId + " successfully Updated!",
-                            Messages.InventorySystem);
-                    }
-                    else
+                            reqEntity.quantity_in_stock -= qtyDifference; // Make sure this property exists
+                            splashDelivery.CloseWaitForm();
+                            PopupNotification.PopUpMessages(1, "Delivery ID: " + deliveryId + " successfully updated!", "UPDATE DELIVERY");
+                            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+                            BindWareHouse();
+                        });
+                    });
+                    if (inventoryResult == 0)
                     {
                         splashDelivery.CloseWaitForm();
-                        unWork.Rollback();
-                        PopupNotification.PopUpMessages(0, "Failed to update delivery.", "Error");
+                        PopupNotification.PopUpMessages(0, "Failed to retrieve inventory.", "UPDATE FAILED");
                     }
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Failed to update delivery.", "UPDATE FAILED");
                 }
             }
         }
+
 
         private void DeleteData()
         {
-            using (var session = new DalSession())
+            var deliveryId = Convert.ToInt32(txtDelWarehouseId.Text.Trim());
+
+            if (deliveryId > 0)
             {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
+                splashDelivery.ShowWaitForm();
+
+                // Use the DeleteEntity method
+                int deleteResult = RepositoryEntity.DeleteEntity<WarehouseDelivery>(deliveryId, entity =>
                 {
-                    splashDelivery.ShowWaitForm();
-                    var deliverId = Convert.ToInt32(txtDelWarehouseId.Text);
-                    var repository = new Repository<WarehouseDelivery>(unWork);
-                    var que = repository.Id(deliverId);
-                    var result = repository.Delete(que);
-                    if (result)
+                    // Add back the delivery quantity to the inventory
+                    int? inventoryId = entity.inventory_id;
+                    if (inventoryId.HasValue)
                     {
-                        splashDelivery.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1,
-                            "Delivery Id: " + txtDelWarehouseId.Text.Trim(' ') + " successfully Deleted!" + Messages.SuccessDelete,
-                            Messages.TitleSuccessDelete);
-                        unWork.Commit();
-                        _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
-                        BindDeliveryList();
+                        RepositoryEntity.UpdateEntity<RequestQuantity>(inventoryId.Value, qtyEntity =>
+                        {
+                            qtyEntity.quantity_in_stock += entity.delivery_qty;
+                        });
                     }
-                    else
-                    {
-                        splashDelivery.CloseWaitForm();
-                    }
+                });
+
+                if (deleteResult > 0)
+                {
+                    splashDelivery.CloseWaitForm();
+                    PopupNotification.PopUpMessages(1,
+                        "Delivery ID: " + deliveryId + " successfully deleted!",
+                        Messages.TitleSuccessDelete);
+
+                    // Refresh the delivery list
+                    _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+                    BindDeliveryList();
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine(ex.Message);
-                    unWork.Rollback();
+                    splashDelivery.CloseWaitForm();
+                    PopupNotification.PopUpMessages(0, "Failed to delete delivery.", "DELETE FAILED");
                 }
             }
         }
+
     }
 }
