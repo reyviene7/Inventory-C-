@@ -719,7 +719,6 @@ namespace Inventory.MainForm
             if (que != null)
             {
                 txtReturnId.Text = que.return_id.ToString();
-                txtGEN.Text = que.return_code;
                 txtReturnCode.Text = que.return_code;
                 cmbProductName.Text = que.product_code;
                 txtDeliveryNo.Text = que.return_number;
@@ -811,7 +810,7 @@ namespace Inventory.MainForm
         }
         private void xCON_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if(xCON.SelectedTabPage == tabHIS)
+            if(xCON.SelectedTabPage == xtraDelivery)
             {
                 if (_branch > 0)
                 {
@@ -826,7 +825,7 @@ namespace Inventory.MainForm
                 }
                
             }
-            if (xCON.SelectedTabPage == tabINV)
+            if (xCON.SelectedTabPage == xtraReturn)
             {
                 ShowBranch();
             }
@@ -1139,7 +1138,7 @@ namespace Inventory.MainForm
                 {
                     var item = new ReturnWareHouse
                     {
-                        ReturnCode = txtGEN.Text.Trim(' '),
+                        ReturnCode = "",
                         ProductId = GetProductId(cmbProductName.Text),
                         ReturnNo = txtDeliveryNo.Text.Trim(' '),
                         ReturnQty = decimal.Parse(txtReturnQty.Text),
@@ -1182,7 +1181,7 @@ namespace Inventory.MainForm
                 {
                     retWET.ShowWaitForm();
                     var returnId = int.Parse(txtReturnId.Text);
-                    var returnCd = txtGEN.Text.Trim(' ');
+                    var returnCd = "";
                     var prodctId = GetProductId(cmbProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);
@@ -1229,7 +1228,7 @@ namespace Inventory.MainForm
                     retWET.ShowWaitForm();
                     unWork.Begin();
                     var returnId = int.Parse(txtReturnId.Text);
-                    var returnCd = txtGEN.Text.Trim(' ');
+                    var returnCd = "";
                     var prodctId = GetProductId(cmbProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);
@@ -1281,7 +1280,7 @@ namespace Inventory.MainForm
                 {
                     retWET.ShowWaitForm();
                     var returnId = int.Parse(txtReturnId.Text);
-                    var returnCd = txtGEN.Text.Trim(' ');
+                    var returnCd = "";
                     var prodctId = GetProductId(cmbProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);

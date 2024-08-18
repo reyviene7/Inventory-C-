@@ -38,11 +38,8 @@
             this.bntDEL = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.xCON = new DevExpress.XtraTab.XtraTabControl();
-            this.tabINV = new DevExpress.XtraTab.XtraTabPage();
-            this.GbPersonal = new DevExpress.XtraEditors.GroupControl();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblMainTitle = new System.Windows.Forms.Label();
-            this.txtGEN = new System.Windows.Forms.TextBox();
+            this.xtraReturn = new DevExpress.XtraTab.XtraTabPage();
+            this.groupReturnDetails = new DevExpress.XtraEditors.GroupControl();
             this.cmbToBranch = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -66,25 +63,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtReturnCode = new System.Windows.Forms.TextBox();
-            this.gbCON = new DevExpress.XtraEditors.GroupControl();
+            this.groupDetails = new DevExpress.XtraEditors.GroupControl();
             this.gCON = new DevExpress.XtraGrid.GridControl();
             this.gridReturn = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grdHIS = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.txtPRI = new System.Windows.Forms.TextBox();
             this.lblBarcode = new System.Windows.Forms.Label();
             this.txtReturnId = new System.Windows.Forms.TextBox();
-            this.tabHIS = new DevExpress.XtraTab.XtraTabPage();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.label15 = new System.Windows.Forms.Label();
-            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.xtraDelivery = new DevExpress.XtraTab.XtraTabPage();
+            this.groupDeliveryDetails = new DevExpress.XtraEditors.GroupControl();
+            this.groupDelivery = new DevExpress.XtraEditors.GroupControl();
             this.gDEL = new DevExpress.XtraGrid.GridControl();
             this.gridDelivery = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblMainTitle = new System.Windows.Forms.Label();
             this.pnlRightOptions = new System.Windows.Forms.Panel();
             this.pnlRightMain = new System.Windows.Forms.Panel();
             this.pbExit = new System.Windows.Forms.PictureBox();
@@ -107,25 +103,26 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.Options = new System.Windows.Forms.Timer(this.components);
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xCON)).BeginInit();
             this.xCON.SuspendLayout();
-            this.tabINV.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GbPersonal)).BeginInit();
-            this.GbPersonal.SuspendLayout();
+            this.xtraReturn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupReturnDetails)).BeginInit();
+            this.groupReturnDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gbCON)).BeginInit();
-            this.gbCON.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupDetails)).BeginInit();
+            this.groupDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gCON)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReturn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).BeginInit();
-            this.tabHIS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
-            this.groupControl3.SuspendLayout();
+            this.xtraDelivery.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupDeliveryDetails)).BeginInit();
+            this.groupDeliveryDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupDelivery)).BeginInit();
+            this.groupDelivery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gDEL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDelivery)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
@@ -149,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHide)).BeginInit();
             this.pnlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // bntCLR
@@ -163,7 +161,7 @@
             this.bntCLR.Name = "bntCLR";
             this.bntCLR.Size = new System.Drawing.Size(91, 104);
             this.bntCLR.TabIndex = 124;
-            this.bntCLR.Text = "LPG";
+            this.bntCLR.Text = "DATA";
             this.bntCLR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntCLR.UseVisualStyleBackColor = false;
             this.bntCLR.Click += new System.EventHandler(this.bntCLR_Click);
@@ -253,9 +251,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(40, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(40, 16);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 159);
+            this.pictureBox1.Size = new System.Drawing.Size(111, 143);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 127;
             this.pictureBox1.TabStop = false;
@@ -266,99 +264,62 @@
             this.xCON.Appearance.Options.UseBackColor = true;
             this.xCON.Location = new System.Drawing.Point(197, 8);
             this.xCON.Name = "xCON";
-            this.xCON.SelectedTabPage = this.tabINV;
+            this.xCON.SelectedTabPage = this.xtraReturn;
             this.xCON.Size = new System.Drawing.Size(1136, 779);
             this.xCON.TabIndex = 128;
             this.xCON.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.tabINV,
-            this.tabHIS});
+            this.xtraReturn,
+            this.xtraDelivery});
             this.xCON.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xCON_SelectedPageChanged);
             // 
-            // tabINV
+            // xtraReturn
             // 
-            this.tabINV.Appearance.PageClient.BackColor = System.Drawing.Color.Black;
-            this.tabINV.Appearance.PageClient.Options.UseBackColor = true;
-            this.tabINV.Controls.Add(this.GbPersonal);
-            this.tabINV.Name = "tabINV";
-            this.tabINV.Size = new System.Drawing.Size(1134, 754);
-            this.tabINV.Text = "Stock From Depot";
+            this.xtraReturn.Appearance.PageClient.BackColor = System.Drawing.Color.Black;
+            this.xtraReturn.Appearance.PageClient.Options.UseBackColor = true;
+            this.xtraReturn.Controls.Add(this.groupReturnDetails);
+            this.xtraReturn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraReturn.ImageOptions.Image")));
+            this.xtraReturn.Name = "xtraReturn";
+            this.xtraReturn.Size = new System.Drawing.Size(1134, 751);
+            this.xtraReturn.Text = "Return Stock";
             // 
-            // GbPersonal
+            // groupReturnDetails
             // 
-            this.GbPersonal.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.GbPersonal.Appearance.Options.UseBackColor = true;
-            this.GbPersonal.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.GbPersonal.Controls.Add(this.label10);
-            this.GbPersonal.Controls.Add(this.lblMainTitle);
-            this.GbPersonal.Controls.Add(this.txtGEN);
-            this.GbPersonal.Controls.Add(this.cmbToBranch);
-            this.GbPersonal.Controls.Add(this.label7);
-            this.GbPersonal.Controls.Add(this.label9);
-            this.GbPersonal.Controls.Add(this.txtRemarks);
-            this.GbPersonal.Controls.Add(this.cmbFromBranch);
-            this.GbPersonal.Controls.Add(this.label8);
-            this.GbPersonal.Controls.Add(this.label3);
-            this.GbPersonal.Controls.Add(this.dkpInputDate);
-            this.GbPersonal.Controls.Add(this.txtWarehouseQty);
-            this.GbPersonal.Controls.Add(this.label14);
-            this.GbPersonal.Controls.Add(this.txtReturnQty);
-            this.GbPersonal.Controls.Add(this.label4);
-            this.GbPersonal.Controls.Add(this.cmbProductStatus);
-            this.GbPersonal.Controls.Add(this.cmbProductName);
-            this.GbPersonal.Controls.Add(this.imgPreview);
-            this.GbPersonal.Controls.Add(this.lblHiredate);
-            this.GbPersonal.Controls.Add(this.dkpReturnDelivery);
-            this.GbPersonal.Controls.Add(this.label6);
-            this.GbPersonal.Controls.Add(this.label5);
-            this.GbPersonal.Controls.Add(this.txtDeliveryNo);
-            this.GbPersonal.Controls.Add(this.label2);
-            this.GbPersonal.Controls.Add(this.label1);
-            this.GbPersonal.Controls.Add(this.txtReturnCode);
-            this.GbPersonal.Controls.Add(this.gbCON);
-            this.GbPersonal.Controls.Add(this.lblBarcode);
-            this.GbPersonal.Controls.Add(this.txtReturnId);
-            this.GbPersonal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GbPersonal.Location = new System.Drawing.Point(0, 0);
-            this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
-            this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1134, 754);
-            this.GbPersonal.TabIndex = 173;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Yellow;
-            this.label10.Location = new System.Drawing.Point(6, 18);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(217, 17);
-            this.label10.TabIndex = 247;
-            this.label10.Text = "NOTE: RETURN EMPTY = F2 and R";
-            // 
-            // lblMainTitle
-            // 
-            this.lblMainTitle.AutoSize = true;
-            this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(300, 7);
-            this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(330, 47);
-            this.lblMainTitle.TabIndex = 246;
-            this.lblMainTitle.Text = "WareHouse Return";
-            // 
-            // txtGEN
-            // 
-            this.txtGEN.BackColor = System.Drawing.Color.DimGray;
-            this.txtGEN.Enabled = false;
-            this.txtGEN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGEN.ForeColor = System.Drawing.Color.Maroon;
-            this.txtGEN.Location = new System.Drawing.Point(429, 12);
-            this.txtGEN.Multiline = true;
-            this.txtGEN.Name = "txtGEN";
-            this.txtGEN.Size = new System.Drawing.Size(37, 29);
-            this.txtGEN.TabIndex = 245;
+            this.groupReturnDetails.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupReturnDetails.Appearance.Options.UseBackColor = true;
+            this.groupReturnDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupReturnDetails.Controls.Add(this.cmbToBranch);
+            this.groupReturnDetails.Controls.Add(this.label7);
+            this.groupReturnDetails.Controls.Add(this.label9);
+            this.groupReturnDetails.Controls.Add(this.txtRemarks);
+            this.groupReturnDetails.Controls.Add(this.cmbFromBranch);
+            this.groupReturnDetails.Controls.Add(this.label8);
+            this.groupReturnDetails.Controls.Add(this.label3);
+            this.groupReturnDetails.Controls.Add(this.dkpInputDate);
+            this.groupReturnDetails.Controls.Add(this.txtWarehouseQty);
+            this.groupReturnDetails.Controls.Add(this.label14);
+            this.groupReturnDetails.Controls.Add(this.txtReturnQty);
+            this.groupReturnDetails.Controls.Add(this.label4);
+            this.groupReturnDetails.Controls.Add(this.cmbProductStatus);
+            this.groupReturnDetails.Controls.Add(this.cmbProductName);
+            this.groupReturnDetails.Controls.Add(this.imgPreview);
+            this.groupReturnDetails.Controls.Add(this.lblHiredate);
+            this.groupReturnDetails.Controls.Add(this.dkpReturnDelivery);
+            this.groupReturnDetails.Controls.Add(this.label6);
+            this.groupReturnDetails.Controls.Add(this.label5);
+            this.groupReturnDetails.Controls.Add(this.txtDeliveryNo);
+            this.groupReturnDetails.Controls.Add(this.label2);
+            this.groupReturnDetails.Controls.Add(this.label1);
+            this.groupReturnDetails.Controls.Add(this.txtReturnCode);
+            this.groupReturnDetails.Controls.Add(this.groupDetails);
+            this.groupReturnDetails.Controls.Add(this.lblBarcode);
+            this.groupReturnDetails.Controls.Add(this.txtReturnId);
+            this.groupReturnDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupReturnDetails.Location = new System.Drawing.Point(0, 0);
+            this.groupReturnDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupReturnDetails.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupReturnDetails.Name = "groupReturnDetails";
+            this.groupReturnDetails.Size = new System.Drawing.Size(1134, 751);
+            this.groupReturnDetails.TabIndex = 173;
             // 
             // cmbToBranch
             // 
@@ -369,7 +330,7 @@
             this.cmbToBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbToBranch.ForeColor = System.Drawing.Color.Maroon;
             this.cmbToBranch.FormattingEnabled = true;
-            this.cmbToBranch.Location = new System.Drawing.Point(529, 87);
+            this.cmbToBranch.Location = new System.Drawing.Point(135, 233);
             this.cmbToBranch.Name = "cmbToBranch";
             this.cmbToBranch.Size = new System.Drawing.Size(269, 29);
             this.cmbToBranch.TabIndex = 243;
@@ -380,7 +341,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(414, 93);
+            this.label7.Location = new System.Drawing.Point(20, 239);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 17);
             this.label7.TabIndex = 244;
@@ -392,7 +353,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(414, 214);
+            this.label9.Location = new System.Drawing.Point(431, 58);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 17);
             this.label9.TabIndex = 242;
@@ -404,7 +365,7 @@
             this.txtRemarks.Enabled = false;
             this.txtRemarks.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRemarks.ForeColor = System.Drawing.Color.Maroon;
-            this.txtRemarks.Location = new System.Drawing.Point(529, 208);
+            this.txtRemarks.Location = new System.Drawing.Point(546, 52);
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(269, 29);
             this.txtRemarks.TabIndex = 11;
@@ -419,7 +380,7 @@
             this.cmbFromBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFromBranch.ForeColor = System.Drawing.Color.Maroon;
             this.cmbFromBranch.FormattingEnabled = true;
-            this.cmbFromBranch.Location = new System.Drawing.Point(529, 57);
+            this.cmbFromBranch.Location = new System.Drawing.Point(135, 203);
             this.cmbFromBranch.Name = "cmbFromBranch";
             this.cmbFromBranch.Size = new System.Drawing.Size(269, 29);
             this.cmbFromBranch.TabIndex = 7;
@@ -430,7 +391,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(414, 63);
+            this.label8.Location = new System.Drawing.Point(20, 209);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 17);
             this.label8.TabIndex = 240;
@@ -442,7 +403,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(414, 157);
+            this.label3.Location = new System.Drawing.Point(431, 122);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 17);
             this.label3.TabIndex = 236;
@@ -454,7 +415,7 @@
             this.dkpInputDate.Enabled = false;
             this.dkpInputDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpInputDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpInputDate.Location = new System.Drawing.Point(529, 148);
+            this.dkpInputDate.Location = new System.Drawing.Point(546, 113);
             this.dkpInputDate.Name = "dkpInputDate";
             this.dkpInputDate.Size = new System.Drawing.Size(269, 29);
             this.dkpInputDate.TabIndex = 9;
@@ -466,7 +427,7 @@
             this.txtWarehouseQty.Enabled = false;
             this.txtWarehouseQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWarehouseQty.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWarehouseQty.Location = new System.Drawing.Point(121, 177);
+            this.txtWarehouseQty.Location = new System.Drawing.Point(135, 143);
             this.txtWarehouseQty.Name = "txtWarehouseQty";
             this.txtWarehouseQty.Size = new System.Drawing.Size(269, 29);
             this.txtWarehouseQty.TabIndex = 5;
@@ -477,7 +438,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(6, 214);
+            this.label14.Location = new System.Drawing.Point(20, 179);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(79, 17);
             this.label14.TabIndex = 233;
@@ -489,7 +450,7 @@
             this.txtReturnQty.Enabled = false;
             this.txtReturnQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReturnQty.ForeColor = System.Drawing.Color.Maroon;
-            this.txtReturnQty.Location = new System.Drawing.Point(121, 208);
+            this.txtReturnQty.Location = new System.Drawing.Point(135, 173);
             this.txtReturnQty.Name = "txtReturnQty";
             this.txtReturnQty.Size = new System.Drawing.Size(269, 29);
             this.txtReturnQty.TabIndex = 6;
@@ -503,7 +464,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(414, 184);
+            this.label4.Location = new System.Drawing.Point(431, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 17);
             this.label4.TabIndex = 225;
@@ -518,7 +479,7 @@
             this.cmbProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductStatus.ForeColor = System.Drawing.Color.Maroon;
             this.cmbProductStatus.FormattingEnabled = true;
-            this.cmbProductStatus.Location = new System.Drawing.Point(529, 178);
+            this.cmbProductStatus.Location = new System.Drawing.Point(546, 22);
             this.cmbProductStatus.Name = "cmbProductStatus";
             this.cmbProductStatus.Size = new System.Drawing.Size(269, 29);
             this.cmbProductStatus.TabIndex = 10;
@@ -533,7 +494,7 @@
             this.cmbProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductName.ForeColor = System.Drawing.Color.Maroon;
             this.cmbProductName.FormattingEnabled = true;
-            this.cmbProductName.Location = new System.Drawing.Point(121, 117);
+            this.cmbProductName.Location = new System.Drawing.Point(135, 83);
             this.cmbProductName.Name = "cmbProductName";
             this.cmbProductName.Size = new System.Drawing.Size(269, 29);
             this.cmbProductName.TabIndex = 3;
@@ -542,9 +503,9 @@
             // imgPreview
             // 
             this.imgPreview.BackColor = System.Drawing.Color.Gray;
-            this.imgPreview.Location = new System.Drawing.Point(811, 3);
+            this.imgPreview.Location = new System.Drawing.Point(866, 18);
             this.imgPreview.Name = "imgPreview";
-            this.imgPreview.Size = new System.Drawing.Size(298, 248);
+            this.imgPreview.Size = new System.Drawing.Size(261, 248);
             this.imgPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgPreview.TabIndex = 223;
             this.imgPreview.TabStop = false;
@@ -555,7 +516,7 @@
             this.lblHiredate.BackColor = System.Drawing.Color.Transparent;
             this.lblHiredate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHiredate.ForeColor = System.Drawing.Color.White;
-            this.lblHiredate.Location = new System.Drawing.Point(414, 127);
+            this.lblHiredate.Location = new System.Drawing.Point(431, 92);
             this.lblHiredate.Name = "lblHiredate";
             this.lblHiredate.Size = new System.Drawing.Size(109, 17);
             this.lblHiredate.TabIndex = 208;
@@ -567,7 +528,7 @@
             this.dkpReturnDelivery.Enabled = false;
             this.dkpReturnDelivery.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpReturnDelivery.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpReturnDelivery.Location = new System.Drawing.Point(529, 118);
+            this.dkpReturnDelivery.Location = new System.Drawing.Point(546, 83);
             this.dkpReturnDelivery.Name = "dkpReturnDelivery";
             this.dkpReturnDelivery.Size = new System.Drawing.Size(269, 29);
             this.dkpReturnDelivery.TabIndex = 8;
@@ -579,7 +540,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(6, 183);
+            this.label6.Location = new System.Drawing.Point(20, 149);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 17);
             this.label6.TabIndex = 184;
@@ -591,7 +552,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(6, 123);
+            this.label5.Location = new System.Drawing.Point(20, 89);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 17);
             this.label5.TabIndex = 182;
@@ -603,7 +564,7 @@
             this.txtDeliveryNo.Enabled = false;
             this.txtDeliveryNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDeliveryNo.ForeColor = System.Drawing.Color.Maroon;
-            this.txtDeliveryNo.Location = new System.Drawing.Point(121, 147);
+            this.txtDeliveryNo.Location = new System.Drawing.Point(135, 113);
             this.txtDeliveryNo.Name = "txtDeliveryNo";
             this.txtDeliveryNo.Size = new System.Drawing.Size(269, 29);
             this.txtDeliveryNo.TabIndex = 4;
@@ -615,7 +576,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(6, 153);
+            this.label2.Location = new System.Drawing.Point(20, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 17);
             this.label2.TabIndex = 176;
@@ -627,7 +588,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(6, 93);
+            this.label1.Location = new System.Drawing.Point(20, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 17);
             this.label1.TabIndex = 174;
@@ -639,26 +600,24 @@
             this.txtReturnCode.Enabled = false;
             this.txtReturnCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReturnCode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtReturnCode.Location = new System.Drawing.Point(121, 87);
+            this.txtReturnCode.Location = new System.Drawing.Point(135, 53);
             this.txtReturnCode.Name = "txtReturnCode";
             this.txtReturnCode.Size = new System.Drawing.Size(269, 29);
             this.txtReturnCode.TabIndex = 2;
             // 
-            // gbCON
+            // groupDetails
             // 
-            this.gbCON.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.gbCON.Appearance.Options.UseBackColor = true;
-            this.gbCON.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.gbCON.Controls.Add(this.gCON);
-            this.gbCON.Controls.Add(this.txtPRI);
-            this.gbCON.Location = new System.Drawing.Point(-1, 251);
-            this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
-            this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(1129, 484);
-            this.gbCON.TabIndex = 172;
-            this.gbCON.Text = "Press F1 = Show Item Return in Warehouse. F2 = Return to Inventory List. F3 = Bra" +
-    "nch Menu Selection";
+            this.groupDetails.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.groupDetails.Appearance.Options.UseBackColor = true;
+            this.groupDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupDetails.Controls.Add(this.gCON);
+            this.groupDetails.Location = new System.Drawing.Point(0, 267);
+            this.groupDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupDetails.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupDetails.Name = "groupDetails";
+            this.groupDetails.Size = new System.Drawing.Size(1129, 466);
+            this.groupDetails.TabIndex = 172;
+            this.groupDetails.Text = "List of Return Stock";
             // 
             // gCON
             // 
@@ -670,7 +629,7 @@
             this.gCON.Location = new System.Drawing.Point(3, 18);
             this.gCON.MainView = this.gridReturn;
             this.gCON.Name = "gCON";
-            this.gCON.Size = new System.Drawing.Size(1123, 463);
+            this.gCON.Size = new System.Drawing.Size(1123, 445);
             this.gCON.TabIndex = 102;
             this.gCON.TabStop = false;
             this.gCON.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -789,26 +748,13 @@
             this.grdHIS.GridControl = this.gCON;
             this.grdHIS.Name = "grdHIS";
             // 
-            // txtPRI
-            // 
-            this.txtPRI.BackColor = System.Drawing.Color.DimGray;
-            this.txtPRI.Enabled = false;
-            this.txtPRI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPRI.ForeColor = System.Drawing.Color.Maroon;
-            this.txtPRI.Location = new System.Drawing.Point(-8, 21);
-            this.txtPRI.Multiline = true;
-            this.txtPRI.Name = "txtPRI";
-            this.txtPRI.Size = new System.Drawing.Size(10, 10);
-            this.txtPRI.TabIndex = 99;
-            this.txtPRI.Visible = false;
-            // 
             // lblBarcode
             // 
             this.lblBarcode.AutoSize = true;
             this.lblBarcode.BackColor = System.Drawing.Color.Transparent;
             this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
-            this.lblBarcode.Location = new System.Drawing.Point(6, 63);
+            this.lblBarcode.Location = new System.Drawing.Point(20, 29);
             this.lblBarcode.Name = "lblBarcode";
             this.lblBarcode.Size = new System.Drawing.Size(69, 17);
             this.lblBarcode.TabIndex = 142;
@@ -820,58 +766,48 @@
             this.txtReturnId.Enabled = false;
             this.txtReturnId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReturnId.ForeColor = System.Drawing.Color.Maroon;
-            this.txtReturnId.Location = new System.Drawing.Point(121, 57);
+            this.txtReturnId.Location = new System.Drawing.Point(135, 23);
             this.txtReturnId.Name = "txtReturnId";
             this.txtReturnId.Size = new System.Drawing.Size(269, 29);
             this.txtReturnId.TabIndex = 1;
             // 
-            // tabHIS
+            // xtraDelivery
             // 
-            this.tabHIS.Controls.Add(this.groupControl1);
-            this.tabHIS.Name = "tabHIS";
-            this.tabHIS.Size = new System.Drawing.Size(1134, 754);
-            this.tabHIS.Text = "Delivery History";
+            this.xtraDelivery.Controls.Add(this.groupDeliveryDetails);
+            this.xtraDelivery.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraDelivery.ImageOptions.Image")));
+            this.xtraDelivery.Name = "xtraDelivery";
+            this.xtraDelivery.Size = new System.Drawing.Size(1134, 751);
+            this.xtraDelivery.Text = "Delivery History";
             // 
-            // groupControl1
+            // groupDeliveryDetails
             // 
-            this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.groupControl1.Appearance.Options.UseBackColor = true;
-            this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupControl1.Controls.Add(this.label15);
-            this.groupControl1.Controls.Add(this.groupControl3);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 0);
-            this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
-            this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1134, 754);
-            this.groupControl1.TabIndex = 174;
+            this.groupDeliveryDetails.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupDeliveryDetails.Appearance.Options.UseBackColor = true;
+            this.groupDeliveryDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupDeliveryDetails.Controls.Add(this.pictureBox3);
+            this.groupDeliveryDetails.Controls.Add(this.groupDelivery);
+            this.groupDeliveryDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupDeliveryDetails.Location = new System.Drawing.Point(0, 0);
+            this.groupDeliveryDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupDeliveryDetails.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupDeliveryDetails.Name = "groupDeliveryDetails";
+            this.groupDeliveryDetails.Size = new System.Drawing.Size(1134, 751);
+            this.groupDeliveryDetails.TabIndex = 174;
             // 
-            // label15
+            // groupDelivery
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label15.Location = new System.Drawing.Point(22, 18);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(436, 47);
-            this.label15.TabIndex = 174;
-            this.label15.Text = "Branches Return Delivery";
-            // 
-            // groupControl3
-            // 
-            this.groupControl3.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.groupControl3.Appearance.Options.UseBackColor = true;
-            this.groupControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupControl3.Controls.Add(this.gDEL);
-            this.groupControl3.Controls.Add(this.textBox2);
-            this.groupControl3.Location = new System.Drawing.Point(-3, 155);
-            this.groupControl3.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
-            this.groupControl3.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1108, 581);
-            this.groupControl3.TabIndex = 173;
-            this.groupControl3.Text = "Stock from depot List";
+            this.groupDelivery.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.groupDelivery.Appearance.Options.UseBackColor = true;
+            this.groupDelivery.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupDelivery.Controls.Add(this.gDEL);
+            this.groupDelivery.Controls.Add(this.textBox2);
+            this.groupDelivery.Location = new System.Drawing.Point(-3, 269);
+            this.groupDelivery.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupDelivery.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupDelivery.Name = "groupDelivery";
+            this.groupDelivery.Size = new System.Drawing.Size(1134, 467);
+            this.groupDelivery.TabIndex = 173;
+            this.groupDelivery.Text = "List of Stock Delivered";
             // 
             // gDEL
             // 
@@ -883,7 +819,7 @@
             this.gDEL.Location = new System.Drawing.Point(3, 18);
             this.gDEL.MainView = this.gridDelivery;
             this.gDEL.Name = "gDEL";
-            this.gDEL.Size = new System.Drawing.Size(1102, 560);
+            this.gDEL.Size = new System.Drawing.Size(1128, 446);
             this.gDEL.TabIndex = 102;
             this.gDEL.TabStop = false;
             this.gDEL.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1011,6 +947,17 @@
             this.textBox2.Size = new System.Drawing.Size(10, 10);
             this.textBox2.TabIndex = 99;
             this.textBox2.Visible = false;
+            // 
+            // lblMainTitle
+            // 
+            this.lblMainTitle.AutoSize = true;
+            this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblMainTitle.Location = new System.Drawing.Point(32, 159);
+            this.lblMainTitle.Name = "lblMainTitle";
+            this.lblMainTitle.Size = new System.Drawing.Size(131, 47);
+            this.lblMainTitle.TabIndex = 246;
+            this.lblMainTitle.Text = "Return";
             // 
             // pnlRightOptions
             // 
@@ -1218,6 +1165,7 @@
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.HotTrack;
             this.pnlMain.Controls.Add(this.pnlRightOptions);
+            this.pnlMain.Controls.Add(this.lblMainTitle);
             this.pnlMain.Controls.Add(this.xCON);
             this.pnlMain.Controls.Add(this.pictureBox1);
             this.pnlMain.Controls.Add(this.bntADD);
@@ -1243,6 +1191,16 @@
             this.RightOptions.Interval = 1;
             this.RightOptions.Tick += new System.EventHandler(this.RightOptions_Tick);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox3.Location = new System.Drawing.Point(868, 20);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(261, 248);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 224;
+            this.pictureBox3.TabStop = false;
+            // 
             // FirmWareHouseReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1261,26 +1219,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xCON)).EndInit();
             this.xCON.ResumeLayout(false);
-            this.tabINV.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GbPersonal)).EndInit();
-            this.GbPersonal.ResumeLayout(false);
-            this.GbPersonal.PerformLayout();
+            this.xtraReturn.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupReturnDetails)).EndInit();
+            this.groupReturnDetails.ResumeLayout(false);
+            this.groupReturnDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
-            this.gbCON.ResumeLayout(false);
-            this.gbCON.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupDetails)).EndInit();
+            this.groupDetails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gCON)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReturn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).EndInit();
-            this.tabHIS.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
-            this.groupControl3.ResumeLayout(false);
-            this.groupControl3.PerformLayout();
+            this.xtraDelivery.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupDeliveryDetails)).EndInit();
+            this.groupDeliveryDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupDelivery)).EndInit();
+            this.groupDelivery.ResumeLayout(false);
+            this.groupDelivery.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gDEL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDelivery)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
@@ -1304,6 +1260,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHide)).EndInit();
             this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1317,8 +1275,8 @@
         private System.Windows.Forms.Button bntDEL;
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraTab.XtraTabControl xCON;
-        private DevExpress.XtraTab.XtraTabPage tabINV;
-        private DevExpress.XtraEditors.GroupControl GbPersonal;
+        private DevExpress.XtraTab.XtraTabPage xtraReturn;
+        private DevExpress.XtraEditors.GroupControl groupReturnDetails;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dkpInputDate;
         private System.Windows.Forms.TextBox txtWarehouseQty;
@@ -1336,19 +1294,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtReturnCode;
-        private DevExpress.XtraEditors.GroupControl gbCON;
+        private DevExpress.XtraEditors.GroupControl groupDetails;
         private DevExpress.XtraGrid.GridControl gCON;
         private DevExpress.XtraGrid.Views.Grid.GridView gridReturn;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraGrid.Views.Grid.GridView grdHIS;
-        private System.Windows.Forms.TextBox txtPRI;
         private System.Windows.Forms.Label lblBarcode;
         private System.Windows.Forms.TextBox txtReturnId;
-        private DevExpress.XtraTab.XtraTabPage tabHIS;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private System.Windows.Forms.Label label15;
-        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraTab.XtraTabPage xtraDelivery;
+        private DevExpress.XtraEditors.GroupControl groupDeliveryDetails;
+        private DevExpress.XtraEditors.GroupControl groupDelivery;
         private DevExpress.XtraGrid.GridControl gDEL;
         private DevExpress.XtraGrid.Views.Grid.GridView gridDelivery;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
@@ -1369,8 +1325,6 @@
         private System.Windows.Forms.ComboBox cmbToBranch;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblMainTitle;
-        private System.Windows.Forms.TextBox txtGEN;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel pnlOptions;
         private System.Windows.Forms.Panel pnlOptionsMain;
         private System.Windows.Forms.PictureBox pictureBox17;
@@ -1386,5 +1340,6 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Timer Options;
         private System.Windows.Forms.Timer RightOptions;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
