@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 using Inventory.MainForm;
@@ -18,6 +18,7 @@ namespace Inventory.PopupForm
         private readonly int _userTy;
         private bool _return;
         private bool _management;
+    
         public bool Return
         {
             get { return _return; }
@@ -88,8 +89,6 @@ namespace Inventory.PopupForm
                     ReturnBranch.BranchId = branchId;
                     ReturnBranch.branch = branch;
                 }
-                // add logic for DeliveryBranches
-                // Main.DeliveryBranches = branch;
                 if (_management) {
                     management.branch = branch;
                     management.branchId = branchId;

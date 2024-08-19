@@ -12,7 +12,7 @@ using ServeAll.Core.Helper;
 
 namespace ServeAll.Core.Repository
 {
-    public class Repository<T> : IIKeyedRepository<T>, IRepository<T>, IReadOnlyRepository<T>, IReadOnlyStoredProcedure<T>, TargetClass<T> where T : class
+    public class Repository<T> : IIKeyedRepository<T>, IRepository<T>, IReadOnlyRepository<T>, TargetClass<T> where T : class
     {
         private readonly UnitofWork _iunitofworks;
         public Repository(UnitofWork iunitofworks)
@@ -342,8 +342,8 @@ namespace ServeAll.Core.Repository
             string procName, 
             string inReturnId, int returnId, string inReturnCd, string returnCd,
             string inProdctId, int productId, string inReturnNo, string returnNo, string inReturnQt, decimal returnQty,
-            string inBranchId, int branchId, string inDestines, int destination, string inRetrnDet, DateTime returnDate,
-            string inRefeDate, DateTime referDate, string inStatusId, int statusId, string inRermarks, string remarks,
+            string inBranchId, int branchId, string inDestines, int destination, string inRetrnDet, DateTime returnDate, 
+            string inStatusId, int statusId, string inRermarks, string remarks,
             string inInventry, int inventoryId)
         {
             var paramDic = new Dictionary<string, object>
@@ -356,7 +356,6 @@ namespace ServeAll.Core.Repository
                 {inBranchId, branchId},
                 {inDestines, destination},
                 {inRetrnDet, returnDate},
-                {inRefeDate, referDate},
                 {inStatusId, statusId},
                 {inRermarks, remarks},
                 {inInventry, inventoryId}
@@ -371,7 +370,7 @@ namespace ServeAll.Core.Repository
         public int ExecuteRetUpdWarehouse(string procName, string inReturnId, int returnId, string inReturnCd, string returnCd,
             string inProdctId, int productId, string inReturnNo, string returnNo, string inReturnQt, decimal returnQty,
             string inBranchId, int branchId, string inDestines, int destination, string inRetrnDet, DateTime returnDate,
-            string inRefeDate, DateTime referDate, string inStatusId, int statusId, string inRermarks, string remarks)
+            string inStatusId, int statusId, string inRermarks, string remarks)
         {
             var paramDic = new Dictionary<string, object>
             {
@@ -383,7 +382,6 @@ namespace ServeAll.Core.Repository
                 {inBranchId, branchId},
                 {inDestines, destination},
                 {inRetrnDet, returnDate},
-                {inRefeDate, referDate},
                 {inStatusId, statusId},
                 {inRermarks, remarks}
             };
