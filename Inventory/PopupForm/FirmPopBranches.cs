@@ -3,9 +3,9 @@ using System.Linq;
 using System.Windows.Forms;
 using Inventory.MainForm;
 using ServeAll.Core.Entities;
-using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
 using Inventory.Config;
+using ServeAll.Core.Utilities;
 
 namespace Inventory.PopupForm
 {
@@ -13,17 +13,21 @@ namespace Inventory.PopupForm
     {
         public FirmWarehouse Main { protected get;  set; }
         public FirmWareHouseReturn ReturnBranch { protected get; set; }
+        public FrmManagement management { protected get; set; }
         private readonly int _userId;
         private readonly int _userTy;
         private bool _return;
-       
+        private bool _management;
         public bool Return
         {
             get { return _return; }
             set { _return = value; }
         }
-
-     
+        public bool formManagement
+        {
+            get { return _management; }
+            set { _management = value; }
+        }
 
         public FirmPopBranches(int userId, int userTy)
         {
@@ -36,7 +40,7 @@ namespace Inventory.PopupForm
             if (_userId != 0 && _userTy == 1)
             {
                 BindBranch();
-                cmbDIS.Focus();
+                cmbBranchName.Focus();
             }
             else
             {
@@ -46,22 +50,7 @@ namespace Inventory.PopupForm
         }
         private void bntSVA_Click(object sender, EventArgs e)
         {
-            var branch = cmbDIS.Text.Trim(' ');
-            if (branch.Length > 0)
-            {
-               
-                if (_return)
-                {
-                    var branchId = GetBranchId(branch);
-                    ReturnBranch.BranchId = branchId;
-                    ReturnBranch.branch = branch;
-                }
-                else
-                {
-                    Main.DeliveryBranches = branch;
-                }
-                Close();
-            }
+            
 
         }
 
@@ -74,25 +63,7 @@ namespace Inventory.PopupForm
             }
            
         }
-        private int GetBranchId(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.branch_details == input);
-                    return query.branch_id;
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Branch Id Error", "Branch Inventory Details");
-                    throw;
-                }
-            }
-        }
+        
         private void BindBranch()
         {
             using (var session = new DalSession())
@@ -101,8 +72,29 @@ namespace Inventory.PopupForm
                 unWork.Begin();
                 var repository = new Repository<Branch>(unWork);
                 var query = repository.SelectAll(ServeAll.Core.Queries.Query.AllBranch).Select(x => x.branch_details).Distinct().ToList();
-                cmbDIS.DataBindings.Clear();
-                cmbDIS.DataSource = query;
+                cmbBranchName.DataBindings.Clear();
+                cmbBranchName.DataSource = query;
+            }
+        }
+
+        private void bntGoBranch_Click(object sender, EventArgs e)
+        {
+            var branch = cmbBranchName.Text.Trim(' ');
+            if (branch.Length > 0)
+            {
+                var branchId = FetchUtils.getBranchId(branch);
+                if (_return)
+                {
+                    ReturnBranch.BranchId = branchId;
+                    ReturnBranch.branch = branch;
+                }
+                // add logic for DeliveryBranches
+                // Main.DeliveryBranches = branch;
+                if (_management) {
+                    management.branch = branch;
+                    management.branchId = branchId;
+                }
+                Close();
             }
         }
     }

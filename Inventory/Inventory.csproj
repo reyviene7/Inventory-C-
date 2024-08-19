@@ -587,6 +587,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Graph.ico" />
+    <None Include="Resources\converttorange_16x16.png" />
     <None Include="Resources\convert_32x32.png" />
     <None Include="Resources\list.gear.png" />
     <None Include="Resources\graph.histogram.description.png" />
