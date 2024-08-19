@@ -33,8 +33,6 @@ namespace Inventory.MainForm
                 _branch = value;
             }
         }
-        
-
         public int BranchId
         {
             get { return _branchId; }
@@ -72,12 +70,10 @@ namespace Inventory.MainForm
         {
             PanelInterface.MouseMOve(this, pnlRightOptions, e);
         }
-
         private void Options_Tick(object sender, EventArgs e)
         {
             PanelInterface.OptionTick(this, pnlOptions);
         }
-
         private void RightOptions_Tick(object sender, EventArgs e)
         {
             PanelInterface.RightOptionTick(this, pnlRightOptions);
@@ -97,8 +93,6 @@ namespace Inventory.MainForm
             {
                 bntUPD.Enabled = false;
             }
-
-        
         }
         private void bntSAV_Click(object sender, EventArgs e)
         {
@@ -707,7 +701,7 @@ namespace Inventory.MainForm
                 {
                     var item = cmbProductName.Text.Trim(' ');
                     var productId = FetchUtils.getProductId(item);
-                    var result = SearchLpg(productId);
+                    var result = FetchUtils.getSearchProduct(productId);
                     if (result > 0)
                     {
                         _pop = true;
@@ -741,7 +735,7 @@ namespace Inventory.MainForm
                     retWET.ShowWaitForm();
                     var item = cmbProductName.Text.Trim(' ');
                     var productId = FetchUtils.getProductId(item);
-                    var result = SearchLpg(productId);
+                    var result = FetchUtils.getSearchProduct(productId);
                     if (result > 0)
                     {
                         _lpg = false;
@@ -848,7 +842,6 @@ namespace Inventory.MainForm
         {
             retWET.ShowWaitForm();
             ClearGrid();
-             // gCON.DataSource = EnumerableBranches(branch);
              gCON.DataSource = listInventory.Select(p => new { 
                 Id = p.inventory_id,
                 Item = p.product_name,
@@ -859,35 +852,16 @@ namespace Inventory.MainForm
             gCON.Update();
             if (gridReturn.RowCount > 0)
             {
-                gridReturn.Columns[0].Width = 50;
+                gridReturn.Columns[0].Width = 40;
                 gridReturn.Columns[1].Width = 400;
                 gridReturn.Columns[2].Width = 80;
                 gridReturn.Columns[3].Width = 120;
                 gridReturn.Columns[4].Width = 160;
-
             }
             retWET.CloseWaitForm();
 
         }
         
-        private int SearchLpg(int productId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    var repository = new Repository<ViewProductId>(unWork);
-                    return repository
-                        .SelectAll(Query.SelectAllProductId)
-                        .Count(x => x.product_id == productId);
-                }
-                catch (Exception)
-                {
-                    return 0;
-                }
-            }
-        }
         private void ShowValue(int id)
         {
             var que = FetchUtils.getShowEntity(id);

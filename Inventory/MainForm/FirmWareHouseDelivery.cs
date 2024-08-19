@@ -173,6 +173,7 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridControl.Enabled = false;
+            cmbWarehouseBranch.Text = "Main Branch";
             cmbDeliveryStatus.Text = "Processing";
             txtRemarks.Text = "N/A";
         }
