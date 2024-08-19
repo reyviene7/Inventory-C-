@@ -349,7 +349,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(431, 58);
+            this.label9.Location = new System.Drawing.Point(431, 59);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 17);
             this.label9.TabIndex = 242;
@@ -488,11 +488,11 @@
             this.lblHiredate.BackColor = System.Drawing.Color.Transparent;
             this.lblHiredate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHiredate.ForeColor = System.Drawing.Color.White;
-            this.lblHiredate.Location = new System.Drawing.Point(431, 92);
+            this.lblHiredate.Location = new System.Drawing.Point(431, 91);
             this.lblHiredate.Name = "lblHiredate";
-            this.lblHiredate.Size = new System.Drawing.Size(109, 17);
+            this.lblHiredate.Size = new System.Drawing.Size(86, 17);
             this.lblHiredate.TabIndex = 208;
-            this.lblHiredate.Text = "Return Delivery:";
+            this.lblHiredate.Text = "Return Date:";
             // 
             // dkpReturnDelivery
             // 
@@ -549,9 +549,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(20, 119);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 17);
+            this.label2.Size = new System.Drawing.Size(109, 17);
             this.label2.TabIndex = 176;
-            this.label2.Text = "Delivery No:";
+            this.label2.Text = "Return Delivery:";
             // 
             // label1
             // 
@@ -999,7 +999,6 @@
             // bntADD
             // 
             this.bntADD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.bntADD.Enabled = false;
             this.bntADD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bntADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntADD.ForeColor = System.Drawing.Color.White;
