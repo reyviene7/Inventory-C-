@@ -205,19 +205,19 @@ namespace Inventory.MainForm
                 var result = RepositoryEntity.AddEntity<ServeAll.Core.Entities.Services>(services);
                 if (result > 0L)
                 {
-                    inventoryScreen.CloseWaitForm();
+                    splashScreen.CloseWaitForm();
                     PopupNotification.PopUpMessages(1, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.SuccessInsert,
                          Messages.TitleSuccessInsert);
                 }
                 else
                 {
-                    inventoryScreen.CloseWaitForm();
+                    splashScreen.CloseWaitForm();
                     PopupNotification.PopUpMessages(0, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.ErrorInsert,
                             Messages.TitleFailedInsert);
                 }
             }
             else {
-                inventoryScreen.CloseWaitForm();
+                splashScreen.CloseWaitForm();
                 PopupNotification.PopUpMessages(0, "Status Id and Staff Id must not be null!",
                             Messages.TitleFailedInsert);
             }
@@ -244,13 +244,13 @@ namespace Inventory.MainForm
                 });
                 if (result > 0)
                 {
-                    inventoryScreen.CloseWaitForm();
+                    splashScreen.CloseWaitForm();
                     PopupNotification.PopUpMessages(1, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
                            Messages.TitleSuccessUpdate);
                 }
                 else
                 {
-                    inventoryScreen.CloseWaitForm();
+                    splashScreen.CloseWaitForm();
                     PopupNotification.PopUpMessages(1, "Service Name: " + txtServiceName.Text.Trim(' ') + " " + Messages.ErrorUpdate,
                             Messages.TitleFialedUpdate);
                 }
@@ -518,7 +518,7 @@ namespace Inventory.MainForm
         }
         private void ButSav()
         {
-            inventoryScreen.ShowWaitForm();
+            splashScreen.ShowWaitForm();
             if (_add && _edt == false && _del == false)
             {
                 addInventory();
