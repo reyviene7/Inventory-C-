@@ -173,17 +173,16 @@ namespace Inventory.PopupForm
                 {
                     var item = new ReturnWareHouse
                     {
-                        ReturnCode      = GenerateReturn(),
-                        ProductId       = int.Parse(txtPID.Text),
-                        ReturnNo        = txtRET.Text.Trim(' '),
-                        ReturnQty       = decimal.Parse(txtQTY.Text),
-                        BranchId        = GetBranchId(_origin),
-                        Destination     = GetBranchId(_destin),
-                        ReturnDelivery  = dkpDEL.Value.Date,
-                        RefDate         = dkpDET.Value.Date,
-                        StatusId        = GetProductStatus(cmbSAT.Text),
-                        Remarks         = txtMAR.Text.Trim(' '),
-                        InventoryId     = _inventoId
+                        return_code      = GenerateReturn(),
+                        product_id       = int.Parse(txtPID.Text),
+                        return_number        = txtRET.Text.Trim(' '),
+                        return_quantity       = decimal.Parse(txtQTY.Text),
+                        branch_id        = GetBranchId(_origin),
+                        destination     = GetBranchId(_destin),
+                        return_date  = dkpDEL.Value.Date,
+                        status_id        = GetProductStatus(cmbSAT.Text),
+                        remarks         = txtMAR.Text.Trim(' '),
+                        inventory_id     = _inventoId
                     };
                     retWET.ShowWaitForm();
                     unWork.Begin();

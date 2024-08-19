@@ -490,25 +490,6 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-        public static IEnumerable<ViewInventoryList> EnumerableBranches()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ViewInventoryList>(unWork);
-                    return repository.SelectAll(Query.AllInventoryList)
-                        .ToList();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    return GetEmptyList<ViewInventoryList>();
-                }
-            }
-        }
         public static IEnumerable<ViewInventory> getInventory()
         {
             using (var session = new DalSession())
@@ -525,6 +506,25 @@ namespace ServeAll.Core.Utilities
                 {
                     Console.WriteLine(ex.Message);
                     return GetEmptyList<ViewInventory>();
+                }
+            }
+        }
+        public static IEnumerable<ViewInventoryList> getInventoryList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewInventoryList>(unWork);
+                    return repository.SelectAll(Query.AllInventoryList)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewInventoryList>();
                 }
             }
         }
@@ -581,6 +581,24 @@ namespace ServeAll.Core.Utilities
                 {
                     Console.WriteLine(ex.Message);
                     return GetEmptyList<ViewWareHouseInventory>();
+                }
+            }
+        }
+        public static IEnumerable<ViewReturnWarehouse> getWareHouseReturnList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewReturnWarehouse>(unWork);
+                    return repository.SelectAll(Query.getWarehouseReturn).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewReturnWarehouse>();
                 }
             }
         }
