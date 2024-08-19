@@ -320,7 +320,7 @@
             this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbWarehouse.ForeColor = System.Drawing.Color.Maroon;
             this.cmbWarehouse.FormattingEnabled = true;
-            this.cmbWarehouse.Location = new System.Drawing.Point(132, 143);
+            this.cmbWarehouse.Location = new System.Drawing.Point(132, 113);
             this.cmbWarehouse.Name = "cmbWarehouse";
             this.cmbWarehouse.Size = new System.Drawing.Size(269, 29);
             this.cmbWarehouse.TabIndex = 4;
@@ -394,7 +394,7 @@
             this.lblPRC.BackColor = System.Drawing.Color.Transparent;
             this.lblPRC.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPRC.ForeColor = System.Drawing.Color.White;
-            this.lblPRC.Location = new System.Drawing.Point(416, 118);
+            this.lblPRC.Location = new System.Drawing.Point(9, 208);
             this.lblPRC.Name = "lblPRC";
             this.lblPRC.Size = new System.Drawing.Size(90, 17);
             this.lblPRC.TabIndex = 233;
@@ -406,7 +406,7 @@
             this.txtDeliveryQty.Enabled = false;
             this.txtDeliveryQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDeliveryQty.ForeColor = System.Drawing.Color.Maroon;
-            this.txtDeliveryQty.Location = new System.Drawing.Point(541, 112);
+            this.txtDeliveryQty.Location = new System.Drawing.Point(132, 203);
             this.txtDeliveryQty.Name = "txtDeliveryQty";
             this.txtDeliveryQty.Size = new System.Drawing.Size(269, 29);
             this.txtDeliveryQty.TabIndex = 12;
@@ -418,7 +418,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(9, 209);
+            this.label10.Location = new System.Drawing.Point(9, 179);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(74, 17);
             this.label10.TabIndex = 231;
@@ -430,7 +430,7 @@
             this.txtItemPrice.Enabled = false;
             this.txtItemPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemPrice.ForeColor = System.Drawing.Color.Maroon;
-            this.txtItemPrice.Location = new System.Drawing.Point(132, 203);
+            this.txtItemPrice.Location = new System.Drawing.Point(132, 173);
             this.txtItemPrice.Name = "txtItemPrice";
             this.txtItemPrice.Size = new System.Drawing.Size(269, 29);
             this.txtItemPrice.TabIndex = 11;
@@ -464,7 +464,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(8, 119);
+            this.label4.Location = new System.Drawing.Point(417, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 17);
             this.label4.TabIndex = 225;
@@ -479,7 +479,7 @@
             this.cmbProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductStatus.ForeColor = System.Drawing.Color.Maroon;
             this.cmbProductStatus.FormattingEnabled = true;
-            this.cmbProductStatus.Location = new System.Drawing.Point(132, 113);
+            this.cmbProductStatus.Location = new System.Drawing.Point(541, 112);
             this.cmbProductStatus.Name = "cmbProductStatus";
             this.cmbProductStatus.Size = new System.Drawing.Size(269, 29);
             this.cmbProductStatus.TabIndex = 10;
@@ -508,7 +508,6 @@
             this.cmbWarehouseBranch.Name = "cmbWarehouseBranch";
             this.cmbWarehouseBranch.Size = new System.Drawing.Size(269, 29);
             this.cmbWarehouseBranch.TabIndex = 9;
-            this.cmbWarehouseBranch.Text = "SELECT BRANCH";
             this.cmbWarehouseBranch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbDIS_KeyDown);
             // 
             // label13
@@ -529,7 +528,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(8, 149);
+            this.label11.Location = new System.Drawing.Point(8, 120);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(115, 17);
             this.label11.TabIndex = 210;
@@ -613,7 +612,7 @@
             this.txtLastCost.Enabled = false;
             this.txtLastCost.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastCost.ForeColor = System.Drawing.Color.Maroon;
-            this.txtLastCost.Location = new System.Drawing.Point(132, 173);
+            this.txtLastCost.Location = new System.Drawing.Point(132, 143);
             this.txtLastCost.Name = "txtLastCost";
             this.txtLastCost.Size = new System.Drawing.Size(269, 29);
             this.txtLastCost.TabIndex = 6;
@@ -625,7 +624,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(9, 179);
+            this.label2.Location = new System.Drawing.Point(9, 149);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 17);
             this.label2.TabIndex = 176;

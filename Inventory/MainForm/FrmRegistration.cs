@@ -40,8 +40,10 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
+            splashManager.ShowWaitForm();
             _profileList = EnumerableUtils.getProfileList();
             _image_list = EnumerableUtils.getProfileImgList();
+            splashManager.CloseWaitForm();
             bindProfileList();
             _add = false;
             _edt = false;

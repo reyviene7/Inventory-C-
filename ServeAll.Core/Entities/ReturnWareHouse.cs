@@ -3,21 +3,20 @@ using Dapper.Contrib.Extensions;
 
 namespace ServeAll.Core.Entities
 {
-    [Table("ReturnWareHouse")]
+    [Table("return_warehouse")]
     public class ReturnWareHouse
     {
         [Key]
-        public int ReturnId         { get; set; }
-        public string ReturnCode    { get; set; }
-        public int ProductId        { get; set; }
-        public string ReturnNo      { get; set; }
-        public decimal ReturnQty    { get; set; }
-        public int BranchId         { get; set; }
-        public int Destination      { get; set; }
-        public DateTime ReturnDelivery { get; set; }
-        public DateTime RefDate     { get; set; }
-        public int StatusId         { get; set; }
-        public string Remarks       { get; set; }
-        public int InventoryId      { get; set; }
+        public int return_id         { get; set; }
+        public string return_code    { get; set; }
+        public int product_id        { get; set; }
+        public string return_number      { get; set; }
+        public decimal return_quantity { get; set; }
+        public int branch_id         { get; set; }
+        public int destination      { get; set; }
+        public DateTime return_date { get; set; }
+        public int status_id         { get; set; }
+        public string remarks       { get; set; }
+        public int inventory_id      { get; set; }
     }
 }

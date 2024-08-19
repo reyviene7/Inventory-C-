@@ -46,8 +46,6 @@
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.cmbFromBranch = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dkpInputDate = new System.Windows.Forms.DateTimePicker();
             this.txtWarehouseQty = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtReturnQty = new System.Windows.Forms.TextBox();
@@ -73,6 +71,7 @@
             this.txtReturnId = new System.Windows.Forms.TextBox();
             this.xtraDelivery = new DevExpress.XtraTab.XtraTabPage();
             this.groupDeliveryDetails = new DevExpress.XtraEditors.GroupControl();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.groupDelivery = new DevExpress.XtraEditors.GroupControl();
             this.gDEL = new DevExpress.XtraGrid.GridControl();
             this.gridDelivery = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -103,7 +102,6 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.Options = new System.Windows.Forms.Timer(this.components);
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xCON)).BeginInit();
             this.xCON.SuspendLayout();
@@ -121,6 +119,7 @@
             this.xtraDelivery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupDeliveryDetails)).BeginInit();
             this.groupDeliveryDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupDelivery)).BeginInit();
             this.groupDelivery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gDEL)).BeginInit();
@@ -146,7 +145,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHide)).BeginInit();
             this.pnlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // bntCLR
@@ -293,8 +291,6 @@
             this.groupReturnDetails.Controls.Add(this.txtRemarks);
             this.groupReturnDetails.Controls.Add(this.cmbFromBranch);
             this.groupReturnDetails.Controls.Add(this.label8);
-            this.groupReturnDetails.Controls.Add(this.label3);
-            this.groupReturnDetails.Controls.Add(this.dkpInputDate);
             this.groupReturnDetails.Controls.Add(this.txtWarehouseQty);
             this.groupReturnDetails.Controls.Add(this.label14);
             this.groupReturnDetails.Controls.Add(this.txtReturnQty);
@@ -396,30 +392,6 @@
             this.label8.Size = new System.Drawing.Size(90, 17);
             this.label8.TabIndex = 240;
             this.label8.Text = "From Branch:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(431, 122);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 17);
-            this.label3.TabIndex = 236;
-            this.label3.Text = "Input Date:";
-            // 
-            // dkpInputDate
-            // 
-            this.dkpInputDate.CustomFormat = "dd-MM-yyyy";
-            this.dkpInputDate.Enabled = false;
-            this.dkpInputDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dkpInputDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpInputDate.Location = new System.Drawing.Point(546, 113);
-            this.dkpInputDate.Name = "dkpInputDate";
-            this.dkpInputDate.Size = new System.Drawing.Size(269, 29);
-            this.dkpInputDate.TabIndex = 9;
-            this.dkpInputDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpInputDate_KeyDown);
             // 
             // txtWarehouseQty
             // 
@@ -532,7 +504,6 @@
             this.dkpReturnDelivery.Name = "dkpReturnDelivery";
             this.dkpReturnDelivery.Size = new System.Drawing.Size(269, 29);
             this.dkpReturnDelivery.TabIndex = 8;
-            this.dkpReturnDelivery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpReturnDelivery_KeyDown);
             // 
             // label6
             // 
@@ -615,7 +586,7 @@
             this.groupDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupDetails.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupDetails.Name = "groupDetails";
-            this.groupDetails.Size = new System.Drawing.Size(1129, 466);
+            this.groupDetails.Size = new System.Drawing.Size(1134, 484);
             this.groupDetails.TabIndex = 172;
             this.groupDetails.Text = "List of Return Stock";
             // 
@@ -629,7 +600,7 @@
             this.gCON.Location = new System.Drawing.Point(3, 18);
             this.gCON.MainView = this.gridReturn;
             this.gCON.Name = "gCON";
-            this.gCON.Size = new System.Drawing.Size(1123, 445);
+            this.gCON.Size = new System.Drawing.Size(1128, 463);
             this.gCON.TabIndex = 102;
             this.gCON.TabStop = false;
             this.gCON.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -794,6 +765,16 @@
             this.groupDeliveryDetails.Size = new System.Drawing.Size(1134, 751);
             this.groupDeliveryDetails.TabIndex = 174;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox3.Location = new System.Drawing.Point(868, 20);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(261, 248);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 224;
+            this.pictureBox3.TabStop = false;
+            // 
             // groupDelivery
             // 
             this.groupDelivery.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -801,11 +782,11 @@
             this.groupDelivery.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.groupDelivery.Controls.Add(this.gDEL);
             this.groupDelivery.Controls.Add(this.textBox2);
-            this.groupDelivery.Location = new System.Drawing.Point(-3, 269);
+            this.groupDelivery.Location = new System.Drawing.Point(0, 269);
             this.groupDelivery.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupDelivery.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupDelivery.Name = "groupDelivery";
-            this.groupDelivery.Size = new System.Drawing.Size(1134, 467);
+            this.groupDelivery.Size = new System.Drawing.Size(1135, 482);
             this.groupDelivery.TabIndex = 173;
             this.groupDelivery.Text = "List of Stock Delivered";
             // 
@@ -819,7 +800,7 @@
             this.gDEL.Location = new System.Drawing.Point(3, 18);
             this.gDEL.MainView = this.gridDelivery;
             this.gDEL.Name = "gDEL";
-            this.gDEL.Size = new System.Drawing.Size(1128, 446);
+            this.gDEL.Size = new System.Drawing.Size(1129, 461);
             this.gDEL.TabIndex = 102;
             this.gDEL.TabStop = false;
             this.gDEL.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -963,7 +944,7 @@
             // 
             this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1329, 1);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1571, 0);
             this.pnlRightOptions.Name = "pnlRightOptions";
             this.pnlRightOptions.Size = new System.Drawing.Size(77, 764);
             this.pnlRightOptions.TabIndex = 129;
@@ -982,7 +963,7 @@
             // 
             this.pbExit.Image = ((System.Drawing.Image)(resources.GetObject("pbExit.Image")));
             this.pbExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbExit.Location = new System.Drawing.Point(3, 448);
+            this.pbExit.Location = new System.Drawing.Point(-1, 448);
             this.pbExit.Name = "pbExit";
             this.pbExit.Size = new System.Drawing.Size(70, 76);
             this.pbExit.TabIndex = 5;
@@ -1038,7 +1019,7 @@
             this.pnlOptions.Controls.Add(this.pnlOptionsMain);
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
-            this.pnlOptions.Location = new System.Drawing.Point(-2, 768);
+            this.pnlOptions.Location = new System.Drawing.Point(1, 874);
             this.pnlOptions.Name = "pnlOptions";
             this.pnlOptions.Size = new System.Drawing.Size(1298, 74);
             this.pnlOptions.TabIndex = 131;
@@ -1164,7 +1145,6 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.pnlMain.Controls.Add(this.pnlRightOptions);
             this.pnlMain.Controls.Add(this.lblMainTitle);
             this.pnlMain.Controls.Add(this.xCON);
             this.pnlMain.Controls.Add(this.pictureBox1);
@@ -1177,7 +1157,7 @@
             this.pnlMain.Controls.Add(this.bntSAV);
             this.pnlMain.Location = new System.Drawing.Point(1, -4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1564, 872);
+            this.pnlMain.Size = new System.Drawing.Size(1335, 788);
             this.pnlMain.TabIndex = 132;
             this.pnlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirmBranchesWareHouse_MouseMove);
             // 
@@ -1191,22 +1171,13 @@
             this.RightOptions.Interval = 1;
             this.RightOptions.Tick += new System.EventHandler(this.RightOptions_Tick);
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox3.Location = new System.Drawing.Point(868, 20);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(261, 248);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 224;
-            this.pictureBox3.TabStop = false;
-            // 
             // FirmWareHouseReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1763, 979);
+            this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1234,6 +1205,7 @@
             this.xtraDelivery.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupDeliveryDetails)).EndInit();
             this.groupDeliveryDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupDelivery)).EndInit();
             this.groupDelivery.ResumeLayout(false);
             this.groupDelivery.PerformLayout();
@@ -1261,7 +1233,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbHide)).EndInit();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1277,8 +1248,6 @@
         private DevExpress.XtraTab.XtraTabControl xCON;
         private DevExpress.XtraTab.XtraTabPage xtraReturn;
         private DevExpress.XtraEditors.GroupControl groupReturnDetails;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dkpInputDate;
         private System.Windows.Forms.TextBox txtWarehouseQty;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtReturnQty;

@@ -18,22 +18,33 @@ namespace Inventory.MainForm
 {
     public partial class FirmWareHouseReturn : Form
     {
-        private bool _lpg, _itm, _ret, _add, _edt, _del, _pop;
+        private bool _add, _edt, _del, _pop;
         private bool _edtItm, _edtLpg;
         private readonly int _userId;
         private readonly int _userTy;
+        private IEnumerable<ViewReturnWarehouse> _return_list;
         private IEnumerable<ViewInventoryList> listInventory;
-        private int _branch;
-        public int Branch
-        {
+        private IEnumerable<ViewImageProduct> imgList;
+        private int _branchId;
+        private string _branch;
+        private int InventoryId;
+
+        public string branch { 
             get { return _branch; }
             set
             {
                 _branch = value;
-                if (_branch > 0)
+            }
+        }
+        public int BranchId
+        {
+            get { return _branchId; }
+            set
+            {
+                _branchId = value;
+                if (_branchId > 0)
                 {
-                    var branch = GetBranch(_branch);
-                    BindInventory(branch);
+                    BindInventory(_branch);
                 }
             }
         }
@@ -52,20 +63,21 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
-            listInventory = EnumerableUtils.EnumerableBranches();
+            _return_list = EnumerableUtils.getWareHouseReturnList();
+            listInventory = EnumerableUtils.getInventoryList();
+            imgList = EnumerableUtils.getImgProductList();
             ShowBranch();
+            BindInventory(_branch);
         }
 
         private void FirmBranchesWareHouse_MouseMove(object sender, MouseEventArgs e)
         {
             PanelInterface.MouseMOve(this, pnlRightOptions, e);
         }
-
         private void Options_Tick(object sender, EventArgs e)
         {
             PanelInterface.OptionTick(this, pnlOptions);
         }
-
         private void RightOptions_Tick(object sender, EventArgs e)
         {
             PanelInterface.RightOptionTick(this, pnlRightOptions);
@@ -85,8 +97,6 @@ namespace Inventory.MainForm
             {
                 bntUPD.Enabled = false;
             }
-
-        
         }
         private void bntSAV_Click(object sender, EventArgs e)
         {
@@ -143,18 +153,16 @@ namespace Inventory.MainForm
         }
         private void ButLpg()
         {
-            _lpg = true;
-            _itm = false;
             _add = true;
             _edt = false;
             _del = false;
-            ButtonLpg();
+            ButtonReturn();
             InputLpg();
             InputEnab();
             cmbProductName.Focus();
             GenerateReturn();
             cmbProductName.BackColor = Color.Yellow;
-            cmbFromBranch.Text = GetBranch(_branch);
+            cmbFromBranch.Text = branch;
             cmbToBranch.Text = Constant.DefaultWareHouse;
             cmbProductStatus.Text = Constant.DefaultReturn;
             gCON.Enabled = false;
@@ -162,8 +170,6 @@ namespace Inventory.MainForm
         private void ButAdd()
         {
             _add = true;
-            _lpg = false;
-            _itm = true;
             _edt = false;
             _del = false;
             ButtonAdd();
@@ -173,15 +179,13 @@ namespace Inventory.MainForm
             cmbProductName.Focus();
             GenerateReturn();
             cmbProductName.BackColor = Color.Yellow;
-            cmbFromBranch.Text = GetBranch(_branch);
+            cmbFromBranch.Text = branch;
             cmbToBranch.Text = Constant.DefaultWareHouse;
             cmbProductStatus.Text = Constant.DefaultReturn;
             gCON.Enabled = false;
         }
         private void ButUpd()
         {
-            _lpg = false;
-            _itm = false;
             _add = false;
             _edt = true;
             _del = false;
@@ -194,8 +198,6 @@ namespace Inventory.MainForm
         }
         private void ButDel()
         {
-            _lpg = false;
-            _itm = false;
             _add = false;
             _edt = false;
             _del = true;
@@ -209,8 +211,6 @@ namespace Inventory.MainForm
             _add = false;
             _edt = false;
             _del = false;
-            _lpg = false;
-            _itm = false;
             _edtItm = false;
             _edtLpg = false;
             ButtonCan();
@@ -225,10 +225,10 @@ namespace Inventory.MainForm
         private void ButSav()
         {
 
-            if (_lpg && _add && _edt == false && _del == false)
+            if (_add && _edt == false && _del == false)
             {
 
-                ReturnLpg();
+                InsertReturn();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
@@ -236,9 +236,9 @@ namespace Inventory.MainForm
                 ClearGrid();
 
             }
-            if (_add && _itm  && _edt == false && _del == false)
+            if (_add && _edt == false && _del == false)
             {
-                ReturnItem();
+                UpdateReturn();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
@@ -267,7 +267,7 @@ namespace Inventory.MainForm
             if (_edtItm == false && _add == false && _edt == false && _del && _edtLpg)
             {
 
-                ReturnLpgDel();
+                DeleteReturn();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
@@ -286,8 +286,6 @@ namespace Inventory.MainForm
             _add = false;
             _edt = false;
             _del = false;
-            _lpg = false;
-            _itm = false;
             _edtItm = false;
             _edtLpg = false;
             gCON.Enabled = true;
@@ -347,7 +345,7 @@ namespace Inventory.MainForm
             pbLogout.Enabled = true;
             pbExit.Enabled = true;
         }
-        private void ButtonLpg()
+        private void ButtonReturn()
         {
             bntADD.Enabled = false;
             bntUPD.Enabled = false;
@@ -385,7 +383,6 @@ namespace Inventory.MainForm
             cmbProductStatus.BackColor = Color.White;
             txtRemarks.BackColor = Color.White;
             dkpReturnDelivery.BackColor = Color.White;
-            dkpInputDate.BackColor = Color.White;
             cmbProductStatus.BackColor = Color.White;
             txtWarehouseQty.BackColor = Color.White;
         }
@@ -396,7 +393,6 @@ namespace Inventory.MainForm
             txtRemarks.Enabled = true;
             txtReturnQty.Enabled = true;
             dkpReturnDelivery.Enabled = true;
-            dkpInputDate.Enabled = true;
             txtRemarks.Enabled = true;
             cmbProductStatus.Enabled = true;
         }
@@ -411,7 +407,6 @@ namespace Inventory.MainForm
             cmbProductStatus.Enabled = false;
             txtRemarks.Enabled = false;
             dkpReturnDelivery.Enabled = false;
-            dkpInputDate.Enabled = false;
             cmbProductStatus.Enabled = false;
         }
         private void InputClea()
@@ -425,7 +420,6 @@ namespace Inventory.MainForm
             cmbFromBranch.Text = "";
             txtRemarks.Clear();
             dkpReturnDelivery.Value = DateTime.Now.Date;
-            dkpInputDate.Value = DateTime.Now.Date;
             cmbProductStatus.Text = "";
         }
         private void InputItem()
@@ -451,537 +445,12 @@ namespace Inventory.MainForm
             cmbProductStatus.BackColor = Color.DimGray;
             txtRemarks.BackColor = Color.DimGray;
             dkpReturnDelivery.BackColor = Color.DimGray;
-            dkpInputDate.BackColor = Color.DimGray;
             cmbProductStatus.BackColor = Color.DimGray;
             txtWarehouseQty.BackColor = Color.DimGray;
-        }
-        private int GetProductId(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.product_name == input);
-                    return query.product_id;
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Product Id Error", "Product Inventory Details");
-                    throw;
-                }
-            }
-        }
-         
-        private int GetBranchId(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.branch_details == input);
-                    return query.branch_id;
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Branch Id Error", "Branch Inventory Details");
-                    throw;
-                }
-            }
-        }
-        private string GetBranch(int input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.branch_id == input);
-                    return query.branch_details;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                    return null;
-                }
-            }
-        }
-        private int GetProductStatus(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ProductStatus>(unWork);
-                    var query = repository.FindBy(x => x.status == input);
-                    return query.status_id;
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Product Status Id Error", "Product Status Inventory Details");
-                    throw;
-                }
-            }
-        }
-        private int GetProductImgId(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ViewProductCategory>(unWork);
-                    var query = repository.FindBy(x => x.product_name == input);
-                    return query.image_id;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                    return 0;
-                }
-            }
-        }
-        private int VerifyReturnNo(string returnNo)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    var repository = new Repository<ViewReturnWarehouse>(unWork);
-                    return repository.SelectAll(Query.SelectCountReturnNo)
-                        .Where(x => x.return_number == returnNo)
-                        .Select(x => x.return_id)
-                        .Count();
-                }
-                catch (Exception e)
-                {
-                    Console.Write(e.ToString());
-                    return 0;
-                }
-            }
-        }
-        private void GenerateReturn()
-        {
-            var lastCode = GetLastReturnId();
-            var lastId = GetSettings.GetLastBarcode(lastCode);
-            var alphaNumeric = new GenerateAlpaNum("D", 3, lastId);
-            alphaNumeric.Increment();
-            txtReturnCode.Text = alphaNumeric.ToString();
-        }
-        private string GetLastReturnId()
-        {
-            using (var session = new DalSession())
-            {
-                var unitWork = session.UnitofWrk;
-                unitWork.Begin();
-                var repository = new Repository<ViewReturnWarehouse>(unitWork);
-                var result = (from b in repository.SelectAll(Query.SelectAllReturnWareHs)
-                              orderby b.return_id descending
-                              select b.return_code).Take(1).SingleOrDefault();
-                if (result != null)
-                {
-                    return result;
-                }
-                result = Query.DefaultCode;
-                return result;
-            }
-        }
-        private void ClearGrid()
-        {
-            gCON.DataSource = null;
-            gCON.DataSource = "";
-            gDEL.DataSource = "";
-            gDEL.DataSource = null;
-            gridReturn.Columns.Clear();
-            gridDelivery.Columns.Clear();
-
-        }
-        private void BindWareHouse()
-        {
-            var branch = GetBranch(_branch);
-            retWET.ShowWaitForm();
-            ClearGrid();
-            gDEL.DataSource = EnumerableWareHouse(branch);
-            if (gridDelivery.RowCount > 0)
-            {
-                gridDelivery.Columns[0].Width = 40;
-            }
-            retWET.CloseWaitForm();
-
-        }
-        private void BindReturnWareHouse()
-        {
-            var branch = GetBranch(_branch);
-            retWET.ShowWaitForm();
-            ClearGrid();
-            gCON.DataSource = EnumerableWareHouse(branch);
-            if (gridReturn.RowCount > 0)
-            {
-                gridReturn.Columns[0].Width = 40;
-             
-                gridReturn.Columns[2].Width = 195;
-            }
-            retWET.CloseWaitForm();
-
-        }
-        private void BindInventory(string branch)
-        {
-            retWET.ShowWaitForm();
-            ClearGrid();
-             // gCON.DataSource = EnumerableBranches(branch);
-             gCON.DataSource = listInventory.Select(p => new { 
-                Id = p.inventory_id,
-                Item = p.product_name,
-                Qty = p.quantity,
-                Status = p.status,
-                Branch = p.branch_details
-
-            });  
-            if (gridReturn.RowCount > 0)
-            {
-                gridReturn.Columns[0].Width = 50;
-                gridReturn.Columns[1].Width = 400;
-                gridReturn.Columns[2].Width = 80;
-                gridReturn.Columns[3].Width = 120;
-                gridReturn.Columns[4].Width = 160;
-
-            }
-            retWET.CloseWaitForm();
-
-        }
-        
-        private int SearchLpg(int productId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    var repository = new Repository<ViewProductId>(unWork);
-                    return repository
-                        .SelectAll(Query.SelectAllProductId)
-                        .Count(x => x.product_id == productId);
-                }
-                catch (Exception)
-                {
-                    return 0;
-                }
-            }
-        }
-        private IEnumerable<ViewReturnWarehouse> EnumerableWareHouse(string branch)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ViewReturnWarehouse>(unWork);
-                    return repository.SelectAll(Query.SelectAllReturnWareHs)
-                        .ToList();
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, Messages.ErrorInternal, Messages.TitleInventory);
-                    throw;
-                }
-            }
-        }
-        private void ShowValue(int id)
-        {
-            var que = ShowEntity(id);
-            if (que != null)
-            {
-                txtReturnId.Text = que.inventory_id.ToString();
-                txtReturnCode.Text = que.product_code;
-                cmbProductName.Text = que.product_name;
-                txtDeliveryNo.Text = que.delivery_code;
-                txtWarehouseQty.Text = que.quantity.ToString(CultureInfo.InvariantCulture);
-                cmbFromBranch.Text = que.branch_details;
-                dkpInputDate.Value = que.inventory_date.Date;
-                cmbProductStatus.Text = que.status;
-            }
-        }
-        private void ShowValueReturn(int id)
-        {
-            var que = ShowReturn(id);
-            if (que != null)
-            {
-                txtReturnId.Text = que.return_id.ToString();
-                txtReturnCode.Text = que.return_code;
-                cmbProductName.Text = que.product_code;
-                txtDeliveryNo.Text = que.return_number;
-                txtWarehouseQty.Text = Constant.DefaultZero.ToString();
-                //cmbFromBranch.Text = que.Origin;
-                cmbToBranch.Text = que.destination;
-                dkpReturnDelivery.Value = que.return_date.Date;
-                //dkpInputDate.Value = que.RefDate.Date;
-                cmbProductStatus.Text = que.status_id;
-                txtRemarks.Text = que.remarks;
-                txtReturnQty.Text = que.return_quantity.ToString(CultureInfo.InvariantCulture);
-            }
-        }
-
-        private void ShowBranch()
-        {
-            var pop = new FirmPopBranches(_userId, _userTy)
-            {
-                ReturnBranch = this,
-                Return = true
-            };
-            pop.ShowDialog();
-        }
-        private void BindProductsLpg()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<Products>(unWork);
-                var query = (from r in repository.SelectAll(Query.AllProducts)
-                    where r.product_name.Contains(Constant.AddFilterLpg)
-                    where !r.product_name.Contains(Constant.AddFilterEmp)
-                    select r.product_name).Distinct().ToList();
-                cmbProductName.DataBindings.Clear();
-                cmbProductName.DataSource = query;
-            }
-        }
-        private void BindProducts()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<Products>(unWork);
-                var query = (from r in repository.SelectAll(Query.AllProducts)
-                    where !r.product_name.Contains(Constant.AddFilterLpg)
-                    where !r.product_name.Contains(Constant.AddFilterEmp)
-                    select r.product_name).Distinct().ToList();
-                cmbProductName.DataBindings.Clear();
-                cmbProductName.DataSource = query;
-            }
-        }
-        private ViewInventory ShowEntity(int inventoryId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    var repository = new Repository<ViewInventory>(unWork);
-                    return repository.FindBy(x => x.inventory_id == inventoryId);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                    return null;
-                }
-                
-            }
-        }
-        private ViewReturnWarehouse ShowReturn(int returnId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    var repository = new Repository<ViewReturnWarehouse>(unWork);
-                    return repository.FindBy(x => x.return_id == returnId);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                    return null;
-                }
-
-            }
-        }
-        private void xCON_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-            if(xCON.SelectedTabPage == xtraDelivery)
-            {
-                if (_branch > 0)
-                {
-                    ButCan();
-                    bntADD.Enabled = false;
-                    bntCLR.Enabled = false;
-                    BindWareHouse();
-                }
-                else
-                {
-                    PopupNotification.PopUpMessages(0, "Please Select branch first!", Messages.InventorySystem);
-                }
-               
-            }
-            if (xCON.SelectedTabPage == xtraReturn)
-            {
-                ShowBranch();
-            }
-        }
-        private void gridReturn_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                BindReturnWareHouse();
-                InputClea();
-                bntADD.Enabled = false;
-                bntCLR.Enabled = false;
-                _lpg = false;
-                _itm = false;
-                _ret = true;
-            }
-            if (e.KeyCode == Keys.F2)
-            {
-                _ret = false;
-                if (_branch > 0)
-                {
-                    var branch = GetBranch(_branch);
-                    BindInventory(branch);
-                }
-            }
-            if (e.KeyCode == Keys.F3)
-            {
-                ClearGrid();
-                ShowBranch();
-                _ret = false;
-            }
-            if (e.KeyCode == Keys.R)
-            {
-                if (_pop)
-                {
-                    var productId = GetProductId(cmbProductName.Text);
-                    var inventoId = int.Parse(txtReturnId.Text);
-                    var origin = cmbFromBranch.Text;
-                    var destin = Constant.DefaultWareHouse;
-                    var prodct = cmbProductName.Text;
-                    var pop = new FirmPopReturnEmpty(productId, inventoId, origin, destin, prodct)
-                    {
-                        Main = this
-                    };
-                    pop.ShowDialog();
-                }
-               
-            }
-        }
-        private void gridReturn_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            if (gridReturn.RowCount > 0)
-            {
-                try
-                {
-                    if (_ret == false)
-                    {
-                        var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
-                        ShowValue(invId);
-                        var imgId = GetProductImgId(cmbProductName.Text);
-                    }
-                    if (_ret)
-                    {
-                        var invId = (int)((GridView)sender).GetFocusedRowCellValue("Id");
-                        ShowValueReturn(invId);
-                        var imgId = GetProductImgId(cmbProductName.Text);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
-        }
-        private void gridReturn_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-            InputWhit();
-            var len = cmbProductName.Text.Length;
-            if (_ret == false)
-            {
-                bntUPD.Enabled = false;
-                if (len > 0)
-                {
-                    retWET.ShowWaitForm();
-                    var item = cmbProductName.Text.Trim(' ');
-                    var productId = GetProductId(item);
-                    var result = SearchLpg(productId);
-                    if (result > 0)
-                    {
-                        _pop = true;
-                        _lpg = true;
-                        _itm = false;
-                        _edtItm = false;
-                        _edtLpg = false;
-                        bntCLR.BackColor = Color.Maroon;
-                        bntCLR.Enabled = true;
-                        bntADD.Enabled = false;
-                    }
-                    else
-                    {
-                        _pop = false;
-                        _lpg = false;
-                        _itm = true;
-                        _edtItm = false;
-                        _edtLpg = false;
-                        bntCLR.BackColor = Color.Black;
-                        bntCLR.Enabled = false;
-                        bntADD.Enabled = true;
-                    }
-                    retWET.CloseWaitForm();
-                }
-            }else if (_ret)
-            {
-                bntUPD.Enabled = true;
-                bntDEL.Enabled = true;
-                if (len > 0)
-                {
-                    retWET.ShowWaitForm();
-                    var item = cmbProductName.Text.Trim(' ');
-                    var productId = GetProductId(item);
-                    var result = SearchLpg(productId);
-                    if (result > 0)
-                    {
-                        _lpg = false;
-                        _itm = false;
-                        _edtItm = false;
-                        _edtLpg = true;
-                        _pop = false;
-                    }
-                    else
-                    {
-                        _lpg = false;
-                        _itm = false;
-                        _edtItm = true;
-                        _edtLpg = false;
-                        _pop = false;
-                    }
-                    retWET.CloseWaitForm();
-                }
-            }
-            
         }
 
         private void cmbProductName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1)
-            {
-                if (_lpg && _ret == false && _add == false)
-                {
-                    BindProductsLpg();
-                }
-                else if (_lpg == false && _ret == false && _add == false)
-                {
-                    BindProducts();
-                }
-            }
             if (e.KeyCode == Keys.Enter)
             {
                 var len = cmbProductName.Text.Length;
@@ -1057,8 +526,7 @@ namespace Inventory.MainForm
 
         private void txtReturnQTY_Leave(object sender, EventArgs e)
         {
-            if (_itm && _lpg == false)
-            {
+            
                 var len = txtReturnQty.Text.Length;
                 if (len > 0)
                 {
@@ -1076,30 +544,9 @@ namespace Inventory.MainForm
                         txtReturnQty.BackColor = Color.Yellow;
                     }
                 }
-
-            }
         }
-
-        private void dkpReturnDelivery_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                dkpInputDate.Focus();
-            }
-        }
-
-        private void dkpInputDate_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                cmbProductStatus.Focus();
-                cmbProductStatus.BackColor = Color.Yellow;
-            }
-        }
-
         private void cmbProductStatus_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1) { BindStatus(); }
             var len = cmbProductStatus.Text.Length;
             if (len > 0)
             {
@@ -1128,8 +575,228 @@ namespace Inventory.MainForm
                 }
             }
         }
+        private void gridReturn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                BindReturnWareHouse();
+                InputClea();
+                bntADD.Enabled = false;
+                bntCLR.Enabled = false;
+            }
+            if (e.KeyCode == Keys.F2)
+            {
+                if (branch.Length > 0)
+                {
+                    BindInventory(branch);
+                }
+            }
+            if (e.KeyCode == Keys.F3)
+            {
+                ClearGrid();
+                ShowBranch();
+            }
+            if (e.KeyCode == Keys.R)
+            {
+                if (_pop)
+                {
+                    var productId = FetchUtils.getProductId(cmbProductName.Text);
+                    var inventoId = int.Parse(txtReturnId.Text);
+                    var origin = cmbFromBranch.Text;
+                    var destin = Constant.DefaultWareHouse;
+                    var prodct = cmbProductName.Text;
+                    var pop = new FirmPopReturnEmpty(productId, inventoId, origin, destin, prodct)
+                    {
+                        Main = this
+                    };
+                    pop.ShowDialog();
+                }
 
-        private void ReturnLpg()
+            }
+        }
+        private void gridReturn_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            gridViewReturn(sender);
+            
+        }
+        private void gridViewReturn(object sender)
+        {
+            if (gridReturn.RowCount > 0)
+            {
+                try
+                {
+                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (id.Length > 0)
+                    {
+                            InventoryId = int.Parse(id);
+                            var ent = searchInventoryId(InventoryId);
+                            var barcode = ent.product_code;
+                            cmbProductName.Text = ent.product_name;
+                            txtWarehouseQty.Text = ent.quantity.ToString(CultureInfo.InvariantCulture);
+                            cmbFromBranch.Text = ent.branch_details;
+                            cmbProductStatus.Text = ent.status;
+
+                            var img = searchProductImg(barcode);
+                            var imgLocation = img.img_location;
+                            if (imgLocation.Length > 0)
+                            {
+                                var location = ConstantUtils.defaultImgLocation + imgLocation;
+                                imgPreview.ImageLocation = location;
+                            }
+                            else
+                            {
+                                imgPreview.Image = null;
+                            }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+        private ViewInventoryList searchInventoryId(int id)
+        {
+            return listInventory.FirstOrDefault(Inventory => Inventory.inventory_id == id);
+        }
+        private void gridReturn_RowClick(object sender, RowClickEventArgs e)
+        {
+            if (gridReturn.RowCount > 0)
+            {
+                InputWhit();
+            }
+        } 
+        
+        private void GenerateReturn()
+        {
+            var lastCode = FetchUtils.getLastReturnId();
+            var lastId = GetSettings.GetLastBarcode(lastCode);
+            var alphaNumeric = new GenerateAlpaNum("D", 3, lastId);
+            alphaNumeric.Increment();
+            txtReturnCode.Text = alphaNumeric.ToString();
+        }
+        
+        private void ClearGrid()
+        {
+            gCON.DataSource = null;
+            gCON.DataSource = "";
+            gDEL.DataSource = "";
+            gDEL.DataSource = null;
+            gridReturn.Columns.Clear();
+            gridDelivery.Columns.Clear();
+
+        }
+        private void BindWareHouse()
+        {
+            retWET.ShowWaitForm();
+            ClearGrid();
+            gDEL.DataSource = EnumerableUtils.getEnumerableWareHouse(branch);
+            if (gridDelivery.RowCount > 0)
+            {
+                gridDelivery.Columns[0].Width = 40;
+            }
+            retWET.CloseWaitForm();
+
+        }
+        private void BindReturnWareHouse()
+        {
+            retWET.ShowWaitForm();
+            ClearGrid();
+            gCON.DataSource = EnumerableUtils.getEnumerableWareHouse(branch);
+            if (gridReturn.RowCount > 0)
+            {
+                gridReturn.Columns[0].Width = 40;
+             
+                gridReturn.Columns[2].Width = 195;
+            }
+            retWET.CloseWaitForm();
+
+        }
+        private void BindInventory(string branch)
+        {
+            retWET.ShowWaitForm();
+            ClearGrid();
+             gCON.DataSource = listInventory.Select(p => new { 
+                Id = p.inventory_id,
+                Item = p.product_name,
+                Qty = p.quantity,
+                Status = p.status,
+                Branch = p.branch_details
+            });
+            gCON.Update();
+            if (gridReturn.RowCount > 0)
+            {
+                gridReturn.Columns[0].Width = 40;
+                gridReturn.Columns[1].Width = 400;
+                gridReturn.Columns[2].Width = 80;
+                gridReturn.Columns[3].Width = 120;
+                gridReturn.Columns[4].Width = 160;
+            }
+            retWET.CloseWaitForm();
+        }
+        private void ShowValueReturn(int id)
+        {
+            var que = FetchUtils.getShowReturn(id);
+            if (que != null)
+            {
+                txtReturnId.Text = que.return_id.ToString();
+                txtReturnCode.Text = que.return_code;
+                cmbProductName.Text = que.product_code;
+                txtDeliveryNo.Text = que.return_number;
+                txtWarehouseQty.Text = Constant.DefaultZero.ToString();
+                //cmbFromBranch.Text = que.Origin;
+                cmbToBranch.Text = que.destination;
+                dkpReturnDelivery.Value = que.return_date.Date;
+                //dkpInputDate.Value = que.RefDate.Date;
+                cmbProductStatus.Text = que.status_id;
+                txtRemarks.Text = que.remarks;
+                txtReturnQty.Text = que.return_quantity.ToString(CultureInfo.InvariantCulture);
+                var barcode = que.product_code;
+                var img = searchProductImg(barcode);
+                var imgLocation = img.img_location;
+                if (imgLocation.Length > 0)
+                {
+                    var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                    imgPreview.ImageLocation = location;
+                }
+                else
+                    imgPreview.Image = null;
+            }
+        }
+
+        private void ShowBranch()
+        {
+            var pop = new FirmPopBranches(_userId, _userTy)
+            {
+                ReturnBranch = this,
+                Return = true
+            };
+            pop.ShowDialog();
+        }
+        private void xCON_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if(xCON.SelectedTabPage == xtraDelivery)
+            {
+                if (branch.Length > 0)
+                {
+                    ButCan();
+                    bntADD.Enabled = false;
+                    bntCLR.Enabled = false;
+                    BindWareHouse();
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Please Select branch first!", Messages.InventorySystem);
+                }
+               
+            }
+            if (xCON.SelectedTabPage == xtraReturn)
+            {
+                ShowBranch();
+            }
+        }
+        private void InsertReturn()
         {
             using (var session = new DalSession())
             {
@@ -1138,17 +805,16 @@ namespace Inventory.MainForm
                 {
                     var item = new ReturnWareHouse
                     {
-                        ReturnCode = "",
-                        ProductId = GetProductId(cmbProductName.Text),
-                        ReturnNo = txtDeliveryNo.Text.Trim(' '),
-                        ReturnQty = decimal.Parse(txtReturnQty.Text),
-                        BranchId = GetBranchId(cmbFromBranch.Text),
-                        Destination = GetBranchId(cmbToBranch.Text),
-                        ReturnDelivery = dkpReturnDelivery.Value.Date,
-                        RefDate = dkpInputDate.Value.Date,
-                        StatusId = GetProductStatus(cmbProductStatus.Text),
-                        Remarks = txtRemarks.Text.Trim(' '), 
-                        InventoryId = int.Parse(txtReturnId.Text)
+                        return_code = "",
+                        product_id = FetchUtils.getProductId(cmbProductName.Text),
+                        return_number = txtDeliveryNo.Text.Trim(' '),
+                        return_quantity = decimal.Parse(txtReturnQty.Text),
+                        branch_id = FetchUtils.getBranchId(cmbFromBranch.Text),
+                        destination = FetchUtils.getBranchId(cmbToBranch.Text),
+                        return_date = dkpReturnDelivery.Value.Date,
+                        status_id = FetchUtils.getProductStatus(cmbProductStatus.Text),
+                        remarks = txtRemarks.Text.Trim(' '), 
+                        inventory_id = int.Parse(txtReturnId.Text)
                     };
                     retWET.ShowWaitForm();
                     unWork.Begin();
@@ -1172,7 +838,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private void ReturnItem()
+        private void UpdateReturn()
         {
             using (var session = new DalSession())
             {
@@ -1182,14 +848,12 @@ namespace Inventory.MainForm
                     retWET.ShowWaitForm();
                     var returnId = int.Parse(txtReturnId.Text);
                     var returnCd = "";
-                    var prodctId = GetProductId(cmbProductName.Text);
+                    var prodctId = FetchUtils.getProductId(cmbProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);
-                    var branchId = _branch;
-                    var destines = GetBranchId(cmbToBranch.Text);
+                    var destines = FetchUtils.getBranchId(cmbToBranch.Text);
                     var returnDt = dkpReturnDelivery.Value.Date;
-                    var refDates = dkpInputDate.Value.Date;
-                    var statusId = GetProductStatus(cmbProductStatus.Text);
+                    var statusId = FetchUtils.getProductStatus(cmbProductStatus.Text);
                     var remarkss = txtRemarks.Text.Trim(' ');
                     var repository = new Repository<ReturnWareHouse>(unWork);
                     var result = repository.ExecuteReturnWarehouse(StoredProcedure.UspReturnItemWareh,
@@ -1198,10 +862,9 @@ namespace Inventory.MainForm
                         SqlVariables.ProductId, prodctId,
                         SqlVariables.ReturnNo, returnNo,
                         SqlVariables.ReturnQty, retrnQty,
-                        SqlVariables.BranchId, branchId,
+                        SqlVariables.BranchId, _branchId,
                         SqlVariables.Destination, destines,
                         SqlVariables.ReturnDel, returnDt,
-                        SqlVariables.RefDate, refDates,
                         SqlVariables.StatusId, statusId,
                         SqlVariables.Remarks, remarkss, 
                         SqlVariables.InventoryId, returnId);
@@ -1229,27 +892,24 @@ namespace Inventory.MainForm
                     unWork.Begin();
                     var returnId = int.Parse(txtReturnId.Text);
                     var returnCd = "";
-                    var prodctId = GetProductId(cmbProductName.Text);
+                    var prodctId = FetchUtils.getProductId(cmbProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);
-                    var branchId = _branch;
-                    var destines = GetBranchId(cmbToBranch.Text);
+                    var destines = FetchUtils.getBranchId(cmbToBranch.Text);
                     var returnDt = dkpReturnDelivery.Value.Date;
-                    var refDates = dkpInputDate.Value.Date;
-                    var statusId = GetProductStatus(cmbProductStatus.Text);
+                    var statusId = FetchUtils.getProductStatus(cmbProductStatus.Text);
                     var remarkss = txtRemarks.Text.Trim(' ');
                     var repository = new Repository<ReturnWareHouse>(unWork);
-                    var que = repository.FindBy(x => x.ReturnId == returnId);
-                        que.ReturnCode = returnCd;
-                        que.ProductId  = prodctId;
-                        que.ReturnNo   = returnNo;
-                        que.ReturnQty = retrnQty;
-                        que.BranchId = branchId;
-                        que.Destination = destines;
-                        que.ReturnDelivery = returnDt;
-                        que.RefDate = refDates;
-                        que.StatusId = statusId;
-                        que.Remarks = remarkss;
+                    var que = repository.FindBy(x => x.return_id == returnId);
+                        que.return_code = returnCd;
+                        que.product_id  = prodctId;
+                        que.return_number   = returnNo;
+                        que.return_quantity = retrnQty;
+                        que.branch_id = _branchId;
+                        que.destination = destines;
+                        que.return_date = returnDt;
+                        que.status_id = statusId;
+                        que.remarks = remarkss;
                     var result = repository.Update(que);
                     if (result)
                     {
@@ -1281,14 +941,12 @@ namespace Inventory.MainForm
                     retWET.ShowWaitForm();
                     var returnId = int.Parse(txtReturnId.Text);
                     var returnCd = "";
-                    var prodctId = GetProductId(cmbProductName.Text);
+                    var prodctId = FetchUtils.getProductId(cmbProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);
-                    var branchId = _branch;
-                    var destines = GetBranchId(cmbToBranch.Text);
+                    var destines = FetchUtils.getBranchId(cmbToBranch.Text);
                     var returnDt = dkpReturnDelivery.Value.Date;
-                    var refDates = dkpInputDate.Value.Date;
-                    var statusId = GetProductStatus(cmbProductStatus.Text);
+                    var statusId = FetchUtils.getProductStatus(cmbProductStatus.Text);
                     var remarkss = txtRemarks.Text.Trim(' ');
                     var repository = new Repository<ReturnWareHouse>(unWork);
                     var result = repository.ExecuteRetUpdWarehouse(StoredProcedure.UspReturnUpdWarehs,
@@ -1297,10 +955,9 @@ namespace Inventory.MainForm
                         SqlVariables.ProductId, prodctId,
                         SqlVariables.ReturnNo, returnNo,
                         SqlVariables.ReturnQty, retrnQty,
-                        SqlVariables.BranchId, branchId,
+                        SqlVariables.BranchId, _branchId,
                         SqlVariables.Destination, destines,
                         SqlVariables.ReturnDel, returnDt,
-                        SqlVariables.RefDate, refDates,
                         SqlVariables.StatusId, statusId,
                         SqlVariables.Remarks, remarkss);
                     if (result > 0)
@@ -1316,7 +973,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private void ReturnLpgDel()
+        private void DeleteReturn()
         {
             using (var session = new DalSession())
             {
@@ -1327,7 +984,7 @@ namespace Inventory.MainForm
                     unWork.Begin();
                     var returnId = int.Parse(txtReturnId.Text);
                     var repository = new Repository<ReturnWareHouse>(unWork);
-                    var que = repository.FindBy(x => x.ReturnId == returnId);
+                    var que = repository.FindBy(x => x.return_id == returnId);
                     var result = repository.Delete(que);
                     if (result)
                     {
@@ -1377,17 +1034,9 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private void BindStatus()
+        private ViewImageProduct searchProductImg(string param)
         {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<ProductStatus>(unWork);
-                var query = repository.SelectAll(Query.AllProductStatus).Select(x => x.status).Distinct().ToList();
-                cmbProductStatus.DataBindings.Clear();
-                cmbProductStatus.DataSource = query;
-            }
+            return imgList.FirstOrDefault(img => img.image_code == param);
         }
     }
 }

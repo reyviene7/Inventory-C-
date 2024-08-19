@@ -221,6 +221,25 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static int getProductImgId(string input)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewProductCategory>(unWork);
+                    var query = repository.FindBy(x => x.product_name == input);
+                    return query.image_id;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
 
         public static int getLastCategoryId()
         {
@@ -437,6 +456,25 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static int getProductStatus(string input)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ProductStatus>(unWork);
+                    var query = repository.FindBy(x => x.status == input);
+                    return query.status_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
 
         public static int getStatusId(string status)
         {
@@ -492,6 +530,24 @@ namespace ServeAll.Core.Utilities
                     var query = repository.FindBy(x => x.product_code == barcode);
                     return query.product_id;
                  
+            }
+        }
+        public static int getSearchProduct(int productId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewProductId>(unWork);
+                    return repository
+                        .SelectAll(Query.SelectAllProductId)
+                        .Count(x => x.product_id == productId);
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
             }
         }
 
@@ -672,6 +728,59 @@ namespace ServeAll.Core.Utilities
                     Console.WriteLine(ex.Message);
                     return "";
                 }
+            }
+        }
+        public static ViewReturnWarehouse getShowReturn(int returnId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewReturnWarehouse>(unWork);
+                    return repository.FindBy(x => x.return_id == returnId);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null; 
+                }
+            }
+        }
+        public static string getLastReturnId()
+        {
+            using (var session = new DalSession())
+            {
+                var unitWork = session.UnitofWrk;
+                unitWork.Begin();
+                var repository = new Repository<ViewReturnWarehouse>(unitWork);
+                var result = (from b in repository.SelectAll(Query.SelectAllReturnWareHs)
+                              orderby b.return_id descending
+                              select b.return_code).Take(1).SingleOrDefault();
+                if (result != null)
+                {
+                    return result;
+                }
+                result = Query.DefaultCode;
+                return result;
+            }
+        }
+        public static ViewInventory getShowEntity(int inventoryId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewInventory>(unWork);
+                    return repository.FindBy(x => x.inventory_id == inventoryId);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+
             }
         }
         public static int GetLastId()

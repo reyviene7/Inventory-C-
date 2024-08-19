@@ -17,7 +17,7 @@ namespace Inventory.MainForm
         private   string _optionsDirection = "down";
         private   string _toastDirection = "down";
         private   string _rightDirection = "right";
-
+        const int type = Config.Constant.ReportDepotDelivery;
         //For animated panels timeout
         private int _optionsTimeOut;
         private int _rightTimeOut;
@@ -186,9 +186,8 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            Hide();
             warehouseInventory.Show();
-          
+            Hide();
         }
 
         private void tileWAR_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
@@ -262,7 +261,7 @@ namespace Inventory.MainForm
         private void tileINV_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
-            const int type = Config.Constant.ReportWareHouseItem;
+          
             var view = new FirmPopDateEntries(name, type)
             {
                 Main = this
@@ -273,7 +272,7 @@ namespace Inventory.MainForm
         private void tileWDL_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
-            const int type = Config.Constant.ReportWareHouseDelr;
+         
             var view = new FirmPopCategoryReport(name, type)
             {
                 Main = this
@@ -284,7 +283,6 @@ namespace Inventory.MainForm
         private void tileRET_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
-            const int type = Config.Constant.ReportReturnWarehos;
             var view = new FirmPopCategoryReport(name, type)
             {
                 Main = this
@@ -295,7 +293,6 @@ namespace Inventory.MainForm
         private void tileRDP_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
-            const int type = Constant.ReportReturnDepotDl;
             var view = new FirmPopDateEntries(name, type)
             {
                 Main = this
@@ -327,7 +324,7 @@ namespace Inventory.MainForm
 
         private void tileManagement_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var view = new FrmManagement()
+            var view = new FrmManagement(_userId, type, _userName)
             {
                 Main = this
             };
@@ -336,7 +333,7 @@ namespace Inventory.MainForm
 
         private void tileServices_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            const int type = Config.Constant.ReportDepotDelivery;
+ 
             var view = new FrmServices(_userId, type, _userName)
             {
                 Main = this

@@ -1,8 +1,12 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.XtraGrid.Views.Card;
+using DevExpress.XtraGrid.Views.Grid;
+using Inventory.Config;
+using Inventory.PopupForm;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,22 +15,56 @@ namespace Inventory.MainForm
     public partial class FrmManagement : Form
     {
         private FirmMain _main;
-        private readonly IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
+        private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
+        private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private readonly IEnumerable<ViewImageProduct> _imgList;
+        private IEnumerable<ViewSalesPart> _sales_list;
+        private readonly int _userId;
+        private readonly int _userType;
+        private readonly string _username;
+        private int _branchId;
+        private string _branch;
+        public FrmManagement management { protected get; set; }
+        Image imgProcessing = Image.FromFile(ConstantUtils.imgProcessing);
+        Image imgCancelled = Image.FromFile(ConstantUtils.imgCancelled);
         public FirmMain Main
         {
             get { return _main; }
             set { _main = value; }
         }
-        public FrmManagement()
+
+        public int branchId
         {
+            get { return _branchId; }
+            set
+            {
+                _branchId = value;
+            }
+        }
+      
+        public string branch
+        {
+            get { return _branch; }
+            set
+            {
+                _branch = value;
+            }
+        }
+
+        public FrmManagement(int userId, int userType, string username)
+        {
+            _userId = userId;
+            _userType = userType;
+            _username = username;
             InitializeComponent();
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+            _sales_list = EnumerableUtils.getSalesParticular(branch);
             _imgList = EnumerableUtils.getImgProductList();
         }
         private void FrmManagement_Load(object sender, System.EventArgs e)
         {
-            bindDeliveryList();
+            ShowBranch();
+            bindDeliveryList(_branch);
         }
         private void barMainMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -41,49 +79,148 @@ namespace Inventory.MainForm
 
         private void ClearGrid()
         {
-            gridControl.DataSource = null;
-            gridControl.DataSource = "";
-            gridInventory.Columns.Clear();
+            gridCtrlPending.DataSource = null;
+            gridCtrlPending.DataSource = "";
+            cardPending.Columns.Clear();
         }
 
-        private void bindDeliveryList()
+        private void clearGridView()
+        {
+            gridCtrlPending.DataSource = null;
+            gridCtrlPending.DataSource = "";
+            grid.Columns.Clear();
+        }
+
+        private void clearGridSales()
+        {
+            gridCtrlSales.DataSource = null;
+            gridCtrlSales.DataSource = "";
+            gridSales.Columns.Clear();
+        }
+
+        private void bindDeliveryList(string branch)
         {
             ClearGrid();
-            var list = _warehouse_delivery.Select(p => new
+            var list = _warehouse_delivery
+                .Where(p => p.branch_details == branch)
+                .Select(p => new
             {
-                Id = p.delivery_id,
+                Id = "" + p.delivery_id,
                 Barcode = p.product_code,
-                Delivery = p.delivery_code,
-                Product = p.product_name,
-                Destination = p.branch_details,
+                Code = p.delivery_code,
+                Item = p.product_name,
+                Branch = p.branch_details,
+                Price = "P" + p.cost_per_unit,
+                LastCost = "P" + p.last_cost_per_unit,
+                Qty = "" + p.delivery_qty,
+                Status = p.status_details,
+                Date = p.delivery_date,
+                Delivery = p.delivery_status
+            });
+            gridCtrlPending.DataSource = list;
+            gridCtrlPending.Update();
+        }
+
+        private void bindCardViewList(string branch)
+        {
+            ClearGrid();
+            var list = _warehouse_delivery
+                .Where(p => p.branch_details == branch)
+                .Select(p => new
+            {
+                Id = "" + p.delivery_id,
+                Barcode = p.product_code,
+                Code = p.delivery_code,
+                Item = p.product_name,
+                Branch = p.branch_details,
+                Price = "P" + p.cost_per_unit,
+                LastCost = "P" + p.last_cost_per_unit,
+                Qty = "" + p.delivery_qty,
+                Status = p.status_details,
+                Date = p.delivery_date,
+                Delivery = p.delivery_status
+            });
+            gridCtrlPending.DataSource = list;
+            gridCtrlPending.Update();
+        }
+
+        private void bindWharehouseList()
+        {
+            clearGridView();
+            var list = _warehouse_list.Select(p => new {
+                Id = p.inventory_id,
+                Barcode = p.product_code,
+                SKU = p.sku,
+                Qty = p.quantity_in_stock,
+                ReQty = p.reorder_level,
+                Location = p.location_code,
+                Supplier = p.supplier_name,
+                LStocked = p.last_stocked_date,
+                LOrder = p.last_ordered_date,
+                Expire = p.expiration_date,
                 Price = p.cost_per_unit,
                 LastCost = p.last_cost_per_unit,
-                Qty = p.delivery_qty,
+                Total = p.total_value,
                 Status = p.status_details,
-                DeliveryStatus = p.delivery_status,
-                DeliveryDate = p.delivery_date
-            });
-            gridControl.DataSource = list;
-            if (gridInventory.RowCount > 0)
+                Created = p.created_at,
+                Updated = p.updated_at
+            }).ToList();
+            gridCtrlWarehouse.DataSource = list;
+            gridCtrlWarehouse.Update();
+         
+            if (gridWarehouseInventory.RowCount > 0)
+                gridWarehouseInventory.Columns[0].Width = 40;
+                gridWarehouseInventory.Columns[1].Width = 90;
+                gridWarehouseInventory.Columns[2].Width = 65;
+                gridWarehouseInventory.Columns[3].Width = 40;
+                gridWarehouseInventory.Columns[4].Width = 40;
+                gridWarehouseInventory.Columns[6].Width = 180;
+        }
+
+        private void bindSalesParticular()
+        {
+            try
             {
-                gridInventory.Columns[0].Width = 65;
-                gridInventory.Columns[1].Width = 130;
-                gridInventory.Columns[2].Width = 95;
-                gridInventory.Columns[3].Width = 320;
-                gridInventory.Columns[4].Width = 100;
-                gridInventory.Columns[5].Width = 100;
-                gridInventory.Columns[6].Width = 100;
-                gridInventory.Columns[7].Width = 65;
-                gridInventory.Columns[8].Width = 100;
-                gridInventory.Columns[9].Width = 140;
-                gridInventory.Columns[10].Width = 120;
+                clearGridSales();
+                var list = _sales_list.Select(x => new
+                {
+                    Id = x.id,
+                    Invoice = x.invoice,
+                    Barcode = x.barcode,
+                    Item = x.item,
+                    Qty = x.qty,
+                    UnitPrice = x.price,
+                    Discount = x.discount,
+                    Gross = x.gross,
+                    NetSales = x.net,
+                    Customer = x.customer,
+                    Branch = x.branch,
+                    Date = x.date,
+                }).ToList();
+                gridCtrlSales.DataSource = list;
+                gridCtrlSales.Update();
+                gridSales.Columns[0].Width = 40;
+                gridSales.Columns[1].Width = 50;
+                gridSales.Columns[2].Width = 100;
+                gridSales.Columns[3].Width = 340;
+                gridSales.Columns[4].Width = 50;
+                gridSales.Columns[5].Width = 50;
+                gridSales.Columns[6].Width = 50;
+                gridSales.Columns[7].Width = 50;
+                gridSales.Columns[8].Width = 50;
+                gridSales.Columns[9].Width = 110;
+                gridSales.Columns[10].Width = 90;
+                gridSales.Columns[11].Width = 100;
             }
-            gridControl.Update();
+            catch (Exception ex)
+            {
+                PopupNotification.PopUpMessages(0, ex.ToString(), "Sales Particular");
+            }
         }
 
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (gridInventory.RowCount > 0)
+            if (cardPending.RowCount > 0)
                 try
                 {
                     var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
@@ -114,6 +251,98 @@ namespace Inventory.MainForm
         private void barBackToMain_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+        }
+
+        private void gridInventory_CustomDrawCardCaption(object sender, DevExpress.XtraGrid.Views.Card.CardCaptionCustomDrawEventArgs e)
+        {
+
+        }
+
+        private void cardInventory_CustomDrawCardField(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+
+        }
+
+        private void cardInventory_CustomDrawCardFieldValue(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column.FieldName == "Delivery")
+            {
+                string status = e.CellValue?.ToString();
+                Image imageToDraw = null;
+
+                if (status == "Cancelled")
+                {
+                    imageToDraw = imgCancelled;
+                }
+                else if (status == "Processing")
+                {
+                    imageToDraw = imgProcessing;
+                }
+
+                if (imageToDraw != null)
+                {
+                    int imageSize = 18;
+                    Rectangle imageRect = new Rectangle(e.Bounds.X, e.Bounds.Y, imageSize, imageSize);
+                    e.Graphics.DrawImage(imageToDraw, imageRect);
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void ShowBranch()
+        {
+            var pop = new FirmPopBranches(_userId, 1)
+            {
+                management = this,
+                formManagement = true
+            };
+            pop.ShowDialog();
+        }
+
+        private void barWarehouse_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreen.ShowWaitForm();
+            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            bindWharehouseList();
+            xInventory.SelectedTabPage = xtraInventory;
+            splashScreen.CloseWaitForm();
+        }
+
+        private void barItemDelivery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreen.ShowWaitForm();
+            _warehouse_list = Enumerable.Empty<ViewWareHouseInventory>();
+            _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+            bindCardViewList(_branch);
+            xInventory.SelectedTabPage = xtraPending;
+            splashScreen.CloseWaitForm();
+        }
+
+        private void barSalesItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreen.ShowWaitForm();
+            _sales_list = Enumerable.Empty<ViewSalesPart>();
+            _sales_list = EnumerableUtils.getSalesParticular(branch);
+            bindSalesParticular();
+            xInventory.SelectedTabPage = xtraSales;
+            splashScreen.CloseWaitForm();
+        }
+
+        private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            var barcode = ((CardView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
+            var img = searchProductImg(barcode);
+            var imgLocation = img.img_location;
+            if (imgLocation.Length > 0)
+            {
+                var location = ConstantUtils.defaultImgLocation + imgLocation;
+                imgPreview.ImageLocation = location;
+                imgPreview.Refresh();
+            }
+            else
+            {
+                imgPreview.Image = null;
+            }
         }
     }
 }

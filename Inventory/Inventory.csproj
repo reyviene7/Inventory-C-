@@ -114,6 +114,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.XtraGrid.v19.2.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.XtraPrinting.v19.2.dll</HintPath>
@@ -586,6 +587,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Graph.ico" />
+    <None Include="Resources\converttorange_16x16.png" />
+    <None Include="Resources\convert_32x32.png" />
     <None Include="Resources\list.gear.png" />
     <None Include="Resources\graph.histogram.description.png" />
     <None Include="Resources\transit.bus.png" />

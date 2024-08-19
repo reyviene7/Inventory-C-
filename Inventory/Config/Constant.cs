@@ -2,7 +2,7 @@
 
 namespace Inventory.Config
 {
-    public class Constant
+    public static class Constant
     {
         public const float LocXStar = (float)494.67;
         public const float LocYStar = (float)55.33;
