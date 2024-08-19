@@ -508,7 +508,6 @@
             this.cmbWarehouseBranch.Name = "cmbWarehouseBranch";
             this.cmbWarehouseBranch.Size = new System.Drawing.Size(269, 29);
             this.cmbWarehouseBranch.TabIndex = 9;
-            this.cmbWarehouseBranch.Text = "SELECT BRANCH";
             this.cmbWarehouseBranch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbDIS_KeyDown);
             // 
             // label13

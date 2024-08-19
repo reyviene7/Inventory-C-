@@ -6,6 +6,7 @@ using ServeAll.Core.Entities;
 using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
 using Inventory.Config;
+using ServeAll.Core.Utilities;
 
 namespace Inventory.PopupForm
 {
@@ -52,7 +53,7 @@ namespace Inventory.PopupForm
                
                 if (_return)
                 {
-                    var branchId = GetBranchId(branch);
+                    var branchId = FetchUtils.getBranchId(branch);
                     ReturnBranch.BranchId = branchId;
                     ReturnBranch.branch = branch;
                 }
@@ -73,25 +74,6 @@ namespace Inventory.PopupForm
                 Close();
             }
            
-        }
-        private int GetBranchId(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.branch_details == input);
-                    return query.branch_id;
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Branch Id Error", "Branch Inventory Details");
-                    throw;
-                }
-            }
         }
         private void BindBranch()
         {
