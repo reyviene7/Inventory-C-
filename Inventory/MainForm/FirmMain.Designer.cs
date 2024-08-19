@@ -65,6 +65,9 @@
             DevExpress.XtraEditors.TileItemElement tileItemElement111 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement112 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement113 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement114 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement115 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement116 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement117 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement118 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement119 = new DevExpress.XtraEditors.TileItemElement();
@@ -75,18 +78,15 @@
             DevExpress.XtraEditors.TileItemElement tileItemElement124 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement125 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement126 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement131 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement132 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement127 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement128 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement129 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement130 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement131 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement132 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement133 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement134 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement135 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement114 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement115 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement116 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement136 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement137 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement138 = new DevExpress.XtraEditors.TileItemElement();
@@ -130,16 +130,16 @@
             this.tileControl = new DevExpress.XtraEditors.TileControl();
             this.tileWarehouse = new DevExpress.XtraEditors.TileGroup();
             this.tileWAR = new DevExpress.XtraEditors.TileItem();
+            this.tileStaffRegistration = new DevExpress.XtraEditors.TileItem();
             this.tileDEV = new DevExpress.XtraEditors.TileItem();
             this.tileDEP = new DevExpress.XtraEditors.TileItem();
             this.tileCAT = new DevExpress.XtraEditors.TileItem();
-            this.tilePRO = new DevExpress.XtraEditors.TileItem();
             this.tileInvetoryWarehouse = new DevExpress.XtraEditors.TileGroup();
-            this.tileInventory = new DevExpress.XtraEditors.TileItem();
+            this.tilePRO = new DevExpress.XtraEditors.TileItem();
             this.tileDFB = new DevExpress.XtraEditors.TileItem();
             this.tileDTW = new DevExpress.XtraEditors.TileItem();
+            this.tileInventory = new DevExpress.XtraEditors.TileItem();
             this.tileRDP = new DevExpress.XtraEditors.TileItem();
-            this.tileStaffRegistration = new DevExpress.XtraEditors.TileItem();
             this.tileReports = new DevExpress.XtraEditors.TileGroup();
             this.tilePlist = new DevExpress.XtraEditors.TileItem();
             this.tileLPG = new DevExpress.XtraEditors.TileItem();
@@ -169,7 +169,7 @@
             this.pcAdd = new System.Windows.Forms.PictureBox();
             this.pcChangePassword = new System.Windows.Forms.PictureBox();
             this.pbHide = new System.Windows.Forms.PictureBox();
-            this.menWET = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.WaitForm1), true, true);
+            this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.WaitForm1), true, true);
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.tileItem1 = new DevExpress.XtraEditors.TileItem();
             this.tileItem5 = new DevExpress.XtraEditors.TileItem();
@@ -800,6 +800,38 @@
             this.tileWAR.Name = "tileWAR";
             this.tileWAR.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileWAR_ItemClick);
             // 
+            // tileStaffRegistration
+            // 
+            this.tileStaffRegistration.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tileStaffRegistration.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.tileStaffRegistration.AppearanceItem.Normal.BorderColor = System.Drawing.Color.White;
+            this.tileStaffRegistration.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.tileStaffRegistration.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileStaffRegistration.AppearanceItem.Normal.Options.UseBorderColor = true;
+            this.tileStaffRegistration.AppearanceItem.Normal.Options.UseFont = true;
+            this.tileStaffRegistration.AppearanceItem.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tileStaffRegistration.AppearanceItem.Pressed.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.tileStaffRegistration.AppearanceItem.Pressed.BorderColor = System.Drawing.Color.White;
+            this.tileStaffRegistration.AppearanceItem.Pressed.Options.UseBackColor = true;
+            this.tileStaffRegistration.AppearanceItem.Pressed.Options.UseBorderColor = true;
+            this.tileStaffRegistration.AppearanceItem.Selected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.tileStaffRegistration.AppearanceItem.Selected.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.tileStaffRegistration.AppearanceItem.Selected.BorderColor = System.Drawing.Color.White;
+            this.tileStaffRegistration.AppearanceItem.Selected.Options.UseBackColor = true;
+            this.tileStaffRegistration.AppearanceItem.Selected.Options.UseBorderColor = true;
+            tileItemElement114.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image17")));
+            tileItemElement114.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement114.Text = "Registration";
+            tileItemElement115.Text = "Staff";
+            tileItemElement116.Text = "";
+            this.tileStaffRegistration.Elements.Add(tileItemElement114);
+            this.tileStaffRegistration.Elements.Add(tileItemElement115);
+            this.tileStaffRegistration.Elements.Add(tileItemElement116);
+            this.tileStaffRegistration.Id = 64;
+            this.tileStaffRegistration.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
+            this.tileStaffRegistration.Name = "tileStaffRegistration";
+            this.tileStaffRegistration.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileStaffRegistration_ItemClick);
+            // 
             // tileDEV
             // 
             this.tileDEV.AppearanceItem.Hovered.BackColor = System.Drawing.Color.Maroon;
@@ -896,6 +928,16 @@
             this.tileCAT.Name = "tileCAT";
             this.tileCAT.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileCAT_ItemClick);
             // 
+            // tileInvetoryWarehouse
+            // 
+            this.tileInvetoryWarehouse.Items.Add(this.tilePRO);
+            this.tileInvetoryWarehouse.Items.Add(this.tileDFB);
+            this.tileInvetoryWarehouse.Items.Add(this.tileDTW);
+            this.tileInvetoryWarehouse.Items.Add(this.tileInventory);
+            this.tileInvetoryWarehouse.Items.Add(this.tileRDP);
+            this.tileInvetoryWarehouse.Name = "tileInvetoryWarehouse";
+            this.tileInvetoryWarehouse.Text = null;
+            // 
             // tilePRO
             // 
             this.tilePRO.AppearanceItem.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -939,40 +981,6 @@
             this.tilePRO.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tilePRO.Name = "tilePRO";
             this.tilePRO.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tilePRO_ItemClick);
-            // 
-            // tileInvetoryWarehouse
-            // 
-            this.tileInvetoryWarehouse.Items.Add(this.tilePRO);
-            this.tileInvetoryWarehouse.Items.Add(this.tileDFB);
-            this.tileInvetoryWarehouse.Items.Add(this.tileDTW);
-            this.tileInvetoryWarehouse.Items.Add(this.tileInventory);
-            this.tileInvetoryWarehouse.Items.Add(this.tileRDP);
-            this.tileInvetoryWarehouse.Name = "tileInvetoryWarehouse";
-            this.tileInvetoryWarehouse.Text = null;
-            // 
-            // tileInventory
-            // 
-            this.tileInventory.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.tileInventory.AppearanceItem.Normal.BorderColor = System.Drawing.Color.White;
-            this.tileInventory.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.tileInventory.AppearanceItem.Normal.Options.UseBackColor = true;
-            this.tileInventory.AppearanceItem.Normal.Options.UseBorderColor = true;
-            this.tileInventory.AppearanceItem.Normal.Options.UseFont = true;
-            this.tileInventory.AppearanceItem.Pressed.BackColor = System.Drawing.Color.Red;
-            this.tileInventory.AppearanceItem.Pressed.Options.UseBackColor = true;
-            this.tileInventory.AppearanceItem.Selected.BackColor = System.Drawing.Color.Red;
-            this.tileInventory.AppearanceItem.Selected.Options.UseBackColor = true;
-            tileItemElement131.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image24")));
-            tileItemElement131.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement131.Text = "Inventory";
-            tileItemElement132.Text = "Product Inventory";
-            tileItemElement132.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft;
-            this.tileInventory.Elements.Add(tileItemElement131);
-            this.tileInventory.Elements.Add(tileItemElement132);
-            this.tileInventory.Id = 69;
-            this.tileInventory.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
-            this.tileInventory.Name = "tileInventory";
-            this.tileInventory.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileInventory_itemClick);
             // 
             // tileDFB
             // 
@@ -1030,6 +1038,30 @@
             this.tileDTW.Name = "tileDTW";
             this.tileDTW.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileDTW_ItemClick);
             // 
+            // tileInventory
+            // 
+            this.tileInventory.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tileInventory.AppearanceItem.Normal.BorderColor = System.Drawing.Color.White;
+            this.tileInventory.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.tileInventory.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileInventory.AppearanceItem.Normal.Options.UseBorderColor = true;
+            this.tileInventory.AppearanceItem.Normal.Options.UseFont = true;
+            this.tileInventory.AppearanceItem.Pressed.BackColor = System.Drawing.Color.Red;
+            this.tileInventory.AppearanceItem.Pressed.Options.UseBackColor = true;
+            this.tileInventory.AppearanceItem.Selected.BackColor = System.Drawing.Color.Red;
+            this.tileInventory.AppearanceItem.Selected.Options.UseBackColor = true;
+            tileItemElement131.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image24")));
+            tileItemElement131.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement131.Text = "Inventory";
+            tileItemElement132.Text = "Product Inventory";
+            tileItemElement132.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft;
+            this.tileInventory.Elements.Add(tileItemElement131);
+            this.tileInventory.Elements.Add(tileItemElement132);
+            this.tileInventory.Id = 69;
+            this.tileInventory.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
+            this.tileInventory.Name = "tileInventory";
+            this.tileInventory.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileInventory_itemClick);
+            // 
             // tileRDP
             // 
             this.tileRDP.AppearanceItem.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
@@ -1067,38 +1099,6 @@
             this.tileRDP.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileRDP.Name = "tileRDP";
             this.tileRDP.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileRDP_ItemClick);
-            // 
-            // tileStaffRegistration
-            // 
-            this.tileStaffRegistration.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.tileStaffRegistration.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.tileStaffRegistration.AppearanceItem.Normal.BorderColor = System.Drawing.Color.White;
-            this.tileStaffRegistration.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.tileStaffRegistration.AppearanceItem.Normal.Options.UseBackColor = true;
-            this.tileStaffRegistration.AppearanceItem.Normal.Options.UseBorderColor = true;
-            this.tileStaffRegistration.AppearanceItem.Normal.Options.UseFont = true;
-            this.tileStaffRegistration.AppearanceItem.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tileStaffRegistration.AppearanceItem.Pressed.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.tileStaffRegistration.AppearanceItem.Pressed.BorderColor = System.Drawing.Color.White;
-            this.tileStaffRegistration.AppearanceItem.Pressed.Options.UseBackColor = true;
-            this.tileStaffRegistration.AppearanceItem.Pressed.Options.UseBorderColor = true;
-            this.tileStaffRegistration.AppearanceItem.Selected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.tileStaffRegistration.AppearanceItem.Selected.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.tileStaffRegistration.AppearanceItem.Selected.BorderColor = System.Drawing.Color.White;
-            this.tileStaffRegistration.AppearanceItem.Selected.Options.UseBackColor = true;
-            this.tileStaffRegistration.AppearanceItem.Selected.Options.UseBorderColor = true;
-            tileItemElement114.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image17")));
-            tileItemElement114.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement114.Text = "Registration";
-            tileItemElement115.Text = "Staff";
-            tileItemElement116.Text = "";
-            this.tileStaffRegistration.Elements.Add(tileItemElement114);
-            this.tileStaffRegistration.Elements.Add(tileItemElement115);
-            this.tileStaffRegistration.Elements.Add(tileItemElement116);
-            this.tileStaffRegistration.Id = 64;
-            this.tileStaffRegistration.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
-            this.tileStaffRegistration.Name = "tileStaffRegistration";
-            this.tileStaffRegistration.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileStaffRegistration_ItemClick);
             // 
             // tileReports
             // 
@@ -1512,9 +1512,9 @@
             this.pbHide.TabIndex = 14;
             this.pbHide.TabStop = false;
             // 
-            // menWET
+            // splashScreen
             // 
-            this.menWET.ClosingDelay = 500;
+            this.splashScreen.ClosingDelay = 500;
             // 
             // lblMainTitle
             // 
@@ -1685,7 +1685,7 @@
         private DevExpress.XtraEditors.TileItem tileDFB;
         private DevExpress.XtraEditors.TileItem tileDEV;
         private DevExpress.XtraEditors.TileItem tilePlist;
-        private DevExpress.XtraSplashScreen.SplashScreenManager menWET;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreen;
         private DevExpress.XtraEditors.TileGroup tileReports;
         private DevExpress.XtraEditors.TileItem tileLPG;
         private DevExpress.XtraEditors.TileItem tileServices;

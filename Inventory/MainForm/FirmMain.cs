@@ -154,82 +154,99 @@ namespace Inventory.MainForm
             var que = PopupNotification.PopUpMessageQuestion("Are you sure you want to Logoff?", Messages.InventorySystem);
             if (que)
             {
+                splashScreen.ShowWaitForm();
                 var log = new FirmLogin();
-                Close();
                 log.Show();
+                splashScreen.CloseWaitForm();
+                Close();
             }
         }
 
         private void tileCAT_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var cat = new FirmCategory()
             {
                 Main = this
             };
-            Hide();
             cat.Show();
+            splashScreen.CloseWaitForm();
+            Hide();
         }
 
         private void tilePRO_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var proc = new FirmProducts()
             {
                 Main = this
             };
-            Hide();
             proc.Show();
+            splashScreen.CloseWaitForm();
+            Hide();
         }
 
         private void tileDEP_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var warehouseInventory = new FirmWarehouseInvetory(_userId, _usrTyp, _userName)
             {
                 Main = this
             };
             warehouseInventory.Show();
+            splashScreen.CloseWaitForm();
             Hide();
         }
 
         private void tileWAR_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var dep = new FirmWarehouse(_userId, _usrTyp, _userName)
             {
                 Main = this
             };
-            Hide();
             dep.Show();
+            splashScreen.CloseWaitForm();
+            Hide();
         }
 
         private void tileDFB_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var bra = new FirmWareHouseDelivery(_userId, _usrTyp)
             {
                 Main = this
             };
-            Hide();
+      
             bra.Show();
+            splashScreen.CloseWaitForm();
+            Hide();
         }
 
         private void tileDEV_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var dep = new FrmBranch(_userId, _usrTyp)
             {
                 Main = this
             };
-            Hide();
-            dep.Show();
            
-          
+            dep.Show();
+            splashScreen.CloseWaitForm();
+            Hide();
+
         }
 
         private void tileDTW_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var ret = new FirmWareHouseReturn(_userId, _usrTyp)
             {
                 Main=this
             };
-            Hide();
             ret.Show();
+            splashScreen.CloseWaitForm();
+            Hide();
         }
 
        
@@ -260,6 +277,7 @@ namespace Inventory.MainForm
 
         private void tileINV_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var name = GetUseFullName(_userId);
             const int type = Config.Constant.ReportWareHouseItem;
             var view = new FirmPopDateEntries(name, type)
@@ -267,10 +285,13 @@ namespace Inventory.MainForm
                 Main = this
             };
             view.ShowDialog();
+            splashScreen.CloseWaitForm();
+            Hide();
         }
 
         private void tileWDL_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var name = GetUseFullName(_userId);
             const int type = Config.Constant.ReportWareHouseDelr;
             var view = new FirmPopCategoryReport(name, type)
@@ -278,10 +299,13 @@ namespace Inventory.MainForm
                 Main = this
             };
             view.ShowDialog();
+            splashScreen.CloseWaitForm();
+            Hide();
         }
 
         private void tileRET_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var name = GetUseFullName(_userId);
             const int type = Config.Constant.ReportReturnWarehos;
             var view = new FirmPopCategoryReport(name, type)
@@ -289,10 +313,13 @@ namespace Inventory.MainForm
                 Main = this
             };
             view.ShowDialog();
+            splashScreen.CloseWaitForm();
+            Hide();
         }
 
         private void tileRDP_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var name = GetUseFullName(_userId);
             const int type = Constant.ReportReturnDepotDl;
             var view = new FirmPopDateEntries(name, type)
@@ -300,6 +327,8 @@ namespace Inventory.MainForm
                 Main = this
             };
             view.ShowDialog();
+            splashScreen.CloseWaitForm();
+            Hide();
         }
 
         private void tilePlist_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
@@ -316,40 +345,50 @@ namespace Inventory.MainForm
 
         private void tileInventory_itemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var ret = new FrmInventory(_userId, _usrTyp, _userName)
             {
                 Main = this
             };
             ret.Show();
+            splashScreen.CloseWaitForm();
             Hide();
         }
 
         private void tileManagement_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var view = new FrmManagement()
             {
                 Main = this
             };
+            splashScreen.CloseWaitForm();
             view.ShowDialog();
         }
 
         private void tileServices_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             const int type = Config.Constant.ReportDepotDelivery;
             var view = new FrmServices(_userId, type, _userName)
             {
                 Main = this
             };
+            splashScreen.CloseWaitForm();
             view.ShowDialog();
+            Hide();
         }
 
         private void tileStaffRegistration_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var view = new FrmRegistration(_userId)
             {
                 Main = this
             };
             view.ShowDialog();
+            splashScreen.CloseWaitForm();
+            Hide();
         }
     }
 }
