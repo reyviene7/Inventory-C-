@@ -513,6 +513,24 @@ namespace ServeAll.Core.Utilities
                  
             }
         }
+        public static int getSearchProduct(int productId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewProductId>(unWork);
+                    return repository
+                        .SelectAll(Query.SelectAllProductId)
+                        .Count(x => x.product_id == productId);
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+            }
+        }
 
         public static int counterCredit(int customerId)
         {
