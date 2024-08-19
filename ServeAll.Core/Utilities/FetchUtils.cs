@@ -221,6 +221,25 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static int getProductImgId(string input)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewProductCategory>(unWork);
+                    var query = repository.FindBy(x => x.product_name == input);
+                    return query.image_id;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
 
         public static int getLastCategoryId()
         {
@@ -724,8 +743,26 @@ namespace ServeAll.Core.Utilities
                 catch (Exception e)
                 {
                     Console.WriteLine(e.ToString());
-                    return null; // Return null if an exception occurs
+                    return null; 
                 }
+            }
+        }
+        public static string getLastReturnId()
+        {
+            using (var session = new DalSession())
+            {
+                var unitWork = session.UnitofWrk;
+                unitWork.Begin();
+                var repository = new Repository<ViewReturnWarehouse>(unitWork);
+                var result = (from b in repository.SelectAll(Query.SelectAllReturnWareHs)
+                              orderby b.return_id descending
+                              select b.return_code).Take(1).SingleOrDefault();
+                if (result != null)
+                {
+                    return result;
+                }
+                result = Query.DefaultCode;
+                return result;
             }
         }
         public static ViewInventory getShowEntity(int inventoryId)
