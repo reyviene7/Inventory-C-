@@ -19,7 +19,6 @@ namespace Inventory.MainForm
     public partial class FirmWareHouseReturn : Form
     {
         private bool _add, _edt, _del, _pop;
-        private bool _edtItm, _edtLpg;
         private readonly int _userId;
         private readonly int _userTy;
         private IEnumerable<ViewReturnWarehouse> _return_list;
@@ -212,8 +211,6 @@ namespace Inventory.MainForm
             _add = false;
             _edt = false;
             _del = false;
-            _edtItm = false;
-            _edtLpg = false;
             ButtonCan();
             InputDisb();
             InputDimG();
@@ -237,7 +234,7 @@ namespace Inventory.MainForm
                 ClearGrid();
 
             }
-            if (_add && _edt == false && _del == false)
+            if (_add == false && _edt && _del == false)
             {
                 UpdateReturn();
                 ButtonSav();
@@ -246,38 +243,9 @@ namespace Inventory.MainForm
                 InputClea();
                 ClearGrid();
             }
-            if (_edtItm && _add == false && _edt && _del ==false && _edtLpg==false)
+            if (_add == false && _edt == false && _del)
             {
-                ReturnItmEdt();
-                ButtonSav();
-                InputDisb();
-                InputDimG();
-                InputClea();
-                ClearGrid();
-            }
-            if (_edtItm == false && _add == false && _edt && _del == false && _edtLpg)
-            {
-                
-                ReturnLpgEdt();
-                ButtonSav();
-                InputDisb();
-                InputDimG();
-                InputClea();
-                ClearGrid();
-            }
-            if (_edtItm == false && _add == false && _edt == false && _del && _edtLpg)
-            {
-
                 DeleteReturn();
-                ButtonSav();
-                InputDisb();
-                InputDimG();
-                InputClea();
-                ClearGrid();
-            }
-            if (_edtItm && _add == false && _edt == false && _del && _edtLpg == false)
-            {
-                ReturnItmDel();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
@@ -287,8 +255,6 @@ namespace Inventory.MainForm
             _add = false;
             _edt = false;
             _del = false;
-            _edtItm = false;
-            _edtLpg = false;
             gCON.Enabled = true;
             cmbProductName.DataBindings.Clear();
             imgPreview.DataBindings.Clear();
@@ -296,7 +262,7 @@ namespace Inventory.MainForm
         }
         private void ButtonAdd()
         {
-           // bntADD.Enabled = true;
+            bntADD.Enabled = true;
             bntUPD.Enabled = false;
             bntDEL.Enabled = false;
             bntSAV.Enabled = true;
@@ -309,7 +275,7 @@ namespace Inventory.MainForm
         }
         private void ButtonUpd()
         {
-          //  bntADD.Enabled = false;
+            bntADD.Enabled = false;
             bntUPD.Enabled = true;
             bntDEL.Enabled = false;
             bntSAV.Enabled = true;
@@ -322,7 +288,7 @@ namespace Inventory.MainForm
         }
         private void ButtonDel()
         {
-          //  bntADD.Enabled = false;
+            bntADD.Enabled = false;
             bntUPD.Enabled = false;
             bntDEL.Enabled = true;
             bntSAV.Enabled = true;
@@ -335,7 +301,7 @@ namespace Inventory.MainForm
         }
         private void ButtonSav()
         {
-          //  bntADD.Enabled = true;
+            bntADD.Enabled = true;
             bntUPD.Enabled = true;
             bntDEL.Enabled = true;
             bntSAV.Enabled = false;
@@ -362,7 +328,7 @@ namespace Inventory.MainForm
         }
         private void ButtonCan()
         {
-         //   bntADD.Enabled = true;
+            bntADD.Enabled = true;
             bntUPD.Enabled = true;
             bntDEL.Enabled = true;
             bntSAV.Enabled = false;
@@ -838,51 +804,8 @@ namespace Inventory.MainForm
                     Console.WriteLine(e.ToString());
                 }
             }
-        }
+        } 
         private void UpdateReturn()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    retWET.ShowWaitForm();
-                    var returnId = int.Parse(txtReturnId.Text);
-                    var returnCd = "";
-                    var prodctId = FetchUtils.getProductId(cmbProductName.Text);
-                    var returnNo = txtDeliveryNo.Text.Trim(' ');
-                    var retrnQty = decimal.Parse(txtReturnQty.Text);
-                    var destines = FetchUtils.getBranchId(cmbToBranch.Text);
-                    var returnDt = dkpReturnDelivery.Value.Date;
-                    var statusId = FetchUtils.getProductStatus(cmbProductStatus.Text);
-                    var remarkss = txtRemarks.Text.Trim(' ');
-                    var repository = new Repository<ReturnWareHouse>(unWork);
-                    var result = repository.ExecuteReturnWarehouse(StoredProcedure.UspReturnItemWareh,
-                        SqlVariables.ReturnId, returnId,
-                        SqlVariables.ReturnCode, returnCd,
-                        SqlVariables.ProductId, prodctId,
-                        SqlVariables.ReturnNo, returnNo,
-                        SqlVariables.ReturnQty, retrnQty,
-                        SqlVariables.BranchId, _branchId,
-                        SqlVariables.Destination, destines,
-                        SqlVariables.ReturnDel, returnDt,
-                        SqlVariables.StatusId, statusId,
-                        SqlVariables.Remarks, remarkss, 
-                        SqlVariables.InventoryId, returnId);
-                    if (result > 0)
-                    {
-                        retWET.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Item: "+cmbProductName.Text.Trim(' ')+" successfully return to Warehouse!", Messages.InventorySystem);
-                    }
-                }
-                catch (Exception e)
-                {
-
-                    Console.WriteLine(e.ToString());
-                }
-            }
-        }
-        private void ReturnLpgEdt()
         {
             using (var session = new DalSession())
             {
@@ -931,47 +854,6 @@ namespace Inventory.MainForm
                     Console.Write(e.ToString());
                 }
                 
-            }
-        }
-        private void ReturnItmEdt() {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    retWET.ShowWaitForm();
-                    var returnId = int.Parse(txtReturnId.Text);
-                    var returnCd = "";
-                    var prodctId = FetchUtils.getProductId(cmbProductName.Text);
-                    var returnNo = txtDeliveryNo.Text.Trim(' ');
-                    var retrnQty = decimal.Parse(txtReturnQty.Text);
-                    var destines = FetchUtils.getBranchId(cmbToBranch.Text);
-                    var returnDt = dkpReturnDelivery.Value.Date;
-                    var statusId = FetchUtils.getProductStatus(cmbProductStatus.Text);
-                    var remarkss = txtRemarks.Text.Trim(' ');
-                    var repository = new Repository<ReturnWareHouse>(unWork);
-                    var result = repository.ExecuteRetUpdWarehouse(StoredProcedure.UspReturnUpdWarehs,
-                        SqlVariables.ReturnId, returnId,
-                        SqlVariables.ReturnCode, returnCd,
-                        SqlVariables.ProductId, prodctId,
-                        SqlVariables.ReturnNo, returnNo,
-                        SqlVariables.ReturnQty, retrnQty,
-                        SqlVariables.BranchId, _branchId,
-                        SqlVariables.Destination, destines,
-                        SqlVariables.ReturnDel, returnDt,
-                        SqlVariables.StatusId, statusId,
-                        SqlVariables.Remarks, remarkss);
-                    if (result > 0)
-                    {
-                        retWET.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Item: " + cmbProductName.Text.Trim(' ') + " successfully updated!", Messages.InventorySystem);
-                    }
-                }
-                catch (Exception e)
-                {
-
-                    Console.WriteLine(e.ToString());
-                }
             }
         }
         private void DeleteReturn()
