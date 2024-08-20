@@ -41,6 +41,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static ViewWarehouseDelivery getWarehouseDelivery(int deliveryId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewWarehouseDelivery>(unWork);
+                    var parameter = new { deliveryId = deliveryId };
+                    return repository.SearchBy(Query.getWarehouseDeliveryById, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
+        }
+
         public static void addItemDiscount(int salesId, decimal discount)
         {
             using (var session = new DalSession())

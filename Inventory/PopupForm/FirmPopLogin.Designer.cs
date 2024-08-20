@@ -39,7 +39,7 @@
             this.lblLOG = new System.Windows.Forms.Label();
             this.bntSVA = new DevExpress.XtraEditors.SimpleButton();
             this.bntCAN = new DevExpress.XtraEditors.SimpleButton();
-            this.intWET = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
+            this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).BeginInit();
             this.gbCON.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPASS.Properties)).BeginInit();
@@ -179,9 +179,9 @@
             this.bntCAN.ToolTip = "Service Manual";
             this.bntCAN.Click += new System.EventHandler(this.bntCAN_Click);
             // 
-            // intWET
+            // splashScreen
             // 
-            this.intWET.ClosingDelay = 500;
+            this.splashScreen.ClosingDelay = 500;
             // 
             // FirmPopLogin
             // 
@@ -217,6 +217,6 @@
         private System.Windows.Forms.Label lblLOG;
         private DevExpress.XtraEditors.SimpleButton bntSVA;
         private DevExpress.XtraEditors.SimpleButton bntCAN;
-        private DevExpress.XtraSplashScreen.SplashScreenManager intWET;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreen;
     }
 }

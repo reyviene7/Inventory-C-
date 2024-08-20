@@ -323,10 +323,12 @@ namespace Inventory.MainForm
 
         private void tileManagement_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            splashScreen.ShowWaitForm();
             var view = new FrmManagement(_userId, type, _userName)
             {
                 Main = this
             };
+            splashScreen.CloseWaitForm();
             view.ShowDialog();
         }
 
