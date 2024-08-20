@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmServices));
-            this.inventoryScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
+            this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.pnlRightOptions = new System.Windows.Forms.Panel();
             this.pnlRightMain = new System.Windows.Forms.Panel();
             this.pbExit = new System.Windows.Forms.PictureBox();
@@ -1575,7 +1575,7 @@
         private System.Windows.Forms.Timer Options;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtBarcode;
-        private DevExpress.XtraSplashScreen.SplashScreenManager inventoryScreen;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreen;
         private System.Windows.Forms.ComboBox cmbStaff;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 using Inventory.MainForm;
@@ -12,19 +12,20 @@ namespace Inventory.PopupForm
 {
     public partial class FirmPopBranches : Form
     {
-        public FirmWarehouse WarehouseMain { protected get;  set; }
+        public FirmWarehouse WarehouseMain { protected get; set; }
         public FirmWareHouseReturn ReturnBranch { protected get; set; }
         private readonly int _userId;
         private readonly int _userTy;
         private bool _return;
-       
+
         public bool Return
         {
             get { return _return; }
             set { _return = value; }
         }
 
-     
+        public bool formManagement { get; internal set; }
+        public FrmManagement management { get; internal set; }
 
         public FirmPopBranches(int userId, int userTy)
         {
@@ -50,7 +51,7 @@ namespace Inventory.PopupForm
             var branch = cmbDIS.Text.Trim(' ');
             if (branch.Length > 0)
             {
-               
+
                 if (_return)
                 {
                     var branchId = FetchUtils.getBranchId(branch);
@@ -69,7 +70,7 @@ namespace Inventory.PopupForm
 
         private void bntCAN_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel; 
+            DialogResult = DialogResult.Cancel;
             Close();
         }
         private void BindBranch()

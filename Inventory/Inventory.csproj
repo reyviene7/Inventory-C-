@@ -114,6 +114,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.XtraGrid.v19.2.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.XtraPrinting.v19.2.dll</HintPath>
@@ -347,17 +348,17 @@
     <Compile Include="PopupForm\FirmPopAuthentication.Designer.cs">
       <DependentUpon>FirmPopAuthentication.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopupForm\FirmPopBranches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FirmPopBranches.designer.cs">
+      <DependentUpon>FirmPopBranches.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopupForm\FirmPopInventoryBranch.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PopupForm\FirmPopInventoryBranch.Designer.cs">
       <DependentUpon>FirmPopInventoryBranch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PopupForm\FirmPopBranches.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PopupForm\FirmPopBranches.Designer.cs">
-      <DependentUpon>FirmPopBranches.cs</DependentUpon>
     </Compile>
     <Compile Include="PopupForm\FirmPopCategoryReport.cs">
       <SubType>Form</SubType>
@@ -515,11 +516,11 @@
     <EmbeddedResource Include="PopupForm\FirmPopAuthentication.resx">
       <DependentUpon>FirmPopAuthentication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PopupForm\FirmPopInventoryBranch.resx">
-      <DependentUpon>FirmPopInventoryBranch.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopBranches.resx">
       <DependentUpon>FirmPopBranches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FirmPopInventoryBranch.resx">
+      <DependentUpon>FirmPopInventoryBranch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopCategoryReport.resx">
       <DependentUpon>FirmPopCategoryReport.cs</DependentUpon>
@@ -586,6 +587,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Graph.ico" />
+    <None Include="Resources\converttorange_16x16.png" />
+    <None Include="Resources\convert_32x32.png" />
     <None Include="Resources\list.gear.png" />
     <None Include="Resources\graph.histogram.description.png" />
     <None Include="Resources\transit.bus.png" />
