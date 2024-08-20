@@ -22,7 +22,11 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userType;
         private readonly string _username;
+<<<<<<< HEAD
         private int _received;
+=======
+
+>>>>>>> b7c93ab209139a01a7703a196647256520bd5bcf
         public FrmManagement management { protected get; set; }
         Image imgProcessing = Image.FromFile(ConstantUtils.imgProcessing);
         Image imgCancelled = Image.FromFile(ConstantUtils.imgCancelled);
@@ -333,6 +337,7 @@ namespace Inventory.MainForm
 
         private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
+<<<<<<< HEAD
             gridCardView(sender);
         }
 
@@ -415,6 +420,33 @@ namespace Inventory.MainForm
                 splashScreen.CloseWaitForm();
                 pop.ShowDialog();
             }
+=======
+            var barcode = ((CardView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
+            txtBarcode.Text = barcode;
+            txtItemName.Text = ((CardView)sender).GetFocusedRowCellValue("Item")?.ToString();
+            txtControl.Text = ((CardView)sender).GetFocusedRowCellValue("Code")?.ToString();
+            txtQuantity.Text = ((CardView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
+            txtDeliveryStatus.Text = ((CardView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
+            txtStockStatus.Text = ((CardView)sender).GetFocusedRowCellValue("Status")?.ToString();
+            txtCostPrice.Text = ((CardView)sender).GetFocusedRowCellValue("Price")?.ToString();
+            txtLastCost.Text = ((CardView)sender).GetFocusedRowCellValue("LastCost")?.ToString();
+            txtBranch.Text = ((CardView)sender).GetFocusedRowCellValue("Branch")?.ToString();
+            if (barcode != null)
+            {
+                var img = searchProductImg(barcode);
+                var imgLocation = img.img_location;
+                if (imgLocation.Length > 0)
+                {
+                    var location = ConstantUtils.defaultImgLocation + imgLocation;
+                    imgPreview.ImageLocation = location;
+                    imgPreview.Refresh();
+                }
+                else
+                {
+                    imgPreview.Image = null;
+                }
+            }    
+>>>>>>> b7c93ab209139a01a7703a196647256520bd5bcf
         }
     }
 }

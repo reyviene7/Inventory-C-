@@ -3,6 +3,11 @@ using System.Linq;
 using System.Windows.Forms;
 using Inventory.MainForm;
 using ServeAll.Core.Entities;
+<<<<<<< HEAD
+=======
+using ServeAll.Core.Queries;
+using ServeAll.Core.Repository;
+>>>>>>> b7c93ab209139a01a7703a196647256520bd5bcf
 using Inventory.Config;
 using ServeAll.Core.Utilities;
 using System.Collections.Generic;
@@ -25,12 +30,12 @@ namespace Inventory.PopupForm
             get { return _return; }
             set { _return = value; }
         }
+
         public bool formManagement
         {
             get { return _management; }
             set { _management = value; }
         }
-
         public FirmPopBranches(int userId, int userTy)
         {
             _userId = userId;
@@ -52,8 +57,12 @@ namespace Inventory.PopupForm
                 Close();
             }
         }
+<<<<<<< HEAD
 
         private void bntGoBranch_Click(object sender, EventArgs e)
+=======
+        private void bntSVA_Click(object sender, EventArgs e)
+>>>>>>> b7c93ab209139a01a7703a196647256520bd5bcf
         {
             var branch = cmbBranchName.Text.Trim(' ');
             if (branch.Length > 0)
@@ -69,8 +78,16 @@ namespace Inventory.PopupForm
                     management.branch = branch;
                     management.branchId = branchId;
                 }
+                DialogResult = DialogResult.OK;
                 Close();
             }
+
+        }
+
+        private void bntCAN_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void bntClose_Click(object sender, EventArgs e)
