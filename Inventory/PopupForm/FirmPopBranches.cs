@@ -80,17 +80,5 @@ namespace Inventory.PopupForm
             DialogResult = DialogResult.Cancel;
             Close();
         }
-        private void BindBranch()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<Branch>(unWork);
-                var query = repository.SelectAll(ServeAll.Core.Queries.Query.AllBranch).Select(x => x.branch_details).Distinct().ToList();
-                cmbBranchName.DataBindings.Clear();
-                cmbBranchName.DataSource = query;
-            }
-        }
     }
 }
