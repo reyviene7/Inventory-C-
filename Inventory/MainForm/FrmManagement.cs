@@ -316,31 +316,85 @@ namespace Inventory.MainForm
 
         private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            var barcode = ((CardView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
-            txtBarcode.Text = barcode;
-            txtItemName.Text = ((CardView)sender).GetFocusedRowCellValue("Item")?.ToString();
-            txtControl.Text = ((CardView)sender).GetFocusedRowCellValue("Code")?.ToString();
-            txtQuantity.Text = ((CardView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
-            txtDeliveryStatus.Text = ((CardView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
-            txtStockStatus.Text = ((CardView)sender).GetFocusedRowCellValue("Status")?.ToString();
-            txtCostPrice.Text = ((CardView)sender).GetFocusedRowCellValue("Price")?.ToString();
-            txtLastCost.Text = ((CardView)sender).GetFocusedRowCellValue("LastCost")?.ToString();
-            txtBranch.Text = ((CardView)sender).GetFocusedRowCellValue("Branch")?.ToString();
-            if (barcode != null)
+            gridCardView(sender);
+        }
+
+        private void gridSales_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            gridSalesView(sender);
+        }
+
+        private void gridSalesView(object sender)
+        {
+            if(gridSales.RowCount > 0)
             {
-                var img = searchProductImg(barcode);
-                var imgLocation = img.img_location;
-                if (imgLocation.Length > 0)
+                var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
+                txtBarcode.Text = barcode;
+                txtBranch.Text = ((GridView)sender).GetFocusedRowCellValue("Branch")?.ToString();
+                txtItemName.Text = ((GridView)sender).GetFocusedRowCellValue("Item")?.ToString();
+                txtControl.Text = ((GridView)sender).GetFocusedRowCellValue("Invoice")?.ToString();
+                txtQuantity.Text = ((GridView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
+                txtRetail.Text = ((GridView)sender).GetFocusedRowCellValue("UnitPrice")?.ToString();
+                if (barcode != null)
                 {
-                    var location = ConstantUtils.defaultImgLocation + imgLocation;
-                    imgPreview.ImageLocation = location;
-                    imgPreview.Refresh();
+                    var img = searchProductImg(barcode);
+                    var imgLocation = img.img_location;
+                    if (imgLocation.Length > 0)
+                    {
+                        var location = ConstantUtils.defaultImgLocation + imgLocation;
+                        imgPreview.ImageLocation = location;
+                        imgPreview.Refresh();
+                    }
+                    else
+                    {
+                        imgPreview.Image = null;
+                    }
                 }
-                else
+            }
+        }
+
+        private void gridCardView(object sender)
+        {
+            if(cardPending.RowCount > 0)
+            {
+                var barcode = ((CardView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
+                txtBarcode.Text = barcode;
+                txtItemName.Text = ((CardView)sender).GetFocusedRowCellValue("Item")?.ToString();
+                txtControl.Text = ((CardView)sender).GetFocusedRowCellValue("Code")?.ToString();
+                txtQuantity.Text = ((CardView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
+                txtDeliveryStatus.Text = ((CardView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
+                txtStockStatus.Text = ((CardView)sender).GetFocusedRowCellValue("Status")?.ToString();
+                txtCostPrice.Text = ((CardView)sender).GetFocusedRowCellValue("Price")?.ToString();
+                txtLastCost.Text = ((CardView)sender).GetFocusedRowCellValue("LastCost")?.ToString();
+                txtBranch.Text = ((CardView)sender).GetFocusedRowCellValue("Branch")?.ToString();
+                if (barcode != null)
                 {
-                    imgPreview.Image = null;
+                    var img = searchProductImg(barcode);
+                    var imgLocation = img.img_location;
+                    if (imgLocation.Length > 0)
+                    {
+                        var location = ConstantUtils.defaultImgLocation + imgLocation;
+                        imgPreview.ImageLocation = location;
+                        imgPreview.Refresh();
+                    }
+                    else
+                    {
+                        imgPreview.Image = null;
+                    }
                 }
-            }    
+            }
+        }
+
+        private void cardPending_DoubleClick(object sender, EventArgs e)
+        {
+            if (cardPending.RowCount > 0) {
+                splashScreen.ShowWaitForm();
+                var id = ((CardView)sender).GetFocusedRowCellValue("Id")?.ToString();
+                var delivery = EntityUtils.getWarehouseDelivery(int.Parse(id));
+                var pop = new FrmPopLauncher(_userId, 1, delivery);
+                splashScreen.CloseWaitForm();
+                pop.ShowDialog();
+            }
         }
     }
 }
