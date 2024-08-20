@@ -40,6 +40,7 @@
             this.xCON = new DevExpress.XtraTab.XtraTabControl();
             this.xtraReturn = new DevExpress.XtraTab.XtraTabPage();
             this.groupReturnDetails = new DevExpress.XtraEditors.GroupControl();
+            this.txtProductName = new System.Windows.Forms.TextBox();
             this.cmbToBranch = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -50,8 +51,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtReturnQty = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmbProductStatus = new System.Windows.Forms.ComboBox();
-            this.cmbProductName = new System.Windows.Forms.ComboBox();
             this.imgPreview = new System.Windows.Forms.PictureBox();
             this.lblHiredate = new System.Windows.Forms.Label();
             this.dkpReturnDelivery = new System.Windows.Forms.DateTimePicker();
@@ -102,6 +101,7 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.Options = new System.Windows.Forms.Timer(this.components);
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
+            this.txtProductStatus = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xCON)).BeginInit();
             this.xCON.SuspendLayout();
@@ -285,6 +285,8 @@
             this.groupReturnDetails.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupReturnDetails.Appearance.Options.UseBackColor = true;
             this.groupReturnDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupReturnDetails.Controls.Add(this.txtProductStatus);
+            this.groupReturnDetails.Controls.Add(this.txtProductName);
             this.groupReturnDetails.Controls.Add(this.cmbToBranch);
             this.groupReturnDetails.Controls.Add(this.label7);
             this.groupReturnDetails.Controls.Add(this.label9);
@@ -295,8 +297,6 @@
             this.groupReturnDetails.Controls.Add(this.label14);
             this.groupReturnDetails.Controls.Add(this.txtReturnQty);
             this.groupReturnDetails.Controls.Add(this.label4);
-            this.groupReturnDetails.Controls.Add(this.cmbProductStatus);
-            this.groupReturnDetails.Controls.Add(this.cmbProductName);
             this.groupReturnDetails.Controls.Add(this.imgPreview);
             this.groupReturnDetails.Controls.Add(this.lblHiredate);
             this.groupReturnDetails.Controls.Add(this.dkpReturnDelivery);
@@ -316,6 +316,17 @@
             this.groupReturnDetails.Name = "groupReturnDetails";
             this.groupReturnDetails.Size = new System.Drawing.Size(1134, 751);
             this.groupReturnDetails.TabIndex = 173;
+            // 
+            // txtProductName
+            // 
+            this.txtProductName.BackColor = System.Drawing.Color.DimGray;
+            this.txtProductName.Enabled = false;
+            this.txtProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductName.ForeColor = System.Drawing.Color.Maroon;
+            this.txtProductName.Location = new System.Drawing.Point(135, 83);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Size = new System.Drawing.Size(269, 29);
+            this.txtProductName.TabIndex = 245;
             // 
             // cmbToBranch
             // 
@@ -441,36 +452,6 @@
             this.label4.Size = new System.Drawing.Size(102, 17);
             this.label4.TabIndex = 225;
             this.label4.Text = "Product Status:";
-            // 
-            // cmbProductStatus
-            // 
-            this.cmbProductStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbProductStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbProductStatus.BackColor = System.Drawing.Color.DimGray;
-            this.cmbProductStatus.Enabled = false;
-            this.cmbProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProductStatus.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbProductStatus.FormattingEnabled = true;
-            this.cmbProductStatus.Location = new System.Drawing.Point(546, 22);
-            this.cmbProductStatus.Name = "cmbProductStatus";
-            this.cmbProductStatus.Size = new System.Drawing.Size(269, 29);
-            this.cmbProductStatus.TabIndex = 10;
-            this.cmbProductStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductStatus_KeyDown);
-            // 
-            // cmbProductName
-            // 
-            this.cmbProductName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbProductName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbProductName.BackColor = System.Drawing.Color.DimGray;
-            this.cmbProductName.Enabled = false;
-            this.cmbProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProductName.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbProductName.FormattingEnabled = true;
-            this.cmbProductName.Location = new System.Drawing.Point(135, 83);
-            this.cmbProductName.Name = "cmbProductName";
-            this.cmbProductName.Size = new System.Drawing.Size(269, 29);
-            this.cmbProductName.TabIndex = 3;
-            this.cmbProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductName_KeyDown);
             // 
             // imgPreview
             // 
@@ -1170,12 +1151,23 @@
             this.RightOptions.Interval = 1;
             this.RightOptions.Tick += new System.EventHandler(this.RightOptions_Tick);
             // 
+            // txtProductStatus
+            // 
+            this.txtProductStatus.BackColor = System.Drawing.Color.DimGray;
+            this.txtProductStatus.Enabled = false;
+            this.txtProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductStatus.ForeColor = System.Drawing.Color.Maroon;
+            this.txtProductStatus.Location = new System.Drawing.Point(546, 22);
+            this.txtProductStatus.Name = "txtProductStatus";
+            this.txtProductStatus.Size = new System.Drawing.Size(269, 29);
+            this.txtProductStatus.TabIndex = 246;
+            // 
             // FirmWareHouseReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1763, 979);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlMain);
@@ -1251,8 +1243,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtReturnQty;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbProductStatus;
-        private System.Windows.Forms.ComboBox cmbProductName;
         private System.Windows.Forms.PictureBox imgPreview;
         private System.Windows.Forms.Label lblHiredate;
         private System.Windows.Forms.DateTimePicker dkpReturnDelivery;
@@ -1309,5 +1299,7 @@
         private System.Windows.Forms.Timer Options;
         private System.Windows.Forms.Timer RightOptions;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.TextBox txtProductStatus;
     }
 }

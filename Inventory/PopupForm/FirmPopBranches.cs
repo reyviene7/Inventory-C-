@@ -11,7 +11,7 @@ namespace Inventory.PopupForm
 {
     public partial class FirmPopBranches : Form
     {
-        public FirmWarehouse Main { protected get;  set; }
+        public FirmWarehouse WarehouseMain { protected get;  set; }
         public FirmWareHouseReturn ReturnBranch { protected get; set; }
         public FrmManagement management { protected get; set; }
         private readonly int _userId;
@@ -51,18 +51,29 @@ namespace Inventory.PopupForm
         }
         private void bntSVA_Click(object sender, EventArgs e)
         {
-            
-
+            var branch = cmbDIS.Text.Trim(' ');
+            if (branch.Length > 0)
+            {
+               
+                if (_return)
+                {
+                    var branchId = FetchUtils.getBranchId(branch);
+                    ReturnBranch.BranchId = branchId;
+                    ReturnBranch.branch = branch;
+                }
+                else
+                {
+                    WarehouseMain.DeliveryBranches = branch;
+                }
+                DialogResult = DialogResult.OK;
+                Close();
+            }
         }
 
         private void bntCAN_Click(object sender, EventArgs e)
         {
-            if (_return == false)
-            {
-                Main.Close = 1;
-                Close();
-            }
-           
+            DialogResult = DialogResult.Cancel; 
+            Close();
         }
         
         private void BindBranch()

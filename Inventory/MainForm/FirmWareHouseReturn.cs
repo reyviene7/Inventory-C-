@@ -19,6 +19,7 @@ namespace Inventory.MainForm
     public partial class FirmWareHouseReturn : Form
     {
         private bool _add, _edt, _del, _pop;
+        private bool _isCanceled;
         private readonly int _userId;
         private readonly int _userTy;
         private IEnumerable<ViewReturnWarehouse> _return_list;
@@ -87,15 +88,7 @@ namespace Inventory.MainForm
         }
         private void bntUPD_Click(object sender, EventArgs e)
         {
-            var len = txtReturnId.Text.Length;
-            if (len > 0)
-            {
-                ButUpd();
-            }
-            else
-            {
-                bntUPD.Enabled = false;
-            }
+            ButUpd();
         }
         private void bntSAV_Click(object sender, EventArgs e)
         {
@@ -103,7 +96,7 @@ namespace Inventory.MainForm
         }
         private void bntCLR_Click(object sender, EventArgs e)
         {
-           ButLpg();
+           ButClear();
         }
         private void bntCAN_Click(object sender, EventArgs e)
         {
@@ -150,7 +143,7 @@ namespace Inventory.MainForm
         {
             Constant.ApplicationExit();
         }
-        private void ButLpg()
+        private void ButClear()
         {
             _add = true;
             _edt = false;
@@ -158,12 +151,12 @@ namespace Inventory.MainForm
             ButtonReturn();
             InputLpg();
             InputEnab();
-            cmbProductName.Focus();
+            txtProductName.Focus();
+            txtProductName.BackColor = Color.Yellow;
             GenerateReturn();
-            cmbProductName.BackColor = Color.Yellow;
             cmbFromBranch.Text = branch;
             cmbToBranch.Text = Constant.DefaultWareHouse;
-            cmbProductStatus.Text = Constant.DefaultReturn;
+            txtProductStatus.Text = Constant.DefaultReturn;
             gCON.Enabled = false;
         }
         private void ButAdd()
@@ -175,12 +168,12 @@ namespace Inventory.MainForm
             InputItem();
             InputWhit();
             InputEnab();
-            cmbProductName.Focus();
+            txtProductName.Focus();
+            txtProductName.BackColor = Color.Yellow;
             GenerateReturn();
-            cmbProductName.BackColor = Color.Yellow;
             cmbFromBranch.Text = branch;
             cmbToBranch.Text = Constant.DefaultWareHouse;
-            cmbProductStatus.Text = Constant.DefaultReturn;
+            txtProductStatus.Text = Constant.DefaultReturn;
             gCON.Enabled = false;
         }
         private void ButUpd()
@@ -191,8 +184,8 @@ namespace Inventory.MainForm
             ButtonUpd();
             InputWhit();
             InputEnab();
-            cmbProductName.Focus();
-            cmbProductName.BackColor = Color.Yellow;
+            txtProductName.Focus();
+            txtProductName.BackColor = Color.Yellow;
             gCON.Enabled = false;
         }
         private void ButDel()
@@ -215,7 +208,7 @@ namespace Inventory.MainForm
             InputDimG();
             InputClea();
             gCON.Enabled = true;
-            cmbProductName.DataBindings.Clear();
+            txtProductName.DataBindings.Clear();
             imgPreview.DataBindings.Clear();
             imgPreview.Image = null;
         }
@@ -255,7 +248,7 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gCON.Enabled = true;
-            cmbProductName.DataBindings.Clear();
+            txtProductName.DataBindings.Clear();
             imgPreview.DataBindings.Clear();
             imgPreview.Image = null;
         }
@@ -342,51 +335,49 @@ namespace Inventory.MainForm
         {
             txtReturnId.BackColor = Color.White;
             txtReturnCode.BackColor = Color.White;
-            cmbProductName.BackColor = Color.White;
+            txtProductName.BackColor = Color.White;
             txtDeliveryNo.BackColor = Color.White;
             txtReturnQty.BackColor = Color.White;
             cmbFromBranch.BackColor = Color.White;
-            cmbProductStatus.BackColor = Color.White;
+            txtProductStatus.BackColor = Color.White;
             txtRemarks.BackColor = Color.White;
             dkpReturnDelivery.BackColor = Color.White;
-            cmbProductStatus.BackColor = Color.White;
             txtWarehouseQty.BackColor = Color.White;
         }
         private void InputEnab()
         {
-            cmbProductName.Enabled = true;
+            txtProductName.Enabled = true;
             txtDeliveryNo.Enabled = true;
             txtRemarks.Enabled = true;
             txtReturnQty.Enabled = true;
             dkpReturnDelivery.Enabled = true;
             txtRemarks.Enabled = true;
-            cmbProductStatus.Enabled = true;
+            txtProductStatus.Enabled = true;
         }
         private void InputDisb()
         {
             txtReturnId.Enabled = false;
             txtReturnCode.Enabled = false;
-            cmbProductName.Enabled = false;
+            txtProductName.Enabled = false;
             txtDeliveryNo.Enabled = false;
             txtReturnQty.Enabled = false;
             cmbFromBranch.Enabled = false;
-            cmbProductStatus.Enabled = false;
+            txtProductStatus.Enabled = false;
             txtRemarks.Enabled = false;
             dkpReturnDelivery.Enabled = false;
-            cmbProductStatus.Enabled = false;
         }
         private void InputClea()
         {
             txtReturnId.Clear();
             txtReturnCode.Clear();
-            cmbProductName.Text = "";
+            txtProductName.Text = "";
             txtDeliveryNo.Clear();
             txtWarehouseQty.Clear();
             txtReturnQty.Clear();
             cmbFromBranch.Text = "";
             txtRemarks.Clear();
             dkpReturnDelivery.Value = DateTime.Now.Date;
-            cmbProductStatus.Text = "";
+            txtProductStatus.Text = "";
         }
         private void InputItem()
         {
@@ -404,36 +395,14 @@ namespace Inventory.MainForm
         {
             txtReturnId.BackColor = Color.DimGray;
             txtReturnCode.BackColor = Color.DimGray;
-            cmbProductName.BackColor = Color.DimGray;
+            txtProductName.BackColor = Color.DimGray;
             txtDeliveryNo.BackColor = Color.DimGray;
             txtReturnQty.BackColor = Color.DimGray;
             cmbFromBranch.BackColor = Color.DimGray;
-            cmbProductStatus.BackColor = Color.DimGray;
+            txtProductStatus.BackColor = Color.DimGray;
             txtRemarks.BackColor = Color.DimGray;
             dkpReturnDelivery.BackColor = Color.DimGray;
-            cmbProductStatus.BackColor = Color.DimGray;
             txtWarehouseQty.BackColor = Color.DimGray;
-        }
-
-        private void cmbProductName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = cmbProductName.Text.Length;
-                if (len > 0)
-                {
-                    cmbProductName.BackColor = Color.White;
-                    txtDeliveryNo.BackColor = Color.Yellow;
-                    txtDeliveryNo.Focus();
-                }
-                else
-                {
-                    PopupNotification.PopUpMessages(0, "Item name must not be empty!", Messages.InventorySystem);
-                    cmbProductName.BackColor = Color.Yellow;
-                    cmbProductName.Focus();
-                }
-
-            }
         }
 
         private void txtDeliveryNo_KeyDown(object sender, KeyEventArgs e)
@@ -510,20 +479,7 @@ namespace Inventory.MainForm
                         txtReturnQty.BackColor = Color.Yellow;
                     }
                 }
-        }
-        private void cmbProductStatus_KeyDown(object sender, KeyEventArgs e)
-        {
-            var len = cmbProductStatus.Text.Length;
-            if (len > 0)
-            {
-                txtRemarks.BackColor = Color.Yellow;
-                txtRemarks.Focus();
-            }
-            else
-            {
-                cmbProductStatus.Text = Constant.DefaultReturn;
-            }
-        }
+        } 
 
         private void txtRemarks_KeyDown(object sender, KeyEventArgs e)
         {
@@ -566,11 +522,11 @@ namespace Inventory.MainForm
             {
                 if (_pop)
                 {
-                    var productId = FetchUtils.getProductId(cmbProductName.Text);
+                    var productId = FetchUtils.getProductId(txtProductName.Text);
                     var inventoId = int.Parse(txtReturnId.Text);
                     var origin = cmbFromBranch.Text;
                     var destin = Constant.DefaultWareHouse;
-                    var prodct = cmbProductName.Text;
+                    var prodct = txtProductName.Text;
                     var pop = new FirmPopReturnEmpty(productId, inventoId, origin, destin, prodct)
                     {
                         Main = this
@@ -597,10 +553,10 @@ namespace Inventory.MainForm
                             InventoryId = int.Parse(id);
                             var ent = searchInventoryId(InventoryId);
                             var barcode = ent.product_code;
-                            cmbProductName.Text = ent.product_name;
+                            txtProductName.Text = ent.product_name;
                             txtWarehouseQty.Text = ent.quantity.ToString(CultureInfo.InvariantCulture);
                             cmbFromBranch.Text = ent.branch_details;
-                            cmbProductStatus.Text = ent.status;
+                            txtProductStatus.Text = Constant.DefaultReturn;
 
                             var img = searchProductImg(barcode);
                             var imgLocation = img.img_location;
@@ -676,7 +632,6 @@ namespace Inventory.MainForm
                 gridReturn.Columns[2].Width = 195;
             }
             retWET.CloseWaitForm();
-
         }
         private void BindInventory(string branch)
         {
@@ -700,37 +655,6 @@ namespace Inventory.MainForm
             }
             retWET.CloseWaitForm();
         }
-        private void ShowValueReturn(int id)
-        {
-            var que = FetchUtils.getShowReturn(id);
-            if (que != null)
-            {
-                txtReturnId.Text = que.return_id.ToString();
-                txtReturnCode.Text = que.return_code;
-                cmbProductName.Text = que.product_code;
-                txtDeliveryNo.Text = que.return_number;
-                txtWarehouseQty.Text = Constant.DefaultZero.ToString();
-                //cmbFromBranch.Text = que.Origin;
-                cmbToBranch.Text = que.destination;
-                dkpReturnDelivery.Value = que.return_date.Date;
-                //dkpInputDate.Value = que.RefDate.Date;
-                cmbProductStatus.Text = que.status_id;
-                txtRemarks.Text = que.remarks;
-                txtReturnQty.Text = que.return_quantity.ToString(CultureInfo.InvariantCulture);
-                var barcode = que.product_code;
-                var img = searchProductImg(barcode);
-                var imgLocation = img.img_location;
-                if (imgLocation.Length > 0)
-                {
-                    var location = ConstantUtils.defaultImgLocation + imgLocation;
-
-                    imgPreview.ImageLocation = location;
-                }
-                else
-                    imgPreview.Image = null;
-            }
-        }
-
         private void ShowBranch()
         {
             var pop = new FirmPopBranches(_userId, _userTy)
@@ -739,6 +663,15 @@ namespace Inventory.MainForm
                 Return = true
             };
             pop.ShowDialog();
+
+            _isCanceled = pop.DialogResult == DialogResult.Cancel;
+
+            if (_isCanceled)
+            {
+                MessageBox.Show("Operation canceled by the user.", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Main.Show();
+                Close();
+            }
         }
         private void xCON_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
@@ -772,13 +705,13 @@ namespace Inventory.MainForm
                     var item = new ReturnWareHouse
                     {
                         return_code = "",
-                        product_id = FetchUtils.getProductId(cmbProductName.Text),
+                        product_id = FetchUtils.getProductId(txtProductName.Text),
                         return_number = txtDeliveryNo.Text.Trim(' '),
                         return_quantity = decimal.Parse(txtReturnQty.Text),
                         branch_id = FetchUtils.getBranchId(cmbFromBranch.Text),
                         destination = FetchUtils.getBranchId(cmbToBranch.Text),
                         return_date = dkpReturnDelivery.Value.Date,
-                        status_id = FetchUtils.getProductStatus(cmbProductStatus.Text),
+                        status_id = FetchUtils.getProductStatus(txtProductStatus.Text),
                         remarks = txtRemarks.Text.Trim(' '), 
                         inventory_id = int.Parse(txtReturnId.Text)
                     };
@@ -815,12 +748,12 @@ namespace Inventory.MainForm
                     unWork.Begin();
                     var returnId = int.Parse(txtReturnId.Text);
                     var returnCd = "";
-                    var prodctId = FetchUtils.getProductId(cmbProductName.Text);
+                    var prodctId = FetchUtils.getProductId(txtProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);
                     var destines = FetchUtils.getBranchId(cmbToBranch.Text);
                     var returnDt = dkpReturnDelivery.Value.Date;
-                    var statusId = FetchUtils.getProductStatus(cmbProductStatus.Text);
+                    var statusId = FetchUtils.getProductStatus(txtProductStatus.Text);
                     var remarkss = txtRemarks.Text.Trim(' ');
                     var repository = new Repository<ReturnWareHouse>(unWork);
                     var que = repository.FindBy(x => x.return_id == returnId);
@@ -839,7 +772,7 @@ namespace Inventory.MainForm
                         retWET.CloseWaitForm();
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
-                            "Item: " + cmbProductName.Text.Trim(' ') + " successfully updated to Warehouse!", Messages.InventorySystem);
+                            "Item: " + txtProductName.Text.Trim(' ') + " successfully updated to Warehouse!", Messages.InventorySystem);
                     }
                     else
                     {
@@ -873,7 +806,7 @@ namespace Inventory.MainForm
                         retWET.CloseWaitForm();
                         unWork.Commit();
                         PopupNotification.PopUpMessages(1,
-                            "Item: " + cmbProductName.Text.Trim(' ') + " successfully deleted!", Messages.InventorySystem);
+                            "Item: " + txtProductName.Text.Trim(' ') + " successfully deleted!", Messages.InventorySystem);
                     }
                     else
                     {
@@ -887,33 +820,6 @@ namespace Inventory.MainForm
                     Console.Write(e.ToString());
                 }
 
-            }
-        }
-        private void ReturnItmDel()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    retWET.ShowWaitForm();
-                    var returnId = int.Parse(txtReturnId.Text);
-                     var retrnQty = decimal.Parse(txtReturnQty.Text);
-                    var repository = new Repository<ReturnWareHouse>(unWork);
-                    var result = repository.ExecuteRetDelWarehouse(StoredProcedure.UspReturnDelWarehs,
-                        SqlVariables.ReturnId, returnId,
-                        SqlVariables.ReturnQty, retrnQty);
-                    if (result > 0)
-                    {
-                        retWET.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Item: " + cmbProductName.Text.Trim(' ') + " successfully deleted!", Messages.InventorySystem);
-                    }
-                }
-                catch (Exception e)
-                {
-
-                    Console.WriteLine(e.ToString());
-                }
             }
         }
         private ViewImageProduct searchProductImg(string param)
