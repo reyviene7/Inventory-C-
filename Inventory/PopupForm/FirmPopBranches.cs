@@ -3,6 +3,11 @@ using System.Linq;
 using System.Windows.Forms;
 using Inventory.MainForm;
 using ServeAll.Core.Entities;
+<<<<<<< HEAD
+=======
+using ServeAll.Core.Queries;
+using ServeAll.Core.Repository;
+>>>>>>> b7c93ab209139a01a7703a196647256520bd5bcf
 using Inventory.Config;
 using ServeAll.Core.Utilities;
 using System.Collections.Generic;
@@ -11,7 +16,7 @@ namespace Inventory.PopupForm
 {
     public partial class FirmPopBranches : Form
     {
-        public FirmWarehouse Main { protected get;  set; }
+        public FirmWarehouse Main { protected get; set; }
         public FirmWareHouseReturn ReturnBranch { protected get; set; }
         public FrmManagement management { protected get; set; }
         private IEnumerable<Branch> _branches;
@@ -19,18 +24,18 @@ namespace Inventory.PopupForm
         private readonly int _userTy;
         private bool _return;
         private bool _management;
-    
+
         public bool Return
         {
             get { return _return; }
             set { _return = value; }
         }
+
         public bool formManagement
         {
             get { return _management; }
             set { _management = value; }
         }
-
         public FirmPopBranches(int userId, int userTy)
         {
             _userId = userId;
@@ -52,8 +57,12 @@ namespace Inventory.PopupForm
                 Close();
             }
         }
- 
+<<<<<<< HEAD
+
         private void bntGoBranch_Click(object sender, EventArgs e)
+=======
+        private void bntSVA_Click(object sender, EventArgs e)
+>>>>>>> b7c93ab209139a01a7703a196647256520bd5bcf
         {
             var branch = cmbBranchName.Text.Trim(' ');
             if (branch.Length > 0)
@@ -64,12 +73,21 @@ namespace Inventory.PopupForm
                     ReturnBranch.BranchId = branchId;
                     ReturnBranch.branch = branch;
                 }
-                if (_management) {
+                if (_management)
+                {
                     management.branch = branch;
                     management.branchId = branchId;
                 }
+                DialogResult = DialogResult.OK;
                 Close();
             }
+
+        }
+
+        private void bntCAN_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void bntClose_Click(object sender, EventArgs e)

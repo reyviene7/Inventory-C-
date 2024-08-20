@@ -53,6 +53,37 @@ namespace Inventory.MainForm
             FirstColumn.Start();
             pnlOptions.Focus();
         }
+
+        private void RightOptions_Tick(object sender, EventArgs e)
+        {
+            if (_rightTimeOut < 500)
+            {
+                _rightTimeOut++;
+            }
+            if (_rightTimeOut == 500)
+            {
+                if (_rightDirection == "left")
+                {
+                    _rightDirection = "right";
+                }
+            }
+            if (_rightDirection == "left")
+            {
+                if (rightX > Width - pnlRightOptions.Width)
+                {
+                    rightX -= 2;
+                    pnlRightOptions.Location = new Point(rightX, _rightY);
+                }
+            }
+            else
+            {
+                if (rightX < Width)
+                {
+                    rightX += 2;
+                }
+                pnlRightOptions.Location = new Point(rightX, _rightY);
+            }
+        }
         private void Options_Tick(object sender, EventArgs e)
         {
             if (_optionsTimeOut < 500)
@@ -105,43 +136,11 @@ namespace Inventory.MainForm
 
             }
         }
-
         private void SetMainPanelPosition()
         {
             var mX = (Width - tileMain.Width) / 2;
             var mY = (Height - tileMain.Height) / 2;
             tileMain.Location = new Point(mX, mY);
-        }
-
-        private void RightOptions_Tick(object sender, EventArgs e)
-        {
-            if (_rightTimeOut < 500)
-            {
-                _rightTimeOut++;
-            }
-            if (_rightTimeOut == 500)
-            {
-                if (_rightDirection == "left")
-                {
-                    _rightDirection = "right";
-                }
-            }
-            if (_rightDirection == "left")
-            {
-                if (rightX > Width - pnlRightOptions.Width)
-                {
-                    rightX -= 2;
-                    pnlRightOptions.Location = new Point(rightX, _rightY);
-                }
-            }
-            else
-            {
-                if (rightX < Width)
-                {
-                    rightX += 2;
-                }
-                pnlRightOptions.Location = new Point(rightX, _rightY);
-            }
         }
 
         private void pbExit_Click(object sender, EventArgs e)

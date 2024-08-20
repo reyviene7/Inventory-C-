@@ -22,10 +22,28 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userType;
         private readonly string _username;
+<<<<<<< HEAD
+        private int _received;
+=======
 
+>>>>>>> b7c93ab209139a01a7703a196647256520bd5bcf
         public FrmManagement management { protected get; set; }
         Image imgProcessing = Image.FromFile(ConstantUtils.imgProcessing);
         Image imgCancelled = Image.FromFile(ConstantUtils.imgCancelled);
+        Image imgCompleted = Image.FromFile(ConstantUtils.imgCompleted);
+        public int received
+        {
+            get { return _received; }
+            set { 
+                _received = value;
+                if (_received == 1) {
+                    splashScreen.ShowWaitForm();
+                    _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+                    bindDeliveryList(branch);
+                    splashScreen.CloseWaitForm();
+                }
+            }
+        }
         public FirmMain Main
         {
             get { return _main; }
@@ -264,6 +282,9 @@ namespace Inventory.MainForm
                 {
                     imageToDraw = imgProcessing;
                 }
+                else if (status == "Completed") {
+                    imageToDraw = imgCompleted;
+                }
 
                 if (imageToDraw != null)
                 {
@@ -316,6 +337,7 @@ namespace Inventory.MainForm
 
         private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
+<<<<<<< HEAD
             gridCardView(sender);
         }
 
@@ -391,10 +413,40 @@ namespace Inventory.MainForm
                 splashScreen.ShowWaitForm();
                 var id = ((CardView)sender).GetFocusedRowCellValue("Id")?.ToString();
                 var delivery = EntityUtils.getWarehouseDelivery(int.Parse(id));
-                var pop = new FrmPopLauncher(_userId, 1, delivery);
+                var pop = new FrmPopLauncher(_userId, 1, delivery) 
+                {
+                    main = this
+                };
                 splashScreen.CloseWaitForm();
                 pop.ShowDialog();
             }
+=======
+            var barcode = ((CardView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
+            txtBarcode.Text = barcode;
+            txtItemName.Text = ((CardView)sender).GetFocusedRowCellValue("Item")?.ToString();
+            txtControl.Text = ((CardView)sender).GetFocusedRowCellValue("Code")?.ToString();
+            txtQuantity.Text = ((CardView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
+            txtDeliveryStatus.Text = ((CardView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
+            txtStockStatus.Text = ((CardView)sender).GetFocusedRowCellValue("Status")?.ToString();
+            txtCostPrice.Text = ((CardView)sender).GetFocusedRowCellValue("Price")?.ToString();
+            txtLastCost.Text = ((CardView)sender).GetFocusedRowCellValue("LastCost")?.ToString();
+            txtBranch.Text = ((CardView)sender).GetFocusedRowCellValue("Branch")?.ToString();
+            if (barcode != null)
+            {
+                var img = searchProductImg(barcode);
+                var imgLocation = img.img_location;
+                if (imgLocation.Length > 0)
+                {
+                    var location = ConstantUtils.defaultImgLocation + imgLocation;
+                    imgPreview.ImageLocation = location;
+                    imgPreview.Refresh();
+                }
+                else
+                {
+                    imgPreview.Image = null;
+                }
+            }    
+>>>>>>> b7c93ab209139a01a7703a196647256520bd5bcf
         }
     }
 }

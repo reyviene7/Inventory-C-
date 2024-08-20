@@ -967,7 +967,7 @@ namespace Inventory.MainForm
                 if (result > 0)
                 {
                     splashDelivery.CloseWaitForm();
-                    PopupNotification.PopUpMessages(1, "Delivery Code: " + txtDeliveryCode.Text.Trim() + " successfully Added!", Messages.InventorySystem);
+                    PopupNotification.PopUpMessages(1, "Delivery Code: " + txtDeliveryCode.Text.Trim() + " Successfully Delivered!", Messages.InventorySystem);
                     _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
                     BindWareHouse();
                 }
@@ -1024,7 +1024,7 @@ namespace Inventory.MainForm
                         {
                             reqEntity.quantity_in_stock -= qtyDifference; // Make sure this property exists
                             splashDelivery.CloseWaitForm();
-                            PopupNotification.PopUpMessages(1, "Delivery ID: " + deliveryId + " successfully updated!", "UPDATE DELIVERY");
+                            PopupNotification.PopUpMessages(1, "Delivery ID: " + deliveryId + " Successfully Updated!", "UPDATE DELIVERY");
                             _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
                             BindWareHouse();
                         });
@@ -1069,7 +1069,7 @@ namespace Inventory.MainForm
                 {
                     splashDelivery.CloseWaitForm();
                     PopupNotification.PopUpMessages(1,
-                        "Delivery ID: " + deliveryId + " successfully deleted!",
+                        "Delivery ID: " + deliveryId + " Successfully Deleted!",
                         Messages.TitleSuccessDelete);
 
                     // Refresh the delivery list
