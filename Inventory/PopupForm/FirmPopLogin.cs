@@ -6,6 +6,7 @@ using ServeAll.Core.Helper;
 using ServeAll.Core.Repository;
 using Constant = Inventory.Config.Constant;
 using Inventory.Config;
+using ServeAll.Core.Utilities;
 using ServeAll.Core.Entities;
 
 namespace Inventory.PopupForm
@@ -74,7 +75,7 @@ namespace Inventory.PopupForm
             {
                 try
                 {
-
+                    splashScreen.ShowWaitForm();
                     await Task.Delay((int)TimeSpan.FromMilliseconds(1).TotalMilliseconds);
                     var unWork = session.UnitofWrk;
                     var repository = new Repository<users>(unWork);
@@ -84,15 +85,16 @@ namespace Inventory.PopupForm
                     var que = StringCipher.Decrypt(query.Trim(' '), salt);
                     if (string.Equals(userPass, que))
                     {
-                        Login.UserId = GetUserId(userName);
+                        Login.UserId = FetchUtils.getUserId(userName);
                         Login.UserTy = _uTyp;
                         Login._userName = userName;
                         Login.LoginSuccess = 1;
+                        splashScreen.CloseWaitForm();
                         Close();
                     }
                     else
                     {
-
+                        splashScreen.CloseWaitForm();
                         PopupNotification.PopUpMessages(0, "Username or Password Incorrect!", "POS Authentication");
                         txtPASS.Text = "";
                         txtUSR.Text = "";
@@ -101,29 +103,12 @@ namespace Inventory.PopupForm
                 }
                 catch (Exception ex)
                 {
+                    splashScreen.CloseWaitForm();
                     Console.WriteLine(ex.ToString());
                 }
             }
         }
-        private int GetUserId(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<users>(unWork);
-                    var query = repository.FindBy(x => x.username == input);
-                    return query.user_id;
-                }
-                catch (Exception ex)
-                {
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableUsers);
-                    return 0;
-                }
-            }
-        }
+
         private void txtPASS_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter) return;

@@ -35,6 +35,7 @@ namespace Inventory.MainForm
                 _branch = value;
             }
         }
+
         public int BranchId
         {
             get { return _branchId; }

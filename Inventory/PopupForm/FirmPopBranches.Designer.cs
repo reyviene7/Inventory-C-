@@ -33,7 +33,7 @@
             this.cmbBranchName = new System.Windows.Forms.ComboBox();
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.bntGoBranch = new DevExpress.XtraEditors.SimpleButton();
-            this.bntCAN = new DevExpress.XtraEditors.SimpleButton();
+            this.bntClose = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).BeginInit();
             this.gbCON.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +47,7 @@
             this.gbCON.Controls.Add(this.cmbBranchName);
             this.gbCON.Controls.Add(this.lblMainTitle);
             this.gbCON.Controls.Add(this.bntGoBranch);
-            this.gbCON.Controls.Add(this.bntCAN);
+            this.gbCON.Controls.Add(this.bntClose);
             this.gbCON.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbCON.Location = new System.Drawing.Point(0, 0);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
@@ -82,7 +82,7 @@
             // 
             // bntGoBranch
             // 
-            this.bntGoBranch.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntSVA.ImageOptions.Image")));
+            this.bntGoBranch.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntGoBranch.ImageOptions.Image")));
             this.bntGoBranch.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntGoBranch.Location = new System.Drawing.Point(69, 152);
             this.bntGoBranch.Name = "bntGoBranch";
@@ -91,16 +91,16 @@
             this.bntGoBranch.ToolTip = "User Manual";
             this.bntGoBranch.Click += new System.EventHandler(this.bntGoBranch_Click);
             // 
-            // bntCAN
+            // bntClose
             // 
-            this.bntCAN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntCAN.ImageOptions.Image")));
-            this.bntCAN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntCAN.Location = new System.Drawing.Point(232, 152);
-            this.bntCAN.Name = "bntCAN";
-            this.bntCAN.Size = new System.Drawing.Size(157, 37);
-            this.bntCAN.TabIndex = 3;
-            this.bntCAN.ToolTip = "Service Manual";
-            this.bntCAN.Click += new System.EventHandler(this.bntCAN_Click);
+            this.bntClose.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntCAN.ImageOptions.Image")));
+            this.bntClose.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.bntClose.Location = new System.Drawing.Point(232, 152);
+            this.bntClose.Name = "bntClose";
+            this.bntClose.Size = new System.Drawing.Size(157, 37);
+            this.bntClose.TabIndex = 3;
+            this.bntClose.ToolTip = "Service Manual";
+            this.bntClose.Click += new System.EventHandler(this.bntClose_Click);
             // 
             // FirmPopBranches
             // 
@@ -126,6 +126,6 @@
         private System.Windows.Forms.ComboBox cmbBranchName;
         private System.Windows.Forms.Label lblMainTitle;
         private DevExpress.XtraEditors.SimpleButton bntGoBranch;
-        private DevExpress.XtraEditors.SimpleButton bntCAN;
+        private DevExpress.XtraEditors.SimpleButton bntClose;
     }
 }

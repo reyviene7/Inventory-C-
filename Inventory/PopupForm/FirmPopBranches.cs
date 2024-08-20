@@ -3,9 +3,9 @@ using System.Linq;
 using System.Windows.Forms;
 using Inventory.MainForm;
 using ServeAll.Core.Entities;
-using ServeAll.Core.Repository;
 using Inventory.Config;
 using ServeAll.Core.Utilities;
+using System.Collections.Generic;
 
 namespace Inventory.PopupForm
 {
@@ -14,6 +14,7 @@ namespace Inventory.PopupForm
         public FirmWarehouse Main { protected get;  set; }
         public FirmWareHouseReturn ReturnBranch { protected get; set; }
         public FrmManagement management { protected get; set; }
+        private IEnumerable<Branch> _branches;
         private readonly int _userId;
         private readonly int _userTy;
         private bool _return;
@@ -40,7 +41,9 @@ namespace Inventory.PopupForm
         {
             if (_userId != 0 && _userTy == 1)
             {
-                BindBranch();
+                _branches = EnumerableUtils.getBranches();
+                cmbBranchName.DataBindings.Clear();
+                cmbBranchName.DataSource = _branches.Select(x => x.branch_details).Distinct().ToList();
                 cmbBranchName.Focus();
             }
             else
@@ -49,35 +52,7 @@ namespace Inventory.PopupForm
                 Close();
             }
         }
-        private void bntSVA_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void bntCAN_Click(object sender, EventArgs e)
-        {
-            if (_return == false)
-            {
-                Main.Close = 1;
-                Close();
-            }
-           
-        }
-        
-        private void BindBranch()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<Branch>(unWork);
-                var query = repository.SelectAll(ServeAll.Core.Queries.Query.AllBranch).Select(x => x.branch_details).Distinct().ToList();
-                cmbBranchName.DataBindings.Clear();
-                cmbBranchName.DataSource = query;
-            }
-        }
-
+ 
         private void bntGoBranch_Click(object sender, EventArgs e)
         {
             var branch = cmbBranchName.Text.Trim(' ');
@@ -93,6 +68,14 @@ namespace Inventory.PopupForm
                     management.branch = branch;
                     management.branchId = branchId;
                 }
+                Close();
+            }
+        }
+
+        private void bntClose_Click(object sender, EventArgs e)
+        {
+            if (_return == false)
+            {
                 Close();
             }
         }

@@ -44,8 +44,6 @@ namespace Inventory.MainForm
             set
             {
                 _close = value;
-                if (_close > 0)
-                    XtraWarehouse.SelectedTabPage = XtabWHdetails;
             }
         }
         public int Deliver

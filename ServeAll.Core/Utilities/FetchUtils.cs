@@ -3,8 +3,6 @@ using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
 using System;
 using System.Linq;
-using System.Text.RegularExpressions;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace ServeAll.Core.Utilities
 {
