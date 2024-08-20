@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagement));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.ribSaveTrans = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bntSave = new DevExpress.XtraBars.BarSubItem();
@@ -173,12 +173,17 @@
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.clock = new System.Windows.Forms.Timer(this.components);
             this.txtBarcode = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblCreditAmount = new DevExpress.XtraEditors.LabelControl();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblPaidAmount = new DevExpress.XtraEditors.LabelControl();
             this.lblBarcode = new System.Windows.Forms.Label();
             this.gUSE = new DevExpress.XtraEditors.GroupControl();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCostPrice = new System.Windows.Forms.TextBox();
+            this.txtDeliveryStatus = new System.Windows.Forms.TextBox();
+            this.txtLastCost = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtWholeSale = new System.Windows.Forms.TextBox();
+            this.txtStockStatus = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.xInventory = new DevExpress.XtraTab.XtraTabControl();
             this.xtraPending = new DevExpress.XtraTab.XtraTabPage();
             this.groupInventoryDetail = new DevExpress.XtraEditors.GroupControl();
@@ -188,10 +193,18 @@
             this.xtraAccepted = new DevExpress.XtraTab.XtraTabPage();
             this.groupAccepted = new DevExpress.XtraEditors.GroupControl();
             this.gridControlAccepted = new DevExpress.XtraGrid.GridControl();
+            this.layoutAccepted = new DevExpress.XtraGrid.Views.Layout.LayoutView();
+            this.layoutViewCard1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grdHIS = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraReturn = new DevExpress.XtraTab.XtraTabPage();
+            this.groupReturn = new DevExpress.XtraEditors.GroupControl();
+            this.gridCtrlReturn = new DevExpress.XtraGrid.GridControl();
+            this.gridReturn = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView12 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView13 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraInventory = new DevExpress.XtraTab.XtraTabPage();
             this.groupInventory = new DevExpress.XtraEditors.GroupControl();
             this.gridCtrlWarehouse = new DevExpress.XtraGrid.GridControl();
@@ -206,34 +219,29 @@
             this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView11 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtRetail = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.pcLOG = new System.Windows.Forms.PictureBox();
             this.txtPRI = new System.Windows.Forms.TextBox();
-            this.txtLimit = new System.Windows.Forms.TextBox();
-            this.txtOperator = new System.Windows.Forms.TextBox();
+            this.txtBranch = new System.Windows.Forms.TextBox();
             this.spCON = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupImage = new DevExpress.XtraEditors.GroupControl();
             this.imgPreview = new System.Windows.Forms.PictureBox();
             this.groupGrid = new DevExpress.XtraEditors.GroupControl();
             this.groupOperator = new DevExpress.XtraEditors.GroupControl();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dpkUpdated = new System.Windows.Forms.DateTimePicker();
+            this.dkpDeliveryDate = new System.Windows.Forms.DateTimePicker();
+            this.txtControl = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.lblInvoice = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtBalance = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtCustomers = new System.Windows.Forms.TextBox();
+            this.txtItemName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
-            this.groupReturn = new DevExpress.XtraEditors.GroupControl();
-            this.gridCtrlReturn = new DevExpress.XtraGrid.GridControl();
-            this.gridReturn = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView12 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView13 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.layoutAccepted = new DevExpress.XtraGrid.Views.Layout.LayoutView();
-            this.layoutViewCard1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -266,10 +274,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupAccepted)).BeginInit();
             this.groupAccepted.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlAccepted)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutAccepted)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).BeginInit();
             this.xtraReturn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupReturn)).BeginInit();
+            this.groupReturn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlReturn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridReturn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView13)).BeginInit();
             this.xtraInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupInventory)).BeginInit();
             this.groupInventory.SuspendLayout();
@@ -296,15 +313,6 @@
             this.groupGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupOperator)).BeginInit();
             this.groupOperator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupReturn)).BeginInit();
-            this.groupReturn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlReturn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridReturn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutAccepted)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribSaveTrans
@@ -448,12 +456,12 @@
             this.barItemDelivery.Name = "barItemDelivery";
             this.barItemDelivery.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem1.Text = "Petron POS";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Search Customer";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barItemDelivery.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Petron POS";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Search Customer";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.barItemDelivery.SuperTip = superToolTip3;
             this.barItemDelivery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barItemDelivery_ItemClick);
             // 
             // ribGCB
@@ -487,12 +495,12 @@
             this.barNewCustomer.Name = "barNewCustomer";
             this.barNewCustomer.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem2.Text = " NEW CUSTOMER";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Add new Customer Information";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barNewCustomer.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = " NEW CUSTOMER";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Add new Customer Information";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.barNewCustomer.SuperTip = superToolTip4;
             // 
             // ribGCA
             // 
@@ -886,6 +894,7 @@
             this.barUser.Caption = "User:";
             this.barUser.Edit = this.repositoryItemTextEdit4;
             this.barUser.EditWidth = 85;
+            this.barUser.Enabled = false;
             this.barUser.Id = 28;
             this.barUser.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barUser.ImageOptions.Image")));
             this.barUser.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barUser.ImageOptions.LargeImage")));
@@ -902,6 +911,7 @@
             this.barBranch.Edit = this.repositoryItemTextEdit5;
             this.barBranch.EditValue = "";
             this.barBranch.EditWidth = 100;
+            this.barBranch.Enabled = false;
             this.barBranch.Id = 29;
             this.barBranch.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBranch.ImageOptions.Image")));
             this.barBranch.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barBranch.ImageOptions.LargeImage")));
@@ -917,6 +927,7 @@
             this.barSoftware.Caption = "Software:";
             this.barSoftware.Edit = this.repositoryItemTextEdit6;
             this.barSoftware.EditWidth = 95;
+            this.barSoftware.Enabled = false;
             this.barSoftware.Id = 30;
             this.barSoftware.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSoftware.ImageOptions.Image")));
             this.barSoftware.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSoftware.ImageOptions.LargeImage")));
@@ -932,6 +943,7 @@
             this.barDate.Caption = "Date:";
             this.barDate.Edit = this.repositoryItemTextEdit7;
             this.barDate.EditWidth = 90;
+            this.barDate.Enabled = false;
             this.barDate.Id = 31;
             this.barDate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barDate.ImageOptions.Image")));
             this.barDate.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barDate.ImageOptions.LargeImage")));
@@ -947,6 +959,7 @@
             this.barTime.Caption = "Time:";
             this.barTime.Edit = this.repositoryItemTextEdit8;
             this.barTime.EditWidth = 120;
+            this.barTime.Enabled = false;
             this.barTime.Id = 32;
             this.barTime.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barTime.ImageOptions.Image")));
             this.barTime.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barTime.ImageOptions.LargeImage")));
@@ -1486,93 +1499,48 @@
             // txtBarcode
             // 
             this.txtBarcode.BackColor = System.Drawing.Color.White;
+            this.txtBarcode.Enabled = false;
             this.txtBarcode.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBarcode.Location = new System.Drawing.Point(170, 12);
+            this.txtBarcode.Location = new System.Drawing.Point(148, 11);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(473, 46);
+            this.txtBarcode.Size = new System.Drawing.Size(360, 46);
             this.txtBarcode.TabIndex = 241;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(871, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(139, 20);
-            this.label10.TabIndex = 240;
-            this.label10.Text = "Total Paid Amount:";
-            // 
-            // lblCreditAmount
-            // 
-            this.lblCreditAmount.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblCreditAmount.Appearance.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditAmount.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.lblCreditAmount.Appearance.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblCreditAmount.Appearance.Options.UseBorderColor = true;
-            this.lblCreditAmount.Appearance.Options.UseFont = true;
-            this.lblCreditAmount.Appearance.Options.UseForeColor = true;
-            this.lblCreditAmount.Location = new System.Drawing.Point(1027, 30);
-            this.lblCreditAmount.Name = "lblCreditAmount";
-            this.lblCreditAmount.Size = new System.Drawing.Size(54, 30);
-            this.lblCreditAmount.TabIndex = 239;
-            this.lblCreditAmount.Text = "00.00";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(871, 34);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(150, 20);
-            this.label8.TabIndex = 238;
-            this.label8.Text = "Total Credit Amount:";
-            // 
-            // lblPaidAmount
-            // 
-            this.lblPaidAmount.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblPaidAmount.Appearance.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaidAmount.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.lblPaidAmount.Appearance.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblPaidAmount.Appearance.Options.UseBorderColor = true;
-            this.lblPaidAmount.Appearance.Options.UseFont = true;
-            this.lblPaidAmount.Appearance.Options.UseForeColor = true;
-            this.lblPaidAmount.Location = new System.Drawing.Point(1027, 3);
-            this.lblPaidAmount.Name = "lblPaidAmount";
-            this.lblPaidAmount.Size = new System.Drawing.Size(54, 30);
-            this.lblPaidAmount.TabIndex = 234;
-            this.lblPaidAmount.Text = "00.00";
             // 
             // lblBarcode
             // 
             this.lblBarcode.AutoSize = true;
             this.lblBarcode.BackColor = System.Drawing.Color.Transparent;
-            this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold);
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
-            this.lblBarcode.Location = new System.Drawing.Point(21, 14);
+            this.lblBarcode.Location = new System.Drawing.Point(21, 13);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(138, 40);
+            this.lblBarcode.Size = new System.Drawing.Size(121, 36);
             this.lblBarcode.TabIndex = 232;
             this.lblBarcode.Text = "Barcode:";
             // 
             // gUSE
             // 
-            this.gUSE.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gUSE.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.gUSE.Appearance.BackColor2 = System.Drawing.Color.RoyalBlue;
             this.gUSE.Appearance.BorderColor = System.Drawing.Color.White;
             this.gUSE.Appearance.Options.UseBackColor = true;
             this.gUSE.Appearance.Options.UseBorderColor = true;
             this.gUSE.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.gUSE.CaptionLocation = DevExpress.Utils.Locations.Left;
-            this.gUSE.Controls.Add(this.xInventory);
-            this.gUSE.Controls.Add(this.txtBarcode);
-            this.gUSE.Controls.Add(this.label10);
-            this.gUSE.Controls.Add(this.lblCreditAmount);
             this.gUSE.Controls.Add(this.label8);
-            this.gUSE.Controls.Add(this.lblPaidAmount);
+            this.gUSE.Controls.Add(this.txtCostPrice);
+            this.gUSE.Controls.Add(this.txtDeliveryStatus);
+            this.gUSE.Controls.Add(this.txtLastCost);
+            this.gUSE.Controls.Add(this.label7);
+            this.gUSE.Controls.Add(this.label3);
+            this.gUSE.Controls.Add(this.txtWholeSale);
+            this.gUSE.Controls.Add(this.txtStockStatus);
+            this.gUSE.Controls.Add(this.label6);
+            this.gUSE.Controls.Add(this.xInventory);
+            this.gUSE.Controls.Add(this.label5);
+            this.gUSE.Controls.Add(this.txtBarcode);
+            this.gUSE.Controls.Add(this.txtRetail);
+            this.gUSE.Controls.Add(this.label4);
             this.gUSE.Controls.Add(this.lblBarcode);
             this.gUSE.Location = new System.Drawing.Point(2, 21);
             this.gUSE.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
@@ -1581,6 +1549,102 @@
             this.gUSE.Size = new System.Drawing.Size(1586, 672);
             this.gUSE.TabIndex = 234;
             this.gUSE.Text = "Warehouse";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(1105, 36);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 21);
+            this.label8.TabIndex = 245;
+            this.label8.Text = "Cost Price:";
+            // 
+            // txtCostPrice
+            // 
+            this.txtCostPrice.Enabled = false;
+            this.txtCostPrice.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
+            this.txtCostPrice.Location = new System.Drawing.Point(1199, 33);
+            this.txtCostPrice.Name = "txtCostPrice";
+            this.txtCostPrice.Size = new System.Drawing.Size(114, 29);
+            this.txtCostPrice.TabIndex = 251;
+            this.txtCostPrice.Text = "0.00";
+            // 
+            // txtDeliveryStatus
+            // 
+            this.txtDeliveryStatus.Enabled = false;
+            this.txtDeliveryStatus.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
+            this.txtDeliveryStatus.Location = new System.Drawing.Point(665, 33);
+            this.txtDeliveryStatus.Name = "txtDeliveryStatus";
+            this.txtDeliveryStatus.Size = new System.Drawing.Size(209, 29);
+            this.txtDeliveryStatus.TabIndex = 250;
+            // 
+            // txtLastCost
+            // 
+            this.txtLastCost.Enabled = false;
+            this.txtLastCost.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
+            this.txtLastCost.Location = new System.Drawing.Point(1199, 3);
+            this.txtLastCost.Name = "txtLastCost";
+            this.txtLastCost.Size = new System.Drawing.Size(114, 29);
+            this.txtLastCost.TabIndex = 247;
+            this.txtLastCost.Text = "0.00";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(1106, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(81, 21);
+            this.label7.TabIndex = 244;
+            this.label7.Text = "Last Cost:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(513, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 21);
+            this.label3.TabIndex = 249;
+            this.label3.Text = "Delivery Status:";
+            // 
+            // txtWholeSale
+            // 
+            this.txtWholeSale.Enabled = false;
+            this.txtWholeSale.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
+            this.txtWholeSale.Location = new System.Drawing.Point(989, 33);
+            this.txtWholeSale.Name = "txtWholeSale";
+            this.txtWholeSale.Size = new System.Drawing.Size(114, 29);
+            this.txtWholeSale.TabIndex = 246;
+            this.txtWholeSale.Text = "0.00";
+            // 
+            // txtStockStatus
+            // 
+            this.txtStockStatus.Enabled = false;
+            this.txtStockStatus.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
+            this.txtStockStatus.Location = new System.Drawing.Point(665, 3);
+            this.txtStockStatus.Name = "txtStockStatus";
+            this.txtStockStatus.Size = new System.Drawing.Size(209, 29);
+            this.txtStockStatus.TabIndex = 248;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(513, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 21);
+            this.label6.TabIndex = 247;
+            this.label6.Text = "Stock Status:";
             // 
             // xInventory
             // 
@@ -1777,10 +1841,34 @@
             this.gridControlAccepted.TabIndex = 25;
             this.gridControlAccepted.TabStop = false;
             this.gridControlAccepted.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.layoutAccepted,
             this.gridView2,
             this.gridView3,
-            this.grdHIS,
-            this.layoutAccepted});
+            this.grdHIS});
+            // 
+            // layoutAccepted
+            // 
+            this.layoutAccepted.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.layoutAccepted.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.layoutAccepted.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.layoutAccepted.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.layoutAccepted.Appearance.HeaderPanel.Options.UseFont = true;
+            this.layoutAccepted.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.layoutAccepted.Appearance.ViewCaption.Options.UseFont = true;
+            this.layoutAccepted.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.layoutAccepted.GridControl = this.gridControlAccepted;
+            this.layoutAccepted.Name = "layoutAccepted";
+            this.layoutAccepted.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.layoutAccepted.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.layoutAccepted.OptionsBehavior.Editable = false;
+            this.layoutAccepted.OptionsSelection.MultiSelect = true;
+            this.layoutAccepted.TemplateCard = this.layoutViewCard1;
+            // 
+            // layoutViewCard1
+            // 
+            this.layoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
+            this.layoutViewCard1.Name = "layoutViewCard1";
+            this.layoutViewCard1.OptionsItemText.TextToControlDistance = 5;
             // 
             // gridView2
             // 
@@ -1840,6 +1928,145 @@
             this.xtraReturn.Name = "xtraReturn";
             this.xtraReturn.Size = new System.Drawing.Size(1563, 516);
             this.xtraReturn.Text = "Return Inventory";
+            // 
+            // groupReturn
+            // 
+            this.groupReturn.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupReturn.Appearance.Options.UseBackColor = true;
+            this.groupReturn.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupReturn.Controls.Add(this.gridCtrlReturn);
+            this.groupReturn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupReturn.Location = new System.Drawing.Point(0, 0);
+            this.groupReturn.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupReturn.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupReturn.Name = "groupReturn";
+            this.groupReturn.Size = new System.Drawing.Size(1563, 516);
+            this.groupReturn.TabIndex = 177;
+            // 
+            // gridCtrlReturn
+            // 
+            this.gridCtrlReturn.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridCtrlReturn.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.gridCtrlReturn.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridCtrlReturn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.gridCtrlReturn.Location = new System.Drawing.Point(3, 18);
+            this.gridCtrlReturn.MainView = this.gridReturn;
+            this.gridCtrlReturn.Name = "gridCtrlReturn";
+            this.gridCtrlReturn.Size = new System.Drawing.Size(1557, 495);
+            this.gridCtrlReturn.TabIndex = 25;
+            this.gridCtrlReturn.TabStop = false;
+            this.gridCtrlReturn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridReturn,
+            this.gridView8,
+            this.gridView12,
+            this.gridView13});
+            // 
+            // gridReturn
+            // 
+            this.gridReturn.Appearance.Empty.BackColor = System.Drawing.Color.LightGray;
+            this.gridReturn.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridReturn.Appearance.Empty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridReturn.Appearance.Empty.Options.UseBackColor = true;
+            this.gridReturn.Appearance.Empty.Options.UseBorderColor = true;
+            this.gridReturn.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridReturn.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridReturn.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridReturn.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridReturn.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridReturn.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridReturn.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridReturn.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridReturn.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridReturn.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridReturn.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridReturn.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.gridReturn.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridReturn.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridReturn.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridReturn.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
+            this.gridReturn.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridReturn.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridReturn.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridReturn.Appearance.Row.Options.UseBackColor = true;
+            this.gridReturn.Appearance.Row.Options.UseBorderColor = true;
+            this.gridReturn.Appearance.Row.Options.UseFont = true;
+            this.gridReturn.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridReturn.Appearance.ViewCaption.Options.UseFont = true;
+            this.gridReturn.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridReturn.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridReturn.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridReturn.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridReturn.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridReturn.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridReturn.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
+            this.gridReturn.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridReturn.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridReturn.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridReturn.AppearancePrint.Row.Options.UseFont = true;
+            this.gridReturn.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridReturn.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.gridReturn.GridControl = this.gridCtrlReturn;
+            this.gridReturn.Name = "gridReturn";
+            this.gridReturn.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridReturn.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridReturn.OptionsBehavior.Editable = false;
+            this.gridReturn.OptionsCustomization.AllowRowSizing = true;
+            this.gridReturn.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridReturn.OptionsSelection.MultiSelect = true;
+            this.gridReturn.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridReturn.OptionsView.RowAutoHeight = true;
+            this.gridReturn.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            // 
+            // gridView8
+            // 
+            this.gridView8.GridControl = this.gridCtrlReturn;
+            this.gridView8.Name = "gridView8";
+            // 
+            // gridView12
+            // 
+            this.gridView12.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridView12.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridView12.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridView12.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView12.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Green;
+            this.gridView12.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView12.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridView12.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridView12.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView12.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridView12.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView12.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView12.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView12.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView12.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridView12.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.gridView12.Appearance.Row.Options.UseFont = true;
+            this.gridView12.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridView12.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView12.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView12.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridView12.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridView12.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridView12.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView12.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridView12.AppearancePrint.Row.Options.UseFont = true;
+            this.gridView12.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridView12.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.gridView12.GridControl = this.gridCtrlReturn;
+            this.gridView12.Name = "gridView12";
+            this.gridView12.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView12.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView12.OptionsBehavior.Editable = false;
+            this.gridView12.OptionsBehavior.ReadOnly = true;
+            this.gridView12.OptionsCustomization.AllowRowSizing = true;
+            this.gridView12.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridView12.OptionsSelection.MultiSelect = true;
+            this.gridView12.OptionsView.ColumnAutoWidth = false;
+            // 
+            // gridView13
+            // 
+            this.gridView13.GridControl = this.gridCtrlReturn;
+            this.gridView13.Name = "gridView13";
             // 
             // xtraInventory
             // 
@@ -2139,6 +2366,40 @@
             this.gridView11.GridControl = this.gridCtrlSales;
             this.gridView11.Name = "gridView11";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(887, 36);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 21);
+            this.label5.TabIndex = 240;
+            this.label5.Text = "Whole Sale:";
+            // 
+            // txtRetail
+            // 
+            this.txtRetail.Enabled = false;
+            this.txtRetail.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
+            this.txtRetail.Location = new System.Drawing.Point(989, 3);
+            this.txtRetail.Name = "txtRetail";
+            this.txtRetail.Size = new System.Drawing.Size(114, 29);
+            this.txtRetail.TabIndex = 238;
+            this.txtRetail.Text = "0.00";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(887, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 21);
+            this.label4.TabIndex = 237;
+            this.label4.Text = "Retail Price:";
+            // 
             // pcLOG
             // 
             this.pcLOG.BackColor = System.Drawing.Color.Gray;
@@ -2163,24 +2424,14 @@
             this.txtPRI.TabIndex = 99;
             this.txtPRI.Visible = false;
             // 
-            // txtLimit
+            // txtBranch
             // 
-            this.txtLimit.Enabled = false;
-            this.txtLimit.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLimit.Location = new System.Drawing.Point(764, 35);
-            this.txtLimit.Name = "txtLimit";
-            this.txtLimit.Size = new System.Drawing.Size(147, 31);
-            this.txtLimit.TabIndex = 246;
-            this.txtLimit.Text = "0.00";
-            // 
-            // txtOperator
-            // 
-            this.txtOperator.Enabled = false;
-            this.txtOperator.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOperator.Location = new System.Drawing.Point(149, 4);
-            this.txtOperator.Name = "txtOperator";
-            this.txtOperator.Size = new System.Drawing.Size(475, 31);
-            this.txtOperator.TabIndex = 235;
+            this.txtBranch.Enabled = false;
+            this.txtBranch.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold);
+            this.txtBranch.Location = new System.Drawing.Point(129, 34);
+            this.txtBranch.Name = "txtBranch";
+            this.txtBranch.Size = new System.Drawing.Size(359, 30);
+            this.txtBranch.TabIndex = 235;
             // 
             // spCON
             // 
@@ -2250,23 +2501,23 @@
             // 
             // groupOperator
             // 
-            this.groupOperator.Appearance.BackColor = System.Drawing.Color.White;
+            this.groupOperator.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupOperator.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.groupOperator.Appearance.BorderColor = System.Drawing.Color.White;
             this.groupOperator.Appearance.Options.UseBackColor = true;
             this.groupOperator.Appearance.Options.UseBorderColor = true;
             this.groupOperator.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.groupOperator.CaptionLocation = DevExpress.Utils.Locations.Left;
-            this.groupOperator.Controls.Add(this.textBox1);
-            this.groupOperator.Controls.Add(this.textBox2);
-            this.groupOperator.Controls.Add(this.txtLimit);
-            this.groupOperator.Controls.Add(this.label7);
+            this.groupOperator.Controls.Add(this.label11);
+            this.groupOperator.Controls.Add(this.label10);
+            this.groupOperator.Controls.Add(this.dpkUpdated);
+            this.groupOperator.Controls.Add(this.dkpDeliveryDate);
+            this.groupOperator.Controls.Add(this.txtControl);
+            this.groupOperator.Controls.Add(this.label9);
+            this.groupOperator.Controls.Add(this.txtQuantity);
             this.groupOperator.Controls.Add(this.lblInvoice);
-            this.groupOperator.Controls.Add(this.label5);
-            this.groupOperator.Controls.Add(this.txtBalance);
-            this.groupOperator.Controls.Add(this.label4);
-            this.groupOperator.Controls.Add(this.txtCustomers);
-            this.groupOperator.Controls.Add(this.txtOperator);
+            this.groupOperator.Controls.Add(this.txtItemName);
+            this.groupOperator.Controls.Add(this.txtBranch);
             this.groupOperator.Controls.Add(this.label2);
             this.groupOperator.Controls.Add(this.label1);
             this.groupOperator.Location = new System.Drawing.Point(21, 84);
@@ -2277,115 +2528,129 @@
             this.groupOperator.TabIndex = 235;
             this.groupOperator.Text = "Inventory";
             // 
-            // textBox1
+            // label11
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(1049, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(147, 31);
-            this.textBox1.TabIndex = 248;
-            this.textBox1.Text = "0.00";
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.Color.DimGray;
+            this.label11.Location = new System.Drawing.Point(953, 37);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(106, 21);
+            this.label11.TabIndex = 254;
+            this.label11.Text = "Updated On:";
             // 
-            // textBox2
+            // label10
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1049, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(147, 31);
-            this.textBox2.TabIndex = 247;
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.DimGray;
+            this.label10.Location = new System.Drawing.Point(953, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(119, 21);
+            this.label10.TabIndex = 253;
+            this.label10.Text = "Delivery Date:";
             // 
-            // label7
+            // dpkUpdated
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label7.Location = new System.Drawing.Point(917, 7);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 28);
-            this.label7.TabIndex = 244;
-            this.label7.Text = "Status:";
+            this.dpkUpdated.CalendarFont = new System.Drawing.Font("Segoe UI", 13F);
+            this.dpkUpdated.CustomFormat = "dd-MM-yyyy";
+            this.dpkUpdated.Enabled = false;
+            this.dpkUpdated.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpkUpdated.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpkUpdated.Location = new System.Drawing.Point(1080, 34);
+            this.dpkUpdated.Name = "dpkUpdated";
+            this.dpkUpdated.Size = new System.Drawing.Size(212, 29);
+            this.dpkUpdated.TabIndex = 252;
+            // 
+            // dkpDeliveryDate
+            // 
+            this.dkpDeliveryDate.CalendarFont = new System.Drawing.Font("Segoe UI", 13F);
+            this.dkpDeliveryDate.CustomFormat = "dd-MM-yyyy";
+            this.dkpDeliveryDate.Enabled = false;
+            this.dkpDeliveryDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dkpDeliveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dkpDeliveryDate.Location = new System.Drawing.Point(1080, 3);
+            this.dkpDeliveryDate.Name = "dkpDeliveryDate";
+            this.dkpDeliveryDate.Size = new System.Drawing.Size(212, 29);
+            this.dkpDeliveryDate.TabIndex = 251;
+            // 
+            // txtControl
+            // 
+            this.txtControl.Enabled = false;
+            this.txtControl.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
+            this.txtControl.Location = new System.Drawing.Point(574, 35);
+            this.txtControl.Name = "txtControl";
+            this.txtControl.Size = new System.Drawing.Size(99, 29);
+            this.txtControl.TabIndex = 250;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(491, 36);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(80, 25);
+            this.label9.TabIndex = 249;
+            this.label9.Text = "Control:";
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Enabled = false;
+            this.txtQuantity.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
+            this.txtQuantity.Location = new System.Drawing.Point(771, 35);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(84, 29);
+            this.txtQuantity.TabIndex = 248;
+            this.txtQuantity.Text = "0";
             // 
             // lblInvoice
             // 
             this.lblInvoice.AutoSize = true;
             this.lblInvoice.BackColor = System.Drawing.Color.Transparent;
-            this.lblInvoice.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.lblInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.lblInvoice.Location = new System.Drawing.Point(917, 35);
+            this.lblInvoice.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.lblInvoice.ForeColor = System.Drawing.Color.White;
+            this.lblInvoice.Location = new System.Drawing.Point(676, 36);
             this.lblInvoice.Name = "lblInvoice";
-            this.lblInvoice.Size = new System.Drawing.Size(100, 28);
+            this.lblInvoice.Size = new System.Drawing.Size(92, 25);
             this.lblInvoice.TabIndex = 241;
             this.lblInvoice.Text = "Quantity:";
             // 
-            // label5
+            // txtItemName
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label5.Location = new System.Drawing.Point(630, 31);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 28);
-            this.label5.TabIndex = 240;
-            this.label5.Text = "Whole Sale:";
-            // 
-            // txtBalance
-            // 
-            this.txtBalance.Enabled = false;
-            this.txtBalance.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBalance.Location = new System.Drawing.Point(764, 3);
-            this.txtBalance.Name = "txtBalance";
-            this.txtBalance.Size = new System.Drawing.Size(147, 31);
-            this.txtBalance.TabIndex = 238;
-            this.txtBalance.Text = "0.00";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label4.Location = new System.Drawing.Point(630, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 28);
-            this.label4.TabIndex = 237;
-            this.label4.Text = "Retail Price:";
-            // 
-            // txtCustomers
-            // 
-            this.txtCustomers.Enabled = false;
-            this.txtCustomers.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomers.Location = new System.Drawing.Point(149, 35);
-            this.txtCustomers.Name = "txtCustomers";
-            this.txtCustomers.Size = new System.Drawing.Size(475, 31);
-            this.txtCustomers.TabIndex = 236;
+            this.txtItemName.Enabled = false;
+            this.txtItemName.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold);
+            this.txtItemName.Location = new System.Drawing.Point(129, 3);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Size = new System.Drawing.Size(726, 30);
+            this.txtItemName.TabIndex = 236;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label2.Location = new System.Drawing.Point(27, 34);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(16, 6);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 28);
+            this.label2.Size = new System.Drawing.Size(114, 25);
             this.label2.TabIndex = 234;
-            this.label2.Text = "Item";
+            this.label2.Text = "Item Name:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label1.Location = new System.Drawing.Point(27, 2);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(17, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 28);
+            this.label1.Size = new System.Drawing.Size(79, 25);
             this.label1.TabIndex = 233;
-            this.label1.Text = "Operator:";
+            this.label1.Text = "Branch:";
             // 
             // barSubItem3
             // 
@@ -2394,169 +2659,6 @@
             this.barSubItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.Image")));
             this.barSubItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.LargeImage")));
             this.barSubItem3.Name = "barSubItem3";
-            // 
-            // groupReturn
-            // 
-            this.groupReturn.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.groupReturn.Appearance.Options.UseBackColor = true;
-            this.groupReturn.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupReturn.Controls.Add(this.gridCtrlReturn);
-            this.groupReturn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupReturn.Location = new System.Drawing.Point(0, 0);
-            this.groupReturn.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
-            this.groupReturn.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupReturn.Name = "groupReturn";
-            this.groupReturn.Size = new System.Drawing.Size(1563, 516);
-            this.groupReturn.TabIndex = 177;
-            // 
-            // gridCtrlReturn
-            // 
-            this.gridCtrlReturn.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridCtrlReturn.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.gridCtrlReturn.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
-            this.gridCtrlReturn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.gridCtrlReturn.Location = new System.Drawing.Point(3, 18);
-            this.gridCtrlReturn.MainView = this.gridReturn;
-            this.gridCtrlReturn.Name = "gridCtrlReturn";
-            this.gridCtrlReturn.Size = new System.Drawing.Size(1557, 495);
-            this.gridCtrlReturn.TabIndex = 25;
-            this.gridCtrlReturn.TabStop = false;
-            this.gridCtrlReturn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridReturn,
-            this.gridView8,
-            this.gridView12,
-            this.gridView13});
-            // 
-            // gridReturn
-            // 
-            this.gridReturn.Appearance.Empty.BackColor = System.Drawing.Color.LightGray;
-            this.gridReturn.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridReturn.Appearance.Empty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridReturn.Appearance.Empty.Options.UseBackColor = true;
-            this.gridReturn.Appearance.Empty.Options.UseBorderColor = true;
-            this.gridReturn.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.gridReturn.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridReturn.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridReturn.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridReturn.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridReturn.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridReturn.Appearance.FocusedRow.Options.UseBorderColor = true;
-            this.gridReturn.Appearance.FocusedRow.Options.UseFont = true;
-            this.gridReturn.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.gridReturn.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridReturn.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridReturn.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.gridReturn.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.gridReturn.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridReturn.Appearance.HeaderPanel.Options.UseForeColor = true;
-            this.gridReturn.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
-            this.gridReturn.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridReturn.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridReturn.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridReturn.Appearance.Row.Options.UseBackColor = true;
-            this.gridReturn.Appearance.Row.Options.UseBorderColor = true;
-            this.gridReturn.Appearance.Row.Options.UseFont = true;
-            this.gridReturn.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridReturn.Appearance.ViewCaption.Options.UseFont = true;
-            this.gridReturn.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridReturn.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridReturn.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
-            this.gridReturn.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
-            this.gridReturn.AppearancePrint.HeaderPanel.Options.UseFont = true;
-            this.gridReturn.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
-            this.gridReturn.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
-            this.gridReturn.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridReturn.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridReturn.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
-            this.gridReturn.AppearancePrint.Row.Options.UseFont = true;
-            this.gridReturn.AppearancePrint.Row.Options.UseForeColor = true;
-            this.gridReturn.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.gridReturn.GridControl = this.gridCtrlReturn;
-            this.gridReturn.Name = "gridReturn";
-            this.gridReturn.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridReturn.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridReturn.OptionsBehavior.Editable = false;
-            this.gridReturn.OptionsCustomization.AllowRowSizing = true;
-            this.gridReturn.OptionsDetail.AllowExpandEmptyDetails = true;
-            this.gridReturn.OptionsSelection.MultiSelect = true;
-            this.gridReturn.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridReturn.OptionsView.RowAutoHeight = true;
-            this.gridReturn.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
-            // 
-            // gridView8
-            // 
-            this.gridView8.GridControl = this.gridCtrlReturn;
-            this.gridView8.Name = "gridView8";
-            // 
-            // gridView12
-            // 
-            this.gridView12.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridView12.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridView12.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridView12.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.gridView12.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Green;
-            this.gridView12.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridView12.Appearance.FocusedRow.Options.UseBorderColor = true;
-            this.gridView12.Appearance.FocusedRow.Options.UseFont = true;
-            this.gridView12.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.gridView12.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridView12.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.gridView12.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridView12.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.gridView12.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridView12.Appearance.HeaderPanel.Options.UseForeColor = true;
-            this.gridView12.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.gridView12.Appearance.Row.Options.UseFont = true;
-            this.gridView12.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridView12.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.gridView12.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
-            this.gridView12.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
-            this.gridView12.AppearancePrint.HeaderPanel.Options.UseFont = true;
-            this.gridView12.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
-            this.gridView12.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.gridView12.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
-            this.gridView12.AppearancePrint.Row.Options.UseFont = true;
-            this.gridView12.AppearancePrint.Row.Options.UseForeColor = true;
-            this.gridView12.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.gridView12.GridControl = this.gridCtrlReturn;
-            this.gridView12.Name = "gridView12";
-            this.gridView12.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView12.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView12.OptionsBehavior.Editable = false;
-            this.gridView12.OptionsBehavior.ReadOnly = true;
-            this.gridView12.OptionsCustomization.AllowRowSizing = true;
-            this.gridView12.OptionsDetail.AllowExpandEmptyDetails = true;
-            this.gridView12.OptionsSelection.MultiSelect = true;
-            this.gridView12.OptionsView.ColumnAutoWidth = false;
-            // 
-            // gridView13
-            // 
-            this.gridView13.GridControl = this.gridCtrlReturn;
-            this.gridView13.Name = "gridView13";
-            // 
-            // layoutAccepted
-            // 
-            this.layoutAccepted.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.layoutAccepted.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.layoutAccepted.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.layoutAccepted.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.layoutAccepted.Appearance.HeaderPanel.Options.UseFont = true;
-            this.layoutAccepted.Appearance.HeaderPanel.Options.UseForeColor = true;
-            this.layoutAccepted.Appearance.ViewCaption.Options.UseFont = true;
-            this.layoutAccepted.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.layoutAccepted.GridControl = this.gridControlAccepted;
-            this.layoutAccepted.Name = "layoutAccepted";
-            this.layoutAccepted.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.layoutAccepted.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.layoutAccepted.OptionsBehavior.Editable = false;
-            this.layoutAccepted.OptionsSelection.MultiSelect = true;
-            this.layoutAccepted.TemplateCard = this.layoutViewCard1;
-            // 
-            // layoutViewCard1
-            // 
-            this.layoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
-            this.layoutViewCard1.Name = "layoutViewCard1";
-            this.layoutViewCard1.OptionsItemText.TextToControlDistance = 5;
             // 
             // FrmManagement
             // 
@@ -2602,10 +2704,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupAccepted)).EndInit();
             this.groupAccepted.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlAccepted)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutAccepted)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).EndInit();
             this.xtraReturn.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupReturn)).EndInit();
+            this.groupReturn.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlReturn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridReturn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView13)).EndInit();
             this.xtraInventory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupInventory)).EndInit();
             this.groupInventory.ResumeLayout(false);
@@ -2634,15 +2745,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupOperator)).EndInit();
             this.groupOperator.ResumeLayout(false);
             this.groupOperator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupReturn)).EndInit();
-            this.groupReturn.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlReturn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridReturn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutAccepted)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2785,16 +2887,12 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private System.Windows.Forms.Timer clock;
         private System.Windows.Forms.TextBox txtBarcode;
-        private System.Windows.Forms.Label label10;
-        private DevExpress.XtraEditors.LabelControl lblCreditAmount;
-        private System.Windows.Forms.Label label8;
-        private DevExpress.XtraEditors.LabelControl lblPaidAmount;
         private System.Windows.Forms.Label lblBarcode;
         private DevExpress.XtraEditors.GroupControl gUSE;
         private System.Windows.Forms.PictureBox pcLOG;
         private System.Windows.Forms.TextBox txtPRI;
-        private System.Windows.Forms.TextBox txtLimit;
-        private System.Windows.Forms.TextBox txtOperator;
+        private System.Windows.Forms.TextBox txtWholeSale;
+        private System.Windows.Forms.TextBox txtBranch;
         private DevExpress.XtraEditors.SplitContainerControl spCON;
         private DevExpress.XtraEditors.GroupControl groupGrid;
         private DevExpress.XtraGrid.GridControl gridCtrlPending;
@@ -2802,16 +2900,16 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblInvoice;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtBalance;
+        private System.Windows.Forms.TextBox txtRetail;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtCustomers;
+        private System.Windows.Forms.TextBox txtItemName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraBars.BarSubItem barSubItem3;
         private System.Windows.Forms.PictureBox imgPreview;
         private DevExpress.XtraEditors.GroupControl groupImage;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.TextBox txtLastCost;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreen;
         private DevExpress.XtraGrid.Views.Card.CardView cardPending;
         private DevExpress.XtraGrid.Views.Grid.GridView grid;
@@ -2847,5 +2945,17 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView8;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView12;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView13;
+        private System.Windows.Forms.TextBox txtDeliveryStatus;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtStockStatus;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtCostPrice;
+        private System.Windows.Forms.TextBox txtControl;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker dpkUpdated;
+        private System.Windows.Forms.DateTimePicker dkpDeliveryDate;
     }
 }
