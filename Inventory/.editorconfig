@@ -32,3 +32,6 @@ dotnet_diagnostic.CA2007.severity = none
 
 # CA1805: Do not initialize unnecessarily
 dotnet_diagnostic.CA1805.severity = none
+
+# IDE0055: Fix formatting
+dotnet_diagnostic.IDE0055.severity = none

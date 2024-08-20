@@ -12,7 +12,7 @@ namespace Inventory.PopupForm
 {
     public partial class FirmPopBranches : Form
     {
-        public FirmWarehouse Main { protected get;  set; }
+        public FirmWarehouse WarehouseMain { protected get;  set; }
         public FirmWareHouseReturn ReturnBranch { protected get; set; }
         private readonly int _userId;
         private readonly int _userTy;
@@ -59,8 +59,9 @@ namespace Inventory.PopupForm
                 }
                 else
                 {
-                    Main.DeliveryBranches = branch;
+                    WarehouseMain.DeliveryBranches = branch;
                 }
+                DialogResult = DialogResult.OK;
                 Close();
             }
 
@@ -68,12 +69,8 @@ namespace Inventory.PopupForm
 
         private void bntCAN_Click(object sender, EventArgs e)
         {
-            if (_return == false)
-            {
-                Main.Close = 1;
-                Close();
-            }
-           
+            DialogResult = DialogResult.Cancel; 
+            Close();
         }
         private void BindBranch()
         {
