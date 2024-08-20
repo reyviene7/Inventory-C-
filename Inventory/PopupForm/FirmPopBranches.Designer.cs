@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmPopBranches));
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
-            this.cmbDIS = new System.Windows.Forms.ComboBox();
+            this.cmbBranchName = new System.Windows.Forms.ComboBox();
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.bntSVA = new DevExpress.XtraEditors.SimpleButton();
             this.bntCAN = new DevExpress.XtraEditors.SimpleButton();
@@ -44,7 +44,7 @@
             this.gbCON.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.gbCON.Appearance.Options.UseBackColor = true;
             this.gbCON.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.gbCON.Controls.Add(this.cmbDIS);
+            this.gbCON.Controls.Add(this.cmbBranchName);
             this.gbCON.Controls.Add(this.lblMainTitle);
             this.gbCON.Controls.Add(this.bntSVA);
             this.gbCON.Controls.Add(this.bntCAN);
@@ -56,18 +56,18 @@
             this.gbCON.Size = new System.Drawing.Size(457, 201);
             this.gbCON.TabIndex = 5;
             // 
-            // cmbDIS
+            // cmbBranchName
             // 
-            this.cmbDIS.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbDIS.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbDIS.BackColor = System.Drawing.Color.White;
-            this.cmbDIS.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDIS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.cmbDIS.FormattingEnabled = true;
-            this.cmbDIS.Location = new System.Drawing.Point(13, 88);
-            this.cmbDIS.Name = "cmbDIS";
-            this.cmbDIS.Size = new System.Drawing.Size(433, 40);
-            this.cmbDIS.TabIndex = 1;
+            this.cmbBranchName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbBranchName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbBranchName.BackColor = System.Drawing.Color.White;
+            this.cmbBranchName.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBranchName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.cmbBranchName.FormattingEnabled = true;
+            this.cmbBranchName.Location = new System.Drawing.Point(13, 88);
+            this.cmbBranchName.Name = "cmbBranchName";
+            this.cmbBranchName.Size = new System.Drawing.Size(433, 40);
+            this.cmbBranchName.TabIndex = 1;
             // 
             // lblMainTitle
             // 
@@ -123,7 +123,7 @@
         #endregion
 
         private DevExpress.XtraEditors.GroupControl gbCON;
-        private System.Windows.Forms.ComboBox cmbDIS;
+        private System.Windows.Forms.ComboBox cmbBranchName;
         private System.Windows.Forms.Label lblMainTitle;
         private DevExpress.XtraEditors.SimpleButton bntSVA;
         private DevExpress.XtraEditors.SimpleButton bntCAN;
