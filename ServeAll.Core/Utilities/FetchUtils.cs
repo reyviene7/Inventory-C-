@@ -530,6 +530,7 @@ namespace ServeAll.Core.Utilities
                  
             }
         }
+
         public static int getSearchProduct(int productId)
         {
             using (var session = new DalSession())
@@ -542,8 +543,9 @@ namespace ServeAll.Core.Utilities
                         .SelectAll(Query.SelectAllProductId)
                         .Count(x => x.product_id == productId);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    Console.WriteLine(e.ToString());
                     return 0;
                 }
             }

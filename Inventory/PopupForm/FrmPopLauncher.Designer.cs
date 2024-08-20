@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPopLauncher));
+            this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.groupLauncher = new DevExpress.XtraEditors.GroupControl();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dkpDelivery = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bntExit = new DevExpress.XtraEditors.SimpleButton();
             this.lblMainTitle = new System.Windows.Forms.Label();
@@ -57,8 +60,6 @@
             this.cmbBranchName = new System.Windows.Forms.ComboBox();
             this.bntAccept = new DevExpress.XtraEditors.SimpleButton();
             this.bntCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.dkpDelivery = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupLauncher)).BeginInit();
             this.groupLauncher.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -110,6 +111,29 @@
             this.groupLauncher.TabIndex = 6;
             this.groupLauncher.Text = "Stock Delivery From Warehouse";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(387, 382);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(119, 21);
+            this.label10.TabIndex = 273;
+            this.label10.Text = "Delivery Date:";
+            // 
+            // dkpDelivery
+            // 
+            this.dkpDelivery.CustomFormat = "dd-MM-yyyy";
+            this.dkpDelivery.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.dkpDelivery.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dkpDelivery.Location = new System.Drawing.Point(523, 374);
+            this.dkpDelivery.Name = "dkpDelivery";
+            this.dkpDelivery.Size = new System.Drawing.Size(223, 34);
+            this.dkpDelivery.TabIndex = 11;
+            this.dkpDelivery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDelivery_KeyDown);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -127,7 +151,7 @@
             this.bntExit.Location = new System.Drawing.Point(3, 516);
             this.bntExit.Name = "bntExit";
             this.bntExit.Size = new System.Drawing.Size(371, 62);
-            this.bntExit.TabIndex = 13;
+            this.bntExit.TabIndex = 14;
             this.bntExit.ToolTip = "Close Item Delivery";
             this.bntExit.Click += new System.EventHandler(this.bntExit_Click);
             // 
@@ -166,7 +190,7 @@
             this.cmbDeliveryStatus.Name = "cmbDeliveryStatus";
             this.cmbDeliveryStatus.Size = new System.Drawing.Size(396, 36);
             this.cmbDeliveryStatus.TabIndex = 9;
-            this.cmbDeliveryStatus.SelectedIndexChanged += new System.EventHandler(this.cmbDeliveryStatus_SelectedIndexChanged);
+            this.cmbDeliveryStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbDeliveryStatus_KeyDown);
             // 
             // label8
             // 
@@ -192,7 +216,7 @@
             this.cmbItemStatus.Name = "cmbItemStatus";
             this.cmbItemStatus.Size = new System.Drawing.Size(396, 36);
             this.cmbItemStatus.TabIndex = 8;
-            this.cmbItemStatus.SelectedIndexChanged += new System.EventHandler(this.cmbItemStatus_SelectedIndexChanged);
+            this.cmbItemStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbItemStatus_KeyDown);
             // 
             // txtQuantity
             // 
@@ -201,6 +225,7 @@
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(223, 32);
             this.txtQuantity.TabIndex = 10;
+            this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyDown);
             // 
             // label6
             // 
@@ -221,6 +246,7 @@
             this.txtWholePrice.Name = "txtWholePrice";
             this.txtWholePrice.Size = new System.Drawing.Size(396, 32);
             this.txtWholePrice.TabIndex = 7;
+            this.txtWholePrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWholePrice_KeyDown);
             // 
             // label4
             // 
@@ -402,7 +428,7 @@
             this.bntAccept.Location = new System.Drawing.Point(3, 389);
             this.bntAccept.Name = "bntAccept";
             this.bntAccept.Size = new System.Drawing.Size(371, 62);
-            this.bntAccept.TabIndex = 11;
+            this.bntAccept.TabIndex = 12;
             this.bntAccept.ToolTip = "Accept Delivery";
             this.bntAccept.Click += new System.EventHandler(this.bntAccept_Click);
             // 
@@ -413,31 +439,9 @@
             this.bntCancel.Location = new System.Drawing.Point(3, 452);
             this.bntCancel.Name = "bntCancel";
             this.bntCancel.Size = new System.Drawing.Size(371, 62);
-            this.bntCancel.TabIndex = 12;
+            this.bntCancel.TabIndex = 13;
             this.bntCancel.ToolTip = "Reject / Cancel Delivery";
             this.bntCancel.Click += new System.EventHandler(this.bntCancel_Click);
-            // 
-            // dkpDelivery
-            // 
-            this.dkpDelivery.CustomFormat = "dd-MM-yyyy";
-            this.dkpDelivery.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.dkpDelivery.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDelivery.Location = new System.Drawing.Point(523, 374);
-            this.dkpDelivery.Name = "dkpDelivery";
-            this.dkpDelivery.Size = new System.Drawing.Size(223, 34);
-            this.dkpDelivery.TabIndex = 272;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(387, 382);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(119, 21);
-            this.label10.TabIndex = 273;
-            this.label10.Text = "Delivery Date:";
             // 
             // FrmPopLauncher
             // 
@@ -495,5 +499,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dkpDelivery;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreen;
     }
 }

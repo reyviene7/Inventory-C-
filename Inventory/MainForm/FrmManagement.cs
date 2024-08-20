@@ -22,10 +22,24 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userType;
         private readonly string _username;
-
+        private int _received;
         public FrmManagement management { protected get; set; }
         Image imgProcessing = Image.FromFile(ConstantUtils.imgProcessing);
         Image imgCancelled = Image.FromFile(ConstantUtils.imgCancelled);
+        Image imgCompleted = Image.FromFile(ConstantUtils.imgCompleted);
+        public int received
+        {
+            get { return _received; }
+            set { 
+                _received = value;
+                if (_received == 1) {
+                    splashScreen.ShowWaitForm();
+                    _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+                    bindDeliveryList(branch);
+                    splashScreen.CloseWaitForm();
+                }
+            }
+        }
         public FirmMain Main
         {
             get { return _main; }
@@ -264,6 +278,9 @@ namespace Inventory.MainForm
                 {
                     imageToDraw = imgProcessing;
                 }
+                else if (status == "Completed") {
+                    imageToDraw = imgCompleted;
+                }
 
                 if (imageToDraw != null)
                 {
@@ -391,7 +408,10 @@ namespace Inventory.MainForm
                 splashScreen.ShowWaitForm();
                 var id = ((CardView)sender).GetFocusedRowCellValue("Id")?.ToString();
                 var delivery = EntityUtils.getWarehouseDelivery(int.Parse(id));
-                var pop = new FrmPopLauncher(_userId, 1, delivery);
+                var pop = new FrmPopLauncher(_userId, 1, delivery) 
+                {
+                    main = this
+                };
                 splashScreen.CloseWaitForm();
                 pop.ShowDialog();
             }
