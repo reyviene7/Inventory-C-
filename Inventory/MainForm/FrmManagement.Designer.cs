@@ -1773,6 +1773,7 @@
             this.cardPending.CustomDrawCardField += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.cardInventory_CustomDrawCardField);
             this.cardPending.CustomDrawCardFieldValue += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.cardInventory_CustomDrawCardFieldValue);
             this.cardPending.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.cardPending_FocusedRowChanged);
+            this.cardPending.DoubleClick += new System.EventHandler(this.cardPending_DoubleClick);
             // 
             // grid
             // 
@@ -2314,6 +2315,7 @@
             this.gridSales.OptionsView.EnableAppearanceEvenRow = true;
             this.gridSales.OptionsView.RowAutoHeight = true;
             this.gridSales.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridSales.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridSales_FocusedRowChanged);
             // 
             // gridView9
             // 
