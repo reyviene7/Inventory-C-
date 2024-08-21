@@ -13,7 +13,7 @@ namespace ServeAll.Core.Entities
         public string return_number      { get; set; }
         public decimal return_quantity { get; set; }
         public int branch_id         { get; set; }
-        public int destination      { get; set; }
+        public string destination      { get; set; }
         public DateTime return_date { get; set; }
         public int status_id         { get; set; }
         public string remarks       { get; set; }

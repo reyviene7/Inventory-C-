@@ -40,6 +40,7 @@
             this.xCON = new DevExpress.XtraTab.XtraTabControl();
             this.xtraReturn = new DevExpress.XtraTab.XtraTabPage();
             this.groupReturnDetails = new DevExpress.XtraEditors.GroupControl();
+            this.txtProductStatus = new System.Windows.Forms.TextBox();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.cmbToBranch = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -101,7 +102,28 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.Options = new System.Windows.Forms.Timer(this.components);
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
-            this.txtProductStatus = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xCON)).BeginInit();
             this.xCON.SuspendLayout();
@@ -158,7 +180,7 @@
             this.bntCLR.Location = new System.Drawing.Point(8, 419);
             this.bntCLR.Name = "bntCLR";
             this.bntCLR.Size = new System.Drawing.Size(91, 104);
-            this.bntCLR.TabIndex = 124;
+            this.bntCLR.TabIndex = 15;
             this.bntCLR.Text = "DATA";
             this.bntCLR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntCLR.UseVisualStyleBackColor = false;
@@ -175,7 +197,7 @@
             this.bntCAN.Location = new System.Drawing.Point(100, 419);
             this.bntCAN.Name = "bntCAN";
             this.bntCAN.Size = new System.Drawing.Size(91, 104);
-            this.bntCAN.TabIndex = 123;
+            this.bntCAN.TabIndex = 16;
             this.bntCAN.Text = "CANCEL";
             this.bntCAN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntCAN.UseVisualStyleBackColor = false;
@@ -192,7 +214,7 @@
             this.bntSAV.Location = new System.Drawing.Point(8, 314);
             this.bntSAV.Name = "bntSAV";
             this.bntSAV.Size = new System.Drawing.Size(183, 104);
-            this.bntSAV.TabIndex = 122;
+            this.bntSAV.TabIndex = 14;
             this.bntSAV.Text = "SAVE";
             this.bntSAV.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSAV.UseVisualStyleBackColor = false;
@@ -208,7 +230,7 @@
             this.bntUPD.Location = new System.Drawing.Point(100, 209);
             this.bntUPD.Name = "bntUPD";
             this.bntUPD.Size = new System.Drawing.Size(91, 104);
-            this.bntUPD.TabIndex = 121;
+            this.bntUPD.TabIndex = 13;
             this.bntUPD.Text = "EDIT";
             this.bntUPD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntUPD.UseVisualStyleBackColor = false;
@@ -224,7 +246,7 @@
             this.bntHOM.Location = new System.Drawing.Point(100, 524);
             this.bntHOM.Name = "bntHOM";
             this.bntHOM.Size = new System.Drawing.Size(91, 104);
-            this.bntHOM.TabIndex = 126;
+            this.bntHOM.TabIndex = 18;
             this.bntHOM.Text = "HOME";
             this.bntHOM.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntHOM.UseVisualStyleBackColor = false;
@@ -240,7 +262,7 @@
             this.bntDEL.Location = new System.Drawing.Point(8, 524);
             this.bntDEL.Name = "bntDEL";
             this.bntDEL.Size = new System.Drawing.Size(91, 104);
-            this.bntDEL.TabIndex = 125;
+            this.bntDEL.TabIndex = 17;
             this.bntDEL.Text = "DELETE";
             this.bntDEL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntDEL.UseVisualStyleBackColor = false;
@@ -317,6 +339,17 @@
             this.groupReturnDetails.Size = new System.Drawing.Size(1134, 751);
             this.groupReturnDetails.TabIndex = 173;
             // 
+            // txtProductStatus
+            // 
+            this.txtProductStatus.BackColor = System.Drawing.Color.DimGray;
+            this.txtProductStatus.Enabled = false;
+            this.txtProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductStatus.ForeColor = System.Drawing.Color.Maroon;
+            this.txtProductStatus.Location = new System.Drawing.Point(546, 22);
+            this.txtProductStatus.Name = "txtProductStatus";
+            this.txtProductStatus.Size = new System.Drawing.Size(269, 29);
+            this.txtProductStatus.TabIndex = 9;
+            // 
             // txtProductName
             // 
             this.txtProductName.BackColor = System.Drawing.Color.DimGray;
@@ -326,7 +359,7 @@
             this.txtProductName.Location = new System.Drawing.Point(135, 83);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(269, 29);
-            this.txtProductName.TabIndex = 245;
+            this.txtProductName.TabIndex = 3;
             // 
             // cmbToBranch
             // 
@@ -340,7 +373,7 @@
             this.cmbToBranch.Location = new System.Drawing.Point(135, 233);
             this.cmbToBranch.Name = "cmbToBranch";
             this.cmbToBranch.Size = new System.Drawing.Size(269, 29);
-            this.cmbToBranch.TabIndex = 243;
+            this.cmbToBranch.TabIndex = 8;
             // 
             // label7
             // 
@@ -375,7 +408,7 @@
             this.txtRemarks.Location = new System.Drawing.Point(546, 52);
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(269, 29);
-            this.txtRemarks.TabIndex = 11;
+            this.txtRemarks.TabIndex = 10;
             this.txtRemarks.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRemarks_KeyDown);
             // 
             // cmbFromBranch
@@ -484,7 +517,7 @@
             this.dkpReturnDelivery.Location = new System.Drawing.Point(546, 83);
             this.dkpReturnDelivery.Name = "dkpReturnDelivery";
             this.dkpReturnDelivery.Size = new System.Drawing.Size(269, 29);
-            this.dkpReturnDelivery.TabIndex = 8;
+            this.dkpReturnDelivery.TabIndex = 11;
             // 
             // label6
             // 
@@ -736,6 +769,28 @@
             this.groupDeliveryDetails.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupDeliveryDetails.Appearance.Options.UseBackColor = true;
             this.groupDeliveryDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupDeliveryDetails.Controls.Add(this.textBox1);
+            this.groupDeliveryDetails.Controls.Add(this.textBox3);
+            this.groupDeliveryDetails.Controls.Add(this.comboBox1);
+            this.groupDeliveryDetails.Controls.Add(this.label3);
+            this.groupDeliveryDetails.Controls.Add(this.label10);
+            this.groupDeliveryDetails.Controls.Add(this.textBox4);
+            this.groupDeliveryDetails.Controls.Add(this.comboBox2);
+            this.groupDeliveryDetails.Controls.Add(this.label11);
+            this.groupDeliveryDetails.Controls.Add(this.textBox5);
+            this.groupDeliveryDetails.Controls.Add(this.label12);
+            this.groupDeliveryDetails.Controls.Add(this.textBox6);
+            this.groupDeliveryDetails.Controls.Add(this.label13);
+            this.groupDeliveryDetails.Controls.Add(this.label15);
+            this.groupDeliveryDetails.Controls.Add(this.dateTimePicker1);
+            this.groupDeliveryDetails.Controls.Add(this.label16);
+            this.groupDeliveryDetails.Controls.Add(this.label17);
+            this.groupDeliveryDetails.Controls.Add(this.textBox7);
+            this.groupDeliveryDetails.Controls.Add(this.label18);
+            this.groupDeliveryDetails.Controls.Add(this.label19);
+            this.groupDeliveryDetails.Controls.Add(this.textBox8);
+            this.groupDeliveryDetails.Controls.Add(this.label20);
+            this.groupDeliveryDetails.Controls.Add(this.textBox9);
             this.groupDeliveryDetails.Controls.Add(this.pictureBox3);
             this.groupDeliveryDetails.Controls.Add(this.groupDelivery);
             this.groupDeliveryDetails.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -987,7 +1042,7 @@
             this.bntADD.Location = new System.Drawing.Point(8, 209);
             this.bntADD.Name = "bntADD";
             this.bntADD.Size = new System.Drawing.Size(91, 104);
-            this.bntADD.TabIndex = 130;
+            this.bntADD.TabIndex = 12;
             this.bntADD.Text = "Return";
             this.bntADD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntADD.UseVisualStyleBackColor = false;
@@ -1151,16 +1206,264 @@
             this.RightOptions.Interval = 1;
             this.RightOptions.Tick += new System.EventHandler(this.RightOptions_Tick);
             // 
-            // txtProductStatus
+            // textBox1
             // 
-            this.txtProductStatus.BackColor = System.Drawing.Color.DimGray;
-            this.txtProductStatus.Enabled = false;
-            this.txtProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductStatus.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductStatus.Location = new System.Drawing.Point(546, 22);
-            this.txtProductStatus.Name = "txtProductStatus";
-            this.txtProductStatus.Size = new System.Drawing.Size(269, 29);
-            this.txtProductStatus.TabIndex = 246;
+            this.textBox1.BackColor = System.Drawing.Color.DimGray;
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox1.Location = new System.Drawing.Point(546, 22);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(269, 29);
+            this.textBox1.TabIndex = 253;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.DimGray;
+            this.textBox3.Enabled = false;
+            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox3.Location = new System.Drawing.Point(135, 83);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(269, 29);
+            this.textBox3.TabIndex = 247;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox1.BackColor = System.Drawing.Color.DimGray;
+            this.comboBox1.Enabled = false;
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.ForeColor = System.Drawing.Color.Maroon;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(135, 233);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(269, 29);
+            this.comboBox1.TabIndex = 252;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(20, 239);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 17);
+            this.label3.TabIndex = 266;
+            this.label3.Text = "To Branch:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(431, 59);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(64, 17);
+            this.label10.TabIndex = 265;
+            this.label10.Text = "Remarks:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.DimGray;
+            this.textBox4.Enabled = false;
+            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox4.Location = new System.Drawing.Point(546, 52);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(269, 29);
+            this.textBox4.TabIndex = 254;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox2.BackColor = System.Drawing.Color.DimGray;
+            this.comboBox2.Enabled = false;
+            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.ForeColor = System.Drawing.Color.Maroon;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(135, 203);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(269, 29);
+            this.comboBox2.TabIndex = 251;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(20, 209);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 17);
+            this.label11.TabIndex = 264;
+            this.label11.Text = "From Branch:";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.DimGray;
+            this.textBox5.Enabled = false;
+            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox5.Location = new System.Drawing.Point(135, 143);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(269, 29);
+            this.textBox5.TabIndex = 249;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(20, 179);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(79, 17);
+            this.label12.TabIndex = 263;
+            this.label12.Text = "Return Qty:";
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.DimGray;
+            this.textBox6.Enabled = false;
+            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox6.Location = new System.Drawing.Point(135, 173);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(269, 29);
+            this.textBox6.TabIndex = 250;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(431, 28);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(102, 17);
+            this.label13.TabIndex = 262;
+            this.label13.Text = "Product Status:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(431, 91);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(86, 17);
+            this.label15.TabIndex = 261;
+            this.label15.Text = "Return Date:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "dd-MM-yyyy";
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(546, 83);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(269, 29);
+            this.dateTimePicker1.TabIndex = 255;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(20, 149);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(106, 17);
+            this.label16.TabIndex = 260;
+            this.label16.Text = "Warehouse Qty:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(20, 89);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(100, 17);
+            this.label17.TabIndex = 259;
+            this.label17.Text = "Product Name:";
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.DimGray;
+            this.textBox7.Enabled = false;
+            this.textBox7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox7.Location = new System.Drawing.Point(135, 113);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(269, 29);
+            this.textBox7.TabIndex = 248;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(20, 119);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(109, 17);
+            this.label18.TabIndex = 258;
+            this.label18.Text = "Return Delivery:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(20, 59);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(88, 17);
+            this.label19.TabIndex = 257;
+            this.label19.Text = "Return Code:";
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.Color.DimGray;
+            this.textBox8.Enabled = false;
+            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox8.Location = new System.Drawing.Point(135, 53);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(269, 29);
+            this.textBox8.TabIndex = 246;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(20, 29);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(69, 17);
+            this.label20.TabIndex = 256;
+            this.label20.Text = "Return Id:";
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.Color.DimGray;
+            this.textBox9.Enabled = false;
+            this.textBox9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox9.Location = new System.Drawing.Point(135, 23);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(269, 29);
+            this.textBox9.TabIndex = 245;
             // 
             // FirmWareHouseReturn
             // 
@@ -1196,6 +1499,7 @@
             this.xtraDelivery.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupDeliveryDetails)).EndInit();
             this.groupDeliveryDetails.ResumeLayout(false);
+            this.groupDeliveryDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupDelivery)).EndInit();
             this.groupDelivery.ResumeLayout(false);
@@ -1301,5 +1605,27 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.TextBox txtProductStatus;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBox9;
     }
 }

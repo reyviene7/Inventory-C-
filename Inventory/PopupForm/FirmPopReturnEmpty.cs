@@ -178,7 +178,7 @@ namespace Inventory.PopupForm
                         return_number        = txtRET.Text.Trim(' '),
                         return_quantity       = decimal.Parse(txtQTY.Text),
                         branch_id        = GetBranchId(_origin),
-                        destination     = GetBranchId(_destin),
+                        destination     = _destin,
                         return_date  = dkpDEL.Value.Date,
                         status_id        = GetProductStatus(cmbSAT.Text),
                         remarks         = txtMAR.Text.Trim(' '),
