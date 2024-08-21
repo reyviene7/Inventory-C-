@@ -112,13 +112,13 @@ namespace Inventory.MainForm
         }
         private void bntDEL_Click(object sender, EventArgs e)
         {
-            var len = txtReturnId.Text.Length;
+            var len = txtReturnedId.Text.Length;
             if (len > 0)
             {
                 InputWhit();
                 var que =
                     PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delete Return Delivery No: " + txtDeliveryNo.Text.Trim(' ') + " " + "?", "Return Inventory Details");
+                        "Are you sure you want to Delete Return Delivery No: " + txtReturnedDelivery.Text.Trim(' ') + " " + "?", "Return Inventory Details");
                 if (que)
                 {
                     ButDel();
@@ -207,9 +207,9 @@ namespace Inventory.MainForm
             _edt = false;
             _del = true;
             ButtonDel();
-            InputWhit();
-            InputEnab();
-            gCON.Enabled = false;
+            InputWhitRet();
+            InputEnabRet();
+            gDEL.Enabled = false;
         }
         private void ButCan()
         {
@@ -253,10 +253,11 @@ namespace Inventory.MainForm
             {
                 DeleteReturn();
                 ButtonSav();
-                InputDisb();
-                InputDimG();
-                InputClea();
+                InputDisbRet();
+                InputDimGRet();
+                InputCleaRet();
                 ClearGrid();
+                warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
             }
             BindReturnWareHouse();
             _add = false;
@@ -679,6 +680,10 @@ namespace Inventory.MainForm
         {
             return warehouse_return.FirstOrDefault(Return => Return.return_id == id);
         }
+        private ViewImageProduct searchProductImg(string param)
+        {
+            return imgList.FirstOrDefault(img => img.image_code == param);
+        }
         private void gridReturn_RowClick(object sender, RowClickEventArgs e)
         {
             if (gridReturn.RowCount > 0)
@@ -833,7 +838,7 @@ namespace Inventory.MainForm
                         return_code = txtReturnCode.Text.Trim(' '),
                         product_id = FetchUtils.getProductId(txtProductName.Text),
                         return_number = txtDeliveryNo.Text.Trim(' '),
-                        return_quantity = decimal.Parse(txtReturnQty.Text),
+                        return_quantity = int.Parse(txtReturnQty.Text),
                         branch_id = FetchUtils.getBranchId(cmbFromBranch.Text),
                         destination = cmbToBranch.Text,
                         return_date = dkpReturnDelivery.Value.Date,
@@ -861,7 +866,7 @@ namespace Inventory.MainForm
             if (returned.Length > 0)
             {
                 var returnId = int.Parse(returned);
-                var returnQty = decimal.Parse(txtReturnedQty.Text);
+                var returnQty = int.Parse(txtReturnedQty.Text);
                 var remarks = txtReturnedRemarks.Text.Trim(' ');
                 var update = DateTime.Now.Date;
                 int returnResult = RepositoryEntity.UpdateEntity<ReturnWareHouse>(returnId, entity =>
@@ -888,41 +893,38 @@ namespace Inventory.MainForm
         }
         private void DeleteReturn()
         {
-            using (var session = new DalSession())
+            var returnedId = Convert.ToInt32(txtReturnedId.Text.Trim());
+
+            if (returnedId > 0)
             {
-                var unWork = session.UnitofWrk;
-                try
+                splashReturn.ShowWaitForm();
+                int deleteResult = RepositoryEntity.DeleteEntity<ReturnWareHouse>(returnedId, entity =>
                 {
-                    splashReturn.ShowWaitForm();
-                    unWork.Begin();
-                    var returnId = int.Parse(txtReturnId.Text);
-                    var repository = new Repository<ReturnWareHouse>(unWork);
-                    var que = repository.FindBy(x => x.return_id == returnId);
-                    var result = repository.Delete(que);
-                    if (result)
+                    int? inventoryId = entity.inventory_id;
+                    if (inventoryId.HasValue)
                     {
-                        splashReturn.CloseWaitForm();
-                        unWork.Commit();
-                        PopupNotification.PopUpMessages(1,
-                            "Item: " + txtProductName.Text.Trim(' ') + " successfully deleted!", Messages.InventorySystem);
+                        RepositoryEntity.UpdateEntity<RequestQuantity>(inventoryId.Value, qtyEntity =>
+                        {
+                            qtyEntity.quantity_in_stock += entity.return_quantity;
+                        });
                     }
-                    else
-                    {
-                        splashReturn.CloseWaitForm();
-                        unWork.Rollback();
-                    }
+                });
 
-                }
-                catch (Exception e)
+                if (deleteResult > 0)
                 {
-                    Console.Write(e.ToString());
+                    splashReturn.CloseWaitForm();
+                    PopupNotification.PopUpMessages(1,
+                        "Return ID: " + returnedId + " Successfully Deleted!",
+                        Messages.TitleSuccessDelete);
+                    warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
+                    BindReturnWareHouse();
                 }
-
+                else
+                {
+                    splashReturn.CloseWaitForm();
+                    PopupNotification.PopUpMessages(0, "Failed to delete return.", "DELETE FAILED");
+                }
             }
-        }
-        private ViewImageProduct searchProductImg(string param)
-        {
-            return imgList.FirstOrDefault(img => img.image_code == param);
         }
     }
 }
