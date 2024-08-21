@@ -15,6 +15,7 @@ namespace ServeAll.Core.Entities
         public int branch_id         { get; set; }
         public string destination      { get; set; }
         public DateTime return_date { get; set; }
+        public DateTime update_on { get; set; }
         public int status_id         { get; set; }
         public string remarks       { get; set; }
         public int inventory_id      { get; set; }

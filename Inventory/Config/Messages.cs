@@ -60,6 +60,7 @@ namespace Inventory.Config
         public const string TitleInventory = "INVENTORY DETAILS";
         public const string TitleUsers = "USER DETAILS";
         public const string TitleCredit = "CREDIT DETAILS";
+        public const string TitleReturn = "RETURN WAREHOUSE";
         public const string AdminPrivilege = "It requires administrator privillege to access ";
         public const string ImageFormat = "JPG Files (*.jpg)|*.jpg|TIF Files (*.tif)|*.tif|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif|All Files (*.*)|*.*";
     }
