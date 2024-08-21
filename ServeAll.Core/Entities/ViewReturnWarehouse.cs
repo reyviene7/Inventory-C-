@@ -12,11 +12,11 @@ namespace ServeAll.Core.Entities
         public string product_code { get; set; }
         public string return_number { get; set; }
         public decimal return_quantity { get; set; }
-        public string branch_code { get; set; }
+        public string branch_details { get; set; }
         public string destination { get; set; }
         public DateTime return_date { get; set; }
-        public string status_id { get; set; }
+        public string status_details { get; set; }
         public string remarks { get; set; }
-        public int inventory_code { get; set; }
+        public string inventory_code { get; set; }
     }
 }

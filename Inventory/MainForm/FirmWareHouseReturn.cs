@@ -23,6 +23,7 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userTy;
         private IEnumerable<ViewReturnWarehouse> _return_list;
+        private IEnumerable<ViewReturnWarehouse> warehouse_return;
         private IEnumerable<ViewInventoryList> listInventory;
         private IEnumerable<ViewImageProduct> imgList;
         private int _branchId;
@@ -64,6 +65,7 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
+            warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
             _return_list = EnumerableUtils.getWareHouseReturnList();
             listInventory = EnumerableUtils.getInventoryList();
             imgList = EnumerableUtils.getImgProductList();
@@ -155,6 +157,8 @@ namespace Inventory.MainForm
             txtProductName.Focus();
             txtProductName.BackColor = Color.Yellow;
             GenerateReturn();
+            GenerateReturnId();
+            GenerateReturnDel();
             cmbFromBranch.Text = branch;
             cmbToBranch.Text = Constant.DefaultWareHouse;
             txtProductStatus.Text = Constant.DefaultReturn;
@@ -169,12 +173,15 @@ namespace Inventory.MainForm
             InputItem();
             InputWhit();
             InputEnab();
-            txtProductName.Focus();
-            txtProductName.BackColor = Color.Yellow;
+            txtReturnQty.Focus();
+            txtReturnQty.BackColor = Color.Yellow;
             GenerateReturn();
+            GenerateReturnId();
+            GenerateReturnDel();
             cmbFromBranch.Text = branch;
             cmbToBranch.Text = Constant.DefaultWareHouse;
             txtProductStatus.Text = Constant.DefaultReturn;
+            txtRemarks.Text = "N/A";
             gCON.Enabled = false;
         }
         private void ButUpd()
@@ -185,8 +192,8 @@ namespace Inventory.MainForm
             ButtonUpd();
             InputWhit();
             InputEnab();
-            txtProductName.Focus();
-            txtProductName.BackColor = Color.Yellow;
+            txtReturnQty.Focus();
+            txtReturnQty.BackColor = Color.Yellow;
             gCON.Enabled = false;
         }
         private void ButDel()
@@ -347,13 +354,9 @@ namespace Inventory.MainForm
         }
         private void InputEnab()
         {
-            txtProductName.Enabled = true;
-            txtDeliveryNo.Enabled = true;
             txtRemarks.Enabled = true;
             txtReturnQty.Enabled = true;
             dkpReturnDelivery.Enabled = true;
-            txtRemarks.Enabled = true;
-            txtProductStatus.Enabled = true;
         }
         private void InputDisb()
         {
@@ -437,7 +440,7 @@ namespace Inventory.MainForm
                 if (len > 0)
                 {
                     txtReturnQty.BackColor = Color.White;
-                    dkpReturnDelivery.Focus();
+                    txtRemarks.Focus();
                 }
                 else
                 {
@@ -504,7 +507,7 @@ namespace Inventory.MainForm
             {
                 BindReturnWareHouse();
                 InputClea();
-                bntADD.Enabled = false;
+                bntADD.Enabled = true;
                 bntCLR.Enabled = false;
             }
             if (e.KeyCode == Keys.F2)
@@ -558,7 +561,7 @@ namespace Inventory.MainForm
                             txtWarehouseQty.Text = ent.quantity.ToString(CultureInfo.InvariantCulture);
                             cmbFromBranch.Text = ent.branch_details;
                             txtProductStatus.Text = Constant.DefaultReturn;
-
+                            
                             var img = searchProductImg(barcode);
                             var imgLocation = img.img_location;
                             if (imgLocation.Length > 0)
@@ -588,17 +591,46 @@ namespace Inventory.MainForm
             {
                 InputWhit();
             }
-        } 
-        
+        }
+        private void GenerateReturnId()
+        {
+            var lastId = FetchUtils.getLastReturnId();
+            if (int.TryParse(lastId, out int lastIdNumber))
+            {
+                var newIdNumber = lastIdNumber + 1;
+                txtReturnId.Text = newIdNumber.ToString();
+            }
+            else
+            {
+                txtReturnId.Text = "1";
+            }
+        }
         private void GenerateReturn()
         {
-            var lastCode = FetchUtils.getLastReturnId();
-            var lastId = GetSettings.GetLastBarcode(lastCode);
-            var alphaNumeric = new GenerateAlpaNum("D", 3, lastId);
+            var lastReturnCode = FetchUtils.getLastReturnId();
+            int lastReturnNumber;
+
+            if (string.IsNullOrEmpty(lastReturnCode) || !int.TryParse(lastReturnCode.Replace("R", ""), out lastReturnNumber))
+            {
+                lastReturnNumber = 0;
+            }
+            var alphaNumeric = new GenerateAlpaNum("R", 3, lastReturnNumber);
             alphaNumeric.Increment();
             txtReturnCode.Text = alphaNumeric.ToString();
         }
-        
+        private void GenerateReturnDel()
+        {
+            var lastDeliveryCode = FetchUtils.getLastReturnId();
+            int lastDeliveryNumber;
+
+            if (string.IsNullOrEmpty(lastDeliveryCode) || !int.TryParse(lastDeliveryCode.Replace("DEL", ""), out lastDeliveryNumber))
+            {
+                lastDeliveryNumber = 0;
+            }
+            var alphaNumeric = new GenerateAlpaNum("DEL", 3, lastDeliveryNumber);
+            alphaNumeric.Increment();
+            txtDeliveryNo.Text = alphaNumeric.ToString();
+        }
         private void ClearGrid()
         {
             gCON.DataSource = null;
@@ -609,30 +641,29 @@ namespace Inventory.MainForm
             gridDelivery.Columns.Clear();
 
         }
-        private void BindWareHouse()
+        private void BindReturnWareHouse()
         {
-            retWET.ShowWaitForm();
             ClearGrid();
-            gDEL.DataSource = EnumerableUtils.getEnumerableWareHouse(branch);
+            var list = warehouse_return.Select(r => new
+            {
+                Id = r.return_id,
+                Code = r.return_code,
+                Barcode = r.product_code,
+                Qty = r.return_quantity,
+                Destination = r.destination,
+                Status = r.status_details,
+                ReturnDate = r.return_date
+            }).ToList();
+            gDEL.DataSource = list;
+            gDEL.Update();
             if (gridDelivery.RowCount > 0)
             {
                 gridDelivery.Columns[0].Width = 40;
+                gridDelivery.Columns[1].Width = 80;
+                gridDelivery.Columns[2].Width = 120;
+                gridDelivery.Columns[3].Width = 120;
+                gridDelivery.Columns[4].Width = 120;
             }
-            retWET.CloseWaitForm();
-
-        }
-        private void BindReturnWareHouse()
-        {
-            retWET.ShowWaitForm();
-            ClearGrid();
-            gCON.DataSource = EnumerableUtils.getEnumerableWareHouse(branch);
-            if (gridReturn.RowCount > 0)
-            {
-                gridReturn.Columns[0].Width = 40;
-             
-                gridReturn.Columns[2].Width = 195;
-            }
-            retWET.CloseWaitForm();
         }
         private void BindInventory(string branch)
         {
@@ -681,9 +712,9 @@ namespace Inventory.MainForm
                 if (branch.Length > 0)
                 {
                     ButCan();
-                    bntADD.Enabled = false;
+                    bntADD.Enabled = true;
                     bntCLR.Enabled = false;
-                    BindWareHouse();
+                    BindReturnWareHouse();
                 }
                 else
                 {
@@ -697,46 +728,32 @@ namespace Inventory.MainForm
             }
         }
         private void InsertReturn()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    var item = new ReturnWareHouse
+        {                    
+                    retWET.ShowWaitForm();
+                    var returnWarehouse = new ReturnWareHouse
                     {
-                        return_code = "",
+                        return_code = txtReturnCode.Text.Trim(' '),
                         product_id = FetchUtils.getProductId(txtProductName.Text),
                         return_number = txtDeliveryNo.Text.Trim(' '),
                         return_quantity = decimal.Parse(txtReturnQty.Text),
                         branch_id = FetchUtils.getBranchId(cmbFromBranch.Text),
-                        destination = FetchUtils.getBranchId(cmbToBranch.Text),
+                        destination = cmbToBranch.Text,
                         return_date = dkpReturnDelivery.Value.Date,
-                        status_id = FetchUtils.getProductStatus(txtProductStatus.Text),
+                        status_id = FetchUtils.getStatusId(txtProductStatus.Text),
                         remarks = txtRemarks.Text.Trim(' '), 
-                        inventory_id = int.Parse(txtReturnId.Text)
+                        inventory_id = InventoryId
                     };
-                    retWET.ShowWaitForm();
-                    unWork.Begin();
-                    var repository = new Repository<ReturnWareHouse>(unWork);
-                    var result = repository.Add(item);
-                    if (result > 0)
+                    var returnResult = RepositoryEntity.AddEntity<ReturnWareHouse>(returnWarehouse);
+                    if (returnResult > 0)
                     {
                         retWET.CloseWaitForm();
-                        unWork.Commit();
-                        PopupNotification.PopUpMessages(1,"Return Delivery No: "+txtDeliveryNo.Text.Trim(' ')+" successfully return to Warehouse!", Messages.InventorySystem);
+                        PopupNotification.PopUpMessages(1,"Return Delivery No: "+ txtDeliveryNo.Text.Trim(' ')+" successfully return to Warehouse!", Messages.InventorySystem);
+                        warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
                     }
                     else
                     {
                         retWET.CloseWaitForm();
-                        unWork.Rollback();
                     }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
-            }
         } 
         private void UpdateReturn()
         {
@@ -752,9 +769,9 @@ namespace Inventory.MainForm
                     var prodctId = FetchUtils.getProductId(txtProductName.Text);
                     var returnNo = txtDeliveryNo.Text.Trim(' ');
                     var retrnQty = decimal.Parse(txtReturnQty.Text);
-                    var destines = FetchUtils.getBranchId(cmbToBranch.Text);
+                    var destines = cmbToBranch.Text;
                     var returnDt = dkpReturnDelivery.Value.Date;
-                    var statusId = FetchUtils.getProductStatus(txtProductStatus.Text);
+                    var statusId = FetchUtils.getStatusId(txtProductStatus.Text);
                     var remarkss = txtRemarks.Text.Trim(' ');
                     var repository = new Repository<ReturnWareHouse>(unWork);
                     var que = repository.FindBy(x => x.return_id == returnId);

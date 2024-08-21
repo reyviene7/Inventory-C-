@@ -259,7 +259,7 @@
         public const string SelectAllBranchDelivery = "SELECT Id, Code, Item, Qty, Delivery, Receipt, Branch, Warranty, Status,RefDate, WareHouseId FROM view_branchdelivery ORDER BY Id DESC";
         public const string SelectAllBranchExcWareH = "SELECT branch_details FROM branch WHERE branch_id NOT IN (SELECT branch_id FROM branch WHERE branch_details = 'warehouse')";
         public const string SelectAllFingerPrints = "SELECT FingerId, EmployeeId, FingerIndex, FingerBytes FROM Finger ORDER BY FingerIndex DESC";
-        public const string SelectAllReturnWareHs = "SELECT return_id, return_code, product_code, return_number, return_quantity, branch_code, destination, return_date, status_id, remarks, inventory_code FROM view_return_warehouse ORDER BY return_id DESC";
+        public const string SelectAllReturnWareHs = "SELECT return_id, return_code, product_code, return_number, return_quantity, branch_details, destination, return_date, status_details, remarks, inventory_code FROM view_return_warehouse ORDER BY return_id DESC";
         public const string SelectAllProductId = "SELECT product_id FROM view_product_id";
         public const string SelectAllStockMovement = "SELECT * FROM stock_movement";
         public const string SelectStockMovementList = "SELECT * FROM view_stock_movement";

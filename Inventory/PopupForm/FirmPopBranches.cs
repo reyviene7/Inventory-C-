@@ -74,17 +74,11 @@ namespace Inventory.PopupForm
             }
 
         }
-
-        private void bntCAN_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
-
         private void bntClose_Click(object sender, EventArgs e)
         {
-            if (_return == false)
+            if (_return == true)
             {
+                DialogResult = DialogResult.Cancel;
                 Close();
             }
         }
