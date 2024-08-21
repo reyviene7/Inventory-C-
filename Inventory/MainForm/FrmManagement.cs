@@ -19,14 +19,11 @@ namespace Inventory.MainForm
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private readonly IEnumerable<ViewImageProduct> _imgList;
         private IEnumerable<ViewSalesPart> _sales_list;
+        private IEnumerable<ViewAcceptedDelivery> _accepted_list;
         private readonly int _userId;
         private readonly int _userType;
         private readonly string _username;
-<<<<<<< HEAD
         private int _received;
-=======
-
->>>>>>> b7c93ab209139a01a7703a196647256520bd5bcf
         public FrmManagement management { protected get; set; }
         Image imgProcessing = Image.FromFile(ConstantUtils.imgProcessing);
         Image imgCancelled = Image.FromFile(ConstantUtils.imgCancelled);
@@ -60,6 +57,7 @@ namespace Inventory.MainForm
             InitializeComponent();
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
             _sales_list = EnumerableUtils.getSalesParticular(branch);
+            _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
             _imgList = EnumerableUtils.getImgProductList();
         }
         private void FrmManagement_Load(object sender, System.EventArgs e)
@@ -86,6 +84,13 @@ namespace Inventory.MainForm
             gridCtrlPending.DataSource = null;
             gridCtrlPending.DataSource = "";
             cardPending.Columns.Clear();
+        }
+
+        private void clearAcceptedDelivery()
+        {
+            gridCtrlAccepted.DataSource = null;
+            gridCtrlAccepted.DataSource = "";
+            layoutAccepted.Columns.Clear();
         }
 
         private void clearGridView()
@@ -120,9 +125,36 @@ namespace Inventory.MainForm
                 Status = p.status_details,
                 Date = p.delivery_date,
                 Delivery = p.delivery_status
-            });
+            }).ToList();
             gridCtrlPending.DataSource = list;
             gridCtrlPending.Update();
+        }
+
+        private void bindAcceptedDelivery()
+        {
+            clearAcceptedDelivery();
+            var list = _accepted_list.Select(p => new {
+                Id = "" + p.received_id,
+                Barcode = p.product_code,
+                Delivery = p.delivery_code,
+                Quantity = "" + p.delivery_qty,
+                LastCost = "P" + p.last_cost_per_unit,
+                ItemPrice = "P" + p.item_price,
+                RetailPrice = "P" + p.retail_price,
+                WholeSale = "P" + p.whole_sale,
+                Totaled = "P" + p.total_value,
+                ReceiptNo = p.receipt_number,
+                User = p.username,
+                Warehouse = p.warehouse_name,
+                Branch = p.branch_details,
+                Status = p.status_details,
+                DeliverySta = p.delivery_status,
+                Received = p.received_date,
+                UpdateOn = p.update_on,
+                Remarks = p.remarks
+            }).ToList();
+            gridCtrlAccepted.DataSource = list;
+            gridCtrlAccepted.Update();
         }
 
         private void bindCardViewList(string branch)
@@ -334,10 +366,18 @@ namespace Inventory.MainForm
             xInventory.SelectedTabPage = xtraSales;
             splashScreen.CloseWaitForm();
         }
+        private void barCreditLine_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreen.ShowWaitForm();
+            _accepted_list = Enumerable.Empty<ViewAcceptedDelivery>();
+            _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
+            bindAcceptedDelivery();
+            xInventory.SelectedTabPage = xtraAccepted;
+            splashScreen.CloseWaitForm();
+        }
 
         private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-<<<<<<< HEAD
             gridCardView(sender);
         }
 
@@ -420,7 +460,6 @@ namespace Inventory.MainForm
                 splashScreen.CloseWaitForm();
                 pop.ShowDialog();
             }
-=======
             var barcode = ((CardView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
             txtBarcode.Text = barcode;
             txtItemName.Text = ((CardView)sender).GetFocusedRowCellValue("Item")?.ToString();
@@ -446,7 +485,6 @@ namespace Inventory.MainForm
                     imgPreview.Image = null;
                 }
             }    
->>>>>>> b7c93ab209139a01a7703a196647256520bd5bcf
         }
     }
 }

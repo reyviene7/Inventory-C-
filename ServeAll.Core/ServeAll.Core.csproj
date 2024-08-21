@@ -77,6 +77,7 @@
     <Compile Include="Entities\ServiceImages.cs" />
     <Compile Include="Entities\Services.cs" />
     <Compile Include="Entities\ServiceStatus.cs" />
+    <Compile Include="Entities\ViewAcceptedDelivery.cs" />
     <Compile Include="Entities\ViewBranch.cs" />
     <Compile Include="Entities\Branch.cs" />
     <Compile Include="Entities\BranchDelivery.cs" />
