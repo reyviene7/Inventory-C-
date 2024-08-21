@@ -176,7 +176,7 @@ namespace Inventory.PopupForm
                         return_code      = GenerateReturn(),
                         product_id       = int.Parse(txtPID.Text),
                         return_number        = txtRET.Text.Trim(' '),
-                        return_quantity       = decimal.Parse(txtQTY.Text),
+                        return_quantity       = int.Parse(txtQTY.Text),
                         branch_id        = GetBranchId(_origin),
                         destination     = _destin,
                         return_date  = dkpDEL.Value.Date,
