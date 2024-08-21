@@ -127,6 +127,26 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<ViewAcceptedDelivery> getAcceptedDelivery(string branch)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewAcceptedDelivery>(unWork);
+                    var param = new { branch = branch };
+                    return repository.SelectAll(Query.getAcceptedDelivery, param).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewAcceptedDelivery>();
+                }
+            }
+        }
+
         public static IEnumerable<ViewServiceImages> getServiceImgList()
         {
             using (var session = new DalSession())

@@ -326,7 +326,8 @@
         public const string getWarehouseReturn = @"SELECT * FROM view_return_inventory ";
         public const string getServices = "SELECT * FROM view_services ORDER BY service_id DESC";
         public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
-        public const string getContactById = @"SELECT * FROM contact WHERE contact_id = @contact;";
+        public const string getAcceptedDelivery = @"SELECT * FROM view_accepted_delivery WHERE branch_details = @branch ORDER BY received_id DESC";
+        public const string getContactById = @"SELECT * FROM contact WHERE contact_id = @contact";
         public const string getAddressById = @"SELECT * FROM address WHERE address_id = @address";
     }
 }
