@@ -396,6 +396,12 @@
     <Compile Include="PopupForm\FirmPopServer.Designer.cs">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopupForm\FrmPopReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FrmPopReturn.Designer.cs">
+      <DependentUpon>FrmPopReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopupForm\FrmPopLauncher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -545,6 +551,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopServer.resx">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FrmPopReturn.resx">
+      <DependentUpon>FrmPopReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FrmPopLauncher.resx">
       <DependentUpon>FrmPopLauncher.cs</DependentUpon>

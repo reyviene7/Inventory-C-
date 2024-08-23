@@ -454,6 +454,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ProductStatus> getProductStatus()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ProductStatus>(unWork);
+                    return repository.SelectAll(Query.AllProductStatus).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ProductStatus>();
+                }
+            }
+        }
         public static IEnumerable<Branch> getBranchDetails()
         {
             using (var session = new DalSession())

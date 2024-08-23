@@ -453,7 +453,12 @@ namespace Inventory.MainForm
                 splashScreen.ShowWaitForm();
                 var id = ((CardView)sender).GetFocusedRowCellValue("Id")?.ToString();
                 var delivery = EntityUtils.getWarehouseDelivery(int.Parse(id));
+                var Inventory = EntityUtils.getInventory(int.Parse(id));
                 var pop = new FrmPopLauncher(_userId, 1, delivery) 
+                {
+                    main = this
+                };
+                var _pop = new FrmPopReturn(_userId, 1, Inventory)
                 {
                     main = this
                 };
