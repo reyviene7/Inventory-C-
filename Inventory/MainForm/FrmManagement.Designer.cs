@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagement));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.ribSaveTrans = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bntSave = new DevExpress.XtraBars.BarSubItem();
@@ -456,12 +456,12 @@
             this.barItemDelivery.Name = "barItemDelivery";
             this.barItemDelivery.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem1.Text = "Petron POS";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Search Customer";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barItemDelivery.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Petron POS";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Search Customer";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.barItemDelivery.SuperTip = superToolTip3;
             this.barItemDelivery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barItemDelivery_ItemClick);
             // 
             // ribGCB
@@ -479,6 +479,7 @@
             this.barReturn.Name = "barReturn";
             this.barReturn.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barReturn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReturn_ItemClick);
             // 
             // ribGCI
             // 
@@ -495,12 +496,12 @@
             this.barNewCustomer.Name = "barNewCustomer";
             this.barNewCustomer.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem2.Text = " NEW CUSTOMER";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Add new Customer Information";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barNewCustomer.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = " NEW CUSTOMER";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Add new Customer Information";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.barNewCustomer.SuperTip = superToolTip4;
             // 
             // ribGCA
             // 
@@ -2037,6 +2038,8 @@
             this.gridReturn.OptionsView.EnableAppearanceEvenRow = true;
             this.gridReturn.OptionsView.RowAutoHeight = true;
             this.gridReturn.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridReturn.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridReturn_FocusedRowChanged);
+            this.gridReturn.DoubleClick += new System.EventHandler(this.gridReturn_DoubleClick);
             // 
             // gridView8
             // 

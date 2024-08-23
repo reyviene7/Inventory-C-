@@ -20,7 +20,6 @@ namespace Inventory.PopupForm
         private IEnumerable<ViewImageProduct> _imgList;
         private IEnumerable<ProductStatus> _productStatus;
         private IEnumerable<DeliveryStatus> _delivery_status;
-        private string returnCode;
 
         public FrmManagement main
         {
@@ -126,14 +125,14 @@ namespace Inventory.PopupForm
         }
         private string GenerateReturn()
         {
-            var lastReturnCode = FetchUtils.getLastReturnId();
-            int lastReturnNumber;
+            var lastReturnGenCode = FetchUtils.getLastReturnId();
+            int lastReturnGenNumber;
 
-            if (string.IsNullOrEmpty(lastReturnCode) || !int.TryParse(lastReturnCode.Replace("R", ""), out lastReturnNumber))
+            if (string.IsNullOrEmpty(lastReturnGenCode) || !int.TryParse(lastReturnGenCode.Replace("R", ""), out lastReturnGenNumber))
             {
-                lastReturnNumber = 0;
+                lastReturnGenNumber = 0;
             }
-            var alphaNumeric = new GenerateAlpaNum("R", 3, lastReturnNumber);
+            var alphaNumeric = new GenerateAlpaNum("R", 3, lastReturnGenNumber);
             alphaNumeric.Increment();
             var returnCode = alphaNumeric.ToString();
             return returnCode;
@@ -142,6 +141,8 @@ namespace Inventory.PopupForm
         {
             
                 splashScreen.ShowWaitForm();
+                var returnCode = GenerateReturn();
+
                 ReceivedReturn WarehouseReturn = new ReceivedReturn
                 {
                     return_code = returnCode,
@@ -162,17 +163,14 @@ namespace Inventory.PopupForm
                 {
                     splashScreen.CloseWaitForm();
                     PopupNotification.PopUpMessages(1, "Return Delivery No: " + _inventory.delivery_code + " successfully return to Warehouse!", Messages.InventorySystem);
+                    Close();
                 }
                 else
                 {
                     splashScreen.CloseWaitForm();
                     PopupNotification.PopUpMessages(0, "Return Delivery Code: " + _inventory.delivery_code + " Failed to Received/Complete Delivery!", Messages.InventorySystem);
+                    Close();
             }
-        }
-
-        private void bntCancel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

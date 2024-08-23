@@ -26,7 +26,7 @@ namespace Inventory.MainForm
         private IEnumerable<ViewReturnWarehouse> _return_list;
         private IEnumerable<RequestProducts> _products;
         private IEnumerable<ViewReturnWarehouse> warehouse_return;
-        private IEnumerable<ViewInventoryList> listInventory;
+        private IEnumerable<ViewInventory> listInventory;
         private IEnumerable<ViewImageProduct> imgList;
         private int _branchId;
         private string _branch;
@@ -163,7 +163,6 @@ namespace Inventory.MainForm
             txtProductName.BackColor = Color.Yellow;
             GenerateReturn();
             GenerateReturnId();
-            GenerateReturnDel();
             cmbFromBranch.Text = branch;
             cmbToBranch.Text = Constant.DefaultWareHouse;
             txtProductStatus.Text = Constant.DefaultReturn;
@@ -175,14 +174,12 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             ButtonAdd();
-            InputItem();
             InputWhit();
             InputEnab();
             txtReturnQty.Focus();
             txtReturnQty.BackColor = Color.Yellow;
             GenerateReturn();
             GenerateReturnId();
-            GenerateReturnDel();
             cmbFromBranch.Text = branch;
             cmbToBranch.Text = Constant.DefaultWareHouse;
             txtProductStatus.Text = Constant.DefaultReturn;
@@ -419,7 +416,7 @@ namespace Inventory.MainForm
             txtReturnId.Clear();
             txtReturnCode.Clear();
             txtProductName.Text = "";
-            txtDeliveryNo.Clear();
+            txtDeliveryNo.Text = "";
             txtWarehouseQty.Clear();
             txtReturnQty.Clear();
             cmbFromBranch.Text = "";
@@ -439,17 +436,11 @@ namespace Inventory.MainForm
             dkpReturnedUpdate.Value = DateTime.Now.Date;
             txtReturnedStatus.Text = "";
         }
-        private void InputItem()
-        {
-            txtDeliveryNo.Clear();
-            txtRemarks.Clear();
-        }
         private void InputLpg()
         {
             txtDeliveryNo.Clear();
             txtReturnQty.Clear();
             txtRemarks.Clear();
-
         }
         private void InputDimG()
         {
@@ -608,6 +599,7 @@ namespace Inventory.MainForm
                             var barcode = ent.product_code;
                             txtProductName.Text = ent.product_name;
                             txtWarehouseQty.Text = ent.quantity.ToString(CultureInfo.InvariantCulture);
+                            txtDeliveryNo.Text = ent.delivery_code;
                             cmbFromBranch.Text = ent.branch_details;
                             txtProductStatus.Text = Constant.DefaultReturn;
                             
@@ -672,7 +664,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private ViewInventoryList searchInventoryId(int id)
+        private ViewInventory searchInventoryId(int id)
         {
             return listInventory.FirstOrDefault(Inventory => Inventory.inventory_id == id);
         }
@@ -716,19 +708,6 @@ namespace Inventory.MainForm
             var alphaNumeric = new GenerateAlpaNum("R", 3, lastReturnNumber);
             alphaNumeric.Increment();
             txtReturnCode.Text = alphaNumeric.ToString();
-        }
-        private void GenerateReturnDel()
-        {
-            var lastDeliveryCode = FetchUtils.GetLastReturnDel();
-            int lastDeliveryNumber;
-
-            if (string.IsNullOrEmpty(lastDeliveryCode) || !int.TryParse(lastDeliveryCode.Replace("DEL", ""), out lastDeliveryNumber))
-            {
-                lastDeliveryNumber = 0;
-            }
-            var alphaNumeric = new GenerateAlpaNum("DEL", 3, lastDeliveryNumber);
-            alphaNumeric.Increment();
-            txtDeliveryNo.Text = alphaNumeric.ToString();
         }
         private void ClearGrid()
         {

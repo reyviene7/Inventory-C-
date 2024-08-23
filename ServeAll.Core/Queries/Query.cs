@@ -82,7 +82,7 @@
                                             FROM view_poscustomers";
         public const string PosProducts = @"SELECT code as Code, item as Item, qty as Qty, retail_price, wholesale, status, branch FROM view_product_inventory";
         public const string AllProductList = @"SELECT ProductId, Code, Name, RetailPrice, Status FROM view_productlist ORDER BY Code ASC";
-        public const string AllInventoryList = "SELECT inventory_id, product_code, product_name, quantity, status, branch_details FROM view_inventoryList";
+        public const string AllInventoryList = "SELECT * FROM view_inventory";
         public const string AllSupplier = @"SELECT supplier_id,
                                               supplier_code,
                                               supplier_name,
@@ -326,7 +326,7 @@
                                                         created_at,
                                                         updated_at
                                                     FROM view_warehouse_inventory ORDER BY inventory_id DESC";
-        public const string getWarehouseReturn = @"SELECT * FROM view_return_inventory ";
+        public const string getWarehouseReturn = @"SELECT * FROM view_return_warehouse ";
         public const string getServices = "SELECT * FROM view_services ORDER BY service_id DESC";
         public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
         public const string getAcceptedDelivery = @"SELECT * FROM view_accepted_delivery WHERE branch_details = @branch ORDER BY received_id DESC";

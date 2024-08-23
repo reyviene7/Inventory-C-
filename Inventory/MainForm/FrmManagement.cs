@@ -17,6 +17,7 @@ namespace Inventory.MainForm
         private FirmMain _main;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
+        private IEnumerable<ViewReturnWarehouse> _return_list;
         private readonly IEnumerable<ViewImageProduct> _imgList;
         private IEnumerable<ViewSalesPart> _sales_list;
         private IEnumerable<ViewAcceptedDelivery> _accepted_list;
@@ -56,6 +57,7 @@ namespace Inventory.MainForm
             _username = username;
             InitializeComponent();
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+            _return_list = EnumerableUtils.getWareHouseReturnList();
             _sales_list = EnumerableUtils.getSalesParticular(branch);
             _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
             _imgList = EnumerableUtils.getImgProductList();
@@ -105,6 +107,12 @@ namespace Inventory.MainForm
             gridCtrlSales.DataSource = null;
             gridCtrlSales.DataSource = "";
             gridSales.Columns.Clear();
+        }
+        private void clearGridReturn()
+        {
+            gridCtrlReturn.DataSource = null;
+            gridCtrlReturn.DataSource = "";
+            gridReturn.Columns.Clear();
         }
 
         private void bindDeliveryList(string branch)
@@ -253,6 +261,39 @@ namespace Inventory.MainForm
                 PopupNotification.PopUpMessages(0, ex.ToString(), "Sales Particular");
             }
         }
+        private void bindReturnList()
+        {
+            
+                clearGridReturn();
+                var list = _return_list.Select(p => new {
+                    Id = p.return_id,
+                    Code = p.return_code,
+                    Barcode = p.product_code,
+                    Item = p.product_name,
+                    Quantity = p.return_quantity,
+                    Delivery = p.return_number,
+                    Branch = p.branch_details,
+                    Destination = p.destination,
+                    Status = p.status,
+                    Remarks = p.remarks,
+                    UpdateOn = p.update_on
+                }).ToList();
+                gridCtrlReturn.DataSource = list;
+                gridCtrlReturn.Update();
+
+                if (gridReturn.RowCount > 0)
+                gridReturn.Columns[0].Width = 40;
+                gridReturn.Columns[1].Width = 70;
+                gridReturn.Columns[2].Width = 120;
+                gridReturn.Columns[3].Width = 400;
+                gridReturn.Columns[4].Width = 40;
+                gridReturn.Columns[5].Width = 70;
+                gridReturn.Columns[6].Width = 80;
+                gridReturn.Columns[7].Width = 80;
+                gridReturn.Columns[8].Width = 100;
+                gridReturn.Columns[9].Width = 100;
+                gridReturn.Columns[10].Width = 100;
+        }
 
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
@@ -356,7 +397,6 @@ namespace Inventory.MainForm
             xInventory.SelectedTabPage = xtraPending;
             splashScreen.CloseWaitForm();
         }
-
         private void barSalesItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             splashScreen.ShowWaitForm();
@@ -375,7 +415,15 @@ namespace Inventory.MainForm
             xInventory.SelectedTabPage = xtraAccepted;
             splashScreen.CloseWaitForm();
         }
-
+        private void barReturn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreen.ShowWaitForm();
+            _return_list = Enumerable.Empty<ViewReturnWarehouse>();
+            _return_list = EnumerableUtils.getWareHouseReturnList();
+            bindReturnList();
+            xInventory.SelectedTabPage = xtraReturn;
+            splashScreen.CloseWaitForm();
+        }
         private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridCardView(sender);
@@ -384,6 +432,10 @@ namespace Inventory.MainForm
         private void gridSales_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridSalesView(sender);
+        }
+        private void gridReturn_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            gridReturnView(sender);
         }
 
         private void gridSalesView(object sender)
@@ -446,6 +498,35 @@ namespace Inventory.MainForm
                 }
             }
         }
+        
+        private void gridReturnView(object sender)
+        {
+            if (gridReturn.RowCount > 0)
+            {
+                var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
+                txtBarcode.Text = barcode;
+                txtItemName.Text = ((GridView)sender).GetFocusedRowCellValue("Item")?.ToString();
+                txtQuantity.Text = ((GridView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
+                txtControl.Text = ((GridView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
+                txtStockStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status")?.ToString();
+                txtBranch.Text = ((GridView)sender).GetFocusedRowCellValue("Branch")?.ToString();
+                if (barcode != null)
+                {
+                    var img = searchProductImg(barcode);
+                    var imgLocation = img.img_location;
+                    if (imgLocation.Length > 0)
+                    {
+                        var location = ConstantUtils.defaultImgLocation + imgLocation;
+                        imgPreview.ImageLocation = location;
+                        imgPreview.Refresh();
+                    }
+                    else
+                    {
+                        imgPreview.Image = null;
+                    }
+                }
+            }
+        }
 
         private void cardPending_DoubleClick(object sender, EventArgs e)
         {
@@ -453,12 +534,7 @@ namespace Inventory.MainForm
                 splashScreen.ShowWaitForm();
                 var id = ((CardView)sender).GetFocusedRowCellValue("Id")?.ToString();
                 var delivery = EntityUtils.getWarehouseDelivery(int.Parse(id));
-                var Inventory = EntityUtils.getInventory(int.Parse(id));
                 var pop = new FrmPopLauncher(_userId, 1, delivery) 
-                {
-                    main = this
-                };
-                var _pop = new FrmPopReturn(_userId, 1, Inventory)
                 {
                     main = this
                 };
@@ -491,5 +567,44 @@ namespace Inventory.MainForm
                 }
             }    
         }
+
+        private void gridReturn_DoubleClick(object sender, EventArgs e)
+        {
+            if (gridReturn.RowCount > 0)
+            {
+                splashScreen.ShowWaitForm();
+                var id = ((GridView)sender).GetFocusedRowCellValue("Id")?.ToString();
+                var Inventory = EntityUtils.getInventory(int.Parse(id));
+                var pop = new FrmPopReturn(_userId, 1, Inventory)
+                {
+                    main = this
+                };
+                splashScreen.CloseWaitForm();
+                pop.ShowDialog();
+            }
+            var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
+            txtBarcode.Text = barcode;
+            txtItemName.Text = ((GridView)sender).GetFocusedRowCellValue("Item")?.ToString();
+            txtQuantity.Text = ((GridView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
+            txtControl.Text = ((GridView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
+            txtStockStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status")?.ToString();
+            txtBranch.Text = ((GridView)sender).GetFocusedRowCellValue("Branch")?.ToString();
+            if (barcode != null)
+            {
+                var img = searchProductImg(barcode);
+                var imgLocation = img.img_location;
+                if (imgLocation.Length > 0)
+                {
+                    var location = ConstantUtils.defaultImgLocation + imgLocation;
+                    imgPreview.ImageLocation = location;
+                    imgPreview.Refresh();
+                }
+                else
+                {
+                    imgPreview.Image = null;
+                }
+            }
+        }
+
     }
 }
