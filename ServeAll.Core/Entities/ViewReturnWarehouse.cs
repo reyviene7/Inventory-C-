@@ -17,7 +17,7 @@ namespace ServeAll.Core.Entities
         public string destination { get; set; }
         public DateTime return_date { get; set; }
         public DateTime update_on { get; set; }
-        public string status_details { get; set; }
+        public string status { get; set; }
         public string remarks { get; set; }
         public string inventory_code { get; set; }
     }

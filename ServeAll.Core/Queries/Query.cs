@@ -259,7 +259,7 @@
         public const string SelectAllBranchDelivery = "SELECT Id, Code, Item, Qty, Delivery, Receipt, Branch, Warranty, Status,RefDate, WareHouseId FROM view_branchdelivery ORDER BY Id DESC";
         public const string SelectAllBranchExcWareH = "SELECT branch_details FROM branch WHERE branch_id NOT IN (SELECT branch_id FROM branch WHERE branch_details = 'warehouse')";
         public const string SelectAllFingerPrints = "SELECT FingerId, EmployeeId, FingerIndex, FingerBytes FROM Finger ORDER BY FingerIndex DESC";
-        public const string SelectAllReturnWareHs = "SELECT return_id, return_code, product_code, product_name, return_number, return_quantity, branch_details, destination, return_date, update_on, status_details, remarks, inventory_code FROM view_return_warehouse ORDER BY return_id DESC";
+        public const string SelectAllReturnWareHs = "SELECT return_id, return_code, product_code, product_name, return_number, return_quantity, branch_details, destination, return_date, update_on, status, remarks, inventory_code FROM view_return_warehouse ORDER BY return_id DESC";
         public const string SelectAllProductId = "SELECT product_id FROM view_product_id";
         public const string SelectAllStockMovement = "SELECT * FROM stock_movement";
         public const string SelectStockMovementList = "SELECT * FROM view_stock_movement";
@@ -288,6 +288,7 @@
         public const string getCustomerList = "select customer_id, customer_name from view_poscustomers";
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getWarehouseDeliveryById = "SELECT * FROM view_warehouse_delivery WHERE delivery_id = @deliveryId";
+        public const string getInventoryById = "SELECT * FROM view_inventory WHERE inventory_id = @inventoryId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
         public const string getLastProfileIdQuery = "SELECT COUNT(profile_id) as profile_id FROM profile";

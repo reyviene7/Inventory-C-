@@ -437,6 +437,26 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static int getProductStatusId(string status)
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ProductStatus>(unWork);
+                    var query = repository.FindBy(x => x.status == status);
+                    return query.status_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
 
         public static int getCustomerCreditId(int customerId)
         {

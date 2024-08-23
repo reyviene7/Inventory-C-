@@ -649,7 +649,7 @@ namespace Inventory.MainForm
                         txtReturnedQty.Text = ent.return_quantity.ToString(CultureInfo.InvariantCulture);
                         cmbReturnedBranch.Text = ent.branch_details;
                         cmbReturnedWarehouse.Text = ent.destination;
-                        txtReturnedStatus.Text = ent.status_details;
+                        txtReturnedStatus.Text = ent.status;
                         txtReturnedRemarks.Text = ent.remarks;
                         dkpReturedDate.Value = ent.return_date;
 
@@ -750,7 +750,7 @@ namespace Inventory.MainForm
                 Item = r.product_name,
                 Qty = r.return_quantity,
                 Destination = r.destination,
-                Status = r.status_details,
+                Status = r.status,
                 Remarks = r.remarks,
                 ReturnDate = r.return_date
             }).ToList();
@@ -843,7 +843,7 @@ namespace Inventory.MainForm
                         destination = cmbToBranch.Text,
                         return_date = dkpReturnDelivery.Value.Date,
                         update_on = DateTime.Now.Date,
-                        status_id = FetchUtils.getStatusId(txtProductStatus.Text),
+                        status_id = FetchUtils.getProductStatusId(txtProductStatus.Text),
                         remarks = txtRemarks.Text.Trim(' '), 
                         inventory_id = InventoryId
                     };
