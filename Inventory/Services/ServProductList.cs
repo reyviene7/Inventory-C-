@@ -10,49 +10,64 @@ using Query = ServeAll.Core.Queries.Query;
 
 namespace Inventory.Services
 {
-    public class ServProductList: IProductList
+    public class ServProductList : IProductList
     {
         private IList<ProductList> _list;
+
         public IEnumerable<ProductList> DataSource()
         {
             _list = new List<ProductList>();
-            foreach (var source in Source())
+            var sources = Source();
+            if (sources != null)
             {
-                _list.Add(new ProductList()
-                 {
-                     Id = source.product_id, 
-                     Code = source.product_code,
-                     Name = source.product_name,
-                     TradePrice = source.trade_price,
-                     RetailPrice = source.retail_price
-                 });
+                foreach (var source in sources)
+                {
+                    _list.Add(new ProductList()
+                    {
+                        Id = source.inventory_id,
+                        Code = source.product_code,
+                        Name = source.product_name,
+                        Qty = source.quantity,
+                        TradePrice = source.trade_price,
+                        RetailPrice = source.retail_price,
+                        Status = source.status
+                    });
+                }
             }
             return _list;
         }
+
         public IEnumerable<ProductList> DataSourceLpg()
         {
             _list = new List<ProductList>();
-            foreach (var source in SourceLpg())
+            var sources = SourceLpg();
+            if (sources != null)
             {
-                _list.Add(new ProductList()
+                foreach (var source in sources)
                 {
-                    Id = source.product_id,
-                    Code = source.product_code,
-                    Name = source.product_name,
-                    TradePrice = source.trade_price,
-                    RetailPrice = source.retail_price
-                });
+                    _list.Add(new ProductList()
+                    {
+                        Id = source.inventory_id,
+                        Code = source.product_code,
+                        Name = source.product_name,
+                        Qty = source.quantity,
+                        TradePrice = source.trade_price,
+                        RetailPrice = source.retail_price,
+                        Status = source.status
+                    });
+                }
             }
             return _list;
         }
-        private static IEnumerable<Products> Source()
+
+        private static IEnumerable<ViewInventoryList> Source()
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<Products>(unWork);
+                    var repository = new Repository<ViewInventoryList>(unWork);
                     return repository.SelectAll(Query.SelectReportAllItem).ToList();
                 }
                 catch (Exception e)
@@ -62,17 +77,16 @@ namespace Inventory.Services
                 }
             }
         }
-        private static IEnumerable<Products> SourceLpg()
+
+        private static IEnumerable<ViewInventoryList> SourceLpg()
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<Products>(unWork);
-                    return repository.SelectAll(Query.SelectReportAllItem)
-                        
-                        .ToList();
+                    var repository = new Repository<ViewInventoryList>(unWork);
+                    return repository.SelectAll(Query.SelectReportAllItem).ToList();
                 }
                 catch (Exception e)
                 {

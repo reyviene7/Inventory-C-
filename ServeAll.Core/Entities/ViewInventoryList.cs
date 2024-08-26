@@ -9,8 +9,9 @@ namespace ServeAll.Core.Entities
         public int inventory_id { get; set; }
         public string product_code { get; set; }
         public string product_name { get; set; }
-        public decimal quantity { get; set; }
+        public int quantity { get; set; }
+        public decimal trade_price { get; set; }
+        public decimal retail_price { get; set; }
         public string status { get; set; }
-        public string branch_details { get; set; }
     }
 }

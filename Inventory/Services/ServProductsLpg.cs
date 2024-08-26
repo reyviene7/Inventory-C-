@@ -22,23 +22,25 @@ namespace Inventory.Services
             {
                 _productLists.Add(new ProductList
                 {
-                    Id = product.product_id, 
-                    Code = product.product_code, 
+                    Id = product.inventory_id,
+                    Code = product.product_code,
                     Name = product.product_name,
-                    TradePrice = product.trade_price, 
-                    RetailPrice = product.retail_price
+                    Qty = product.quantity,
+                    TradePrice = product.trade_price,
+                    RetailPrice = product.retail_price,
+                    Status = product.status
                 });
             }
             return _productLists;
         }
-        private static IEnumerable<Products> ProductLpg()
+        private static IEnumerable<ViewInventoryList> ProductLpg()
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<Products>(unWork);
+                    var repository = new Repository<ViewInventoryList>(unWork);
                     return repository.SelectAll(Query.SelectReportAllItem)
                         .Where(x => x.product_name.Contains(Constant.AddFilterLpg))
                         .ToList();
