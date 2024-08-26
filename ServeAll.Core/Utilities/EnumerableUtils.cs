@@ -127,6 +127,26 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<ViewAcceptedDelivery> getAcceptedDelivery(string branch)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewAcceptedDelivery>(unWork);
+                    var param = new { branch = branch };
+                    return repository.SelectAll(Query.getAcceptedDelivery, param).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewAcceptedDelivery>();
+                }
+            }
+        }
+
         public static IEnumerable<ViewServiceImages> getServiceImgList()
         {
             using (var session = new DalSession())
@@ -434,6 +454,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ProductStatus> getProductStatus()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ProductStatus>(unWork);
+                    return repository.SelectAll(Query.AllProductStatus).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ProductStatus>();
+                }
+            }
+        }
         public static IEnumerable<Branch> getBranchDetails()
         {
             using (var session = new DalSession())
@@ -509,7 +547,7 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-        public static IEnumerable<ViewInventoryList> getInventoryList()
+        public static IEnumerable<ViewInventory> getInventoryList()
         {
             using (var session = new DalSession())
             {
@@ -517,14 +555,14 @@ namespace ServeAll.Core.Utilities
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<ViewInventoryList>(unWork);
+                    var repository = new Repository<ViewInventory>(unWork);
                     return repository.SelectAll(Query.AllInventoryList)
                         .ToList();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    return GetEmptyList<ViewInventoryList>();
+                    return GetEmptyList<ViewInventory>();
                 }
             }
         }

@@ -192,7 +192,7 @@
             this.grid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraAccepted = new DevExpress.XtraTab.XtraTabPage();
             this.groupAccepted = new DevExpress.XtraEditors.GroupControl();
-            this.gridControlAccepted = new DevExpress.XtraGrid.GridControl();
+            this.gridCtrlAccepted = new DevExpress.XtraGrid.GridControl();
             this.layoutAccepted = new DevExpress.XtraGrid.Views.Layout.LayoutView();
             this.layoutViewCard1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -273,7 +273,7 @@
             this.xtraAccepted.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupAccepted)).BeginInit();
             this.groupAccepted.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlAccepted)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlAccepted)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutAccepted)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
@@ -479,6 +479,7 @@
             this.barReturn.Name = "barReturn";
             this.barReturn.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barReturn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReturn_ItemClick);
             // 
             // ribGCI
             // 
@@ -534,6 +535,7 @@
             this.barCreditLine.Name = "barCreditLine";
             this.barCreditLine.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barCreditLine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCreditLine_ItemClick);
             // 
             // ribGCT
             // 
@@ -1819,7 +1821,7 @@
             this.groupAccepted.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupAccepted.Appearance.Options.UseBackColor = true;
             this.groupAccepted.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupAccepted.Controls.Add(this.gridControlAccepted);
+            this.groupAccepted.Controls.Add(this.gridCtrlAccepted);
             this.groupAccepted.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupAccepted.Location = new System.Drawing.Point(0, 0);
             this.groupAccepted.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
@@ -1828,20 +1830,20 @@
             this.groupAccepted.Size = new System.Drawing.Size(1563, 516);
             this.groupAccepted.TabIndex = 174;
             // 
-            // gridControlAccepted
+            // gridCtrlAccepted
             // 
-            this.gridControlAccepted.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridControlAccepted.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlAccepted.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.gridControlAccepted.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
-            this.gridControlAccepted.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.gridControlAccepted.Location = new System.Drawing.Point(3, 18);
-            this.gridControlAccepted.MainView = this.layoutAccepted;
-            this.gridControlAccepted.Name = "gridControlAccepted";
-            this.gridControlAccepted.Size = new System.Drawing.Size(1557, 495);
-            this.gridControlAccepted.TabIndex = 25;
-            this.gridControlAccepted.TabStop = false;
-            this.gridControlAccepted.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridCtrlAccepted.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridCtrlAccepted.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridCtrlAccepted.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.gridCtrlAccepted.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridCtrlAccepted.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.gridCtrlAccepted.Location = new System.Drawing.Point(3, 18);
+            this.gridCtrlAccepted.MainView = this.layoutAccepted;
+            this.gridCtrlAccepted.Name = "gridCtrlAccepted";
+            this.gridCtrlAccepted.Size = new System.Drawing.Size(1557, 495);
+            this.gridCtrlAccepted.TabIndex = 25;
+            this.gridCtrlAccepted.TabStop = false;
+            this.gridCtrlAccepted.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.layoutAccepted,
             this.gridView2,
             this.gridView3,
@@ -1849,15 +1851,34 @@
             // 
             // layoutAccepted
             // 
+            this.layoutAccepted.Appearance.CardCaption.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutAccepted.Appearance.CardCaption.Options.UseFont = true;
+            this.layoutAccepted.Appearance.FieldCaption.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutAccepted.Appearance.FieldCaption.Options.UseFont = true;
+            this.layoutAccepted.Appearance.FieldValue.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutAccepted.Appearance.FieldValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.layoutAccepted.Appearance.FieldValue.Options.UseFont = true;
+            this.layoutAccepted.Appearance.FieldValue.Options.UseForeColor = true;
+            this.layoutAccepted.Appearance.FocusedCardCaption.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
+            this.layoutAccepted.Appearance.FocusedCardCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.layoutAccepted.Appearance.FocusedCardCaption.Options.UseFont = true;
             this.layoutAccepted.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.layoutAccepted.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             this.layoutAccepted.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.layoutAccepted.Appearance.HeaderPanel.Options.UseBackColor = true;
             this.layoutAccepted.Appearance.HeaderPanel.Options.UseFont = true;
             this.layoutAccepted.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.layoutAccepted.Appearance.SelectedCardCaption.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutAccepted.Appearance.SelectedCardCaption.Options.UseFont = true;
+            this.layoutAccepted.Appearance.SeparatorLine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.layoutAccepted.Appearance.SeparatorLine.Options.UseForeColor = true;
+            this.layoutAccepted.Appearance.ViewBackground.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.layoutAccepted.Appearance.ViewBackground.Options.UseForeColor = true;
+            this.layoutAccepted.Appearance.ViewCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.layoutAccepted.Appearance.ViewCaption.Options.UseFont = true;
+            this.layoutAccepted.Appearance.ViewCaption.Options.UseForeColor = true;
             this.layoutAccepted.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.layoutAccepted.GridControl = this.gridControlAccepted;
+            this.layoutAccepted.GridControl = this.gridCtrlAccepted;
             this.layoutAccepted.Name = "layoutAccepted";
             this.layoutAccepted.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.layoutAccepted.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1868,12 +1889,12 @@
             // layoutViewCard1
             // 
             this.layoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
-            this.layoutViewCard1.Name = "layoutViewCard1";
+            this.layoutViewCard1.Name = "layoutViewTemplateCard";
             this.layoutViewCard1.OptionsItemText.TextToControlDistance = 5;
             // 
             // gridView2
             // 
-            this.gridView2.GridControl = this.gridControlAccepted;
+            this.gridView2.GridControl = this.gridCtrlAccepted;
             this.gridView2.Name = "gridView2";
             // 
             // gridView3
@@ -1906,7 +1927,7 @@
             this.gridView3.AppearancePrint.Row.Options.UseFont = true;
             this.gridView3.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridView3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.gridView3.GridControl = this.gridControlAccepted;
+            this.gridView3.GridControl = this.gridCtrlAccepted;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView3.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1919,7 +1940,7 @@
             // 
             // grdHIS
             // 
-            this.grdHIS.GridControl = this.gridControlAccepted;
+            this.grdHIS.GridControl = this.gridCtrlAccepted;
             this.grdHIS.Name = "grdHIS";
             // 
             // xtraReturn
@@ -2017,6 +2038,8 @@
             this.gridReturn.OptionsView.EnableAppearanceEvenRow = true;
             this.gridReturn.OptionsView.RowAutoHeight = true;
             this.gridReturn.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridReturn.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridReturn_FocusedRowChanged);
+            this.gridReturn.DoubleClick += new System.EventHandler(this.gridReturn_DoubleClick);
             // 
             // gridView8
             // 
@@ -2705,7 +2728,7 @@
             this.xtraAccepted.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupAccepted)).EndInit();
             this.groupAccepted.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlAccepted)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlAccepted)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutAccepted)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
@@ -2924,7 +2947,7 @@
         private DevExpress.XtraEditors.GroupControl groupInventory;
         private DevExpress.XtraTab.XtraTabPage xtraSales;
         private DevExpress.XtraEditors.GroupControl groupSalesDetails;
-        private DevExpress.XtraGrid.GridControl gridControlAccepted;
+        private DevExpress.XtraGrid.GridControl gridCtrlAccepted;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraGrid.Views.Grid.GridView grdHIS;

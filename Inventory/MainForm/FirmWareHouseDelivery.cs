@@ -1051,10 +1051,8 @@ namespace Inventory.MainForm
             {
                 splashDelivery.ShowWaitForm();
 
-                // Use the DeleteEntity method
                 int deleteResult = RepositoryEntity.DeleteEntity<WarehouseDelivery>(deliveryId, entity =>
                 {
-                    // Add back the delivery quantity to the inventory
                     int? inventoryId = entity.inventory_id;
                     if (inventoryId.HasValue)
                     {
@@ -1072,7 +1070,6 @@ namespace Inventory.MainForm
                         "Delivery ID: " + deliveryId + " Successfully Deleted!",
                         Messages.TitleSuccessDelete);
 
-                    // Refresh the delivery list
                     _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
                     BindDeliveryList();
                 }

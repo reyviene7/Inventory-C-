@@ -74,9 +74,11 @@
     <Compile Include="Entities\request\RequestProducts.cs" />
     <Compile Include="Entities\request\RequestSupplier.cs" />
     <Compile Include="Entities\ProfileImages.cs" />
+    <Compile Include="Entities\ReceivedReturn.cs" />
     <Compile Include="Entities\ServiceImages.cs" />
     <Compile Include="Entities\Services.cs" />
     <Compile Include="Entities\ServiceStatus.cs" />
+    <Compile Include="Entities\ViewAcceptedDelivery.cs" />
     <Compile Include="Entities\ViewBranch.cs" />
     <Compile Include="Entities\Branch.cs" />
     <Compile Include="Entities\BranchDelivery.cs" />
