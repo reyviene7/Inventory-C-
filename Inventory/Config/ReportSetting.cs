@@ -329,7 +329,7 @@ namespace Inventory.Config
                 try
                 {
                     var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.BranchDetails == input);
+                    var query = repository.FindBy(x => x.branch_details == input);
                     return query.branch_id;
                 }
                 catch (Exception)

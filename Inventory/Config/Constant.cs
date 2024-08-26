@@ -47,7 +47,7 @@ namespace Inventory.Config
         public const string UserAccount = "User Account";
         public const string GuessAccount = "Guess Account";
         public const string DefaultDepots = "Depot";
-        public const string AddFilterLpg = "LPG";
+        public const string AddFilterLpg = "PRODUCTS";
         public const string AddFilterEmp = "EMPTY";
         public const string Barcode = "Barcode";
         public const string InvoiceId = "InvoiceId";
