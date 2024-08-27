@@ -18,7 +18,7 @@ namespace Inventory.Services
         public IEnumerable<ProductList> DataSource()
         {
             _productLists = new List<ProductList>();
-            foreach (var product in ProductLpg())
+            foreach (var product in Product())
             {
                 _productLists.Add(new ProductList
                 {
@@ -33,7 +33,7 @@ namespace Inventory.Services
             }
             return _productLists;
         }
-        private static IEnumerable<ViewInventoryList> ProductLpg()
+        private static IEnumerable<ViewInventoryList> Product()
         {
             using (var session = new DalSession())
             {
