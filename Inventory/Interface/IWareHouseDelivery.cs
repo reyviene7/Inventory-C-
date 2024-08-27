@@ -8,6 +8,6 @@ namespace Inventory.Interface
 {
    public interface IWareHouseDelivery
    {
-       IEnumerable<BranchDelivery> DataSource(string branch, DateTime startDate, DateTime endDate);
+       IEnumerable<WarehouseDelivery> DataSource(string branch, DateTime startDate, DateTime endDate);
    }
 }

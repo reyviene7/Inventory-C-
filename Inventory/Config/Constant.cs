@@ -30,7 +30,7 @@ namespace Inventory.Config
         public const int ReportSummarWareBra = 6;
         public const int SizeWidth = 215;
         public const int SizeHeight = 21;
-        public const int FontSize = 9;
+        public const int FontSize = 10;
         public const string DefaultApprove = "Angela Reyes-Javier";
         public const float DetSizeWidth = (float) 118.84;
         public const float DetSizeheight = (float)20.92;

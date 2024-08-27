@@ -37,10 +37,10 @@ namespace Inventory.Services
             return _list;
         }
 
-        public IEnumerable<ProductList> DataSourceLpg()
+        public IEnumerable<ProductList> DataSourceProduct()
         {
             _list = new List<ProductList>();
-            var sources = SourceLpg();
+            var sources = SourceProduct();
             if (sources != null)
             {
                 foreach (var source in sources)
@@ -78,7 +78,7 @@ namespace Inventory.Services
             }
         }
 
-        private static IEnumerable<ViewInventoryList> SourceLpg()
+        private static IEnumerable<ViewInventoryList> SourceProduct()
         {
             using (var session = new DalSession())
             {
