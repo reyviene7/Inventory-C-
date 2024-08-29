@@ -33,11 +33,11 @@ namespace Inventory.PopupForm
             switch (_reportType)
             {
                 case 1:
-                    DepotDeliveries();
+                    WareHouseItem();
                     Close();
                     break;
                 case 2:
-                    WareHouseItem();
+                    DepotDeliveries();
                     Close();
                     break;
                 case 5: 

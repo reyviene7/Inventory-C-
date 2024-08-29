@@ -6,11 +6,11 @@ namespace Inventory.Config
     {
         public const float LocXStar = (float)494.67;
         public const float LocYStar = (float)55.33;
-        public const float LocDStarX =(float)613.44;
+        public const float LocDStarX =(float) 84.29;
         public const float LocDStarY = (float) 77.6;
-        public const float LocDEndsX = (float)613.44;
+        public const float LocDEndsX = (float)84.29;
         public const float LocDEndsY = (float)98.52;
-        public const float LocDBranX = (float) 619.67;
+        public const float LocDBranX = (float) 87.49;
         public const float LocDBranY = (float) 27.54;
         public const float LocXEnds = (float)494.67;
         public const float LocYEnds = (float)76.25;
@@ -30,7 +30,7 @@ namespace Inventory.Config
         public const int ReportSummarWareBra = 6;
         public const int SizeWidth = 215;
         public const int SizeHeight = 21;
-        public const int FontSize = 9;
+        public const int FontSize = 10;
         public const string DefaultApprove = "Angela Reyes-Javier";
         public const float DetSizeWidth = (float) 118.84;
         public const float DetSizeheight = (float)20.92;
@@ -47,7 +47,7 @@ namespace Inventory.Config
         public const string UserAccount = "User Account";
         public const string GuessAccount = "Guess Account";
         public const string DefaultDepots = "Depot";
-        public const string AddFilterLpg = "LPG";
+        public const string AddFilterLpg = "PRODUCTS";
         public const string AddFilterEmp = "EMPTY";
         public const string Barcode = "Barcode";
         public const string InvoiceId = "InvoiceId";

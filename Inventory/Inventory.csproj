@@ -94,6 +94,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.Utils.v19.2.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 19.2\Components\Bin\Framework\DevExpress.XtraBars.v19.2.dll</HintPath>
@@ -198,7 +199,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\BranchDelivery.cs" />
+    <Compile Include="Class\WarehouseInventory.cs" />
+    <Compile Include="Class\WarehouseDelivery.cs" />
     <Compile Include="Class\DepotDelivery.cs" />
     <Compile Include="Class\ProductList.cs" />
     <Compile Include="Class\ReturnDepot.cs" />
@@ -226,6 +228,7 @@
     <Compile Include="Entities\ViewReturnDepot.cs" />
     <Compile Include="Entities\ViewReturnWareHouseDepot.cs" />
     <Compile Include="Entities\WareHouse.cs" />
+    <Compile Include="Entities\ViewReportWarehouseDelivery.cs" />
     <Compile Include="Interface\IDepotDelivery.cs" />
     <Compile Include="Interface\IProductList.cs" />
     <Compile Include="Interface\IReadOnlyReport.cs" />

@@ -230,7 +230,7 @@ namespace Inventory.Config
         {
             var report = new RepItemWareHouse();
             var serv = new ServWarehouseItem();
-            var dataSource = serv.WareHouseItem(startDate, endngDate);
+            var dataSource = serv.DataSource(startDate, endngDate);
             report.Load(dataSource);
             var starDate = new XRLabel
             {
@@ -329,7 +329,7 @@ namespace Inventory.Config
                 try
                 {
                     var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.BranchDetails == input);
+                    var query = repository.FindBy(x => x.branch_details == input);
                     return query.branch_id;
                 }
                 catch (Exception)
