@@ -13,7 +13,7 @@ namespace Inventory.PopupForm
 {
     public partial class FirmPopCategoryReport : Form
     {
-        public FirmMain Main;
+        public FirmMain Main { get; set; }
         private readonly string _fullName;
         private readonly int _reportType;
         public FirmPopCategoryReport(string fullName, int reportType)
@@ -51,23 +51,31 @@ namespace Inventory.PopupForm
         }
         private void bntSVA_Click(object sender, EventArgs e)
         {
-            
-            switch (_reportType)
+            try
             {
-                case 3:
-                    ShowWareHouseDelivery();
-                    Close();
-                    break;
-                case 4: 
-                    ShowReturnWarehouseDelivery();
-                    Close();
-                    break;
-                case 6: 
-                    ShowSummaryWarehouseDelivery();
-                    Close();
-                    break;
+                switch (_reportType)
+                {
+                    case 1:
+                        ShowWareHouseDelivery();
+                        break;
+                    case 2:
+                        ShowReturnWarehouseDelivery();
+                        break;
+                    case 5:
+                        ShowSummaryWarehouseDelivery();
+                        break;
+                    default:
+                        MessageBox.Show("Invalid report type.");
+                        return;
+                }
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
+
 
         private void bntCAN_Click(object sender, EventArgs e)
         {
