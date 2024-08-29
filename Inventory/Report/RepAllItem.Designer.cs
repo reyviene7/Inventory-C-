@@ -42,8 +42,8 @@
             this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.xrPageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.reportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
@@ -194,38 +194,39 @@
             // BottomMargin
             // 
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrPageInfo1,
             this.xrPageInfo2});
             this.BottomMargin.HeightF = 52.62502F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
-            // xrPageInfo1
-            // 
-            this.xrPageInfo1.Font = new System.Drawing.Font("Verdana", 9F);
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 10F);
-            this.xrPageInfo1.Name = "xrPageInfo1";
-            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(313F, 23F);
-            this.xrPageInfo1.StylePriority.UseFont = false;
-            this.xrPageInfo1.TextFormatString = "{0:dddd, MMMM d, yyyy HH:mm}";
-            // 
             // xrPageInfo2
             // 
             this.xrPageInfo2.Font = new System.Drawing.Font("Verdana", 9F);
-            this.xrPageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(427F, 10F);
+            this.xrPageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(343.6667F, 9.999974F);
             this.xrPageInfo2.Name = "xrPageInfo2";
             this.xrPageInfo2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo2.SizeF = new System.Drawing.SizeF(313F, 23F);
+            this.xrPageInfo2.SizeF = new System.Drawing.SizeF(77.58331F, 23F);
             this.xrPageInfo2.StylePriority.UseFont = false;
-            this.xrPageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrPageInfo2.StylePriority.UseTextAlignment = false;
+            this.xrPageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrPageInfo2.TextFormatString = "Page {0} of {1}";
+            // 
+            // xrPageInfo1
+            // 
+            this.xrPageInfo1.Font = new System.Drawing.Font("Verdana", 9F);
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(482.1238F, 52.12651F);
+            this.xrPageInfo1.Name = "xrPageInfo1";
+            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrPageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(257.8762F, 23F);
+            this.xrPageInfo1.StylePriority.UseFont = false;
+            this.xrPageInfo1.TextFormatString = "Generated On: {0:yyyy-MM-dd HH:mm:ss}";
             // 
             // reportHeader
             // 
             this.reportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPageInfo1,
             this.xrLabel1,
             this.xrLabel3,
             this.xrLabel5,
@@ -263,7 +264,7 @@
             this.xrLabel5.BorderColor = System.Drawing.Color.Black;
             this.xrLabel5.Font = new System.Drawing.Font("Verdana", 9F);
             this.xrLabel5.ForeColor = System.Drawing.Color.Red;
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(659.7711F, 45.31214F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(115.6731F, 47.58488F);
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel5.SizeF = new System.Drawing.SizeF(58.1864F, 27.54164F);
@@ -277,7 +278,7 @@
             // xrLabel4
             // 
             this.xrLabel4.Font = new System.Drawing.Font("Verdana", 9F);
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(578.8842F, 45.56218F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(34.78622F, 47.83491F);
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel4.SizeF = new System.Drawing.SizeF(56.45013F, 27.54164F);
@@ -289,14 +290,14 @@
             // xlblHeader
             // 
             this.xlblHeader.Font = new System.Drawing.Font("Verdana", 10F);
-            this.xlblHeader.LocationFloat = new DevExpress.Utils.PointFloat(34.78619F, 45.31215F);
+            this.xlblHeader.LocationFloat = new DevExpress.Utils.PointFloat(296.875F, 87.97926F);
             this.xlblHeader.Name = "xlblHeader";
             this.xlblHeader.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xlblHeader.SizeF = new System.Drawing.SizeF(232.9166F, 20.91668F);
+            this.xlblHeader.SizeF = new System.Drawing.SizeF(192.7083F, 20.91668F);
             this.xlblHeader.StylePriority.UseFont = false;
             this.xlblHeader.StylePriority.UseTextAlignment = false;
             this.xlblHeader.Text = "Empowering Your Business";
-            this.xlblHeader.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.xlblHeader.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // groupTitle
             // 
@@ -340,7 +341,7 @@
             this.xrTableCell1.StylePriority.UseFont = false;
             this.xrTableCell1.StylePriority.UseForeColor = false;
             this.xrTableCell1.StylePriority.UseTextAlignment = false;
-            this.xrTableCell1.Text = "Id";
+            this.xrTableCell1.Text = "#";
             this.xrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell1.Weight = 0.069410519474045071D;
             // 

@@ -230,7 +230,7 @@ namespace Inventory.Config
         {
             var report = new RepItemWareHouse();
             var serv = new ServWarehouseItem();
-            var dataSource = serv.WareHouseItem(startDate, endngDate);
+            var dataSource = serv.DataSource(startDate, endngDate);
             report.Load(dataSource);
             var starDate = new XRLabel
             {

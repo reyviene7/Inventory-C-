@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 using Inventory.Entities;
+using Inventory.Class;
 
 namespace Inventory.Report
 {
@@ -15,7 +16,7 @@ namespace Inventory.Report
             InitializeComponent();
         }
 
-        public void Load(IEnumerable<ViewReportWareHousetItem> dataSource)
+        public void Load(IEnumerable<WarehouseInventory> dataSource)
         {
             DataSource = dataSource;
         }
