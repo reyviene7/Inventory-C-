@@ -6,11 +6,11 @@ namespace Inventory.Config
     {
         public const float LocXStar = (float)494.67;
         public const float LocYStar = (float)55.33;
-        public const float LocDStarX =(float)613.44;
+        public const float LocDStarX =(float) 84.29;
         public const float LocDStarY = (float) 77.6;
-        public const float LocDEndsX = (float)613.44;
+        public const float LocDEndsX = (float)84.29;
         public const float LocDEndsY = (float)98.52;
-        public const float LocDBranX = (float) 619.67;
+        public const float LocDBranX = (float) 87.49;
         public const float LocDBranY = (float) 27.54;
         public const float LocXEnds = (float)494.67;
         public const float LocYEnds = (float)76.25;

@@ -228,6 +228,7 @@
     <Compile Include="Entities\ViewReturnDepot.cs" />
     <Compile Include="Entities\ViewReturnWareHouseDepot.cs" />
     <Compile Include="Entities\WareHouse.cs" />
+    <Compile Include="Entities\ViewReportWarehouseDelivery.cs" />
     <Compile Include="Interface\IDepotDelivery.cs" />
     <Compile Include="Interface\IProductList.cs" />
     <Compile Include="Interface\IReadOnlyReport.cs" />
