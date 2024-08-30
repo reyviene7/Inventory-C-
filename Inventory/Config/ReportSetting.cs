@@ -11,10 +11,10 @@ namespace Inventory.Config
 {
     public static class ReportSetting
     {
-        public static void ListofProductItem(string fullName)
+        public static void ListofInventoryProducts(string fullName)
         {
             var report = new RepAllItem();
-            var serv = new ServProductList();
+            var serv = new ServInventoryList();
             var dataSource = serv.DataSource();
             report.Load(dataSource);
             var prePared = new XRLabel
@@ -38,10 +38,10 @@ namespace Inventory.Config
             band?.Controls.Add(appPared);
             report.ShowPreviewDialog();
         }
-        public static void ListofProductLpgs(string fullName)
+        public static void ListofProductItem(string fullName)
         {
-            var report = new RepItemProductLpg();
-            var serv = new ServProductsLpg();
+            var report = new RepItemProduct();
+            var serv = new ServProductsItem();
             var dataSource = serv.DataSource();
             report.Load(dataSource);
             var prePared = new XRLabel

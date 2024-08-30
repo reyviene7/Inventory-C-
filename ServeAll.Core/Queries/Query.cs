@@ -275,7 +275,8 @@
         public const string SelectReportWareHouseDelr = "SELECT delivery_id, product_name, quantity_in_stock, delivery_code, branch_details, last_cost_per_unit, retail_price, delivery_date, status_details FROM report_warehouse_delivery";
         public const string SelectReportReturnWarehos = "SELECT  Id,Item, Delivery, Qty, Origin, RetailPrice, RetDate, Status, Remarks FROM report_return_warehouse";
         public const string SelectReportReturnDepotDl = "SELECT * FROM report_return_delivery_depot";
-        public const string SelectReportAllItem = "SELECT inventory_id, product_code, product_name, quantity, trade_price, retail_price, status FROM view_inventoryList"; 
+        public const string SelectReportAllItem = "SELECT inventory_id, product_code, product_name, quantity, trade_price, retail_price, status FROM view_inventoryList";
+        public const string SelectReportProduct = "SELECT product_id, product_code, product_name, trade_price, retail_price FROM report_product_list";
         public const string getContactId = @"SELECT contact_id FROM contact";
         public const string getAddressId = @"SELECT address_id FROM address";
         public const string getCustomerId = @"SELECT customer_id FROM customers";

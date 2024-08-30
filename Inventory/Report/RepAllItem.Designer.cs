@@ -195,7 +195,7 @@
             // 
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPageInfo2});
-            this.BottomMargin.HeightF = 52.62502F;
+            this.BottomMargin.HeightF = 53F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -215,13 +215,13 @@
             // xrPageInfo1
             // 
             this.xrPageInfo1.Font = new System.Drawing.Font("Verdana", 9F);
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(482.1238F, 52.12651F);
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(512.12F, 52.13F);
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(257.8762F, 23F);
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(186.0012F, 23F);
             this.xrPageInfo1.StylePriority.UseFont = false;
-            this.xrPageInfo1.TextFormatString = "Generated On: {0:yyyy-MM-dd HH:mm:ss}";
+            this.xrPageInfo1.TextFormatString = "Generated On: {0:MM-dd-yyyy}";
             // 
             // reportHeader
             // 
