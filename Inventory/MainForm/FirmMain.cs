@@ -298,17 +298,15 @@ namespace Inventory.MainForm
             };
             view.ShowDialog();
         }
-
-        private void tilePlist_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        private void tileInventoryList_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofInventoryProducts(name);
+        }
+        private void tileProducts_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
             ReportSetting.ListofProductItem(name);
-        }
-        private void tileLPG_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
-        {
-            //  var name = GetUseFullName(_userId);
-            // ReportSetting.ListofProductLpgs(name);
-            Constant.ApplicationExit();
         }
 
         private void tileInventory_itemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)

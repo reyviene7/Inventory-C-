@@ -10,19 +10,19 @@ using Query = ServeAll.Core.Queries.Query;
 
 namespace Inventory.Services
 {
-    public class ServProductList : IProductList
+    public class ServInventoryList : IInventoryList
     {
-        private IList<ProductList> _list;
+        private IList<InventoryList> _list;
 
-        public IEnumerable<ProductList> DataSource()
+        public IEnumerable<InventoryList> DataSource()
         {
-            _list = new List<ProductList>();
+            _list = new List<InventoryList>();
             var sources = Source();
             if (sources != null)
             {
                 foreach (var source in sources)
                 {
-                    _list.Add(new ProductList()
+                    _list.Add(new InventoryList()
                     {
                         Id = source.inventory_id,
                         Code = source.product_code,
@@ -37,15 +37,15 @@ namespace Inventory.Services
             return _list;
         }
 
-        public IEnumerable<ProductList> DataSourceProduct()
+        public IEnumerable<InventoryList> DataSourceProduct()
         {
-            _list = new List<ProductList>();
+            _list = new List<InventoryList>();
             var sources = SourceProduct();
             if (sources != null)
             {
                 foreach (var source in sources)
                 {
-                    _list.Add(new ProductList()
+                    _list.Add(new InventoryList()
                     {
                         Id = source.inventory_id,
                         Code = source.product_code,

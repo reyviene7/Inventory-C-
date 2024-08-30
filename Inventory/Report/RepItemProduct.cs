@@ -5,9 +5,9 @@ using Inventory.Class;
 
 namespace Inventory.Report
 {
-    public partial class RepItemProductLpg : DevExpress.XtraReports.UI.XtraReport
+    public partial class RepItemProduct : DevExpress.XtraReports.UI.XtraReport
     {
-        public RepItemProductLpg()
+        public RepItemProduct()
         {
             InitializeComponent();
         }

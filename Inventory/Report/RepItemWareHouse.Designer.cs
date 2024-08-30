@@ -265,13 +265,13 @@
             // xrPageInfo3
             // 
             this.xrPageInfo3.Font = new System.Drawing.Font("Verdana", 9F);
-            this.xrPageInfo3.LocationFloat = new DevExpress.Utils.PointFloat(482.1238F, 52.12651F);
+            this.xrPageInfo3.LocationFloat = new DevExpress.Utils.PointFloat(512.12F, 52.13F);
             this.xrPageInfo3.Name = "xrPageInfo3";
             this.xrPageInfo3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo3.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
-            this.xrPageInfo3.SizeF = new System.Drawing.SizeF(257.8762F, 23F);
+            this.xrPageInfo3.SizeF = new System.Drawing.SizeF(193.2928F, 23F);
             this.xrPageInfo3.StylePriority.UseFont = false;
-            this.xrPageInfo3.TextFormatString = "Generated On: {0:yyyy-MM-dd HH:mm:ss}";
+            this.xrPageInfo3.TextFormatString = "Generated On: {0:MM-dd-yyyy}";
             // 
             // xrLabel8
             // 

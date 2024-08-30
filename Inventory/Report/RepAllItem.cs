@@ -10,7 +10,7 @@ namespace Inventory.Report
             InitializeComponent();
         }
 
-        public void Load(IEnumerable<ProductList> productlist)
+        public void Load(IEnumerable<InventoryList> productlist)
         {
             DataSource = productlist;
         }
