@@ -25,14 +25,14 @@ namespace Inventory.Services
                 {
                     _list.Add(new WarehouseInventory()
                     {
-                        Id = source.delivery_id,
+                        Id = source.inventory_id,
                         Item = source.product_name,
                         Qty = source.quantity_in_stock,
-                        Delivery = source.delivery_code,
-                        Branch = source.branch_details,
+                        SKU = source.sku,
+                        Warehouse = source.warehouse_name,
+                        ItemCost = source.cost_per_unit,
                         LastCost = source.last_cost_per_unit,
-                        RetailPrice = source.retail_price,
-                        Purchase = source.delivery_date,
+                        Update = source.updated_at,
                         Status = source.status_details
                     });
                 }
@@ -48,8 +48,8 @@ namespace Inventory.Services
                 {
                     var repository = new Repository<ViewReportWareHousetItem>(unWork);
                     return repository.SelectAll(Query.SelectReportWareHouseItem)
-                        .Where(x => x.delivery_date >= startDate)
-                        .Where(x => x.delivery_date <= endDate)
+                        .Where(x => x.updated_at >= startDate)
+                        .Where(x => x.updated_at <= endDate)
                         .ToList();
                 }
                 catch (Exception e)
