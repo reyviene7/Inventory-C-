@@ -149,12 +149,12 @@
             // xrTableCell13
             // 
             this.xrTableCell13.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Qty", "{0:#.00}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Qty", "{0:#}")});
             this.xrTableCell13.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell13.Name = "xrTableCell13";
             this.xrTableCell13.StylePriority.UseFont = false;
             this.xrTableCell13.StylePriority.UseTextAlignment = false;
-            this.xrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell13.Weight = 0.059769193157702225D;
             // 
             // xrTableCell14
@@ -241,7 +241,7 @@
             // xrPageInfo2
             // 
             this.xrPageInfo2.Font = new System.Drawing.Font("Verdana", 9F);
-            this.xrPageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(324.5F, 9.999974F);
+            this.xrPageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(339.5F, 10F);
             this.xrPageInfo2.Name = "xrPageInfo2";
             this.xrPageInfo2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo2.SizeF = new System.Drawing.SizeF(84.875F, 23F);
@@ -279,7 +279,7 @@
             // xrLabel9
             // 
             this.xrLabel9.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(304.9594F, 46.19798F);
+            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(302.5833F, 37.54168F);
             this.xrLabel9.Name = "xrLabel9";
             this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel9.SizeF = new System.Drawing.SizeF(140.0813F, 27.54165F);
@@ -291,7 +291,7 @@
             // xrLabel3
             // 
             this.xrLabel3.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(238.6144F, 15.89591F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(249.0311F, 10.00001F);
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel3.SizeF = new System.Drawing.SizeF(256.6158F, 27.54166F);
@@ -457,7 +457,7 @@
             this.xrTableCell3.StylePriority.UseForeColor = false;
             this.xrTableCell3.StylePriority.UseTextAlignment = false;
             this.xrTableCell3.Text = "Qty";
-            this.xrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell3.Weight = 0.059769228501523969D;
             // 
             // xrTableCell4

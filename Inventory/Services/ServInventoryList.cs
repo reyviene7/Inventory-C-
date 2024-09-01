@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Inventory.Class;
-using Inventory.Config;
+using Inventory.Entities;
 using Inventory.Interface;
-using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
 using Query = ServeAll.Core.Queries.Query;
 
@@ -60,14 +59,14 @@ namespace Inventory.Services
             return _list;
         }
 
-        private static IEnumerable<ViewInventoryList> Source()
+        private static IEnumerable<ViewReportInventoryList> Source()
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<ViewInventoryList>(unWork);
+                    var repository = new Repository<ViewReportInventoryList>(unWork);
                     return repository.SelectAll(Query.SelectReportAllItem).ToList();
                 }
                 catch (Exception e)
@@ -78,14 +77,14 @@ namespace Inventory.Services
             }
         }
 
-        private static IEnumerable<ViewInventoryList> SourceProduct()
+        private static IEnumerable<ViewReportInventoryList> SourceProduct()
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<ViewInventoryList>(unWork);
+                    var repository = new Repository<ViewReportInventoryList>(unWork);
                     return repository.SelectAll(Query.SelectReportAllItem).ToList();
                 }
                 catch (Exception e)

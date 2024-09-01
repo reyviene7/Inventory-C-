@@ -1,6 +1,6 @@
 ﻿namespace Inventory.Report
 {
-    partial class RepAllItem
+    partial class RepInventoryItem
     {
         /// <summary>
         /// Required designer variable.
@@ -238,7 +238,7 @@
             // xrLabel1
             // 
             this.xrLabel1.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(317.0425F, 34.4476F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(319.04F, 34.45F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(140.0813F, 27.54165F);
@@ -250,7 +250,7 @@
             // xrLabel3
             // 
             this.xrLabel3.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(211.8342F, 6.905941F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(207.8884F, 6.905937F);
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel3.SizeF = new System.Drawing.SizeF(364.2477F, 27.54166F);
@@ -290,7 +290,7 @@
             // xlblHeader
             // 
             this.xlblHeader.Font = new System.Drawing.Font("Verdana", 10F);
-            this.xlblHeader.LocationFloat = new DevExpress.Utils.PointFloat(296.875F, 87.97926F);
+            this.xlblHeader.LocationFloat = new DevExpress.Utils.PointFloat(295.88F, 87.98F);
             this.xlblHeader.Name = "xlblHeader";
             this.xlblHeader.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xlblHeader.SizeF = new System.Drawing.SizeF(192.7083F, 20.91668F);
@@ -546,7 +546,7 @@
             this.objSource.DataSource = typeof(Inventory.Class.ProductList);
             this.objSource.Name = "objSource";
             // 
-            // RepAllItem
+            // RepInventoryItem
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,

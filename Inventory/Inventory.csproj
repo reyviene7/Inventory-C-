@@ -222,6 +222,8 @@
     <Compile Include="Entities\Depot.cs" />
     <Compile Include="Entities\Final.cs" />
     <Compile Include="Entities\ReturnDepot.cs" />
+    <Compile Include="Entities\ViewReturnWarehouse.cs" />
+    <Compile Include="Entities\ViewReportInventoryList.cs" />
     <Compile Include="Entities\ViewReportProductList.cs" />
     <Compile Include="Entities\ViewReturnDepotDelivery.cs" />
     <Compile Include="Entities\ViewBranchDelivery.cs" />
@@ -421,11 +423,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Report\RepAllItem.cs">
+    <Compile Include="Report\RepInventoryItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\RepAllItem.Designer.cs">
-      <DependentUpon>RepAllItem.cs</DependentUpon>
+    <Compile Include="Report\RepInventoryItem.Designer.cs">
+      <DependentUpon>RepInventoryItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\RepDepotDelivery.cs">
       <SubType>Component</SubType>
@@ -570,8 +572,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\RepAllItem.resx">
-      <DependentUpon>RepAllItem.cs</DependentUpon>
+    <EmbeddedResource Include="Report\RepInventoryItem.resx">
+      <DependentUpon>RepInventoryItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RepDepotDelivery.resx">
       <DependentUpon>RepDepotDelivery.cs</DependentUpon>
