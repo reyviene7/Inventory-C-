@@ -2,11 +2,11 @@
 
 namespace ServeAll.Core.Entities
 {
-    [Table("view_user_employee")]
+    [Table("view_user_profile")]
     public class ViewUserEmployees
     {
         [Key]
-        public int UserId { get; set; }
-        public string Name { get; set; }
+        public int user_id { get; set; }
+        public string name { get; set; }
     }
 }

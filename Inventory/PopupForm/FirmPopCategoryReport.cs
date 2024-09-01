@@ -14,6 +14,7 @@ namespace Inventory.PopupForm
     public partial class FirmPopCategoryReport : Form
     {
         public FirmMain Main { get; set; }
+        public FrmManagement main { get; set; }
         private readonly string _fullName;
         private readonly int _reportType;
         public FirmPopCategoryReport(string fullName, int reportType)
