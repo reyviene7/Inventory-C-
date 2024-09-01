@@ -8,6 +8,7 @@ namespace Inventory.PopupForm
     public partial class FirmPopDateEntries : Form
     {
         public FirmMain Main { get; set; }
+        public FrmManagement main { get; set; }
         private readonly string _fullname;
         private readonly int _reportType;
         public FirmPopDateEntries(string fullname, int reportType)

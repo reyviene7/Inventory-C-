@@ -246,7 +246,7 @@ namespace Inventory.MainForm
                 try
                 {
                     var repository = new Repository<ViewUserEmployees>(unWork);
-                    return repository.FindBy(x => x.UserId == userId).Name;
+                    return repository.FindBy(x => x.user_id == userId).name;
                 }
                 catch (Exception e)
                 {
@@ -256,39 +256,6 @@ namespace Inventory.MainForm
                 }
             }
         }
-
-        private void tileINV_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
-        {
-            var name = GetUseFullName(_userId);
-          
-            var view = new FirmPopDateEntries(name, type)
-            {
-                Main = this
-            };
-            view.ShowDialog();
-        }
-
-        private void tileWDL_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
-        {
-            var name = GetUseFullName(_userId);
-
-            var view = new FirmPopCategoryReport(name, 1)  
-            {
-                Main = this
-            };
-            view.ShowDialog();
-        }
-
-        private void tileRET_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
-        {
-            var name = GetUseFullName(_userId);
-            var view = new FirmPopCategoryReport(name, 2)  
-            {
-                Main = this
-            };
-            view.ShowDialog();
-        }
-
         private void tileRDP_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
@@ -298,15 +265,44 @@ namespace Inventory.MainForm
             };
             view.ShowDialog();
         }
-        private void tileInventoryList_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        private void tileReportInventoryList_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
             ReportSetting.ListofInventoryProducts(name);
         }
-        private void tileProducts_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        private void tileReportProducts_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
             ReportSetting.ListofProductItem(name);
+        }
+        private void tileReportWarehouseINV_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+
+            var view = new FirmPopDateEntries(name, 1)
+            {
+                Main = this
+            };
+            view.ShowDialog();
+        }
+        private void tileReportWarehouseDEL_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+
+            var view = new FirmPopCategoryReport(name, 1)
+            {
+                Main = this
+            };
+            view.ShowDialog();
+        }
+        private void tileReportReturnWare_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            var view = new FirmPopCategoryReport(name, 2)
+            {
+                Main = this
+            };
+            view.ShowDialog();
         }
 
         private void tileInventory_itemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
