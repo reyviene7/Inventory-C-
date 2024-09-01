@@ -1,9 +1,9 @@
 ﻿using Dapper.Contrib.Extensions;
 
-namespace ServeAll.Core.Entities
+namespace Inventory.Entities
 {
     [Table("view_inventorylist")]
-    public class ViewInventoryList
+    public class ViewReportInventoryList
     {
         [Key]
         public int inventory_id { get; set; }

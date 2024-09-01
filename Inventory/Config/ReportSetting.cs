@@ -6,6 +6,7 @@ using Inventory.Report;
 using Inventory.Services;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
+using ServeAll.Core.Utilities;
 
 namespace Inventory.Config
 {
@@ -13,7 +14,7 @@ namespace Inventory.Config
     {
         public static void ListofInventoryProducts(string fullName)
         {
-            var report = new RepAllItem();
+            var report = new RepInventoryItem();
             var serv = new ServInventoryList();
             var dataSource = serv.DataSource();
             report.Load(dataSource);
@@ -320,25 +321,6 @@ namespace Inventory.Config
             band?.Controls.Add(appPared);
             report.ShowPreviewDialog();
         }
-        private static int GetBranchId(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.branch_details == input);
-                    return query.branch_id;
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Branch Id Error", "Inventory Details");
-                    throw;
-                }
-            }
-        }
         private static int GetCustomerId(string input)
         {
             using (var session = new DalSession())
@@ -362,7 +344,7 @@ namespace Inventory.Config
         {
             var report = new RepSummaryBranchDelivery();
             var serv = new ServSumBranchDelivery();
-            var branchId = GetBranchId(branchName);
+            var branchId = FetchUtils.getBranchId(branchName);
             var dataSource = serv.GetSummary(startDate, endngDate, branchId);
             report.Load(dataSource);
             var starDate = new XRLabel

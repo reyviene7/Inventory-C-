@@ -271,8 +271,8 @@ namespace Inventory.MainForm
         private void tileWDL_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
-         
-            var view = new FirmPopCategoryReport(name, type)
+
+            var view = new FirmPopCategoryReport(name, 1)  
             {
                 Main = this
             };
@@ -282,7 +282,7 @@ namespace Inventory.MainForm
         private void tileRET_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
-            var view = new FirmPopCategoryReport(name, type)
+            var view = new FirmPopCategoryReport(name, 2)  
             {
                 Main = this
             };
