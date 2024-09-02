@@ -1197,8 +1197,8 @@
             // 
             this.barReportSales.Caption = "Sales";
             this.barReportSales.Id = 48;
-            this.barReportSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barProductList.ImageOptions.Image")));
-            this.barReportSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barProductList.ImageOptions.LargeImage")));
+            this.barReportSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportSales.ImageOptions.Image")));
+            this.barReportSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportSales.ImageOptions.LargeImage")));
             this.barReportSales.Name = "barReportSales";
             this.barReportSales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportSales_ItemClick);
             // 
