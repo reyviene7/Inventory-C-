@@ -606,29 +606,10 @@ namespace Inventory.MainForm
                 }
             }
         }
-
         private void barReportProduct_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);
             ReportSetting.ListofProductItem(name);
-        }
-        private string GetUseFullName(int userId)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                try
-                {
-                    var repository = new Repository<ViewUserEmployees>(unWork);
-                    return repository.FindBy(x => x.user_id == userId).name;
-                }
-                catch (Exception e)
-                {
-
-                    Console.WriteLine(e.ToString());
-                    return null;
-                }
-            }
         }
 
         private void barReportInventory_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -667,6 +648,30 @@ namespace Inventory.MainForm
                 main = this
             };
             view.ShowDialog();
+        }
+
+        private void barReportSales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofSalesItem(name);
+        }
+        private string GetUseFullName(int userId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewUserEmployees>(unWork);
+                    return repository.FindBy(x => x.user_id == userId).name;
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
         }
     }
 }
