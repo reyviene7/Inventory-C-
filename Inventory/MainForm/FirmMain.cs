@@ -304,6 +304,11 @@ namespace Inventory.MainForm
             };
             view.ShowDialog();
         }
+        private void tileReportSales_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofSalesItem(name);
+        }
 
         private void tileInventory_itemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
