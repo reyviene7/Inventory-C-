@@ -200,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\ProductList.cs" />
+    <Compile Include="Class\SalesList.cs" />
     <Compile Include="Class\WarehouseInventory.cs" />
     <Compile Include="Class\WarehouseDelivery.cs" />
     <Compile Include="Class\DepotDelivery.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="Entities\Depot.cs" />
     <Compile Include="Entities\Final.cs" />
     <Compile Include="Entities\ReturnDepot.cs" />
+    <Compile Include="Entities\ViewReportSales.cs" />
     <Compile Include="Entities\ViewReturnWarehouse.cs" />
     <Compile Include="Entities\ViewReportInventoryList.cs" />
     <Compile Include="Entities\ViewReportProductList.cs" />
@@ -241,6 +243,7 @@
     <Compile Include="Interface\IReturnWarehouse.cs" />
     <Compile Include="Interface\ISummaryBranchDelivery.cs" />
     <Compile Include="Interface\IWareHouseDelivery.cs" />
+    <Compile Include="Interface\ISalesItem.cs" />
     <Compile Include="Interface\IWareHouseItem.cs" />
     <Compile Include="MainForm\FirmWareHouseDelivery.cs">
       <SubType>Form</SubType>
@@ -465,6 +468,12 @@
     <Compile Include="Report\RepSummaryBranchDelivery.Designer.cs">
       <DependentUpon>RepSummaryBranchDelivery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\RepSalesItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepSalesItem.Designer.cs">
+      <DependentUpon>RepSalesItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\RepWareHouseDelivery.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -478,6 +487,7 @@
     <Compile Include="Services\ServReturnWareHouse.cs" />
     <Compile Include="Services\ServSumBranchDelivery.cs" />
     <Compile Include="Services\ServWareHouseDelivery.cs" />
+    <Compile Include="Services\ServReportSales.cs" />
     <Compile Include="Services\ServWarehouseItem.cs" />
     <EmbeddedResource Include="MainForm\FirmWareHouseDelivery.resx">
       <DependentUpon>FirmWareHouseDelivery.cs</DependentUpon>
@@ -592,6 +602,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RepSummaryBranchDelivery.resx">
       <DependentUpon>RepSummaryBranchDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepSalesItem.resx">
+      <DependentUpon>RepSalesItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RepWareHouseDelivery.resx">
       <DependentUpon>RepWareHouseDelivery.cs</DependentUpon>

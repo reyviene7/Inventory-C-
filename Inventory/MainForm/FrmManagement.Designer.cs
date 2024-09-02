@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagement));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.ribSaveTrans = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bntSave = new DevExpress.XtraBars.BarSubItem();
@@ -149,6 +149,7 @@
             this.barCRS = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.barInvoice = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.PageSel = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribUSE = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribPAR = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -242,7 +243,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
-            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -453,12 +453,12 @@
             this.barItemDelivery.Name = "barItemDelivery";
             this.barItemDelivery.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem1.Text = "Petron POS";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Search Customer";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barItemDelivery.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Petron POS";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Search Customer";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.barItemDelivery.SuperTip = superToolTip3;
             this.barItemDelivery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barItemDelivery_ItemClick);
             // 
             // ribGCB
@@ -493,12 +493,12 @@
             this.barNewCustomer.Name = "barNewCustomer";
             this.barNewCustomer.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem2.Text = " NEW CUSTOMER";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Add new Customer Information";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barNewCustomer.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = " NEW CUSTOMER";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Add new Customer Information";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.barNewCustomer.SuperTip = superToolTip4;
             // 
             // ribGCA
             // 
@@ -1195,7 +1195,7 @@
             // 
             // barProductList
             // 
-            this.barProductList.Caption = "Product-List";
+            this.barProductList.Caption = "Sales";
             this.barProductList.Id = 48;
             this.barProductList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barProductList.ImageOptions.Image")));
             this.barProductList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barProductList.ImageOptions.LargeImage")));
@@ -1203,7 +1203,7 @@
             // 
             // barInventory
             // 
-            this.barInventory.Caption = "Inventory-List";
+            this.barInventory.Caption = "Sales-Particular";
             this.barInventory.Id = 49;
             this.barInventory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barInventory.ImageOptions.Image")));
             this.barInventory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barInventory.ImageOptions.LargeImage")));
@@ -1211,7 +1211,7 @@
             // 
             // barUnderWarranty
             // 
-            this.barUnderWarranty.Caption = "Under-Warranty";
+            this.barUnderWarranty.Caption = "Credit-Sales";
             this.barUnderWarranty.Id = 50;
             this.barUnderWarranty.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barUnderWarranty.ImageOptions.Image")));
             this.barUnderWarranty.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barUnderWarranty.ImageOptions.LargeImage")));
@@ -1287,7 +1287,7 @@
             // 
             // barPurchaseWarranty
             // 
-            this.barPurchaseWarranty.Caption = "Purchase-Warranty";
+            this.barPurchaseWarranty.Caption = "Credit-Particular";
             this.barPurchaseWarranty.Id = 60;
             this.barPurchaseWarranty.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barPurchaseWarranty.ImageOptions.Image")));
             this.barPurchaseWarranty.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barPurchaseWarranty.ImageOptions.LargeImage")));
@@ -1342,6 +1342,12 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barPARC)});
             this.barInvoice.Name = "barInvoice";
             // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "barSubItem4";
+            this.barSubItem4.Id = 46;
+            this.barSubItem4.Name = "barSubItem4";
+            // 
             // PageSel
             // 
             this.PageSel.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -1354,37 +1360,32 @@
             this.ribSEV,
             this.ribbonPageGroup2});
             this.PageSel.Name = "PageSel";
-            this.PageSel.Text = "Inventory Details";
+            this.PageSel.Text = "Inventory Report";
             // 
             // ribUSE
             // 
             this.ribUSE.ItemLinks.Add(this.barReportProduct);
             this.ribUSE.Name = "ribUSE";
-            this.ribUSE.Text = "Report";
             // 
             // ribPAR
             // 
             this.ribPAR.ItemLinks.Add(this.barReportInventory);
             this.ribPAR.Name = "ribPAR";
-            this.ribPAR.Text = "Report";
             // 
             // ribSAL
             // 
             this.ribSAL.ItemLinks.Add(this.barReportWarehouseInv);
             this.ribSAL.Name = "ribSAL";
-            this.ribSAL.Text = "Report";
             // 
             // rbCAS
             // 
             this.rbCAS.ItemLinks.Add(this.barReportWarehouseDel);
             this.rbCAS.Name = "rbCAS";
-            this.rbCAS.Text = "Report";
             // 
             // rbDSS
             // 
             this.rbDSS.ItemLinks.Add(this.barReportReturnWare);
             this.rbDSS.Name = "rbDSS";
-            this.rbDSS.Text = "Report";
             // 
             // ribWAR
             // 
@@ -1413,31 +1414,27 @@
             this.ribWER});
             this.PageInv.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("PageInv.ImageOptions.Image")));
             this.PageInv.Name = "PageInv";
-            this.PageInv.Text = "Product Control";
+            this.PageInv.Text = "Sales Report";
             // 
             // ribbonPageGroup3
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.barProductList);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Product";
             // 
             // ribbonPageGroup4
             // 
             this.ribbonPageGroup4.ItemLinks.Add(this.barInventory);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Inventory";
             // 
             // ribUWA
             // 
             this.ribUWA.ItemLinks.Add(this.barUnderWarranty);
             this.ribUWA.Name = "ribUWA";
-            this.ribUWA.Text = "Warranty";
             // 
             // ribWER
             // 
             this.ribWER.ItemLinks.Add(this.barPurchaseWarranty);
             this.ribWER.Name = "ribWER";
-            this.ribWER.Text = "Warranty";
             // 
             // PageCus
             // 
@@ -2682,12 +2679,6 @@
             this.barSubItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.Image")));
             this.barSubItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.LargeImage")));
             this.barSubItem3.Name = "barSubItem3";
-            // 
-            // barSubItem4
-            // 
-            this.barSubItem4.Caption = "barSubItem4";
-            this.barSubItem4.Id = 46;
-            this.barSubItem4.Name = "barSubItem4";
             // 
             // FrmManagement
             // 
