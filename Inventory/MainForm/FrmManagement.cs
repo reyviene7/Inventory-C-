@@ -665,6 +665,11 @@ namespace Inventory.MainForm
             var name = GetUseFullName(_userId);
             ReportSetting.ListofCreditItem(name);
         }
+        private void barReportCreditPart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofCreditParticular(name);
+        }
         private string GetUseFullName(int userId)
         {
             using (var session = new DalSession())
@@ -683,6 +688,5 @@ namespace Inventory.MainForm
                 }
             }
         }
-
     }
 }
