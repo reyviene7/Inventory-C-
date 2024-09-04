@@ -280,6 +280,7 @@
         public const string SelectReportSales = "SELECT sale_id, customer_name, amount_due, paid_amount, gross, discount, net_sales, branch_details, receipt_number, sale_date  FROM report_sales";
         public const string SelectReportCredit = "SELECT credit_id, customer_name, amount_credit, paid_amount, discount, net_sales, branch_details, service_number, credit_date  FROM report_credit";
         public const string SelectReportSalesParticular = "SELECT particular_id, product_name, unit_price, quantity, gross, net_sales, branch_details, customer_name, status_name, purchase_on  FROM report_sales_particular";
+        public const string SelectReportCreditParticular = "SELECT particular_id, product_name, quantity, unit_price, gross, net_sales, branch_details, customer_name, purchase_on  FROM report_credit_particular";
         public const string getContactId = @"SELECT contact_id FROM contact";
         public const string getAddressId = @"SELECT address_id FROM address";
         public const string getCustomerId = @"SELECT customer_id FROM customers";

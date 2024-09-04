@@ -1295,6 +1295,7 @@
             this.barReportCreditPart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportCreditPart.ImageOptions.Image")));
             this.barReportCreditPart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportCreditPart.ImageOptions.LargeImage")));
             this.barReportCreditPart.Name = "barReportCreditPart";
+            this.barReportCreditPart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportCreditPart_ItemClick);
             // 
             // barCRL
             // 
