@@ -1,6 +1,6 @@
 # The Wizards Inventory
 
-![alt text](./inventory/wizards.ico)
+![alt text](./Inventory/wizards.ico)
 
 ## Used in Development:
 
