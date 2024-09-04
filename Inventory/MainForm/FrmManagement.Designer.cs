@@ -1218,6 +1218,7 @@
             this.barReportCreditSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportCreditSales.ImageOptions.Image")));
             this.barReportCreditSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportCreditSales.ImageOptions.LargeImage")));
             this.barReportCreditSales.Name = "barReportCreditSales";
+            this.barReportCreditSales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportCreditSales_ItemClick);
             // 
             // barCustomerList
             // 
