@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInventory));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlRightOptions = new System.Windows.Forms.Panel();
             this.pcRight = new System.Windows.Forms.PictureBox();
             this.pnlRightMain = new System.Windows.Forms.Panel();
@@ -51,6 +51,7 @@
             this.xtraIntake = new DevExpress.XtraTab.XtraTabPage();
             this.groupIntakeDetails = new DevExpress.XtraEditors.GroupControl();
             this.gBAL = new DevExpress.XtraEditors.GroupControl();
+            this.lblSign = new DevExpress.XtraEditors.LabelControl();
             this.lblPrice = new DevExpress.XtraEditors.LabelControl();
             this.label9 = new System.Windows.Forms.Label();
             this.txtBarcode = new System.Windows.Forms.TextBox();
@@ -81,11 +82,15 @@
             this.lblBarcode = new System.Windows.Forms.Label();
             this.txtInventoryId = new System.Windows.Forms.TextBox();
             this.xtraDelivery = new DevExpress.XtraTab.XtraTabPage();
+            this.groupDeliveryDetails = new DevExpress.XtraEditors.GroupControl();
+            this.ImageProduct = new System.Windows.Forms.PictureBox();
             this.groupDelivery = new DevExpress.XtraEditors.GroupControl();
-            this.dataGridProducts = new System.Windows.Forms.DataGridView();
+            this.gridProducts = new System.Windows.Forms.DataGridView();
             this.xtraSales = new DevExpress.XtraTab.XtraTabPage();
+            this.groupSalesDetails = new DevExpress.XtraEditors.GroupControl();
+            this.ImageSales = new System.Windows.Forms.PictureBox();
             this.groupSales = new DevExpress.XtraEditors.GroupControl();
-            this.dataGridSales = new System.Windows.Forms.DataGridView();
+            this.gridSales = new System.Windows.Forms.DataGridView();
             this.bntClear = new System.Windows.Forms.Button();
             this.bntAdd = new System.Windows.Forms.Button();
             this.bntCancel = new System.Windows.Forms.Button();
@@ -105,11 +110,6 @@
             this.pcChangePassword = new System.Windows.Forms.PictureBox();
             this.pbHide = new System.Windows.Forms.PictureBox();
             this.Options = new System.Windows.Forms.Timer(this.components);
-            this.lblSign = new DevExpress.XtraEditors.LabelControl();
-            this.groupDeliveryDetails = new DevExpress.XtraEditors.GroupControl();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.groupSalesDetails = new DevExpress.XtraEditors.GroupControl();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pnlRightOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRight)).BeginInit();
             this.pnlRightMain.SuspendLayout();
@@ -134,13 +134,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).BeginInit();
             this.xtraDelivery.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupDeliveryDetails)).BeginInit();
+            this.groupDeliveryDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupDelivery)).BeginInit();
             this.groupDelivery.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridProducts)).BeginInit();
             this.xtraSales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupSalesDetails)).BeginInit();
+            this.groupSalesDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupSales)).BeginInit();
             this.groupSales.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.pnlOptions.SuspendLayout();
             this.pnlOptionsMain.SuspendLayout();
@@ -154,12 +160,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHide)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupDeliveryDetails)).BeginInit();
-            this.groupDeliveryDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupSalesDetails)).BeginInit();
-            this.groupSalesDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlRightOptions
@@ -272,7 +272,7 @@
             this.bntHome.Location = new System.Drawing.Point(93, 479);
             this.bntHome.Name = "bntHome";
             this.bntHome.Size = new System.Drawing.Size(91, 104);
-            this.bntHome.TabIndex = 235;
+            this.bntHome.TabIndex = 127;
             this.bntHome.Text = "HOME";
             this.bntHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntHome.UseVisualStyleBackColor = false;
@@ -299,7 +299,7 @@
             this.bntDelete.Location = new System.Drawing.Point(1, 479);
             this.bntDelete.Name = "bntDelete";
             this.bntDelete.Size = new System.Drawing.Size(91, 104);
-            this.bntDelete.TabIndex = 234;
+            this.bntDelete.TabIndex = 126;
             this.bntDelete.Text = "DELETE";
             this.bntDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntDelete.UseVisualStyleBackColor = false;
@@ -322,7 +322,7 @@
             this.xtraIntake.Appearance.PageClient.BackColor = System.Drawing.Color.Black;
             this.xtraIntake.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraIntake.Controls.Add(this.groupIntakeDetails);
-            this.xtraIntake.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tabInventory.ImageOptions.Image")));
+            this.xtraIntake.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraIntake.ImageOptions.Image")));
             this.xtraIntake.Name = "xtraIntake";
             this.xtraIntake.Size = new System.Drawing.Size(1109, 730);
             this.xtraIntake.Text = "Inventory Intake";
@@ -382,6 +382,21 @@
             this.gBAL.TabIndex = 230;
             this.gBAL.Text = "ITEM PRICE";
             // 
+            // lblSign
+            // 
+            this.lblSign.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblSign.Appearance.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSign.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.lblSign.Appearance.ForeColor = System.Drawing.Color.Yellow;
+            this.lblSign.Appearance.Options.UseBorderColor = true;
+            this.lblSign.Appearance.Options.UseFont = true;
+            this.lblSign.Appearance.Options.UseForeColor = true;
+            this.lblSign.Location = new System.Drawing.Point(6, 30);
+            this.lblSign.Name = "lblSign";
+            this.lblSign.Size = new System.Drawing.Size(22, 47);
+            this.lblSign.TabIndex = 102;
+            this.lblSign.Text = "P";
+            // 
             // lblPrice
             // 
             this.lblPrice.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -417,7 +432,7 @@
             this.txtBarcode.Location = new System.Drawing.Point(136, 262);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(269, 29);
-            this.txtBarcode.TabIndex = 228;
+            this.txtBarcode.TabIndex = 119;
             // 
             // label4
             // 
@@ -443,7 +458,8 @@
             this.cmbProductStatus.Location = new System.Drawing.Point(136, 232);
             this.cmbProductStatus.Name = "cmbProductStatus";
             this.cmbProductStatus.Size = new System.Drawing.Size(269, 29);
-            this.cmbProductStatus.TabIndex = 224;
+            this.cmbProductStatus.TabIndex = 118;
+            this.cmbProductStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductStatus_KeyDown);
             // 
             // cmbProductName
             // 
@@ -518,7 +534,7 @@
             this.dkpInventoryDate.Location = new System.Drawing.Point(555, 155);
             this.dkpInventoryDate.Name = "dkpInventoryDate";
             this.dkpInventoryDate.Size = new System.Drawing.Size(269, 29);
-            this.dkpInventoryDate.TabIndex = 123;
+            this.dkpInventoryDate.TabIndex = 120;
             // 
             // label8
             // 
@@ -526,7 +542,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(16, 209);
+            this.label8.Location = new System.Drawing.Point(13, 209);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 17);
             this.label8.TabIndex = 206;
@@ -541,7 +557,7 @@
             this.txtLastCost.Location = new System.Drawing.Point(136, 202);
             this.txtLastCost.Name = "txtLastCost";
             this.txtLastCost.Size = new System.Drawing.Size(269, 29);
-            this.txtLastCost.TabIndex = 120;
+            this.txtLastCost.TabIndex = 117;
             this.txtLastCost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLastCost_KeyDown);
             // 
             // label6
@@ -811,17 +827,42 @@
             // xtraDelivery
             // 
             this.xtraDelivery.Controls.Add(this.groupDeliveryDetails);
-            this.xtraDelivery.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tabHistory.ImageOptions.Image")));
+            this.xtraDelivery.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraDelivery.ImageOptions.Image")));
             this.xtraDelivery.Name = "xtraDelivery";
             this.xtraDelivery.Size = new System.Drawing.Size(1109, 730);
             this.xtraDelivery.Text = "Delivery Received";
+            // 
+            // groupDeliveryDetails
+            // 
+            this.groupDeliveryDetails.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupDeliveryDetails.Appearance.Options.UseBackColor = true;
+            this.groupDeliveryDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupDeliveryDetails.Controls.Add(this.ImageProduct);
+            this.groupDeliveryDetails.Controls.Add(this.groupDelivery);
+            this.groupDeliveryDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupDeliveryDetails.Location = new System.Drawing.Point(0, 0);
+            this.groupDeliveryDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupDeliveryDetails.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupDeliveryDetails.Name = "groupDeliveryDetails";
+            this.groupDeliveryDetails.Size = new System.Drawing.Size(1109, 730);
+            this.groupDeliveryDetails.TabIndex = 175;
+            // 
+            // ImageProduct
+            // 
+            this.ImageProduct.BackColor = System.Drawing.Color.Gray;
+            this.ImageProduct.Location = new System.Drawing.Point(834, 22);
+            this.ImageProduct.Name = "ImageProduct";
+            this.ImageProduct.Size = new System.Drawing.Size(270, 268);
+            this.ImageProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ImageProduct.TabIndex = 224;
+            this.ImageProduct.TabStop = false;
             // 
             // groupDelivery
             // 
             this.groupDelivery.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupDelivery.Appearance.Options.UseBackColor = true;
             this.groupDelivery.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupDelivery.Controls.Add(this.dataGridProducts);
+            this.groupDelivery.Controls.Add(this.gridProducts);
             this.groupDelivery.Location = new System.Drawing.Point(1, 295);
             this.groupDelivery.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupDelivery.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -830,52 +871,78 @@
             this.groupDelivery.TabIndex = 174;
             this.groupDelivery.Text = "List of Stock Received";
             // 
-            // dataGridProducts
+            // gridProducts
             // 
-            this.dataGridProducts.AllowUserToAddRows = false;
-            this.dataGridProducts.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridProducts.ColumnHeadersHeight = 30;
-            this.dataGridProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LemonChiffon;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridProducts.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridProducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridProducts.EnableHeadersVisualStyles = false;
-            this.dataGridProducts.Location = new System.Drawing.Point(3, 18);
-            this.dataGridProducts.Name = "dataGridProducts";
-            this.dataGridProducts.RowHeadersVisible = false;
-            this.dataGridProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridProducts.Size = new System.Drawing.Size(1103, 415);
-            this.dataGridProducts.TabIndex = 110;
+            this.gridProducts.AllowUserToAddRows = false;
+            this.gridProducts.BackgroundColor = System.Drawing.Color.White;
+            this.gridProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.gridProducts.ColumnHeadersHeight = 30;
+            this.gridProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LemonChiffon;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridProducts.DefaultCellStyle = dataGridViewCellStyle8;
+            this.gridProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridProducts.EnableHeadersVisualStyles = false;
+            this.gridProducts.Location = new System.Drawing.Point(3, 18);
+            this.gridProducts.Name = "gridProducts";
+            this.gridProducts.RowHeadersVisible = false;
+            this.gridProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridProducts.Size = new System.Drawing.Size(1103, 415);
+            this.gridProducts.TabIndex = 110;
+            this.gridProducts.SelectionChanged += new System.EventHandler(this.gridProducts_SelectionChanged);
             // 
             // xtraSales
             // 
             this.xtraSales.Controls.Add(this.groupSalesDetails);
-            this.xtraSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tabSaleHis.ImageOptions.Image")));
+            this.xtraSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraSales.ImageOptions.Image")));
             this.xtraSales.Name = "xtraSales";
             this.xtraSales.Size = new System.Drawing.Size(1109, 730);
             this.xtraSales.Text = "Transaction History";
+            // 
+            // groupSalesDetails
+            // 
+            this.groupSalesDetails.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupSalesDetails.Appearance.Options.UseBackColor = true;
+            this.groupSalesDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupSalesDetails.Controls.Add(this.ImageSales);
+            this.groupSalesDetails.Controls.Add(this.groupSales);
+            this.groupSalesDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupSalesDetails.Location = new System.Drawing.Point(0, 0);
+            this.groupSalesDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupSalesDetails.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupSalesDetails.Name = "groupSalesDetails";
+            this.groupSalesDetails.Size = new System.Drawing.Size(1109, 730);
+            this.groupSalesDetails.TabIndex = 176;
+            // 
+            // ImageSales
+            // 
+            this.ImageSales.BackColor = System.Drawing.Color.Gray;
+            this.ImageSales.Location = new System.Drawing.Point(835, 23);
+            this.ImageSales.Name = "ImageSales";
+            this.ImageSales.Size = new System.Drawing.Size(270, 268);
+            this.ImageSales.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ImageSales.TabIndex = 225;
+            this.ImageSales.TabStop = false;
             // 
             // groupSales
             // 
             this.groupSales.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupSales.Appearance.Options.UseBackColor = true;
             this.groupSales.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupSales.Controls.Add(this.dataGridSales);
+            this.groupSales.Controls.Add(this.gridSales);
             this.groupSales.Location = new System.Drawing.Point(2, 295);
             this.groupSales.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupSales.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -884,37 +951,37 @@
             this.groupSales.TabIndex = 175;
             this.groupSales.Text = "List of Transaction History";
             // 
-            // dataGridSales
+            // gridSales
             // 
-            this.dataGridSales.AllowUserToAddRows = false;
-            this.dataGridSales.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridSales.ColumnHeadersHeight = 30;
-            this.dataGridSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LemonChiffon;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridSales.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridSales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridSales.EnableHeadersVisualStyles = false;
-            this.dataGridSales.Location = new System.Drawing.Point(3, 18);
-            this.dataGridSales.Name = "dataGridSales";
-            this.dataGridSales.RowHeadersVisible = false;
-            this.dataGridSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridSales.Size = new System.Drawing.Size(1100, 412);
-            this.dataGridSales.TabIndex = 111;
+            this.gridSales.AllowUserToAddRows = false;
+            this.gridSales.BackgroundColor = System.Drawing.Color.White;
+            this.gridSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.gridSales.ColumnHeadersHeight = 30;
+            this.gridSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LemonChiffon;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridSales.DefaultCellStyle = dataGridViewCellStyle6;
+            this.gridSales.EnableHeadersVisualStyles = false;
+            this.gridSales.Location = new System.Drawing.Point(3, 18);
+            this.gridSales.Name = "gridSales";
+            this.gridSales.RowHeadersVisible = false;
+            this.gridSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridSales.Size = new System.Drawing.Size(1100, 412);
+            this.gridSales.TabIndex = 111;
+            this.gridSales.SelectionChanged += new System.EventHandler(this.gridSales_SelectionChanged);
             // 
             // bntClear
             // 
@@ -926,7 +993,7 @@
             this.bntClear.Location = new System.Drawing.Point(1, 374);
             this.bntClear.Name = "bntClear";
             this.bntClear.Size = new System.Drawing.Size(91, 104);
-            this.bntClear.TabIndex = 233;
+            this.bntClear.TabIndex = 124;
             this.bntClear.Text = "BRANCH";
             this.bntClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntClear.UseVisualStyleBackColor = false;
@@ -942,7 +1009,7 @@
             this.bntAdd.Location = new System.Drawing.Point(1, 164);
             this.bntAdd.Name = "bntAdd";
             this.bntAdd.Size = new System.Drawing.Size(91, 104);
-            this.bntAdd.TabIndex = 229;
+            this.bntAdd.TabIndex = 121;
             this.bntAdd.Text = "ACCEPT";
             this.bntAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntAdd.UseVisualStyleBackColor = false;
@@ -959,7 +1026,7 @@
             this.bntCancel.Location = new System.Drawing.Point(93, 374);
             this.bntCancel.Name = "bntCancel";
             this.bntCancel.Size = new System.Drawing.Size(91, 104);
-            this.bntCancel.TabIndex = 232;
+            this.bntCancel.TabIndex = 125;
             this.bntCancel.Text = "CANCEL";
             this.bntCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntCancel.UseVisualStyleBackColor = false;
@@ -975,7 +1042,7 @@
             this.bntUpdate.Location = new System.Drawing.Point(93, 164);
             this.bntUpdate.Name = "bntUpdate";
             this.bntUpdate.Size = new System.Drawing.Size(91, 104);
-            this.bntUpdate.TabIndex = 230;
+            this.bntUpdate.TabIndex = 122;
             this.bntUpdate.Text = "EDIT";
             this.bntUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntUpdate.UseVisualStyleBackColor = false;
@@ -992,7 +1059,7 @@
             this.bntSave.Location = new System.Drawing.Point(1, 269);
             this.bntSave.Name = "bntSave";
             this.bntSave.Size = new System.Drawing.Size(183, 104);
-            this.bntSave.TabIndex = 231;
+            this.bntSave.TabIndex = 123;
             this.bntSave.Text = "SAVE";
             this.bntSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSave.UseVisualStyleBackColor = false;
@@ -1136,71 +1203,6 @@
             this.Options.Interval = 1;
             this.Options.Tick += new System.EventHandler(this.Options_Tick);
             // 
-            // lblSign
-            // 
-            this.lblSign.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblSign.Appearance.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSign.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.lblSign.Appearance.ForeColor = System.Drawing.Color.Yellow;
-            this.lblSign.Appearance.Options.UseBorderColor = true;
-            this.lblSign.Appearance.Options.UseFont = true;
-            this.lblSign.Appearance.Options.UseForeColor = true;
-            this.lblSign.Location = new System.Drawing.Point(6, 30);
-            this.lblSign.Name = "lblSign";
-            this.lblSign.Size = new System.Drawing.Size(22, 47);
-            this.lblSign.TabIndex = 102;
-            this.lblSign.Text = "P";
-            // 
-            // groupDeliveryDetails
-            // 
-            this.groupDeliveryDetails.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.groupDeliveryDetails.Appearance.Options.UseBackColor = true;
-            this.groupDeliveryDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupDeliveryDetails.Controls.Add(this.pictureBox2);
-            this.groupDeliveryDetails.Controls.Add(this.groupDelivery);
-            this.groupDeliveryDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupDeliveryDetails.Location = new System.Drawing.Point(0, 0);
-            this.groupDeliveryDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
-            this.groupDeliveryDetails.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupDeliveryDetails.Name = "groupDeliveryDetails";
-            this.groupDeliveryDetails.Size = new System.Drawing.Size(1109, 730);
-            this.groupDeliveryDetails.TabIndex = 175;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox2.Location = new System.Drawing.Point(834, 22);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(270, 268);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 224;
-            this.pictureBox2.TabStop = false;
-            // 
-            // groupSalesDetails
-            // 
-            this.groupSalesDetails.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.groupSalesDetails.Appearance.Options.UseBackColor = true;
-            this.groupSalesDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupSalesDetails.Controls.Add(this.pictureBox3);
-            this.groupSalesDetails.Controls.Add(this.groupSales);
-            this.groupSalesDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupSalesDetails.Location = new System.Drawing.Point(0, 0);
-            this.groupSalesDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
-            this.groupSalesDetails.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupSalesDetails.Name = "groupSalesDetails";
-            this.groupSalesDetails.Size = new System.Drawing.Size(1109, 730);
-            this.groupSalesDetails.TabIndex = 176;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox3.Location = new System.Drawing.Point(835, 23);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(270, 268);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 225;
-            this.pictureBox3.TabStop = false;
-            // 
             // FrmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1245,13 +1247,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).EndInit();
             this.xtraDelivery.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupDeliveryDetails)).EndInit();
+            this.groupDeliveryDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ImageProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupDelivery)).EndInit();
             this.groupDelivery.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridProducts)).EndInit();
             this.xtraSales.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupSalesDetails)).EndInit();
+            this.groupSalesDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ImageSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupSales)).EndInit();
             this.groupSales.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.pnlOptions.ResumeLayout(false);
             this.pnlOptionsMain.ResumeLayout(false);
@@ -1265,12 +1273,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcChangePassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHide)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupDeliveryDetails)).EndInit();
-            this.groupDeliveryDetails.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupSalesDetails)).EndInit();
-            this.groupSalesDetails.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1333,7 +1335,7 @@
         private System.Windows.Forms.Button bntCancel;
         private System.Windows.Forms.Button bntUpdate;
         private System.Windows.Forms.Button bntSave;
-        private System.Windows.Forms.DataGridView dataGridProducts;
+        private System.Windows.Forms.DataGridView gridProducts;
         private System.Windows.Forms.Panel pnlOptions;
         private System.Windows.Forms.Panel pnlOptionsMain;
         private System.Windows.Forms.PictureBox pictureBox17;
@@ -1347,11 +1349,11 @@
         private System.Windows.Forms.PictureBox pcChangePassword;
         private System.Windows.Forms.PictureBox pbHide;
         private System.Windows.Forms.Timer Options;
-        private System.Windows.Forms.DataGridView dataGridSales;
+        private System.Windows.Forms.DataGridView gridSales;
         private DevExpress.XtraEditors.LabelControl lblSign;
         private DevExpress.XtraEditors.GroupControl groupDeliveryDetails;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox ImageProduct;
         private DevExpress.XtraEditors.GroupControl groupSalesDetails;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox ImageSales;
     }
 }
