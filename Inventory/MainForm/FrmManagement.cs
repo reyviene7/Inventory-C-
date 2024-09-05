@@ -378,6 +378,7 @@ namespace Inventory.MainForm
                 formManagement = true
             };
             pop.ShowDialog();
+
         }
 
         private void barWarehouse_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -669,6 +670,11 @@ namespace Inventory.MainForm
         {
             var name = GetUseFullName(_userId);
             ReportSetting.ListofCreditParticular(name);
+        }
+        private void barReportServices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofServiceItem(name);
         }
         private string GetUseFullName(int userId)
         {
