@@ -278,6 +278,7 @@
         public const string SelectReportAllItem = "SELECT inventory_id, product_code, product_name, quantity, trade_price, retail_price, status FROM view_inventoryList";
         public const string SelectReportProduct = "SELECT product_id, product_code, product_name, trade_price, retail_price FROM report_product_list";
         public const string SelectReportSales = "SELECT sale_id, customer_name, amount_due, paid_amount, gross, discount, net_sales, branch_details, receipt_number, sale_date  FROM report_sales";
+        public const string SelectReportService = "SELECT service_id, service_name, service_details, service_charges, category_details, service_commission, full_name, status_name, service_date FROM report_service";
         public const string SelectReportCredit = "SELECT credit_id, customer_name, amount_credit, paid_amount, discount, net_sales, branch_details, service_number, credit_date  FROM report_credit";
         public const string SelectReportSalesParticular = "SELECT particular_id, product_name, unit_price, quantity, gross, net_sales, branch_details, customer_name, status_name, purchase_on  FROM report_sales_particular";
         public const string SelectReportCreditParticular = "SELECT particular_id, product_name, quantity, unit_price, gross, net_sales, branch_details, customer_name, purchase_on  FROM report_credit_particular";
