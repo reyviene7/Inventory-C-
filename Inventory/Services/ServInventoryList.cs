@@ -2,27 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using Inventory.Class;
-using Inventory.Config;
+using Inventory.Entities;
 using Inventory.Interface;
-using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
 using Query = ServeAll.Core.Queries.Query;
 
 namespace Inventory.Services
 {
-    public class ServProductList : IProductList
+    public class ServInventoryList : IInventoryList
     {
-        private IList<ProductList> _list;
+        private IList<InventoryList> _list;
 
-        public IEnumerable<ProductList> DataSource()
+        public IEnumerable<InventoryList> DataSource()
         {
-            _list = new List<ProductList>();
+            _list = new List<InventoryList>();
             var sources = Source();
             if (sources != null)
             {
                 foreach (var source in sources)
                 {
-                    _list.Add(new ProductList()
+                    _list.Add(new InventoryList()
                     {
                         Id = source.inventory_id,
                         Code = source.product_code,
@@ -37,15 +36,15 @@ namespace Inventory.Services
             return _list;
         }
 
-        public IEnumerable<ProductList> DataSourceProduct()
+        public IEnumerable<InventoryList> DataSourceProduct()
         {
-            _list = new List<ProductList>();
+            _list = new List<InventoryList>();
             var sources = SourceProduct();
             if (sources != null)
             {
                 foreach (var source in sources)
                 {
-                    _list.Add(new ProductList()
+                    _list.Add(new InventoryList()
                     {
                         Id = source.inventory_id,
                         Code = source.product_code,
@@ -60,14 +59,14 @@ namespace Inventory.Services
             return _list;
         }
 
-        private static IEnumerable<ViewInventoryList> Source()
+        private static IEnumerable<ViewReportInventoryList> Source()
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<ViewInventoryList>(unWork);
+                    var repository = new Repository<ViewReportInventoryList>(unWork);
                     return repository.SelectAll(Query.SelectReportAllItem).ToList();
                 }
                 catch (Exception e)
@@ -78,14 +77,14 @@ namespace Inventory.Services
             }
         }
 
-        private static IEnumerable<ViewInventoryList> SourceProduct()
+        private static IEnumerable<ViewReportInventoryList> SourceProduct()
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<ViewInventoryList>(unWork);
+                    var repository = new Repository<ViewReportInventoryList>(unWork);
                     return repository.SelectAll(Query.SelectReportAllItem).ToList();
                 }
                 catch (Exception e)

@@ -3,14 +3,14 @@ using Inventory.Class;
 
 namespace Inventory.Report
 {
-    public partial class RepAllItem : DevExpress.XtraReports.UI.XtraReport
+    public partial class RepInventoryItem : DevExpress.XtraReports.UI.XtraReport
     {
-        public RepAllItem()
+        public RepInventoryItem()
         {
             InitializeComponent();
         }
 
-        public void Load(IEnumerable<ProductList> productlist)
+        public void Load(IEnumerable<InventoryList> productlist)
         {
             DataSource = productlist;
         }

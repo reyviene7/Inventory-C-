@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagement));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.ribSaveTrans = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bntSave = new DevExpress.XtraBars.BarSubItem();
             this.barDLT = new DevExpress.XtraBars.BarButtonItem();
             this.barUPDSales = new DevExpress.XtraBars.BarButtonItem();
-            this.barUpdateSales = new DevExpress.XtraBars.BarSubItem();
+            this.barReportWarehouseDel = new DevExpress.XtraBars.BarSubItem();
             this.barUPP = new DevExpress.XtraBars.BarButtonItem();
             this.barUPI = new DevExpress.XtraBars.BarButtonItem();
             this.barSearchParticular = new DevExpress.XtraBars.BarButtonItem();
@@ -69,7 +69,7 @@
             this.barMainMenu = new DevExpress.XtraBars.BarButtonItem();
             this.barDEL = new DevExpress.XtraBars.BarButtonItem();
             this.barPIC = new DevExpress.XtraBars.BarButtonItem();
-            this.barDeleteRecord = new DevExpress.XtraBars.BarSubItem();
+            this.barReportReturnWare = new DevExpress.XtraBars.BarSubItem();
             this.barCSL = new DevExpress.XtraBars.BarButtonItem();
             this.barDIC = new DevExpress.XtraBars.BarButtonItem();
             this.barPRIN = new DevExpress.XtraBars.BarButtonItem();
@@ -125,15 +125,15 @@
             this.barEXT = new DevExpress.XtraBars.BarSubItem();
             this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
             this.barBRH = new DevExpress.XtraBars.BarButtonItem();
-            this.barSales = new DevExpress.XtraBars.BarButtonItem();
-            this.barParticular = new DevExpress.XtraBars.BarButtonItem();
-            this.barChangeUser = new DevExpress.XtraBars.BarButtonItem();
+            this.barReportWarehouseInv = new DevExpress.XtraBars.BarButtonItem();
+            this.barReportInventory = new DevExpress.XtraBars.BarButtonItem();
+            this.barReportProduct = new DevExpress.XtraBars.BarButtonItem();
             this.barDAI = new DevExpress.XtraBars.BarButtonItem();
             this.barWarranty = new DevExpress.XtraBars.BarButtonItem();
             this.barBackToMain = new DevExpress.XtraBars.BarButtonItem();
-            this.barProductList = new DevExpress.XtraBars.BarButtonItem();
-            this.barInventory = new DevExpress.XtraBars.BarButtonItem();
-            this.barUnderWarranty = new DevExpress.XtraBars.BarButtonItem();
+            this.barReportSales = new DevExpress.XtraBars.BarButtonItem();
+            this.barReportSalesPart = new DevExpress.XtraBars.BarButtonItem();
+            this.barReportCreditSales = new DevExpress.XtraBars.BarButtonItem();
             this.barCustomerList = new DevExpress.XtraBars.BarButtonItem();
             this.barCreditList = new DevExpress.XtraBars.BarButtonItem();
             this.barPayCredit = new DevExpress.XtraBars.BarButtonItem();
@@ -142,13 +142,14 @@
             this.barSaveChanges = new DevExpress.XtraBars.BarButtonItem();
             this.barRDI = new DevExpress.XtraBars.BarButtonItem();
             this.barPAR = new DevExpress.XtraBars.BarButtonItem();
-            this.barPurchaseWarranty = new DevExpress.XtraBars.BarButtonItem();
+            this.barReportCreditPart = new DevExpress.XtraBars.BarButtonItem();
             this.barCRL = new DevExpress.XtraBars.BarButtonItem();
             this.crdDaily = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barCRS = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.barInvoice = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.PageSel = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribUSE = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribPAR = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -346,18 +347,14 @@
             this.barUPDSales.Id = 36;
             this.barUPDSales.Name = "barUPDSales";
             // 
-            // barUpdateSales
+            // barReportWarehouseDel
             // 
-            this.barUpdateSales.Caption = "Update-Sales";
-            this.barUpdateSales.Id = 37;
-            this.barUpdateSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barUpdateSales.ImageOptions.Image")));
-            this.barUpdateSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barUpdateSales.ImageOptions.LargeImage")));
-            this.barUpdateSales.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barUPP),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barUPI),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSearchParticular),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSearchSales)});
-            this.barUpdateSales.Name = "barUpdateSales";
+            this.barReportWarehouseDel.Caption = "List Warehouse Delivery";
+            this.barReportWarehouseDel.Id = 37;
+            this.barReportWarehouseDel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportWarehouseDel.ImageOptions.Image")));
+            this.barReportWarehouseDel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportWarehouseDel.ImageOptions.LargeImage")));
+            this.barReportWarehouseDel.Name = "barReportWarehouseDel";
+            this.barReportWarehouseDel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportWarehouseDel_ItemClick);
             // 
             // barUPP
             // 
@@ -456,12 +453,12 @@
             this.barItemDelivery.Name = "barItemDelivery";
             this.barItemDelivery.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem3.Text = "Petron POS";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Search Customer";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.barItemDelivery.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Petron POS";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Search Customer";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.barItemDelivery.SuperTip = superToolTip1;
             this.barItemDelivery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barItemDelivery_ItemClick);
             // 
             // ribGCB
@@ -496,12 +493,12 @@
             this.barNewCustomer.Name = "barNewCustomer";
             this.barNewCustomer.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem4.Text = " NEW CUSTOMER";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Add new Customer Information";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.barNewCustomer.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = " NEW CUSTOMER";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Add new Customer Information";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.barNewCustomer.SuperTip = superToolTip2;
             // 
             // ribGCA
             // 
@@ -598,17 +595,14 @@
             this.barPIC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barPIC.ImageOptions.Image")));
             this.barPIC.Name = "barPIC";
             // 
-            // barDeleteRecord
+            // barReportReturnWare
             // 
-            this.barDeleteRecord.Caption = "Delete-Records";
-            this.barDeleteRecord.Id = 33;
-            this.barDeleteRecord.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barDeleteRecord.ImageOptions.Image")));
-            this.barDeleteRecord.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barDeleteRecord.ImageOptions.LargeImage")));
-            this.barDeleteRecord.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCSL),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barDEL),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barDLT)});
-            this.barDeleteRecord.Name = "barDeleteRecord";
+            this.barReportReturnWare.Caption = "List Return Warehouse";
+            this.barReportReturnWare.Id = 33;
+            this.barReportReturnWare.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportReturnWare.ImageOptions.Image")));
+            this.barReportReturnWare.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportReturnWare.ImageOptions.LargeImage")));
+            this.barReportReturnWare.Name = "barReportReturnWare";
+            this.barReportReturnWare.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportReturnWare_ItemClick);
             // 
             // barCSL
             // 
@@ -1023,15 +1017,15 @@
             this.barCSL,
             this.barMainMenu,
             this.barBRH,
-            this.barSales,
-            this.barParticular,
-            this.barChangeUser,
+            this.barReportWarehouseInv,
+            this.barReportInventory,
+            this.barReportProduct,
             this.barDAI,
             this.barWarranty,
             this.barBackToMain,
-            this.barProductList,
-            this.barInventory,
-            this.barUnderWarranty,
+            this.barReportSales,
+            this.barReportSalesPart,
+            this.barReportCreditSales,
             this.barCustomerList,
             this.barCreditList,
             this.barPayCredit,
@@ -1040,7 +1034,7 @@
             this.barSaveChanges,
             this.barRDI,
             this.barPAR,
-            this.barPurchaseWarranty,
+            this.barReportCreditPart,
             this.barCRL,
             this.crdDaily,
             this.barSubItem1,
@@ -1066,11 +1060,11 @@
             this.barDAIRD,
             this.barParticularSales,
             this.barDAIPR,
-            this.barDeleteRecord,
+            this.barReportReturnWare,
             this.barDEL,
             this.barDLT,
             this.barUPDSales,
-            this.barUpdateSales,
+            this.barReportWarehouseDel,
             this.barUPP,
             this.barUPI,
             this.barDAISM,
@@ -1078,9 +1072,10 @@
             this.barCreditDetails,
             this.barParCred,
             this.barSearchParticular,
-            this.barSearchSales});
+            this.barSearchSales,
+            this.barSubItem4});
             this.rbControl.Location = new System.Drawing.Point(0, 0);
-            this.rbControl.MaxItemId = 46;
+            this.rbControl.MaxItemId = 47;
             this.rbControl.Name = "rbControl";
             this.rbControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.PagePos,
@@ -1146,29 +1141,32 @@
             this.barBRH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barBRH.ImageOptions.LargeImage")));
             this.barBRH.Name = "barBRH";
             // 
-            // barSales
+            // barReportWarehouseInv
             // 
-            this.barSales.Caption = "View Sales";
-            this.barSales.Id = 40;
-            this.barSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSales.ImageOptions.Image")));
-            this.barSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSales.ImageOptions.LargeImage")));
-            this.barSales.Name = "barSales";
+            this.barReportWarehouseInv.Caption = "List Warehouse Inventory";
+            this.barReportWarehouseInv.Id = 40;
+            this.barReportWarehouseInv.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportWarehouseInv.ImageOptions.Image")));
+            this.barReportWarehouseInv.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportWarehouseInv.ImageOptions.LargeImage")));
+            this.barReportWarehouseInv.Name = "barReportWarehouseInv";
+            this.barReportWarehouseInv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportWarehouseInv_ItemClick);
             // 
-            // barParticular
+            // barReportInventory
             // 
-            this.barParticular.Caption = "View Particular";
-            this.barParticular.Id = 41;
-            this.barParticular.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barParticular.ImageOptions.Image")));
-            this.barParticular.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barParticular.ImageOptions.LargeImage")));
-            this.barParticular.Name = "barParticular";
+            this.barReportInventory.Caption = "List Inventory";
+            this.barReportInventory.Id = 41;
+            this.barReportInventory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportInventory.ImageOptions.Image")));
+            this.barReportInventory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportInventory.ImageOptions.LargeImage")));
+            this.barReportInventory.Name = "barReportInventory";
+            this.barReportInventory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportInventory_ItemClick);
             // 
-            // barChangeUser
+            // barReportProduct
             // 
-            this.barChangeUser.Caption = "Change-User";
-            this.barChangeUser.Id = 43;
-            this.barChangeUser.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barChangeUser.ImageOptions.Image")));
-            this.barChangeUser.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barChangeUser.ImageOptions.LargeImage")));
-            this.barChangeUser.Name = "barChangeUser";
+            this.barReportProduct.Caption = "List Products";
+            this.barReportProduct.Id = 43;
+            this.barReportProduct.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportProduct.ImageOptions.Image")));
+            this.barReportProduct.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportProduct.ImageOptions.LargeImage")));
+            this.barReportProduct.Name = "barReportProduct";
+            this.barReportProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportProduct_ItemClick);
             // 
             // barDAI
             // 
@@ -1195,29 +1193,32 @@
             this.barBackToMain.Name = "barBackToMain";
             this.barBackToMain.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBackToMain_ItemClick);
             // 
-            // barProductList
+            // barReportSales
             // 
-            this.barProductList.Caption = "Product-List";
-            this.barProductList.Id = 48;
-            this.barProductList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barProductList.ImageOptions.Image")));
-            this.barProductList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barProductList.ImageOptions.LargeImage")));
-            this.barProductList.Name = "barProductList";
+            this.barReportSales.Caption = "Sales";
+            this.barReportSales.Id = 48;
+            this.barReportSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportSales.ImageOptions.Image")));
+            this.barReportSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportSales.ImageOptions.LargeImage")));
+            this.barReportSales.Name = "barReportSales";
+            this.barReportSales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportSales_ItemClick);
             // 
-            // barInventory
+            // barReportSalesPart
             // 
-            this.barInventory.Caption = "Inventory-List";
-            this.barInventory.Id = 49;
-            this.barInventory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barInventory.ImageOptions.Image")));
-            this.barInventory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barInventory.ImageOptions.LargeImage")));
-            this.barInventory.Name = "barInventory";
+            this.barReportSalesPart.Caption = "Sales-Particular";
+            this.barReportSalesPart.Id = 49;
+            this.barReportSalesPart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportSalesPart.ImageOptions.Image")));
+            this.barReportSalesPart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportSalesPart.ImageOptions.LargeImage")));
+            this.barReportSalesPart.Name = "barReportSalesPart";
+            this.barReportSalesPart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportSalesPart_ItemClick);
             // 
-            // barUnderWarranty
+            // barReportCreditSales
             // 
-            this.barUnderWarranty.Caption = "Under-Warranty";
-            this.barUnderWarranty.Id = 50;
-            this.barUnderWarranty.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barUnderWarranty.ImageOptions.Image")));
-            this.barUnderWarranty.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barUnderWarranty.ImageOptions.LargeImage")));
-            this.barUnderWarranty.Name = "barUnderWarranty";
+            this.barReportCreditSales.Caption = "Credit-Sales";
+            this.barReportCreditSales.Id = 50;
+            this.barReportCreditSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportCreditSales.ImageOptions.Image")));
+            this.barReportCreditSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportCreditSales.ImageOptions.LargeImage")));
+            this.barReportCreditSales.Name = "barReportCreditSales";
+            this.barReportCreditSales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportCreditSales_ItemClick);
             // 
             // barCustomerList
             // 
@@ -1287,13 +1288,14 @@
             this.barPAR.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barPAR.ImageOptions.LargeImage")));
             this.barPAR.Name = "barPAR";
             // 
-            // barPurchaseWarranty
+            // barReportCreditPart
             // 
-            this.barPurchaseWarranty.Caption = "Purchase-Warranty";
-            this.barPurchaseWarranty.Id = 60;
-            this.barPurchaseWarranty.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barPurchaseWarranty.ImageOptions.Image")));
-            this.barPurchaseWarranty.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barPurchaseWarranty.ImageOptions.LargeImage")));
-            this.barPurchaseWarranty.Name = "barPurchaseWarranty";
+            this.barReportCreditPart.Caption = "Credit-Particular";
+            this.barReportCreditPart.Id = 60;
+            this.barReportCreditPart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportCreditPart.ImageOptions.Image")));
+            this.barReportCreditPart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportCreditPart.ImageOptions.LargeImage")));
+            this.barReportCreditPart.Name = "barReportCreditPart";
+            this.barReportCreditPart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportCreditPart_ItemClick);
             // 
             // barCRL
             // 
@@ -1344,6 +1346,12 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barPARC)});
             this.barInvoice.Name = "barInvoice";
             // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "barSubItem4";
+            this.barSubItem4.Id = 46;
+            this.barSubItem4.Name = "barSubItem4";
+            // 
             // PageSel
             // 
             this.PageSel.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -1356,37 +1364,32 @@
             this.ribSEV,
             this.ribbonPageGroup2});
             this.PageSel.Name = "PageSel";
-            this.PageSel.Text = "Inventory Details";
+            this.PageSel.Text = "Inventory Report";
             // 
             // ribUSE
             // 
-            this.ribUSE.ItemLinks.Add(this.barChangeUser);
+            this.ribUSE.ItemLinks.Add(this.barReportProduct);
             this.ribUSE.Name = "ribUSE";
-            this.ribUSE.Text = "U";
             // 
             // ribPAR
             // 
-            this.ribPAR.ItemLinks.Add(this.barParticular);
+            this.ribPAR.ItemLinks.Add(this.barReportInventory);
             this.ribPAR.Name = "ribPAR";
-            this.ribPAR.Text = "S";
             // 
             // ribSAL
             // 
-            this.ribSAL.ItemLinks.Add(this.barSales);
+            this.ribSAL.ItemLinks.Add(this.barReportWarehouseInv);
             this.ribSAL.Name = "ribSAL";
-            this.ribSAL.Text = "V";
             // 
             // rbCAS
             // 
-            this.rbCAS.ItemLinks.Add(this.barUpdateSales);
+            this.rbCAS.ItemLinks.Add(this.barReportWarehouseDel);
             this.rbCAS.Name = "rbCAS";
-            this.rbCAS.Text = "D";
             // 
             // rbDSS
             // 
-            this.rbDSS.ItemLinks.Add(this.barDeleteRecord);
+            this.rbDSS.ItemLinks.Add(this.barReportReturnWare);
             this.rbDSS.Name = "rbDSS";
-            this.rbDSS.Text = "R";
             // 
             // ribWAR
             // 
@@ -1415,31 +1418,27 @@
             this.ribWER});
             this.PageInv.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("PageInv.ImageOptions.Image")));
             this.PageInv.Name = "PageInv";
-            this.PageInv.Text = "Product Control";
+            this.PageInv.Text = "Sales Report";
             // 
             // ribbonPageGroup3
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barProductList);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barReportSales);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Product";
             // 
             // ribbonPageGroup4
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.barInventory);
+            this.ribbonPageGroup4.ItemLinks.Add(this.barReportSalesPart);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Inventory";
             // 
             // ribUWA
             // 
-            this.ribUWA.ItemLinks.Add(this.barUnderWarranty);
+            this.ribUWA.ItemLinks.Add(this.barReportCreditSales);
             this.ribUWA.Name = "ribUWA";
-            this.ribUWA.Text = "Warranty";
             // 
             // ribWER
             // 
-            this.ribWER.ItemLinks.Add(this.barPurchaseWarranty);
+            this.ribWER.ItemLinks.Add(this.barReportCreditPart);
             this.ribWER.Name = "ribWER";
-            this.ribWER.Text = "Warranty";
             // 
             // PageCus
             // 
@@ -2689,7 +2688,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1592, 886);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.spCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmManagement";
@@ -2780,7 +2779,7 @@
         private DevExpress.XtraBars.BarSubItem bntSave;
         private DevExpress.XtraBars.BarButtonItem barDLT;
         private DevExpress.XtraBars.BarButtonItem barUPDSales;
-        private DevExpress.XtraBars.BarSubItem barUpdateSales;
+        private DevExpress.XtraBars.BarSubItem barReportWarehouseDel;
         private DevExpress.XtraBars.BarButtonItem barUPP;
         private DevExpress.XtraBars.BarButtonItem barUPI;
         private DevExpress.XtraBars.BarButtonItem barSearchParticular;
@@ -2808,7 +2807,7 @@
         private DevExpress.XtraBars.BarButtonItem barMainMenu;
         private DevExpress.XtraBars.BarButtonItem barDEL;
         private DevExpress.XtraBars.BarButtonItem barPIC;
-        private DevExpress.XtraBars.BarSubItem barDeleteRecord;
+        private DevExpress.XtraBars.BarSubItem barReportReturnWare;
         private DevExpress.XtraBars.BarButtonItem barCSL;
         private DevExpress.XtraBars.BarButtonItem barDIC;
         private DevExpress.XtraBars.BarButtonItem barPRIN;
@@ -2864,15 +2863,15 @@
         private DevExpress.XtraBars.BarSubItem barEXT;
         private DevExpress.XtraBars.BarHeaderItem barHeaderItem1;
         private DevExpress.XtraBars.BarButtonItem barBRH;
-        private DevExpress.XtraBars.BarButtonItem barSales;
-        private DevExpress.XtraBars.BarButtonItem barParticular;
-        private DevExpress.XtraBars.BarButtonItem barChangeUser;
+        private DevExpress.XtraBars.BarButtonItem barReportWarehouseInv;
+        private DevExpress.XtraBars.BarButtonItem barReportInventory;
+        private DevExpress.XtraBars.BarButtonItem barReportProduct;
         private DevExpress.XtraBars.BarButtonItem barDAI;
         private DevExpress.XtraBars.BarButtonItem barWarranty;
         private DevExpress.XtraBars.BarButtonItem barBackToMain;
-        private DevExpress.XtraBars.BarButtonItem barProductList;
-        private DevExpress.XtraBars.BarButtonItem barInventory;
-        private DevExpress.XtraBars.BarButtonItem barUnderWarranty;
+        private DevExpress.XtraBars.BarButtonItem barReportSales;
+        private DevExpress.XtraBars.BarButtonItem barReportSalesPart;
+        private DevExpress.XtraBars.BarButtonItem barReportCreditSales;
         private DevExpress.XtraBars.BarButtonItem barCustomerList;
         private DevExpress.XtraBars.BarButtonItem barCreditList;
         private DevExpress.XtraBars.BarButtonItem barPayCredit;
@@ -2881,7 +2880,7 @@
         private DevExpress.XtraBars.BarButtonItem barSaveChanges;
         private DevExpress.XtraBars.BarButtonItem barRDI;
         private DevExpress.XtraBars.BarButtonItem barPAR;
-        private DevExpress.XtraBars.BarButtonItem barPurchaseWarranty;
+        private DevExpress.XtraBars.BarButtonItem barReportCreditPart;
         private DevExpress.XtraBars.BarButtonItem barCRL;
         private DevExpress.XtraBars.BarButtonItem crdDaily;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
@@ -2982,5 +2981,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dpkUpdated;
         private System.Windows.Forms.DateTimePicker dkpDeliveryDate;
+        private DevExpress.XtraBars.BarSubItem barSubItem4;
     }
 }

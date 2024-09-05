@@ -125,7 +125,6 @@
     <Compile Include="Entities\ViewProfile.cs" />
     <Compile Include="Entities\ViewSalesCredit.cs" />
     <Compile Include="Entities\ViewCustomerList.cs" />
-    <Compile Include="Entities\ViewInventoryList.cs" />
     <Compile Include="Entities\ViewLpgGasul.cs" />
     <Compile Include="Entities\ViewPayment.cs" />
     <Compile Include="Entities\ViewProductList.cs" />

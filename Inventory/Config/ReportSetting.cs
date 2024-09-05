@@ -6,15 +6,16 @@ using Inventory.Report;
 using Inventory.Services;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
+using ServeAll.Core.Utilities;
 
 namespace Inventory.Config
 {
     public static class ReportSetting
     {
-        public static void ListofProductItem(string fullName)
+        public static void ListofInventoryProducts(string fullName)
         {
-            var report = new RepAllItem();
-            var serv = new ServProductList();
+            var report = new RepInventoryItem();
+            var serv = new ServInventoryList();
             var dataSource = serv.DataSource();
             report.Load(dataSource);
             var prePared = new XRLabel
@@ -38,10 +39,10 @@ namespace Inventory.Config
             band?.Controls.Add(appPared);
             report.ShowPreviewDialog();
         }
-        public static void ListofProductLpgs(string fullName)
+        public static void ListofProductItem(string fullName)
         {
-            var report = new RepItemProductLpg();
-            var serv = new ServProductsLpg();
+            var report = new RepItemProduct();
+            var serv = new ServProductsItem();
             var dataSource = serv.DataSource();
             report.Load(dataSource);
             var prePared = new XRLabel
@@ -320,24 +321,113 @@ namespace Inventory.Config
             band?.Controls.Add(appPared);
             report.ShowPreviewDialog();
         }
-        private static int GetBranchId(string input)
+        public static void ListofSalesItem(string fullName)
         {
-            using (var session = new DalSession())
+            var report = new RepSalesItem();
+            var serv = new ServReportSales();
+            var dataSource = serv.DataSource();
+            report.Load(dataSource);
+            var prePared = new XRLabel
             {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<Branch>(unWork);
-                    var query = repository.FindBy(x => x.branch_details == input);
-                    return query.branch_id;
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Branch Id Error", "Inventory Details");
-                    throw;
-                }
-            }
+                Text = fullName,
+                LocationF = new PointF(Constant.PreXStar, Constant.PreYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+            var appPared = new XRLabel
+            {
+                Text = Constant.DefaultApprove,
+                LocationF = new PointF(Constant.AppXStar, Constant.AppYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter,
+            };
+            var band = report.Bands[BandKind.ReportFooter] as ReportFooterBand;
+            band?.Controls.Add(prePared);
+            band?.Controls.Add(appPared);
+            report.ShowPreviewDialog();
+        }
+        public static void ListofSalesParticular(string fullName)
+        {
+            var report = new RepSalesParticular();
+            var serv = new ServSalesParticular();
+            var dataSource = serv.DataSource();
+            report.Load(dataSource);
+            var prePared = new XRLabel
+            {
+                Text = fullName,
+                LocationF = new PointF(Constant.PreXStar, Constant.PreYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+            var appPared = new XRLabel
+            {
+                Text = Constant.DefaultApprove,
+                LocationF = new PointF(Constant.AppXStar, Constant.AppYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter,
+            };
+            var band = report.Bands[BandKind.ReportFooter] as ReportFooterBand;
+            band?.Controls.Add(prePared);
+            band?.Controls.Add(appPared);
+            report.ShowPreviewDialog();
+        }
+        public static void ListofCreditItem(string fullName)
+        {
+            var report = new RepCreditItem();
+            var serv = new ServReportCredit();
+            var dataSource = serv.DataSource();
+            report.Load(dataSource);
+            var prePared = new XRLabel
+            {
+                Text = fullName,
+                LocationF = new PointF(Constant.PreXStar, Constant.PreYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+            var appPared = new XRLabel
+            {
+                Text = Constant.DefaultApprove,
+                LocationF = new PointF(Constant.AppXStar, Constant.AppYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter,
+            };
+            var band = report.Bands[BandKind.ReportFooter] as ReportFooterBand;
+            band?.Controls.Add(prePared);
+            band?.Controls.Add(appPared);
+            report.ShowPreviewDialog();
+        }
+        public static void ListofCreditParticular(string fullName)
+        {
+            var report = new RepCreditParticular();
+            var serv = new ServCreditParticular();
+            var dataSource = serv.DataSource();
+            report.Load(dataSource);
+            var prePared = new XRLabel
+            {
+                Text = fullName,
+                LocationF = new PointF(Constant.PreXStar, Constant.PreYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+            var appPared = new XRLabel
+            {
+                Text = Constant.DefaultApprove,
+                LocationF = new PointF(Constant.AppXStar, Constant.AppYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter,
+            };
+            var band = report.Bands[BandKind.ReportFooter] as ReportFooterBand;
+            band?.Controls.Add(prePared);
+            band?.Controls.Add(appPared);
+            report.ShowPreviewDialog();
         }
         private static int GetCustomerId(string input)
         {
@@ -362,7 +452,7 @@ namespace Inventory.Config
         {
             var report = new RepSummaryBranchDelivery();
             var serv = new ServSumBranchDelivery();
-            var branchId = GetBranchId(branchName);
+            var branchId = FetchUtils.getBranchId(branchName);
             var dataSource = serv.GetSummary(startDate, endngDate, branchId);
             report.Load(dataSource);
             var starDate = new XRLabel

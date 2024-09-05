@@ -3,6 +3,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using Inventory.Config;
 using Inventory.PopupForm;
 using ServeAll.Core.Entities;
+using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
 using System;
 using System.Collections.Generic;
@@ -605,6 +606,87 @@ namespace Inventory.MainForm
                 }
             }
         }
+        private void barReportProduct_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofProductItem(name);
+        }
 
+        private void barReportInventory_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofInventoryProducts(name);
+        }
+
+        private void barReportWarehouseInv_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+
+            var view = new FirmPopDateEntries(name, 1)
+            {
+                main = this
+            };
+            view.ShowDialog();
+        }
+
+        private void barReportWarehouseDel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+
+            var view = new FirmPopCategoryReport(name, 1)
+            {
+                main = this
+            };
+            view.ShowDialog();
+        }
+
+        private void barReportReturnWare_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            var view = new FirmPopCategoryReport(name, 2)
+            {
+                main = this
+            };
+            view.ShowDialog();
+        }
+
+        private void barReportSales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofSalesItem(name);
+        }
+        private void barReportSalesPart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofSalesParticular(name);
+        }
+        private void barReportCreditSales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofCreditItem(name);
+        }
+        private void barReportCreditPart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofCreditParticular(name);
+        }
+        private string GetUseFullName(int userId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewUserEmployees>(unWork);
+                    return repository.FindBy(x => x.user_id == userId).name;
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
+        }
     }
 }
