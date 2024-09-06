@@ -755,6 +755,7 @@
             this.barReportParticularServices.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportParticularServices.ImageOptions.Image")));
             this.barReportParticularServices.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportParticularServices.ImageOptions.LargeImage")));
             this.barReportParticularServices.Name = "barReportParticularServices";
+            this.barReportParticularServices.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportParticularServices_ItemClick);
             // 
             // barDAIPR
             // 

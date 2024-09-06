@@ -676,6 +676,11 @@ namespace Inventory.MainForm
             var name = GetUseFullName(_userId);
             ReportSetting.ListofServiceItem(name);
         }
+        private void barReportParticularServices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofServiceParticular(name);
+        }
         private string GetUseFullName(int userId)
         {
             using (var session = new DalSession())
