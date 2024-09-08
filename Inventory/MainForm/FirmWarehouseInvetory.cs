@@ -26,6 +26,7 @@ namespace Inventory.MainForm
         private IEnumerable<WarehouseStatus> _statuses;
         private IEnumerable<Location> _locations;
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
+        private IEnumerable<ViewReturnWarehouse> warehouse_return;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewSalesPart> _transaction_list;
         private IEnumerable<ViewImageProduct> imgList;
@@ -66,6 +67,7 @@ namespace Inventory.MainForm
         }
         private FirmMain _main;
         private bool _add, _edt, _del;
+        public int ReturnedId { get; private set; }
         public FirmMain Main
         {
             get { return _main; }
@@ -89,10 +91,12 @@ namespace Inventory.MainForm
             RightOptions.Start();
             splashScreen.ShowWaitForm();
             _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            warehouse_return = EnumerableUtils.getWareHouseReturn();
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
             imgList = EnumerableUtils.getImgProductList();
             bindDeliveryList();
             bindWareHouse();
+            BindReturnWareHouse();
             splashScreen.CloseWaitForm();
         }
         private ViewImageProduct searchProductImg(string param)
@@ -209,6 +213,35 @@ namespace Inventory.MainForm
             dkpSalesDate.Value = DateTime.Now;
         }
 
+        private void whiteDelivery()
+        {
+            txtDelWarehouseId.BackColor = Color.White;
+            txtDelProduct.BackColor = Color.White;
+            txtDelProductName.BackColor = Color.White;
+            cmbDelProductStatus.BackColor = Color.White;
+            cmbDelWarehouseCode.BackColor = Color.White;
+            txtDelLastCost.BackColor = Color.White;
+            txtDelItemPrice.BackColor = Color.White;
+            txtDelRemainQty.BackColor = Color.White;
+            cmbDelBranch.BackColor = Color.White;
+            txtDelWarehouseCode.BackColor = Color.White;
+            txtDelReceipt.BackColor = Color.White;
+            txtDelQty.BackColor = Color.White;
+            cmbDelDeliveryStatus.BackColor = Color.White;
+            txtDelRemarks.BackColor = Color.White;
+        }
+        private void whiteReturn()
+        {
+            txtReturnedId.BackColor = Color.White;
+            txtReturnedCode.BackColor = Color.White;
+            txtReturnedProduct.BackColor = Color.White;
+            txtReturnedDelivery.BackColor = Color.White;
+            txtReturnedQty.BackColor = Color.White;
+            cmbReturnedBranch.BackColor = Color.White;
+            cmbReturnedWarehouse.BackColor = Color.White;
+            txtReturnedStatus.BackColor = Color.White;
+            txtReturnedRemarks.BackColor = Color.White;
+        }
         private void whiteSales()
         {
             txtSalesId.BackColor = Color.White;
@@ -828,14 +861,20 @@ namespace Inventory.MainForm
                 bindWareHouse();
                 splashScreen.CloseWaitForm();
             }
-
             if (e.Page == xtraDelivery)
             {
                 splashScreen.ShowWaitForm();
-                graySales();
-                disabledSales();
+                whiteDelivery();
                 _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
                 bindDeliveryList();
+                splashScreen.CloseWaitForm();
+            }
+            if (e.Page == xtraReturn)
+            {
+                splashScreen.ShowWaitForm();
+                whiteReturn();
+                warehouse_return = EnumerableUtils.getWareHouseReturn();
+                BindReturnWareHouse();
                 splashScreen.CloseWaitForm();
             }
             if(e.Page == xtraSales)
@@ -859,6 +898,11 @@ namespace Inventory.MainForm
             gridViewDelivery(sender);
         }
 
+        private void gridReturn_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            gridViewReturn(sender);
+        }
+
         private void gridSales_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridViewSales(sender);
@@ -877,6 +921,10 @@ namespace Inventory.MainForm
         private ViewWarehouseDelivery searchWarehouseDeliveryId(string barcode)
         {
             return _warehouse_delivery.FirstOrDefault(Warehouse => Warehouse.product_code == barcode);
+        }
+        private ViewReturnWarehouse searchReturnId(int id)
+        {
+            return warehouse_return.FirstOrDefault(Return => Return.return_id == id);
         }
 
         private void gridViewInventory(object sender)
@@ -962,6 +1010,47 @@ namespace Inventory.MainForm
                         else
                         {
                             imgDelivery.Image = null;
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+        }
+        private void gridViewReturn(object sender)
+        {
+            if (gridReturn.RowCount > 0)
+                try
+                {
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
+                    var ReturnId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (barcode.Length > 0)
+                    {
+                        ReturnedId = int.Parse(ReturnId);
+                        var ent = searchReturnId(ReturnedId);
+                        txtReturnedId.Text = ReturnId;
+                        txtReturnedCode.Text = ent.return_code;
+                        txtReturnedProduct.Text = barcode;
+                        txtReturnedDelivery.Text = ent.return_number;
+                        txtReturnedQty.Text = ent.return_quantity.ToString(CultureInfo.InvariantCulture);
+                        cmbReturnedBranch.Text = ent.branch_details;
+                        cmbReturnedWarehouse.Text = ent.destination;
+                        txtReturnedStatus.Text = ent.status;
+                        txtReturnedRemarks.Text = ent.remarks;
+                        dkpReturedDate.Value = ent.return_date;
+                        var img = searchProductImg(barcode);
+                        var imgLocation = img.img_location;
+                        if (imgLocation.Length > 0)
+                        {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            imgReturn.ImageLocation = location;
+                            imgReturn.Refresh();
+                        }
+                        else
+                        {
+                            imgReturn.Image = null;
                         }
 
                     }
@@ -1083,7 +1172,35 @@ namespace Inventory.MainForm
                 gridDelivery.Columns[10].Width = 80;
             }
         }
-
+        private void BindReturnWareHouse()
+        {
+            clearGridReturn();
+            var list = warehouse_return.Select(r => new
+            {
+                Id = r.return_id,
+                Code = r.return_code,
+                Barcode = r.product_code,
+                Item = r.product_name,
+                Qty = r.return_quantity,
+                Destination = r.destination,
+                Status = r.status,
+                Remarks = r.remarks,
+                ReturnDate = r.return_date
+            }).ToList();
+            gridControlReturn.DataSource = list;
+            gridControlReturn.Update();
+            if (gridReturn.RowCount > 0)
+            {
+                gridReturn.Columns[0].Width = 40;
+                gridReturn.Columns[1].Width = 60;
+                gridReturn.Columns[2].Width = 120;
+                gridReturn.Columns[3].Width = 400;
+                gridReturn.Columns[4].Width = 40;
+                gridReturn.Columns[5].Width = 100;
+                gridReturn.Columns[6].Width = 100;
+                gridReturn.Columns[7].Width = 100;
+            }
+        }
         private void bindSalesParticular()
         {
             gridControlSales.Update();
@@ -1137,6 +1254,13 @@ namespace Inventory.MainForm
             gridControlDelivery.DataSource = null;
             gridControlDelivery.DataSource = "";
             gridDelivery.Columns.Clear();
+        }
+
+        private void clearGridReturn()
+        {
+            gridControlReturn.DataSource = null;
+            gridControlReturn.DataSource = "";
+            gridReturn.Columns.Clear();
         }
 
         private void clearGridSales()
@@ -1196,7 +1320,6 @@ namespace Inventory.MainForm
                 }
             }
         }
-
 
         private void editInventory()
         {
