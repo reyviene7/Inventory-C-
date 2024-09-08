@@ -872,7 +872,7 @@
             this.ribSTATUS.ItemLinks.Add(this.barDate);
             this.ribSTATUS.ItemLinks.Add(this.barTime);
             this.ribSTATUS.ItemLinks.Add(this.barStatus);
-            this.ribSTATUS.Location = new System.Drawing.Point(0, 845);
+            this.ribSTATUS.Location = new System.Drawing.Point(0, 804);
             this.ribSTATUS.Name = "ribSTATUS";
             this.ribSTATUS.Ribbon = this.rbControl;
             this.ribSTATUS.Size = new System.Drawing.Size(1588, 27);
@@ -1535,11 +1535,11 @@
             this.gUSE.Controls.Add(this.txtRetail);
             this.gUSE.Controls.Add(this.label4);
             this.gUSE.Controls.Add(this.lblBarcode);
-            this.gUSE.Location = new System.Drawing.Point(2, 21);
+            this.gUSE.Location = new System.Drawing.Point(0, 21);
             this.gUSE.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gUSE.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gUSE.Name = "gUSE";
-            this.gUSE.Size = new System.Drawing.Size(1586, 672);
+            this.gUSE.Size = new System.Drawing.Size(1583, 630);
             this.gUSE.TabIndex = 234;
             this.gUSE.Text = "Warehouse";
             // 
@@ -1549,7 +1549,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(1105, 36);
+            this.label8.Location = new System.Drawing.Point(1102, 36);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 21);
             this.label8.TabIndex = 245;
@@ -1559,7 +1559,7 @@
             // 
             this.txtCostPrice.Enabled = false;
             this.txtCostPrice.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
-            this.txtCostPrice.Location = new System.Drawing.Point(1199, 33);
+            this.txtCostPrice.Location = new System.Drawing.Point(1196, 33);
             this.txtCostPrice.Name = "txtCostPrice";
             this.txtCostPrice.Size = new System.Drawing.Size(114, 29);
             this.txtCostPrice.TabIndex = 251;
@@ -1578,7 +1578,7 @@
             // 
             this.txtLastCost.Enabled = false;
             this.txtLastCost.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
-            this.txtLastCost.Location = new System.Drawing.Point(1199, 3);
+            this.txtLastCost.Location = new System.Drawing.Point(1196, 3);
             this.txtLastCost.Name = "txtLastCost";
             this.txtLastCost.Size = new System.Drawing.Size(114, 29);
             this.txtLastCost.TabIndex = 247;
@@ -1590,7 +1590,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(1106, 6);
+            this.label7.Location = new System.Drawing.Point(1103, 6);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 21);
             this.label7.TabIndex = 244;
@@ -1612,7 +1612,7 @@
             // 
             this.txtWholeSale.Enabled = false;
             this.txtWholeSale.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
-            this.txtWholeSale.Location = new System.Drawing.Point(989, 33);
+            this.txtWholeSale.Location = new System.Drawing.Point(977, 33);
             this.txtWholeSale.Name = "txtWholeSale";
             this.txtWholeSale.Size = new System.Drawing.Size(114, 29);
             this.txtWholeSale.TabIndex = 246;
@@ -1646,7 +1646,7 @@
             this.xInventory.Location = new System.Drawing.Point(21, 129);
             this.xInventory.Name = "xInventory";
             this.xInventory.SelectedTabPage = this.xtraPending;
-            this.xInventory.Size = new System.Drawing.Size(1565, 543);
+            this.xInventory.Size = new System.Drawing.Size(1565, 501);
             this.xInventory.TabIndex = 242;
             this.xInventory.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraPending,
@@ -1662,7 +1662,7 @@
             this.xtraPending.Controls.Add(this.groupInventoryDetail);
             this.xtraPending.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraPending.ImageOptions.Image")));
             this.xtraPending.Name = "xtraPending";
-            this.xtraPending.Size = new System.Drawing.Size(1563, 516);
+            this.xtraPending.Size = new System.Drawing.Size(1563, 474);
             this.xtraPending.Text = "Warehouse Delivery";
             // 
             // groupInventoryDetail
@@ -1676,7 +1676,7 @@
             this.groupInventoryDetail.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupInventoryDetail.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupInventoryDetail.Name = "groupInventoryDetail";
-            this.groupInventoryDetail.Size = new System.Drawing.Size(1563, 516);
+            this.groupInventoryDetail.Size = new System.Drawing.Size(1563, 474);
             this.groupInventoryDetail.TabIndex = 173;
             // 
             // gridCtrlPending
@@ -1689,7 +1689,7 @@
             this.gridCtrlPending.Location = new System.Drawing.Point(3, 18);
             this.gridCtrlPending.MainView = this.cardPending;
             this.gridCtrlPending.Name = "gridCtrlPending";
-            this.gridCtrlPending.Size = new System.Drawing.Size(1557, 495);
+            this.gridCtrlPending.Size = new System.Drawing.Size(1557, 453);
             this.gridCtrlPending.TabIndex = 237;
             this.gridCtrlPending.TabStop = false;
             this.gridCtrlPending.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2388,7 +2388,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(887, 36);
+            this.label5.Location = new System.Drawing.Point(875, 36);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 21);
             this.label5.TabIndex = 240;
@@ -2398,7 +2398,7 @@
             // 
             this.txtRetail.Enabled = false;
             this.txtRetail.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
-            this.txtRetail.Location = new System.Drawing.Point(989, 3);
+            this.txtRetail.Location = new System.Drawing.Point(977, 3);
             this.txtRetail.Name = "txtRetail";
             this.txtRetail.Size = new System.Drawing.Size(114, 29);
             this.txtRetail.TabIndex = 238;
@@ -2410,7 +2410,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(887, 6);
+            this.label4.Location = new System.Drawing.Point(875, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 21);
             this.label4.TabIndex = 237;
@@ -2469,7 +2469,7 @@
             this.spCON.Panel2.Controls.Add(this.groupGrid);
             this.spCON.Panel2.Controls.Add(this.rbControl);
             this.spCON.Panel2.Controls.Add(this.ribSTATUS);
-            this.spCON.Size = new System.Drawing.Size(1592, 886);
+            this.spCON.Size = new System.Drawing.Size(1592, 845);
             this.spCON.SplitterPosition = 0;
             this.spCON.TabIndex = 95;
             // 
@@ -2479,7 +2479,7 @@
             this.groupImage.Appearance.Options.UseBackColor = true;
             this.groupImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.groupImage.Controls.Add(this.imgPreview);
-            this.groupImage.Location = new System.Drawing.Point(1315, 50);
+            this.groupImage.Location = new System.Drawing.Point(1312, 50);
             this.groupImage.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupImage.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupImage.Name = "groupImage";
@@ -2512,7 +2512,7 @@
             this.groupGrid.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupGrid.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupGrid.Name = "groupGrid";
-            this.groupGrid.Size = new System.Drawing.Size(1588, 692);
+            this.groupGrid.Size = new System.Drawing.Size(1588, 651);
             this.groupGrid.TabIndex = 173;
             // 
             // groupOperator
@@ -2540,7 +2540,7 @@
             this.groupOperator.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupOperator.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupOperator.Name = "groupOperator";
-            this.groupOperator.Size = new System.Drawing.Size(1296, 68);
+            this.groupOperator.Size = new System.Drawing.Size(1295, 68);
             this.groupOperator.TabIndex = 235;
             this.groupOperator.Text = "Inventory";
             // 
@@ -2550,7 +2550,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.DimGray;
-            this.label11.Location = new System.Drawing.Point(953, 37);
+            this.label11.Location = new System.Drawing.Point(951, 37);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(106, 21);
             this.label11.TabIndex = 254;
@@ -2562,7 +2562,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.DimGray;
-            this.label10.Location = new System.Drawing.Point(953, 8);
+            this.label10.Location = new System.Drawing.Point(951, 8);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(119, 21);
             this.label10.TabIndex = 253;
@@ -2575,7 +2575,7 @@
             this.dpkUpdated.Enabled = false;
             this.dpkUpdated.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkUpdated.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpkUpdated.Location = new System.Drawing.Point(1080, 34);
+            this.dpkUpdated.Location = new System.Drawing.Point(1078, 34);
             this.dpkUpdated.Name = "dpkUpdated";
             this.dpkUpdated.Size = new System.Drawing.Size(212, 29);
             this.dpkUpdated.TabIndex = 252;
@@ -2587,7 +2587,7 @@
             this.dkpDeliveryDate.Enabled = false;
             this.dkpDeliveryDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDeliveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDeliveryDate.Location = new System.Drawing.Point(1080, 3);
+            this.dkpDeliveryDate.Location = new System.Drawing.Point(1078, 3);
             this.dkpDeliveryDate.Name = "dkpDeliveryDate";
             this.dkpDeliveryDate.Size = new System.Drawing.Size(212, 29);
             this.dkpDeliveryDate.TabIndex = 251;
@@ -2680,7 +2680,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1587, 846);
             this.Controls.Add(this.spCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmManagement";
