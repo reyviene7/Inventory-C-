@@ -309,7 +309,7 @@
             this.txtProductName.Location = new System.Drawing.Point(132, 83);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(269, 29);
-            this.txtProductName.TabIndex = 5;
+            this.txtProductName.TabIndex = 3;
             // 
             // cmbWarehouse
             // 
@@ -363,6 +363,7 @@
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(269, 29);
             this.txtRemarks.TabIndex = 14;
+            this.txtRemarks.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRemarks_KeyDown);
             // 
             // label7
             // 
@@ -409,7 +410,7 @@
             this.txtDeliveryQty.Location = new System.Drawing.Point(132, 203);
             this.txtDeliveryQty.Name = "txtDeliveryQty";
             this.txtDeliveryQty.Size = new System.Drawing.Size(269, 29);
-            this.txtDeliveryQty.TabIndex = 12;
+            this.txtDeliveryQty.TabIndex = 7;
             this.txtDeliveryQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDeliveryQty_KeyDown);
             // 
             // label10
@@ -433,7 +434,8 @@
             this.txtItemPrice.Location = new System.Drawing.Point(132, 173);
             this.txtItemPrice.Name = "txtItemPrice";
             this.txtItemPrice.Size = new System.Drawing.Size(269, 29);
-            this.txtItemPrice.TabIndex = 11;
+            this.txtItemPrice.TabIndex = 6;
+            this.txtItemPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtItemPrice_KeyDown);
             // 
             // label9
             // 
@@ -482,7 +484,7 @@
             this.cmbProductStatus.Location = new System.Drawing.Point(541, 112);
             this.cmbProductStatus.Name = "cmbProductStatus";
             this.cmbProductStatus.Size = new System.Drawing.Size(269, 29);
-            this.cmbProductStatus.TabIndex = 10;
+            this.cmbProductStatus.TabIndex = 12;
             this.cmbProductStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductStatus_KeyDown);
             // 
             // imgPRO
@@ -508,7 +510,7 @@
             this.cmbWarehouseBranch.Name = "cmbWarehouseBranch";
             this.cmbWarehouseBranch.Size = new System.Drawing.Size(269, 29);
             this.cmbWarehouseBranch.TabIndex = 9;
-            this.cmbWarehouseBranch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbDIS_KeyDown);
+            this.cmbWarehouseBranch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbWarehouseBranch_KeyDown);
             // 
             // label13
             // 
@@ -556,7 +558,7 @@
             this.dkpDeliveryDate.Name = "dkpDeliveryDate";
             this.dkpDeliveryDate.Size = new System.Drawing.Size(269, 29);
             this.dkpDeliveryDate.TabIndex = 15;
-            this.dkpDeliveryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpPUR_KeyDown);
+            this.dkpDeliveryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDeliveryDate_KeyDown);
             // 
             // label3
             // 
@@ -603,8 +605,7 @@
             this.txtReceiptNum.Location = new System.Drawing.Point(541, 82);
             this.txtReceiptNum.Name = "txtReceiptNum";
             this.txtReceiptNum.Size = new System.Drawing.Size(269, 29);
-            this.txtReceiptNum.TabIndex = 7;
-            this.txtReceiptNum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtREC_KeyDown);
+            this.txtReceiptNum.TabIndex = 11;
             // 
             // txtLastCost
             // 
@@ -615,8 +616,8 @@
             this.txtLastCost.Location = new System.Drawing.Point(132, 143);
             this.txtLastCost.Name = "txtLastCost";
             this.txtLastCost.Size = new System.Drawing.Size(269, 29);
-            this.txtLastCost.TabIndex = 6;
-            this.txtLastCost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDEL_KeyDown);
+            this.txtLastCost.TabIndex = 5;
+            this.txtLastCost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLastCost_KeyDown);
             // 
             // label2
             // 
@@ -651,7 +652,7 @@
             this.txtDeliveryCode.Location = new System.Drawing.Point(541, 52);
             this.txtDeliveryCode.Name = "txtDeliveryCode";
             this.txtDeliveryCode.Size = new System.Drawing.Size(269, 29);
-            this.txtDeliveryCode.TabIndex = 3;
+            this.txtDeliveryCode.TabIndex = 10;
             // 
             // gbCON
             // 
