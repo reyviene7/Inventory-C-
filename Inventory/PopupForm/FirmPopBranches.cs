@@ -81,6 +81,11 @@ namespace Inventory.PopupForm
                 DialogResult = DialogResult.Cancel;
                 Close();
             }
+            if (_management == true)
+            {
+                DialogResult = DialogResult.Cancel;
+                Close();
+            }
         }
     }
 }
