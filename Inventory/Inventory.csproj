@@ -326,18 +326,6 @@
     <Compile Include="MainForm\FirmProducts.Designer.cs">
       <DependentUpon>FirmProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm\FirmDepot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm\FirmDepot.Designer.cs">
-      <DependentUpon>FirmDepot.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm\FirmDepotReturn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm\FirmDepotReturn.Designer.cs">
-      <DependentUpon>FirmDepotReturn.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm\FirmWarehouse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -571,12 +559,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FirmProducts.resx">
       <DependentUpon>FirmProducts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm\FirmDepot.resx">
-      <DependentUpon>FirmDepot.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm\FirmDepotReturn.resx">
-      <DependentUpon>FirmDepotReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FirmWarehouse.resx">
       <DependentUpon>FirmWarehouse.cs</DependentUpon>
