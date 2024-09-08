@@ -207,47 +207,6 @@ namespace Inventory.MainForm
             dkpDateRegister.BackColor = Color.DimGray;
         }
 
-        private void InputWhitimg()
-        {
-            txtImageId.BackColor = Color.White;
-            txtImageCode.BackColor = Color.White;
-            txtImageName.BackColor = Color.White;
-            txtImageLocation.BackColor = Color.White;
-   
-        }
-        private void InputEnabimg() {
-            txtImageCode.Enabled = true;
-            txtImageName.Enabled = true;
-            txtImageLocation.Enabled = false;
-     
-        }
-        private void InputDisbimg()
-        {
-            txtImageCode.Enabled = false;
-            txtImageName.Enabled = false;
-            txtImageLocation.Enabled = false;
-         
-        }
-        private void InputCleaimg()
-        {
-            txtImageId.Clear();
-            if (_add == false)
-            {
-                txtImageCode.Clear();
-            }
-            txtImageName.Clear();
-            txtImageLocation.Clear();
-          
-        }
-        private void InputDimGimg()
-        {
-            txtImageId.BackColor = Color.DimGray;
-            txtImageCode.BackColor = Color.DimGray;
-            txtImageName.BackColor = Color.DimGray;
-            txtImageLocation.BackColor = Color.DimGray;
- 
-        }
-
 
         private string GetLastImgId()
         {
@@ -297,14 +256,12 @@ namespace Inventory.MainForm
             var lastImageId = FetchUtils.getLastImageId();
             var alphaNumeric = new GenerateAlpaNum("IP", 3, lastImageId);
             alphaNumeric.Increment();
-            txtImageCode.Text = alphaNumeric.ToString();
         }
 
 
         private void ButAdd()
         {
             ButtonAdd();
-            BntEnabled();
             _add = true;
             _edt = false;
             _del = false;
@@ -322,10 +279,6 @@ namespace Inventory.MainForm
             if (_cat == false && _img)
             {
                 GenerateImgCode();
-                InputEnabimg();
-                InputWhitimg();
-                InputCleaimg();
-                txtImageName.Focus();
             }
 
         }
@@ -341,12 +294,6 @@ namespace Inventory.MainForm
                 InputWhit();
                 gridControl.Enabled = false;
             }
-            if (_cat == false && _img)
-            {
-                InputEnabimg();
-                InputWhitimg();
-           
-            }
         }
         private void ButDel()
         {
@@ -361,9 +308,6 @@ namespace Inventory.MainForm
         private void ButClr()
         {
             ButtonClr();
-            InputEnabimg();
-            InputWhitimg();
-            InputCleaimg();
             gridControl.Enabled = true;
             cmbProductImage.DataBindings.Clear();
         }
@@ -373,10 +317,7 @@ namespace Inventory.MainForm
             {
                 SavCat();
             }
-            if (_cat == false && _img)
-            {
-                SavImg();
-            }      
+               
         }
         private void ButCan()
         {
@@ -429,44 +370,6 @@ namespace Inventory.MainForm
         }
 #endregion
 
-#region SaveImages
-
-        private void SavImg()
-        {
-            if (_add && _img && _edt == false && _del == false && _cat == false)
-            {
-                ButtonSav();
-                InputDisbimg();
-                InputDimGimg();
-                InputCleaimg();
-           
-            }
-            if (_add == false && _edt && _img && _del == false && _cat == false)
-            {
-                DataImgUpdate();
-                ButtonSav();
-                InputDisbimg();
-                InputDimG();
-                InputCleaimg();
-             
-            }
-            if (_add == false && _edt == false && _del && _img && _cat == false)
-            {
-                DataImgDelete();
-                ButtonSav();
-                InputDisbimg();
-                InputDimGimg();
-                InputCleaimg();
-            
-            }
-            _add = false;
-            _edt = false;
-            _del = false;
-            _img = true;
-            _cat = false;
-          
-        }
-#endregion  
 
         private void BindCategoryList()
         {
@@ -551,105 +454,180 @@ namespace Inventory.MainForm
             }
         }
 
-
-        #region ImgBrowse
-        private void BrwImage()
+        private void tabCategory_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
+            if (tabCategory.SelectedTabPage == xtraCategory)
+            {
+                _cat = true;
+                _img = false;
+                gridControl.Enabled = true;
+             
+            }
           
-            imgOFD.Title = @"Open Image";
-            imgOFD.Filter = Messages.ImageFormat;
-            imgOFD.DefaultExt = "*.jpg";
-            imgOFD.FilterIndex = 1;
-            imgOFD.FileName = "";
-            var result = imgOFD.ShowDialog();
-            if (result == DialogResult.OK)
-           {
-                var imgFile = imgOFD.FileName;
-                txtImageLocation.Text = imgFile;
-                var objImg  = Image.FromFile(@imgFile);
-                var imgType = Path.GetExtension(imgFile);
-                _imgWidth   = objImg.Width;
-                _imgHeight  = objImg.Height;
-                _location   = imgFile;
-                _code       = txtImageCode.Text.Trim(' ');
-                _title      = txtImageName.Text.Trim(' ');
-                _type       = imgType.Trim(' ');
-                objImg.Dispose();
+        }
+        private ViewImageProduct searchProductImg(string param)
+        {
+            return imgList.FirstOrDefault(img => img.image_code == param);
+        }
+
+        private ProductImages searchProductImageId(int image_id)
+        {
+            return listProductImage.FirstOrDefault(product_image => product_image.image_id == image_id);
+        }
+
+        private void dkpREG_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Image Register", Messages.TitleCategory);
+        }
+
+        private void dkpREG_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Image Register", Messages.TitleCategory);
             }
         }
-        #endregion
 
-#region ImgCRUD
-
-        private void DataImgUpdate()
+        private ViewCategoryImage searchCategoryId(int id)
         {
-            using (var session = new DalSession())
+            return listCategory.FirstOrDefault(view_category_image => view_category_image.category_id == id);
+        }
+
+        private void gridCategory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (gridCategory.RowCount > 0)
             {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
                 try
                 {
-                    var imgId = Convert.ToInt32(txtImageId.Text);
-                    var repository = new Repository<ProductImages>(unWork);
-                    var fileStream = new FileStream(_location, FileMode.Open);
-                    var binaryReader = new BinaryReader(fileStream);
-                    var image = binaryReader.ReadBytes((int)fileStream.Length);
-                    var que = repository.Id(imgId);
-                        que.image_code = _code;
-                        que.title = _title;
-                        que.img_type = _type;
-                        que.img_location = _location;
-                    
-                    var result = repository.Update(que);
-                    if (result)
+                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (id.Length > 0)
                     {
-                        PopupNotification.PopUpMessages(1, "Image Name: " + txtImageName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
-                        Messages.TitleSuccessUpdate);
-                        unWork.Commit();
+                        var category_id = int.Parse(id);
+                        var category = searchCategoryId(category_id);
+                        var categoryCode = category.category_code;
+                        int categoryId = category.category_id;
+                        txtCategoryId.Text = categoryId.ToString();
+                        txtCategoryCode.Text = categoryCode;
+                        txtCategoryDetails.Text = category.category_details;
+                        dkpDateRegister.Value = category.date_register;
                     }
                 }
                 catch (Exception ex)
                 {
-                    unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedUpdate);
+                    Console.WriteLine(ex.ToString());
                 }
             }
         }
-        private void DataImgDelete()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var imgId = Convert.ToInt32(txtImageId.Text);
-                    var repository = new Repository<ProductImages>(unWork);
-                    var que = repository.Id(imgId);
-                    var result = repository.Delete(que);
-                    if (result)
-                    {
-                        PopupNotification.PopUpMessages(1, "Image Name: " + txtImageName.Text.Trim(' ') + " " + Messages.SuccessDelete,
-                        Messages.TitleSuccessDelete);
-                        unWork.Commit();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedDelete);
-                }
-            }
-        }
-#endregion
 
-#region DataCrud
+        private void gridCategory_RowClick(object sender, RowClickEventArgs e)
+        {
+            InputWhit();
+        }
+
+        private void gridCategory_LostFocus(object sender, EventArgs e)
+        {
+            InputDimG();
+        }
+
+       
+
+        //CATEGORY LEAVE
+        private void cmbIMG_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbProductImage.Text.Length > 0)
+            {
+                var imgId = ProductImageId(cmbProductImage.Text);
+            }
+        }
+
+        private void bntAdd_Click(object sender, EventArgs e)
+        {
+            ButAdd();
+        }
+
+        private void bntUpdate_Click(object sender, EventArgs e)
+        {
+            ButUpd();
+        }
+
+        private void bntSave_Click(object sender, EventArgs e)
+        {
+            ButSav();
+        }
+
+        private void bntCancel_Click(object sender, EventArgs e)
+        {
+            ButCan();
+        }
+
+        private void bntClear_Click(object sender, EventArgs e)
+        {
+            ButClr();
+        }
+
+        private void bntDelete_Click(object sender, EventArgs e)
+        {
+            if (_cat && _img == false)
+            {
+                InputWhit();
+                var que =
+                    PopupNotification.PopUpMessageQuestion(
+                        "Are you sure you want to Delete Category Code: " + txtCategoryCode.Text.Trim(' ') + " " + "?", "Category Details");
+                if (que)
+                {
+                    ButDel();
+                    gridControl.Enabled = false;
+                }
+                else
+                {
+                    ButCan();
+                    gridControl.Enabled = true;
+                }
+            }
+        }
+
+        private void bntHome_Click(object sender, EventArgs e)
+        {
+            Main.Show();
+            Close();
+        }
+
+        private void cmbProductImage_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                BindImage();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
+            }
+        }
+
+        private void cmbProductImage_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
+        }
+
+        private void txtCategoryDetails_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtCategoryDetails, cmbProductImage, "Category Details", Messages.TitleCategory);
+            }
+        }
+
+        private void txtCategoryDetails_Leave(object sender, EventArgs e)
+        {
+            InputManipulation.InputBoxLeave(txtCategoryDetails, cmbProductImage, "Category Details", Messages.TitleCategory);
+        }
 
         private void DataInsert()
         {
             using (var session = new DalSession())
             {
-                var unWork = session.UnitofWrk; 
+                var unWork = session.UnitofWrk;
                 unWork.Begin();
                 try
                 {
@@ -657,10 +635,10 @@ namespace Inventory.MainForm
                     var repository = new Repository<Category>(unWork);
                     var category = new Category()
                     {
-                        category_code    = txtCategoryCode.Text.Trim(' '),
-                        category_details = txtCategoryDetails.Text.Trim(' '), 
-                        image_id         = ProductImageId(imgName),
-                        date_register    = dkpDateRegister.Value.Date
+                        category_code = txtCategoryCode.Text.Trim(' '),
+                        category_details = txtCategoryDetails.Text.Trim(' '),
+                        image_id = ProductImageId(imgName),
+                        date_register = dkpDateRegister.Value.Date
                     };
                     var result = repository.Add(category);
                     if (result > 0)
@@ -741,235 +719,6 @@ namespace Inventory.MainForm
                     PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedDelete);
                 }
             }
-        }
-#endregion
-
-        #region ImageButton
-
-        private void BntEnabled()
-        {
-            
-        }
-        #endregion
-
-
-      
-
-        private void bntUpload_Click(object sender, EventArgs e)
-        {
-            BrwImage();
-        }
-        private void tabCategory_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-            if (tabCategory.SelectedTabPage == xtraCategory)
-            {
-                _cat = true;
-                _img = false;
-                gridControl.Enabled = true;
-             
-            }
-          
-        }
-        private ViewImageProduct searchProductImg(string param)
-        {
-            return imgList.FirstOrDefault(img => img.image_code == param);
-        }
-
-        private ProductImages searchProductImageId(int image_id)
-        {
-            return listProductImage.FirstOrDefault(product_image => product_image.image_id == image_id);
-        }
-
-        
-
-        private void gridImage_RowClick(object sender, RowClickEventArgs e)
-        {
-            InputWhitimg();
-        }
-
-        private void dkpREG_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Image Register", Messages.TitleCategory);
-        }
-
-        private void dkpREG_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Image Register", Messages.TitleCategory);
-            }
-        }
-
-        
-
-        private void gridImage_LostFocus(object sender, EventArgs e)
-        {
-            InputDimGimg();
-        }
-
-        private ViewCategoryImage searchCategoryId(int id)
-        {
-            return listCategory.FirstOrDefault(view_category_image => view_category_image.category_id == id);
-        }
-
-        private void gridCategory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            if (gridCategory.RowCount > 0)
-            {
-                try
-                {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    if (id.Length > 0)
-                    {
-                        var category_id = int.Parse(id);
-                        var category = searchCategoryId(category_id);
-                        var categoryCode = category.category_code;
-                        int categoryId = category.category_id;
-                        txtCategoryId.Text = categoryId.ToString();
-                        txtCategoryCode.Text = categoryCode;
-                        txtCategoryDetails.Text = category.category_details;
-                        dkpDateRegister.Value = category.date_register;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
-        }
-
-        private void gridCategory_RowClick(object sender, RowClickEventArgs e)
-        {
-            InputWhit();
-        }
-
-        private void gridCategory_LostFocus(object sender, EventArgs e)
-        {
-            InputDimG();
-        }
-
-       
-
-        //CATEGORY LEAVE
-        private void cmbIMG_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbProductImage.Text.Length > 0)
-            {
-                var imgId = ProductImageId(cmbProductImage.Text);
-            }
-        }
-
-        private void txtImageName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtImageName, txtImageLocation, "Image Name", Messages.TitleProductImage);
-            }
-        }
-
-        private void txtImageName_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(txtImageName, txtImageLocation, "Image Name", Messages.TitleProductImage);
-        }
-
-        private void bntAdd_Click(object sender, EventArgs e)
-        {
-            ButAdd();
-        }
-
-        private void bntUpdate_Click(object sender, EventArgs e)
-        {
-            ButUpd();
-        }
-
-        private void bntSave_Click(object sender, EventArgs e)
-        {
-            ButSav();
-        }
-
-        private void bntCancel_Click(object sender, EventArgs e)
-        {
-            ButCan();
-        }
-
-        private void bntClear_Click(object sender, EventArgs e)
-        {
-            ButClr();
-        }
-
-        private void bntDelete_Click(object sender, EventArgs e)
-        {
-            if (_cat && _img == false)
-            {
-                InputWhit();
-                var que =
-                    PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delete Category Code: " + txtCategoryCode.Text.Trim(' ') + " " + "?", "Category Details");
-                if (que)
-                {
-                    ButDel();
-                    gridControl.Enabled = false;
-                }
-                else
-                {
-                    ButCan();
-                    gridControl.Enabled = true;
-                }
-            }
-            if (_cat == false && _img)
-            {
-                InputWhitimg();
-                var que =
-                    PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delete Image Name: " + txtImageName.Text.Trim(' ') + " " + "?", "Image Details");
-                if (que)
-                {
-                    ButDel();
-                  
-                }
-                else
-                {
-                    ButCan();
-                   
-                }
-            }
-        }
-
-        private void bntHome_Click(object sender, EventArgs e)
-        {
-            Main.Show();
-            Close();
-        }
-
-        private void cmbProductImage_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                BindImage();
-            }
-            if (e.KeyCode == Keys.Enter)
-            {
-
-                InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
-            }
-        }
-
-        private void cmbProductImage_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
-        }
-
-        private void txtCategoryDetails_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtCategoryDetails, cmbProductImage, "Category Details", Messages.TitleCategory);
-            }
-        }
-
-        private void txtCategoryDetails_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(txtCategoryDetails, cmbProductImage, "Category Details", Messages.TitleCategory);
         }
     }
 }
