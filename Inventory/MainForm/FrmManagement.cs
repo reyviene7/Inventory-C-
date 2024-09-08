@@ -16,6 +16,7 @@ namespace Inventory.MainForm
     public partial class FrmManagement : Form
     {
         private FirmMain _main;
+        private bool _isCanceled;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewReturnWarehouse> _return_list;
@@ -372,13 +373,20 @@ namespace Inventory.MainForm
 
         private void ShowBranch()
         {
-            var pop = new FirmPopBranches(_userId, 1)
+            var pop = new FirmPopBranches(_userId, _userType)
             {
                 management = this,
                 formManagement = true
             };
             pop.ShowDialog();
+            _isCanceled = pop.DialogResult == DialogResult.Cancel;
 
+            if (_isCanceled)
+            {
+                MessageBox.Show("Operation canceled by the user.", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Show();
+                Close();
+            }
         }
 
         private void barWarehouse_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
