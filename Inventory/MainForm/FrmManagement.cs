@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Layout;
 
 namespace Inventory.MainForm
 {
@@ -94,7 +95,7 @@ namespace Inventory.MainForm
         {
             gridCtrlAccepted.DataSource = null;
             gridCtrlAccepted.DataSource = "";
-            layoutAccepted.Columns.Clear();
+            gridAccepted.Columns.Clear();
         }
 
         private void clearGridView()
@@ -575,7 +576,25 @@ namespace Inventory.MainForm
                 {
                     imgPreview.Image = null;
                 }
-            }    
+            }
+        }
+
+        private void gridAccepted_DoubleClick(object sender, EventArgs e)
+        {
+            if (gridAccepted.RowCount > 0)
+            {
+                splashScreen.ShowWaitForm();
+                var id = ((LayoutView)sender).GetFocusedRowCellValue("Id")?.ToString();
+                var Received = EntityUtils.getAccepted(int.Parse(id));
+                var pop = new FrmPopAccept(_userId, 1, Received)
+                {
+                    main = this
+                };
+                splashScreen.CloseWaitForm();
+                pop.ShowDialog();
+                _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
+                bindAcceptedDelivery();
+            }
         }
 
         private void gridReturn_DoubleClick(object sender, EventArgs e)

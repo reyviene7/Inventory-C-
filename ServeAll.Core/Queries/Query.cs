@@ -295,6 +295,7 @@
         public const string getCustomerList = "select customer_id, customer_name from view_poscustomers";
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getWarehouseDeliveryById = "SELECT * FROM view_warehouse_delivery WHERE delivery_id = @deliveryId";
+        public const string getAcceptedDeliveryById = "SELECT * FROM view_accepted_delivery WHERE received_id = @receivedId";
         public const string getInventoryById = "SELECT * FROM view_inventory WHERE inventory_id = @inventoryId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
