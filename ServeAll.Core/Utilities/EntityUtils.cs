@@ -59,6 +59,26 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+
+        public static ViewAcceptedDelivery getAccepted(int receivedId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewAcceptedDelivery>(unWork);
+                    var parameter = new { receivedId = receivedId };
+                    return repository.SearchBy(Query.getAcceptedDeliveryById, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
+        }
+
         public static ViewInventory getInventory(int inventoryId)
         {
             using (var session = new DalSession())

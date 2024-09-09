@@ -99,7 +99,7 @@
             this.groupLauncher.Name = "groupLauncher";
             this.groupLauncher.Size = new System.Drawing.Size(931, 582);
             this.groupLauncher.TabIndex = 6;
-            this.groupLauncher.Text = "Stock Delivery From Warehouse";
+            this.groupLauncher.Text = "Stock Return From Inventory";
             // 
             // label10
             // 
@@ -210,7 +210,6 @@
             // 
             // txtInventoryQuantity
             // 
-            this.txtInventoryQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtInventoryQuantity.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtInventoryQuantity.Location = new System.Drawing.Point(523, 162);
             this.txtInventoryQuantity.Name = "txtInventoryQuantity";
@@ -231,7 +230,6 @@
             // 
             // txtReturnRemarks
             // 
-            this.txtReturnRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReturnRemarks.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtReturnRemarks.Location = new System.Drawing.Point(523, 265);
             this.txtReturnRemarks.Name = "txtReturnRemarks";
@@ -254,7 +252,6 @@
             // txtReturnQuantity
             // 
             this.txtReturnQuantity.BackColor = System.Drawing.Color.Yellow;
-            this.txtReturnQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReturnQuantity.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtReturnQuantity.Location = new System.Drawing.Point(523, 195);
             this.txtReturnQuantity.Name = "txtReturnQuantity";
@@ -288,7 +285,6 @@
             // 
             // txtReturnItem
             // 
-            this.txtReturnItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReturnItem.Enabled = false;
             this.txtReturnItem.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtReturnItem.Location = new System.Drawing.Point(523, 55);
@@ -310,7 +306,6 @@
             // 
             // txtReturnBarcode
             // 
-            this.txtReturnBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReturnBarcode.Enabled = false;
             this.txtReturnBarcode.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtReturnBarcode.Location = new System.Drawing.Point(523, 22);
