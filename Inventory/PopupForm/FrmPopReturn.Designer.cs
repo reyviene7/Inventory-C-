@@ -259,6 +259,7 @@
             this.txtReturnQuantity.Size = new System.Drawing.Size(396, 32);
             this.txtReturnQuantity.TabIndex = 6;
             this.txtReturnQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReturnQuantity_KeyDown);
+            this.txtReturnQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReturnQuantity_KeyPress);
             // 
             // label5
             // 
