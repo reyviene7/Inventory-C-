@@ -217,6 +217,13 @@ namespace Inventory.PopupForm
 
         private void recievedDelivery()
         {
+            if (string.IsNullOrWhiteSpace(txtRetailPrice.Text) ||
+                string.IsNullOrWhiteSpace(txtWholePrice.Text) ||
+                string.IsNullOrWhiteSpace(txtQuantity.Text))
+            {
+                PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
+                return;
+            }
             decimal costPrice = decimal.Parse(txtCostPrice.Text);
             decimal retailPrice = decimal.Parse(txtRetailPrice.Text);
             if (retailPrice < costPrice)

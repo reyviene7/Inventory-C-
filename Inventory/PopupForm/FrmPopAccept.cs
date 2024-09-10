@@ -157,6 +157,11 @@ namespace Inventory.PopupForm
 
         private void receivedInventory()
         {
+            if (string.IsNullOrWhiteSpace(txtItemQty.Text))
+            {
+                PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
+                return;
+            }
             var receiveId = _accepted_list.received_id;
             if (receiveId > 0)
             {
