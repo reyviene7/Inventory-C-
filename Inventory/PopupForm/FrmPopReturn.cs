@@ -20,6 +20,7 @@ namespace Inventory.PopupForm
         private IEnumerable<ViewImageProduct> _imgList;
         private IEnumerable<ProductStatus> _productStatus;
         private IEnumerable<DeliveryStatus> _delivery_status;
+        private readonly ViewReturnWarehouse _return_list;
 
         public FrmManagement main
         {
@@ -27,11 +28,11 @@ namespace Inventory.PopupForm
             set { _main = value; }
         }
 
-        public FrmPopReturn(int userId, int userType, ViewInventory Inventory)
+        public FrmPopReturn(int userId, int userType, ViewReturnWarehouse ReturnList)
         {
             _userId = userId;
             _userType = userType;
-            _inventory = Inventory;
+            _return_list = ReturnList;
             InitializeComponent();
             GenerateReturn();
         }
@@ -41,12 +42,13 @@ namespace Inventory.PopupForm
             _imgList = EnumerableUtils.getImgProductList();
             _productStatus = EnumerableUtils.getProductStatus();
             _delivery_status = EnumerableUtils.getWarehouseDelivery();
-            var barcode = _inventory.product_code;
+            var barcode = _return_list.product_code;
             txtReturnBarcode.Text = barcode;
-            txtReturnItem.Text = _inventory.product_name;
-            cmbReturnBranch.Text = _inventory.branch_details;
-            txtInventoryQuantity.Text = _inventory.quantity.ToString();
-            cmbReturnItemStatus.Text = _inventory.status;
+            txtReturnItem.Text = _return_list.product_name;
+            cmbReturnBranch.Text = _return_list.branch_details;
+            txtReturnNumber.Text = _return_list.return_number;
+            txtReturnQuantity.Text = _return_list.return_quantity.ToString();
+            cmbReturnItemStatus.Text = _return_list.status;
             cmbReturnDestination.Text = Constant.DefaultWareHouse;
             txtReturnRemarks.Text = "N/A";
             txtReturnQuantity.Focus();
@@ -80,29 +82,15 @@ namespace Inventory.PopupForm
 
         private void bntAccept_Click(object sender, EventArgs e)
         {
-            recievedDelivery();
+            receivedDelivery();
         }
         private void txtReturnQuantity_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
             {
                 txtReturnQuantity.BackColor = Color.White;
-                cmbReturnItemStatus.Focus();
-                cmbReturnItemStatus.BackColor = Color.Yellow;
-            }
-        }
-        private void cmbItemStatus_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
-            {
-                cmbReturnItemStatus.BackColor = Color.White;
                 txtReturnRemarks.Focus();
                 txtReturnRemarks.BackColor = Color.Yellow;
-            }
-            if (e.KeyCode == Keys.F1)
-            {
-                cmbReturnItemStatus.DataBindings.Clear();
-                cmbReturnItemStatus.DataSource = _productStatus.Select(p => p.status).ToList();
             }
         }
         private void txtReturnRemarks_KeyDown(object sender, KeyEventArgs e)
@@ -110,19 +98,10 @@ namespace Inventory.PopupForm
             if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
             {
                 txtReturnRemarks.BackColor = Color.White;
-                dkpReturnDate.Focus();
-                dkpReturnDate.BackColor = Color.Yellow;
-            }
-        }
-
-        private void dkpDelivery_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
-            {
-                dkpReturnDate.BackColor = Color.White;
                 bntAccept.Focus();
             }
         }
+
         private string GenerateReturn()
         {
             var lastReturnGenCode = FetchUtils.getLastReturnId();
@@ -137,39 +116,42 @@ namespace Inventory.PopupForm
             var returnCode = alphaNumeric.ToString();
             return returnCode;
         }
-        private void recievedDelivery()
+        private void receivedDelivery()
         {
-            
+            var ReturnId = _return_list.return_id;
+            if (ReturnId > 0)
+            {
                 splashScreen.ShowWaitForm();
-                var returnCode = GenerateReturn();
+                try
+                {
+                    var returnQty = int.Parse(txtReturnQuantity.Text);
+                    var remarks = txtReturnRemarks.Text.Trim(' ');
+                    var update = DateTime.Now.Date;
 
-                ReceivedReturn WarehouseReturn = new ReceivedReturn
-                {
-                    return_code = returnCode,
-                    product_id = FetchUtils.getProductIdBarcode(txtReturnBarcode.Text),
-                    return_number = _inventory.delivery_code,
-                    return_quantity = int.Parse(txtReturnQuantity.Text),
-                    branch_id = FetchUtils.getBranchId(cmbReturnBranch.Text),
-                    destination = cmbReturnDestination.Text.Trim(' '),
-                    return_date = dkpReturnDate.Value.Date,
-                    status_id = FetchUtils.getProductStatusId(cmbReturnItemStatus.Text),
-                    remarks = txtReturnRemarks.Text.Trim(' '),
-                    inventory_id = _inventory.inventory_id,
-                    update_on = dkpReturnDate.Value.Date,
-                    received_date = dkpReturnDate.Value.Date
-                };
-                var returnResult = RepositoryEntity.AddEntity<ReceivedReturn>(WarehouseReturn);
-                if (returnResult > 0)
-                {
-                    splashScreen.CloseWaitForm();
-                    PopupNotification.PopUpMessages(1, "Return Delivery No: " + _inventory.delivery_code + " successfully return to Warehouse!", Messages.InventorySystem);
-                    Close();
+                    var result = RepositoryEntity.UpdateEntity<ReturnWareHouse>(ReturnId, WarehouseReturn =>
+                    {
+                        WarehouseReturn.return_quantity = returnQty;
+                        WarehouseReturn.remarks = remarks;
+                        WarehouseReturn.update_on = update;
+                    });
+                    if (result > 0)
+                    {
+                        splashScreen.CloseWaitForm();
+                        PopupNotification.PopUpMessages(1, "Item Return:" + txtReturnItem.Text.Trim(' ') + " successfully updated!", "UPDATE RETURN");
+                        Close();
+                    }
+                    else
+                    {
+                        splashScreen.CloseWaitForm();
+                        PopupNotification.PopUpMessages(0, "Item Return:" + txtReturnItem.Text.Trim(' ') + " was not updated to return warehouse!", "UPDATE FAILED");
+                        Close();
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    splashScreen.CloseWaitForm();
-                    PopupNotification.PopUpMessages(0, "Return Delivery Code: " + _inventory.delivery_code + " Failed to Received/Complete Delivery!", Messages.InventorySystem);
-                    Close();
+                    Console.WriteLine(e);
+                    throw;
+                }
             }
         }
     }

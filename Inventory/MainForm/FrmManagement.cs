@@ -603,13 +603,15 @@ namespace Inventory.MainForm
             {
                 splashScreen.ShowWaitForm();
                 var id = ((GridView)sender).GetFocusedRowCellValue("Id")?.ToString();
-                var Inventory = EntityUtils.getInventory(int.Parse(id));
-                var pop = new FrmPopReturn(_userId, 1, Inventory)
+                var ReturnList = EntityUtils.getReturn(int.Parse(id));
+                var pop = new FrmPopReturn(_userId, 1, ReturnList)
                 {
                     main = this
                 };
                 splashScreen.CloseWaitForm();
                 pop.ShowDialog();
+                _return_list = EnumerableUtils.getWareHouseReturnList();
+                bindReturnList();
             }
             var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
             txtBarcode.Text = barcode;

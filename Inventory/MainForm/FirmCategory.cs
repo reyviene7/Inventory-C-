@@ -207,43 +207,6 @@ namespace Inventory.MainForm
             dkpDateRegister.BackColor = Color.DimGray;
         }
 
-
-        private string GetLastImgId()
-        {
-            using (var session = new DalSession())
-            {
-                var unitWork = session.UnitofWrk;
-                unitWork.Begin();
-                var repository = new Repository<ProductImages>(unitWork);
-                var result = (from b in repository.SelectAll(Query.AllProductImage)
-                              orderby b.image_id descending
-                              select b.image_code).Take(1).SingleOrDefault();
-                if (result != null)
-                {
-                    return result;
-                }
-                result = Query.DefaultCode;
-                return result;
-            }
-        }
-        private string GetLastId()
-        {
-            using (var session = new DalSession())
-            {
-                var unitWork = session.UnitofWrk;
-                unitWork.Begin();
-                var repository = new Repository<Category>(unitWork);
-                var result = (from b in repository.SelectAll(Query.AllCategory)
-                              orderby b.category_id descending
-                              select b.category_code).Take(1).SingleOrDefault();
-                if (result != null)
-                {
-                    return result;
-                }
-                result = Query.DefaultCode;
-                return result;
-            }
-        }
         private void GenerateCode()
         {
             var lastCategoryId = FetchUtils.getLastCategoryId();
@@ -329,8 +292,6 @@ namespace Inventory.MainForm
             cmbProductImage.DataBindings.Clear();
         }
 
-        #region SaveCategory
-
         private void SavCat()
         {
             if (_add && _edt == false && _del == false && _img == false)
@@ -368,8 +329,6 @@ namespace Inventory.MainForm
             gridControl.Enabled = true;
             cmbProductImage.DataBindings.Clear();
         }
-#endregion
-
 
         private void BindCategoryList()
         {
@@ -465,15 +424,6 @@ namespace Inventory.MainForm
             }
           
         }
-        private ViewImageProduct searchProductImg(string param)
-        {
-            return imgList.FirstOrDefault(img => img.image_code == param);
-        }
-
-        private ProductImages searchProductImageId(int image_id)
-        {
-            return listProductImage.FirstOrDefault(product_image => product_image.image_id == image_id);
-        }
 
         private void dkpREG_Leave(object sender, EventArgs e)
         {
@@ -528,8 +478,6 @@ namespace Inventory.MainForm
         {
             InputDimG();
         }
-
-       
 
         //CATEGORY LEAVE
         private void cmbIMG_SelectedIndexChanged(object sender, EventArgs e)

@@ -79,16 +79,16 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static ViewInventory getInventory(int inventoryId)
+        public static ViewReturnWarehouse getReturn(int returnId)
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<ViewInventory>(unWork);
-                    var parameter = new { inventoryId = inventoryId };
-                    return repository.SearchBy(Query.getInventoryById, parameter);
+                    var repository = new Repository<ViewReturnWarehouse>(unWork);
+                    var parameter = new { returnId = returnId };
+                    return repository.SearchBy(Query.getReturnById, parameter);
                 }
                 catch (Exception e)
                 {
