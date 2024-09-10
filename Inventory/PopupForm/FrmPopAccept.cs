@@ -86,11 +86,6 @@ namespace Inventory.PopupForm
             receivedInventory();
         }
 
-        private void bntCancel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtItemQty_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter) {
@@ -184,7 +179,7 @@ namespace Inventory.PopupForm
                 catch (Exception ex)
                 {
                     splashScreen.CloseWaitForm();
-                    PopupNotification.PopUpMessages(0, "An error occurred while processing the delivery!", Messages.InventorySystem);
+                    Console.WriteLine(ex.Message);
                 }
             }
             else
