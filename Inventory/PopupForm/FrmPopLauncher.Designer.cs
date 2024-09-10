@@ -226,6 +226,7 @@
             this.txtQuantity.Size = new System.Drawing.Size(223, 32);
             this.txtQuantity.TabIndex = 10;
             this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyDown);
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // label6
             // 
@@ -247,6 +248,7 @@
             this.txtWholePrice.Size = new System.Drawing.Size(396, 32);
             this.txtWholePrice.TabIndex = 7;
             this.txtWholePrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWholePrice_KeyDown);
+            this.txtWholePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWholePrice_KeyPress);
             // 
             // label4
             // 
@@ -269,6 +271,7 @@
             this.txtRetailPrice.Size = new System.Drawing.Size(396, 32);
             this.txtRetailPrice.TabIndex = 6;
             this.txtRetailPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRetailPrice_KeyDown);
+            this.txtRetailPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRetailPrice_KeyPress);
             // 
             // label5
             // 

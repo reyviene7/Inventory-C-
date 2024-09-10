@@ -87,6 +87,66 @@ namespace Inventory.PopupForm
 
         }
 
+        private void txtRetailPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtRetailPrice.Text) && e.KeyChar == (char)Keys.Enter)
+            {
+                PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
+                txtRetailPrice.Focus();
+                txtRetailPrice.BackColor = Color.Yellow;
+            }
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
+                txtRetailPrice.Focus();
+                txtRetailPrice.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtRetailPrice.BackColor = Color.White;
+            }
+        }
+
+        private void txtWholePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtWholePrice.Text) && e.KeyChar == (char)Keys.Enter)
+            {
+                PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
+                txtWholePrice.Focus();
+                txtWholePrice.BackColor = Color.Yellow;
+            }
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
+                txtWholePrice.Focus();
+                txtWholePrice.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtWholePrice.BackColor = Color.White;
+            }
+        }
+
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtQuantity.Text) && e.KeyChar == (char)Keys.Enter)
+            {
+                PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
+                txtQuantity.Focus();
+                txtQuantity.BackColor = Color.Yellow;
+            }
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
+                txtQuantity.Focus();
+                txtQuantity.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtQuantity.BackColor = Color.White;
+            }
+        }
+
         private void txtRetailPrice_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter) {

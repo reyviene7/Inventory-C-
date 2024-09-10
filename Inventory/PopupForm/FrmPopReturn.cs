@@ -84,6 +84,26 @@ namespace Inventory.PopupForm
         {
             receivedDelivery();
         }
+        private void txtReturnQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtReturnQuantity.Text) && e.KeyChar == (char)Keys.Enter)
+            {
+                PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
+                txtReturnQuantity.Focus();
+                txtReturnQuantity.BackColor = Color.Yellow;
+            }
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
+                txtReturnQuantity.Focus();
+                txtReturnQuantity.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtReturnQuantity.BackColor = Color.White;
+            }
+        }
+
         private void txtReturnQuantity_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
@@ -93,6 +113,7 @@ namespace Inventory.PopupForm
                 txtReturnRemarks.BackColor = Color.Yellow;
             }
         }
+
         private void txtReturnRemarks_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)

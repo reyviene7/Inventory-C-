@@ -138,6 +138,7 @@
             this.txtItemQty.Size = new System.Drawing.Size(396, 32);
             this.txtItemQty.TabIndex = 3;
             this.txtItemQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtItemQty_KeyDown);
+            this.txtItemQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemQty_KeyPress);
             // 
             // txtReceiptNumber
             // 
