@@ -63,7 +63,6 @@
             this.imgPreview = new System.Windows.Forms.PictureBox();
             this.cmbBranchName = new System.Windows.Forms.ComboBox();
             this.bntAccept = new DevExpress.XtraEditors.SimpleButton();
-            this.bntCancel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupLauncher)).BeginInit();
             this.groupLauncher.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -109,7 +108,6 @@
             this.groupLauncher.Controls.Add(this.groupImage);
             this.groupLauncher.Controls.Add(this.cmbBranchName);
             this.groupLauncher.Controls.Add(this.bntAccept);
-            this.groupLauncher.Controls.Add(this.bntCancel);
             this.groupLauncher.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupLauncher.Location = new System.Drawing.Point(0, 0);
             this.groupLauncher.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
@@ -442,7 +440,7 @@
             this.groupImage.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupImage.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupImage.Name = "groupImage";
-            this.groupImage.Size = new System.Drawing.Size(372, 368);
+            this.groupImage.Size = new System.Drawing.Size(372, 433);
             this.groupImage.TabIndex = 250;
             // 
             // imgPreview
@@ -451,7 +449,7 @@
             this.imgPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgPreview.Location = new System.Drawing.Point(3, 18);
             this.imgPreview.Name = "imgPreview";
-            this.imgPreview.Size = new System.Drawing.Size(366, 347);
+            this.imgPreview.Size = new System.Drawing.Size(366, 412);
             this.imgPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgPreview.TabIndex = 244;
             this.imgPreview.TabStop = false;
@@ -476,23 +474,12 @@
             this.bntAccept.Appearance.Options.UseFont = true;
             this.bntAccept.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntAccept.ImageOptions.Image")));
             this.bntAccept.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntAccept.Location = new System.Drawing.Point(3, 389);
+            this.bntAccept.Location = new System.Drawing.Point(3, 453);
             this.bntAccept.Name = "bntAccept";
             this.bntAccept.Size = new System.Drawing.Size(371, 62);
             this.bntAccept.TabIndex = 14;
             this.bntAccept.ToolTip = "Accept Delivery";
             this.bntAccept.Click += new System.EventHandler(this.bntAccept_Click);
-            // 
-            // bntCancel
-            // 
-            this.bntCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntCancel.ImageOptions.Image")));
-            this.bntCancel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntCancel.Location = new System.Drawing.Point(3, 452);
-            this.bntCancel.Name = "bntCancel";
-            this.bntCancel.Size = new System.Drawing.Size(371, 62);
-            this.bntCancel.TabIndex = 15;
-            this.bntCancel.ToolTip = "Reject / Cancel Delivery";
-            this.bntCancel.Click += new System.EventHandler(this.bntCancel_Click);
             // 
             // FrmPopAccept
             // 
@@ -523,7 +510,6 @@
         private DevExpress.XtraEditors.GroupControl groupLauncher;
         private System.Windows.Forms.ComboBox cmbBranchName;
         private DevExpress.XtraEditors.SimpleButton bntAccept;
-        private DevExpress.XtraEditors.SimpleButton bntCancel;
         private DevExpress.XtraEditors.GroupControl groupImage;
         private System.Windows.Forms.PictureBox imgPreview;
         private System.Windows.Forms.Label label7;

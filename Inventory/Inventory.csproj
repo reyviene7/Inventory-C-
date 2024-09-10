@@ -380,12 +380,6 @@
     <Compile Include="PopupForm\FirmPopCategoryReport.Designer.cs">
       <DependentUpon>FirmPopCategoryReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="PopupForm\FirmPopDeliveryInvBranch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PopupForm\FirmPopDeliveryInvBranch.Designer.cs">
-      <DependentUpon>FirmPopDeliveryInvBranch.cs</DependentUpon>
-    </Compile>
     <Compile Include="PopupForm\FirmPopLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -397,12 +391,6 @@
     </Compile>
     <Compile Include="PopupForm\FirmPopDateEntries.Designer.cs">
       <DependentUpon>FirmPopDateEntries.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PopupForm\FirmPopReturnEmpty.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PopupForm\FirmPopReturnEmpty.Designer.cs">
-      <DependentUpon>FirmPopReturnEmpty.cs</DependentUpon>
     </Compile>
     <Compile Include="PopupForm\FirmPopServer.cs">
       <SubType>Form</SubType>
@@ -593,17 +581,11 @@
     <EmbeddedResource Include="PopupForm\FirmPopCategoryReport.resx">
       <DependentUpon>FirmPopCategoryReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PopupForm\FirmPopDeliveryInvBranch.resx">
-      <DependentUpon>FirmPopDeliveryInvBranch.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopLogin.resx">
       <DependentUpon>FirmPopLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopDateEntries.resx">
       <DependentUpon>FirmPopDateEntries.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PopupForm\FirmPopReturnEmpty.resx">
-      <DependentUpon>FirmPopReturnEmpty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopServer.resx">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
