@@ -38,6 +38,13 @@ namespace Inventory.MainForm
         {
             _userId = userId;
             _userTy = userTy;
+            if (_userTy != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+                
+                _main.Show();
+                return;
+            }
             InitializeComponent();
             _warehouse = EnumerableUtils.getWarehouse();
             _warehouse_list = EnumerableUtils.getWareHouseInventoryList();

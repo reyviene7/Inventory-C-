@@ -78,6 +78,17 @@ namespace Inventory.MainForm
             _userName = username;
             _userId = userId;
             _userTyp = userTy;
+            // Check user type before form initialization
+            if (_userTyp != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+                if (_main == null || _main.IsDisposed)
+                {
+                    _main = new FirmMain(_userId, _userTyp, _userName);
+                }
+                _main.Show();
+                return;
+            }
             InitializeComponent();
         }
 
