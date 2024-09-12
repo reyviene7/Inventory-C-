@@ -79,7 +79,7 @@ namespace Inventory.PopupForm
 
         private void bntAccept_Click(object sender, EventArgs e)
         {
-            recievedDelivery();
+            receivedDelivery();
         }
 
         private void bntCancel_Click(object sender, EventArgs e)
@@ -215,7 +215,7 @@ namespace Inventory.PopupForm
             }
         }
 
-        private void recievedDelivery()
+        private void receivedDelivery()
         {
             if (string.IsNullOrWhiteSpace(txtRetailPrice.Text) ||
                 string.IsNullOrWhiteSpace(txtWholePrice.Text) ||

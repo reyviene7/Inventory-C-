@@ -202,6 +202,7 @@
     <Compile Include="Class\ProductList.cs" />
     <Compile Include="Class\CreditList.cs" />
     <Compile Include="Class\CreditParticularList.cs" />
+    <Compile Include="Class\PaymentList.cs" />
     <Compile Include="Class\ServiceParticularList.cs" />
     <Compile Include="Class\ServiceList.cs" />
     <Compile Include="Class\SalesParticularList.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="Entities\ReturnDepot.cs" />
     <Compile Include="Entities\ViewReportCredit.cs" />
     <Compile Include="Entities\ViewReportCreditParticular.cs" />
+    <Compile Include="Entities\ViewReportPayment.cs" />
     <Compile Include="Entities\ViewReportServiceParticular.cs" />
     <Compile Include="Entities\ViewReportService.cs" />
     <Compile Include="Entities\ViewReportSalesParticular.cs" />
@@ -253,6 +255,7 @@
     <Compile Include="Interface\IReturnWarehouse.cs" />
     <Compile Include="Interface\ICreditItem.cs" />
     <Compile Include="Interface\ICreditParticular.cs" />
+    <Compile Include="Interface\IPaymentItem.cs" />
     <Compile Include="Interface\IServiceParticular.cs" />
     <Compile Include="Interface\IServiceItem.cs" />
     <Compile Include="Interface\ISalesParticular.cs" />
@@ -471,6 +474,12 @@
     <Compile Include="Report\RepCreditParticular.Designer.cs">
       <DependentUpon>RepCreditParticular.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\RepPaymentItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepPaymentItem.Designer.cs">
+      <DependentUpon>RepPaymentItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\RepServiceParticular.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -512,6 +521,7 @@
     <Compile Include="Services\ServProductsItem.cs" />
     <Compile Include="Services\ServReportCredit.cs" />
     <Compile Include="Services\ServCreditParticular.cs" />
+    <Compile Include="Services\ServReportPayment.cs" />
     <Compile Include="Services\ServReportService.cs" />
     <Compile Include="Services\ServServiceParticular.cs" />
     <Compile Include="Services\ServSalesParticular.cs" />
@@ -628,6 +638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RepCreditParticular.resx">
       <DependentUpon>RepCreditParticular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepPaymentItem.resx">
+      <DependentUpon>RepPaymentItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RepServiceParticular.resx">
       <DependentUpon>RepServiceParticular.cs</DependentUpon>

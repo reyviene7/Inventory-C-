@@ -60,7 +60,7 @@ namespace Inventory.PopupForm
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Admin Username must not be empty!", Messages.InventorySystem);
+                    PopupNotification.PopUpMessages(0, "Username must not be empty!", Messages.InventorySystem);
                     txtUSR.Focus();
                 }
             }
@@ -105,6 +105,7 @@ namespace Inventory.PopupForm
                 {
                     splashScreen.CloseWaitForm();
                     Console.WriteLine(ex.ToString());
+                    PopupNotification.PopUpMessages(0, "Incorrect!", "POS Authentication");
                 }
             }
         }

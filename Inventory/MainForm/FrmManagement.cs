@@ -710,6 +710,12 @@ namespace Inventory.MainForm
             var name = GetUseFullName(_userId);
             ReportSetting.ListofServiceParticular(name);
         }
+
+        private void barReportCreditServices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofPayment(name);
+        }
         private string GetUseFullName(int userId)
         {
             using (var session = new DalSession())

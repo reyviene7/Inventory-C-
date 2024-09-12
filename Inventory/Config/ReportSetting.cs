@@ -483,6 +483,33 @@ namespace Inventory.Config
             band?.Controls.Add(appPared);
             report.ShowPreviewDialog();
         }
+        public static void ListofPayment(string fullName)
+        {
+            var report = new RepPaymentItem();
+            var serv = new ServReportPayment();
+            var dataSource = serv.DataSource();
+            report.Load(dataSource);
+            var prePared = new XRLabel
+            {
+                Text = fullName,
+                LocationF = new PointF(Constant.PreXStar, Constant.PreYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+            var appPared = new XRLabel
+            {
+                Text = Constant.DefaultApprove,
+                LocationF = new PointF(Constant.AppXStar, Constant.AppYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter,
+            };
+            var band = report.Bands[BandKind.ReportFooter] as ReportFooterBand;
+            band?.Controls.Add(prePared);
+            band?.Controls.Add(appPared);
+            report.ShowPreviewDialog();
+        }
         private static int GetCustomerId(string input)
         {
             using (var session = new DalSession())
