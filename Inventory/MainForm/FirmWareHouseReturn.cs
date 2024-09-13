@@ -59,7 +59,15 @@ namespace Inventory.MainForm
         {
             _userId = userId;
             _userTy = userTy;
+            if (_userTy != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
         }
         private void FirmBranchesWareHouse_Load(object sender, EventArgs e)
         {

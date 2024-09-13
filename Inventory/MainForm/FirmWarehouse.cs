@@ -77,7 +77,15 @@ namespace Inventory.MainForm
             _userName = userName;
             _userId = userId;
             _userTyp = userTy;
+            if (_userTyp != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
             _warehouse_list = EnumerableUtils.getWarehouseList();   
         }
         private void FirmWarehouseInvetory_Load(object sender, EventArgs e)

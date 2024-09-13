@@ -24,15 +24,28 @@ namespace Inventory.MainForm
         private IEnumerable<ViewProducts> listProducts;
         private IEnumerable<ViewImageProduct> imgList;
         private int productId;
+        private readonly int _userId;
+        private readonly int _userTyp;
         public FirmMain Main
         {
             get { return _main; }
             set { _main = value; }
         }
 
-        public FirmProducts()
+        public FirmProducts(int userId, int userTy)
         {
+            _userId = userId;
+            _userTyp = userTy;
+
+            if (_userTyp != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
         }
 
         private void FrmProducts_Load(object sender, EventArgs e)

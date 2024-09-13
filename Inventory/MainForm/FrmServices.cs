@@ -64,7 +64,15 @@ namespace Inventory.MainForm
             _userName = username;
             _userId = userId;
             _userTyp = userTy;
+            if (_userTyp != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
             _services_list = EnumerableUtils.getServicesList();
             _service_image_list = EnumerableUtils.getServiceImgList();
             gridServices.FocusedRowChanged += gridInventory_FocusedRowChanged;
