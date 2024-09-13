@@ -19,6 +19,8 @@ namespace Inventory.MainForm
     {
         private FirmMain _main;
         private bool _add, _edt, _del, _img, _cat;
+        private readonly int _userId;
+        private readonly int _userTyp;
         private IEnumerable<ViewCategoryImage> listCategory;
         private IEnumerable<ProductImages> listProductImage;
         private IEnumerable<ViewImageProduct> imgList;
@@ -31,10 +33,20 @@ namespace Inventory.MainForm
             set { _main = value; }
         }
 
-
-        public FirmCategory()
+        public FirmCategory(int userId, int userTy)
         {
+            _userId = userId;
+            _userTyp = userTy;
+
+            if (_userTyp != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
         }
 
         private void FrmCategory_Load(object sender, EventArgs e)

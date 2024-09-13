@@ -18,6 +18,7 @@ namespace Inventory.MainForm
         private FirmMain _main;
         private bool _add, _edt, _del;
         private readonly int _userId;
+        private readonly int _userTyp;
         private ViewProfile _profile;
         private IEnumerable<ViewProfile> _profileList;
         private IEnumerable<ProfileImages> _image_list;
@@ -27,10 +28,19 @@ namespace Inventory.MainForm
 
             set { _main = value; }
         }
-        public FrmRegistration(int userId)
+        public FrmRegistration(int userId, int userTy)
         {
-            InitializeComponent();
             _userId = userId;
+            _userTyp = userTy;
+            if (_userTyp != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
+            InitializeComponent();
+            this.DialogResult = DialogResult.OK;
         }
         private void FrmRegistration_Load(object sender, EventArgs e)
         {

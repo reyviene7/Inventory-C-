@@ -58,7 +58,15 @@ namespace Inventory.MainForm
             _userId = userId;
             _userType = userType;
             _username = username;
+            if (_userType != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
             _return_list = EnumerableUtils.getWareHouseReturnList();
             _sales_list = EnumerableUtils.getSalesParticular(branch);

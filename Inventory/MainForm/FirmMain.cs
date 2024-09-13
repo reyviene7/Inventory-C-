@@ -161,22 +161,36 @@ namespace Inventory.MainForm
 
         private void tileCAT_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var cat = new FirmCategory()
+            var cat = new FirmCategory(_userId, _usrTyp)
             {
                 Main = this
             };
-            Hide();
-            cat.Show();
+            if (cat.DialogResult == DialogResult.OK)
+            {
+                cat.Show();
+                Hide();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void tilePRO_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var proc = new FirmProducts()
+            var proc = new FirmProducts(_userId, _usrTyp)
             {
                 Main = this
             };
-            Hide();
-            proc.Show();
+            if (proc.DialogResult == DialogResult.OK)
+            {
+                Hide();
+                proc.Show();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void tileDEP_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
@@ -185,8 +199,15 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            warehouseInventory.Show();
-            Hide();
+            if (warehouseInventory.DialogResult == DialogResult.OK)
+            {
+                warehouseInventory.Show();
+                Hide();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void tileWAR_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
@@ -195,8 +216,15 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            Hide();
-            dep.Show();
+            if (dep.DialogResult == DialogResult.OK)
+            {
+                Hide();
+                dep.Show();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void tileDFB_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
@@ -205,8 +233,15 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            Hide();
-            bra.Show();
+            if (bra.DialogResult == DialogResult.OK)
+            {
+                Hide();
+                bra.Show();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void tileDEV_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
@@ -215,10 +250,15 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            Hide();
-            dep.Show();
-           
-          
+            if (dep.DialogResult == DialogResult.OK)
+            {
+                Hide();
+                dep.Show();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void tileDTW_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
@@ -227,15 +267,15 @@ namespace Inventory.MainForm
             {
                 Main=this
             };
-            Hide();
-            ret.Show();
-        }
-
-       
-
-        private void tileDEL_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
-        {
-          
+            if (ret.DialogResult == DialogResult.OK)
+            {
+                Hide();
+                ret.Show();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private string GetUseFullName(int userId)
@@ -316,38 +356,66 @@ namespace Inventory.MainForm
             {
                 Main = this
             };
-            ret.Show();
-            Hide();
+            if (ret.DialogResult == DialogResult.OK)
+            {
+                ret.Show();
+                Hide();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void tileManagement_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             splashScreen.ShowWaitForm();
-            var view = new FrmManagement(_userId, type, _userName)
+            var view = new FrmManagement(_userId, _usrTyp, _userName)
             {
                 Main = this
             };
             splashScreen.CloseWaitForm();
-            view.ShowDialog();
+            if (view.DialogResult == DialogResult.OK)
+            {
+                view.ShowDialog();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void tileServices_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
  
-            var view = new FrmServices(_userId, type, _userName)
+            var view = new FrmServices(_userId, _usrTyp, _userName)
             {
                 Main = this
             };
-            view.ShowDialog();
+            if (view.DialogResult == DialogResult.OK)
+            {
+                view.ShowDialog();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void tileStaffRegistration_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var view = new FrmRegistration(_userId)
+            var view = new FrmRegistration(_userId, _usrTyp)
             {
                 Main = this
             };
-            view.ShowDialog();
+            if (view.DialogResult == DialogResult.OK)
+            {
+                view.ShowDialog();
+            }
+            else
+            {
+                this.Show();
+            }
         }
     }
 }

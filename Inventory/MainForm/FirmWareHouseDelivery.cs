@@ -41,11 +41,12 @@ namespace Inventory.MainForm
             if (_userTy != 1)
             {
                 PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
-                
-                _main.Show();
+
+                this.DialogResult = DialogResult.Cancel;
                 return;
             }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
             _warehouse = EnumerableUtils.getWarehouse();
             _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
