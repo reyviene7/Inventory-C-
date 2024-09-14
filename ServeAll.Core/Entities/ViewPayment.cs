@@ -7,12 +7,16 @@ namespace ServeAll.Core.Entities
     public class ViewPayment
     {
         [Key]
-        public int Id { get; set; }
-        public string Invoice { get; set; }
-        public string ServiceNo { get; set; }
-        public decimal PayAmount { get; set; }
-        public string Customer { get; set; }
-        public string Branch { get; set; }
-        public DateTime RefDate { get; set; }
+        public int payment_id { get; set; }
+        public decimal amount_due { get; set; }
+        public decimal amount_paid { get; set; }
+        public decimal remaining_balance { get; set; }
+        public string payment_method { get; set; }
+        public string processed_by { get; set; }
+        public string customer_name { get; set; }
+        public string branch_details { get; set; }
+        public string credit_code { get; set; }
+        public string receipt_number { get; set; }
+        public DateTime payment_date { get; set; }
     }
 }

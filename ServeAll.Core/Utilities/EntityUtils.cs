@@ -98,6 +98,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static ViewSalesCredit getCredit(int creditId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewSalesCredit>(unWork);
+                    var parameter = new { creditId = creditId };
+                    return repository.SearchBy(Query.getCreditById, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
+        }
+
         public static void addItemDiscount(int salesId, decimal discount)
         {
             using (var session = new DalSession())
