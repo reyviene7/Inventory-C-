@@ -135,7 +135,7 @@
             this.barReportSalesPart = new DevExpress.XtraBars.BarButtonItem();
             this.barReportCreditSales = new DevExpress.XtraBars.BarButtonItem();
             this.barCustomerList = new DevExpress.XtraBars.BarButtonItem();
-            this.barCreditList = new DevExpress.XtraBars.BarButtonItem();
+            this.barCreditSales = new DevExpress.XtraBars.BarButtonItem();
             this.barPayCredit = new DevExpress.XtraBars.BarButtonItem();
             this.barHIS = new DevExpress.XtraBars.BarButtonItem();
             this.barPaymentList = new DevExpress.XtraBars.BarButtonItem();
@@ -220,6 +220,14 @@
             this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView11 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.xtraCredits = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.gridCtrlCredits = new DevExpress.XtraGrid.GridControl();
+            this.gridCredits = new DevExpress.XtraGrid.Views.Layout.LayoutView();
+            this.layoutViewCard2 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView14 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRetail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -304,6 +312,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView11)).BeginInit();
+            this.xtraCredits.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlCredits)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCredits)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcLOG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spCON)).BeginInit();
             this.spCON.SuspendLayout();
@@ -1020,7 +1037,7 @@
             this.barReportSalesPart,
             this.barReportCreditSales,
             this.barCustomerList,
-            this.barCreditList,
+            this.barCreditSales,
             this.barPayCredit,
             this.barHIS,
             this.barPaymentList,
@@ -1221,13 +1238,14 @@
             this.barCustomerList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCustomerList.ImageOptions.LargeImage")));
             this.barCustomerList.Name = "barCustomerList";
             // 
-            // barCreditList
+            // barCreditSales
             // 
-            this.barCreditList.Caption = "Credit-List";
-            this.barCreditList.Id = 52;
-            this.barCreditList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCreditList.ImageOptions.Image")));
-            this.barCreditList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCreditList.ImageOptions.LargeImage")));
-            this.barCreditList.Name = "barCreditList";
+            this.barCreditSales.Caption = "Credit-Sales";
+            this.barCreditSales.Id = 52;
+            this.barCreditSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCreditSales.ImageOptions.Image")));
+            this.barCreditSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCreditSales.ImageOptions.LargeImage")));
+            this.barCreditSales.Name = "barCreditSales";
+            this.barCreditSales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCreditSales_ItemClick);
             // 
             // barPayCredit
             // 
@@ -1456,7 +1474,7 @@
             // 
             // ribCRD
             // 
-            this.ribCRD.ItemLinks.Add(this.barCreditList);
+            this.ribCRD.ItemLinks.Add(this.barCreditSales);
             this.ribCRD.Name = "ribCRD";
             this.ribCRD.Text = "Credit";
             // 
@@ -1654,7 +1672,8 @@
             this.xtraAccepted,
             this.xtraReturn,
             this.xtraInventory,
-            this.xtraSales});
+            this.xtraSales,
+            this.xtraCredits});
             // 
             // xtraPending
             // 
@@ -2384,6 +2403,144 @@
             this.gridView11.GridControl = this.gridCtrlSales;
             this.gridView11.Name = "gridView11";
             // 
+            // xtraCredits
+            // 
+            this.xtraCredits.Appearance.PageClient.BackColor = System.Drawing.Color.BurlyWood;
+            this.xtraCredits.Appearance.PageClient.Options.UseBackColor = true;
+            this.xtraCredits.Controls.Add(this.groupControl1);
+            this.xtraCredits.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraCredits.ImageOptions.Image")));
+            this.xtraCredits.Name = "xtraCredits";
+            this.xtraCredits.Size = new System.Drawing.Size(1563, 474);
+            this.xtraCredits.Text = "Credit Details";
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupControl1.Appearance.Options.UseBackColor = true;
+            this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl1.Controls.Add(this.gridCtrlCredits);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(1563, 474);
+            this.groupControl1.TabIndex = 175;
+            // 
+            // gridCtrlCredits
+            // 
+            this.gridCtrlCredits.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridCtrlCredits.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridCtrlCredits.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.gridCtrlCredits.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridCtrlCredits.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.gridCtrlCredits.Location = new System.Drawing.Point(3, 18);
+            this.gridCtrlCredits.MainView = this.gridCredits;
+            this.gridCtrlCredits.Name = "gridCtrlCredits";
+            this.gridCtrlCredits.Size = new System.Drawing.Size(1557, 453);
+            this.gridCtrlCredits.TabIndex = 25;
+            this.gridCtrlCredits.TabStop = false;
+            this.gridCtrlCredits.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridCredits,
+            this.gridView1,
+            this.gridView4,
+            this.gridView14});
+            // 
+            // gridCredits
+            // 
+            this.gridCredits.Appearance.CardCaption.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridCredits.Appearance.CardCaption.Options.UseFont = true;
+            this.gridCredits.Appearance.FieldCaption.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridCredits.Appearance.FieldCaption.Options.UseFont = true;
+            this.gridCredits.Appearance.FieldValue.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridCredits.Appearance.FieldValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridCredits.Appearance.FieldValue.Options.UseFont = true;
+            this.gridCredits.Appearance.FieldValue.Options.UseForeColor = true;
+            this.gridCredits.Appearance.FocusedCardCaption.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
+            this.gridCredits.Appearance.FocusedCardCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCredits.Appearance.FocusedCardCaption.Options.UseFont = true;
+            this.gridCredits.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridCredits.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridCredits.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.gridCredits.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridCredits.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridCredits.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridCredits.Appearance.SelectedCardCaption.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridCredits.Appearance.SelectedCardCaption.Options.UseFont = true;
+            this.gridCredits.Appearance.SeparatorLine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridCredits.Appearance.SeparatorLine.Options.UseForeColor = true;
+            this.gridCredits.Appearance.ViewBackground.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridCredits.Appearance.ViewBackground.Options.UseForeColor = true;
+            this.gridCredits.Appearance.ViewCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.gridCredits.Appearance.ViewCaption.Options.UseFont = true;
+            this.gridCredits.Appearance.ViewCaption.Options.UseForeColor = true;
+            this.gridCredits.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.gridCredits.GridControl = this.gridCtrlCredits;
+            this.gridCredits.Name = "gridCredits";
+            this.gridCredits.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridCredits.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridCredits.OptionsBehavior.Editable = false;
+            this.gridCredits.OptionsSelection.MultiSelect = true;
+            this.gridCredits.TemplateCard = this.layoutViewCard2;
+            this.gridCredits.DoubleClick += new System.EventHandler(this.gridCredits_DoubleClick);
+            // 
+            // layoutViewCard2
+            // 
+            this.layoutViewCard2.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
+            this.layoutViewCard2.Name = "layoutViewTemplateCard";
+            this.layoutViewCard2.OptionsItemText.TextToControlDistance = 5;
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridCtrlCredits;
+            this.gridView1.Name = "gridView1";
+            // 
+            // gridView4
+            // 
+            this.gridView4.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridView4.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridView4.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridView4.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView4.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Green;
+            this.gridView4.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView4.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridView4.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridView4.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView4.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridView4.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView4.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView4.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView4.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView4.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridView4.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.gridView4.Appearance.Row.Options.UseFont = true;
+            this.gridView4.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridView4.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView4.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView4.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridView4.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridView4.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridView4.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView4.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridView4.AppearancePrint.Row.Options.UseFont = true;
+            this.gridView4.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridView4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.gridView4.GridControl = this.gridCtrlCredits;
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView4.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView4.OptionsBehavior.Editable = false;
+            this.gridView4.OptionsBehavior.ReadOnly = true;
+            this.gridView4.OptionsCustomization.AllowRowSizing = true;
+            this.gridView4.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridView4.OptionsSelection.MultiSelect = true;
+            this.gridView4.OptionsView.ColumnAutoWidth = false;
+            // 
+            // gridView14
+            // 
+            this.gridView14.GridControl = this.gridCtrlCredits;
+            this.gridView14.Name = "gridView14";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -2751,6 +2908,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView11)).EndInit();
+            this.xtraCredits.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlCredits)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCredits)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcLOG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spCON)).EndInit();
             this.spCON.ResumeLayout(false);
@@ -2867,7 +3033,7 @@
         private DevExpress.XtraBars.BarButtonItem barReportSalesPart;
         private DevExpress.XtraBars.BarButtonItem barReportCreditSales;
         private DevExpress.XtraBars.BarButtonItem barCustomerList;
-        private DevExpress.XtraBars.BarButtonItem barCreditList;
+        private DevExpress.XtraBars.BarButtonItem barCreditSales;
         private DevExpress.XtraBars.BarButtonItem barPayCredit;
         private DevExpress.XtraBars.BarButtonItem barHIS;
         private DevExpress.XtraBars.BarButtonItem barPaymentList;
@@ -2976,5 +3142,13 @@
         private System.Windows.Forms.DateTimePicker dpkUpdated;
         private System.Windows.Forms.DateTimePicker dkpDeliveryDate;
         private DevExpress.XtraBars.BarSubItem barSubItem4;
+        private DevExpress.XtraTab.XtraTabPage xtraCredits;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraGrid.GridControl gridCtrlCredits;
+        private DevExpress.XtraGrid.Views.Layout.LayoutView gridCredits;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewCard layoutViewCard2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView14;
     }
 }

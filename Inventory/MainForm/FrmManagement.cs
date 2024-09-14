@@ -24,6 +24,7 @@ namespace Inventory.MainForm
         private readonly IEnumerable<ViewImageProduct> _imgList;
         private IEnumerable<ViewSalesPart> _sales_list;
         private IEnumerable<ViewAcceptedDelivery> _accepted_list;
+        private IEnumerable<ViewSalesCredit> _credit_sales;
         private readonly int _userId;
         private readonly int _userType;
         private readonly string _username;
@@ -71,6 +72,7 @@ namespace Inventory.MainForm
             _return_list = EnumerableUtils.getWareHouseReturnList();
             _sales_list = EnumerableUtils.getSalesParticular(branch);
             _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
+            _credit_sales = EnumerableUtils.getCreditSales(branch);
             _imgList = EnumerableUtils.getImgProductList();
         }
         private void FrmManagement_Load(object sender, System.EventArgs e)
@@ -124,6 +126,12 @@ namespace Inventory.MainForm
             gridCtrlReturn.DataSource = null;
             gridCtrlReturn.DataSource = "";
             gridReturn.Columns.Clear();
+        }
+        private void clearGridCreditSales()
+        {
+            gridCtrlCredits.DataSource = null;
+            gridCtrlCredits.DataSource = "";
+            gridCredits.Columns.Clear();
         }
 
         private void bindDeliveryList(string branch)
@@ -306,6 +314,30 @@ namespace Inventory.MainForm
                 gridReturn.Columns[10].Width = 100;
         }
 
+        private void bindCreditSales()
+        {
+            clearGridCreditSales();
+            var list = _credit_sales.Select(p => new {
+                Id = "" + p.id,
+                Invoice = p.invoice_id,
+                Due = "P" + p.amount_due,
+                AmountPaid = "P" + p.paid_amount,
+                Balance = "P" + p.remaining_balance,
+                Gross = "P" + p.gross,
+                NetSales = "P" + p.net_sales,
+                Customer = p.customer,
+                Branch = p.branch,
+                User = p.operators,
+                Code = p.credit_code,
+                CreditBalance = p.credit_balance,
+                CreditLimit = p.credit_limit,
+                Receipt = p.receipt,
+                Date = p.credit_date
+            }).ToList();
+            gridCtrlCredits.DataSource = list;
+            gridCtrlCredits.Update();
+        }
+
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (cardPending.RowCount > 0)
@@ -443,6 +475,17 @@ namespace Inventory.MainForm
             xInventory.SelectedTabPage = xtraReturn;
             splashScreen.CloseWaitForm();
         }
+
+        private void barCreditSales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreen.ShowWaitForm();
+            _credit_sales = Enumerable.Empty<ViewSalesCredit>();
+            _credit_sales = EnumerableUtils.getCreditSales(branch);
+            bindCreditSales();
+            xInventory.SelectedTabPage = xtraCredits;
+            splashScreen.CloseWaitForm();
+        }
+
         private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridCardView(sender);
@@ -644,6 +687,25 @@ namespace Inventory.MainForm
                 }
             }
         }
+
+        private void gridCredits_DoubleClick(object sender, EventArgs e)
+        {
+            if (gridCredits.RowCount > 0)
+            {
+                splashScreen.ShowWaitForm();
+                var id = ((LayoutView)sender).GetFocusedRowCellValue("Id")?.ToString();
+                var CreditList = EntityUtils.getCredit(int.Parse(id));
+                var pop = new FrmPopCredit(_userId, 1, CreditList)
+                {
+                    main = this
+                };
+                splashScreen.CloseWaitForm();
+                pop.ShowDialog();
+                _credit_sales = EnumerableUtils.getCreditSales(branch);
+                bindCreditSales();
+            }
+        }
+
         private void barReportProduct_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);
