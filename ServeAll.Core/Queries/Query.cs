@@ -278,8 +278,11 @@
         public const string SelectReportAllItem = "SELECT inventory_id, product_code, product_name, quantity, trade_price, retail_price, status FROM view_inventoryList";
         public const string SelectReportProduct = "SELECT product_id, product_code, product_name, trade_price, retail_price FROM report_product_list";
         public const string SelectReportSales = "SELECT sale_id, customer_name, amount_due, paid_amount, gross, discount, net_sales, branch_details, receipt_number, sale_date  FROM report_sales";
+        public const string SelectReportService = "SELECT service_id, service_name, service_details, service_charges, category_details, service_commission, full_name, status_name, service_date FROM report_service";
+        public const string SelectReportPayment = "SELECT payment_id, amount_due, amount_paid, remaining_balance, payment_method, customer_name, branch_details, credit_code, receipt_number, payment_date FROM report_payment";
         public const string SelectReportCredit = "SELECT credit_id, customer_name, amount_credit, paid_amount, discount, net_sales, branch_details, service_number, credit_date  FROM report_credit";
         public const string SelectReportSalesParticular = "SELECT particular_id, product_name, unit_price, quantity, gross, net_sales, branch_details, customer_name, status_name, purchase_on  FROM report_sales_particular";
+        public const string SelectReportServiceParticular = "SELECT particular_id, service_name, service_charge, tax, discount, gross, net_sales, customer_name, status_name, service_on  FROM report_service_particular";
         public const string SelectReportCreditParticular = "SELECT particular_id, product_name, quantity, unit_price, gross, net_sales, branch_details, customer_name, purchase_on  FROM report_credit_particular";
         public const string getContactId = @"SELECT contact_id FROM contact";
         public const string getAddressId = @"SELECT address_id FROM address";
@@ -293,7 +296,9 @@
         public const string getCustomerList = "select customer_id, customer_name from view_poscustomers";
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getWarehouseDeliveryById = "SELECT * FROM view_warehouse_delivery WHERE delivery_id = @deliveryId";
-        public const string getInventoryById = "SELECT * FROM view_inventory WHERE inventory_id = @inventoryId";
+        public const string getAcceptedDeliveryById = "SELECT * FROM view_accepted_delivery WHERE received_id = @receivedId";
+        public const string getReturnById = "SELECT * FROM view_return_warehouse WHERE return_id = @returnId";
+        public const string getCreditById = "SELECT * FROM view_credit_sales WHERE id = @creditId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
         public const string getLastProfileIdQuery = "SELECT COUNT(profile_id) as profile_id FROM profile";
@@ -335,6 +340,7 @@
         public const string getServices = "SELECT * FROM view_services ORDER BY service_id DESC";
         public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
         public const string getAcceptedDelivery = @"SELECT * FROM view_accepted_delivery WHERE branch_details = @branch ORDER BY received_id DESC";
+        public const string getCreditSales = @"SELECT * FROM view_credit_sales WHERE branch = @branch ORDER BY id DESC";
         public const string getContactById = @"SELECT * FROM contact WHERE contact_id = @contact";
         public const string getAddressById = @"SELECT * FROM address WHERE address_id = @address";
     }

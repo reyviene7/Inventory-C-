@@ -1,10 +1,10 @@
-﻿using System;
-using Dapper.Contrib.Extensions;
+﻿using Dapper.Contrib.Extensions;
+using System;
 
-namespace ServeAll.Core.Entities
+namespace Inventory.Entities
 {
-    [Table("view_payment")]
-    public class ViewPayment
+    [Table("report_payment")]
+    public class ViewReportPayment
     {
         [Key]
         public int payment_id { get; set; }

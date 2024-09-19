@@ -46,7 +46,7 @@
             this.barUPI = new DevExpress.XtraBars.BarButtonItem();
             this.barSearchParticular = new DevExpress.XtraBars.BarButtonItem();
             this.barSearchSales = new DevExpress.XtraBars.BarButtonItem();
-            this.barCreditDetails = new DevExpress.XtraBars.BarSubItem();
+            this.barReportCreditServices = new DevExpress.XtraBars.BarSubItem();
             this.barParCred = new DevExpress.XtraBars.BarButtonItem();
             this.PagePos = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rbPGC = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -86,9 +86,9 @@
             this.barUPAY = new DevExpress.XtraBars.BarButtonItem();
             this.barADDC = new DevExpress.XtraBars.BarButtonItem();
             this.barSaveCredit = new DevExpress.XtraBars.BarButtonItem();
-            this.barInvoiceSales = new DevExpress.XtraBars.BarSubItem();
+            this.barReportServices = new DevExpress.XtraBars.BarSubItem();
             this.barDAIRD = new DevExpress.XtraBars.BarButtonItem();
-            this.barParticularSales = new DevExpress.XtraBars.BarSubItem();
+            this.barReportParticularServices = new DevExpress.XtraBars.BarSubItem();
             this.barDAIPR = new DevExpress.XtraBars.BarButtonItem();
             this.barDAISM = new DevExpress.XtraBars.BarButtonItem();
             this.ribSAV = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -135,7 +135,7 @@
             this.barReportSalesPart = new DevExpress.XtraBars.BarButtonItem();
             this.barReportCreditSales = new DevExpress.XtraBars.BarButtonItem();
             this.barCustomerList = new DevExpress.XtraBars.BarButtonItem();
-            this.barCreditList = new DevExpress.XtraBars.BarButtonItem();
+            this.barCreditSales = new DevExpress.XtraBars.BarButtonItem();
             this.barPayCredit = new DevExpress.XtraBars.BarButtonItem();
             this.barHIS = new DevExpress.XtraBars.BarButtonItem();
             this.barPaymentList = new DevExpress.XtraBars.BarButtonItem();
@@ -194,7 +194,7 @@
             this.xtraAccepted = new DevExpress.XtraTab.XtraTabPage();
             this.groupAccepted = new DevExpress.XtraEditors.GroupControl();
             this.gridCtrlAccepted = new DevExpress.XtraGrid.GridControl();
-            this.layoutAccepted = new DevExpress.XtraGrid.Views.Layout.LayoutView();
+            this.gridAccepted = new DevExpress.XtraGrid.Views.Layout.LayoutView();
             this.layoutViewCard1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -220,6 +220,14 @@
             this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView11 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.xtraCredits = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.gridCtrlCredits = new DevExpress.XtraGrid.GridControl();
+            this.gridCredits = new DevExpress.XtraGrid.Views.Layout.LayoutView();
+            this.layoutViewCard2 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView14 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRetail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -275,7 +283,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupAccepted)).BeginInit();
             this.groupAccepted.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrlAccepted)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutAccepted)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAccepted)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
@@ -304,6 +312,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView11)).BeginInit();
+            this.xtraCredits.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlCredits)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCredits)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcLOG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spCON)).BeginInit();
             this.spCON.SuspendLayout();
@@ -386,15 +403,14 @@
             this.barSearchSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSearchSales.ImageOptions.Image")));
             this.barSearchSales.Name = "barSearchSales";
             // 
-            // barCreditDetails
+            // barReportCreditServices
             // 
-            this.barCreditDetails.Caption = "Credit-Details";
-            this.barCreditDetails.Id = 42;
-            this.barCreditDetails.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCreditDetails.ImageOptions.Image")));
-            this.barCreditDetails.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCreditDetails.ImageOptions.LargeImage")));
-            this.barCreditDetails.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barParCred)});
-            this.barCreditDetails.Name = "barCreditDetails";
+            this.barReportCreditServices.Caption = "Credit-Services";
+            this.barReportCreditServices.Id = 42;
+            this.barReportCreditServices.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportCreditServices.ImageOptions.Image")));
+            this.barReportCreditServices.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportCreditServices.ImageOptions.LargeImage")));
+            this.barReportCreditServices.Name = "barReportCreditServices";
+            this.barReportCreditServices.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportCreditServices_ItemClick);
             // 
             // barParCred
             // 
@@ -734,15 +750,14 @@
             this.barSaveCredit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSaveCredit.ImageOptions.LargeImage")));
             this.barSaveCredit.Name = "barSaveCredit";
             // 
-            // barInvoiceSales
+            // barReportServices
             // 
-            this.barInvoiceSales.Caption = "Invoice-Sales";
-            this.barInvoiceSales.Id = 29;
-            this.barInvoiceSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barInvoiceSales.ImageOptions.Image")));
-            this.barInvoiceSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barInvoiceSales.ImageOptions.LargeImage")));
-            this.barInvoiceSales.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barDAIRD)});
-            this.barInvoiceSales.Name = "barInvoiceSales";
+            this.barReportServices.Caption = "List Services";
+            this.barReportServices.Id = 29;
+            this.barReportServices.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportServices.ImageOptions.Image")));
+            this.barReportServices.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportServices.ImageOptions.LargeImage")));
+            this.barReportServices.Name = "barReportServices";
+            this.barReportServices.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportServices_ItemClick);
             // 
             // barDAIRD
             // 
@@ -751,16 +766,14 @@
             this.barDAIRD.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barDAIRD.ImageOptions.Image")));
             this.barDAIRD.Name = "barDAIRD";
             // 
-            // barParticularSales
+            // barReportParticularServices
             // 
-            this.barParticularSales.Caption = "Particular-Sales";
-            this.barParticularSales.Id = 31;
-            this.barParticularSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barParticularSales.ImageOptions.Image")));
-            this.barParticularSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barParticularSales.ImageOptions.LargeImage")));
-            this.barParticularSales.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barDAIPR),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barDAISM)});
-            this.barParticularSales.Name = "barParticularSales";
+            this.barReportParticularServices.Caption = "Particular-Services";
+            this.barReportParticularServices.Id = 31;
+            this.barReportParticularServices.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportParticularServices.ImageOptions.Image")));
+            this.barReportParticularServices.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportParticularServices.ImageOptions.LargeImage")));
+            this.barReportParticularServices.Name = "barReportParticularServices";
+            this.barReportParticularServices.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportParticularServices_ItemClick);
             // 
             // barDAIPR
             // 
@@ -794,21 +807,18 @@
             // 
             // ridDAI
             // 
-            this.ridDAI.ItemLinks.Add(this.barInvoiceSales);
+            this.ridDAI.ItemLinks.Add(this.barReportServices);
             this.ridDAI.Name = "ridDAI";
-            this.ridDAI.Text = "Report";
             // 
             // ribRD1
             // 
-            this.ribRD1.ItemLinks.Add(this.barParticularSales);
+            this.ribRD1.ItemLinks.Add(this.barReportParticularServices);
             this.ribRD1.Name = "ribRD1";
-            this.ribRD1.Text = "Report";
             // 
             // ribbonPageGroup6
             // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.barCreditDetails);
+            this.ribbonPageGroup6.ItemLinks.Add(this.barReportCreditServices);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "Report";
             // 
             // repositoryItemImageEdit1
             // 
@@ -880,7 +890,7 @@
             this.ribSTATUS.ItemLinks.Add(this.barDate);
             this.ribSTATUS.ItemLinks.Add(this.barTime);
             this.ribSTATUS.ItemLinks.Add(this.barStatus);
-            this.ribSTATUS.Location = new System.Drawing.Point(0, 845);
+            this.ribSTATUS.Location = new System.Drawing.Point(0, 804);
             this.ribSTATUS.Name = "ribSTATUS";
             this.ribSTATUS.Ribbon = this.rbControl;
             this.ribSTATUS.Size = new System.Drawing.Size(1588, 27);
@@ -1027,7 +1037,7 @@
             this.barReportSalesPart,
             this.barReportCreditSales,
             this.barCustomerList,
-            this.barCreditList,
+            this.barCreditSales,
             this.barPayCredit,
             this.barHIS,
             this.barPaymentList,
@@ -1056,9 +1066,9 @@
             this.barSaveCredit,
             this.barUPAY,
             this.barADDC,
-            this.barInvoiceSales,
+            this.barReportServices,
             this.barDAIRD,
-            this.barParticularSales,
+            this.barReportParticularServices,
             this.barDAIPR,
             this.barReportReturnWare,
             this.barDEL,
@@ -1069,7 +1079,7 @@
             this.barUPI,
             this.barDAISM,
             this.barDCPR,
-            this.barCreditDetails,
+            this.barReportCreditServices,
             this.barParCred,
             this.barSearchParticular,
             this.barSearchSales,
@@ -1195,7 +1205,7 @@
             // 
             // barReportSales
             // 
-            this.barReportSales.Caption = "Sales";
+            this.barReportSales.Caption = "List Sales";
             this.barReportSales.Id = 48;
             this.barReportSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportSales.ImageOptions.Image")));
             this.barReportSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportSales.ImageOptions.LargeImage")));
@@ -1228,13 +1238,14 @@
             this.barCustomerList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCustomerList.ImageOptions.LargeImage")));
             this.barCustomerList.Name = "barCustomerList";
             // 
-            // barCreditList
+            // barCreditSales
             // 
-            this.barCreditList.Caption = "Credit-List";
-            this.barCreditList.Id = 52;
-            this.barCreditList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCreditList.ImageOptions.Image")));
-            this.barCreditList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCreditList.ImageOptions.LargeImage")));
-            this.barCreditList.Name = "barCreditList";
+            this.barCreditSales.Caption = "Credit-Sales";
+            this.barCreditSales.Id = 52;
+            this.barCreditSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCreditSales.ImageOptions.Image")));
+            this.barCreditSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCreditSales.ImageOptions.LargeImage")));
+            this.barCreditSales.Name = "barCreditSales";
+            this.barCreditSales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCreditSales_ItemClick);
             // 
             // barPayCredit
             // 
@@ -1463,7 +1474,7 @@
             // 
             // ribCRD
             // 
-            this.ribCRD.ItemLinks.Add(this.barCreditList);
+            this.ribCRD.ItemLinks.Add(this.barCreditSales);
             this.ribCRD.Name = "ribCRD";
             this.ribCRD.Text = "Credit";
             // 
@@ -1543,11 +1554,11 @@
             this.gUSE.Controls.Add(this.txtRetail);
             this.gUSE.Controls.Add(this.label4);
             this.gUSE.Controls.Add(this.lblBarcode);
-            this.gUSE.Location = new System.Drawing.Point(2, 21);
+            this.gUSE.Location = new System.Drawing.Point(0, 21);
             this.gUSE.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gUSE.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gUSE.Name = "gUSE";
-            this.gUSE.Size = new System.Drawing.Size(1586, 672);
+            this.gUSE.Size = new System.Drawing.Size(1583, 630);
             this.gUSE.TabIndex = 234;
             this.gUSE.Text = "Warehouse";
             // 
@@ -1557,7 +1568,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(1105, 36);
+            this.label8.Location = new System.Drawing.Point(1102, 36);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 21);
             this.label8.TabIndex = 245;
@@ -1567,7 +1578,7 @@
             // 
             this.txtCostPrice.Enabled = false;
             this.txtCostPrice.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
-            this.txtCostPrice.Location = new System.Drawing.Point(1199, 33);
+            this.txtCostPrice.Location = new System.Drawing.Point(1196, 33);
             this.txtCostPrice.Name = "txtCostPrice";
             this.txtCostPrice.Size = new System.Drawing.Size(114, 29);
             this.txtCostPrice.TabIndex = 251;
@@ -1586,7 +1597,7 @@
             // 
             this.txtLastCost.Enabled = false;
             this.txtLastCost.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
-            this.txtLastCost.Location = new System.Drawing.Point(1199, 3);
+            this.txtLastCost.Location = new System.Drawing.Point(1196, 3);
             this.txtLastCost.Name = "txtLastCost";
             this.txtLastCost.Size = new System.Drawing.Size(114, 29);
             this.txtLastCost.TabIndex = 247;
@@ -1598,7 +1609,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(1106, 6);
+            this.label7.Location = new System.Drawing.Point(1103, 6);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 21);
             this.label7.TabIndex = 244;
@@ -1620,7 +1631,7 @@
             // 
             this.txtWholeSale.Enabled = false;
             this.txtWholeSale.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
-            this.txtWholeSale.Location = new System.Drawing.Point(989, 33);
+            this.txtWholeSale.Location = new System.Drawing.Point(977, 33);
             this.txtWholeSale.Name = "txtWholeSale";
             this.txtWholeSale.Size = new System.Drawing.Size(114, 29);
             this.txtWholeSale.TabIndex = 246;
@@ -1654,14 +1665,15 @@
             this.xInventory.Location = new System.Drawing.Point(21, 129);
             this.xInventory.Name = "xInventory";
             this.xInventory.SelectedTabPage = this.xtraPending;
-            this.xInventory.Size = new System.Drawing.Size(1565, 543);
+            this.xInventory.Size = new System.Drawing.Size(1565, 501);
             this.xInventory.TabIndex = 242;
             this.xInventory.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraPending,
             this.xtraAccepted,
             this.xtraReturn,
             this.xtraInventory,
-            this.xtraSales});
+            this.xtraSales,
+            this.xtraCredits});
             // 
             // xtraPending
             // 
@@ -1670,7 +1682,7 @@
             this.xtraPending.Controls.Add(this.groupInventoryDetail);
             this.xtraPending.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraPending.ImageOptions.Image")));
             this.xtraPending.Name = "xtraPending";
-            this.xtraPending.Size = new System.Drawing.Size(1563, 516);
+            this.xtraPending.Size = new System.Drawing.Size(1563, 474);
             this.xtraPending.Text = "Warehouse Delivery";
             // 
             // groupInventoryDetail
@@ -1684,7 +1696,7 @@
             this.groupInventoryDetail.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupInventoryDetail.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupInventoryDetail.Name = "groupInventoryDetail";
-            this.groupInventoryDetail.Size = new System.Drawing.Size(1563, 516);
+            this.groupInventoryDetail.Size = new System.Drawing.Size(1563, 474);
             this.groupInventoryDetail.TabIndex = 173;
             // 
             // gridCtrlPending
@@ -1697,7 +1709,7 @@
             this.gridCtrlPending.Location = new System.Drawing.Point(3, 18);
             this.gridCtrlPending.MainView = this.cardPending;
             this.gridCtrlPending.Name = "gridCtrlPending";
-            this.gridCtrlPending.Size = new System.Drawing.Size(1557, 495);
+            this.gridCtrlPending.Size = new System.Drawing.Size(1557, 453);
             this.gridCtrlPending.TabIndex = 237;
             this.gridCtrlPending.TabStop = false;
             this.gridCtrlPending.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1812,7 +1824,7 @@
             this.xtraAccepted.Controls.Add(this.groupAccepted);
             this.xtraAccepted.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraAccepted.ImageOptions.Image")));
             this.xtraAccepted.Name = "xtraAccepted";
-            this.xtraAccepted.Size = new System.Drawing.Size(1563, 516);
+            this.xtraAccepted.Size = new System.Drawing.Size(1563, 474);
             this.xtraAccepted.Text = "Accepted Delivery";
             // 
             // groupAccepted
@@ -1826,7 +1838,7 @@
             this.groupAccepted.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupAccepted.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupAccepted.Name = "groupAccepted";
-            this.groupAccepted.Size = new System.Drawing.Size(1563, 516);
+            this.groupAccepted.Size = new System.Drawing.Size(1563, 474);
             this.groupAccepted.TabIndex = 174;
             // 
             // gridCtrlAccepted
@@ -1837,53 +1849,54 @@
             this.gridCtrlAccepted.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
             this.gridCtrlAccepted.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
             this.gridCtrlAccepted.Location = new System.Drawing.Point(3, 18);
-            this.gridCtrlAccepted.MainView = this.layoutAccepted;
+            this.gridCtrlAccepted.MainView = this.gridAccepted;
             this.gridCtrlAccepted.Name = "gridCtrlAccepted";
-            this.gridCtrlAccepted.Size = new System.Drawing.Size(1557, 495);
+            this.gridCtrlAccepted.Size = new System.Drawing.Size(1557, 453);
             this.gridCtrlAccepted.TabIndex = 25;
             this.gridCtrlAccepted.TabStop = false;
             this.gridCtrlAccepted.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.layoutAccepted,
+            this.gridAccepted,
             this.gridView2,
             this.gridView3,
             this.grdHIS});
             // 
-            // layoutAccepted
+            // gridAccepted
             // 
-            this.layoutAccepted.Appearance.CardCaption.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layoutAccepted.Appearance.CardCaption.Options.UseFont = true;
-            this.layoutAccepted.Appearance.FieldCaption.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layoutAccepted.Appearance.FieldCaption.Options.UseFont = true;
-            this.layoutAccepted.Appearance.FieldValue.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layoutAccepted.Appearance.FieldValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.layoutAccepted.Appearance.FieldValue.Options.UseFont = true;
-            this.layoutAccepted.Appearance.FieldValue.Options.UseForeColor = true;
-            this.layoutAccepted.Appearance.FocusedCardCaption.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.layoutAccepted.Appearance.FocusedCardCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.layoutAccepted.Appearance.FocusedCardCaption.Options.UseFont = true;
-            this.layoutAccepted.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.layoutAccepted.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.layoutAccepted.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.layoutAccepted.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.layoutAccepted.Appearance.HeaderPanel.Options.UseFont = true;
-            this.layoutAccepted.Appearance.HeaderPanel.Options.UseForeColor = true;
-            this.layoutAccepted.Appearance.SelectedCardCaption.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layoutAccepted.Appearance.SelectedCardCaption.Options.UseFont = true;
-            this.layoutAccepted.Appearance.SeparatorLine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.layoutAccepted.Appearance.SeparatorLine.Options.UseForeColor = true;
-            this.layoutAccepted.Appearance.ViewBackground.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.layoutAccepted.Appearance.ViewBackground.Options.UseForeColor = true;
-            this.layoutAccepted.Appearance.ViewCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.layoutAccepted.Appearance.ViewCaption.Options.UseFont = true;
-            this.layoutAccepted.Appearance.ViewCaption.Options.UseForeColor = true;
-            this.layoutAccepted.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.layoutAccepted.GridControl = this.gridCtrlAccepted;
-            this.layoutAccepted.Name = "layoutAccepted";
-            this.layoutAccepted.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.layoutAccepted.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.layoutAccepted.OptionsBehavior.Editable = false;
-            this.layoutAccepted.OptionsSelection.MultiSelect = true;
-            this.layoutAccepted.TemplateCard = this.layoutViewCard1;
+            this.gridAccepted.Appearance.CardCaption.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridAccepted.Appearance.CardCaption.Options.UseFont = true;
+            this.gridAccepted.Appearance.FieldCaption.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridAccepted.Appearance.FieldCaption.Options.UseFont = true;
+            this.gridAccepted.Appearance.FieldValue.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridAccepted.Appearance.FieldValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridAccepted.Appearance.FieldValue.Options.UseFont = true;
+            this.gridAccepted.Appearance.FieldValue.Options.UseForeColor = true;
+            this.gridAccepted.Appearance.FocusedCardCaption.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
+            this.gridAccepted.Appearance.FocusedCardCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridAccepted.Appearance.FocusedCardCaption.Options.UseFont = true;
+            this.gridAccepted.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridAccepted.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridAccepted.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.gridAccepted.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridAccepted.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridAccepted.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridAccepted.Appearance.SelectedCardCaption.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridAccepted.Appearance.SelectedCardCaption.Options.UseFont = true;
+            this.gridAccepted.Appearance.SeparatorLine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridAccepted.Appearance.SeparatorLine.Options.UseForeColor = true;
+            this.gridAccepted.Appearance.ViewBackground.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridAccepted.Appearance.ViewBackground.Options.UseForeColor = true;
+            this.gridAccepted.Appearance.ViewCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.gridAccepted.Appearance.ViewCaption.Options.UseFont = true;
+            this.gridAccepted.Appearance.ViewCaption.Options.UseForeColor = true;
+            this.gridAccepted.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.gridAccepted.GridControl = this.gridCtrlAccepted;
+            this.gridAccepted.Name = "gridAccepted";
+            this.gridAccepted.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridAccepted.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridAccepted.OptionsBehavior.Editable = false;
+            this.gridAccepted.OptionsSelection.MultiSelect = true;
+            this.gridAccepted.TemplateCard = this.layoutViewCard1;
+            this.gridAccepted.DoubleClick += new System.EventHandler(this.gridAccepted_DoubleClick);
             // 
             // layoutViewCard1
             // 
@@ -1947,7 +1960,7 @@
             this.xtraReturn.Controls.Add(this.groupReturn);
             this.xtraReturn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraReturn.ImageOptions.Image")));
             this.xtraReturn.Name = "xtraReturn";
-            this.xtraReturn.Size = new System.Drawing.Size(1563, 516);
+            this.xtraReturn.Size = new System.Drawing.Size(1563, 474);
             this.xtraReturn.Text = "Return Inventory";
             // 
             // groupReturn
@@ -1961,7 +1974,7 @@
             this.groupReturn.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupReturn.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupReturn.Name = "groupReturn";
-            this.groupReturn.Size = new System.Drawing.Size(1563, 516);
+            this.groupReturn.Size = new System.Drawing.Size(1563, 474);
             this.groupReturn.TabIndex = 177;
             // 
             // gridCtrlReturn
@@ -2096,7 +2109,7 @@
             this.xtraInventory.Controls.Add(this.groupInventory);
             this.xtraInventory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraInventory.ImageOptions.Image")));
             this.xtraInventory.Name = "xtraInventory";
-            this.xtraInventory.Size = new System.Drawing.Size(1563, 516);
+            this.xtraInventory.Size = new System.Drawing.Size(1563, 474);
             this.xtraInventory.Text = "Warehouse Inventory";
             // 
             // groupInventory
@@ -2110,7 +2123,7 @@
             this.groupInventory.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupInventory.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupInventory.Name = "groupInventory";
-            this.groupInventory.Size = new System.Drawing.Size(1563, 516);
+            this.groupInventory.Size = new System.Drawing.Size(1563, 474);
             this.groupInventory.TabIndex = 176;
             // 
             // gridCtrlWarehouse
@@ -2123,7 +2136,7 @@
             this.gridCtrlWarehouse.Location = new System.Drawing.Point(3, 18);
             this.gridCtrlWarehouse.MainView = this.gridWarehouseInventory;
             this.gridCtrlWarehouse.Name = "gridCtrlWarehouse";
-            this.gridCtrlWarehouse.Size = new System.Drawing.Size(1557, 495);
+            this.gridCtrlWarehouse.Size = new System.Drawing.Size(1557, 453);
             this.gridCtrlWarehouse.TabIndex = 25;
             this.gridCtrlWarehouse.TabStop = false;
             this.gridCtrlWarehouse.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2246,7 +2259,7 @@
             this.xtraSales.Controls.Add(this.groupSalesDetails);
             this.xtraSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraSales.ImageOptions.Image")));
             this.xtraSales.Name = "xtraSales";
-            this.xtraSales.Size = new System.Drawing.Size(1563, 516);
+            this.xtraSales.Size = new System.Drawing.Size(1563, 474);
             this.xtraSales.Text = "Sales History";
             // 
             // groupSalesDetails
@@ -2260,7 +2273,7 @@
             this.groupSalesDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupSalesDetails.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupSalesDetails.Name = "groupSalesDetails";
-            this.groupSalesDetails.Size = new System.Drawing.Size(1563, 516);
+            this.groupSalesDetails.Size = new System.Drawing.Size(1563, 474);
             this.groupSalesDetails.TabIndex = 175;
             // 
             // gridCtrlSales
@@ -2273,7 +2286,7 @@
             this.gridCtrlSales.Location = new System.Drawing.Point(3, 18);
             this.gridCtrlSales.MainView = this.gridSales;
             this.gridCtrlSales.Name = "gridCtrlSales";
-            this.gridCtrlSales.Size = new System.Drawing.Size(1557, 495);
+            this.gridCtrlSales.Size = new System.Drawing.Size(1557, 453);
             this.gridCtrlSales.TabIndex = 25;
             this.gridCtrlSales.TabStop = false;
             this.gridCtrlSales.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2390,13 +2403,151 @@
             this.gridView11.GridControl = this.gridCtrlSales;
             this.gridView11.Name = "gridView11";
             // 
+            // xtraCredits
+            // 
+            this.xtraCredits.Appearance.PageClient.BackColor = System.Drawing.Color.BurlyWood;
+            this.xtraCredits.Appearance.PageClient.Options.UseBackColor = true;
+            this.xtraCredits.Controls.Add(this.groupControl1);
+            this.xtraCredits.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraCredits.ImageOptions.Image")));
+            this.xtraCredits.Name = "xtraCredits";
+            this.xtraCredits.Size = new System.Drawing.Size(1563, 474);
+            this.xtraCredits.Text = "Credit Details";
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupControl1.Appearance.Options.UseBackColor = true;
+            this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl1.Controls.Add(this.gridCtrlCredits);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(1563, 474);
+            this.groupControl1.TabIndex = 175;
+            // 
+            // gridCtrlCredits
+            // 
+            this.gridCtrlCredits.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridCtrlCredits.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridCtrlCredits.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.gridCtrlCredits.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridCtrlCredits.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.gridCtrlCredits.Location = new System.Drawing.Point(3, 18);
+            this.gridCtrlCredits.MainView = this.gridCredits;
+            this.gridCtrlCredits.Name = "gridCtrlCredits";
+            this.gridCtrlCredits.Size = new System.Drawing.Size(1557, 453);
+            this.gridCtrlCredits.TabIndex = 25;
+            this.gridCtrlCredits.TabStop = false;
+            this.gridCtrlCredits.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridCredits,
+            this.gridView1,
+            this.gridView4,
+            this.gridView14});
+            // 
+            // gridCredits
+            // 
+            this.gridCredits.Appearance.CardCaption.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridCredits.Appearance.CardCaption.Options.UseFont = true;
+            this.gridCredits.Appearance.FieldCaption.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridCredits.Appearance.FieldCaption.Options.UseFont = true;
+            this.gridCredits.Appearance.FieldValue.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridCredits.Appearance.FieldValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridCredits.Appearance.FieldValue.Options.UseFont = true;
+            this.gridCredits.Appearance.FieldValue.Options.UseForeColor = true;
+            this.gridCredits.Appearance.FocusedCardCaption.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
+            this.gridCredits.Appearance.FocusedCardCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCredits.Appearance.FocusedCardCaption.Options.UseFont = true;
+            this.gridCredits.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridCredits.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridCredits.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.gridCredits.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridCredits.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridCredits.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridCredits.Appearance.SelectedCardCaption.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridCredits.Appearance.SelectedCardCaption.Options.UseFont = true;
+            this.gridCredits.Appearance.SeparatorLine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridCredits.Appearance.SeparatorLine.Options.UseForeColor = true;
+            this.gridCredits.Appearance.ViewBackground.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridCredits.Appearance.ViewBackground.Options.UseForeColor = true;
+            this.gridCredits.Appearance.ViewCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.gridCredits.Appearance.ViewCaption.Options.UseFont = true;
+            this.gridCredits.Appearance.ViewCaption.Options.UseForeColor = true;
+            this.gridCredits.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.gridCredits.GridControl = this.gridCtrlCredits;
+            this.gridCredits.Name = "gridCredits";
+            this.gridCredits.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridCredits.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridCredits.OptionsBehavior.Editable = false;
+            this.gridCredits.OptionsSelection.MultiSelect = true;
+            this.gridCredits.TemplateCard = this.layoutViewCard2;
+            this.gridCredits.DoubleClick += new System.EventHandler(this.gridCredits_DoubleClick);
+            // 
+            // layoutViewCard2
+            // 
+            this.layoutViewCard2.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
+            this.layoutViewCard2.Name = "layoutViewTemplateCard";
+            this.layoutViewCard2.OptionsItemText.TextToControlDistance = 5;
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridCtrlCredits;
+            this.gridView1.Name = "gridView1";
+            // 
+            // gridView4
+            // 
+            this.gridView4.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridView4.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridView4.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridView4.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView4.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Green;
+            this.gridView4.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView4.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridView4.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridView4.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView4.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridView4.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView4.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView4.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView4.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView4.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridView4.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.gridView4.Appearance.Row.Options.UseFont = true;
+            this.gridView4.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridView4.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView4.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView4.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridView4.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridView4.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridView4.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView4.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridView4.AppearancePrint.Row.Options.UseFont = true;
+            this.gridView4.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridView4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.gridView4.GridControl = this.gridCtrlCredits;
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView4.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView4.OptionsBehavior.Editable = false;
+            this.gridView4.OptionsBehavior.ReadOnly = true;
+            this.gridView4.OptionsCustomization.AllowRowSizing = true;
+            this.gridView4.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridView4.OptionsSelection.MultiSelect = true;
+            this.gridView4.OptionsView.ColumnAutoWidth = false;
+            // 
+            // gridView14
+            // 
+            this.gridView14.GridControl = this.gridCtrlCredits;
+            this.gridView14.Name = "gridView14";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(887, 36);
+            this.label5.Location = new System.Drawing.Point(875, 36);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 21);
             this.label5.TabIndex = 240;
@@ -2406,7 +2557,7 @@
             // 
             this.txtRetail.Enabled = false;
             this.txtRetail.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
-            this.txtRetail.Location = new System.Drawing.Point(989, 3);
+            this.txtRetail.Location = new System.Drawing.Point(977, 3);
             this.txtRetail.Name = "txtRetail";
             this.txtRetail.Size = new System.Drawing.Size(114, 29);
             this.txtRetail.TabIndex = 238;
@@ -2418,7 +2569,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(887, 6);
+            this.label4.Location = new System.Drawing.Point(875, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 21);
             this.label4.TabIndex = 237;
@@ -2477,7 +2628,7 @@
             this.spCON.Panel2.Controls.Add(this.groupGrid);
             this.spCON.Panel2.Controls.Add(this.rbControl);
             this.spCON.Panel2.Controls.Add(this.ribSTATUS);
-            this.spCON.Size = new System.Drawing.Size(1592, 886);
+            this.spCON.Size = new System.Drawing.Size(1592, 845);
             this.spCON.SplitterPosition = 0;
             this.spCON.TabIndex = 95;
             // 
@@ -2487,7 +2638,7 @@
             this.groupImage.Appearance.Options.UseBackColor = true;
             this.groupImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.groupImage.Controls.Add(this.imgPreview);
-            this.groupImage.Location = new System.Drawing.Point(1315, 50);
+            this.groupImage.Location = new System.Drawing.Point(1312, 50);
             this.groupImage.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupImage.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupImage.Name = "groupImage";
@@ -2520,7 +2671,7 @@
             this.groupGrid.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupGrid.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupGrid.Name = "groupGrid";
-            this.groupGrid.Size = new System.Drawing.Size(1588, 692);
+            this.groupGrid.Size = new System.Drawing.Size(1588, 651);
             this.groupGrid.TabIndex = 173;
             // 
             // groupOperator
@@ -2548,7 +2699,7 @@
             this.groupOperator.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupOperator.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupOperator.Name = "groupOperator";
-            this.groupOperator.Size = new System.Drawing.Size(1296, 68);
+            this.groupOperator.Size = new System.Drawing.Size(1295, 68);
             this.groupOperator.TabIndex = 235;
             this.groupOperator.Text = "Inventory";
             // 
@@ -2558,7 +2709,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.DimGray;
-            this.label11.Location = new System.Drawing.Point(953, 37);
+            this.label11.Location = new System.Drawing.Point(951, 37);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(106, 21);
             this.label11.TabIndex = 254;
@@ -2570,7 +2721,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.DimGray;
-            this.label10.Location = new System.Drawing.Point(953, 8);
+            this.label10.Location = new System.Drawing.Point(951, 8);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(119, 21);
             this.label10.TabIndex = 253;
@@ -2583,7 +2734,7 @@
             this.dpkUpdated.Enabled = false;
             this.dpkUpdated.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkUpdated.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpkUpdated.Location = new System.Drawing.Point(1080, 34);
+            this.dpkUpdated.Location = new System.Drawing.Point(1078, 34);
             this.dpkUpdated.Name = "dpkUpdated";
             this.dpkUpdated.Size = new System.Drawing.Size(212, 29);
             this.dpkUpdated.TabIndex = 252;
@@ -2595,7 +2746,7 @@
             this.dkpDeliveryDate.Enabled = false;
             this.dkpDeliveryDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDeliveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDeliveryDate.Location = new System.Drawing.Point(1080, 3);
+            this.dkpDeliveryDate.Location = new System.Drawing.Point(1078, 3);
             this.dkpDeliveryDate.Name = "dkpDeliveryDate";
             this.dkpDeliveryDate.Size = new System.Drawing.Size(212, 29);
             this.dkpDeliveryDate.TabIndex = 251;
@@ -2688,7 +2839,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1587, 846);
             this.Controls.Add(this.spCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmManagement";
@@ -2728,7 +2879,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupAccepted)).EndInit();
             this.groupAccepted.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrlAccepted)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutAccepted)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAccepted)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
@@ -2757,6 +2908,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView11)).EndInit();
+            this.xtraCredits.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlCredits)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCredits)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcLOG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spCON)).EndInit();
             this.spCON.ResumeLayout(false);
@@ -2784,7 +2944,7 @@
         private DevExpress.XtraBars.BarButtonItem barUPI;
         private DevExpress.XtraBars.BarButtonItem barSearchParticular;
         private DevExpress.XtraBars.BarButtonItem barSearchSales;
-        private DevExpress.XtraBars.BarSubItem barCreditDetails;
+        private DevExpress.XtraBars.BarSubItem barReportCreditServices;
         private DevExpress.XtraBars.BarButtonItem barParCred;
         private DevExpress.XtraBars.Ribbon.RibbonPage PagePos;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbPGC;
@@ -2824,9 +2984,9 @@
         private DevExpress.XtraBars.BarButtonItem barUPAY;
         private DevExpress.XtraBars.BarButtonItem barADDC;
         private DevExpress.XtraBars.BarButtonItem barSaveCredit;
-        private DevExpress.XtraBars.BarSubItem barInvoiceSales;
+        private DevExpress.XtraBars.BarSubItem barReportServices;
         private DevExpress.XtraBars.BarButtonItem barDAIRD;
-        private DevExpress.XtraBars.BarSubItem barParticularSales;
+        private DevExpress.XtraBars.BarSubItem barReportParticularServices;
         private DevExpress.XtraBars.BarButtonItem barDAIPR;
         private DevExpress.XtraBars.BarButtonItem barDAISM;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribSAV;
@@ -2873,7 +3033,7 @@
         private DevExpress.XtraBars.BarButtonItem barReportSalesPart;
         private DevExpress.XtraBars.BarButtonItem barReportCreditSales;
         private DevExpress.XtraBars.BarButtonItem barCustomerList;
-        private DevExpress.XtraBars.BarButtonItem barCreditList;
+        private DevExpress.XtraBars.BarButtonItem barCreditSales;
         private DevExpress.XtraBars.BarButtonItem barPayCredit;
         private DevExpress.XtraBars.BarButtonItem barHIS;
         private DevExpress.XtraBars.BarButtonItem barPaymentList;
@@ -2961,7 +3121,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView10;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView11;
         private DevExpress.XtraTab.XtraTabPage xtraReturn;
-        private DevExpress.XtraGrid.Views.Layout.LayoutView layoutAccepted;
+        private DevExpress.XtraGrid.Views.Layout.LayoutView gridAccepted;
         private DevExpress.XtraGrid.Views.Layout.LayoutViewCard layoutViewCard1;
         private DevExpress.XtraEditors.GroupControl groupReturn;
         private DevExpress.XtraGrid.GridControl gridCtrlReturn;
@@ -2982,5 +3142,13 @@
         private System.Windows.Forms.DateTimePicker dpkUpdated;
         private System.Windows.Forms.DateTimePicker dkpDeliveryDate;
         private DevExpress.XtraBars.BarSubItem barSubItem4;
+        private DevExpress.XtraTab.XtraTabPage xtraCredits;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraGrid.GridControl gridCtrlCredits;
+        private DevExpress.XtraGrid.Views.Layout.LayoutView gridCredits;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewCard layoutViewCard2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView14;
     }
 }

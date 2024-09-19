@@ -202,6 +202,9 @@
     <Compile Include="Class\ProductList.cs" />
     <Compile Include="Class\CreditList.cs" />
     <Compile Include="Class\CreditParticularList.cs" />
+    <Compile Include="Class\PaymentList.cs" />
+    <Compile Include="Class\ServiceParticularList.cs" />
+    <Compile Include="Class\ServiceList.cs" />
     <Compile Include="Class\SalesParticularList.cs" />
     <Compile Include="Class\SalesList.cs" />
     <Compile Include="Class\WarehouseInventory.cs" />
@@ -228,6 +231,9 @@
     <Compile Include="Entities\ReturnDepot.cs" />
     <Compile Include="Entities\ViewReportCredit.cs" />
     <Compile Include="Entities\ViewReportCreditParticular.cs" />
+    <Compile Include="Entities\ViewReportPayment.cs" />
+    <Compile Include="Entities\ViewReportServiceParticular.cs" />
+    <Compile Include="Entities\ViewReportService.cs" />
     <Compile Include="Entities\ViewReportSalesParticular.cs" />
     <Compile Include="Entities\ViewReportSales.cs" />
     <Compile Include="Entities\ViewReturnWarehouse.cs" />
@@ -249,6 +255,9 @@
     <Compile Include="Interface\IReturnWarehouse.cs" />
     <Compile Include="Interface\ICreditItem.cs" />
     <Compile Include="Interface\ICreditParticular.cs" />
+    <Compile Include="Interface\IPaymentItem.cs" />
+    <Compile Include="Interface\IServiceParticular.cs" />
+    <Compile Include="Interface\IServiceItem.cs" />
     <Compile Include="Interface\ISalesParticular.cs" />
     <Compile Include="Interface\ISummaryBranchDelivery.cs" />
     <Compile Include="Interface\IWareHouseDelivery.cs" />
@@ -320,18 +329,6 @@
     <Compile Include="MainForm\FirmProducts.Designer.cs">
       <DependentUpon>FirmProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm\FirmDepot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm\FirmDepot.Designer.cs">
-      <DependentUpon>FirmDepot.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm\FirmDepotReturn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm\FirmDepotReturn.Designer.cs">
-      <DependentUpon>FirmDepotReturn.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm\FirmWarehouse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,12 +383,6 @@
     <Compile Include="PopupForm\FirmPopCategoryReport.Designer.cs">
       <DependentUpon>FirmPopCategoryReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="PopupForm\FirmPopDeliveryInvBranch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PopupForm\FirmPopDeliveryInvBranch.Designer.cs">
-      <DependentUpon>FirmPopDeliveryInvBranch.cs</DependentUpon>
-    </Compile>
     <Compile Include="PopupForm\FirmPopLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,17 +395,23 @@
     <Compile Include="PopupForm\FirmPopDateEntries.Designer.cs">
       <DependentUpon>FirmPopDateEntries.cs</DependentUpon>
     </Compile>
-    <Compile Include="PopupForm\FirmPopReturnEmpty.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PopupForm\FirmPopReturnEmpty.Designer.cs">
-      <DependentUpon>FirmPopReturnEmpty.cs</DependentUpon>
-    </Compile>
     <Compile Include="PopupForm\FirmPopServer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PopupForm\FirmPopServer.Designer.cs">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FrmPopCredit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FrmPopCredit.Designer.cs">
+      <DependentUpon>FrmPopCredit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm\FrmPopAccept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FrmPopAccept.Designer.cs">
+      <DependentUpon>FrmPopAccept.cs</DependentUpon>
     </Compile>
     <Compile Include="PopupForm\FrmPopReturn.cs">
       <SubType>Form</SubType>
@@ -483,6 +480,24 @@
     <Compile Include="Report\RepCreditParticular.Designer.cs">
       <DependentUpon>RepCreditParticular.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\RepPaymentItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepPaymentItem.Designer.cs">
+      <DependentUpon>RepPaymentItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RepServiceParticular.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepServiceParticular.Designer.cs">
+      <DependentUpon>RepServiceParticular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RepServiceItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepServiceItem.Designer.cs">
+      <DependentUpon>RepServiceItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\RepSalesParticular.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -512,6 +527,9 @@
     <Compile Include="Services\ServProductsItem.cs" />
     <Compile Include="Services\ServReportCredit.cs" />
     <Compile Include="Services\ServCreditParticular.cs" />
+    <Compile Include="Services\ServReportPayment.cs" />
+    <Compile Include="Services\ServReportService.cs" />
+    <Compile Include="Services\ServServiceParticular.cs" />
     <Compile Include="Services\ServSalesParticular.cs" />
     <Compile Include="Services\ServReturnDepot.cs" />
     <Compile Include="Services\ServReturnWareHouse.cs" />
@@ -552,12 +570,6 @@
     <EmbeddedResource Include="MainForm\FirmProducts.resx">
       <DependentUpon>FirmProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm\FirmDepot.resx">
-      <DependentUpon>FirmDepot.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm\FirmDepotReturn.resx">
-      <DependentUpon>FirmDepotReturn.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FirmWarehouse.resx">
       <DependentUpon>FirmWarehouse.cs</DependentUpon>
     </EmbeddedResource>
@@ -585,20 +597,20 @@
     <EmbeddedResource Include="PopupForm\FirmPopCategoryReport.resx">
       <DependentUpon>FirmPopCategoryReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PopupForm\FirmPopDeliveryInvBranch.resx">
-      <DependentUpon>FirmPopDeliveryInvBranch.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopLogin.resx">
       <DependentUpon>FirmPopLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopDateEntries.resx">
       <DependentUpon>FirmPopDateEntries.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PopupForm\FirmPopReturnEmpty.resx">
-      <DependentUpon>FirmPopReturnEmpty.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopServer.resx">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FrmPopCredit.resx">
+      <DependentUpon>FrmPopCredit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FrmPopAccept.resx">
+      <DependentUpon>FrmPopAccept.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FrmPopReturn.resx">
       <DependentUpon>FrmPopReturn.cs</DependentUpon>
@@ -635,6 +647,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RepCreditParticular.resx">
       <DependentUpon>RepCreditParticular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepPaymentItem.resx">
+      <DependentUpon>RepPaymentItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepServiceParticular.resx">
+      <DependentUpon>RepServiceParticular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepServiceItem.resx">
+      <DependentUpon>RepServiceItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RepSalesParticular.resx">
       <DependentUpon>RepSalesParticular.cs</DependentUpon>

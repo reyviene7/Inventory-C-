@@ -33,7 +33,15 @@ namespace Inventory.MainForm
         {
             _userId = userId;
             _usrTyp = usrTyp;
+            if (_usrTyp != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
         }
 
         private void FrmBranch_Load(object sender, EventArgs e)

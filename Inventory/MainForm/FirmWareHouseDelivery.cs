@@ -38,7 +38,15 @@ namespace Inventory.MainForm
         {
             _userId = userId;
             _userTy = userTy;
+            if (_userTy != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
             _warehouse = EnumerableUtils.getWarehouse();
             _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
@@ -223,6 +231,12 @@ namespace Inventory.MainForm
         {
             if (_add && _edt == false && _del == false)
             {
+                if (string.IsNullOrEmpty(txtDeliveryQty.Text) || !int.TryParse(txtDeliveryQty.Text, out int deliveryQty) || deliveryQty <= 0)
+                {
+                    // Show a popup notification for invalid delivery quantity
+                    PopupNotification.PopUpMessages(0, "Invalid delivery quantity. Please enter a valid number.", "Inventory System");
+                    return; // Exit the method if the condition is not met
+                }
                 InsertData();
                 ButtonSav();
                 InputDisb();
@@ -230,6 +244,7 @@ namespace Inventory.MainForm
                 InputClea();
                 _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
                 _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+                
             }
             if (_add == false && _edt && _del == false)
             {
@@ -500,7 +515,7 @@ namespace Inventory.MainForm
             txtDelRemarks.BackColor = Color.DimGray;
         }
         //KEY DOWN
-        private void txtDEL_KeyDown(object sender, KeyEventArgs e)
+        private void txtLastCost_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -508,36 +523,38 @@ namespace Inventory.MainForm
                 if (len > 0)
                 {
                     txtLastCost.BackColor = Color.White;
-                    txtReceiptNum.Focus();
-                    txtReceiptNum.BackColor = Color.Yellow;
+                    txtItemPrice.Focus();
+                    txtItemPrice.BackColor = Color.Yellow;
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Delivery No must not be empty!", Messages.InventorySystem);
+                    PopupNotification.PopUpMessages(0, "Last Cost must must have be a value!", Messages.InventorySystem);
                     txtLastCost.BackColor = Color.Yellow;
                     txtLastCost.Focus();
                 }
             }
         }
-        private void txtREC_KeyDown(object sender, KeyEventArgs e)
+
+        private void txtItemPrice_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                var len = txtReceiptNum.Text.Length;
+                var len = txtItemPrice.Text.Length;
                 if (len > 0)
                 {
-                    txtReceiptNum.BackColor = Color.White;
+                    txtItemPrice.BackColor = Color.White;
                     txtDeliveryQty.Focus();
                     txtDeliveryQty.BackColor = Color.Yellow;
                 }
                 else
                 {
-                    PopupNotification.PopUpMessages(0, "Receipt No must not be empty!", Messages.InventorySystem);
-                    txtReceiptNum.BackColor = Color.Yellow;
-                    txtReceiptNum.Focus();
+                    PopupNotification.PopUpMessages(0, "Item Price must have be a value!", Messages.InventorySystem);
+                    txtItemPrice.BackColor = Color.Yellow;
+                    txtItemPrice.Focus();
                 }
             }
         }
+
         private void txtQTY_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -557,7 +574,42 @@ namespace Inventory.MainForm
                 }
             }
         }
-        private void cmbDIS_KeyDown(object sender, KeyEventArgs e)
+
+        private void txtDeliveryQty_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var warehouseItem = int.Parse(txtWarehouseQty.Text);
+
+                if (!int.TryParse(txtDeliveryQty.Text, out int deliveryQty) || deliveryQty <= 0)
+                {
+                    PopupNotification.PopUpMessages(0, "Invalid delivery quantity. Please enter a valid number.", "INVALID ENTRY");
+                    txtDeliveryQty.BackColor = Color.Red;
+                    txtDeliveryQty.Focus();
+                    e.SuppressKeyPress = true;
+                    return;
+                }
+
+                if (warehouseItem > 0)
+                {
+                    if (warehouseItem >= deliveryQty)
+                    {
+                        txtWarehouseQty.Text = (warehouseItem - deliveryQty).ToString();
+                        txtDeliveryQty.BackColor = Color.White;
+                        txtWarehouseQty.BackColor = Color.White;
+                        cmbDeliveryStatus.Focus();
+                    }
+                    else
+                    {
+                        PopupNotification.PopUpMessages(0, "Insufficient warehouse quantity!", "INVALID ENTRY");
+                        e.Handled = true; 
+                        txtWarehouseQty.Focus();
+                    }
+                }
+            }
+        }
+
+        private void cmbWarehouseBranch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -581,37 +633,46 @@ namespace Inventory.MainForm
                 cmbWarehouseBranch.DataSource = _branch.Select(p => p.branch_details).ToList();
             }
         }
-        private void dkpPUR_KeyDown(object sender, KeyEventArgs e)
+
+        private void dkpDeliveryDate_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                //pInputDate.Focus();
-            }
-        }
-        private void txtDeliveryQty_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
-            {
-                var warehouseItem = int.Parse(txtWarehouseQty.Text);
-                var deliveryQty = int.Parse(txtDeliveryQty.Text);
-
-                if (warehouseItem > 0)
+                var len = dkpDeliveryDate.Text.Length;
+                if (len > 0)
                 {
-                    if (warehouseItem >= deliveryQty)
-                    {
-                        txtWarehouseQty.Text = (warehouseItem - deliveryQty).ToString();
-                        txtWarehouseQty.BackColor = Color.White;
-                        cmbDeliveryStatus.Focus();
-                    }
-                    else
-                    {
-                        PopupNotification.PopUpMessages(0, "Insufficient warehouse quantity!", "INVALID ENTRY");
-                        e.Handled = true; 
-                        txtWarehouseQty.Focus();
-                    }
+                    dkpDeliveryDate.BackColor = Color.White; 
+                    bntSAVE.Focus();
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Delivery Date must not be empty!", Messages.InventorySystem);
+                    dkpDeliveryDate.BackColor = Color.Yellow;
+                    dkpDeliveryDate.Focus();
                 }
             }
         }
+
+        private void txtRemarks_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var len = txtRemarks.Text.Length;
+                if (len > 0)
+                {
+                    txtRemarks.BackColor = Color.White;
+                    dkpDeliveryDate.Focus();
+                    dkpDeliveryDate.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Remarks must not be empty!", Messages.InventorySystem);
+                    txtRemarks.BackColor = Color.Yellow;
+                    txtRemarks.Focus();
+                }
+            }
+        }
+
         private void txtDelQty_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -688,8 +749,8 @@ namespace Inventory.MainForm
                 if (len > 0)
                 {
                     cmbDeliveryStatus.BackColor = Color.White;
-                    cmbWarehouseBranch.Focus();
-                    cmbWarehouseBranch.BackColor = Color.Yellow;
+                    txtRemarks.Focus();
+                    txtRemarks.BackColor = Color.Yellow;
                 }
                 else
                 {
@@ -707,6 +768,7 @@ namespace Inventory.MainForm
                 cmbDelDeliveryStatus.DataSource = _delivery.Select(p => p.delivery_status).ToList();
             }
         }
+
         private void cmbDelBranch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -715,14 +777,118 @@ namespace Inventory.MainForm
                 cmbDelBranch.DataSource = _branch.Select(p => p.branch_details).ToList();
             }
         }
+
         private void gridList_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridViewWarehouse(sender);
         }
+
         private void gridDelivery_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridViewDelivery(sender);
         }
+
+        private void gridViewWarehouse(object sender)
+        {
+            if (gridInventory.RowCount > 0)
+                try
+                {
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
+                    var inventoryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (barcode.Length > 0)
+                    {
+
+                        var ent = searchWarehouseInventoryId(barcode);
+                        txtInventoryId.Text = inventoryId;
+                        txtProductBarcode.Text = barcode;
+                        cmbWarehouse.Text = ent.warehouse_name;
+                        txtProductName.Text = _products.FirstOrDefault(p => p.product_code == barcode).product_name;
+                        txtLastCost.Text = ent.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtWarehouseQty.Text = ent.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
+                        cmbProductStatus.Text = ent.status_details;
+                        txtItemPrice.Text = ent.cost_per_unit.ToString(CultureInfo.InvariantCulture);
+
+                        var img = searchProductImg(barcode);
+                        var imgLocation = img.img_location;
+                        if (imgLocation.Length > 0)
+                        {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                            imgPRO.ImageLocation = location;
+                        }
+                        else
+                            imgPRO.Image = null;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+        }
+        private void gridViewDelivery(object sender)
+        {
+            if (gridDelivery.RowCount > 0)
+                try
+                {
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
+                    var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (barcode.Length > 0)
+                    {
+
+
+                        var w = searchWarehouseDeliveryId(barcode);
+                        txtDelWarehouseId.Text = deliveryId;
+                        txtDelProduct.Text = barcode;
+                        txtDelWarehouseCode.Text = w.delivery_code;
+                        cmbDelWarehouseCode.Text = w.warehouse_name;
+                        txtDelProductName.Text = w.product_name;
+                        txtDelLastCost.Text = w.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtDelReceipt.Text = w.receipt_number;
+                        txtDelRemainQty.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
+                        cmbDelBranch.Text = w.branch_details;
+                        dkpDelDeliveryDate.Value = w.delivery_date;
+                        cmbDelProductStatus.Text = w.status_details;
+                        txtDelItemPrice.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtDelQty.Text = w.delivery_qty.ToString(CultureInfo.InvariantCulture);
+                        cmbDelDeliveryStatus.Text = w.delivery_status;
+                        txtDelRemarks.Text = w.remarks;
+                        dkpDelUpdate.Value = w.update_on;
+                        var img = searchProductImg(barcode);
+                        var imgLocation = img.img_location;
+                        if (imgLocation.Length > 0)
+                        {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            ImagePreview.ImageLocation = location;
+                            ImagePreview.Refresh();
+                        }
+                        else
+                        {
+                            ImagePreview.Image = null;
+                        }
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+        }
+        private ViewImageProduct searchProductImg(string param)
+        {
+            return imgList.FirstOrDefault(img => img.image_code == param);
+        }
+
+        private ViewWareHouseInventory searchWarehouseInventoryId(string barcode)
+        {
+            return _warehouse_list.FirstOrDefault(Inventory => Inventory.product_code == barcode);
+        }
+        private ViewWarehouseDelivery searchWarehouseDeliveryId(string barcode)
+        {
+            return _warehouse_delivery.FirstOrDefault(Warehouse => Warehouse.product_code == barcode);
+        }
+
         private void gridDelivery_RowClick(object sender, RowClickEventArgs e)
         {
             if (gridDelivery.RowCount > 0)
@@ -730,12 +896,43 @@ namespace Inventory.MainForm
                 InputWhit();
             }
         }
+
         private void gridBranch_RowClick(object sender, RowClickEventArgs e)
         {
             if (gridInventory.RowCount > 0)
             {
                 InputWhit();
             }
+        }
+        private void GenerateWareHouseCode()
+        {
+            var lastWarehouseDeliveryCode = FetchUtils.GetLastWarehouseDeliveryCode();
+            int lastWarehouseDeliveryNumber;
+
+            if (string.IsNullOrEmpty(lastWarehouseDeliveryCode) || !int.TryParse(lastWarehouseDeliveryCode.Replace("DC", ""), out lastWarehouseDeliveryNumber))
+            {
+                lastWarehouseDeliveryNumber = 0;
+            }
+
+            var alphaNumeric = new GenerateAlpaDev("DC", 3, lastWarehouseDeliveryNumber);
+            alphaNumeric.Increment();
+            txtDeliveryCode.Text = alphaNumeric.ToString();
+            txtDeliveryCode.Focus();
+        }
+        private void GenerateReceiptCode()
+        {
+            var lastReceiptCode = FetchUtils.GetLastReceiptCode();
+            int lastReceiptNumber;
+
+            if (string.IsNullOrEmpty(lastReceiptCode) || !int.TryParse(lastReceiptCode.Replace("RCPT", ""), out lastReceiptNumber))
+            {
+                lastReceiptNumber = 0;
+            }
+
+            var alphaNumeric = new GenerateAlpaRcpt("RCPT", 3, lastReceiptNumber);
+            alphaNumeric.Increment();
+            txtReceiptNum.Text = alphaNumeric.ToString();
+            txtReceiptNum.Focus();
         }
         private void BindWareHouse()
         {
@@ -801,136 +998,6 @@ namespace Inventory.MainForm
                 gridDelivery.Columns[9].Width = 70;
                 gridDelivery.Columns[10].Width = 80;
             }
-        }
-        private ViewImageProduct searchProductImg(string param)
-        {
-            return imgList.FirstOrDefault(img => img.image_code == param);
-        }
-
-        private ViewWareHouseInventory searchWarehouseInventoryId(string barcode)
-        {
-            return _warehouse_list.FirstOrDefault(Inventory => Inventory.product_code == barcode);
-        }
-        private ViewWarehouseDelivery searchWarehouseDeliveryId(string barcode)
-        {
-            return _warehouse_delivery.FirstOrDefault(Warehouse => Warehouse.product_code == barcode);
-        }
-        private void GenerateWareHouseCode()
-        {
-            var lastWarehouseDeliveryCode = FetchUtils.GetLastWarehouseDeliveryCode();
-            int lastWarehouseDeliveryNumber;
-
-            if (string.IsNullOrEmpty(lastWarehouseDeliveryCode) || !int.TryParse(lastWarehouseDeliveryCode.Replace("DC", ""), out lastWarehouseDeliveryNumber))
-            {
-                lastWarehouseDeliveryNumber = 0;
-            }
-
-            var alphaNumeric = new GenerateAlpaDev("DC", 3, lastWarehouseDeliveryNumber);
-            alphaNumeric.Increment();
-            txtDeliveryCode.Text = alphaNumeric.ToString();
-            txtDeliveryCode.Focus();
-        }
-        private void GenerateReceiptCode()
-        {
-            var lastReceiptCode = FetchUtils.GetLastReceiptCode();
-            int lastReceiptNumber;
-
-            if (string.IsNullOrEmpty(lastReceiptCode) || !int.TryParse(lastReceiptCode.Replace("RCPT", ""), out lastReceiptNumber))
-            {
-                lastReceiptNumber = 0;
-            }
-
-            var alphaNumeric = new GenerateAlpaRcpt("RCPT", 3, lastReceiptNumber);
-            alphaNumeric.Increment();
-            txtReceiptNum.Text = alphaNumeric.ToString();
-            txtReceiptNum.Focus();
-        }
-        private void gridViewWarehouse(object sender)
-        {
-            if (gridInventory.RowCount > 0)
-                try
-                {
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                    var inventoryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    if (barcode.Length > 0)
-                    {
-
-                        var ent = searchWarehouseInventoryId(barcode);
-                        txtInventoryId.Text = inventoryId;
-                        txtProductBarcode.Text = barcode;
-                        cmbWarehouse.Text = ent.warehouse_name;
-                        txtProductName.Text = _products.FirstOrDefault(p => p.product_code == barcode).product_name;
-                        txtLastCost.Text = ent.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtWarehouseQty.Text = ent.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
-                        cmbProductStatus.Text = ent.status_details;
-                        txtItemPrice.Text = ent.cost_per_unit.ToString(CultureInfo.InvariantCulture);
-
-                        var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
-                        {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-
-                            imgPRO.ImageLocation = location;
-                        }
-                        else
-                            imgPRO.Image = null;
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-        }
-        private void gridViewDelivery(object sender)
-        {
-            if (gridDelivery.RowCount > 0)
-                try
-                {
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                    var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    if (barcode.Length > 0)
-                    {
-                        
-                            
-                        var w = searchWarehouseDeliveryId(barcode);
-                        txtDelWarehouseId.Text = deliveryId;
-                        txtDelProduct.Text = barcode;
-                        txtDelWarehouseCode.Text = w.delivery_code;
-                        cmbDelWarehouseCode.Text = w.warehouse_name;
-                        txtDelProductName.Text = w.product_name;
-                        txtDelLastCost.Text = w.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtDelReceipt.Text = w.receipt_number;
-                        txtDelRemainQty.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
-                        cmbDelBranch.Text = w.branch_details;
-                        dkpDelDeliveryDate.Value = w.delivery_date;
-                        cmbDelProductStatus.Text = w.status_details;
-                        txtDelItemPrice.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtDelQty.Text = w.delivery_qty.ToString(CultureInfo.InvariantCulture);
-                        cmbDelDeliveryStatus.Text = w.delivery_status;
-                        txtDelRemarks.Text = w.remarks;
-                        dkpDelUpdate.Value = w.update_on;
-                        var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
-                        {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-                            ImagePreview.ImageLocation = location;
-                            ImagePreview.Refresh();
-                        }
-                        else
-                        {
-                            ImagePreview.Image = null;
-                        }
-
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
         }
         private void InsertData()
         {
@@ -1041,8 +1108,6 @@ namespace Inventory.MainForm
                 }
             }
         }
-
-
         private void DeleteData()
         {
             var deliveryId = Convert.ToInt32(txtDelWarehouseId.Text.Trim());

@@ -40,7 +40,7 @@
             this.cmbReturnDestination = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cmbReturnItemStatus = new System.Windows.Forms.ComboBox();
-            this.txtInventoryQuantity = new System.Windows.Forms.TextBox();
+            this.txtReturnNumber = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtReturnRemarks = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -78,7 +78,7 @@
             this.groupLauncher.Controls.Add(this.cmbReturnDestination);
             this.groupLauncher.Controls.Add(this.label8);
             this.groupLauncher.Controls.Add(this.cmbReturnItemStatus);
-            this.groupLauncher.Controls.Add(this.txtInventoryQuantity);
+            this.groupLauncher.Controls.Add(this.txtReturnNumber);
             this.groupLauncher.Controls.Add(this.label6);
             this.groupLauncher.Controls.Add(this.txtReturnRemarks);
             this.groupLauncher.Controls.Add(this.label4);
@@ -99,7 +99,7 @@
             this.groupLauncher.Name = "groupLauncher";
             this.groupLauncher.Size = new System.Drawing.Size(931, 582);
             this.groupLauncher.TabIndex = 6;
-            this.groupLauncher.Text = "Stock Delivery From Warehouse";
+            this.groupLauncher.Text = "Stock Return From Inventory";
             // 
             // label10
             // 
@@ -116,13 +116,13 @@
             // dkpReturnDate
             // 
             this.dkpReturnDate.CustomFormat = "dd-MM-yyyy";
+            this.dkpReturnDate.Enabled = false;
             this.dkpReturnDate.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.dkpReturnDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dkpReturnDate.Location = new System.Drawing.Point(523, 298);
             this.dkpReturnDate.Name = "dkpReturnDate";
             this.dkpReturnDate.Size = new System.Drawing.Size(223, 34);
             this.dkpReturnDate.TabIndex = 11;
-            this.dkpReturnDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDelivery_KeyDown);
             // 
             // pictureBox1
             // 
@@ -199,6 +199,7 @@
             this.cmbReturnItemStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbReturnItemStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbReturnItemStatus.BackColor = System.Drawing.Color.White;
+            this.cmbReturnItemStatus.Enabled = false;
             this.cmbReturnItemStatus.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.cmbReturnItemStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.cmbReturnItemStatus.FormattingEnabled = true;
@@ -206,16 +207,15 @@
             this.cmbReturnItemStatus.Name = "cmbReturnItemStatus";
             this.cmbReturnItemStatus.Size = new System.Drawing.Size(396, 36);
             this.cmbReturnItemStatus.TabIndex = 8;
-            this.cmbReturnItemStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbItemStatus_KeyDown);
             // 
-            // txtInventoryQuantity
+            // txtReturnNumber
             // 
-            this.txtInventoryQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtInventoryQuantity.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtInventoryQuantity.Location = new System.Drawing.Point(523, 162);
-            this.txtInventoryQuantity.Name = "txtInventoryQuantity";
-            this.txtInventoryQuantity.Size = new System.Drawing.Size(396, 32);
-            this.txtInventoryQuantity.TabIndex = 10;
+            this.txtReturnNumber.Enabled = false;
+            this.txtReturnNumber.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
+            this.txtReturnNumber.Location = new System.Drawing.Point(523, 162);
+            this.txtReturnNumber.Name = "txtReturnNumber";
+            this.txtReturnNumber.Size = new System.Drawing.Size(396, 32);
+            this.txtReturnNumber.TabIndex = 10;
             // 
             // label6
             // 
@@ -225,13 +225,12 @@
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(385, 168);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 21);
+            this.label6.Size = new System.Drawing.Size(133, 21);
             this.label6.TabIndex = 264;
-            this.label6.Text = "Item Quantity:";
+            this.label6.Text = "Return Number:";
             // 
             // txtReturnRemarks
             // 
-            this.txtReturnRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReturnRemarks.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtReturnRemarks.Location = new System.Drawing.Point(523, 265);
             this.txtReturnRemarks.Name = "txtReturnRemarks";
@@ -254,13 +253,13 @@
             // txtReturnQuantity
             // 
             this.txtReturnQuantity.BackColor = System.Drawing.Color.Yellow;
-            this.txtReturnQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReturnQuantity.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtReturnQuantity.Location = new System.Drawing.Point(523, 195);
             this.txtReturnQuantity.Name = "txtReturnQuantity";
             this.txtReturnQuantity.Size = new System.Drawing.Size(396, 32);
             this.txtReturnQuantity.TabIndex = 6;
             this.txtReturnQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReturnQuantity_KeyDown);
+            this.txtReturnQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReturnQuantity_KeyPress);
             // 
             // label5
             // 
@@ -288,7 +287,6 @@
             // 
             // txtReturnItem
             // 
-            this.txtReturnItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReturnItem.Enabled = false;
             this.txtReturnItem.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtReturnItem.Location = new System.Drawing.Point(523, 55);
@@ -310,7 +308,6 @@
             // 
             // txtReturnBarcode
             // 
-            this.txtReturnBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReturnBarcode.Enabled = false;
             this.txtReturnBarcode.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtReturnBarcode.Location = new System.Drawing.Point(523, 22);
@@ -420,7 +417,7 @@
         private System.Windows.Forms.ComboBox cmbReturnDestination;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbReturnItemStatus;
-        private System.Windows.Forms.TextBox txtInventoryQuantity;
+        private System.Windows.Forms.TextBox txtReturnNumber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtReturnRemarks;
         private System.Windows.Forms.Label label4;

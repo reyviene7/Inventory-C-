@@ -59,16 +59,55 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-        public static ViewInventory getInventory(int inventoryId)
+
+        public static ViewAcceptedDelivery getAccepted(int receivedId)
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<ViewInventory>(unWork);
-                    var parameter = new { inventoryId = inventoryId };
-                    return repository.SearchBy(Query.getInventoryById, parameter);
+                    var repository = new Repository<ViewAcceptedDelivery>(unWork);
+                    var parameter = new { receivedId = receivedId };
+                    return repository.SearchBy(Query.getAcceptedDeliveryById, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
+        }
+
+        public static ViewReturnWarehouse getReturn(int returnId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewReturnWarehouse>(unWork);
+                    var parameter = new { returnId = returnId };
+                    return repository.SearchBy(Query.getReturnById, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
+        }
+
+        public static ViewSalesCredit getCredit(int creditId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewSalesCredit>(unWork);
+                    var parameter = new { creditId = creditId };
+                    return repository.SearchBy(Query.getCreditById, parameter);
                 }
                 catch (Exception e)
                 {

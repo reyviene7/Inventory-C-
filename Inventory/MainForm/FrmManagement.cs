@@ -10,18 +10,21 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Layout;
 
 namespace Inventory.MainForm
 {
     public partial class FrmManagement : Form
     {
         private FirmMain _main;
+        private bool _isCanceled;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewReturnWarehouse> _return_list;
         private readonly IEnumerable<ViewImageProduct> _imgList;
         private IEnumerable<ViewSalesPart> _sales_list;
         private IEnumerable<ViewAcceptedDelivery> _accepted_list;
+        private IEnumerable<ViewSalesCredit> _credit_sales;
         private readonly int _userId;
         private readonly int _userType;
         private readonly string _username;
@@ -56,11 +59,20 @@ namespace Inventory.MainForm
             _userId = userId;
             _userType = userType;
             _username = username;
+            if (_userType != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
             _return_list = EnumerableUtils.getWareHouseReturnList();
             _sales_list = EnumerableUtils.getSalesParticular(branch);
             _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
+            _credit_sales = EnumerableUtils.getCreditSales(branch);
             _imgList = EnumerableUtils.getImgProductList();
         }
         private void FrmManagement_Load(object sender, System.EventArgs e)
@@ -93,7 +105,7 @@ namespace Inventory.MainForm
         {
             gridCtrlAccepted.DataSource = null;
             gridCtrlAccepted.DataSource = "";
-            layoutAccepted.Columns.Clear();
+            gridAccepted.Columns.Clear();
         }
 
         private void clearGridView()
@@ -114,6 +126,12 @@ namespace Inventory.MainForm
             gridCtrlReturn.DataSource = null;
             gridCtrlReturn.DataSource = "";
             gridReturn.Columns.Clear();
+        }
+        private void clearGridCreditSales()
+        {
+            gridCtrlCredits.DataSource = null;
+            gridCtrlCredits.DataSource = "";
+            gridCredits.Columns.Clear();
         }
 
         private void bindDeliveryList(string branch)
@@ -296,6 +314,30 @@ namespace Inventory.MainForm
                 gridReturn.Columns[10].Width = 100;
         }
 
+        private void bindCreditSales()
+        {
+            clearGridCreditSales();
+            var list = _credit_sales.Select(p => new {
+                Id = "" + p.id,
+                Invoice = p.invoice_id,
+                Due = "P" + p.amount_due,
+                AmountPaid = "P" + p.paid_amount,
+                Balance = "P" + p.remaining_balance,
+                Gross = "P" + p.gross,
+                NetSales = "P" + p.net_sales,
+                Customer = p.customer,
+                Branch = p.branch,
+                User = p.operators,
+                Code = p.credit_code,
+                CreditBalance = p.credit_balance,
+                CreditLimit = p.credit_limit,
+                Receipt = p.receipt,
+                Date = p.credit_date
+            }).ToList();
+            gridCtrlCredits.DataSource = list;
+            gridCtrlCredits.Update();
+        }
+
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (cardPending.RowCount > 0)
@@ -372,12 +414,20 @@ namespace Inventory.MainForm
 
         private void ShowBranch()
         {
-            var pop = new FirmPopBranches(_userId, 1)
+            var pop = new FirmPopBranches(_userId, _userType)
             {
                 management = this,
                 formManagement = true
             };
             pop.ShowDialog();
+            _isCanceled = pop.DialogResult == DialogResult.Cancel;
+
+            if (_isCanceled)
+            {
+                MessageBox.Show("Operation canceled by the user.", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Show();
+                Close();
+            }
         }
 
         private void barWarehouse_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -425,6 +475,17 @@ namespace Inventory.MainForm
             xInventory.SelectedTabPage = xtraReturn;
             splashScreen.CloseWaitForm();
         }
+
+        private void barCreditSales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreen.ShowWaitForm();
+            _credit_sales = Enumerable.Empty<ViewSalesCredit>();
+            _credit_sales = EnumerableUtils.getCreditSales(branch);
+            bindCreditSales();
+            xInventory.SelectedTabPage = xtraCredits;
+            splashScreen.CloseWaitForm();
+        }
+
         private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridCardView(sender);
@@ -566,7 +627,25 @@ namespace Inventory.MainForm
                 {
                     imgPreview.Image = null;
                 }
-            }    
+            }
+        }
+
+        private void gridAccepted_DoubleClick(object sender, EventArgs e)
+        {
+            if (gridAccepted.RowCount > 0)
+            {
+                splashScreen.ShowWaitForm();
+                var id = ((LayoutView)sender).GetFocusedRowCellValue("Id")?.ToString();
+                var Received = EntityUtils.getAccepted(int.Parse(id));
+                var pop = new FrmPopAccept(_userId, 1, Received)
+                {
+                    main = this
+                };
+                splashScreen.CloseWaitForm();
+                pop.ShowDialog();
+                _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
+                bindAcceptedDelivery();
+            }
         }
 
         private void gridReturn_DoubleClick(object sender, EventArgs e)
@@ -575,13 +654,15 @@ namespace Inventory.MainForm
             {
                 splashScreen.ShowWaitForm();
                 var id = ((GridView)sender).GetFocusedRowCellValue("Id")?.ToString();
-                var Inventory = EntityUtils.getInventory(int.Parse(id));
-                var pop = new FrmPopReturn(_userId, 1, Inventory)
+                var ReturnList = EntityUtils.getReturn(int.Parse(id));
+                var pop = new FrmPopReturn(_userId, 1, ReturnList)
                 {
                     main = this
                 };
                 splashScreen.CloseWaitForm();
                 pop.ShowDialog();
+                _return_list = EnumerableUtils.getWareHouseReturnList();
+                bindReturnList();
             }
             var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
             txtBarcode.Text = barcode;
@@ -606,6 +687,25 @@ namespace Inventory.MainForm
                 }
             }
         }
+
+        private void gridCredits_DoubleClick(object sender, EventArgs e)
+        {
+            if (gridCredits.RowCount > 0)
+            {
+                splashScreen.ShowWaitForm();
+                var id = ((LayoutView)sender).GetFocusedRowCellValue("Id")?.ToString();
+                var CreditList = EntityUtils.getCredit(int.Parse(id));
+                var pop = new FrmPopCredit(_userId, 1, CreditList)
+                {
+                    main = this
+                };
+                splashScreen.CloseWaitForm();
+                pop.ShowDialog();
+                _credit_sales = EnumerableUtils.getCreditSales(branch);
+                bindCreditSales();
+            }
+        }
+
         private void barReportProduct_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);
@@ -669,6 +769,22 @@ namespace Inventory.MainForm
         {
             var name = GetUseFullName(_userId);
             ReportSetting.ListofCreditParticular(name);
+        }
+        private void barReportServices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofServiceItem(name);
+        }
+        private void barReportParticularServices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofServiceParticular(name);
+        }
+
+        private void barReportCreditServices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofPayment(name);
         }
         private string GetUseFullName(int userId)
         {

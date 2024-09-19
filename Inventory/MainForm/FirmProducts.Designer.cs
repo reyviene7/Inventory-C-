@@ -116,6 +116,7 @@
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pcSettings = new System.Windows.Forms.PictureBox();
             this.splash = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.WaitForm1), true, true);
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcRight)).BeginInit();
             this.pnlRightMain.SuspendLayout();
@@ -152,13 +153,14 @@
             this.pnlOptionsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pbExit
             // 
             this.pbExit.Image = ((System.Drawing.Image)(resources.GetObject("pbExit.Image")));
             this.pbExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbExit.Location = new System.Drawing.Point(3, 448);
+            this.pbExit.Location = new System.Drawing.Point(0, 448);
             this.pbExit.Name = "pbExit";
             this.pbExit.Size = new System.Drawing.Size(70, 76);
             this.pbExit.TabIndex = 5;
@@ -875,6 +877,7 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlMain.Controls.Add(this.pictureBox2);
             this.pnlMain.Controls.Add(this.XtraEmployee);
             this.pnlMain.Controls.Add(this.lblMainTitle);
             this.pnlMain.Controls.Add(this.bntHome);
@@ -1321,6 +1324,16 @@
             // 
             this.splash.ClosingDelay = 500;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(53, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(93, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 121;
+            this.pictureBox2.TabStop = false;
+            // 
             // FirmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1377,6 +1390,7 @@
             this.pnlOptionsMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1470,5 +1484,6 @@
         private System.Windows.Forms.TextBox txtImageTitle;
         private System.Windows.Forms.TextBox txtProductBar;
         private System.Windows.Forms.ComboBox txtImageType;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
