@@ -37,6 +37,7 @@ namespace Inventory.Config
         public const string DefaultInvoice = "#000";
         public const string DefaultReturnHome = "Depot";
         public const string DefaultWareHouse = @"Warehouse";
+        public const string DefaultPayment = @"Credit Card";
         public const string DefaultNone = @"N/A";
         public const string DefaultReturnNone = "None";
         public const string DefaultAmounts = "00.00";

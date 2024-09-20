@@ -695,7 +695,8 @@ namespace Inventory.MainForm
                 splashScreen.ShowWaitForm();
                 var id = ((LayoutView)sender).GetFocusedRowCellValue("Id")?.ToString();
                 var CreditList = EntityUtils.getCredit(int.Parse(id));
-                var pop = new FrmPopCredit(_userId, 1, CreditList)
+                var PaymentList = EntityUtils.getPayment(int.Parse(id));
+                var pop = new FrmPopCredit(_userId, 1, CreditList, PaymentList)
                 {
                     main = this
                 };
