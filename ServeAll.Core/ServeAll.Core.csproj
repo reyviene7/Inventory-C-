@@ -69,6 +69,7 @@
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Delivery.cs" />
     <Compile Include="Entities\Location.cs" />
+    <Compile Include="Entities\PaymentMethod.cs" />
     <Compile Include="Entities\ReceivedInventory.cs" />
     <Compile Include="Entities\request\RequestQuantity.cs" />
     <Compile Include="Entities\request\RequestProducts.cs" />

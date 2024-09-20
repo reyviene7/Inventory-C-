@@ -65,7 +65,8 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-        public static int getBranchId(string branchName) {
+        public static int getBranchId(string branchName)
+        {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
@@ -75,6 +76,25 @@ namespace ServeAll.Core.Utilities
                     var repository = new Repository<ServeAll.Core.Entities.Branch>(unWork);
                     var query = repository.FindBy(x => x.branch_details == branchName);
                     return query.branch_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+        public static int getPaymentMethod(string method)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.PaymentMethod>(unWork);
+                    var query = repository.FindBy(x => x.method_name == method);
+                    return query.payment_method_id;
                 }
                 catch (Exception ex)
                 {

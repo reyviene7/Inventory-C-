@@ -474,6 +474,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<PaymentMethod> getPayment()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<PaymentMethod>(unWork);
+                    return repository.SelectAll(Query.AllPaymentMethod).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<PaymentMethod>();
+                }
+            }
+        }
         public static IEnumerable<ProductStatus> getProductStatus()
         {
             using (var session = new DalSession())

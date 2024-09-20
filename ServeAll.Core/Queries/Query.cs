@@ -185,6 +185,7 @@
         public const string AllUserNames = @"SELECT username FROM users ORDER BY username ASC";
         public const string AllStaff = @"SELECT * FROM view_request_staff ORDER BY staff ASC";
         public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
+        public const string AllPaymentMethod = @"SELECT method_name FROM payment_method";
         public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
         public const string AllServiceStatus = @"SELECT * FROM service_status order by status_name ASC";
         public const string AllWarehouseList = @"SELECT warehouse_id, warehouse_name FROM warehouse";
@@ -299,6 +300,8 @@
         public const string getAcceptedDeliveryById = "SELECT * FROM view_accepted_delivery WHERE received_id = @receivedId";
         public const string getReturnById = "SELECT * FROM view_return_warehouse WHERE return_id = @returnId";
         public const string getCreditById = "SELECT * FROM view_credit_sales WHERE id = @creditId";
+        public const string getPaymentById = "SELECT * FROM view_payment WHERE payment_id = @paymentId";
+        public const string getMethodById = "SELECT * FROM payment_method WHERE payment_method_id = @methodId";
         public const string getTempCounterSales = "SELECT particular_id FROM temp_sales WHERE invoice_id = @invoiceId AND barcode = @barcode AND customer_id = @customerId AND user_id = @userId AND branch_id = @branchId";
         public const string getLastProductIdQuery = "SELECT COUNT(product_id) as product_id FROM products";
         public const string getLastProfileIdQuery = "SELECT COUNT(profile_id) as profile_id FROM profile";

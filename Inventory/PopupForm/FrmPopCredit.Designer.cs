@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPopCredit));
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.groupLauncher = new DevExpress.XtraEditors.GroupControl();
+            this.cmbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.txtCreditLimit = new System.Windows.Forms.TextBox();
             this.txtCreditBalance = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -46,9 +47,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtNetSales = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtGross = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRemainBalance = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -77,6 +75,7 @@
             this.groupLauncher.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.groupLauncher.Appearance.Options.UseBackColor = true;
             this.groupLauncher.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupLauncher.Controls.Add(this.cmbPaymentMethod);
             this.groupLauncher.Controls.Add(this.txtCreditLimit);
             this.groupLauncher.Controls.Add(this.txtCreditBalance);
             this.groupLauncher.Controls.Add(this.label12);
@@ -92,9 +91,6 @@
             this.groupLauncher.Controls.Add(this.label8);
             this.groupLauncher.Controls.Add(this.txtCustomer);
             this.groupLauncher.Controls.Add(this.label6);
-            this.groupLauncher.Controls.Add(this.txtNetSales);
-            this.groupLauncher.Controls.Add(this.label4);
-            this.groupLauncher.Controls.Add(this.txtGross);
             this.groupLauncher.Controls.Add(this.label5);
             this.groupLauncher.Controls.Add(this.txtRemainBalance);
             this.groupLauncher.Controls.Add(this.label2);
@@ -117,11 +113,25 @@
             this.groupLauncher.TabIndex = 6;
             this.groupLauncher.Text = "Stock Payment From Credit Sales";
             // 
+            // cmbPaymentMethod
+            // 
+            this.cmbPaymentMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbPaymentMethod.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbPaymentMethod.BackColor = System.Drawing.Color.White;
+            this.cmbPaymentMethod.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.cmbPaymentMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.cmbPaymentMethod.FormattingEnabled = true;
+            this.cmbPaymentMethod.Location = new System.Drawing.Point(523, 191);
+            this.cmbPaymentMethod.Name = "cmbPaymentMethod";
+            this.cmbPaymentMethod.Size = new System.Drawing.Size(396, 36);
+            this.cmbPaymentMethod.TabIndex = 280;
+            this.cmbPaymentMethod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPaymentMethod_KeyDown);
+            // 
             // txtCreditLimit
             // 
             this.txtCreditLimit.Enabled = false;
             this.txtCreditLimit.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtCreditLimit.Location = new System.Drawing.Point(523, 400);
+            this.txtCreditLimit.Location = new System.Drawing.Point(523, 369);
             this.txtCreditLimit.Name = "txtCreditLimit";
             this.txtCreditLimit.Size = new System.Drawing.Size(223, 32);
             this.txtCreditLimit.TabIndex = 279;
@@ -130,7 +140,7 @@
             // 
             this.txtCreditBalance.Enabled = false;
             this.txtCreditBalance.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtCreditBalance.Location = new System.Drawing.Point(523, 366);
+            this.txtCreditBalance.Location = new System.Drawing.Point(523, 335);
             this.txtCreditBalance.Name = "txtCreditBalance";
             this.txtCreditBalance.Size = new System.Drawing.Size(223, 32);
             this.txtCreditBalance.TabIndex = 278;
@@ -141,7 +151,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(387, 337);
+            this.label12.Location = new System.Drawing.Point(387, 306);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 21);
             this.label12.TabIndex = 277;
@@ -161,7 +171,7 @@
             // 
             this.txtOperator.Enabled = false;
             this.txtOperator.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtOperator.Location = new System.Drawing.Point(523, 294);
+            this.txtOperator.Location = new System.Drawing.Point(523, 263);
             this.txtOperator.Name = "txtOperator";
             this.txtOperator.Size = new System.Drawing.Size(396, 32);
             this.txtOperator.TabIndex = 9;
@@ -172,7 +182,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(387, 299);
+            this.label11.Location = new System.Drawing.Point(387, 268);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(83, 21);
             this.label11.TabIndex = 275;
@@ -184,7 +194,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(387, 443);
+            this.label10.Location = new System.Drawing.Point(387, 412);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 21);
             this.label10.TabIndex = 273;
@@ -195,7 +205,7 @@
             this.dkpDelivery.CustomFormat = "dd-MM-yyyy";
             this.dkpDelivery.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.dkpDelivery.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDelivery.Location = new System.Drawing.Point(523, 434);
+            this.dkpDelivery.Location = new System.Drawing.Point(523, 403);
             this.dkpDelivery.Name = "dkpDelivery";
             this.dkpDelivery.Size = new System.Drawing.Size(223, 34);
             this.dkpDelivery.TabIndex = 13;
@@ -227,11 +237,11 @@
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(441, 486);
+            this.lblMainTitle.Location = new System.Drawing.Point(441, 469);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(232, 51);
+            this.lblMainTitle.Size = new System.Drawing.Size(178, 51);
             this.lblMainTitle.TabIndex = 270;
-            this.lblMainTitle.Text = "Credit Sales";
+            this.lblMainTitle.Text = "Payment";
             // 
             // label9
             // 
@@ -239,7 +249,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(387, 409);
+            this.label9.Location = new System.Drawing.Point(387, 378);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(103, 21);
             this.label9.TabIndex = 269;
@@ -251,7 +261,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(387, 375);
+            this.label8.Location = new System.Drawing.Point(387, 344);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(124, 21);
             this.label8.TabIndex = 267;
@@ -261,7 +271,7 @@
             // 
             this.txtCustomer.Enabled = false;
             this.txtCustomer.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtCustomer.Location = new System.Drawing.Point(523, 260);
+            this.txtCustomer.Location = new System.Drawing.Point(523, 229);
             this.txtCustomer.Name = "txtCustomer";
             this.txtCustomer.Size = new System.Drawing.Size(396, 32);
             this.txtCustomer.TabIndex = 8;
@@ -272,42 +282,11 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(387, 265);
+            this.label6.Location = new System.Drawing.Point(387, 234);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 21);
             this.label6.TabIndex = 264;
             this.label6.Text = "Customer:";
-            // 
-            // txtNetSales
-            // 
-            this.txtNetSales.Enabled = false;
-            this.txtNetSales.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtNetSales.Location = new System.Drawing.Point(523, 226);
-            this.txtNetSales.Name = "txtNetSales";
-            this.txtNetSales.Size = new System.Drawing.Size(396, 32);
-            this.txtNetSales.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(387, 231);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 21);
-            this.label4.TabIndex = 262;
-            this.label4.Text = "Net Sales:";
-            // 
-            // txtGross
-            // 
-            this.txtGross.BackColor = System.Drawing.Color.White;
-            this.txtGross.Enabled = false;
-            this.txtGross.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtGross.Location = new System.Drawing.Point(523, 192);
-            this.txtGross.Name = "txtGross";
-            this.txtGross.Size = new System.Drawing.Size(396, 32);
-            this.txtGross.TabIndex = 6;
             // 
             // label5
             // 
@@ -317,9 +296,9 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(387, 197);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 21);
+            this.label5.Size = new System.Drawing.Size(74, 21);
             this.label5.TabIndex = 260;
-            this.label5.Text = "Gross:";
+            this.label5.Text = "Method:";
             // 
             // txtRemainBalance
             // 
@@ -351,6 +330,7 @@
             this.txtAmountPaid.Size = new System.Drawing.Size(396, 32);
             this.txtAmountPaid.TabIndex = 4;
             this.txtAmountPaid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmountPaid_KeyDown);
+            this.txtAmountPaid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmountPaid_KeyPress);
             // 
             // label3
             // 
@@ -454,7 +434,7 @@
             this.cmbBranchName.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.cmbBranchName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.cmbBranchName.FormattingEnabled = true;
-            this.cmbBranchName.Location = new System.Drawing.Point(523, 328);
+            this.cmbBranchName.Location = new System.Drawing.Point(523, 297);
             this.cmbBranchName.Name = "cmbBranchName";
             this.cmbBranchName.Size = new System.Drawing.Size(223, 36);
             this.cmbBranchName.TabIndex = 10;
@@ -508,9 +488,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtNetSales;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtGross;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRemainBalance;
         private System.Windows.Forms.Label label2;
@@ -532,5 +509,6 @@
         private System.Windows.Forms.TextBox txtAmountDue;
         private System.Windows.Forms.TextBox txtCreditLimit;
         private System.Windows.Forms.TextBox txtCreditBalance;
+        private System.Windows.Forms.ComboBox cmbPaymentMethod;
     }
 }
