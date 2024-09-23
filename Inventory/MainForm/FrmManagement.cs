@@ -771,18 +771,17 @@ namespace Inventory.MainForm
             var name = GetUseFullName(_userId);
             ReportSetting.ListofCreditParticular(name);
         }
-        private void barReportServices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barReportListServices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);
             ReportSetting.ListofServiceItem(name);
         }
-        private void barReportParticularServices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barReportServicesParticular_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);
             ReportSetting.ListofServiceParticular(name);
         }
-
-        private void barReportCreditServices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barPaymentList_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);
             ReportSetting.ListofPayment(name);
