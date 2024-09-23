@@ -37,7 +37,6 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
-            this.ribSaveTrans = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bntSave = new DevExpress.XtraBars.BarSubItem();
             this.barDLT = new DevExpress.XtraBars.BarButtonItem();
             this.barUPDSales = new DevExpress.XtraBars.BarButtonItem();
@@ -63,7 +62,6 @@
             this.barCreditLine = new DevExpress.XtraBars.BarSubItem();
             this.ribGCT = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barChangeBranch = new DevExpress.XtraBars.BarSubItem();
-            this.ribGCU = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barCancelTrans = new DevExpress.XtraBars.BarSubItem();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barMainMenu = new DevExpress.XtraBars.BarButtonItem();
@@ -92,8 +90,6 @@
             this.barDAIPR = new DevExpress.XtraBars.BarButtonItem();
             this.barDAISM = new DevExpress.XtraBars.BarButtonItem();
             this.PageRep = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ridDAI = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribRD1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
@@ -328,12 +324,6 @@
             this.groupOperator.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ribSaveTrans
-            // 
-            this.ribSaveTrans.ItemLinks.Add(this.bntSave);
-            this.ribSaveTrans.Name = "ribSaveTrans";
-            this.ribSaveTrans.Text = "F8";
-            // 
             // bntSave
             // 
             this.bntSave.Caption = "Save Trans";
@@ -424,8 +414,6 @@
             this.ribGCA,
             this.ribGCR,
             this.ribGCT,
-            this.ribSaveTrans,
-            this.ribGCU,
             this.ribbonPageGroup1});
             this.PagePos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("PagePos.ImageOptions.Image")));
             this.PagePos.Name = "PagePos";
@@ -440,6 +428,7 @@
             // 
             // barWarehouse
             // 
+            this.barWarehouse.AllowDrawArrow = DevExpress.Utils.DefaultBoolean.False;
             this.barWarehouse.Caption = "Warehouse";
             this.barWarehouse.Id = 1;
             this.barWarehouse.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barWarehouse.ImageOptions.Image")));
@@ -457,6 +446,7 @@
             // 
             // barItemDelivery
             // 
+            this.barItemDelivery.AllowDrawArrow = DevExpress.Utils.DefaultBoolean.False;
             this.barItemDelivery.Caption = " Inv Deliver";
             this.barItemDelivery.Id = 3;
             this.barItemDelivery.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barItemDelivery.ImageOptions.Image")));
@@ -480,6 +470,7 @@
             // 
             // barReturn
             // 
+            this.barReturn.AllowDrawArrow = DevExpress.Utils.DefaultBoolean.False;
             this.barReturn.Caption = "Inv Return";
             this.barReturn.Id = 4;
             this.barReturn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReturn.ImageOptions.Image")));
@@ -497,6 +488,7 @@
             // 
             // barNewCustomer
             // 
+            this.barNewCustomer.AllowDrawArrow = DevExpress.Utils.DefaultBoolean.False;
             this.barNewCustomer.Caption = "Branch-Inv";
             this.barNewCustomer.Id = 5;
             this.barNewCustomer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barNewCustomer.ImageOptions.Image")));
@@ -519,6 +511,7 @@
             // 
             // barSalesItem
             // 
+            this.barSalesItem.AllowDrawArrow = DevExpress.Utils.DefaultBoolean.False;
             this.barSalesItem.Caption = "Sales-History";
             this.barSalesItem.Id = 9;
             this.barSalesItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSalesItem.ImageOptions.Image")));
@@ -536,6 +529,7 @@
             // 
             // barCreditLine
             // 
+            this.barCreditLine.AllowDrawArrow = DevExpress.Utils.DefaultBoolean.False;
             this.barCreditLine.Caption = "Accepted-Inv";
             this.barCreditLine.Id = 8;
             this.barCreditLine.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCreditLine.ImageOptions.Image")));
@@ -553,17 +547,12 @@
             // 
             // barChangeBranch
             // 
+            this.barChangeBranch.AllowDrawArrow = DevExpress.Utils.DefaultBoolean.False;
             this.barChangeBranch.Caption = "Change-Branch";
             this.barChangeBranch.Id = 7;
             this.barChangeBranch.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barChangeBranch.ImageOptions.Image")));
             this.barChangeBranch.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barChangeBranch.ImageOptions.LargeImage")));
             this.barChangeBranch.Name = "barChangeBranch";
-            // 
-            // ribGCU
-            // 
-            this.ribGCU.ItemLinks.Add(this.barCancelTrans);
-            this.ribGCU.Name = "ribGCU";
-            this.ribGCU.Text = "F9";
             // 
             // barCancelTrans
             // 
@@ -781,22 +770,10 @@
             // PageRep
             // 
             this.PageRep.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ridDAI,
-            this.ribRD1,
             this.ribbonPageGroup6});
             this.PageRep.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("PageRep.ImageOptions.Image")));
             this.PageRep.Name = "PageRep";
             this.PageRep.Text = "Report Control";
-            // 
-            // ridDAI
-            // 
-            this.ridDAI.ItemLinks.Add(this.barReportServices);
-            this.ridDAI.Name = "ridDAI";
-            // 
-            // ribRD1
-            // 
-            this.ribRD1.ItemLinks.Add(this.barReportParticularServices);
-            this.ribRD1.Name = "ribRD1";
             // 
             // ribbonPageGroup6
             // 
@@ -1215,7 +1192,7 @@
             // 
             // barCustomerList
             // 
-            this.barCustomerList.Caption = "Customer-List";
+            this.barCustomerList.Caption = "List-CreditSales";
             this.barCustomerList.Id = 51;
             this.barCustomerList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCustomerList.ImageOptions.Image")));
             this.barCustomerList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCustomerList.ImageOptions.LargeImage")));
@@ -2883,8 +2860,6 @@
         }
 
         #endregion
-
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribSaveTrans;
         private DevExpress.XtraBars.BarSubItem bntSave;
         private DevExpress.XtraBars.BarButtonItem barDLT;
         private DevExpress.XtraBars.BarButtonItem barUPDSales;
@@ -2910,7 +2885,6 @@
         private DevExpress.XtraBars.BarSubItem barCreditLine;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribGCT;
         private DevExpress.XtraBars.BarSubItem barChangeBranch;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribGCU;
         private DevExpress.XtraBars.BarSubItem barCancelTrans;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem barMainMenu;
@@ -2939,8 +2913,6 @@
         private DevExpress.XtraBars.BarButtonItem barDAIPR;
         private DevExpress.XtraBars.BarButtonItem barDAISM;
         private DevExpress.XtraBars.Ribbon.RibbonPage PageRep;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ridDAI;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribRD1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit2;
