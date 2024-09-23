@@ -117,6 +117,44 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static ViewPayment getPayment(int paymentId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewPayment>(unWork);
+                    var parameter = new { paymentId = paymentId };
+                    return repository.SearchBy(Query.getPaymentById, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
+        }
+
+        public static PaymentMethod getPaymentMethod(int methodId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<PaymentMethod>(unWork);
+                    var parameter = new { methodId = methodId };
+                    return repository.SearchBy(Query.getMethodById, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
+        }
+
         public static void addItemDiscount(int salesId, decimal discount)
         {
             using (var session = new DalSession())
