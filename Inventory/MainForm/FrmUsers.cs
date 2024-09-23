@@ -23,15 +23,27 @@ namespace Inventory.MainForm
     {
         private FirmMain _main;
         private bool _add, _edt, _del, _img, _usr;
+        private readonly int _userId;
+        private readonly int _userTy;
         public FirmMain Main
         {
             get { return _main;}
             set { _main = value; }
         }
 
-        public FrmUsers()
+        public FrmUsers(int userId, int userTy)
         {
+            _userId = userId;
+            _userTy = userTy;
+            if (_userTy != 1)
+            {
+                PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
+
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
             InitializeComponent();
+            this.DialogResult = DialogResult.OK;
         }
         private void FrmUsers_Load(object sender, EventArgs e)
         {

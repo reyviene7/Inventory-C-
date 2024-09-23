@@ -298,12 +298,19 @@ namespace Inventory.MainForm
         }
         private void tileRDP_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var name = GetUseFullName(_userId);
-            var view = new FirmPopDateEntries(name, type)
+            var ret = new FrmUsers(_userId, _usrTyp)
             {
                 Main = this
             };
-            view.ShowDialog();
+            if (ret.DialogResult == DialogResult.OK)
+            {
+                Hide();
+                ret.Show();
+            }
+            else
+            {
+                this.Show();
+            }
         }
         private void tileReportInventoryList_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
