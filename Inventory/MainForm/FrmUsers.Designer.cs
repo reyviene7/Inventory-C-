@@ -44,7 +44,6 @@
             this.label45 = new System.Windows.Forms.Label();
             this.GProfileImage = new DevExpress.XtraEditors.GroupControl();
             this.txtImageCode = new System.Windows.Forms.TextBox();
-            this.bntLOD = new System.Windows.Forms.Button();
             this.label46 = new System.Windows.Forms.Label();
             this.txtImageName = new System.Windows.Forms.TextBox();
             this.txtImageLocation = new System.Windows.Forms.TextBox();
@@ -107,7 +106,9 @@
             this.pnlRightMain = new System.Windows.Forms.Panel();
             this.pbExit = new System.Windows.Forms.PictureBox();
             this.pbLogout = new System.Windows.Forms.PictureBox();
-            this.lodWET = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.WaitForm1), true, true);
+            this.splashManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
+            this.bntBrowseImage = new DevExpress.XtraEditors.SimpleButton();
+            this.bntSaveImages = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gIMG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridImg)).BeginInit();
@@ -161,9 +162,9 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label6.Location = new System.Drawing.Point(286, 32);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(294, 47);
+            this.label6.Size = new System.Drawing.Size(206, 47);
             this.label6.TabIndex = 189;
-            this.label6.Text = "Employee Image";
+            this.label6.Text = "User Image";
             // 
             // textBox3
             // 
@@ -193,7 +194,7 @@
             this.gIMG.Location = new System.Drawing.Point(3, 18);
             this.gIMG.MainView = this.gridImg;
             this.gIMG.Name = "gIMG";
-            this.gIMG.Size = new System.Drawing.Size(1001, 254);
+            this.gIMG.Size = new System.Drawing.Size(1003, 254);
             this.gIMG.TabIndex = 103;
             this.gIMG.TabStop = false;
             this.gIMG.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -257,6 +258,7 @@
             this.gridImg.OptionsView.EnableAppearanceEvenRow = true;
             this.gridImg.OptionsView.RowAutoHeight = true;
             this.gridImg.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridImg.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridImg_FocusedRowChanged);
             // 
             // gridView4
             // 
@@ -334,11 +336,11 @@
             this.gImageList.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.gImageList.Controls.Add(this.gIMG);
             this.gImageList.Controls.Add(this.textBox3);
-            this.gImageList.Location = new System.Drawing.Point(0, 283);
+            this.gImageList.Location = new System.Drawing.Point(-1, 283);
             this.gImageList.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gImageList.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gImageList.Name = "gImageList";
-            this.gImageList.Size = new System.Drawing.Size(1007, 275);
+            this.gImageList.Size = new System.Drawing.Size(1009, 275);
             this.gImageList.TabIndex = 188;
             this.gImageList.Text = "User Image List";
             // 
@@ -368,9 +370,11 @@
             // 
             // GProfileImage
             // 
-            this.GProfileImage.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.GProfileImage.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.GProfileImage.Appearance.Options.UseBackColor = true;
             this.GProfileImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.GProfileImage.Controls.Add(this.bntSaveImages);
+            this.GProfileImage.Controls.Add(this.bntBrowseImage);
             this.GProfileImage.Controls.Add(this.label7);
             this.GProfileImage.Controls.Add(this.txtImageId);
             this.GProfileImage.Controls.Add(this.label6);
@@ -378,7 +382,6 @@
             this.GProfileImage.Controls.Add(this.label5);
             this.GProfileImage.Controls.Add(this.label45);
             this.GProfileImage.Controls.Add(this.txtImageCode);
-            this.GProfileImage.Controls.Add(this.bntLOD);
             this.GProfileImage.Controls.Add(this.label46);
             this.GProfileImage.Controls.Add(this.txtImageName);
             this.GProfileImage.Controls.Add(this.txtImageLocation);
@@ -402,19 +405,6 @@
             this.txtImageCode.Name = "txtImageCode";
             this.txtImageCode.Size = new System.Drawing.Size(352, 30);
             this.txtImageCode.TabIndex = 120;
-            // 
-            // bntLOD
-            // 
-            this.bntLOD.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.bntLOD.Enabled = false;
-            this.bntLOD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bntLOD.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.bntLOD.Image = ((System.Drawing.Image)(resources.GetObject("bntLOD.Image")));
-            this.bntLOD.Location = new System.Drawing.Point(251, 233);
-            this.bntLOD.Name = "bntLOD";
-            this.bntLOD.Size = new System.Drawing.Size(352, 36);
-            this.bntLOD.TabIndex = 122;
-            this.bntLOD.UseVisualStyleBackColor = true;
             // 
             // label46
             // 
@@ -453,9 +443,9 @@
             // imgPro
             // 
             this.imgPro.BackColor = System.Drawing.Color.Gray;
-            this.imgPro.Location = new System.Drawing.Point(741, 30);
+            this.imgPro.Location = new System.Drawing.Point(723, 21);
             this.imgPro.Name = "imgPro";
-            this.imgPro.Size = new System.Drawing.Size(255, 247);
+            this.imgPro.Size = new System.Drawing.Size(273, 260);
             this.imgPro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgPro.TabIndex = 180;
             this.imgPro.TabStop = false;
@@ -484,9 +474,9 @@
             // 
             this.tabUsers.Location = new System.Drawing.Point(192, 32);
             this.tabUsers.Name = "tabUsers";
-            this.tabUsers.SelectedTabPage = this.xIMG;
+            this.tabUsers.SelectedTabPage = this.xAUT;
             this.tabUsers.Size = new System.Drawing.Size(1012, 586);
-            this.tabUsers.TabIndex = 1;
+            this.tabUsers.TabIndex = 2;
             this.tabUsers.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xAUT,
             this.xIMG});
@@ -501,7 +491,7 @@
             // 
             // GuserAccount
             // 
-            this.GuserAccount.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.GuserAccount.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.GuserAccount.Appearance.Options.UseBackColor = true;
             this.GuserAccount.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.GuserAccount.Controls.Add(this.imgUser);
@@ -532,9 +522,9 @@
             // imgUser
             // 
             this.imgUser.BackColor = System.Drawing.Color.Gray;
-            this.imgUser.Location = new System.Drawing.Point(701, 24);
+            this.imgUser.Location = new System.Drawing.Point(723, 21);
             this.imgUser.Name = "imgUser";
-            this.imgUser.Size = new System.Drawing.Size(255, 247);
+            this.imgUser.Size = new System.Drawing.Size(273, 255);
             this.imgUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgUser.TabIndex = 194;
             this.imgUser.TabStop = false;
@@ -596,11 +586,11 @@
             this.gCUser.Appearance.Options.UseBackColor = true;
             this.gCUser.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.gCUser.Controls.Add(this.gridUserList);
-            this.gCUser.Location = new System.Drawing.Point(3, 277);
+            this.gCUser.Location = new System.Drawing.Point(-1, 277);
             this.gCUser.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gCUser.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gCUser.Name = "gCUser";
-            this.gCUser.Size = new System.Drawing.Size(1007, 275);
+            this.gCUser.Size = new System.Drawing.Size(1011, 281);
             this.gCUser.TabIndex = 189;
             this.gCUser.Text = "User List";
             // 
@@ -614,7 +604,7 @@
             this.gridUserList.Location = new System.Drawing.Point(3, 18);
             this.gridUserList.MainView = this.gridUsers;
             this.gridUserList.Name = "gridUserList";
-            this.gridUserList.Size = new System.Drawing.Size(1001, 254);
+            this.gridUserList.Size = new System.Drawing.Size(1005, 260);
             this.gridUserList.TabIndex = 103;
             this.gridUserList.TabStop = false;
             this.gridUserList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -843,9 +833,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(23, 138);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 17);
+            this.label4.Size = new System.Drawing.Size(73, 17);
             this.label4.TabIndex = 160;
-            this.label4.Text = "username:";
+            this.label4.Text = "Username:";
             // 
             // txtUsername
             // 
@@ -1233,9 +1223,29 @@
             this.pbLogout.TabStop = false;
             this.pbLogout.Click += new System.EventHandler(this.pbLogout_Click);
             // 
-            // lodWET
+            // splashManager
             // 
-            this.lodWET.ClosingDelay = 500;
+            this.splashManager.ClosingDelay = 500;
+            // 
+            // bntBrowseImage
+            // 
+            this.bntBrowseImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntBrowseImage.ImageOptions.Image")));
+            this.bntBrowseImage.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.bntBrowseImage.Location = new System.Drawing.Point(251, 234);
+            this.bntBrowseImage.Name = "bntBrowseImage";
+            this.bntBrowseImage.Size = new System.Drawing.Size(176, 37);
+            this.bntBrowseImage.TabIndex = 192;
+            this.bntBrowseImage.ToolTip = "User Manual";
+            // 
+            // bntSaveImages
+            // 
+            this.bntSaveImages.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntSaveImages.ImageOptions.Image")));
+            this.bntSaveImages.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.bntSaveImages.Location = new System.Drawing.Point(427, 234);
+            this.bntSaveImages.Name = "bntSaveImages";
+            this.bntSaveImages.Size = new System.Drawing.Size(176, 37);
+            this.bntSaveImages.TabIndex = 193;
+            this.bntSaveImages.ToolTip = "Service Manual";
             // 
             // FrmUsers
             // 
@@ -1319,7 +1329,6 @@
         private System.Windows.Forms.Label label45;
         private DevExpress.XtraEditors.GroupControl GProfileImage;
         private System.Windows.Forms.TextBox txtImageCode;
-        private System.Windows.Forms.Button bntLOD;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.TextBox txtImageName;
         private System.Windows.Forms.TextBox txtImageLocation;
@@ -1360,7 +1369,7 @@
         private System.Windows.Forms.Panel pnlRightMain;
         private System.Windows.Forms.PictureBox pbExit;
         private System.Windows.Forms.PictureBox pbLogout;
-        private DevExpress.XtraSplashScreen.SplashScreenManager lodWET;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashManager;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbName;
         private DevExpress.XtraEditors.GroupControl gCUser;
@@ -1383,5 +1392,7 @@
         private System.Windows.Forms.TextBox txtUserCode;
         private System.Windows.Forms.PictureBox imgUser;
         private System.Windows.Forms.PictureBox pcLOG;
+        private DevExpress.XtraEditors.SimpleButton bntBrowseImage;
+        private DevExpress.XtraEditors.SimpleButton bntSaveImages;
     }
 }

@@ -2,6 +2,7 @@
 {
     public static class ConstantUtils
     {
+        public static string defaultUserImgLocation = @"D:\user_images\";
         public static string defaultImgLocation = @"D:\images\products\";
         public static string imgProcessing = @"D:\images\products\processing.png";
         public static string imgCancelled = @"D:\images\products\cancelled.png";

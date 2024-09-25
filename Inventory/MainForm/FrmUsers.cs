@@ -53,7 +53,9 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
+            splashManager.ShowWaitForm();
             bindingUserList();
+            splashManager.CloseWaitForm();
         }
 
         private void FrmUsers_MouseMove(object sender, MouseEventArgs e)
@@ -230,14 +232,9 @@ namespace Inventory.MainForm
         private void InputDisbimg() { }
         private void InputCleaimg() { }
         private void InputDimGimg() { }
-        private void BntEnabled()
-        {
-            bntLOD.Enabled = true;
-        }
         private void buttonAdd()
         {
             ButtonAdd();
-            BntEnabled();
             _add = true;
             _edt = false;
             _del = false;
@@ -418,11 +415,6 @@ namespace Inventory.MainForm
                 return 0;
             }
         }
-
-
-        
-
-
         private void generateUserCode()
         {
             var lastId = getLastUserId();
@@ -450,6 +442,10 @@ namespace Inventory.MainForm
                 gridUserList.EndUpdate();
                 PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableUsers);
             }
+        }
+
+        private void BindUserImg()
+        {
         }
         private void bindProfileNames()
         {
@@ -651,13 +647,6 @@ namespace Inventory.MainForm
         }
         #endregion
 
-
-        private void cmbNAM_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-                
-        }
-
         private void bntAdd_Click(object sender, EventArgs e)
         {
             buttonAdd();
@@ -792,6 +781,29 @@ namespace Inventory.MainForm
                 catch (Exception ex)
                 {
                     
+                    Console.WriteLine(ex.ToString());
+                }
+        }
+
+        private void gridImg_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            gridImage(sender);
+        }
+
+        private void gridImage(object sender)
+        {
+            var grid = gridUsers;
+            if (grid.RowCount > 0)
+                try
+                {
+                    txtImageId.Text = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    txtImageCode.Text = ((GridView)sender).GetFocusedRowCellValue("Code").ToString();
+                    txtImageName.Text = ((GridView)sender).GetFocusedRowCellValue("Title").ToString();
+                    txtImageLocation.Text = ((GridView)sender).GetFocusedRowCellValue("Location").ToString();
+                }
+                catch (Exception ex)
+                {
+
                     Console.WriteLine(ex.ToString());
                 }
         }

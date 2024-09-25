@@ -298,14 +298,13 @@ namespace Inventory.MainForm
         }
         private void tileRDP_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var ret = new FrmUsers(_userId, _usrTyp)
+            var view = new FrmUsers(_userId, _usrTyp)
             {
                 Main = this
             };
-            if (ret.DialogResult == DialogResult.OK)
+            if (view.DialogResult == DialogResult.OK)
             {
-                Hide();
-                ret.Show();
+                view.ShowDialog();
             }
             else
             {
