@@ -247,10 +247,42 @@ namespace Inventory.MainForm
             txtImageType.BackColor = Color.White;
             txtImageLocation.BackColor = Color.White;
         }
-        private void InputEnabimg() { }
-        private void InputDisbimg() { }
-        private void InputCleaimg() { }
-        private void InputDimGimg() { }
+
+        private void InputEnabimg()
+        {
+            txtImageId.Enabled = true;
+            txtImageCode.Enabled = true;
+            txtImageName.Enabled = true;
+            txtImageType.Enabled = true;
+            txtImageLocation.Enabled = true;
+        }
+
+        private void InputDisbimg()
+        {
+            txtImageId.Enabled = false;
+            txtImageCode.Enabled = false;
+            txtImageName.Enabled = false;
+            txtImageType.Enabled = false;
+            txtImageLocation.Enabled = false;
+        }
+
+        private void InputCleaimg()
+        {
+            txtImageId.Clear();
+            txtImageCode.Clear();
+            txtImageName.Clear();
+            txtImageType.Text = "";
+            txtImageLocation.Clear();
+        }
+
+        private void InputDimGimg()
+        {
+            txtImageId.BackColor = Color.DimGray;
+            txtImageCode.BackColor = Color.DimGray;
+            txtImageName.BackColor = Color.DimGray;
+            txtImageType.BackColor = Color.DimGray;
+            txtImageLocation.BackColor = Color.DimGray;
+        }
         private void buttonAdd()
         {
             ButtonAdd();
@@ -315,7 +347,7 @@ namespace Inventory.MainForm
             InputWhitimg();
             InputCleaimg();
             gridUserList.Enabled = true;
-             
+            bntBrowseImage.Enabled = true;
         }
         private void buttonCancel()
         {
@@ -323,8 +355,11 @@ namespace Inventory.MainForm
             InputDisb();
             InputDimG();
             InputClea();
+            InputDisbimg();
+            InputCleaimg();
             gridUserList.Enabled = true;
             cmbName.DataBindings.Clear();
+            bntBrowseImage.Enabled = true;
         }
         private void buttonSave()
         {
@@ -802,11 +837,13 @@ namespace Inventory.MainForm
                         userId = int.Parse(id);
                         var user = searchUserId(userId);
                         var code = user.user_code;
+                        var fullname = user.name;
                         txtUserId.Text = id;
                         txtUserCode.Text = code;
                         txtImageId.Text = id;
                         txtImageCode.Text = code;
-                        cmbName.Text = user.name;
+                        cmbName.Text = fullname;
+                        txtImageName.Text = fullname;
                         txtUsername.Text = user.username;
                         cmbRoleType.Text = user.role_type;
 
@@ -821,8 +858,8 @@ namespace Inventory.MainForm
                         }
                         else
                         {
-                            imgPro.Image = null;
-                            imgUser.Image = null;
+                            imgPro.ImageLocation = ConstantUtils.defaultUserImgLocation + "empty-image.jpg";
+                            imgUser.ImageLocation = ConstantUtils.defaultUserImgLocation + "empty-image.jpg";
                         }
                     }
                 }
@@ -881,7 +918,7 @@ namespace Inventory.MainForm
                     string selectedFilePath = openFileDialog.FileName;
 
                     string fileNameAndExtension = getfileExntesion(selectedFilePath);
-                    txtImageName.Text = fileNameAndExtension;
+                    txtImageLocation.Text = fileNameAndExtension;
                     bntSaveImages.Enabled = true;
                     bntBrowseImage.Enabled = false;
                 }
@@ -890,19 +927,43 @@ namespace Inventory.MainForm
 
         private void bntSaveImages_Click(object sender, EventArgs e)
         {
-            var code = txtImageCode.Text.Trim(' ');
-            var title = txtImageName.Text.Trim(' ');
-            var imgtype = txtImageType.Text.Trim(' ');
-            var imgLocation = txtImageName.Text.Trim(' ');
-            if (code.Length > 0 && title.Length > 0 && imgtype.Length > 0 && imgLocation.Length > 0)
-            {
-                /*
-                var result = saveProductImage();
-                if (result > 0)
-                {
+            saveUserImage();
+            ButtonSav();
+        }
 
-                }
-                */
+        private string ExtractFileName(string filePath)
+        {
+            return Path.GetFileName(filePath);
+        }
+
+        private void saveUserImage()
+        {
+            splashManager.ShowWaitForm();
+            var filePathLocation = txtImageLocation.Text.Trim(' ');
+            var filePath = ExtractFileName(filePathLocation);
+            var img = new UserImage()
+            {
+                image_code = txtImageCode.Text.Trim(' '),
+                title = txtImageName.Text.Trim(' '),
+                img_type = txtImageType.Text.Trim(' '),
+                img_location = filePath,
+                created_on = DateTime.Now,
+                updated_on = DateTime.Now
+            };
+            var result = RepositoryEntity.AddEntity<UserImage>(img);
+            if (result > 0)
+            {
+                splashManager.CloseWaitForm();
+                PopupNotification.PopUpMessages(1, "User image: " + txtImageName.Text.Trim(' ') + " " + Messages.SuccessInsert,
+                    Messages.TitleSuccessInsert);
+                _user_image = EnumerableUtils.getUserImage();
+                BindUserImg();
+            }
+            else
+            {
+                splashManager.CloseWaitForm();
+                PopupNotification.PopUpMessages(0, "User image: " + txtImageName.Text.Trim(' ') + " " + Messages.ErrorInsert,
+                    Messages.TitleFailedInsert);
             }
         }
 
