@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,12 @@ namespace Inventory.MainForm
         private bool _add, _edt, _del, _img, _usr;
         private readonly int _userId;
         private readonly int _userTy;
+        private IEnumerable<ViewUserImage> user_image;
+        private IEnumerable<users> _users;
+        private IEnumerable<UserImage> _user_image;
+        private IEnumerable<ViewUser> _user_list;
+        private int userId;
+
         public FirmMain Main
         {
             get { return _main;}
@@ -54,7 +61,12 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             splashManager.ShowWaitForm();
+            user_image = EnumerableUtils.getViewUserImage();
+            _user_image = EnumerableUtils.getUserImage();
+            _users = EnumerableUtils.getUserNameList();
+            _user_list = EnumerableUtils.getUserList();
             bindingUserList();
+            BindUserImg();
             splashManager.CloseWaitForm();
         }
 
@@ -227,7 +239,14 @@ namespace Inventory.MainForm
             cmbRoleType.BackColor = Color.DimGray;
         }
 
-        private void InputWhitimg() { }
+        private void InputWhitimg()
+        {
+            txtImageId.BackColor = Color.White;
+            txtImageCode.BackColor = Color.White;
+            txtImageName.BackColor = Color.White;
+            txtImageType.BackColor = Color.White;
+            txtImageLocation.BackColor = Color.White;
+        }
         private void InputEnabimg() { }
         private void InputDisbimg() { }
         private void InputCleaimg() { }
@@ -427,15 +446,16 @@ namespace Inventory.MainForm
             gridUserList.Update();
             try
             {
-                gridUserList.DataBindings.Clear();
-                gridUserList.DataSource = userList().Select(p => new
+                var list = _user_list.Select(u => new
                 {
-                    Id = p.user_id,
-                    UserCode = p.user_code,
-                    Name = p.name,
-                    UserName = p.username,
-                    UserRole = p.role_type
-                });
+                    Id = u.user_id,
+                    UserCode = u.user_code,
+                    Name = u.name,
+                    UserName = u.username,
+                    UserRole = u.role_type
+                }).ToList();
+                gridUserList.DataBindings.Clear();
+                gridUserList.DataSource = list;
             }
             catch (Exception ex)
             {
@@ -446,6 +466,28 @@ namespace Inventory.MainForm
 
         private void BindUserImg()
         {
+            var list = _user_image.Select(i => new
+            {
+                Id = i.image_id,
+                Code = i.image_code,
+                Title = i.title,
+                Type = i.img_type,
+                Location = i.img_location,
+                Created = i.created_on,
+                Updated = i.updated_on
+            }).ToList();
+            gIMG.DataSource = list;
+            gIMG.Update();
+            if (gridImg.RowCount > 0)
+            {
+                gridImg.Columns[0].Width = 40;
+                gridImg.Columns[1].Width = 60;
+                gridImg.Columns[2].Width = 200;
+                gridImg.Columns[3].Width = 50;
+                gridImg.Columns[4].Width = 150;
+                gridImg.Columns[5].Width = 100;
+                gridImg.Columns[6].Width = 100;
+            }
         }
         private void bindProfileNames()
         {
@@ -477,24 +519,6 @@ namespace Inventory.MainForm
             }
         }
 
-        private IEnumerable<ViewUser> userList()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ViewUser>(unWork);
-                    return repository.SelectAll(Query.getViewUser).ToList();
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, Messages.ErrorInternal, Messages.TitleProductImage);
-                    throw;
-                }
-            }
-        }
 
         private void DataInsert()
         {
@@ -763,26 +787,58 @@ namespace Inventory.MainForm
         private void gridUsers_RowClick(object sender, RowClickEventArgs e)
         {
             InputWhit();
+            InputWhitimg();
             gridView(sender);
         }
 
         private void gridView(object sender)
         {
-            var grid = gridUsers;
-            if (grid.RowCount > 0)
+            if (gridUsers.RowCount > 0)
                 try
                 {
-                    txtUserId.Text = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    txtUserCode.Text = ((GridView)sender).GetFocusedRowCellValue("UserCode").ToString();
-                    cmbName.Text = ((GridView)sender).GetFocusedRowCellValue("Name").ToString();
-                    txtUsername.Text = ((GridView)sender).GetFocusedRowCellValue("UserName").ToString();
-                    cmbRoleType.Text = ((GridView)sender).GetFocusedRowCellValue("UserRole").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (id.Length > 0)
+                    {
+                        userId = int.Parse(id);
+                        var user = searchUserId(userId);
+                        var code = user.user_code;
+                        txtUserId.Text = id;
+                        txtUserCode.Text = code;
+                        txtImageId.Text = id;
+                        txtImageCode.Text = code;
+                        cmbName.Text = user.name;
+                        txtUsername.Text = user.username;
+                        cmbRoleType.Text = user.role_type;
+
+                        var img = searchUserImage(code);
+                        var imgLocation = img.img_location;
+
+                        if (imgLocation.Length > 0)
+                        {
+                            var location = ConstantUtils.defaultUserImgLocation + imgLocation;
+                            imgUser.ImageLocation = location;
+                            imgPro.ImageLocation = location;
+                        }
+                        else
+                        {
+                            imgPro.Image = null;
+                            imgUser.Image = null;
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
-                    
                     Console.WriteLine(ex.ToString());
                 }
+        }
+        private ViewUser searchUserId(int id)
+        {
+            return _user_list.FirstOrDefault(user => user.user_id == id);
+        }
+
+        private ViewUserImage searchUserImage(string param)
+        {
+            return user_image.FirstOrDefault(img => img.image_code == param);
         }
 
         private void gridImg_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -792,7 +848,7 @@ namespace Inventory.MainForm
 
         private void gridImage(object sender)
         {
-            var grid = gridUsers;
+            var grid = gridImg;
             if (grid.RowCount > 0)
                 try
                 {
@@ -806,6 +862,59 @@ namespace Inventory.MainForm
 
                     Console.WriteLine(ex.ToString());
                 }
+        }
+        private string getfileExntesion(string filePath)
+        {
+            return Path.GetFileName(filePath);
+        }
+
+        private void bntBrowseImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)|*.bmp;*.jpg;*.jpeg;*.png;*.gif";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.Multiselect = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedFilePath = openFileDialog.FileName;
+
+                    string fileNameAndExtension = getfileExntesion(selectedFilePath);
+                    txtImageName.Text = fileNameAndExtension;
+                    bntSaveImages.Enabled = true;
+                    bntBrowseImage.Enabled = false;
+                }
+            }
+        }
+
+        private void bntSaveImages_Click(object sender, EventArgs e)
+        {
+            var code = txtImageCode.Text.Trim(' ');
+            var title = txtImageName.Text.Trim(' ');
+            var imgtype = txtImageType.Text.Trim(' ');
+            var imgLocation = txtImageName.Text.Trim(' ');
+            if (code.Length > 0 && title.Length > 0 && imgtype.Length > 0 && imgLocation.Length > 0)
+            {
+                /*
+                var result = saveProductImage();
+                if (result > 0)
+                {
+
+                }
+                */
+            }
+        }
+
+        private void txtImageType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedImageType = txtImageType.SelectedItem?.ToString();
+
+            if (selectedImageType != null)
+            {
+                // For demonstration, show a message box with the selected image type
+                MessageBox.Show("Selected Image Type: " + selectedImageType);
+            }
         }
 
         private void txtRewrite_Leave(object sender, EventArgs e)

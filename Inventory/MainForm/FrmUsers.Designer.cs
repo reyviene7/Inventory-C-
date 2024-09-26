@@ -43,6 +43,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.GProfileImage = new DevExpress.XtraEditors.GroupControl();
+            this.label11 = new System.Windows.Forms.Label();
+            this.bntSaveImages = new DevExpress.XtraEditors.SimpleButton();
+            this.bntBrowseImage = new DevExpress.XtraEditors.SimpleButton();
             this.txtImageCode = new System.Windows.Forms.TextBox();
             this.label46 = new System.Windows.Forms.Label();
             this.txtImageName = new System.Windows.Forms.TextBox();
@@ -107,8 +110,7 @@
             this.pbExit = new System.Windows.Forms.PictureBox();
             this.pbLogout = new System.Windows.Forms.PictureBox();
             this.splashManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
-            this.bntBrowseImage = new DevExpress.XtraEditors.SimpleButton();
-            this.bntSaveImages = new DevExpress.XtraEditors.SimpleButton();
+            this.txtImageType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gIMG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridImg)).BeginInit();
@@ -158,9 +160,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(286, 32);
+            this.label6.Location = new System.Drawing.Point(286, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(206, 47);
             this.label6.TabIndex = 189;
@@ -312,7 +315,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(122, 97);
+            this.label7.Location = new System.Drawing.Point(122, 78);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 17);
             this.label7.TabIndex = 191;
@@ -324,7 +327,7 @@
             this.txtImageId.Enabled = false;
             this.txtImageId.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageId.ForeColor = System.Drawing.Color.Black;
-            this.txtImageId.Location = new System.Drawing.Point(251, 90);
+            this.txtImageId.Location = new System.Drawing.Point(251, 71);
             this.txtImageId.Name = "txtImageId";
             this.txtImageId.Size = new System.Drawing.Size(352, 30);
             this.txtImageId.TabIndex = 119;
@@ -350,7 +353,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(122, 205);
+            this.label5.Location = new System.Drawing.Point(122, 204);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 17);
             this.label5.TabIndex = 187;
@@ -362,7 +365,7 @@
             this.label45.BackColor = System.Drawing.Color.Transparent;
             this.label45.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label45.ForeColor = System.Drawing.Color.White;
-            this.label45.Location = new System.Drawing.Point(122, 133);
+            this.label45.Location = new System.Drawing.Point(122, 109);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(85, 17);
             this.label45.TabIndex = 186;
@@ -373,6 +376,8 @@
             this.GProfileImage.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.GProfileImage.Appearance.Options.UseBackColor = true;
             this.GProfileImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.GProfileImage.Controls.Add(this.txtImageType);
+            this.GProfileImage.Controls.Add(this.label11);
             this.GProfileImage.Controls.Add(this.bntSaveImages);
             this.GProfileImage.Controls.Add(this.bntBrowseImage);
             this.GProfileImage.Controls.Add(this.label7);
@@ -395,13 +400,47 @@
             this.GProfileImage.Size = new System.Drawing.Size(1010, 561);
             this.GProfileImage.TabIndex = 174;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(122, 171);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(83, 17);
+            this.label11.TabIndex = 195;
+            this.label11.Text = "Image Type:";
+            // 
+            // bntSaveImages
+            // 
+            this.bntSaveImages.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntSaveImages.ImageOptions.Image")));
+            this.bntSaveImages.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.bntSaveImages.Location = new System.Drawing.Point(427, 234);
+            this.bntSaveImages.Name = "bntSaveImages";
+            this.bntSaveImages.Size = new System.Drawing.Size(176, 37);
+            this.bntSaveImages.TabIndex = 193;
+            this.bntSaveImages.ToolTip = "Service Manual";
+            this.bntSaveImages.Click += new System.EventHandler(this.bntSaveImages_Click);
+            // 
+            // bntBrowseImage
+            // 
+            this.bntBrowseImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntBrowseImage.ImageOptions.Image")));
+            this.bntBrowseImage.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.bntBrowseImage.Location = new System.Drawing.Point(251, 234);
+            this.bntBrowseImage.Name = "bntBrowseImage";
+            this.bntBrowseImage.Size = new System.Drawing.Size(176, 37);
+            this.bntBrowseImage.TabIndex = 192;
+            this.bntBrowseImage.ToolTip = "User Manual";
+            this.bntBrowseImage.Click += new System.EventHandler(this.bntBrowseImage_Click);
+            // 
             // txtImageCode
             // 
             this.txtImageCode.BackColor = System.Drawing.Color.DimGray;
             this.txtImageCode.Enabled = false;
             this.txtImageCode.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageCode.ForeColor = System.Drawing.Color.Black;
-            this.txtImageCode.Location = new System.Drawing.Point(251, 126);
+            this.txtImageCode.Location = new System.Drawing.Point(251, 102);
             this.txtImageCode.Name = "txtImageCode";
             this.txtImageCode.Size = new System.Drawing.Size(352, 30);
             this.txtImageCode.TabIndex = 120;
@@ -412,7 +451,7 @@
             this.label46.BackColor = System.Drawing.Color.Transparent;
             this.label46.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label46.ForeColor = System.Drawing.Color.White;
-            this.label46.Location = new System.Drawing.Point(122, 167);
+            this.label46.Location = new System.Drawing.Point(122, 140);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(90, 17);
             this.label46.TabIndex = 185;
@@ -424,7 +463,7 @@
             this.txtImageName.Enabled = false;
             this.txtImageName.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageName.ForeColor = System.Drawing.Color.Black;
-            this.txtImageName.Location = new System.Drawing.Point(251, 160);
+            this.txtImageName.Location = new System.Drawing.Point(251, 133);
             this.txtImageName.Name = "txtImageName";
             this.txtImageName.Size = new System.Drawing.Size(352, 30);
             this.txtImageName.TabIndex = 121;
@@ -435,7 +474,7 @@
             this.txtImageLocation.Enabled = false;
             this.txtImageLocation.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageLocation.ForeColor = System.Drawing.Color.Black;
-            this.txtImageLocation.Location = new System.Drawing.Point(251, 196);
+            this.txtImageLocation.Location = new System.Drawing.Point(251, 195);
             this.txtImageLocation.Name = "txtImageLocation";
             this.txtImageLocation.Size = new System.Drawing.Size(352, 33);
             this.txtImageLocation.TabIndex = 123;
@@ -1227,25 +1266,21 @@
             // 
             this.splashManager.ClosingDelay = 500;
             // 
-            // bntBrowseImage
+            // txtImageType
             // 
-            this.bntBrowseImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntBrowseImage.ImageOptions.Image")));
-            this.bntBrowseImage.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntBrowseImage.Location = new System.Drawing.Point(251, 234);
-            this.bntBrowseImage.Name = "bntBrowseImage";
-            this.bntBrowseImage.Size = new System.Drawing.Size(176, 37);
-            this.bntBrowseImage.TabIndex = 192;
-            this.bntBrowseImage.ToolTip = "User Manual";
-            // 
-            // bntSaveImages
-            // 
-            this.bntSaveImages.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntSaveImages.ImageOptions.Image")));
-            this.bntSaveImages.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntSaveImages.Location = new System.Drawing.Point(427, 234);
-            this.bntSaveImages.Name = "bntSaveImages";
-            this.bntSaveImages.Size = new System.Drawing.Size(176, 37);
-            this.bntSaveImages.TabIndex = 193;
-            this.bntSaveImages.ToolTip = "Service Manual";
+            this.txtImageType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtImageType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.txtImageType.BackColor = System.Drawing.Color.DimGray;
+            this.txtImageType.Enabled = false;
+            this.txtImageType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtImageType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImageType.ForeColor = System.Drawing.Color.Maroon;
+            this.txtImageType.FormattingEnabled = true;
+            this.txtImageType.Location = new System.Drawing.Point(251, 164);
+            this.txtImageType.Name = "txtImageType";
+            this.txtImageType.Size = new System.Drawing.Size(352, 29);
+            this.txtImageType.TabIndex = 196;
+            this.txtImageType.SelectedIndexChanged += new System.EventHandler(this.txtImageType_SelectedIndexChanged);
             // 
             // FrmUsers
             // 
@@ -1394,5 +1429,7 @@
         private System.Windows.Forms.PictureBox pcLOG;
         private DevExpress.XtraEditors.SimpleButton bntBrowseImage;
         private DevExpress.XtraEditors.SimpleButton bntSaveImages;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox txtImageType;
     }
 }

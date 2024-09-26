@@ -183,6 +183,8 @@
         public const string AllViewImageProduct = "SELECT * FROM view_image_product";
         public const string AllWarehouseStatus = @"SELECT * FROM warehouse_status ORDER BY status_details ASC";
         public const string AllUserNames = @"SELECT username FROM users ORDER BY username ASC";
+        public const string AllUserImage = "SELECT * FROM user_image";
+        public const string AllViewUserImage = "SELECT * FROM view_user_image";
         public const string AllStaff = @"SELECT * FROM view_request_staff ORDER BY staff ASC";
         public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
         public const string AllPaymentMethod = @"SELECT method_name FROM payment_method";
