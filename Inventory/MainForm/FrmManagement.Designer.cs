@@ -62,9 +62,9 @@
             this.barCreditLine = new DevExpress.XtraBars.BarSubItem();
             this.ribGCT = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barChangeBranch = new DevExpress.XtraBars.BarSubItem();
-            this.barCancelTrans = new DevExpress.XtraBars.BarSubItem();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barMainMenu = new DevExpress.XtraBars.BarButtonItem();
+            this.barCancelTrans = new DevExpress.XtraBars.BarSubItem();
             this.barDEL = new DevExpress.XtraBars.BarButtonItem();
             this.barPIC = new DevExpress.XtraBars.BarButtonItem();
             this.barReportReturnWare = new DevExpress.XtraBars.BarSubItem();
@@ -242,6 +242,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.xtraDaily = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView15 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView16 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView17 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView18 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -322,6 +329,14 @@
             this.groupGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupOperator)).BeginInit();
             this.groupOperator.SuspendLayout();
+            this.xtraDaily.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView18)).BeginInit();
             this.SuspendLayout();
             // 
             // bntSave
@@ -396,6 +411,7 @@
             this.barReportDailyExpenses.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportDailyExpenses.ImageOptions.Image")));
             this.barReportDailyExpenses.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportDailyExpenses.ImageOptions.LargeImage")));
             this.barReportDailyExpenses.Name = "barReportDailyExpenses";
+            this.barReportDailyExpenses.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportDailyExpenses_ItemClick);
             // 
             // barParCred
             // 
@@ -554,17 +570,6 @@
             this.barChangeBranch.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barChangeBranch.ImageOptions.LargeImage")));
             this.barChangeBranch.Name = "barChangeBranch";
             // 
-            // barCancelTrans
-            // 
-            this.barCancelTrans.Caption = "Cancel-Trans";
-            this.barCancelTrans.Enabled = false;
-            this.barCancelTrans.Id = 11;
-            this.barCancelTrans.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCancelTrans.ImageOptions.Image")));
-            this.barCancelTrans.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCancelTrans.ImageOptions.LargeImage")));
-            this.barCancelTrans.Name = "barCancelTrans";
-            this.barCancelTrans.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            // 
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.barMainMenu);
@@ -579,6 +584,17 @@
             this.barMainMenu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barMainMenu.ImageOptions.LargeImage")));
             this.barMainMenu.Name = "barMainMenu";
             this.barMainMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barMainMenu_ItemClick);
+            // 
+            // barCancelTrans
+            // 
+            this.barCancelTrans.Caption = "Cancel-Trans";
+            this.barCancelTrans.Enabled = false;
+            this.barCancelTrans.Id = 11;
+            this.barCancelTrans.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCancelTrans.ImageOptions.Image")));
+            this.barCancelTrans.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCancelTrans.ImageOptions.LargeImage")));
+            this.barCancelTrans.Name = "barCancelTrans";
+            this.barCancelTrans.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // barDEL
             // 
@@ -853,7 +869,7 @@
             this.ribSTATUS.Location = new System.Drawing.Point(0, 804);
             this.ribSTATUS.Name = "ribSTATUS";
             this.ribSTATUS.Ribbon = this.rbControl;
-            this.ribSTATUS.Size = new System.Drawing.Size(1588, 27);
+            this.ribSTATUS.Size = new System.Drawing.Size(1584, 27);
             // 
             // barUser
             // 
@@ -1071,7 +1087,7 @@
             this.repositoryItemTextEdit8,
             this.repositoryItemProgressBar1,
             this.repSTA});
-            this.rbControl.Size = new System.Drawing.Size(1588, 153);
+            this.rbControl.Size = new System.Drawing.Size(1584, 153);
             this.rbControl.StatusBar = this.ribSTATUS;
             this.rbControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above;
             // 
@@ -1590,7 +1606,7 @@
             this.xInventory.Appearance.Options.UseBackColor = true;
             this.xInventory.Location = new System.Drawing.Point(21, 129);
             this.xInventory.Name = "xInventory";
-            this.xInventory.SelectedTabPage = this.xtraPending;
+            this.xInventory.SelectedTabPage = this.xtraReturn;
             this.xInventory.Size = new System.Drawing.Size(1565, 501);
             this.xInventory.TabIndex = 242;
             this.xInventory.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
@@ -1599,7 +1615,8 @@
             this.xtraReturn,
             this.xtraInventory,
             this.xtraSales,
-            this.xtraCredits});
+            this.xtraCredits,
+            this.xtraDaily});
             // 
             // xtraPending
             // 
@@ -2554,7 +2571,7 @@
             this.spCON.Panel2.Controls.Add(this.groupGrid);
             this.spCON.Panel2.Controls.Add(this.rbControl);
             this.spCON.Panel2.Controls.Add(this.ribSTATUS);
-            this.spCON.Size = new System.Drawing.Size(1592, 845);
+            this.spCON.Size = new System.Drawing.Size(1588, 845);
             this.spCON.SplitterPosition = 0;
             this.spCON.TabIndex = 95;
             // 
@@ -2761,11 +2778,158 @@
             this.barSubItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.LargeImage")));
             this.barSubItem3.Name = "barSubItem3";
             // 
+            // xtraDaily
+            // 
+            this.xtraDaily.Controls.Add(this.groupControl2);
+            this.xtraDaily.Name = "xtraDaily";
+            this.xtraDaily.Size = new System.Drawing.Size(1563, 474);
+            this.xtraDaily.Text = "Daily Expenses";
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupControl2.Appearance.Options.UseBackColor = true;
+            this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl2.Controls.Add(this.gridControl1);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl2.Location = new System.Drawing.Point(0, 0);
+            this.groupControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupControl2.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(1563, 474);
+            this.groupControl2.TabIndex = 176;
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.gridControl1.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridControl1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.gridControl1.Location = new System.Drawing.Point(3, 18);
+            this.gridControl1.MainView = this.gridView15;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1557, 453);
+            this.gridControl1.TabIndex = 25;
+            this.gridControl1.TabStop = false;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView15,
+            this.gridView16,
+            this.gridView17,
+            this.gridView18});
+            // 
+            // gridView15
+            // 
+            this.gridView15.Appearance.Empty.BackColor = System.Drawing.Color.LightGray;
+            this.gridView15.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridView15.Appearance.Empty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView15.Appearance.Empty.Options.UseBackColor = true;
+            this.gridView15.Appearance.Empty.Options.UseBorderColor = true;
+            this.gridView15.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridView15.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridView15.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridView15.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView15.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView15.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView15.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridView15.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridView15.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView15.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridView15.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView15.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.gridView15.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView15.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView15.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridView15.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
+            this.gridView15.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridView15.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView15.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView15.Appearance.Row.Options.UseBackColor = true;
+            this.gridView15.Appearance.Row.Options.UseBorderColor = true;
+            this.gridView15.Appearance.Row.Options.UseFont = true;
+            this.gridView15.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView15.Appearance.ViewCaption.Options.UseFont = true;
+            this.gridView15.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridView15.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView15.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView15.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridView15.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridView15.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridView15.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
+            this.gridView15.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridView15.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView15.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridView15.AppearancePrint.Row.Options.UseFont = true;
+            this.gridView15.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridView15.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.gridView15.GridControl = this.gridControl1;
+            this.gridView15.Name = "gridView15";
+            this.gridView15.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView15.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView15.OptionsBehavior.Editable = false;
+            this.gridView15.OptionsCustomization.AllowRowSizing = true;
+            this.gridView15.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridView15.OptionsSelection.MultiSelect = true;
+            this.gridView15.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView15.OptionsView.RowAutoHeight = true;
+            this.gridView15.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            // 
+            // gridView16
+            // 
+            this.gridView16.GridControl = this.gridControl1;
+            this.gridView16.Name = "gridView16";
+            // 
+            // gridView17
+            // 
+            this.gridView17.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridView17.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridView17.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridView17.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView17.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Green;
+            this.gridView17.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView17.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridView17.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridView17.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView17.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridView17.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView17.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView17.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView17.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView17.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridView17.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.gridView17.Appearance.Row.Options.UseFont = true;
+            this.gridView17.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridView17.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView17.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView17.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridView17.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridView17.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridView17.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView17.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridView17.AppearancePrint.Row.Options.UseFont = true;
+            this.gridView17.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridView17.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.gridView17.GridControl = this.gridControl1;
+            this.gridView17.Name = "gridView17";
+            this.gridView17.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView17.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView17.OptionsBehavior.Editable = false;
+            this.gridView17.OptionsBehavior.ReadOnly = true;
+            this.gridView17.OptionsCustomization.AllowRowSizing = true;
+            this.gridView17.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridView17.OptionsSelection.MultiSelect = true;
+            this.gridView17.OptionsView.ColumnAutoWidth = false;
+            // 
+            // gridView18
+            // 
+            this.gridView18.GridControl = this.gridControl1;
+            this.gridView18.Name = "gridView18";
+            // 
             // FrmManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1587, 846);
+            this.ClientSize = new System.Drawing.Size(1589, 846);
             this.Controls.Add(this.spCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmManagement";
@@ -2855,6 +3019,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupOperator)).EndInit();
             this.groupOperator.ResumeLayout(false);
             this.groupOperator.PerformLayout();
+            this.xtraDaily.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView18)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3066,5 +3238,12 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView14;
+        private DevExpress.XtraTab.XtraTabPage xtraDaily;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView15;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView16;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView17;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView18;
     }
 }

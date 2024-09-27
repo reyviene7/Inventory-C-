@@ -707,6 +707,11 @@ namespace Inventory.MainForm
             }
         }
 
+        private void barReportDailyExpenses_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var name = GetUseFullName(_userId);
+            ReportSetting.ListofDailyExpenses(name);
+        }
         private void barReportProduct_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);
