@@ -25,6 +25,7 @@ namespace Inventory.MainForm
         private IEnumerable<ViewSalesPart> _sales_list;
         private IEnumerable<ViewAcceptedDelivery> _accepted_list;
         private IEnumerable<ViewSalesCredit> _credit_sales;
+        private IEnumerable<ViewDailySales> _daily_expenses;
         private readonly int _userId;
         private readonly int _userType;
         private readonly string _username;
@@ -73,6 +74,7 @@ namespace Inventory.MainForm
             _sales_list = EnumerableUtils.getSalesParticular(branch);
             _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
             _credit_sales = EnumerableUtils.getCreditSales(branch);
+            _daily_expenses = EnumerableUtils.getDailyExpenses();
             _imgList = EnumerableUtils.getImgProductList();
         }
         private void FrmManagement_Load(object sender, System.EventArgs e)
@@ -132,6 +134,12 @@ namespace Inventory.MainForm
             gridCtrlCredits.DataSource = null;
             gridCtrlCredits.DataSource = "";
             gridCredits.Columns.Clear();
+        }
+        private void clearGridDailyExpenses()
+        {
+            gridCtrlDaily.DataSource = null;
+            gridCtrlDaily.DataSource = "";
+            gridDaily.Columns.Clear();
         }
 
         private void bindDeliveryList(string branch)
@@ -338,6 +346,37 @@ namespace Inventory.MainForm
             gridCtrlCredits.Update();
         }
 
+        private void bindDailyExpenses()
+        {
+            try
+            {
+                clearGridDailyExpenses();
+                var list = _daily_expenses.Select(x => new
+                {
+                    Id = x.expense_id,
+                    Type = x.type_name,
+                    Description = x.description,
+                    Amount = x.amount,
+                    RelatedEntity = x.related_entity,
+                    EntityId = x.entity_id,
+                    Date = x.expense_date,
+                }).ToList();
+                gridCtrlDaily.DataSource = list;
+                gridCtrlDaily.Update();
+                gridDaily.Columns[0].Width = 40;
+                gridDaily.Columns[1].Width = 150;
+                gridDaily.Columns[2].Width = 400;
+                gridDaily.Columns[3].Width = 100;
+                gridDaily.Columns[4].Width = 200;
+                gridDaily.Columns[5].Width = 50;
+                gridDaily.Columns[6].Width = 100;
+            }
+            catch (Exception ex)
+            {
+                PopupNotification.PopUpMessages(0, ex.ToString(), "Daily Expenses");
+            }
+        }
+
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (cardPending.RowCount > 0)
@@ -483,6 +522,16 @@ namespace Inventory.MainForm
             _credit_sales = EnumerableUtils.getCreditSales(branch);
             bindCreditSales();
             xInventory.SelectedTabPage = xtraCredits;
+            splashScreen.CloseWaitForm();
+        }
+
+        private void barDailyExpenses_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreen.ShowWaitForm();
+            _daily_expenses = Enumerable.Empty<ViewDailySales>();
+            _daily_expenses = EnumerableUtils.getDailyExpenses();
+            bindDailyExpenses();
+            xInventory.SelectedTabPage = xtraDaily;
             splashScreen.CloseWaitForm();
         }
 

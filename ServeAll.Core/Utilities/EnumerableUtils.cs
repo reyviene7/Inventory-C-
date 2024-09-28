@@ -166,6 +166,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ViewDailySales> getDailyExpenses()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewDailySales>(unWork);
+                    return repository.SelectAll(Query.getDailyExpenses).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewDailySales>();
+                }
+            }
+        }
 
         public static IEnumerable<ViewServiceImages> getServiceImgList()
         {

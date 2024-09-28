@@ -13,6 +13,6 @@ namespace Inventory.Entities
         public string related_entity { get; set; }
         public int entity_id { get; set; }
         public string description { get; set; }
-        public DateTime expenses_date { get; set; }
+        public DateTime expense_date { get; set; }
     }
 }

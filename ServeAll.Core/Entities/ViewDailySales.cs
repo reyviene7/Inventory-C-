@@ -7,16 +7,12 @@ namespace ServeAll.Core.Entities
    public class ViewDailySales
     {
         [Key]
-        public int Id { get; set; }
-        public string Invoice { get; set; }
-        public string ReceiptNo { get; set; }
-        public string Customer { get; set; }
-        public decimal DueAmount { get; set; }
-        public decimal PaidAmount { get; set; }
-        public decimal Discount { get; set; }
-        public decimal Gross { get; set; }
-        public decimal NetSales { get; set; }
-        public string Branch { get; set; }
-        public DateTime RefDate { get; set; }         
+        public int expense_id { get; set; }
+        public string type_name { get; set; }
+        public decimal amount { get; set; }
+        public string related_entity { get; set; }
+        public int entity_id { get; set; }
+        public string description { get; set; }
+        public DateTime expense_date { get; set; }         
     }
 }
