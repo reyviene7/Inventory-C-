@@ -29,7 +29,7 @@ namespace Inventory.Services
                         Amount = source.amount,
                         RelatedEntity = source.related_entity,
                         EntityId = source.entity_id,
-                        Date = source.expenses_date
+                        Date = source.expense_date
                     });
                 }
             }
@@ -52,7 +52,7 @@ namespace Inventory.Services
                         Amount = source.amount,
                         RelatedEntity = source.related_entity,
                         EntityId = source.entity_id,
-                        Date = source.expenses_date
+                        Date = source.expense_date
                     });
                 }
             }

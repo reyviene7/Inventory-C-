@@ -347,6 +347,7 @@
         public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
         public const string getAcceptedDelivery = @"SELECT * FROM view_accepted_delivery WHERE branch_details = @branch ORDER BY received_id DESC";
         public const string getCreditSales = @"SELECT * FROM view_credit_sales WHERE branch = @branch ORDER BY id DESC";
+        public const string getDailyExpenses = @"SELECT * FROM view_daily_expenses ORDER BY expense_id DESC";
         public const string getContactById = @"SELECT * FROM contact WHERE contact_id = @contact";
         public const string getAddressById = @"SELECT * FROM address WHERE address_id = @address";
     }
