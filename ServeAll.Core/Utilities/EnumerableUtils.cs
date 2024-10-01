@@ -166,6 +166,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ViewDailySales> getDailyExpenses()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewDailySales>(unWork);
+                    return repository.SelectAll(Query.getDailyExpenses).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewDailySales>();
+                }
+            }
+        }
 
         public static IEnumerable<ViewServiceImages> getServiceImgList()
         {
@@ -370,12 +388,70 @@ namespace ServeAll.Core.Utilities
                 try
                 {
                     var repository = new Repository<users>(unWork);
-                    return repository.SelectAll(Query.AllUserNames).ToList();
+                    return repository.SelectAll(Query.AllUsers).ToList();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     return GetEmptyList<users>();
+                }
+            }
+        }
+
+        public static IEnumerable<ViewUser> getUserList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewUser>(unWork);
+                    return repository.SelectAll(Query.getViewUser).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewUser>();
+                }
+            }
+        }
+        public static IEnumerable<UserImage> getUserImage()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<UserImage>(unWork);
+                    return repository.SelectAll(Query.AllUserImage)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<UserImage>();
+                }
+            }
+        }
+
+        public static IEnumerable<ViewUserImage> getViewUserImage()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewUserImage>(unWork);
+                    return repository.SelectAll(Query.AllViewUserImage)
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewUserImage>();
                 }
             }
         }

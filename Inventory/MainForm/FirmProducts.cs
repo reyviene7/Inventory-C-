@@ -831,12 +831,11 @@ namespace Inventory.MainForm
                         }
                         else
                             imgProduct.Image = null;
-                        imgBigPreview.Image = null;
+                            imgBigPreview.Image = null;
                     }
                 }
                 catch (Exception ex)
                 {
-
                     Console.WriteLine(ex.ToString());
                 }
 

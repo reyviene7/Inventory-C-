@@ -1,10 +1,10 @@
 ﻿using System;
 using Dapper.Contrib.Extensions;
 
-namespace ServeAll.Core.Entities
+namespace Inventory.Entities
 {
-    [Table("view_daily_sales")]
-   public class ViewDailySales
+    [Table("view_daily_expenses")]
+    public class ViewReportDailyExpenses
     {
         [Key]
         public int expense_id { get; set; }
@@ -13,6 +13,6 @@ namespace ServeAll.Core.Entities
         public string related_entity { get; set; }
         public int entity_id { get; set; }
         public string description { get; set; }
-        public DateTime expense_date { get; set; }         
+        public DateTime expense_date { get; set; }
     }
 }

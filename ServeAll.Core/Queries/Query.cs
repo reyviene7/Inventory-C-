@@ -183,6 +183,8 @@
         public const string AllViewImageProduct = "SELECT * FROM view_image_product";
         public const string AllWarehouseStatus = @"SELECT * FROM warehouse_status ORDER BY status_details ASC";
         public const string AllUserNames = @"SELECT username FROM users ORDER BY username ASC";
+        public const string AllUserImage = "SELECT * FROM user_image";
+        public const string AllViewUserImage = "SELECT * FROM view_user_image";
         public const string AllStaff = @"SELECT * FROM view_request_staff ORDER BY staff ASC";
         public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
         public const string AllPaymentMethod = @"SELECT method_name FROM payment_method";
@@ -277,6 +279,7 @@
         public const string SelectReportReturnWarehos = "SELECT  return_id, product_name, return_quantity, return_number, branch_details, retail_price, return_date, status, remarks FROM report_return_warehouse";
         public const string SelectReportReturnDepotDl = "SELECT * FROM report_return_delivery_depot";
         public const string SelectReportAllItem = "SELECT inventory_id, product_code, product_name, quantity, trade_price, retail_price, status FROM view_inventoryList";
+        public const string SelectReportDailyExpenses = "SELECT * FROM view_daily_expenses";
         public const string SelectReportProduct = "SELECT product_id, product_code, product_name, trade_price, retail_price FROM report_product_list";
         public const string SelectReportSales = "SELECT sale_id, customer_name, amount_due, paid_amount, gross, discount, net_sales, branch_details, receipt_number, sale_date  FROM report_sales";
         public const string SelectReportService = "SELECT service_id, service_name, service_details, service_charges, category_details, service_commission, full_name, status_name, service_date FROM report_service";
@@ -344,6 +347,7 @@
         public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
         public const string getAcceptedDelivery = @"SELECT * FROM view_accepted_delivery WHERE branch_details = @branch ORDER BY received_id DESC";
         public const string getCreditSales = @"SELECT * FROM view_credit_sales WHERE branch = @branch ORDER BY id DESC";
+        public const string getDailyExpenses = @"SELECT * FROM view_daily_expenses ORDER BY expense_id DESC";
         public const string getContactById = @"SELECT * FROM contact WHERE contact_id = @contact";
         public const string getAddressById = @"SELECT * FROM address WHERE address_id = @address";
     }
