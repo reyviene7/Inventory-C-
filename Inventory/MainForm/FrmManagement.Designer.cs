@@ -2612,6 +2612,7 @@
             this.gridDaily.OptionsView.EnableAppearanceEvenRow = true;
             this.gridDaily.OptionsView.RowAutoHeight = true;
             this.gridDaily.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridDaily.DoubleClick += new System.EventHandler(this.gridDaily_DoubleClick);
             // 
             // gridView16
             // 
@@ -2975,7 +2976,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.spCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmManagement";

@@ -12,7 +12,7 @@ using Constant = Inventory.Config.Constant;
 
 namespace Inventory.PopupForm
 {
-    public partial class FrmPopAddExpenses : Form
+    public partial class FrmPopUpdateExpenses : Form
     {
         private FrmManagement _main;
         private readonly int _userId;
@@ -26,15 +26,22 @@ namespace Inventory.PopupForm
             set { _main = value; }
         }
 
-        public FrmPopAddExpenses(int userId, int userType)
+        public FrmPopUpdateExpenses(int userId, int userType, ViewDailyExpenses dailyExpenses)
         {
             _userId = userId;
             _userType = userType;
+            _daily_expenses = dailyExpenses;
             InitializeComponent();
         }
 
-        private void FrmPopAddExpenses_Load(object sender, EventArgs e)
+        private void FrmPopUpdateExpenses_Load(object sender, EventArgs e)
         {
+            cmbExpensesType.Text = _daily_expenses.type_name;
+            txtAmount.Text = _daily_expenses.amount.ToString();
+            cmbRelatedEntity.Text = _daily_expenses.related_entity;
+            txtDescription.Text = _daily_expenses.description;
+            dkpExpensesDate.Value = _daily_expenses.expense_date;
+
             //_imgList = EnumerableUtils.getImgProductList();
             var expensesType = EnumerableUtils.getExpensesType();
             var typeName = expensesType.Select(type => type.type_name).ToList();
@@ -51,6 +58,7 @@ namespace Inventory.PopupForm
             {
                 cmbRelatedEntity.Text = entity.First();
             }
+            
             /*
             if (barcode != null)
             {
@@ -87,7 +95,7 @@ namespace Inventory.PopupForm
 
         private void bntAccept_Click(object sender, EventArgs e)
         {
-            expenseAdded();
+            expenseUpdate();
         }
 
         private void txtAmountPaid_KeyPress(object sender, KeyPressEventArgs e)
@@ -145,26 +153,32 @@ namespace Inventory.PopupForm
             }
         }
 
-        private void expenseAdded()
+        private void expenseUpdate()
         {
             if (string.IsNullOrWhiteSpace(txtAmount.Text))
             {
                 PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
                 return;
             }
+
+            var expenseId = _daily_expenses.expense_id;
+            if (expenseId > 0)
+            {
                 splashScreen.ShowWaitForm();
-                    var DailyExpenses = new DailyExpenses()
+                try
+                {
+                    var result = RepositoryEntity.UpdateEntity<DailyExpenses>(expenseId, DailyExpenses =>
                     {
-                        expense_type_id = FetchUtils.getExpensesType(cmbExpensesType.Text),
-                        amount = decimal.Parse(txtAmount.Text),
-                        entity_id = FetchUtils.getRelatedEntity(cmbRelatedEntity.Text),
-                        description = txtDescription.Text,
-                        expense_date = dkpExpensesDate.Value.Date
-                    };
-                    var result = RepositoryEntity.AddEntity<DailyExpenses>(DailyExpenses);
+                        DailyExpenses.expense_type_id = FetchUtils.getExpensesType(cmbExpensesType.Text);
+                        DailyExpenses.amount = decimal.Parse(txtAmount.Text);
+                        DailyExpenses.entity_id = FetchUtils.getRelatedEntity(cmbRelatedEntity.Text);
+                        DailyExpenses.description = txtDescription.Text;
+                        DailyExpenses.expense_date = DateTime.Now.Date;
+                    });
                     if (result > 0)
                     {
-                        PopupNotification.PopUpMessages(1,  "New Expense: " + " Added Successfully!", Messages.InventorySystem);
+                        PopupNotification.PopUpMessages(1, "Update New Expense: " + " Successfully!",
+                            Messages.InventorySystem);
                         _main.received = 1;
                         Close();
                         splashScreen.CloseWaitForm();
@@ -172,8 +186,15 @@ namespace Inventory.PopupForm
                     else
                     {
                         splashScreen.CloseWaitForm();
-                        PopupNotification.PopUpMessages(0, "Expense: " + " Failed to Complete!", Messages.InventorySystem);
+                        PopupNotification.PopUpMessages(0, "Update Expense: " + " Failed to Complete!", Messages.InventorySystem);
                     }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
         }
     }
 }

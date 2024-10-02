@@ -410,6 +410,12 @@
     <Compile Include="PopupForm\FirmPopServer.Designer.cs">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopupForm\FrmPopUpdateExpenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm\FrmPopUpdateExpenses.Designer.cs">
+      <DependentUpon>FrmPopUpdateExpenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopupForm\FrmPopAddExpenses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -630,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FirmPopServer.resx">
       <DependentUpon>FirmPopServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm\FrmPopUpdateExpenses.resx">
+      <DependentUpon>FrmPopUpdateExpenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm\FrmPopAddExpenses.resx">
       <DependentUpon>FrmPopAddExpenses.cs</DependentUpon>

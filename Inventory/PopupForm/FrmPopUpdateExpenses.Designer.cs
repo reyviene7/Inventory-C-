@@ -1,6 +1,6 @@
 ﻿namespace Inventory.PopupForm
 {
-    partial class FrmPopAddExpenses
+    partial class FrmPopUpdateExpenses
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPopAddExpenses));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPopUpdateExpenses));
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.groupLauncher = new DevExpress.XtraEditors.GroupControl();
             this.cmbRelatedEntity = new System.Windows.Forms.ComboBox();
@@ -83,7 +83,7 @@
             this.groupLauncher.Name = "groupLauncher";
             this.groupLauncher.Size = new System.Drawing.Size(931, 475);
             this.groupLauncher.TabIndex = 6;
-            this.groupLauncher.Text = "Stock Expenses From Inventory";
+            this.groupLauncher.Text = "Stock Update Expenses From Daily Expenses";
             // 
             // cmbRelatedEntity
             // 
@@ -273,7 +273,7 @@
             this.bntAccept.ToolTip = "Accept Delivery";
             this.bntAccept.Click += new System.EventHandler(this.bntAccept_Click);
             // 
-            // FrmPopAddExpenses
+            // FrmPopUpdateExpenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -282,10 +282,10 @@
             this.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FrmPopAddExpenses";
+            this.Name = "FrmPopUpdateExpenses";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmPopAccept";
-            this.Load += new System.EventHandler(this.FrmPopAddExpenses_Load);
+            this.Load += new System.EventHandler(this.FrmPopUpdateExpenses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupLauncher)).EndInit();
             this.groupLauncher.ResumeLayout(false);
             this.groupLauncher.PerformLayout();
