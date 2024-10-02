@@ -90,6 +90,10 @@
             this.barDAIPR = new DevExpress.XtraBars.BarButtonItem();
             this.barDAISM = new DevExpress.XtraBars.BarButtonItem();
             this.PageRep = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barAddExpenses = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barUpdateExpenses = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
@@ -159,7 +163,6 @@
             this.PageCus = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribCDT = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribCRD = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribPAY = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribPAM = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribDEL = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -249,6 +252,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -787,10 +792,39 @@
             // PageRep
             // 
             this.PageRep.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup7,
+            this.ribbonPageGroup8,
             this.ribbonPageGroup6});
             this.PageRep.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("PageRep.ImageOptions.Image")));
             this.PageRep.Name = "PageRep";
-            this.PageRep.Text = "Report Control";
+            this.PageRep.Text = "Expenses Control";
+            // 
+            // ribbonPageGroup7
+            // 
+            this.ribbonPageGroup7.ItemLinks.Add(this.barAddExpenses);
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
+            // 
+            // barAddExpenses
+            // 
+            this.barAddExpenses.Caption = "Add-Expenses";
+            this.barAddExpenses.Id = 47;
+            this.barAddExpenses.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barAddExpenses.ImageOptions.Image")));
+            this.barAddExpenses.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barAddExpenses.ImageOptions.LargeImage")));
+            this.barAddExpenses.Name = "barAddExpenses";
+            this.barAddExpenses.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barAddExpenses_ItemClick);
+            // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.barUpdateExpenses);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            // 
+            // barUpdateExpenses
+            // 
+            this.barUpdateExpenses.Caption = "Update-Expenses";
+            this.barUpdateExpenses.Id = 48;
+            this.barUpdateExpenses.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barUpdateExpenses.ImageOptions.Image")));
+            this.barUpdateExpenses.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barUpdateExpenses.ImageOptions.LargeImage")));
+            this.barUpdateExpenses.Name = "barUpdateExpenses";
             // 
             // ribbonPageGroup6
             // 
@@ -1060,9 +1094,11 @@
             this.barParCred,
             this.barSearchParticular,
             this.barSearchSales,
-            this.barSubItem4});
+            this.barSubItem4,
+            this.barAddExpenses,
+            this.barUpdateExpenses});
             this.rbControl.Location = new System.Drawing.Point(0, 0);
-            this.rbControl.MaxItemId = 47;
+            this.rbControl.MaxItemId = 49;
             this.rbControl.Name = "rbControl";
             this.rbControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.PagePos,
@@ -1414,7 +1450,6 @@
             this.PageCus.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribCDT,
             this.ribCRD,
-            this.ribPAY,
             this.ribPAM,
             this.ribDEL,
             this.ribbonPageGroup5});
@@ -1431,11 +1466,6 @@
             // 
             this.ribCRD.ItemLinks.Add(this.barCreditSales);
             this.ribCRD.Name = "ribCRD";
-            // 
-            // ribPAY
-            // 
-            this.ribPAY.ItemLinks.Add(this.barPayCredit);
-            this.ribPAY.Name = "ribPAY";
             // 
             // ribPAM
             // 
@@ -1466,11 +1496,11 @@
             // 
             this.lblBarcode.AutoSize = true;
             this.lblBarcode.BackColor = System.Drawing.Color.Transparent;
-            this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold);
+            this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
             this.lblBarcode.Location = new System.Drawing.Point(21, 13);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(121, 36);
+            this.lblBarcode.Size = new System.Drawing.Size(115, 32);
             this.lblBarcode.TabIndex = 232;
             this.lblBarcode.Text = "Barcode:";
             // 
@@ -1512,7 +1542,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(1102, 36);
+            this.label8.Location = new System.Drawing.Point(1091, 36);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 21);
             this.label8.TabIndex = 245;
@@ -1553,7 +1583,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(1103, 6);
+            this.label7.Location = new System.Drawing.Point(1091, 6);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 21);
             this.label7.TabIndex = 244;
@@ -2638,11 +2668,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(875, 36);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 21);
+            this.label5.Size = new System.Drawing.Size(90, 20);
             this.label5.TabIndex = 240;
             this.label5.Text = "Whole Sale:";
             // 
@@ -2660,11 +2690,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(875, 6);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 21);
+            this.label4.Size = new System.Drawing.Size(91, 20);
             this.label4.TabIndex = 237;
             this.label4.Text = "Retail Price:";
             // 
@@ -2802,7 +2832,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.DimGray;
-            this.label11.Location = new System.Drawing.Point(951, 37);
+            this.label11.Location = new System.Drawing.Point(933, 37);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(106, 21);
             this.label11.TabIndex = 254;
@@ -2814,7 +2844,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.DimGray;
-            this.label10.Location = new System.Drawing.Point(951, 8);
+            this.label10.Location = new System.Drawing.Point(933, 8);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(119, 21);
             this.label10.TabIndex = 253;
@@ -2857,11 +2887,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(491, 36);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(80, 25);
+            this.label9.Size = new System.Drawing.Size(71, 21);
             this.label9.TabIndex = 249;
             this.label9.Text = "Control:";
             // 
@@ -2879,11 +2909,11 @@
             // 
             this.lblInvoice.AutoSize = true;
             this.lblInvoice.BackColor = System.Drawing.Color.Transparent;
-            this.lblInvoice.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.lblInvoice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblInvoice.ForeColor = System.Drawing.Color.White;
             this.lblInvoice.Location = new System.Drawing.Point(676, 36);
             this.lblInvoice.Name = "lblInvoice";
-            this.lblInvoice.Size = new System.Drawing.Size(92, 25);
+            this.lblInvoice.Size = new System.Drawing.Size(81, 21);
             this.lblInvoice.TabIndex = 241;
             this.lblInvoice.Text = "Quantity:";
             // 
@@ -2900,11 +2930,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(16, 6);
+            this.label2.Location = new System.Drawing.Point(17, 6);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 25);
+            this.label2.Size = new System.Drawing.Size(104, 23);
             this.label2.TabIndex = 234;
             this.label2.Text = "Item Name:";
             // 
@@ -2912,11 +2942,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(17, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 25);
+            this.label1.Size = new System.Drawing.Size(70, 23);
             this.label1.TabIndex = 233;
             this.label1.Text = "Branch:";
             // 
@@ -2927,6 +2957,19 @@
             this.barSubItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.Image")));
             this.barSubItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.LargeImage")));
             this.barSubItem3.Name = "barSubItem3";
+            // 
+            // barSubItem5
+            // 
+            this.barSubItem5.Caption = "Daily-Expenses";
+            this.barSubItem5.Id = 42;
+            this.barSubItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem5.ImageOptions.Image")));
+            this.barSubItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem5.ImageOptions.LargeImage")));
+            this.barSubItem5.Name = "barSubItem5";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.barReportDailyExpenses);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // FrmManagement
             // 
@@ -3156,7 +3199,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage PageCus;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribCDT;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribCRD;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribPAY;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribPAM;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribDEL;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
@@ -3248,5 +3290,11 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView16;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView17;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView18;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
+        private DevExpress.XtraBars.BarButtonItem barAddExpenses;
+        private DevExpress.XtraBars.BarSubItem barSubItem5;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
+        private DevExpress.XtraBars.BarButtonItem barUpdateExpenses;
     }
 }

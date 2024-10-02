@@ -103,6 +103,44 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static int getExpensesType(string type)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.ExpenseType>(unWork);
+                    var query = repository.FindBy(x => x.type_name == type);
+                    return query.expense_type_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+        public static int getRelatedEntity(string related)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.RelatedEntity>(unWork);
+                    var query = repository.FindBy(x => x.related_entity == related);
+                    return query.entity_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
 
         public static int getLastProductId()
         {
