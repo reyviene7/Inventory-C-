@@ -568,6 +568,42 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ExpenseType> getExpensesType()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ExpenseType>(unWork);
+                    return repository.SelectAll(Query.AllExpenseType).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ExpenseType>();
+                }
+            }
+        }
+        public static IEnumerable<RelatedEntity> getRelatedEntity()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<RelatedEntity>(unWork);
+                    return repository.SelectAll(Query.AllRelatedEntity).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<RelatedEntity>();
+                }
+            }
+        }
         public static IEnumerable<ProductStatus> getProductStatus()
         {
             using (var session = new DalSession())

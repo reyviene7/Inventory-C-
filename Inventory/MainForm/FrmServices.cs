@@ -281,8 +281,7 @@ namespace Inventory.MainForm
         }
         private void pbExit_Click(object sender, EventArgs e)
         {
-            Main.Show();
-            Close();
+            PopupNotification.PopUpMessageExit();
         }
 
         private void InputWhit()

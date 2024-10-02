@@ -1373,7 +1373,7 @@
             this.pnlRightOptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(67)))), ((int)(((byte)(165)))));
             this.pnlRightOptions.Controls.Add(this.pcRight);
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1413, 0);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1396, 0);
             this.pnlRightOptions.Name = "pnlRightOptions";
             this.pnlRightOptions.Size = new System.Drawing.Size(77, 757);
             this.pnlRightOptions.TabIndex = 213;
@@ -1647,7 +1647,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1623, 915);
             this.Controls.Add(this.lblMainTitle);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlOptions);

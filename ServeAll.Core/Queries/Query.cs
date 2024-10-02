@@ -188,6 +188,8 @@
         public const string AllStaff = @"SELECT * FROM view_request_staff ORDER BY staff ASC";
         public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
         public const string AllPaymentMethod = @"SELECT method_name FROM payment_method";
+        public const string AllExpenseType = @"SELECT type_name FROM expense_type";
+        public const string AllRelatedEntity = @"SELECT related_entity FROM related_entity";
         public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
         public const string AllServiceStatus = @"SELECT * FROM service_status order by status_name ASC";
         public const string AllWarehouseList = @"SELECT warehouse_id, warehouse_name FROM warehouse";

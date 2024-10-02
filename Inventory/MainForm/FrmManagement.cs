@@ -85,6 +85,19 @@ namespace Inventory.MainForm
             barSoftware.EditValue = "Inventory System V1.0";
             barBranch.EditValue = branch;
             barDate.EditValue = DateTime.Now.Date.ToString();
+
+            int targetWidth = 1366;
+            int targetHeight = 768;
+            int originalWidth = 1589;
+            int originalHeight = 844;
+
+            float scaleWidth = (float)targetWidth / originalWidth;
+            float scaleHeight = (float)targetHeight / originalHeight;
+
+            this.Scale(new SizeF(scaleWidth, scaleHeight));
+            this.Size = new Size(targetWidth, targetHeight);
+            this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - targetWidth) / 2,
+                (Screen.PrimaryScreen.Bounds.Height - targetHeight) / 2);
         }
         private void barMainMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -840,6 +853,18 @@ namespace Inventory.MainForm
             var name = GetUseFullName(_userId);
             ReportSetting.ListofPayment(name);
         }
+
+        private void barAddExpenses_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreen.ShowWaitForm();
+            var pop = new FrmPopAddExpenses(_userId, 1)
+            {
+                main = this
+            };
+            splashScreen.CloseWaitForm();
+            pop.ShowDialog();
+        }
+
         private string GetUseFullName(int userId)
         {
             using (var session = new DalSession())
