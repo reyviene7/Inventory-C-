@@ -769,6 +769,24 @@ namespace Inventory.MainForm
             }
         }
 
+        private void gridDaily_DoubleClick(object sender, EventArgs e)
+        {
+            if (gridDaily.RowCount > 0)
+            {
+                splashScreen.ShowWaitForm();
+                var id = ((GridView)sender).GetFocusedRowCellValue("Id")?.ToString();
+                var dailyExpenses = EntityUtils.getDailyExpenses(int.Parse(id));
+                var pop = new FrmPopUpdateExpenses(_userId, 1, dailyExpenses)
+                {
+                    main = this
+                };
+                splashScreen.CloseWaitForm();
+                pop.ShowDialog();
+                _daily_expenses = EnumerableUtils.getDailyExpenses();
+                bindDailyExpenses();
+            }
+        }
+
         private void barReportDailyExpenses_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);

@@ -304,6 +304,7 @@
         public const string getWarehouseDeliveryById = "SELECT * FROM view_warehouse_delivery WHERE delivery_id = @deliveryId";
         public const string getAcceptedDeliveryById = "SELECT * FROM view_accepted_delivery WHERE received_id = @receivedId";
         public const string getReturnById = "SELECT * FROM view_return_warehouse WHERE return_id = @returnId";
+        public const string getExpenseById = "SELECT * FROM view_daily_expenses WHERE expense_id = @expenseId";
         public const string getCreditById = "SELECT * FROM view_credit_sales WHERE id = @creditId";
         public const string getPaymentById = "SELECT * FROM view_payment WHERE payment_id = @paymentId";
         public const string getMethodById = "SELECT * FROM payment_method WHERE payment_method_id = @methodId";
