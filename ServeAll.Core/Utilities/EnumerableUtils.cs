@@ -166,7 +166,7 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-        public static IEnumerable<ViewDailySales> getDailyExpenses()
+        public static IEnumerable<ViewDailyExpenses> getDailyExpenses()
         {
             using (var session = new DalSession())
             {
@@ -174,13 +174,13 @@ namespace ServeAll.Core.Utilities
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<ViewDailySales>(unWork);
+                    var repository = new Repository<ViewDailyExpenses>(unWork);
                     return repository.SelectAll(Query.getDailyExpenses).ToList();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    return GetEmptyList<ViewDailySales>();
+                    return GetEmptyList<ViewDailyExpenses>();
                 }
             }
         }
@@ -601,6 +601,24 @@ namespace ServeAll.Core.Utilities
                 {
                     Console.WriteLine(ex.Message);
                     return GetEmptyList<RelatedEntity>();
+                }
+            }
+        }
+        public static IEnumerable<ViewEmployees> getEmployees()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewEmployees>(unWork);
+                    return repository.SelectAll(Query.AllViewEmployees).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewEmployees>();
                 }
             }
         }

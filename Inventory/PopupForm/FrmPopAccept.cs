@@ -190,10 +190,10 @@ namespace Inventory.PopupForm
 
                     if (result > 0)
                     {
+                        splashScreen.CloseWaitForm();
                         PopupNotification.PopUpMessages(1, "Delivery Code: " + _accepted_list.delivery_code + " Successfully Received/Completed!", Messages.InventorySystem);
                         _main.received = 1;
                         Close();
-                        splashScreen.CloseWaitForm();
                     }
                     else
                     {

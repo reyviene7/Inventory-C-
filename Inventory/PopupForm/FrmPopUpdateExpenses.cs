@@ -40,25 +40,33 @@ namespace Inventory.PopupForm
             txtAmount.Text = _daily_expenses.amount.ToString();
             cmbRelatedEntity.Text = _daily_expenses.related_entity;
             txtDescription.Text = _daily_expenses.description;
+            cmbEmployee.Text = _daily_expenses.full_name;
             dkpExpensesDate.Value = _daily_expenses.expense_date;
 
             //_imgList = EnumerableUtils.getImgProductList();
             var expensesType = EnumerableUtils.getExpensesType();
-            var typeName = expensesType.Select(type => type.type_name).ToList();
             var relatedEntity = EnumerableUtils.getRelatedEntity();
+            var viewEmployees = EnumerableUtils.getEmployees();
+            var typeName = expensesType.Select(type => type.type_name).ToList();
             var entity = relatedEntity.Select(related => related.related_entity).ToList();
+            var employees = viewEmployees.Select(fullName => fullName.full_name).ToList();
             cmbExpensesType.Items.AddRange(typeName.ToArray());
             cmbRelatedEntity.Items.AddRange(entity.ToArray());
+            cmbEmployee.Items.AddRange((employees.ToArray()));
             if (typeName.Any())
             {
-                cmbExpensesType.Text = typeName.First(); 
+                cmbExpensesType.Text = typeName.First();
             }
 
             if (entity.Any())
             {
                 cmbRelatedEntity.Text = entity.First();
             }
-            
+            if (employees.Any())
+            {
+                cmbEmployee.Text = employees.First();
+            }
+
             /*
             if (barcode != null)
             {
@@ -171,17 +179,18 @@ namespace Inventory.PopupForm
                     {
                         DailyExpenses.expense_type_id = FetchUtils.getExpensesType(cmbExpensesType.Text);
                         DailyExpenses.amount = decimal.Parse(txtAmount.Text);
+                        DailyExpenses.employee_id = FetchUtils.getEmployee(cmbEmployee.Text);
                         DailyExpenses.entity_id = FetchUtils.getRelatedEntity(cmbRelatedEntity.Text);
                         DailyExpenses.description = txtDescription.Text;
                         DailyExpenses.expense_date = DateTime.Now.Date;
                     });
                     if (result > 0)
                     {
-                        PopupNotification.PopUpMessages(1, "Update New Expense: " + " Successfully!",
+                        splashScreen.CloseWaitForm();
+                        PopupNotification.PopUpMessages(1, "Update Expense: " + " Successfully Complete!",
                             Messages.InventorySystem);
                         _main.received = 1;
                         Close();
-                        splashScreen.CloseWaitForm();
                     }
                     else
                     {

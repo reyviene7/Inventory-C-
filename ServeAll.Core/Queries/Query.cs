@@ -8,27 +8,6 @@
         public const string AllSpecificBranch = @"SELECT  
                                                  BranchDetails FROM Branch";
         public const string AllSpecificCustomer = @"SELECT Name FROM view_customers";
-        public const string AllEmployees = @"SELECT EmployeeId ,
-		                                    EmployeeCode , 
-		                                    FirstName, 
-		                                    LastName, 
-		                                    MiddleInitial , 
-		                                    Gender, 
-		                                    Birthdate, 
-		                                    CivilStatus , 
-		                                    Phone, 
-		                                    Mobile, 
-		                                    EmailAddress , 
-		                                    EmployeeAddress , 
-		                                    ProventialAddress , 
-		                                    SSSNumber , 
-		                                    PhilHealth, 
-		                                    Position, 
-		                                    Department, 
-		                                    HireDate, 
-		                                    DateRegister 
-                                     FROM Employees";
-
         public const string viewProfile = @"SELECT profile_id,
                                                 contact_id,
                                                 address_id,        
@@ -190,6 +169,7 @@
         public const string AllPaymentMethod = @"SELECT method_name FROM payment_method";
         public const string AllExpenseType = @"SELECT type_name FROM expense_type";
         public const string AllRelatedEntity = @"SELECT related_entity FROM related_entity";
+        public const string AllViewEmployees = @"SELECT * FROM view_employees";
         public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
         public const string AllServiceStatus = @"SELECT * FROM service_status order by status_name ASC";
         public const string AllWarehouseList = @"SELECT warehouse_id, warehouse_name FROM warehouse";

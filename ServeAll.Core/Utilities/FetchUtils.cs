@@ -141,6 +141,25 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static int getEmployee(string related)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.ViewEmployees>(unWork);
+                    var query = repository.FindBy(x => x.full_name == related);
+                    return query.employee_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
 
         public static int getLastProductId()
         {

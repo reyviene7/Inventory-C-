@@ -27,6 +27,7 @@ namespace Inventory.Services
                         Type = source.type_name,
                         Description = source.description,
                         Amount = source.amount,
+                        Employee = source.full_name,
                         RelatedEntity = source.related_entity,
                         EntityId = source.entity_id,
                         Date = source.expense_date
@@ -50,6 +51,7 @@ namespace Inventory.Services
                         Type = source.type_name,
                         Description = source.description,
                         Amount = source.amount,
+                        Employee = source.full_name,
                         RelatedEntity = source.related_entity,
                         EntityId = source.entity_id,
                         Date = source.expense_date
