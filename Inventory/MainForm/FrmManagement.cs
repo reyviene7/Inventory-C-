@@ -25,7 +25,7 @@ namespace Inventory.MainForm
         private IEnumerable<ViewSalesPart> _sales_list;
         private IEnumerable<ViewAcceptedDelivery> _accepted_list;
         private IEnumerable<ViewSalesCredit> _credit_sales;
-        private IEnumerable<ViewDailySales> _daily_expenses;
+        private IEnumerable<ViewDailyExpenses> _daily_expenses;
         private readonly int _userId;
         private readonly int _userType;
         private readonly string _username;
@@ -369,6 +369,7 @@ namespace Inventory.MainForm
                     Id = x.expense_id,
                     Type = x.type_name,
                     Description = x.description,
+                    Employee = x.full_name,
                     Amount = x.amount,
                     RelatedEntity = x.related_entity,
                     EntityId = x.entity_id,
@@ -379,10 +380,11 @@ namespace Inventory.MainForm
                 gridDaily.Columns[0].Width = 40;
                 gridDaily.Columns[1].Width = 150;
                 gridDaily.Columns[2].Width = 400;
-                gridDaily.Columns[3].Width = 100;
-                gridDaily.Columns[4].Width = 200;
-                gridDaily.Columns[5].Width = 50;
-                gridDaily.Columns[6].Width = 100;
+                gridDaily.Columns[3].Width = 200;
+                gridDaily.Columns[4].Width = 100;
+                gridDaily.Columns[5].Width = 200;
+                gridDaily.Columns[6].Width = 50;
+                gridDaily.Columns[7].Width = 100;
             }
             catch (Exception ex)
             {
@@ -541,7 +543,7 @@ namespace Inventory.MainForm
         private void barDailyExpenses_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             splashScreen.ShowWaitForm();
-            _daily_expenses = Enumerable.Empty<ViewDailySales>();
+            _daily_expenses = Enumerable.Empty<ViewDailyExpenses>();
             _daily_expenses = EnumerableUtils.getDailyExpenses();
             bindDailyExpenses();
             xInventory.SelectedTabPage = xtraDaily;
@@ -846,7 +848,7 @@ namespace Inventory.MainForm
             var name = GetUseFullName(_userId);
             ReportSetting.ListofSalesParticular(name);
         }
-        private void barReportCreditSales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barReportCreditItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);
             ReportSetting.ListofCreditItem(name);

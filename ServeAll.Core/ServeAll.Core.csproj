@@ -126,7 +126,6 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="Entities\ViewCreditParticular.cs" />
-    <Compile Include="Entities\ViewDailySales.cs" />
     <Compile Include="Entities\ViewImageProduct.cs" />
     <Compile Include="Entities\ViewPosEntity.cs" />
     <Compile Include="Entities\ViewProfile.cs" />

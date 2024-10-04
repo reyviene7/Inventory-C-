@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPopAddExpenses));
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.groupLauncher = new DevExpress.XtraEditors.GroupControl();
+            this.cmbEmployee = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbRelatedEntity = new System.Windows.Forms.ComboBox();
             this.cmbExpensesType = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -61,6 +63,8 @@
             this.groupLauncher.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.groupLauncher.Appearance.Options.UseBackColor = true;
             this.groupLauncher.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupLauncher.Controls.Add(this.cmbEmployee);
+            this.groupLauncher.Controls.Add(this.label1);
             this.groupLauncher.Controls.Add(this.cmbRelatedEntity);
             this.groupLauncher.Controls.Add(this.cmbExpensesType);
             this.groupLauncher.Controls.Add(this.label10);
@@ -81,9 +85,34 @@
             this.groupLauncher.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupLauncher.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupLauncher.Name = "groupLauncher";
-            this.groupLauncher.Size = new System.Drawing.Size(931, 475);
-            this.groupLauncher.TabIndex = 6;
+            this.groupLauncher.Size = new System.Drawing.Size(931, 522);
+            this.groupLauncher.TabIndex = 10;
             this.groupLauncher.Text = "Stock Expenses From Inventory";
+            // 
+            // cmbEmployee
+            // 
+            this.cmbEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbEmployee.BackColor = System.Drawing.Color.White;
+            this.cmbEmployee.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.cmbEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.cmbEmployee.FormattingEnabled = true;
+            this.cmbEmployee.Location = new System.Drawing.Point(522, 169);
+            this.cmbEmployee.Name = "cmbEmployee";
+            this.cmbEmployee.Size = new System.Drawing.Size(397, 36);
+            this.cmbEmployee.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(387, 175);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 21);
+            this.label1.TabIndex = 283;
+            this.label1.Text = "Employee :";
             // 
             // cmbRelatedEntity
             // 
@@ -96,7 +125,7 @@
             this.cmbRelatedEntity.Location = new System.Drawing.Point(522, 98);
             this.cmbRelatedEntity.Name = "cmbRelatedEntity";
             this.cmbRelatedEntity.Size = new System.Drawing.Size(397, 36);
-            this.cmbRelatedEntity.TabIndex = 282;
+            this.cmbRelatedEntity.TabIndex = 3;
             // 
             // cmbExpensesType
             // 
@@ -109,7 +138,7 @@
             this.cmbExpensesType.Location = new System.Drawing.Point(522, 27);
             this.cmbExpensesType.Name = "cmbExpensesType";
             this.cmbExpensesType.Size = new System.Drawing.Size(397, 36);
-            this.cmbExpensesType.TabIndex = 281;
+            this.cmbExpensesType.TabIndex = 1;
             // 
             // label10
             // 
@@ -117,7 +146,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(387, 178);
+            this.label10.Location = new System.Drawing.Point(387, 215);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 21);
             this.label10.TabIndex = 273;
@@ -128,18 +157,18 @@
             this.dkpExpensesDate.CustomFormat = "dd-MM-yyyy";
             this.dkpExpensesDate.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.dkpExpensesDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpExpensesDate.Location = new System.Drawing.Point(523, 169);
+            this.dkpExpensesDate.Location = new System.Drawing.Point(523, 206);
             this.dkpExpensesDate.Name = "dkpExpensesDate";
             this.dkpExpensesDate.Size = new System.Drawing.Size(396, 34);
-            this.dkpExpensesDate.TabIndex = 13;
+            this.dkpExpensesDate.TabIndex = 6;
             this.dkpExpensesDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDelivery_KeyDown);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(711, 226);
+            this.pictureBox1.Location = new System.Drawing.Point(735, 269);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(191, 241);
+            this.pictureBox1.Size = new System.Drawing.Size(173, 229);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 271;
             this.pictureBox1.TabStop = false;
@@ -148,10 +177,10 @@
             // 
             this.bntExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntExit.ImageOptions.Image")));
             this.bntExit.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntExit.Location = new System.Drawing.Point(2, 411);
+            this.bntExit.Location = new System.Drawing.Point(2, 458);
             this.bntExit.Name = "bntExit";
             this.bntExit.Size = new System.Drawing.Size(371, 62);
-            this.bntExit.TabIndex = 16;
+            this.bntExit.TabIndex = 8;
             this.bntExit.ToolTip = "Close Item Delivery";
             this.bntExit.Click += new System.EventHandler(this.bntExit_Click);
             // 
@@ -172,7 +201,7 @@
             this.txtDescription.Location = new System.Drawing.Point(523, 136);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(396, 32);
-            this.txtDescription.TabIndex = 8;
+            this.txtDescription.TabIndex = 4;
             // 
             // label6
             // 
@@ -205,7 +234,7 @@
             this.txtAmount.Location = new System.Drawing.Point(523, 65);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(396, 32);
-            this.txtAmount.TabIndex = 4;
+            this.txtAmount.TabIndex = 2;
             this.txtAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmountPaid_KeyDown);
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmountPaid_KeyPress);
             // 
@@ -246,7 +275,7 @@
             this.groupImage.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupImage.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupImage.Name = "groupImage";
-            this.groupImage.Size = new System.Drawing.Size(372, 328);
+            this.groupImage.Size = new System.Drawing.Size(372, 375);
             this.groupImage.TabIndex = 250;
             // 
             // imgPreview
@@ -255,7 +284,7 @@
             this.imgPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgPreview.Location = new System.Drawing.Point(3, 18);
             this.imgPreview.Name = "imgPreview";
-            this.imgPreview.Size = new System.Drawing.Size(366, 307);
+            this.imgPreview.Size = new System.Drawing.Size(366, 354);
             this.imgPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgPreview.TabIndex = 244;
             this.imgPreview.TabStop = false;
@@ -266,10 +295,10 @@
             this.bntAccept.Appearance.Options.UseFont = true;
             this.bntAccept.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntAccept.ImageOptions.Image")));
             this.bntAccept.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntAccept.Location = new System.Drawing.Point(2, 348);
+            this.bntAccept.Location = new System.Drawing.Point(2, 395);
             this.bntAccept.Name = "bntAccept";
             this.bntAccept.Size = new System.Drawing.Size(371, 62);
-            this.bntAccept.TabIndex = 14;
+            this.bntAccept.TabIndex = 7;
             this.bntAccept.ToolTip = "Accept Delivery";
             this.bntAccept.Click += new System.EventHandler(this.bntAccept_Click);
             // 
@@ -277,7 +306,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 475);
+            this.ClientSize = new System.Drawing.Size(931, 522);
             this.Controls.Add(this.groupLauncher);
             this.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -317,5 +346,7 @@
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreen;
         private System.Windows.Forms.ComboBox cmbExpensesType;
         private System.Windows.Forms.ComboBox cmbRelatedEntity;
+        private System.Windows.Forms.ComboBox cmbEmployee;
+        private System.Windows.Forms.Label label1;
     }
 }
