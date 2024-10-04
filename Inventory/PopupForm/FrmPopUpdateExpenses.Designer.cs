@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPopUpdateExpenses));
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.groupLauncher = new DevExpress.XtraEditors.GroupControl();
+            this.cmbEmployee = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbRelatedEntity = new System.Windows.Forms.ComboBox();
             this.cmbExpensesType = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@
             this.groupImage = new DevExpress.XtraEditors.GroupControl();
             this.imgPreview = new System.Windows.Forms.PictureBox();
             this.bntAccept = new DevExpress.XtraEditors.SimpleButton();
-            this.cmbEmployee = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupLauncher)).BeginInit();
             this.groupLauncher.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -89,6 +89,32 @@
             this.groupLauncher.TabIndex = 10;
             this.groupLauncher.Text = "Stock Update Expenses From Daily Expenses";
             // 
+            // cmbEmployee
+            // 
+            this.cmbEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbEmployee.BackColor = System.Drawing.Color.White;
+            this.cmbEmployee.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.cmbEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.cmbEmployee.FormattingEnabled = true;
+            this.cmbEmployee.Location = new System.Drawing.Point(522, 169);
+            this.cmbEmployee.Name = "cmbEmployee";
+            this.cmbEmployee.Size = new System.Drawing.Size(397, 36);
+            this.cmbEmployee.TabIndex = 5;
+            this.cmbEmployee.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbEmployee_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(387, 175);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 21);
+            this.label1.TabIndex = 285;
+            this.label1.Text = "Employee :";
+            // 
             // cmbRelatedEntity
             // 
             this.cmbRelatedEntity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -101,6 +127,7 @@
             this.cmbRelatedEntity.Name = "cmbRelatedEntity";
             this.cmbRelatedEntity.Size = new System.Drawing.Size(397, 36);
             this.cmbRelatedEntity.TabIndex = 3;
+            this.cmbRelatedEntity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbRelatedEntity_KeyDown);
             // 
             // cmbExpensesType
             // 
@@ -114,6 +141,7 @@
             this.cmbExpensesType.Name = "cmbExpensesType";
             this.cmbExpensesType.Size = new System.Drawing.Size(397, 36);
             this.cmbExpensesType.TabIndex = 1;
+            this.cmbExpensesType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbExpensesType_KeyDown);
             // 
             // label10
             // 
@@ -136,7 +164,7 @@
             this.dkpExpensesDate.Name = "dkpExpensesDate";
             this.dkpExpensesDate.Size = new System.Drawing.Size(396, 34);
             this.dkpExpensesDate.TabIndex = 6;
-            this.dkpExpensesDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDelivery_KeyDown);
+            this.dkpExpensesDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpExpensesDate_KeyDown);
             // 
             // pictureBox1
             // 
@@ -177,6 +205,7 @@
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(396, 32);
             this.txtDescription.TabIndex = 4;
+            this.txtDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDescription_KeyDown);
             // 
             // label6
             // 
@@ -210,8 +239,8 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(396, 32);
             this.txtAmount.TabIndex = 2;
-            this.txtAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmountPaid_KeyDown);
-            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmountPaid_KeyPress);
+            this.txtAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmount_KeyDown);
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
             // label3
             // 
@@ -276,31 +305,6 @@
             this.bntAccept.TabIndex = 7;
             this.bntAccept.ToolTip = "Accept Delivery";
             this.bntAccept.Click += new System.EventHandler(this.bntAccept_Click);
-            // 
-            // cmbEmployee
-            // 
-            this.cmbEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbEmployee.BackColor = System.Drawing.Color.White;
-            this.cmbEmployee.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.cmbEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.cmbEmployee.FormattingEnabled = true;
-            this.cmbEmployee.Location = new System.Drawing.Point(522, 169);
-            this.cmbEmployee.Name = "cmbEmployee";
-            this.cmbEmployee.Size = new System.Drawing.Size(397, 36);
-            this.cmbEmployee.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(387, 175);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 21);
-            this.label1.TabIndex = 285;
-            this.label1.Text = "Employee :";
             // 
             // FrmPopUpdateExpenses
             // 

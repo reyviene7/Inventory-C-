@@ -101,6 +101,7 @@
             this.cmbEmployee.Name = "cmbEmployee";
             this.cmbEmployee.Size = new System.Drawing.Size(397, 36);
             this.cmbEmployee.TabIndex = 5;
+            this.cmbEmployee.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbEmployee_KeyDown);
             // 
             // label1
             // 
@@ -126,6 +127,7 @@
             this.cmbRelatedEntity.Name = "cmbRelatedEntity";
             this.cmbRelatedEntity.Size = new System.Drawing.Size(397, 36);
             this.cmbRelatedEntity.TabIndex = 3;
+            this.cmbRelatedEntity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbRelatedEntity_KeyDown);
             // 
             // cmbExpensesType
             // 
@@ -139,6 +141,7 @@
             this.cmbExpensesType.Name = "cmbExpensesType";
             this.cmbExpensesType.Size = new System.Drawing.Size(397, 36);
             this.cmbExpensesType.TabIndex = 1;
+            this.cmbExpensesType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbExpensesType_KeyDown);
             // 
             // label10
             // 
@@ -161,7 +164,7 @@
             this.dkpExpensesDate.Name = "dkpExpensesDate";
             this.dkpExpensesDate.Size = new System.Drawing.Size(396, 34);
             this.dkpExpensesDate.TabIndex = 6;
-            this.dkpExpensesDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDelivery_KeyDown);
+            this.dkpExpensesDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpExpensesDate_KeyDown);
             // 
             // pictureBox1
             // 
@@ -202,6 +205,7 @@
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(396, 32);
             this.txtDescription.TabIndex = 4;
+            this.txtDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDescription_KeyDown);
             // 
             // label6
             // 
@@ -235,8 +239,8 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(396, 32);
             this.txtAmount.TabIndex = 2;
-            this.txtAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmountPaid_KeyDown);
-            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmountPaid_KeyPress);
+            this.txtAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmount_KeyDown);
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
             // label3
             // 
