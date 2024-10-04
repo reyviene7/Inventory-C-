@@ -81,12 +81,6 @@ namespace Inventory.PopupForm
         {
             return _imgList.FirstOrDefault(img => img.image_code == param);
         }
-        /*
-        private PaymentMethod searchPaymentId(int id)
-        {
-            return _payment_method.FirstOrDefault(Return => Return.return_id == id);
-        }
-        */
         private void bntExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -97,7 +91,7 @@ namespace Inventory.PopupForm
             expenseAdded();
         }
 
-        private void txtAmountPaid_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtAmount.Text) && e.KeyChar == (char)Keys.Enter)
             {
@@ -117,35 +111,104 @@ namespace Inventory.PopupForm
             }
         }
 
-        private void txtAmountPaid_KeyDown(object sender, KeyEventArgs e)
+        private void cmbExpensesType_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                txtAmount.BackColor = Color.White;
-                
-                if (decimal.TryParse(txtAmount.Text, out decimal amountPaid) &&
-                    decimal.TryParse(cmbRelatedEntity.Text, out decimal remainingBalance))
+                if (string.IsNullOrWhiteSpace(cmbExpensesType.Text))
                 {
-                    // Subtract amountPaid from remainingBalance
-                    decimal newBalance = remainingBalance - amountPaid;
-
-                    // Update txtRemainBalance with the new balance
-                    cmbRelatedEntity.Text = newBalance.ToString("F2"); // Format as a decimal with 2 decimal places
+                    PopupNotification.PopUpMessages(0, "Expense Type must not be empty!", Messages.InventorySystem);
+                    cmbExpensesType.BackColor = Color.Yellow;
+                    cmbExpensesType.Focus();
                 }
                 else
                 {
-                    // Display error message if inputs are invalid
-                    PopupNotification.PopUpMessages(0, "Please enter valid numeric values!", "INVALID INPUT");
-                    txtAmount.BackColor = Color.Yellow;
+                    cmbExpensesType.BackColor = Color.White;
                     txtAmount.Focus();
-                    return;
+                    txtAmount.BackColor = Color.Yellow;
                 }
             }
         }
 
-        private void dkpDelivery_KeyDown(object sender, KeyEventArgs e)
+        private void txtAmount_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                if (string.IsNullOrWhiteSpace(txtAmount.Text))
+                {
+                    PopupNotification.PopUpMessages(0, "Amount must not be empty!", Messages.InventorySystem);
+                    txtAmount.BackColor = Color.Yellow;
+                    txtAmount.Focus(); 
+                }
+                else
+                {
+                    txtAmount.BackColor = Color.White;
+                    cmbRelatedEntity.Focus();
+                    cmbRelatedEntity.BackColor = Color.Yellow;
+                }
+            }
+        }
+
+        private void cmbRelatedEntity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                if (string.IsNullOrWhiteSpace(cmbRelatedEntity.Text))
+                {
+                    PopupNotification.PopUpMessages(0, "Related Entity must not be empty!", Messages.InventorySystem);
+                    cmbRelatedEntity.BackColor = Color.Yellow;
+                    cmbRelatedEntity.Focus();
+                }
+                else
+                {
+                    cmbRelatedEntity.BackColor = Color.White;
+                    txtDescription.Focus();
+                    txtDescription.BackColor = Color.Yellow;
+                }
+            }
+        }
+
+        private void txtDescription_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Tab)
+            {
+                if (string.IsNullOrWhiteSpace(txtDescription.Text))
+                {
+                    PopupNotification.PopUpMessages(0, "Description must not be empty!", Messages.InventorySystem);
+                    txtDescription.BackColor = Color.Yellow;
+                    txtDescription.Focus();
+                }
+                else
+                {
+                    txtDescription.BackColor = Color.White;
+                    cmbEmployee.Focus();
+                    cmbEmployee.BackColor = Color.Yellow;
+                }
+            }
+        }
+
+        private void cmbEmployee_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Tab)
+            {
+                if (string.IsNullOrWhiteSpace(cmbEmployee.Text))
+                {
+                    PopupNotification.PopUpMessages(0, "Description must not be empty!", Messages.InventorySystem);
+                    cmbEmployee.BackColor = Color.Yellow;
+                    cmbEmployee.Focus();
+                }
+                else
+                {
+                    cmbEmployee.BackColor = Color.White;
+                    dkpExpensesDate.Focus();
+                    dkpExpensesDate.BackColor = Color.Yellow;
+                }
+            }
+        }
+
+        private void dkpExpensesDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 dkpExpensesDate.BackColor = Color.White;
                 bntAccept.Focus();
