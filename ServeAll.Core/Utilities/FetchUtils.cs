@@ -2,6 +2,7 @@
 using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ServeAll.Core.Utilities
@@ -152,6 +153,45 @@ namespace ServeAll.Core.Utilities
                     var repository = new Repository<ServeAll.Core.Entities.ViewEmployees>(unWork);
                     var query = repository.FindBy(x => x.full_name == related);
                     return query.employee_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public static int getUserRole(string input)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.Roles>(unWork);
+                    var query = repository.FindBy(x => x.role_type == input);
+                    return query.role_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+        public static int getProfileId(string input)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ProfileEntities>(unWork);
+                    var query = repository.FindBy(x => x.name == input);
+                    return query.profile_id;
                 }
                 catch (Exception ex)
                 {
@@ -806,7 +846,7 @@ namespace ServeAll.Core.Utilities
                 result = Query.DefaultCode;
                 return result;
             }
-        } 
+        }
         public static string GetLastReturnDel()
         {
 

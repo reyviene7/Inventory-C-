@@ -8,6 +8,6 @@ namespace ServeAll.Core.Entities
         [Key]
         public int role_id { get; set; }
         public string role_type { get; set; }
-        public string role_description { get; set; }
+        public string description { get; set; }
     }
 }

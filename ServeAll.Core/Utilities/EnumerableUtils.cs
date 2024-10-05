@@ -622,6 +622,43 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+
+        public static IEnumerable<Roles> getRoleType()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Roles>(unWork);
+                    return repository.SelectAll(Query.AllRoleTypes).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<Roles>();
+                }
+            }
+        }
+        public static IEnumerable<ViewProfile> getProfileNames()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewProfile>(unWork);
+                    return repository.SelectAll(Query.getProfileName).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewProfile>();
+                }
+            }
+        }
         public static IEnumerable<ProductStatus> getProductStatus()
         {
             using (var session = new DalSession())
