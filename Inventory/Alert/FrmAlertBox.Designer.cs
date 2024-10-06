@@ -1,5 +1,4 @@
-﻿using Inventory;
-
+﻿
 namespace Inventory.Alert
 {
     partial class FrmAlertBox
@@ -36,7 +35,7 @@ namespace Inventory.Alert
             this.LblTextAlertBox = new System.Windows.Forms.Label();
             this.LinAlertBox = new System.Windows.Forms.Panel();
             this.timerAnimation = new System.Windows.Forms.Timer(this.components);
-            this.ellipse = new Inventory.Alert.EllipseControlArtan();
+            this.ellipse = new EllipseControlArtan();
             ((System.ComponentModel.ISupportInitialize)(this.PicAlertBox)).BeginInit();
             this.SuspendLayout();
             // 

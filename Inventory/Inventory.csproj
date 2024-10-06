@@ -748,9 +748,14 @@
   <ItemGroup>
     <Content Include="Graph.ico" />
     <Content Include="Resources\alert-triangle-svgrepo-com %281%29.png" />
+    <None Include="Resources\alert-triangle-svgrepo-com %281%291.png" />
     <Content Include="Resources\button-error-svgrepo-com %282%29.png" />
     <Content Include="Resources\button-error-svgrepo-com %282%29.svg" />
+    <None Include="Resources\information-svgrepo-com %284%291.png" />
+    <None Include="Resources\button-error-svgrepo-com %282%291.png" />
     <Content Include="Resources\check-circle-svgrepo-com %281%29.png" />
+    <None Include="Resources\Error.bmp" />
+    <None Include="Resources\check-circle-svgrepo-com %281%291.png" />
     <Content Include="Resources\information-svgrepo-com %284%29.png" />
     <None Include="Resources\converttorange_16x16.png" />
     <None Include="Resources\convert_32x32.png" />
