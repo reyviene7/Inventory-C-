@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagement));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.bntSave = new DevExpress.XtraBars.BarSubItem();
             this.barDLT = new DevExpress.XtraBars.BarButtonItem();
@@ -474,12 +474,12 @@
             this.barItemDelivery.Name = "barItemDelivery";
             this.barItemDelivery.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem3.Text = "Petron POS";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Search Customer";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.barItemDelivery.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Petron POS";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Search Customer";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.barItemDelivery.SuperTip = superToolTip1;
             this.barItemDelivery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barItemDelivery_ItemClick);
             // 
             // ribGCB
@@ -516,12 +516,12 @@
             this.barDailyExpenses.Name = "barDailyExpenses";
             this.barDailyExpenses.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem4.Text = " NEW CUSTOMER";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Add new Customer Information";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.barDailyExpenses.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = " NEW CUSTOMER";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Add new Customer Information";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.barDailyExpenses.SuperTip = superToolTip2;
             this.barDailyExpenses.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barDailyExpenses_ItemClick);
             // 
             // ribGCA
@@ -1231,8 +1231,8 @@
             // 
             this.barReportCreditItem.Caption = "List Credit";
             this.barReportCreditItem.Id = 50;
-            this.barReportCreditItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportCreditSales.ImageOptions.Image")));
-            this.barReportCreditItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportCreditSales.ImageOptions.LargeImage")));
+            this.barReportCreditItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barReportCreditItem.ImageOptions.Image")));
+            this.barReportCreditItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barReportCreditItem.ImageOptions.LargeImage")));
             this.barReportCreditItem.Name = "barReportCreditItem";
             this.barReportCreditItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barReportCreditItem_ItemClick);
             // 
@@ -1240,8 +1240,8 @@
             // 
             this.barRepCreditSales.Caption = "Credit-Sales";
             this.barRepCreditSales.Id = 51;
-            this.barRepCreditSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCustomerList.ImageOptions.Image")));
-            this.barRepCreditSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barCustomerList.ImageOptions.LargeImage")));
+            this.barRepCreditSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barRepCreditSales.ImageOptions.Image")));
+            this.barRepCreditSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barRepCreditSales.ImageOptions.LargeImage")));
             this.barRepCreditSales.Name = "barRepCreditSales";
             // 
             // barCreditSales
@@ -2969,7 +2969,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1589, 844);
             this.Controls.Add(this.spCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmManagement";

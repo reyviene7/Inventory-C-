@@ -62,6 +62,7 @@
         public const string PosProducts = @"SELECT code as Code, item as Item, qty as Qty, retail_price, wholesale, status, branch FROM view_product_inventory";
         public const string AllProductList = @"SELECT ProductId, Code, Name, RetailPrice, Status FROM view_productlist ORDER BY Code ASC";
         public const string AllInventoryList = "SELECT * FROM view_inventory";
+        public const string AllInventoryL = "SELECT * FROM inventory";
         public const string AllSupplier = @"SELECT supplier_id,
                                               supplier_code,
                                               supplier_name,

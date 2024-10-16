@@ -35,15 +35,15 @@ namespace Inventory.Alert
             this.LblTextAlertBox = new System.Windows.Forms.Label();
             this.LinAlertBox = new System.Windows.Forms.Panel();
             this.timerAnimation = new System.Windows.Forms.Timer(this.components);
-            this.ellipse = new EllipseControlArtan();
+            this.ellipse = new Inventory.Alert.EllipseControlArtan();
             ((System.ComponentModel.ISupportInitialize)(this.PicAlertBox)).BeginInit();
             this.SuspendLayout();
             // 
             // PicAlertBox
             // 
-            this.PicAlertBox.Location = new System.Drawing.Point(51, 16);
+            this.PicAlertBox.Location = new System.Drawing.Point(43, 11);
             this.PicAlertBox.Name = "PicAlertBox";
-            this.PicAlertBox.Size = new System.Drawing.Size(35, 35);
+            this.PicAlertBox.Size = new System.Drawing.Size(50, 50);
             this.PicAlertBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicAlertBox.TabIndex = 0;
             this.PicAlertBox.TabStop = false;

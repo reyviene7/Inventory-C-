@@ -11,7 +11,7 @@ namespace Inventory.Alert
             InitializeComponent();
         }
 
-        void AlertBoxArtan(Color backColor, Color color, string title, string text, Image icon)
+        public static void AlertBoxArtan(Color backColor, Color color, string title, string text, Image icon)
         {
             FrmAlertBox fRM = new FrmAlertBox();
             fRM.BackColor = backColor;

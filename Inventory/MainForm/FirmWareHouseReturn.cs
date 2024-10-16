@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
 using Inventory.Config;
 using Inventory.PopupForm;
-
+using Inventory.Alert;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Entities.request;
 using ServeAll.Core.Helper;
@@ -31,7 +32,7 @@ namespace Inventory.MainForm
         private int _branchId;
         private string _branch;
         private int InventoryId;
-
+        private Timer checkInventoryTimer;
         public string branch { 
             get { return _branch; }
             set
@@ -66,7 +67,13 @@ namespace Inventory.MainForm
                 this.DialogResult = DialogResult.Cancel;
                 return;
             }
+            InitializeTimer();
+
             InitializeComponent();
+            UpdateToggleSwitchState(); 
+            toggleSwitch1.ToggleChanged += ToggleSwitch1_ToggleChanged;
+            toggleSwitch1.IsOn = false;
+
             this.DialogResult = DialogResult.OK;
         }
         private void FirmBranchesWareHouse_Load(object sender, EventArgs e)
@@ -84,8 +91,105 @@ namespace Inventory.MainForm
             _products = EnumerableUtils.getProductWarehouseList();
             ShowBranch();
             BindInventory(_branch);
+            InitializeTimer();
+
+        }
+        private void InitializeTimer()
+        {
+            checkInventoryTimer = new Timer();
+            checkInventoryTimer.Interval = 10000;  // 1 minute interval
+            checkInventoryTimer.Tick += CheckInventoryTimer_Tick;
+            checkInventoryTimer.Start();
+
+        }
+        private void CheckInventoryTimer_Tick(object sender, EventArgs e)
+        {
+            if (toggleSwitch1.IsOn)
+            {
+                CheckInventoryForAlerts();
+            }
+        }
+        private void CheckInventoryForAlerts()
+        {
+            EnumerableUtils.CheckInventoryQuantities((inventoryCode, alertType) =>
+            {
+                if (alertType == "Out of Stock")
+                {
+                    FrmAlert.AlertBoxArtan(Color.LightPink, Color.DarkRed, "Out of Stock",
+                        $"Product {inventoryCode} is out of stock!", Properties.Resources.Error);
+                }
+                else if (alertType == "In Minimum Quantity")
+                {
+                    FrmAlert.AlertBoxArtan(Color.LightGoldenrodYellow, Color.Goldenrod, "Minimum Quantity",
+                        $"Product {inventoryCode} is in minimum quantity.", Properties.Resources.Warning);
+                }
+            });
+        }
+        private async void ToggleSwitch1_ToggleChanged(object sender, EventArgs e)
+        {
+            bool isSnoozed = toggleSwitch1.IsOn;
+            Console.WriteLine($"Toggle Switch is {(isSnoozed ? "On" : "Off")}");
+            await Task.Run(() => UpdateSnoozeInDatabase(isSnoozed));
+        }
+        private void UpdateSnoozeInDatabase(bool snooze)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
+                    var inventories = repository.SelectAll(Query.AllInventoryL).ToList();
+
+                    foreach (var inventory in inventories)
+                    {
+                        inventory.snooze = snooze;  // Update snooze value for all inventories
+                        repository.Update(inventory);  // Save the update to the database
+                    }
+                    unWork.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    unWork.Rollback();
+                }
+            }
         }
 
+        // Set the initial state of the toggle switch from the first inventory item
+        private void UpdateToggleSwitchState()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
+                    var firstInventory = repository.SelectAll(Query.AllInventoryL).FirstOrDefault();
+
+                    if (firstInventory != null)
+                    {
+                        toggleSwitch1.IsOn = firstInventory.snooze;  // Set toggle state based on snooze status
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        private void FirmWareHouseReturn_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (checkInventoryTimer != null)
+            {
+                checkInventoryTimer.Stop();
+                checkInventoryTimer.Dispose();
+            }
+            toggleSwitch1.IsOn = false;
+        }
         private void FirmBranchesWareHouse_MouseMove(object sender, MouseEventArgs e)
         {
             PanelInterface.MouseMOve(this, pnlRightOptions, e);
@@ -838,12 +942,13 @@ namespace Inventory.MainForm
                     if (returnResult > 0)
                     {
                         splashReturn.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1,"Return Delivery No: "+ txtDeliveryNo.Text.Trim(' ')+" successfully return to Warehouse!", Messages.InventorySystem);
+                        FrmAlert.AlertBoxArtan(Color.LightGreen, Color.SeaGreen, "Success", "Return Delivery No: "+ txtDeliveryNo.Text.Trim(' ')+" successfully return to Warehouse!", Properties.Resources.Success);
                         warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
                     }
                     else
                     {
                         splashReturn.CloseWaitForm();
+                        FrmAlert.AlertBoxArtan(Color.LightPink, Color.DarkRed, "Error", "Return Delivery No: " + txtDeliveryNo.Text.Trim(' ') + " failed return to Warehouse!", Properties.Resources.Error);
                     }
         }
 
@@ -867,14 +972,14 @@ namespace Inventory.MainForm
                 if(returnResult > 0)
                 {
                     splashReturn.CloseWaitForm();
-                    PopupNotification.PopUpMessages(1, "Item Return:" + txtReturnedProduct.Text.Trim(' ') + " successfully updated!", "UPDATE RETURN");
+                    FrmAlert.AlertBoxArtan(Color.LightGreen, Color.SeaGreen, "Success", "Item Return:" + txtReturnedProduct.Text.Trim(' ') + " successfully updated!", Properties.Resources.Success);
                     warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
                     BindReturnWareHouse();
                 }
                 else
                 {
                     splashReturn.CloseWaitForm();
-                    PopupNotification.PopUpMessages(0, "Item Return:" + txtReturnedProduct.Text.Trim(' ') + " was not updated to return warehouse!", "UPDATE FAILED");
+                    FrmAlert.AlertBoxArtan(Color.LightPink, Color.DarkRed, "Error", "Item Return:" + txtReturnedProduct.Text.Trim(' ') + " was not updated to return warehouse!", Properties.Resources.Error);
                 }
             }
         }
@@ -900,16 +1005,14 @@ namespace Inventory.MainForm
                 if (deleteResult > 0)
                 {
                     splashReturn.CloseWaitForm();
-                    PopupNotification.PopUpMessages(1,
-                        "Return ID: " + returnedId + " Successfully Deleted!",
-                        Messages.TitleSuccessDelete);
+                    FrmAlert.AlertBoxArtan(Color.LightGreen, Color.SeaGreen, "Success", "Return ID: " + returnedId + " Successfully Deleted!", Properties.Resources.Success);
                     warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
                     BindReturnWareHouse();
                 }
                 else
                 {
                     splashReturn.CloseWaitForm();
-                    PopupNotification.PopUpMessages(0, "Failed to delete return.", "DELETE FAILED");
+                    FrmAlert.AlertBoxArtan(Color.LightPink, Color.DarkRed, "Error", "Item Return:" + txtReturnedProduct.Text.Trim(' ') + " was failed to delete return warehouse!", Properties.Resources.Error);
                 }
             }
         }

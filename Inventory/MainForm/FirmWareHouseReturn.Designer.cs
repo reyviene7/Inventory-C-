@@ -124,6 +124,7 @@
             this.pcChangePassword = new System.Windows.Forms.PictureBox();
             this.pbHide = new System.Windows.Forms.PictureBox();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.toggleSwitch1 = new Inventory.Alert.ToggleSwitch();
             this.Options = new System.Windows.Forms.Timer(this.components);
             this.RightOptions = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1469,6 +1470,7 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlMain.Controls.Add(this.toggleSwitch1);
             this.pnlMain.Controls.Add(this.lblMainTitle);
             this.pnlMain.Controls.Add(this.xCON);
             this.pnlMain.Controls.Add(this.pictureBox1);
@@ -1484,6 +1486,22 @@
             this.pnlMain.Size = new System.Drawing.Size(1335, 788);
             this.pnlMain.TabIndex = 132;
             this.pnlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirmBranchesWareHouse_MouseMove);
+            // 
+            // toggleSwitch1
+            // 
+            this.toggleSwitch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.toggleSwitch1.IsOn = false;
+            this.toggleSwitch1.LabelColor = System.Drawing.Color.WhiteSmoke;
+            this.toggleSwitch1.Location = new System.Drawing.Point(40, 683);
+            this.toggleSwitch1.Name = "toggleSwitch1";
+            this.toggleSwitch1.OffColor = System.Drawing.Color.Red;
+            this.toggleSwitch1.OffLabel = "OFF";
+            this.toggleSwitch1.OnColor = System.Drawing.Color.Green;
+            this.toggleSwitch1.OnLabel = "ON";
+            this.toggleSwitch1.Radius = 20;
+            this.toggleSwitch1.Size = new System.Drawing.Size(100, 40);
+            this.toggleSwitch1.SwitchColor = System.Drawing.Color.White;
+            this.toggleSwitch1.TabIndex = 247;
             // 
             // Options
             // 
@@ -1509,6 +1527,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmBranchesWareHouse";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FirmWareHouseReturn_FormClosed);
             this.Load += new System.EventHandler(this.FirmBranchesWareHouse_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirmBranchesWareHouse_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1659,5 +1678,6 @@
         private System.Windows.Forms.DateTimePicker dkpReturnedUpdate;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private Alert.ToggleSwitch toggleSwitch1;
     }
 }

@@ -23,7 +23,6 @@ namespace Inventory.MainForm
         private int _rightTimeOut;
         //For animated panels position
         private readonly int _optionsX;
-
         private int optionsY;
         private int rightX;
         private readonly int _rightY;
@@ -53,7 +52,7 @@ namespace Inventory.MainForm
             FirstColumn.Start();
             pnlOptions.Focus();
         }
-
+        
         private void RightOptions_Tick(object sender, EventArgs e)
         {
             if (_rightTimeOut < 500)
