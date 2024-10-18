@@ -141,6 +141,15 @@ namespace Inventory.MainForm
             Main.Show();
             Close();
         }
+
+        private void pbLogout_Click(object sender, EventArgs e)
+        {
+            var que = PopupNotification.PopUpMassageLogOff();
+            if (que <= 0) return;
+            var log = new FirmLogin();
+            log.Show();
+            Close();
+        }
         #region ButtonCRUD
         private void ButAdd()
         {
@@ -1025,6 +1034,7 @@ namespace Inventory.MainForm
                 txtQty.Focus();
             }
         }
+
         private void txtLastCost_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

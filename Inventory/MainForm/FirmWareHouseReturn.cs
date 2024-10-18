@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
 using Inventory.Config;
 using Inventory.PopupForm;
-
+using Inventory.Alert;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Entities.request;
 using ServeAll.Core.Helper;
@@ -66,7 +67,7 @@ namespace Inventory.MainForm
                 this.DialogResult = DialogResult.Cancel;
                 return;
             }
-            InitializeComponent();
+            
             this.DialogResult = DialogResult.OK;
         }
         private void FirmBranchesWareHouse_Load(object sender, EventArgs e)
@@ -148,7 +149,11 @@ namespace Inventory.MainForm
         }
         private void pbLogout_Click(object sender, EventArgs e)
         {
-
+            var que = PopupNotification.PopUpMassageLogOff();
+            if (que <= 0) return;
+            var log = new FirmLogin();
+            log.Show();
+            Close();
         }
         private void pbHome_Click(object sender, EventArgs e)
         {
@@ -838,12 +843,13 @@ namespace Inventory.MainForm
                     if (returnResult > 0)
                     {
                         splashReturn.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1,"Return Delivery No: "+ txtDeliveryNo.Text.Trim(' ')+" successfully return to Warehouse!", Messages.InventorySystem);
+                        FrmAlert.AlertBoxArtan(Color.LightGreen, Color.SeaGreen, "Success", "Return Delivery No: "+ txtDeliveryNo.Text.Trim(' ')+" successfully return to Warehouse!", Properties.Resources.Success);
                         warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
                     }
                     else
                     {
                         splashReturn.CloseWaitForm();
+                        FrmAlert.AlertBoxArtan(Color.LightPink, Color.DarkRed, "Error", "Return Delivery No: " + txtDeliveryNo.Text.Trim(' ') + " failed return to Warehouse!", Properties.Resources.Error);
                     }
         }
 
@@ -867,14 +873,14 @@ namespace Inventory.MainForm
                 if(returnResult > 0)
                 {
                     splashReturn.CloseWaitForm();
-                    PopupNotification.PopUpMessages(1, "Item Return:" + txtReturnedProduct.Text.Trim(' ') + " successfully updated!", "UPDATE RETURN");
+                    FrmAlert.AlertBoxArtan(Color.LightGreen, Color.SeaGreen, "Success", "Item Return:" + txtReturnedProduct.Text.Trim(' ') + " successfully updated!", Properties.Resources.Success);
                     warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
                     BindReturnWareHouse();
                 }
                 else
                 {
                     splashReturn.CloseWaitForm();
-                    PopupNotification.PopUpMessages(0, "Item Return:" + txtReturnedProduct.Text.Trim(' ') + " was not updated to return warehouse!", "UPDATE FAILED");
+                    FrmAlert.AlertBoxArtan(Color.LightPink, Color.DarkRed, "Error", "Item Return:" + txtReturnedProduct.Text.Trim(' ') + " was not updated to return warehouse!", Properties.Resources.Error);
                 }
             }
         }
@@ -900,16 +906,14 @@ namespace Inventory.MainForm
                 if (deleteResult > 0)
                 {
                     splashReturn.CloseWaitForm();
-                    PopupNotification.PopUpMessages(1,
-                        "Return ID: " + returnedId + " Successfully Deleted!",
-                        Messages.TitleSuccessDelete);
+                    FrmAlert.AlertBoxArtan(Color.LightGreen, Color.SeaGreen, "Success", "Return ID: " + returnedId + " Successfully Deleted!", Properties.Resources.Success);
                     warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
                     BindReturnWareHouse();
                 }
                 else
                 {
                     splashReturn.CloseWaitForm();
-                    PopupNotification.PopUpMessages(0, "Failed to delete return.", "DELETE FAILED");
+                    FrmAlert.AlertBoxArtan(Color.LightPink, Color.DarkRed, "Error", "Item Return:" + txtReturnedProduct.Text.Trim(' ') + " was failed to delete return warehouse!", Properties.Resources.Error);
                 }
             }
         }

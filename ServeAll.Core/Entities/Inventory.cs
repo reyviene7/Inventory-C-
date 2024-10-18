@@ -18,5 +18,6 @@ namespace ServeAll.Core.Entities
         public DateTime inventory_date { get; set; }
         public decimal last_price_cost { get; set; }
         public DateTime updatedOn { get; set; }
+        public bool snooze { get; set; }
     }
 }

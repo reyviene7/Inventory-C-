@@ -87,7 +87,11 @@ namespace Inventory.MainForm
 
         private void pbLogout_Click(object sender, EventArgs e)
         {
-            PopupNotification.PopUpMassageLogOff();
+            var que = PopupNotification.PopUpMassageLogOff();
+            if (que <= 0) return;
+            var log = new FirmLogin();
+            log.Show();
+            Close();
         }
 
         private void pbExit_Click(object sender, EventArgs e)

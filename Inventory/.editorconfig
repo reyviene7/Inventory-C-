@@ -53,3 +53,9 @@ dotnet_diagnostic.CA1010.severity = none
 
 # IDE0067: Dispose objects before losing scope
 dotnet_diagnostic.IDE0067.severity = none
+
+# CA1060: Move pinvokes to native methods class
+dotnet_diagnostic.CA1060.severity = none
+
+# CA1062: Validate arguments of public methods
+dotnet_diagnostic.CA1062.severity = none

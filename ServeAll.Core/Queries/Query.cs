@@ -8,27 +8,6 @@
         public const string AllSpecificBranch = @"SELECT  
                                                  BranchDetails FROM Branch";
         public const string AllSpecificCustomer = @"SELECT Name FROM view_customers";
-        public const string AllEmployees = @"SELECT EmployeeId ,
-		                                    EmployeeCode , 
-		                                    FirstName, 
-		                                    LastName, 
-		                                    MiddleInitial , 
-		                                    Gender, 
-		                                    Birthdate, 
-		                                    CivilStatus , 
-		                                    Phone, 
-		                                    Mobile, 
-		                                    EmailAddress , 
-		                                    EmployeeAddress , 
-		                                    ProventialAddress , 
-		                                    SSSNumber , 
-		                                    PhilHealth, 
-		                                    Position, 
-		                                    Department, 
-		                                    HireDate, 
-		                                    DateRegister 
-                                     FROM Employees";
-
         public const string viewProfile = @"SELECT profile_id,
                                                 contact_id,
                                                 address_id,        
@@ -83,6 +62,7 @@
         public const string PosProducts = @"SELECT code as Code, item as Item, qty as Qty, retail_price, wholesale, status, branch FROM view_product_inventory";
         public const string AllProductList = @"SELECT ProductId, Code, Name, RetailPrice, Status FROM view_productlist ORDER BY Code ASC";
         public const string AllInventoryList = "SELECT * FROM view_inventory";
+        public const string AllInventoryL = "SELECT * FROM inventory";
         public const string AllSupplier = @"SELECT supplier_id,
                                               supplier_code,
                                               supplier_name,
@@ -188,6 +168,9 @@
         public const string AllStaff = @"SELECT * FROM view_request_staff ORDER BY staff ASC";
         public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
         public const string AllPaymentMethod = @"SELECT method_name FROM payment_method";
+        public const string AllExpenseType = @"SELECT type_name FROM expense_type";
+        public const string AllRelatedEntity = @"SELECT related_entity FROM related_entity";
+        public const string AllViewEmployees = @"SELECT * FROM view_employees";
         public const string AllWarehouseLocation = @"SELECT * FROM location ORDER BY location_code ASC";
         public const string AllServiceStatus = @"SELECT * FROM service_status order by status_name ASC";
         public const string AllWarehouseList = @"SELECT warehouse_id, warehouse_name FROM warehouse";
@@ -302,6 +285,7 @@
         public const string getWarehouseDeliveryById = "SELECT * FROM view_warehouse_delivery WHERE delivery_id = @deliveryId";
         public const string getAcceptedDeliveryById = "SELECT * FROM view_accepted_delivery WHERE received_id = @receivedId";
         public const string getReturnById = "SELECT * FROM view_return_warehouse WHERE return_id = @returnId";
+        public const string getExpenseById = "SELECT * FROM view_daily_expenses WHERE expense_id = @expenseId";
         public const string getCreditById = "SELECT * FROM view_credit_sales WHERE id = @creditId";
         public const string getPaymentById = "SELECT * FROM view_payment WHERE payment_id = @paymentId";
         public const string getMethodById = "SELECT * FROM payment_method WHERE payment_method_id = @methodId";

@@ -10,6 +10,7 @@ namespace Inventory.Entities
         public int expense_id { get; set; }
         public string type_name { get; set; }
         public decimal amount { get; set; }
+        public string full_name { get; set; }
         public string related_entity { get; set; }
         public int entity_id { get; set; }
         public string description { get; set; }

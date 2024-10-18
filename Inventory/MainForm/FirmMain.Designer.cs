@@ -177,6 +177,8 @@
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.tileItem1 = new DevExpress.XtraEditors.TileItem();
             this.tileItem5 = new DevExpress.XtraEditors.TileItem();
+            this.toggleSwitch1 = new Inventory.Alert.ToggleSwitch();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlRightOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRight)).BeginInit();
             this.pnlRightMain.SuspendLayout();
@@ -1373,7 +1375,7 @@
             this.pnlRightOptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(67)))), ((int)(((byte)(165)))));
             this.pnlRightOptions.Controls.Add(this.pcRight);
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1413, 0);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1396, 0);
             this.pnlRightOptions.Name = "pnlRightOptions";
             this.pnlRightOptions.Size = new System.Drawing.Size(77, 757);
             this.pnlRightOptions.TabIndex = 213;
@@ -1642,12 +1644,41 @@
             this.tileItem5.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem5.Name = "tileItem5";
             // 
+            // toggleSwitch1
+            // 
+            this.toggleSwitch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.toggleSwitch1.IsOn = false;
+            this.toggleSwitch1.LabelColor = System.Drawing.Color.WhiteSmoke;
+            this.toggleSwitch1.Location = new System.Drawing.Point(68, 621);
+            this.toggleSwitch1.Name = "toggleSwitch1";
+            this.toggleSwitch1.OffColor = System.Drawing.Color.Red;
+            this.toggleSwitch1.OffLabel = "OFF";
+            this.toggleSwitch1.OnColor = System.Drawing.Color.Green;
+            this.toggleSwitch1.OnLabel = "ON";
+            this.toggleSwitch1.Radius = 20;
+            this.toggleSwitch1.Size = new System.Drawing.Size(100, 40);
+            this.toggleSwitch1.SwitchColor = System.Drawing.Color.White;
+            this.toggleSwitch1.TabIndex = 248;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(64, 575);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 37);
+            this.label1.TabIndex = 249;
+            this.label1.Text = "Snooze";
+            // 
             // FirmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
             this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.toggleSwitch1);
             this.Controls.Add(this.lblMainTitle);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlOptions);
@@ -1656,6 +1687,7 @@
             this.Name = "FirmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmMain";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FirmMain_FormClosed);
             this.Load += new System.EventHandler(this.FirmMain_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirmMain_MouseMove);
             this.pnlRightOptions.ResumeLayout(false);
@@ -1749,5 +1781,7 @@
         private DevExpress.XtraEditors.TileItem tileItem5;
         private DevExpress.XtraEditors.TileItem tileManagement;
         private DevExpress.XtraEditors.TileItem tileReportSales;
+        private Alert.ToggleSwitch toggleSwitch1;
+        private System.Windows.Forms.Label label1;
     }
 }

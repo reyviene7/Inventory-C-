@@ -186,10 +186,10 @@ namespace Inventory.PopupForm
                     var result = RepositoryEntity.AddEntity<Payment>(CreditSales);
                     if (result > 0)
                     {
+                        splashScreen.CloseWaitForm();
                         PopupNotification.PopUpMessages(1, "Customer: " + _credit_sales.customer + " Payment Successfully!", Messages.InventorySystem);
                         _main.received = 1;
                         Close();
-                        splashScreen.CloseWaitForm();
                     }
                     else
                     {

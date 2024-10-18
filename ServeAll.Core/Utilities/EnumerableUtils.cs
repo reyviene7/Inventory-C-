@@ -166,7 +166,7 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-        public static IEnumerable<ViewDailySales> getDailyExpenses()
+        public static IEnumerable<ViewDailyExpenses> getDailyExpenses()
         {
             using (var session = new DalSession())
             {
@@ -174,13 +174,13 @@ namespace ServeAll.Core.Utilities
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<ViewDailySales>(unWork);
+                    var repository = new Repository<ViewDailyExpenses>(unWork);
                     return repository.SelectAll(Query.getDailyExpenses).ToList();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    return GetEmptyList<ViewDailySales>();
+                    return GetEmptyList<ViewDailyExpenses>();
                 }
             }
         }
@@ -568,6 +568,97 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ExpenseType> getExpensesType()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ExpenseType>(unWork);
+                    return repository.SelectAll(Query.AllExpenseType).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ExpenseType>();
+                }
+            }
+        }
+        public static IEnumerable<RelatedEntity> getRelatedEntity()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<RelatedEntity>(unWork);
+                    return repository.SelectAll(Query.AllRelatedEntity).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<RelatedEntity>();
+                }
+            }
+        }
+        public static IEnumerable<ViewEmployees> getEmployees()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewEmployees>(unWork);
+                    return repository.SelectAll(Query.AllViewEmployees).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewEmployees>();
+                }
+            }
+        }
+
+        public static IEnumerable<Roles> getRoleType()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Roles>(unWork);
+                    return repository.SelectAll(Query.AllRoleTypes).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<Roles>();
+                }
+            }
+        }
+        public static IEnumerable<ViewProfile> getProfileNames()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewProfile>(unWork);
+                    return repository.SelectAll(Query.getProfileName).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewProfile>();
+                }
+            }
+        }
         public static IEnumerable<ProductStatus> getProductStatus()
         {
             using (var session = new DalSession())
@@ -911,5 +1002,44 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<Inventory> CheckInventoryQuantities(Action<string, string> alertCallback)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Inventory>(unWork);
+
+                    // Fetch all inventory items
+                    var inventoryList = repository.SelectAll(Query.AllInventoryL).ToList();
+                    var lowStockItems = inventoryList
+                        .Where(i => !i.snooze) // Only check non-snoozed items
+                        .Where(i => i.quantity <= 5) // Check for low stock or zero quantity
+                        .ToList();
+
+                    foreach (var item in lowStockItems)
+                    {
+                        if (item.quantity == 0)
+                        {
+                            alertCallback(item.inventory_code, "Out of Stock");
+                        }
+                        else if (item.quantity <= 5)
+                        {
+                            alertCallback(item.inventory_code, "In Minimum Quantity");
+                        }
+                    }
+
+                    return lowStockItems;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error checking inventory quantities: {ex.Message}");
+                    return Enumerable.Empty<Inventory>();
+                }
+            }
+        }
+
     }
 }

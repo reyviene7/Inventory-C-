@@ -6,7 +6,7 @@ namespace Inventory.Config
 {
     public class PopupNotification
     {
-        public const string ApplicationTitle = @"SERVE-ALL MARKETING ENTERPRISES";
+        public const string ApplicationTitle = @"INVENTORY LOGIN";
 
         public static void PopUpMessages(int rn, string msgs, string title)
         {

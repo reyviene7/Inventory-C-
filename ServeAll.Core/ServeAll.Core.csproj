@@ -68,7 +68,10 @@
   <ItemGroup>
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Delivery.cs" />
+    <Compile Include="Entities\RelatedEntity.cs" />
     <Compile Include="Entities\Location.cs" />
+    <Compile Include="Entities\DailyExpenses.cs" />
+    <Compile Include="Entities\ExpenseType.cs" />
     <Compile Include="Entities\PaymentMethod.cs" />
     <Compile Include="Entities\ReceivedInventory.cs" />
     <Compile Include="Entities\request\RequestQuantity.cs" />
@@ -112,6 +115,7 @@
     <Compile Include="Entities\RouteLog.cs" />
     <Compile Include="Entities\Sales.cs" />
     <Compile Include="Entities\SalesParticular.cs" />
+    <Compile Include="Entities\ViewDailyExpenses.cs" />
     <Compile Include="Entities\ViewUserImage.cs" />
     <Compile Include="Entities\ViewRequestCategory .cs" />
     <Compile Include="Entities\ViewRequestStaff.cs" />
@@ -122,7 +126,6 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="Entities\ViewCreditParticular.cs" />
-    <Compile Include="Entities\ViewDailySales.cs" />
     <Compile Include="Entities\ViewImageProduct.cs" />
     <Compile Include="Entities\ViewPosEntity.cs" />
     <Compile Include="Entities\ViewProfile.cs" />

@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Inventory.PopupForm;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
 using Inventory.Config;
+using Inventory.Alert;
+using ServeAll.Core.Utilities;
+using Query = ServeAll.Core.Queries.Query;
 
 namespace Inventory.MainForm
 {
@@ -23,10 +28,10 @@ namespace Inventory.MainForm
         private int _rightTimeOut;
         //For animated panels position
         private readonly int _optionsX;
-
         private int optionsY;
         private int rightX;
         private readonly int _rightY;
+        private Timer checkInventoryTimer;
 
         public string ToastDirection { get => _toastDirection; set => _toastDirection = value; }
 
@@ -36,6 +41,11 @@ namespace Inventory.MainForm
             _userId = userId;
             _usrTyp = usrTyp;
             InitializeComponent();
+            InitializeTimer();
+
+            UpdateToggleSwitchState();
+            toggleSwitch1.ToggleChanged += ToggleSwitch1_ToggleChanged;
+            toggleSwitch1.IsOn = false;
         }
 
         private void FirmMain_Load(object sender, EventArgs e)
@@ -53,7 +63,7 @@ namespace Inventory.MainForm
             FirstColumn.Start();
             pnlOptions.Focus();
         }
-
+        
         private void RightOptions_Tick(object sender, EventArgs e)
         {
             if (_rightTimeOut < 500)
@@ -141,6 +151,103 @@ namespace Inventory.MainForm
             var mX = (Width - tileMain.Width) / 2;
             var mY = (Height - tileMain.Height) / 2;
             tileMain.Location = new Point(mX, mY);
+        }
+
+        private void InitializeTimer()
+        {
+            checkInventoryTimer = new Timer();
+            checkInventoryTimer.Interval = 10000;  // 1 minute interval
+            checkInventoryTimer.Tick += CheckInventoryTimer_Tick;
+            checkInventoryTimer.Start();
+
+        }
+        private void CheckInventoryTimer_Tick(object sender, EventArgs e)
+        {
+            if (toggleSwitch1.IsOn)
+            {
+                CheckInventoryForAlerts();
+            }
+        }
+        private void CheckInventoryForAlerts()
+        {
+            EnumerableUtils.CheckInventoryQuantities((inventoryCode, alertType) =>
+            {
+                if (alertType == "Out of Stock")
+                {
+                    FrmAlert.AlertBoxArtan(Color.LightPink, Color.DarkRed, "Out of Stock",
+                        $"Product {inventoryCode} is out of stock!", Properties.Resources.Error);
+                }
+                else if (alertType == "In Minimum Quantity")
+                {
+                    FrmAlert.AlertBoxArtan(Color.LightGoldenrodYellow, Color.Goldenrod, "Minimum Quantity",
+                        $"Product {inventoryCode} is in minimum quantity.", Properties.Resources.Warning);
+                }
+            });
+        }
+        private async void ToggleSwitch1_ToggleChanged(object sender, EventArgs e)
+        {
+            bool isSnoozed = toggleSwitch1.IsOn;
+            Console.WriteLine($"Toggle Switch is {(isSnoozed ? "On" : "Off")}");
+            await Task.Run(() => UpdateSnoozeInDatabase(isSnoozed));
+        }
+        private void UpdateSnoozeInDatabase(bool snooze)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
+                    var inventories = repository.SelectAll(Query.AllInventoryL).ToList();
+
+                    foreach (var inventory in inventories)
+                    {
+                        inventory.snooze = snooze;  // Update snooze value for all inventories
+                        repository.Update(inventory);  // Save the update to the database
+                    }
+                    unWork.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    unWork.Rollback();
+                }
+            }
+        }
+
+        // Set the initial state of the toggle switch from the first inventory item
+        private void UpdateToggleSwitchState()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
+                    var firstInventory = repository.SelectAll(Query.AllInventoryL).FirstOrDefault();
+
+                    if (firstInventory != null)
+                    {
+                        toggleSwitch1.IsOn = firstInventory.snooze;  // Set toggle state based on snooze status
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        private void FirmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (checkInventoryTimer != null)
+            {
+                checkInventoryTimer.Stop();
+                checkInventoryTimer.Dispose();
+            }
+            toggleSwitch1.IsOn = false;
         }
 
         private void pbExit_Click(object sender, EventArgs e)

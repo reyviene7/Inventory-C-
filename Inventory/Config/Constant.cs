@@ -70,7 +70,7 @@ namespace Inventory.Config
         public static readonly int LogAmin = 1;
         public static readonly int LogUser = 2;
         public static readonly int LogGues = 3;
-        public const string LoginAppTitle = "SERVE-ALL MARKETING LOGIN";
+        public const string LoginAppTitle = "INVENTORY LOGIN";
         public const string RegKey = @"HKEY_CURRENT_USER\Software\iJRT-Software\Serve-All Marketing\System Key";
         public const string Server = "SERVER";
         public const string PasKey = "PASSKEY";

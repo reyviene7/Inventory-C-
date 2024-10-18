@@ -83,7 +83,6 @@ namespace Inventory.MainForm
             var log = new FirmLogin();
             log.Show();
             Close();
-           
         }
         private void pbHome_Click(object sender, EventArgs e)
         {

@@ -61,6 +61,21 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             splashManager.ShowWaitForm();
+            var roles = EnumerableUtils.getRoleType();
+            var profile = EnumerableUtils.getProfileNames();
+            var roleType = roles.Select(type => type.role_type).ToList();
+            var profileName = profile
+                .Select(name => name.last_name + ", " + name.first_name + " " + name.middle_initial).ToList();
+            cmbRoleType.Items.AddRange(roleType.ToArray());
+            cmbName.Items.AddRange(profileName.ToArray());
+            if (roleType.Any())
+            {
+                cmbRoleType.Text = roleType.First();
+            }
+            if (profileName.Any())
+            {
+                cmbName.Text = profileName.First();
+            }
             user_image = EnumerableUtils.getViewUserImage();
             _user_image = EnumerableUtils.getUserImage();
             _users = EnumerableUtils.getUserNameList();
@@ -90,13 +105,11 @@ namespace Inventory.MainForm
 
         private void pbLogout_Click(object sender, EventArgs e)
         {
-            var log = new FirmLogin();
             var que = PopupNotification.PopUpMassageLogOff();
-            if (que > 0)
-            {
-                log.Show();
-                Close();
-            }
+            if (que <= 0) return;
+            var log = new FirmLogin();
+            log.Show();
+            Close();
         }
 
         private void pbHome_Click(object sender, EventArgs e)
@@ -199,8 +212,6 @@ namespace Inventory.MainForm
 
         private void InputEnab()
         {
-            txtUserId.Enabled = true;
-            txtUserCode.Enabled = true;
             cmbName.Enabled = true;
             txtUsername.Enabled = true;
             txtPassword.Enabled = true;
@@ -296,8 +307,6 @@ namespace Inventory.MainForm
                 InputEnab();
                 InputWhit();
                 InputClea();
-                bindProfileNames();
-                bindRoleUser();
                 generateUserCode();
             }
             if (_usr == false && _img)
@@ -346,6 +355,7 @@ namespace Inventory.MainForm
             InputEnabimg();
             InputWhitimg();
             InputCleaimg();
+            InputClea();
             gridUserList.Enabled = true;
             bntBrowseImage.Enabled = true;
         }
@@ -357,6 +367,7 @@ namespace Inventory.MainForm
             InputClea();
             InputDisbimg();
             InputCleaimg();
+            InputDimGimg();
             gridUserList.Enabled = true;
             cmbName.DataBindings.Clear();
             bntBrowseImage.Enabled = true;
@@ -448,7 +459,8 @@ namespace Inventory.MainForm
             _usr = true;
             _img = false;
             gridUserList.Enabled = true;
-             
+            _user_list = EnumerableUtils.getUserList();
+            bindingUserList();
         }
         #endregion
 
@@ -524,36 +536,6 @@ namespace Inventory.MainForm
                 gridImg.Columns[6].Width = 100;
             }
         }
-        private void bindProfileNames()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<ViewProfile>(unWork);
-                var query = repository
-                        .SelectAll(Query.getProfileName)
-                        .Select(x => x.last_name + ", " + x.first_name + " " + x.middle_initial)
-                        .Distinct()
-                        .ToList();
-                cmbName.DataBindings.Clear();
-                cmbName.DataSource = query;
-            }
-        }
-
-        private void bindRoleUser()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<Roles>(unWork);
-                var query = repository.SelectAll(Query.AllRoleTypes).Select(x => x.role_type).Distinct().ToList();
-                cmbRoleType.DataBindings.Clear();
-                cmbRoleType.DataSource = query;
-            }
-        }
-
 
         private void DataInsert()
         {
@@ -567,8 +549,8 @@ namespace Inventory.MainForm
                 user_code    = txtUserCode.Text.Trim(' '),
                 username    = txtUsername.Text.Trim(' '),
                 password    = encodedPassword,
-                role_id    = getUserRole(userType),
-                profile_id  = getProfileId(profileName)
+                role_id    = FetchUtils.getUserRole(userType),
+                profile_id  = FetchUtils.getProfileId(profileName)
             };
             using (var session = new DalSession())
             {
@@ -602,12 +584,13 @@ namespace Inventory.MainForm
                 var userId = Convert.ToInt32(txtUserId.Text);
                 try
                 {
-
+                    var profileName = cmbName.Text.Trim(' ');
                     var rawPassword = txtPassword.Text.Trim(' ');
                     var rawRetryPassword = txtRewrite.Text.Trim(' ');
                     var userType = cmbRoleType.Text.Trim(' ');
                     const string encryptionKey = PasswordCipter.EncryptionPass;
-                    var roleId = getUserRole(userType);
+                    var roleId = FetchUtils.getUserRole(userType);
+                    var profileId = FetchUtils.getProfileId(profileName);
                     var encodedPassword = StringCipher.Encrypt(rawPassword, encryptionKey);
 
                     if (rawPassword == rawRetryPassword)
@@ -617,6 +600,7 @@ namespace Inventory.MainForm
                         query.username = txtUsername.Text.Trim(' ');
                         query.password = encodedPassword;
                         query.role_id = roleId;
+                        query.profile_id = profileId;
                         var result = repository.Update(query);
                         if (!result) return;
                         PopupNotification.PopUpMessages(1, "Credential Successfully Updated! ", Messages.SuccessUpdate);
@@ -627,9 +611,6 @@ namespace Inventory.MainForm
                         PopupNotification.PopUpMessages(0, "Password and rewrite mismatched", Messages.TitleFialedUpdate);
 
                     }
-
-
-                    
                 }
                 catch (Exception)
                 {
@@ -661,50 +642,6 @@ namespace Inventory.MainForm
         private void DataImgInsert() { }
         private void DataImgUpdate() { }
         private void DataImgDelete() { }
-
-
-        //BINDING 
-        #region GetBinding
-        private int getProfileId(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ProfileEntities>(unWork);
-                    var query = repository.FindBy(x => x.name == input);
-                    return query.profile_id;
-                }
-                catch (Exception ex)
-                {
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleUsers);
-                    return 0;
-                }
-            }
-        }
-
-        private int getUserRole(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<Roles>(unWork);
-                    var query = repository.FindBy(x => x.role_type == input);
-                    return query.role_id;
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Usertype Id Error", Messages.TitleUsers);
-                    return 0;
-                }
-            }
-        }
-        #endregion
 
         private void bntAdd_Click(object sender, EventArgs e)
         {

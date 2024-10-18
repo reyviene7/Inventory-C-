@@ -1264,7 +1264,7 @@
             // 
             this.pbExit.Image = ((System.Drawing.Image)(resources.GetObject("pbExit.Image")));
             this.pbExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbExit.Location = new System.Drawing.Point(3, 448);
+            this.pbExit.Location = new System.Drawing.Point(-1, 448);
             this.pbExit.Name = "pbExit";
             this.pbExit.Size = new System.Drawing.Size(70, 76);
             this.pbExit.TabIndex = 5;
