@@ -264,15 +264,13 @@ namespace Inventory.MainForm
                 }
             }
         }
-
-        private void bntHOM_Click(object sender, EventArgs e)
-        {
-            Main.Show();
-            Close();
-        }
         private void pbLogout_Click(object sender, EventArgs e)
         {
-
+            var que = PopupNotification.PopUpMassageLogOff();
+            if (que <= 0) return;
+            var log = new FirmLogin();
+            log.Show();
+            Close();
         }
         private void pbHome_Click(object sender, EventArgs e)
         {
