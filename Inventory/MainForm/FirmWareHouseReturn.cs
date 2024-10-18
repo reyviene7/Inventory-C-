@@ -32,7 +32,7 @@ namespace Inventory.MainForm
         private int _branchId;
         private string _branch;
         private int InventoryId;
-        private Timer checkInventoryTimer;
+
         public string branch { 
             get { return _branch; }
             set
@@ -67,13 +67,7 @@ namespace Inventory.MainForm
                 this.DialogResult = DialogResult.Cancel;
                 return;
             }
-            InitializeTimer();
-
-            InitializeComponent();
-            UpdateToggleSwitchState(); 
-            toggleSwitch1.ToggleChanged += ToggleSwitch1_ToggleChanged;
-            toggleSwitch1.IsOn = false;
-
+            
             this.DialogResult = DialogResult.OK;
         }
         private void FirmBranchesWareHouse_Load(object sender, EventArgs e)
@@ -91,105 +85,8 @@ namespace Inventory.MainForm
             _products = EnumerableUtils.getProductWarehouseList();
             ShowBranch();
             BindInventory(_branch);
-            InitializeTimer();
-
-        }
-        private void InitializeTimer()
-        {
-            checkInventoryTimer = new Timer();
-            checkInventoryTimer.Interval = 10000;  // 1 minute interval
-            checkInventoryTimer.Tick += CheckInventoryTimer_Tick;
-            checkInventoryTimer.Start();
-
-        }
-        private void CheckInventoryTimer_Tick(object sender, EventArgs e)
-        {
-            if (toggleSwitch1.IsOn)
-            {
-                CheckInventoryForAlerts();
-            }
-        }
-        private void CheckInventoryForAlerts()
-        {
-            EnumerableUtils.CheckInventoryQuantities((inventoryCode, alertType) =>
-            {
-                if (alertType == "Out of Stock")
-                {
-                    FrmAlert.AlertBoxArtan(Color.LightPink, Color.DarkRed, "Out of Stock",
-                        $"Product {inventoryCode} is out of stock!", Properties.Resources.Error);
-                }
-                else if (alertType == "In Minimum Quantity")
-                {
-                    FrmAlert.AlertBoxArtan(Color.LightGoldenrodYellow, Color.Goldenrod, "Minimum Quantity",
-                        $"Product {inventoryCode} is in minimum quantity.", Properties.Resources.Warning);
-                }
-            });
-        }
-        private async void ToggleSwitch1_ToggleChanged(object sender, EventArgs e)
-        {
-            bool isSnoozed = toggleSwitch1.IsOn;
-            Console.WriteLine($"Toggle Switch is {(isSnoozed ? "On" : "Off")}");
-            await Task.Run(() => UpdateSnoozeInDatabase(isSnoozed));
-        }
-        private void UpdateSnoozeInDatabase(bool snooze)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
-                    var inventories = repository.SelectAll(Query.AllInventoryL).ToList();
-
-                    foreach (var inventory in inventories)
-                    {
-                        inventory.snooze = snooze;  // Update snooze value for all inventories
-                        repository.Update(inventory);  // Save the update to the database
-                    }
-                    unWork.Commit();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    unWork.Rollback();
-                }
-            }
         }
 
-        // Set the initial state of the toggle switch from the first inventory item
-        private void UpdateToggleSwitchState()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
-                    var firstInventory = repository.SelectAll(Query.AllInventoryL).FirstOrDefault();
-
-                    if (firstInventory != null)
-                    {
-                        toggleSwitch1.IsOn = firstInventory.snooze;  // Set toggle state based on snooze status
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-        }
-
-        private void FirmWareHouseReturn_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (checkInventoryTimer != null)
-            {
-                checkInventoryTimer.Stop();
-                checkInventoryTimer.Dispose();
-            }
-            toggleSwitch1.IsOn = false;
-        }
         private void FirmBranchesWareHouse_MouseMove(object sender, MouseEventArgs e)
         {
             PanelInterface.MouseMOve(this, pnlRightOptions, e);
@@ -252,7 +149,11 @@ namespace Inventory.MainForm
         }
         private void pbLogout_Click(object sender, EventArgs e)
         {
-
+            var que = PopupNotification.PopUpMassageLogOff();
+            if (que <= 0) return;
+            var log = new FirmLogin();
+            log.Show();
+            Close();
         }
         private void pbHome_Click(object sender, EventArgs e)
         {

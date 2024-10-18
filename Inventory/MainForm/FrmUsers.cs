@@ -105,13 +105,11 @@ namespace Inventory.MainForm
 
         private void pbLogout_Click(object sender, EventArgs e)
         {
-            var log = new FirmLogin();
             var que = PopupNotification.PopUpMassageLogOff();
-            if (que > 0)
-            {
-                log.Show();
-                Close();
-            }
+            if (que <= 0) return;
+            var log = new FirmLogin();
+            log.Show();
+            Close();
         }
 
         private void pbHome_Click(object sender, EventArgs e)
