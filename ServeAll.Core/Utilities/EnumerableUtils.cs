@@ -1002,7 +1002,7 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-        public static IEnumerable<Inventory> CheckInventoryQuantities(Action<string, string> alertCallback)
+        public static IEnumerable<Inventory> CheckInventoryQuantities(Action<int, string> alertCallback)
         {
             using (var session = new DalSession())
             {
@@ -1023,11 +1023,11 @@ namespace ServeAll.Core.Utilities
                     {
                         if (item.quantity == 0)
                         {
-                            alertCallback(item.inventory_code, "Out of Stock");
+                            alertCallback(item.inventory_id, "Out of Stock");
                         }
                         else if (item.quantity <= 5)
                         {
-                            alertCallback(item.inventory_code, "In Minimum Quantity");
+                            alertCallback(item.inventory_id, "In Minimum Quantity");
                         }
                     }
 

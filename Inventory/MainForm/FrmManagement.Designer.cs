@@ -30,12 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagement));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.bntSave = new DevExpress.XtraBars.BarSubItem();
             this.barDLT = new DevExpress.XtraBars.BarButtonItem();
@@ -160,7 +154,6 @@
             this.ribUWA = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribWER = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.PageCus = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribCDT = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribCRD = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribPAM = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribDEL = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -474,12 +467,6 @@
             this.barItemDelivery.Name = "barItemDelivery";
             this.barItemDelivery.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem1.Text = "Petron POS";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Search Customer";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barItemDelivery.SuperTip = superToolTip1;
             this.barItemDelivery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barItemDelivery_ItemClick);
             // 
             // ribGCB
@@ -516,12 +503,6 @@
             this.barDailyExpenses.Name = "barDailyExpenses";
             this.barDailyExpenses.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem2.Text = " NEW CUSTOMER";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Add new Customer Information";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barDailyExpenses.SuperTip = superToolTip2;
             this.barDailyExpenses.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barDailyExpenses_ItemClick);
             // 
             // ribGCA
@@ -1441,7 +1422,6 @@
             // PageCus
             // 
             this.PageCus.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribCDT,
             this.ribCRD,
             this.ribPAM,
             this.ribDEL,
@@ -1449,11 +1429,6 @@
             this.PageCus.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("PageCus.ImageOptions.Image")));
             this.PageCus.Name = "PageCus";
             this.PageCus.Text = "Credit Invoice Control";
-            // 
-            // ribCDT
-            // 
-            this.ribCDT.ItemLinks.Add(this.barRepCreditSales);
-            this.ribCDT.Name = "ribCDT";
             // 
             // ribCRD
             // 
@@ -3191,7 +3166,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribUWA;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribWER;
         private DevExpress.XtraBars.Ribbon.RibbonPage PageCus;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribCDT;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribCRD;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribPAM;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribDEL;
