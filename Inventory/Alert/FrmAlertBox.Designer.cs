@@ -51,20 +51,20 @@ namespace Inventory.Alert
             // LblTitleAlertBox
             // 
             this.LblTitleAlertBox.AutoSize = true;
-            this.LblTitleAlertBox.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTitleAlertBox.Font = new System.Drawing.Font("Century", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitleAlertBox.Location = new System.Drawing.Point(95, 12);
             this.LblTitleAlertBox.Name = "LblTitleAlertBox";
-            this.LblTitleAlertBox.Size = new System.Drawing.Size(159, 25);
+            this.LblTitleAlertBox.Size = new System.Drawing.Size(148, 23);
             this.LblTitleAlertBox.TabIndex = 1;
             this.LblTitleAlertBox.Text = "TitleAlertBox";
             // 
             // LblTextAlertBox
             // 
             this.LblTextAlertBox.AutoSize = true;
-            this.LblTextAlertBox.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTextAlertBox.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTextAlertBox.Location = new System.Drawing.Point(105, 37);
             this.LblTextAlertBox.Name = "LblTextAlertBox";
-            this.LblTextAlertBox.Size = new System.Drawing.Size(110, 20);
+            this.LblTextAlertBox.Size = new System.Drawing.Size(104, 18);
             this.LblTextAlertBox.TabIndex = 2;
             this.LblTextAlertBox.Text = "TextAlertBox";
             // 

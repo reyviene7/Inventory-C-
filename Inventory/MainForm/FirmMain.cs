@@ -156,7 +156,7 @@ namespace Inventory.MainForm
         private void InitializeTimer()
         {
             checkInventoryTimer = new Timer();
-            checkInventoryTimer.Interval = 10000;  // 1 minute interval
+            checkInventoryTimer.Interval = 60000;  // 1 minute interval
             checkInventoryTimer.Tick += CheckInventoryTimer_Tick;
             checkInventoryTimer.Start();
 
@@ -168,19 +168,30 @@ namespace Inventory.MainForm
                 CheckInventoryForAlerts();
             }
         }
+        private async Task ShowAlertsWhileToggledOn()
+        {
+            while (toggleSwitch1.IsOn)
+            {
+                // Call the alert checking function
+                CheckInventoryForAlerts();
+
+                // Wait for 1 minute before the next alert
+                await Task.Delay(TimeSpan.FromMinutes(1));
+            }
+        }
         private void CheckInventoryForAlerts()
         {
-            EnumerableUtils.CheckInventoryQuantities((inventoryCode, alertType) =>
+            EnumerableUtils.CheckInventoryQuantities((inventoryId, alertType) =>
             {
                 if (alertType == "Out of Stock")
                 {
                     FrmAlert.AlertBoxArtan(Color.LightPink, Color.DarkRed, "Out of Stock",
-                        $"Product {inventoryCode} is out of stock!", Properties.Resources.Error);
+                        $"Product with Inventory ID: {inventoryId} is out of stock!", Properties.Resources.Error);
                 }
                 else if (alertType == "In Minimum Quantity")
                 {
                     FrmAlert.AlertBoxArtan(Color.LightGoldenrodYellow, Color.Goldenrod, "Minimum Quantity",
-                        $"Product {inventoryCode} is in minimum quantity.", Properties.Resources.Warning);
+                        $"Inventory ID: {inventoryId} is in minimum quantity.", Properties.Resources.Warning);
                 }
             });
         }
@@ -188,6 +199,16 @@ namespace Inventory.MainForm
         {
             bool isSnoozed = toggleSwitch1.IsOn;
             Console.WriteLine($"Toggle Switch is {(isSnoozed ? "On" : "Off")}");
+
+            if (isSnoozed)
+            {
+                await ShowAlertsWhileToggledOn();
+            }
+            else
+            {
+                Console.WriteLine("Alerts stopped as the toggle is off.");
+            }
+
             await Task.Run(() => UpdateSnoozeInDatabase(isSnoozed));
         }
         private void UpdateSnoozeInDatabase(bool snooze)
