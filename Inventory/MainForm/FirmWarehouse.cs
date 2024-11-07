@@ -17,9 +17,9 @@ using Query = ServeAll.Core.Queries.Query;
 namespace Inventory.MainForm
 {
     public partial class FirmWarehouse : Form
-    { 
+    {
         private int _deliver;
-        private string _deliveryBranches; 
+        private string _deliveryBranches;
         private int _close;
         private readonly int _userId;
         private readonly int _userTyp;
@@ -53,7 +53,7 @@ namespace Inventory.MainForm
             {
                 _deliver = value;
                 if (_deliver > 0)
-                { 
+                {
                 }
             }
         }
@@ -69,8 +69,8 @@ namespace Inventory.MainForm
                 var main = new FirmMain(_userId, _userTyp, _userName);
                 main.Show();
             }
-        } 
-      
+        }
+
         public FirmMain Main { get; set; }
         public FirmWarehouse(int userId, int userTy, string userName)
         {
@@ -86,12 +86,12 @@ namespace Inventory.MainForm
             }
             InitializeComponent();
             this.DialogResult = DialogResult.OK;
-            _warehouse_list = EnumerableUtils.getWarehouseList();   
+            _warehouse_list = EnumerableUtils.getWarehouseList();
         }
         private void FirmWarehouseInvetory_Load(object sender, EventArgs e)
         {
             wareWet.ShowWaitForm();
-            PanelInterface.SetFullScreen(this); 
+            PanelInterface.SetFullScreen(this);
             PanelInterface.SetOptionsPanelPosition(this, pnlOptions, pbHide);
             PanelInterface.SetMainPanelPosition(this, pnlMain);
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
@@ -100,7 +100,7 @@ namespace Inventory.MainForm
             _warehouse_list = EnumerableUtils.getWarehouseList();
             BindWarehouse();
             wareWet.CloseWaitForm();
-        } 
+        }
         private void BindWarehouseClear()
         {
             gridControl.DataBindings.Clear();
@@ -109,10 +109,10 @@ namespace Inventory.MainForm
             gridWarehouse.Columns.Clear();
         }
         private void BindWarehouse()
-        { 
+        {
             gridControl.Update();
             try
-            { 
+            {
                 var list = _warehouse_list.Select(x => new
                 {
                     Id = x.warehouse_id,
@@ -126,7 +126,7 @@ namespace Inventory.MainForm
                     Date = x.date_added
                 });
 
-                gridControl.DataSource = list; 
+                gridControl.DataSource = list;
 
                 gridWarehouse.Columns[0].Width = 30;
                 gridWarehouse.Columns[1].Width = 50;
@@ -135,7 +135,7 @@ namespace Inventory.MainForm
                 gridWarehouse.Columns[4].Width = 100;
                 gridWarehouse.Columns[5].Width = 100;
                 gridWarehouse.Columns[6].Width = 90;
-                gridWarehouse.Columns[8].Width = 80;  
+                gridWarehouse.Columns[8].Width = 80;
             }
             catch (Exception ex)
             {
@@ -162,7 +162,7 @@ namespace Inventory.MainForm
             PopupNotification.PopUpMessageExit();
         }
         private void bntAdd_Click(object sender, EventArgs e)
-        {  
+        {
             ButAdd();
         }
 
@@ -195,7 +195,7 @@ namespace Inventory.MainForm
                     "Are you sure you want to Delete Warehouse: " + txtWarehouseCode.Text.Trim(' ') + " " + "?", "Warehouse Details");
             if (que)
             {
-                ButDel(); 
+                ButDel();
             }
             else { ButCan(); }
         }
@@ -209,16 +209,16 @@ namespace Inventory.MainForm
         {
             if (gridWarehouse.RowCount > 0)
                 InputWhite();
-                bntClear.Enabled = true;
-        } 
+            bntClear.Enabled = true;
+        }
         private void ButAdd()
-        { 
+        {
             ButtonAdd();
-            InputClear(); 
+            InputClear();
             InputWhite();
-            InputEnable(); 
+            InputEnable();
             GenerateWarehouseCode();
-            GenerateNewWarehouseId(); 
+            GenerateNewWarehouseId();
             _add = true;
             _edt = false;
             _del = false;
@@ -250,7 +250,7 @@ namespace Inventory.MainForm
             InputWhite();
             _add = false;
             _edt = false;
-            _del = true;  
+            _del = true;
         }
         private void ButClr()
         {
@@ -281,12 +281,12 @@ namespace Inventory.MainForm
                 InputClear();
             }
             if (_add == false && _edt == false && _del)
-            { 
+            {
                 DeleteWarehouse();
                 ButtonSav();
                 InputDisable();
                 InputDimGray();
-                InputClear();  
+                InputClear();
             }
             _add = false;
             _edt = false;
@@ -300,7 +300,7 @@ namespace Inventory.MainForm
             InputDisable();
             InputDimGray();
             InputClear();
-            gridControl.Enabled = true; 
+            gridControl.Enabled = true;
         }
         private void ButtonAdd()
         {
@@ -365,7 +365,7 @@ namespace Inventory.MainForm
             bntHome.Enabled = true;
             pbHome.Enabled = true;
             pbLogout.Enabled = true;
-            pbExit.Enabled = true; 
+            pbExit.Enabled = true;
         }
         private void ButtonCan()
         {
@@ -471,14 +471,14 @@ namespace Inventory.MainForm
             int newId = lastId + 1;
 
             txtWarehouseId.Text = newId.ToString();
-        }  
+        }
         private void GenerateWarehouseCode()
         {
             var lastWarehouseId = FetchUtils.getNumberOfWarehouses();
             var alphaNumeric = new GenerateAlpaNum("WH", 3, lastWarehouseId);
             alphaNumeric.Increment();
             txtWarehouseCode.Text = alphaNumeric.ToString();
-        }  
+        }
         private void addWarehouse()
         {
             var warehouse = new Warehouse()
@@ -520,7 +520,7 @@ namespace Inventory.MainForm
                     warehouse.contact_id = contact.contact_id;
 
                     var repository = new Repository<Warehouse>(unit);
-                    var que = repository.Add(warehouse); 
+                    var que = repository.Add(warehouse);
 
                     if (que > 0)
                     {
@@ -530,7 +530,7 @@ namespace Inventory.MainForm
                         BindWarehouse();
                         wareWet.CloseWaitForm();
                         PopupNotification.PopUpMessages(1, "Warehouse Name: " + txtWarehouseName.Text.Trim() + " " + Messages.SuccessInsert, Messages.TitleSuccessInsert);
-                        
+
                     }
                     else
                     {
@@ -540,7 +540,7 @@ namespace Inventory.MainForm
                         wareWet.CloseWaitForm();
                     }
                 }
-                catch  
+                catch
                 {
                     wareWet.ShowWaitForm();
                     unit.Rollback();
@@ -564,7 +564,7 @@ namespace Inventory.MainForm
                     if (warehouse != null)
                     {
                         bool isUpdated = false;
-                         
+
                         if (warehouse.warehouse_code != txtWarehouseCode.Text.Trim(' '))
                         {
                             warehouse.warehouse_code = txtWarehouseCode.Text.Trim(' ');
@@ -579,7 +579,7 @@ namespace Inventory.MainForm
 
                         var addressRepository = new Repository<Address>(unWork);
                         var address = warehouse.address_id > 0 ? addressRepository.Id(warehouse.address_id) : new Address();
-                         
+
                         if (address.street != txtStreet.Text.Trim(' ') ||
                             address.barangay != txtBarangay.Text.Trim(' ') ||
                             address.city != txtCity.Text.Trim(' ') ||
@@ -598,7 +598,7 @@ namespace Inventory.MainForm
 
                         var contactRepository = new Repository<Contact>(unWork);
                         var contact = warehouse.contact_id > 0 ? contactRepository.Id(warehouse.contact_id) : new Contact();
-                         
+
                         if (contact.telephone_number != txtTelephone.Text.Trim(' ') ||
                             contact.mobile_number != txtMobile.Text.Trim(' ') ||
                             contact.email_address != txtEmail.Text.Trim(' ') ||
@@ -610,7 +610,7 @@ namespace Inventory.MainForm
                             contact.fax_number = txtFax.Text.Trim(' ');
                             isUpdated = true;
                         }
- 
+
                         if (warehouse.date_added != dkpDateRegister.Value.Date)
                         {
                             warehouse.date_added = dkpDateRegister.Value.Date;
@@ -620,9 +620,9 @@ namespace Inventory.MainForm
                         if (!isUpdated)
                         {
                             PopupNotification.PopUpMessages(1, "No Changes", "Fields Error");
-                            return;  
+                            return;
                         }
-                         
+
                         try
                         {
                             if (warehouse.address_id > 0)
@@ -656,7 +656,7 @@ namespace Inventory.MainForm
                         {
                             throw new Exception("Error updating contact: " + ex.Message);
                         }
-                         
+
                         var result = warehouseRepository.Update(warehouse);
                         if (result)
                         {
@@ -688,17 +688,17 @@ namespace Inventory.MainForm
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 try
-                { 
+                {
                     var warehouseRepository = new Repository<Warehouse>(unWork);
                     var warehouse = warehouseRepository.Id(ctrlId);
                     if (warehouse == null) return;
 
                     var contactId = warehouse.contact_id;
                     var addressId = warehouse.address_id;
-                     
+
                     var result = warehouseRepository.Delete(warehouse);
                     if (!result) return;
-                     
+
                     if (contactId > 0)
                     {
                         var contactRepository = new Repository<Contact>(unWork);
@@ -708,7 +708,7 @@ namespace Inventory.MainForm
                             contactRepository.Delete(contact);
                         }
                     }
-                     
+
                     if (addressId > 0)
                     {
                         var addressRepository = new Repository<Address>(unWork);
@@ -726,12 +726,12 @@ namespace Inventory.MainForm
                     PopupNotification.PopUpMessages(1, Messages.TableBranch + Messages.CodeName + txtWarehouseName.Text.Trim(' ') + " " + Messages.SuccessDelete, Messages.TitleSuccessDelete);
                 }
                 catch (Exception)
-                { 
-                    unWork.Rollback(); 
+                {
+                    unWork.Rollback();
                     PopupNotification.PopUpMessages(0, Messages.ErrorDelete + Messages.TableBranch + Messages.ErrorOccurred, Messages.TitleFialedDelete);
                 }
             }
-        } 
+        }
         private void BindBranchDeliverList(string branch)
         {
             /*
@@ -754,8 +754,8 @@ namespace Inventory.MainForm
                 Console.Write(ex.ToString());
             }
             */
-        } 
-         
+        }
+
         private void gridWarehouse_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (gridWarehouse.RowCount > 0)
@@ -778,7 +778,7 @@ namespace Inventory.MainForm
                         txtMobile.Text = ent.mobile_number;
                         txtEmail.Text = ent.email_address;
                         txtFax.Text = ent.fax_number;
-                        dkpDateRegister.Value = ent.date_added; 
+                        dkpDateRegister.Value = ent.date_added;
                     }
                 }
                 catch (Exception ex)
@@ -791,12 +791,12 @@ namespace Inventory.MainForm
             if (gridWarehouse.RowCount > 0)
                 InputWhite();
             bntClear.Enabled = true;
-        } 
+        }
         private ViewWarehouse searchWarehouseId(int id)
         {
             return _warehouse_list.FirstOrDefault(Branch => Branch.warehouse_id == id);
         }
-         
+
         //KeyDown
         private void txtWarehouseName_KeyDown(object sender, KeyEventArgs e)
         {
@@ -816,7 +816,7 @@ namespace Inventory.MainForm
                     txtWarehouseName.Focus();
                 }
             }
-        } 
+        }
         private void txtStreet_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -835,7 +835,7 @@ namespace Inventory.MainForm
                     txtStreet.Focus();
                 }
             }
-        } 
+        }
         private void txtBarangay_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -854,7 +854,7 @@ namespace Inventory.MainForm
                     txtBarangay.Focus();
                 }
             }
-        } 
+        }
         private void txtCity_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -930,7 +930,7 @@ namespace Inventory.MainForm
                     txtCountry.Focus();
                 }
             }
-        } 
+        }
         private void dkpDateRegister_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -949,7 +949,7 @@ namespace Inventory.MainForm
                     dkpDateRegister.Focus();
                 }
             }
-        } 
+        }
         private void txtTelephone_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -968,7 +968,7 @@ namespace Inventory.MainForm
                     txtTelephone.Focus();
                 }
             }
-        } 
+        }
         private void txtMobile_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -987,7 +987,7 @@ namespace Inventory.MainForm
                     txtMobile.Focus();
                 }
             }
-        } 
+        }
         private void txtEmail_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -1006,7 +1006,7 @@ namespace Inventory.MainForm
                     txtEmail.Focus();
                 }
             }
-        } 
+        }
         private void txtFax_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -1014,7 +1014,7 @@ namespace Inventory.MainForm
                 var len = txtFax.Text.Length;
                 if (len > 0)
                 {
-                    txtFax.BackColor = Color.White; 
+                    txtFax.BackColor = Color.White;
                 }
                 else
                 {
