@@ -73,6 +73,9 @@ namespace Inventory.MainForm
             get { return _main; }
             set { _main = value; }
         }
+
+        public int DeliveredId { get; private set; }
+
         public FirmWarehouseInvetory(int userId, int userTy, string username)
         {
             _userName = username;
@@ -846,15 +849,17 @@ namespace Inventory.MainForm
         private void bindImage(string barcode)
         {
             var img = searchProductImg(barcode);
-            var imgLocation = img.img_location;
-            if (imgLocation.Length > 0)
+            var imgLocation = img?.img_location;
+            if (img == null || string.IsNullOrEmpty(imgLocation))
+            {
+                imgInventory.ImageLocation = ConstantUtils.defaultImgEmpty;
+            }
+            else
             {
                 var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                 imgInventory.ImageLocation = location;
             }
-            else
-                imgInventory.Image = null;
         }
 
         /** when tab is selected **/
@@ -929,9 +934,9 @@ namespace Inventory.MainForm
         {
             return _warehouse_list.FirstOrDefault(Inventory => Inventory.product_code == barcode);
         }
-        private ViewWarehouseDelivery searchWarehouseDeliveryId(string barcode)
+        private ViewWarehouseDelivery searchWarehouseDeliveryId(int id)
         {
-            return _warehouse_delivery.FirstOrDefault(Warehouse => Warehouse.product_code == barcode);
+            return _warehouse_delivery.FirstOrDefault(Warehouse => Warehouse.delivery_id == id);
         }
         private ViewReturnWarehouse searchReturnId(int id)
         {
@@ -966,15 +971,17 @@ namespace Inventory.MainForm
                         dpkExpirationDate.Value = w.expiration_date;
                         
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgInventory.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                             imgInventory.ImageLocation = location;
                         }
-                        else
-                            imgInventory.Image = null;
                     }
 
                 }
@@ -993,7 +1000,8 @@ namespace Inventory.MainForm
                     var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
                     if (barcode.Length > 0)
                     {
-                        var w = searchWarehouseDeliveryId(barcode);
+                        DeliveredId = int.Parse(deliveryId);
+                        var w = searchWarehouseDeliveryId(DeliveredId);
                         txtDelWarehouseId.Text = deliveryId;
                         txtDelProduct.Text = barcode;
                         txtDelWarehouseCode.Text = w.delivery_code;
@@ -1012,15 +1020,15 @@ namespace Inventory.MainForm
                         dkpDelUpdate.Value = w.update_on;
                         
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
                         {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-                            imgDelivery.ImageLocation = location;
+                            imgDelivery.ImageLocation = ConstantUtils.defaultImgEmpty;
                         }
                         else
                         {
-                            imgDelivery.Image = null;
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            imgDelivery.ImageLocation = location;
                         }
 
                     }
@@ -1052,16 +1060,16 @@ namespace Inventory.MainForm
                         txtReturnedRemarks.Text = ent.remarks;
                         dkpReturedDate.Value = ent.return_date;
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgReturn.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
                             imgReturn.ImageLocation = location;
                             imgReturn.Refresh();
-                        }
-                        else
-                        {
-                            imgReturn.Image = null;
                         }
 
                     }
@@ -1096,15 +1104,17 @@ namespace Inventory.MainForm
                         dkpSalesDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Date");
                         
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgSales.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                             imgSales.ImageLocation = location;
                         }
-                        else
-                            imgSales.Image = null;
                     }
 
                 }

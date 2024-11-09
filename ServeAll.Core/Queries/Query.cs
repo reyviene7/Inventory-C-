@@ -278,7 +278,7 @@
         public const string getUserId = "SELECT user_id FROM users";
         public const string getProfileName = "SELECT last_name,first_name,middle_initial FROM profile";
         public const string getProfileId = "SELECT profile_id, name FROM view_profile_entities";
-        public const string getViewUser = "SELECT user_id, user_code, name, username, role_type FROM view_user";
+        public const string getViewUser = "SELECT user_id, user_code, name, username, role_type FROM view_user ORDER BY user_id ASC";
         public const string getProductDetails = "select code, item, qty, retail_price, wholesale, status, branch from view_product_inventory where code = @barcode and branch = @branch and status = @status and qty >= 1";
         public const string getCustomerList = "select customer_id, customer_name from view_poscustomers";
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";

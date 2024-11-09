@@ -785,18 +785,16 @@ namespace Inventory.MainForm
                         cmbRoleType.Text = user.role_type;
 
                         var img = searchUserImage(code);
-                        var imgLocation = img.img_location;
+                        var imgLocation = img?.img_location;  // Use null conditional operator
 
-                        if (imgLocation.Length > 0)
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
                         {
-                            var location = ConstantUtils.defaultUserImgLocation + imgLocation;
-                            imgUser.ImageLocation = location;
-                            imgPro.ImageLocation = location;
+                            imgUser.ImageLocation = ConstantUtils.defaultUserImgEmpty;
                         }
                         else
                         {
-                            imgPro.ImageLocation = ConstantUtils.defaultUserImgLocation + "empty-image.jpg";
-                            imgUser.ImageLocation = ConstantUtils.defaultUserImgLocation + "empty-image.jpg";
+                            var location = ConstantUtils.defaultUserImgLocation + imgLocation;
+                            imgUser.ImageLocation = location;
                         }
                     }
                 }
@@ -826,10 +824,30 @@ namespace Inventory.MainForm
             if (grid.RowCount > 0)
                 try
                 {
-                    txtImageId.Text = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    txtImageCode.Text = ((GridView)sender).GetFocusedRowCellValue("Code").ToString();
-                    txtImageName.Text = ((GridView)sender).GetFocusedRowCellValue("Title").ToString();
-                    txtImageLocation.Text = ((GridView)sender).GetFocusedRowCellValue("Location").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var code = ((GridView)sender).GetFocusedRowCellValue("Code").ToString();
+                    if (code.Length > 0)
+                    {
+                        var user = searchUserImage(code);
+                        txtImageId.Text = id;
+                        txtImageCode.Text = code;
+                        txtImageName.Text = user.title;
+                        txtImageType.Text = user.img_type;
+                        txtImageLocation.Text = user.img_location;
+
+                        var img = searchUserImage(code);
+                        var imgLocation = img?.img_location;  // Use null conditional operator
+
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgPro.ImageLocation = ConstantUtils.defaultUserImgEmpty;
+                        }
+                        else
+                        {
+                            var location = ConstantUtils.defaultUserImgLocation + imgLocation;
+                            imgPro.ImageLocation = location;
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -904,6 +922,7 @@ namespace Inventory.MainForm
             }
         }
 
+        /*
         private void txtImageType_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedImageType = txtImageType.SelectedItem?.ToString();
@@ -914,6 +933,7 @@ namespace Inventory.MainForm
                 MessageBox.Show("Selected Image Type: " + selectedImageType);
             }
         }
+        */
 
         private void txtRewrite_Leave(object sender, EventArgs e)
         {
