@@ -839,8 +839,6 @@ namespace Inventory.MainForm
                     var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
                     if (barcode.Length > 0)
                     {
-
-
                         var w = searchWarehouseDeliveryId(barcode);
                         txtDelWarehouseId.Text = deliveryId;
                         txtDelProduct.Text = barcode;
@@ -858,13 +856,14 @@ namespace Inventory.MainForm
                         cmbDelDeliveryStatus.Text = w.delivery_status;
                         txtDelRemarks.Text = w.remarks;
                         dkpDelUpdate.Value = w.update_on;
+                        
                         var img = searchProductImg(barcode);
                         var imgLocation = img.img_location;
                         if (imgLocation.Length > 0)
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            
                             ImagePreview.ImageLocation = location;
-                            ImagePreview.Refresh();
                         }
                         else
                         {
@@ -985,9 +984,10 @@ namespace Inventory.MainForm
                 Total = p.total_value,
                 DeliveryStatus = p.delivery_status,
                 Update = p.update_on,
-            });
-
+            }).ToList();
             gridControlDelivery.DataSource = list;
+            gridControlDelivery.Update();
+
             if (gridDelivery.RowCount > 0)
             {
                 gridDelivery.Columns[0].Width = 50;

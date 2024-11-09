@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Inventory.MainForm;
+using Inventory.Utilities;
 using ServeAll.Core.Helper;
 using ServeAll.Core.Repository;
 using Constant = Inventory.Config.Constant;
@@ -89,6 +90,9 @@ namespace Inventory.PopupForm
                         Login.UserTy = _uTyp;
                         Login._userName = userName;
                         Login.LoginSuccess = 1;
+
+                        RegistryHelper.IncrementRegistryValue(@"Software\com\pos\wizard\read", "regWizard");
+
                         splashScreen.CloseWaitForm();
                         Close();
                     }

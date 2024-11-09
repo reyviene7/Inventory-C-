@@ -12,14 +12,24 @@ namespace Inventory.MainForm
         public int UserId { get; set; }
         public int UserTy { get; set; }
         public string _userName { get; set; }
+        private int limitReg;
+        private int regValue;
         public int LoginSuccess
         {
             get { return _loginSuccess; }
             set
             {
                 _loginSuccess = value;
-                if (_loginSuccess > 0 && UserId>0 && UserTy>0)
+                if (_loginSuccess > 0 && UserId > 0 && UserTy > 0)
                 {
+
+                    /**
+                     * if limitReg >= regValue
+                     *  string subKey = @"Software\com\pos\wizard\read";
+                        string keyName = "regWizard";
+                        string keyValue = "1" + 1;
+                     * *
+                     */
                     LaunchMain(_userName);
                 }
             }
@@ -31,6 +41,11 @@ namespace Inventory.MainForm
 
         private void FirmLogin_Load(object sender, EventArgs e)
         {
+            /***
+             read from remote database the encrypted limit int
+             read if exist if does not exist write from local registry int
+
+             */
             PanelInterface.SetMainPanelPosition(this, pnlMain);
         }
 
