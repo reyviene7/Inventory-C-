@@ -587,6 +587,7 @@
     <Compile Include="Services\ServWareHouseDelivery.cs" />
     <Compile Include="Services\ServReportSales.cs" />
     <Compile Include="Services\ServWarehouseItem.cs" />
+    <Compile Include="Utilities\RegistryHelper.cs" />
     <EmbeddedResource Include="Alert\FrmAlert.resx">
       <DependentUpon>FrmAlert.cs</DependentUpon>
     </EmbeddedResource>
