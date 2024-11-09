@@ -131,15 +131,17 @@ namespace Inventory.MainForm
                         dpkCreatedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Created");
                         dpkUpdated.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Updated");
                         var img = searchServiceImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                             imgProduct.ImageLocation = location;
                         }
-                        else
-                            imgProduct.ImageLocation = ConstantUtils.defaultImgLocation + "empty-image.jpg";
                     }
                 }
                 catch(Exception ex)
@@ -159,15 +161,17 @@ namespace Inventory.MainForm
                     {
                         var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
                         var img = searchServiceImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgServiceImages.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                             imgServiceImages.ImageLocation = location;
                         }
-                        else
-                            imgServiceImages.ImageLocation = ConstantUtils.defaultImgLocation + "empty-image.jpg";
                     }
                 }
                 catch (Exception ex)

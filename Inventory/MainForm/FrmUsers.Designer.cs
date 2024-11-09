@@ -418,7 +418,6 @@
             this.txtImageType.Name = "txtImageType";
             this.txtImageType.Size = new System.Drawing.Size(352, 29);
             this.txtImageType.TabIndex = 196;
-            this.txtImageType.SelectedIndexChanged += new System.EventHandler(this.txtImageType_SelectedIndexChanged);
             // 
             // label11
             // 

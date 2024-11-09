@@ -613,15 +613,15 @@ namespace Inventory.MainForm
                         txtProductStatus.Text = Constant.DefaultReturn;
 
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
                         {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-                            imgPreview.ImageLocation = location;
+                            imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
                         }
                         else
                         {
-                            imgPreview.Image = null;
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            imgPreview.ImageLocation = location;
                         }
                     }
                 }
@@ -655,15 +655,15 @@ namespace Inventory.MainForm
                         dkpReturedDate.Value = ent.return_date;
 
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
                         {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-                            ImageReturnedPreview.ImageLocation = location;
+                            ImageReturnedPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
                         }
                         else
                         {
-                            ImageReturnedPreview.Image = null;
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            ImageReturnedPreview.ImageLocation = location;
                         }
                     }
                 }

@@ -7,6 +7,8 @@ namespace ServeAll.Core.Entities
     {
         [Key]
         public string image_code { get; set; }
+        public string title { get; set; }
+        public string img_type { get; set; }
         public string img_location { get; set; }
         public string created_on { get; set; }
         public string updated_on { get; set; }

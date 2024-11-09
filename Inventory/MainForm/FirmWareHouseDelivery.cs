@@ -813,15 +813,17 @@ namespace Inventory.MainForm
                         txtItemPrice.Text = ent.cost_per_unit.ToString(CultureInfo.InvariantCulture);
 
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgPRO.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                             imgPRO.ImageLocation = location;
                         }
-                        else
-                            imgPRO.Image = null;
                     }
 
                 }
@@ -858,16 +860,16 @@ namespace Inventory.MainForm
                         dkpDelUpdate.Value = w.update_on;
                         
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
                         {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-                            
-                            ImagePreview.ImageLocation = location;
+                            ImagePreview.ImageLocation = ConstantUtils.defaultImgEmpty;
                         }
                         else
                         {
-                            ImagePreview.Image = null;
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                            ImagePreview.ImageLocation = location;
                         }
 
                     }
