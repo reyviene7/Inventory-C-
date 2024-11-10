@@ -334,5 +334,6 @@
         public const string getDailyExpenses = @"SELECT * FROM view_daily_expenses ORDER BY expense_id DESC";
         public const string getContactById = @"SELECT * FROM contact WHERE contact_id = @contact";
         public const string getAddressById = @"SELECT * FROM address WHERE address_id = @address";
+        public const string getMachineByKey = "SELECT * FROM authorized_machine where machine_key = @machineKey AND machine_name = @machineName";
     }
 }
