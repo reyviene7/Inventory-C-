@@ -22,6 +22,24 @@ namespace ServeAll.Core.Repository
             return 0L;
         }
 
+        public static long AddDomain<T>(T entity) where T : class
+        {
+            using (var session = new VultrSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+
+                var repository = new Repository<T>(unWork);
+                var result = repository.Add(entity);
+                if (result > 0)
+                {
+                    unWork.Commit();
+                    return result;
+                }
+            }
+            return 0L;
+        }
+
         public static int UpdateEntity<T>(int entityId, Action<T> updateAction) where T : class
         {
             using (var session = new DalSession())

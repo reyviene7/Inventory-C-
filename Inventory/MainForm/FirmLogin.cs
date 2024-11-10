@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using Inventory.Config;
 using Inventory.PopupForm;
+using ServeAll.Core.Entities;
+using ServeAll.Core.Helper;
+using ServeAll.Core.Utilities;
 using Constant = Inventory.Config.Constant;
 
 namespace Inventory.MainForm
@@ -41,11 +44,7 @@ namespace Inventory.MainForm
 
         private void FirmLogin_Load(object sender, EventArgs e)
         {
-            /***
-             read from remote database the encrypted limit int
-             read if exist if does not exist write from local registry int
-
-             */
+            readAuthorization();
             PanelInterface.SetMainPanelPosition(this, pnlMain);
         }
 
@@ -101,6 +100,50 @@ namespace Inventory.MainForm
             auth.ShowDialog();
         }
 
+        private AuthorizedMachine getAuthorizedMachine(string machineKey, string machineName)
+        {
+            try
+            {
+                var result = EntityUtils.getMachineDetails(machineKey, machineName);
+                if (result != null)
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
 
+        private void readAuthorization()
+        {
+            string pcName = Environment.MachineName;
+            var regPath = PathHelper.SOFTPATH;
+            var regKey = PathHelper.SOFTKEY;
+            var readKey = RegistryHelper.ReadFromRegistry(regPath, regKey);
+            string decryptedKey = "";
+
+            if (readKey != null && !string.IsNullOrEmpty(readKey.ToString()))
+            {
+                const string salt = PasswordCipter.EncryptionPass;
+                decryptedKey = StringCipher.Decrypt(readKey.ToString().Trim(), salt);
+            } else
+            {
+                decryptedKey = "";
+            }
+
+            var authorization = getAuthorizedMachine(decryptedKey, pcName);
+            if (authorization == null)
+            {
+                var registration = new FirmPopServer();
+                registration.Show();
+                Hide();
+            }
+        }
     }
 }

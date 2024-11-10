@@ -91,7 +91,7 @@ namespace Inventory.PopupForm
                         Login._userName = userName;
                         Login.LoginSuccess = 1;
 
-                        RegistryHelper.IncrementRegistryValue(@"Software\com\pos\wizard\read", "regWizard");
+                        // RegistryHelper.IncrementRegistryValue(@"Software\com\pos\wizard\read", "regWizard");
 
                         splashScreen.CloseWaitForm();
                         Close();

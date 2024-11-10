@@ -284,7 +284,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FirmLogin";
+            this.Text = "                                                                                 " +
+    "                     ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FirmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgEmployees)).EndInit();

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ServeAll.Core</RootNamespace>
     <AssemblyName>ServeAll.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\AuthorizedMachine.cs" />
     <Compile Include="Entities\Delivery.cs" />
     <Compile Include="Entities\RelatedEntity.cs" />
     <Compile Include="Entities\Location.cs" />
@@ -172,6 +174,8 @@
     <Compile Include="Helper\AppData.cs" />
     <Compile Include="Helper\ParamQuery.cs" />
     <Compile Include="Helper\PasswordCipter.cs" />
+    <Compile Include="Helper\PathHelper.cs" />
+    <Compile Include="Helper\RegistryHelper.cs" />
     <Compile Include="Helper\StoredProcedure.cs" />
     <Compile Include="Helper\StringCipher.cs" />
     <Compile Include="Helper\UserDefinedFunctions.cs" />
@@ -192,6 +196,7 @@
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\TargetClass.cs" />
     <Compile Include="Repository\UnitofWork.cs" />
+    <Compile Include="Repository\VultrSession.cs" />
     <Compile Include="Utilities\ConstantUtils.cs" />
     <Compile Include="Utilities\EntityUtils.cs" />
     <Compile Include="Utilities\EnumerableUtils.cs" />
