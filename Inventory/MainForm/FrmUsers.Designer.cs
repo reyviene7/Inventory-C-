@@ -524,6 +524,7 @@
             // xIMG
             // 
             this.xIMG.Controls.Add(this.GProfileImage);
+            this.xIMG.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xIMG.ImageOptions.Image")));
             this.xIMG.Name = "xIMG";
             this.xIMG.Size = new System.Drawing.Size(1010, 561);
             this.xIMG.Text = "Profile Image";
@@ -543,8 +544,9 @@
             // xAUT
             // 
             this.xAUT.Controls.Add(this.GuserAccount);
+            this.xAUT.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xAUT.ImageOptions.Image")));
             this.xAUT.Name = "xAUT";
-            this.xAUT.Size = new System.Drawing.Size(1010, 561);
+            this.xAUT.Size = new System.Drawing.Size(1010, 558);
             this.xAUT.Text = "User Authentication";
             // 
             // GuserAccount
@@ -574,7 +576,7 @@
             this.GuserAccount.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GuserAccount.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GuserAccount.Name = "GuserAccount";
-            this.GuserAccount.Size = new System.Drawing.Size(1010, 561);
+            this.GuserAccount.Size = new System.Drawing.Size(1010, 558);
             this.GuserAccount.TabIndex = 173;
             // 
             // imgUser

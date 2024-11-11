@@ -700,7 +700,7 @@
             this.cmbSupplier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSupplier.ForeColor = System.Drawing.Color.Maroon;
             this.cmbSupplier.FormattingEnabled = true;
-            this.cmbSupplier.Location = new System.Drawing.Point(120, 201);
+            this.cmbSupplier.Location = new System.Drawing.Point(119, 201);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(285, 29);
             this.cmbSupplier.TabIndex = 6;
@@ -778,7 +778,7 @@
             this.cmbProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductName.ForeColor = System.Drawing.Color.Maroon;
             this.cmbProductName.FormattingEnabled = true;
-            this.cmbProductName.Location = new System.Drawing.Point(120, 111);
+            this.cmbProductName.Location = new System.Drawing.Point(119, 111);
             this.cmbProductName.Name = "cmbProductName";
             this.cmbProductName.Size = new System.Drawing.Size(285, 29);
             this.cmbProductName.TabIndex = 3;
@@ -1277,7 +1277,7 @@
             this.cmbDelWarehouseCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDelWarehouseCode.ForeColor = System.Drawing.Color.Maroon;
             this.cmbDelWarehouseCode.FormattingEnabled = true;
-            this.cmbDelWarehouseCode.Location = new System.Drawing.Point(128, 145);
+            this.cmbDelWarehouseCode.Location = new System.Drawing.Point(127, 145);
             this.cmbDelWarehouseCode.Name = "cmbDelWarehouseCode";
             this.cmbDelWarehouseCode.Size = new System.Drawing.Size(269, 29);
             this.cmbDelWarehouseCode.TabIndex = 272;
@@ -1432,7 +1432,7 @@
             this.cmbDelProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDelProductStatus.ForeColor = System.Drawing.Color.Maroon;
             this.cmbDelProductStatus.FormattingEnabled = true;
-            this.cmbDelProductStatus.Location = new System.Drawing.Point(128, 115);
+            this.cmbDelProductStatus.Location = new System.Drawing.Point(127, 115);
             this.cmbDelProductStatus.Name = "cmbDelProductStatus";
             this.cmbDelProductStatus.Size = new System.Drawing.Size(269, 29);
             this.cmbDelProductStatus.TabIndex = 295;
@@ -1880,7 +1880,7 @@
             this.cmbReturnedWarehouse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbReturnedWarehouse.ForeColor = System.Drawing.Color.Maroon;
             this.cmbReturnedWarehouse.FormattingEnabled = true;
-            this.cmbReturnedWarehouse.Location = new System.Drawing.Point(126, 204);
+            this.cmbReturnedWarehouse.Location = new System.Drawing.Point(125, 204);
             this.cmbReturnedWarehouse.Name = "cmbReturnedWarehouse";
             this.cmbReturnedWarehouse.Size = new System.Drawing.Size(269, 29);
             this.cmbReturnedWarehouse.TabIndex = 275;
@@ -1929,7 +1929,7 @@
             this.cmbReturnedBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbReturnedBranch.ForeColor = System.Drawing.Color.Maroon;
             this.cmbReturnedBranch.FormattingEnabled = true;
-            this.cmbReturnedBranch.Location = new System.Drawing.Point(126, 174);
+            this.cmbReturnedBranch.Location = new System.Drawing.Point(125, 174);
             this.cmbReturnedBranch.Name = "cmbReturnedBranch";
             this.cmbReturnedBranch.Size = new System.Drawing.Size(269, 29);
             this.cmbReturnedBranch.TabIndex = 274;

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Inventory.MainForm;
-using Inventory.Utilities;
 using ServeAll.Core.Helper;
 using ServeAll.Core.Repository;
 using Constant = Inventory.Config.Constant;
