@@ -1034,7 +1034,8 @@ namespace Inventory.MainForm
                     delivery_qty = deliveryQty,
                     delivery_status_id = FetchUtils.getDeliveryStatus(cmbDeliveryStatus.Text),
                     remarks = txtRemarks.Text.Trim(),
-                    delivery_date = dkpDeliveryDate.Value.Date
+                    delivery_date = dkpDeliveryDate.Value.Date,
+                    update_on = dpkUpdated.Value.Date
                 };
                 var result = RepositoryEntity.AddEntity<WarehouseDelivery>(warehouseDel);
                 if (result > 0)

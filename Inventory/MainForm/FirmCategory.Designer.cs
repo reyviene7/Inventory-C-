@@ -60,12 +60,9 @@
             this.tabCategory = new DevExpress.XtraTab.XtraTabControl();
             this.xtraCategory = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.imgCategory = new System.Windows.Forms.PictureBox();
-            this.cmbProductImage = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dkpDateRegister = new System.Windows.Forms.DateTimePicker();
             this.groupGrid = new DevExpress.XtraEditors.GroupControl();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCategoryCode = new System.Windows.Forms.TextBox();
             this.txtCategoryDetails = new System.Windows.Forms.TextBox();
@@ -109,7 +106,6 @@
             this.xtraCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupGrid)).BeginInit();
             this.groupGrid.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -514,13 +510,10 @@
             this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupControl1.Controls.Add(this.imgCategory);
-            this.groupControl1.Controls.Add(this.cmbProductImage);
             this.groupControl1.Controls.Add(this.label4);
             this.groupControl1.Controls.Add(this.dkpDateRegister);
             this.groupControl1.Controls.Add(this.groupGrid);
             this.groupControl1.Controls.Add(this.txtCategoryId);
-            this.groupControl1.Controls.Add(this.label3);
             this.groupControl1.Controls.Add(this.lblBarcode);
             this.groupControl1.Controls.Add(this.label2);
             this.groupControl1.Controls.Add(this.txtCategoryCode);
@@ -533,40 +526,13 @@
             this.groupControl1.Size = new System.Drawing.Size(1011, 762);
             this.groupControl1.TabIndex = 174;
             // 
-            // imgCategory
-            // 
-            this.imgCategory.BackColor = System.Drawing.Color.Gray;
-            this.imgCategory.Location = new System.Drawing.Point(770, 20);
-            this.imgCategory.Name = "imgCategory";
-            this.imgCategory.Size = new System.Drawing.Size(238, 243);
-            this.imgCategory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgCategory.TabIndex = 181;
-            this.imgCategory.TabStop = false;
-            // 
-            // cmbProductImage
-            // 
-            this.cmbProductImage.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbProductImage.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbProductImage.BackColor = System.Drawing.Color.DimGray;
-            this.cmbProductImage.Enabled = false;
-            this.cmbProductImage.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.cmbProductImage.ForeColor = System.Drawing.Color.Black;
-            this.cmbProductImage.FormattingEnabled = true;
-            this.cmbProductImage.Location = new System.Drawing.Point(158, 149);
-            this.cmbProductImage.Name = "cmbProductImage";
-            this.cmbProductImage.Size = new System.Drawing.Size(324, 33);
-            this.cmbProductImage.TabIndex = 113;
-            this.cmbProductImage.SelectedIndexChanged += new System.EventHandler(this.cmbIMG_SelectedIndexChanged);
-            this.cmbProductImage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductImage_KeyDown);
-            this.cmbProductImage.Leave += new System.EventHandler(this.cmbProductImage_Leave);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(14, 199);
+            this.label4.Location = new System.Drawing.Point(14, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 19);
             this.label4.TabIndex = 183;
@@ -578,7 +544,7 @@
             this.dkpDateRegister.Enabled = false;
             this.dkpDateRegister.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDateRegister.Location = new System.Drawing.Point(158, 187);
+            this.dkpDateRegister.Location = new System.Drawing.Point(158, 148);
             this.dkpDateRegister.Name = "dkpDateRegister";
             this.dkpDateRegister.Size = new System.Drawing.Size(324, 33);
             this.dkpDateRegister.TabIndex = 114;
@@ -598,18 +564,6 @@
             this.groupGrid.Size = new System.Drawing.Size(1009, 296);
             this.groupGrid.TabIndex = 172;
             this.groupGrid.Text = "Category List";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(14, 158);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 19);
-            this.label3.TabIndex = 178;
-            this.label3.Text = "Category Image:";
             // 
             // label2
             // 
@@ -850,7 +804,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupGrid)).EndInit();
             this.groupGrid.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
@@ -886,7 +839,6 @@
         private System.Windows.Forms.Timer Options;
         private DevExpress.XtraTab.XtraTabControl tabCategory;
         private DevExpress.XtraTab.XtraTabPage xtraCategory;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCategoryDetails;
         private System.Windows.Forms.Label label1;
@@ -900,10 +852,8 @@
         private System.Windows.Forms.Button bntSave;
         private System.Windows.Forms.Button bntUpdate;
         private System.Windows.Forms.Timer RightOptions;
-        private System.Windows.Forms.PictureBox imgCategory;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dkpDateRegister;
-        private System.Windows.Forms.ComboBox cmbProductImage;
         private System.Windows.Forms.OpenFileDialog imgOFD;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridCategory;

@@ -82,6 +82,7 @@
             this.pbHide = new System.Windows.Forms.PictureBox();
             this.Options = new System.Windows.Forms.Timer(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.XtraEmployee = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabImage = new DevExpress.XtraTab.XtraTabPage();
             this.grpImage = new DevExpress.XtraEditors.GroupControl();
@@ -116,7 +117,6 @@
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pcSettings = new System.Windows.Forms.PictureBox();
             this.splash = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.WaitForm1), true, true);
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcRight)).BeginInit();
             this.pnlRightMain.SuspendLayout();
@@ -136,6 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdHIS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHide)).BeginInit();
             this.pnlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XtraEmployee)).BeginInit();
             this.XtraEmployee.SuspendLayout();
             this.xtraTabImage.SuspendLayout();
@@ -153,7 +154,6 @@
             this.pnlOptionsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pbExit
@@ -230,6 +230,7 @@
             this.XtrPerProfile.Appearance.PageClient.BackColor = System.Drawing.Color.Black;
             this.XtrPerProfile.Appearance.PageClient.Options.UseBackColor = true;
             this.XtrPerProfile.Controls.Add(this.GbPersonal);
+            this.XtrPerProfile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("XtrPerProfile.ImageOptions.Image")));
             this.XtrPerProfile.Name = "XtrPerProfile";
             this.XtrPerProfile.Size = new System.Drawing.Size(1010, 561);
             this.XtrPerProfile.Text = "Product Details";
@@ -377,7 +378,7 @@
             this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.ForeColor = System.Drawing.Color.Maroon;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(125, 67);
+            this.cmbCategory.Location = new System.Drawing.Point(124, 67);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(269, 29);
             this.cmbCategory.TabIndex = 113;
@@ -411,7 +412,7 @@
             "User",
             "Admin",
             "Programmer"});
-            this.cmbSupplier.Location = new System.Drawing.Point(125, 97);
+            this.cmbSupplier.Location = new System.Drawing.Point(124, 97);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(269, 29);
             this.cmbSupplier.TabIndex = 114;
@@ -440,7 +441,7 @@
             this.cmbProductStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbProductStatus.Location = new System.Drawing.Point(499, 187);
+            this.cmbProductStatus.Location = new System.Drawing.Point(498, 187);
             this.cmbProductStatus.Name = "cmbProductStatus";
             this.cmbProductStatus.Size = new System.Drawing.Size(269, 29);
             this.cmbProductStatus.TabIndex = 125;
@@ -892,6 +893,16 @@
             this.pnlMain.Size = new System.Drawing.Size(1207, 626);
             this.pnlMain.TabIndex = 72;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(53, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(93, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 121;
+            this.pictureBox2.TabStop = false;
+            // 
             // XtraEmployee
             // 
             this.XtraEmployee.Location = new System.Drawing.Point(192, 32);
@@ -906,8 +917,9 @@
             // xtraTabImage
             // 
             this.xtraTabImage.Controls.Add(this.grpImage);
+            this.xtraTabImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabImage.ImageOptions.Image")));
             this.xtraTabImage.Name = "xtraTabImage";
-            this.xtraTabImage.Size = new System.Drawing.Size(1010, 561);
+            this.xtraTabImage.Size = new System.Drawing.Size(1010, 558);
             this.xtraTabImage.Text = "Product Image";
             // 
             // grpImage
@@ -931,7 +943,7 @@
             this.grpImage.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.grpImage.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grpImage.Name = "grpImage";
-            this.grpImage.Size = new System.Drawing.Size(1010, 561);
+            this.grpImage.Size = new System.Drawing.Size(1010, 558);
             this.grpImage.TabIndex = 174;
             // 
             // txtImageType
@@ -946,7 +958,7 @@
             "JPG",
             "PNG",
             "BMP"});
-            this.txtImageType.Location = new System.Drawing.Point(730, 107);
+            this.txtImageType.Location = new System.Drawing.Point(729, 104);
             this.txtImageType.Name = "txtImageType";
             this.txtImageType.Size = new System.Drawing.Size(269, 29);
             this.txtImageType.TabIndex = 212;
@@ -991,7 +1003,7 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(609, 148);
+            this.label16.Location = new System.Drawing.Point(609, 145);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(110, 17);
             this.label16.TabIndex = 211;
@@ -1003,7 +1015,7 @@
             this.txtImageFilename.Enabled = false;
             this.txtImageFilename.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageFilename.ForeColor = System.Drawing.Color.Maroon;
-            this.txtImageFilename.Location = new System.Drawing.Point(730, 142);
+            this.txtImageFilename.Location = new System.Drawing.Point(730, 139);
             this.txtImageFilename.Name = "txtImageFilename";
             this.txtImageFilename.Size = new System.Drawing.Size(269, 29);
             this.txtImageFilename.TabIndex = 210;
@@ -1014,7 +1026,7 @@
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(609, 113);
+            this.label17.Location = new System.Drawing.Point(609, 110);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(83, 17);
             this.label17.TabIndex = 209;
@@ -1026,7 +1038,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(609, 77);
+            this.label15.Location = new System.Drawing.Point(609, 76);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(82, 17);
             this.label15.TabIndex = 207;
@@ -1038,7 +1050,7 @@
             this.txtImageTitle.Enabled = false;
             this.txtImageTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageTitle.ForeColor = System.Drawing.Color.Maroon;
-            this.txtImageTitle.Location = new System.Drawing.Point(730, 71);
+            this.txtImageTitle.Location = new System.Drawing.Point(730, 70);
             this.txtImageTitle.Name = "txtImageTitle";
             this.txtImageTitle.Size = new System.Drawing.Size(269, 29);
             this.txtImageTitle.TabIndex = 206;
@@ -1324,16 +1336,6 @@
             // 
             this.splash.ClosingDelay = 500;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(53, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(93, 119);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 121;
-            this.pictureBox2.TabStop = false;
-            // 
             // FirmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1372,6 +1374,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbHide)).EndInit();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XtraEmployee)).EndInit();
             this.XtraEmployee.ResumeLayout(false);
             this.xtraTabImage.ResumeLayout(false);
@@ -1390,7 +1393,6 @@
             this.pnlOptionsMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcSettings)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
