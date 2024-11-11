@@ -184,6 +184,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ViewInventory> getLowQuantity()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewInventory>(unWork);
+                    return repository.SelectAll(Query.getLowQuantity).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewInventory>();
+                }
+            }
+        }
 
         public static IEnumerable<ViewServiceImages> getServiceImgList()
         {
