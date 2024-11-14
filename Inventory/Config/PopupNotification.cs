@@ -6,7 +6,7 @@ namespace Inventory.Config
 {
     public class PopupNotification
     {
-        public const string ApplicationTitle = @"INVENTORY LOGIN";
+        public const string ApplicationTitle = @"INVENTORY MANAGEMENT SYSTEM";
 
         public static void PopUpMessages(int rn, string msgs, string title)
         {
@@ -24,7 +24,7 @@ namespace Inventory.Config
 
         public static void PopUpMessageExit()
         {
-            if (MessageBox.Show(@"Would you like to exit Point of Sales Monitoring System?", ApplicationTitle,
+            if (MessageBox.Show(@"Would you like to exit the Inventory Management System?", ApplicationTitle,
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
@@ -33,7 +33,7 @@ namespace Inventory.Config
 
         public static int PopUpMassageLogOff()
         {
-            return MessageBox.Show(@"Would you like to log-off Point of Sales Monitoring System?", ApplicationTitle,
+            return MessageBox.Show(@"Would you like to log-off the Inventory Management System?", ApplicationTitle,
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes ? 1 : 0;
         }
 

@@ -70,7 +70,7 @@ namespace Inventory.Config
         public static readonly int LogAmin = 1;
         public static readonly int LogUser = 2;
         public static readonly int LogGues = 3;
-        public const string LoginAppTitle = "INVENTORY LOGIN";
+        public const string LoginAppTitle = "INVENTORY MANAGEMENT SYSTEM";
         public const string RegKey = @"HKEY_CURRENT_USER\Software\iJRT-Software\Serve-All Marketing\System Key";
         public const string Server = "SERVER";
         public const string PasKey = "PASSKEY";
@@ -87,7 +87,7 @@ namespace Inventory.Config
         public const string EncryptedUserName ="jGpKa8VR1RxcG7YncvyXMGCT0DFP7OCGOE8Mq93N218wLBdZGUIjlHUvWKTtVIyok616WApnhh2CZ9gP4TIslXfYw0mNKghYPrCanOfLpB7WKbL8A+at8KToL6M6lt/4";
         public static void ApplicationExit()
         {
-            if (MessageBox.Show(@"Would you like to exit Point of Sales Monitoring System?", LoginAppTitle,
+            if (MessageBox.Show(@"Would you like to exit Inventory Management System?", LoginAppTitle,
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
