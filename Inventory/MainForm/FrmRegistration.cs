@@ -192,7 +192,7 @@ namespace Inventory.MainForm
         private void buttonClear()
         {
             ButtonClr();
-            enabledProfile();
+            disabledProfile();
             whiteProfile();
             clearProfile();
             gridCtlProfile.Enabled = true;
@@ -950,7 +950,7 @@ namespace Inventory.MainForm
             }
             if(e.Page == xtraProfile)
             {
-                enabledProfile();
+                disabledProfile();
                 disabledContact();
                 disabledAddress();
                 whiteProfile();

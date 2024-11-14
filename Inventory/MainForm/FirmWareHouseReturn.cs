@@ -162,20 +162,14 @@ namespace Inventory.MainForm
         }
         private void ButClear()
         {
-            _add = true;
-            _edt = false;
-            _del = false;
             ButtonReturn();
             InputLpg();
-            InputEnab();
-            txtProductName.Focus();
-            txtProductName.BackColor = Color.Yellow;
-            GenerateReturn();
-            GenerateReturnId();
+            InputDisb();
+            InputWhit();
             cmbFromBranch.Text = branch;
             cmbToBranch.Text = Constant.DefaultWareHouse;
             txtProductStatus.Text = Constant.DefaultReturn;
-            gCON.Enabled = false;
+            gCON.Enabled = true;
         }
         private void ButAdd()
         {
@@ -219,17 +213,17 @@ namespace Inventory.MainForm
         }
         private void ButCan()
         {
-            _add = false;
-            _edt = false;
-            _del = false;
             ButtonCan();
             InputDisb();
             InputDimG();
             InputClea();
             gCON.Enabled = true;
+            gDEL.Enabled = true;
             txtProductName.DataBindings.Clear();
             imgPreview.DataBindings.Clear();
             imgPreview.Image = null;
+            ImageReturnedPreview.DataBindings.Clear();
+            ImageReturnedPreview.Image = null;
         }
         private void ButSav()
         {
@@ -401,10 +395,12 @@ namespace Inventory.MainForm
             txtReturnCode.Enabled = false;
             txtProductName.Enabled = false;
             txtDeliveryNo.Enabled = false;
+            txtReturnedQty.Enabled = false;
             txtReturnQty.Enabled = false;
             cmbFromBranch.Enabled = false;
             txtProductStatus.Enabled = false;
-            txtRemarks.Enabled = false;
+            txtReturnedRemarks.Enabled = false;
+            txtRemarks.Enabled = false;           
             dkpReturnDelivery.Enabled = false;
         }
         private void InputDisbRet()

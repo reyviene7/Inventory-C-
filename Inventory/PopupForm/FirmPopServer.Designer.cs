@@ -123,6 +123,7 @@
             this.txtSecondKey.Properties.Appearance.Options.UseFont = true;
             this.txtSecondKey.Size = new System.Drawing.Size(169, 44);
             this.txtSecondKey.TabIndex = 2;
+            this.txtSecondKey.TextChanged += new System.EventHandler(this.txtSecondKey_TextChanged);
             this.txtSecondKey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUSR_KeyDown);
             // 
             // txtFirstKey
@@ -137,6 +138,7 @@
             this.txtFirstKey.Properties.Appearance.Options.UseFont = true;
             this.txtFirstKey.Size = new System.Drawing.Size(169, 44);
             this.txtFirstKey.TabIndex = 3;
+            this.txtFirstKey.TextChanged += new System.EventHandler(this.txtFirstKey_TextChanged);
             this.txtFirstKey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDAT_KeyDown);
             // 
             // txtComputerName

@@ -1337,7 +1337,7 @@
             this.bntClear.Name = "bntClear";
             this.bntClear.Size = new System.Drawing.Size(91, 104);
             this.bntClear.TabIndex = 132;
-            this.bntClear.Text = "Delivery";
+            this.bntClear.Text = "CLEAR";
             this.bntClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntClear.UseVisualStyleBackColor = false;
             this.bntClear.Click += new System.EventHandler(this.bntClear_Click);
