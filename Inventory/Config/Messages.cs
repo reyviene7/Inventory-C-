@@ -34,7 +34,7 @@ namespace Inventory.Config
         public const string AdminAccount = "Admin";
         public const string TitleDefaultAccount = "POS DEFAULT ADMIN";
         public const string HassPass = "@hassPass";
-        public const string InventorySystem = "Inventory Monitoring System";
+        public const string InventorySystem = "INVENTORY MANAGEMENT SYSTEM";
 
         public const string SuccessInsert = "Successfully inserted!";
         public const string SuccessUpdate = "Successfully updated!";
