@@ -749,15 +749,17 @@ namespace Inventory.MainForm
                         lblPrice.Text = ent.retail_price.ToString(CultureInfo.InvariantCulture);
 
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                             imgPreview.ImageLocation = location;
                         }
-                        else
-                            imgPreview.Image = null;
                     }
 
                 }
@@ -784,14 +786,14 @@ namespace Inventory.MainForm
                     // Fetch and display product image
                     var img = searchProductImg(barcode);
                     var imgLocation = img?.img_location;
-                    if (!string.IsNullOrEmpty(imgLocation))
+                    if (img == null || string.IsNullOrEmpty(imgLocation))
                     {
-                        var location = ConstantUtils.defaultImgLocation + imgLocation;
-                        ImageProduct.ImageLocation = location;
+                        ImageProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
                     }
                     else
                     {
-                        ImageProduct.Image = null;
+                        var location = ConstantUtils.defaultImgLocation + imgLocation;
+                        ImageProduct.ImageLocation = location;
                     }
                 }
                 catch (Exception ex)
@@ -816,14 +818,14 @@ namespace Inventory.MainForm
                     // Fetch and display product image
                     var img = searchProductImg(barcode);
                     var imgLocation = img?.img_location;
-                    if (!string.IsNullOrEmpty(imgLocation))
+                    if (img == null || string.IsNullOrEmpty(imgLocation))
                     {
-                        var location = ConstantUtils.defaultImgLocation + imgLocation;
-                        ImageSales.ImageLocation = location;
+                        ImageSales.ImageLocation = ConstantUtils.defaultImgEmpty;
                     }
                     else
                     {
-                        ImageSales.Image = null;
+                        var location = ConstantUtils.defaultImgLocation + imgLocation;
+                        ImageSales.ImageLocation = location;
                     }
                 }
                 catch (Exception ex)

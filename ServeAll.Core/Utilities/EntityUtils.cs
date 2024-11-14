@@ -191,5 +191,33 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+
+        public static AuthorizedMachine getMachineDetails(string machineKey, string machineName)
+        {
+            using (var session = new VultrSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<AuthorizedMachine>(unWork);
+                    var parameter = new { 
+                        machineKey = machineKey, 
+                        machineName = machineName 
+                    };
+                    return repository.SearchBy(Query.getMachineByKey, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    DateTime defaultDateTime = new DateTime();
+                    return new AuthorizedMachine {
+                        authorized_id = 0,
+                        machine_name = null,
+                        machine_key = null,
+                        date_register = defaultDateTime
+                    };
+                }
+            }
+        }
     }
 }

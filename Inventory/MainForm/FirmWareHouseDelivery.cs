@@ -813,15 +813,17 @@ namespace Inventory.MainForm
                         txtItemPrice.Text = ent.cost_per_unit.ToString(CultureInfo.InvariantCulture);
 
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgPRO.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                             imgPRO.ImageLocation = location;
                         }
-                        else
-                            imgPRO.Image = null;
                     }
 
                 }
@@ -839,8 +841,6 @@ namespace Inventory.MainForm
                     var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
                     if (barcode.Length > 0)
                     {
-
-
                         var w = searchWarehouseDeliveryId(barcode);
                         txtDelWarehouseId.Text = deliveryId;
                         txtDelProduct.Text = barcode;
@@ -858,17 +858,18 @@ namespace Inventory.MainForm
                         cmbDelDeliveryStatus.Text = w.delivery_status;
                         txtDelRemarks.Text = w.remarks;
                         dkpDelUpdate.Value = w.update_on;
+                        
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
                         {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-                            ImagePreview.ImageLocation = location;
-                            ImagePreview.Refresh();
+                            ImagePreview.ImageLocation = ConstantUtils.defaultImgEmpty;
                         }
                         else
                         {
-                            ImagePreview.Image = null;
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                            ImagePreview.ImageLocation = location;
                         }
 
                     }
@@ -985,9 +986,10 @@ namespace Inventory.MainForm
                 Total = p.total_value,
                 DeliveryStatus = p.delivery_status,
                 Update = p.update_on,
-            });
-
+            }).ToList();
             gridControlDelivery.DataSource = list;
+            gridControlDelivery.Update();
+
             if (gridDelivery.RowCount > 0)
             {
                 gridDelivery.Columns[0].Width = 50;
@@ -1032,7 +1034,8 @@ namespace Inventory.MainForm
                     delivery_qty = deliveryQty,
                     delivery_status_id = FetchUtils.getDeliveryStatus(cmbDeliveryStatus.Text),
                     remarks = txtRemarks.Text.Trim(),
-                    delivery_date = dkpDeliveryDate.Value.Date
+                    delivery_date = dkpDeliveryDate.Value.Date,
+                    update_on = dpkUpdated.Value.Date
                 };
                 var result = RepositoryEntity.AddEntity<WarehouseDelivery>(warehouseDel);
                 if (result > 0)

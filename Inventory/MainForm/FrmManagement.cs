@@ -26,6 +26,7 @@ namespace Inventory.MainForm
         private IEnumerable<ViewAcceptedDelivery> _accepted_list;
         private IEnumerable<ViewSalesCredit> _credit_sales;
         private IEnumerable<ViewDailyExpenses> _daily_expenses;
+        private IEnumerable<ViewInventory> _inventory_list;
         private readonly int _userId;
         private readonly int _userType;
         private readonly string _username;
@@ -75,6 +76,7 @@ namespace Inventory.MainForm
             _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
             _credit_sales = EnumerableUtils.getCreditSales(branch);
             _daily_expenses = EnumerableUtils.getDailyExpenses();
+            _inventory_list = EnumerableUtils.getLowQuantity();
             _imgList = EnumerableUtils.getImgProductList();
         }
         private void FrmManagement_Load(object sender, System.EventArgs e)
@@ -153,6 +155,12 @@ namespace Inventory.MainForm
             gridCtrlDaily.DataSource = null;
             gridCtrlDaily.DataSource = "";
             gridDaily.Columns.Clear();
+        }
+        private void clearGridLowQuantity()
+        {
+            gridCtrlQuantity.DataSource = null;
+            gridCtrlQuantity.DataSource = "";
+            gridQty.Columns.Clear();
         }
 
         private void bindDeliveryList(string branch)
@@ -392,6 +400,47 @@ namespace Inventory.MainForm
             }
         }
 
+        private void bindLowQuantity()
+        {
+            try
+            {
+                clearGridLowQuantity();
+                var list = _inventory_list.Select(x => new
+                {
+                    Id = x.inventory_id,
+                    Code = x.inventory_code,
+                    Barcode = x.product_code,
+                    Product = x.product_name,
+                    Quantity = x.quantity,
+                    Delivery = x.delivery_code,
+                    Retail = x.retail_price,
+                    Trade = x.trade_price,
+                    Wholesale = x.wholesale,
+                    LastPrice = x.last_price_cost,
+                    Status = x.status,
+                    Date = x.inventory_date
+                }).ToList();
+                gridCtrlQuantity.DataSource = list;
+                gridCtrlQuantity.Update();
+                gridQty.Columns[0].Width = 80;
+                gridQty.Columns[1].Width = 100;
+                gridQty.Columns[2].Width = 200;
+                gridQty.Columns[3].Width = 400;
+                gridQty.Columns[4].Width = 100;
+                gridQty.Columns[5].Width = 100;
+                gridQty.Columns[6].Width = 100;
+                gridQty.Columns[7].Width = 100;
+                gridQty.Columns[8].Width = 100;
+                gridQty.Columns[9].Width = 100;
+                gridQty.Columns[10].Width = 150;
+                gridQty.Columns[11].Width = 150;
+            }
+            catch (Exception ex)
+            {
+                PopupNotification.PopUpMessages(0, ex.ToString(), "Daily Expenses");
+            }
+        }
+
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (cardPending.RowCount > 0)
@@ -550,6 +599,16 @@ namespace Inventory.MainForm
             splashScreen.CloseWaitForm();
         }
 
+        private void barLowQuantity_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreen.ShowWaitForm();
+            _inventory_list = Enumerable.Empty<ViewInventory>();
+            _inventory_list = EnumerableUtils.getLowQuantity();
+            bindLowQuantity();
+            xInventory.SelectedTabPage = xtraQuantity;
+            splashScreen.CloseWaitForm();
+        }
+
         private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridCardView(sender);
@@ -562,6 +621,11 @@ namespace Inventory.MainForm
         private void gridReturn_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridReturnView(sender);
+        }
+
+        private void gridQty_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            gridLowQuantityView(sender);
         }
 
         private void gridSalesView(object sender)
@@ -636,6 +700,38 @@ namespace Inventory.MainForm
                 txtControl.Text = ((GridView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
                 txtStockStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status")?.ToString();
                 txtBranch.Text = ((GridView)sender).GetFocusedRowCellValue("Branch")?.ToString();
+                if (barcode != null)
+                {
+                    var img = searchProductImg(barcode);
+                    var imgLocation = img.img_location;
+                    if (imgLocation.Length > 0)
+                    {
+                        var location = ConstantUtils.defaultImgLocation + imgLocation;
+                        imgPreview.ImageLocation = location;
+                        imgPreview.Refresh();
+                    }
+                    else
+                    {
+                        imgPreview.Image = null;
+                    }
+                }
+            }
+        }
+        private void gridLowQuantityView(object sender)
+        {
+            if (gridQty.RowCount > 0)
+            {
+                var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
+                txtBarcode.Text = barcode;
+                txtItemName.Text = ((GridView)sender).GetFocusedRowCellValue("Product")?.ToString();
+                txtQuantity.Text = ((GridView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
+                txtControl.Text = ((GridView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
+                txtStockStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status")?.ToString();
+                txtRetail.Text = ((GridView)sender).GetFocusedRowCellValue("Retail")?.ToString();
+                txtWholeSale.Text = ((GridView)sender).GetFocusedRowCellValue("Wholesale")?.ToString();
+                txtLastCost.Text = ((GridView)sender).GetFocusedRowCellValue("LastPrice")?.ToString();
+                txtCostPrice.Text = ((GridView)sender).GetFocusedRowCellValue("Trade")?.ToString();
+                dkpDeliveryDate.Value = Convert.ToDateTime(((GridView)sender).GetFocusedRowCellValue("Date")?.ToString());
                 if (barcode != null)
                 {
                     var img = searchProductImg(barcode);

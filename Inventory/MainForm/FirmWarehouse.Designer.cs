@@ -169,11 +169,12 @@
             // 
             // XtabWHdetails
             // 
-            this.XtabWHdetails.Appearance.PageClient.BackColor = System.Drawing.Color.Black;
+            this.XtabWHdetails.Appearance.PageClient.BackColor = System.Drawing.Color.White;
             this.XtabWHdetails.Appearance.PageClient.Options.UseBackColor = true;
             this.XtabWHdetails.Controls.Add(this.GbWHDetails);
+            this.XtabWHdetails.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("XtabWHdetails.ImageOptions.Image")));
             this.XtabWHdetails.Name = "XtabWHdetails";
-            this.XtabWHdetails.Size = new System.Drawing.Size(1131, 649);
+            this.XtabWHdetails.Size = new System.Drawing.Size(1131, 646);
             this.XtabWHdetails.Text = "Warehouse Details";
             // 
             // GbWHDetails
@@ -216,7 +217,7 @@
             this.GbWHDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbWHDetails.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GbWHDetails.Name = "GbWHDetails";
-            this.GbWHDetails.Size = new System.Drawing.Size(1131, 649);
+            this.GbWHDetails.Size = new System.Drawing.Size(1131, 646);
             this.GbWHDetails.TabIndex = 173;
             // 
             // label12
@@ -503,7 +504,7 @@
             "Zamboanga del Sur",
             "Zamboanga Sibugay",
             "Metro Manila"});
-            this.cmbProvincialAddress.Location = new System.Drawing.Point(153, 235);
+            this.cmbProvincialAddress.Location = new System.Drawing.Point(152, 235);
             this.cmbProvincialAddress.Name = "cmbProvincialAddress";
             this.cmbProvincialAddress.Size = new System.Drawing.Size(269, 29);
             this.cmbProvincialAddress.TabIndex = 116;

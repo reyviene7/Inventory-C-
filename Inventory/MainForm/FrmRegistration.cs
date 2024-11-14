@@ -55,6 +55,7 @@ namespace Inventory.MainForm
             _image_list = EnumerableUtils.getProfileImgList();
             splashManager.CloseWaitForm();
             bindProfileList();
+            bindProfileImgList();
             _add = false;
             _edt = false;
             _del = false;
@@ -979,9 +980,6 @@ namespace Inventory.MainForm
 
         private void bindProfileImgList()
         {
-            gridImageControl.DataSource = null;
-            gridImageControl.DataSource = "";
-            gridImage.Columns.Clear();
             var list = _image_list.Select(p => new {
                 Id = p.image_id,
                 Barcode = p.image_code,
@@ -991,16 +989,20 @@ namespace Inventory.MainForm
                 Created = p.created_on,
                 Updated = p.updated_on
             }).ToList();
+
             gridImageControl.DataSource = list;
             gridImageControl.Update();
+
             if (gridImage.RowCount > 0)
+            {
                 gridImage.Columns[0].Width = 50;
-            gridImage.Columns[1].Width = 120;
-            gridImage.Columns[2].Width = 200;
-            gridImage.Columns[3].Width = 140;
-            gridImage.Columns[4].Width = 180;
-            gridImage.Columns[5].Width = 100;
-            gridImage.Columns[6].Width = 100;
+                gridImage.Columns[1].Width = 120;
+                gridImage.Columns[2].Width = 200;
+                gridImage.Columns[3].Width = 140;
+                gridImage.Columns[4].Width = 180;
+                gridImage.Columns[5].Width = 100;
+                gridImage.Columns[6].Width = 100;
+            }
         }
 
         private void bindProfileList()
@@ -1132,15 +1134,17 @@ namespace Inventory.MainForm
                     {
                         var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
                         var img = searchProfileImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
                         {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            imgProfileImages.ImageLocation = ConstantUtils.defaultUserImgEmpty;
+                        }
+                        else
+                        {
+                            var location = ConstantUtils.defaultUserImgLocation + imgLocation;
 
                             imgProfileImages.ImageLocation = location;
                         }
-                        else
-                            imgProfileImages.ImageLocation = ConstantUtils.defaultImgLocation + "empty-image.jpg";
                     }
                 }
                 catch (Exception ex)
@@ -1198,15 +1202,19 @@ namespace Inventory.MainForm
                     cmbPosition.Text = ((GridView)sender).GetFocusedRowCellValue("Pos").ToString();
                     dkpDateHired.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Hire");
                     dkpDateRegistered.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Reg");
+                    
                     var img = searchProfileImg(barcode);
-                    var imgLocation = img.img_location;
-                    if (imgLocation.Length > 0)
+                    var imgLocation = img?.img_location;
+                    if (img == null || string.IsNullOrEmpty(imgLocation))
                     {
-                        var location = ConstantUtils.defaultImgLocation + imgLocation;
-                        imgProfile.ImageLocation = location;
+                        imgProfile.ImageLocation = ConstantUtils.defaultUserImgEmpty;
+
                     }
                     else
-                        imgProfile.ImageLocation = ConstantUtils.defaultImgLocation + "empty-image.jpg";
+                    {
+                        var location = ConstantUtils.defaultUserImgLocation + imgLocation;
+                        imgProfile.ImageLocation = location;
+                    }
                 }
                 catch (Exception ex)
                 {

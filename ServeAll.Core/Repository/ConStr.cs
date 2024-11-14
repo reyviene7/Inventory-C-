@@ -12,5 +12,12 @@ namespace ServeAll.Core.Repository
             var conn = new MySqlConnection(str);
             return conn;
         }
+
+        internal static MySqlConnection VultrConString()
+        {
+            var str = ConfigurationManager.ConnectionStrings["ServeAll.Properties.Settings.VultrWizard"].ConnectionString;
+            var conn = new MySqlConnection(str);
+            return conn;
+        }
     }
 }

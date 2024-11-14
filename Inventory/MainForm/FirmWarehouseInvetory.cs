@@ -73,6 +73,9 @@ namespace Inventory.MainForm
             get { return _main; }
             set { _main = value; }
         }
+
+        public int DeliveredId { get; private set; }
+
         public FirmWarehouseInvetory(int userId, int userTy, string username)
         {
             _userName = username;
@@ -87,6 +90,10 @@ namespace Inventory.MainForm
             }
             InitializeComponent();
             this.DialogResult = DialogResult.OK;
+            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            warehouse_return = EnumerableUtils.getWareHouseReturn();
+            _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+            imgList = EnumerableUtils.getImgProductList();
         }
 
         private void FirmWarehouseInvetory_Load(object sender, EventArgs e)
@@ -98,10 +105,10 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             splashScreen.ShowWaitForm();
-            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
-            warehouse_return = EnumerableUtils.getWareHouseReturn();
-            _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
-            imgList = EnumerableUtils.getImgProductList();
+            _products = EnumerableUtils.getProductWarehouseList();
+            _suppliers = EnumerableUtils.getSupplierWarehouseList();
+            _statuses = EnumerableUtils.getStatusWarehouseList();
+            _locations = EnumerableUtils.getLocationWarehouseList();
             bindDeliveryList();
             bindWareHouse();
             BindReturnWareHouse();
@@ -327,11 +334,6 @@ namespace Inventory.MainForm
 
         private void insert()
         {
-            splashScreen.ShowWaitForm();
-            _products = EnumerableUtils.getProductWarehouseList();
-            _suppliers = EnumerableUtils.getSupplierWarehouseList();
-            _statuses = EnumerableUtils.getStatusWarehouseList();
-            _locations = EnumerableUtils.getLocationWarehouseList();
             ButtonAdd();
             inputEnabled();
             inputWhite();
@@ -343,8 +345,6 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridController.Enabled = false;
-            imgInventory.DataBindings.Clear();
-            imgInventory.Image = null;
             cmbProductName.DataBindings.Clear();
             cmbSupplier.DataBindings.Clear();
             cmbStatus.DataBindings.Clear();
@@ -353,7 +353,6 @@ namespace Inventory.MainForm
             cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
             cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
             cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
-            splashScreen.CloseWaitForm();
             txtWarehouseSKU.Focus();
         }
         private void ButtonAdd()
@@ -850,15 +849,17 @@ namespace Inventory.MainForm
         private void bindImage(string barcode)
         {
             var img = searchProductImg(barcode);
-            var imgLocation = img.img_location;
-            if (imgLocation.Length > 0)
+            var imgLocation = img?.img_location;
+            if (img == null || string.IsNullOrEmpty(imgLocation))
+            {
+                imgInventory.ImageLocation = ConstantUtils.defaultImgEmpty;
+            }
+            else
             {
                 var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                 imgInventory.ImageLocation = location;
             }
-            else
-                imgInventory.Image = null;
         }
 
         /** when tab is selected **/
@@ -929,10 +930,13 @@ namespace Inventory.MainForm
         {
             gridViewDelivery(sender);
         }
-
-        private ViewWarehouseDelivery searchWarehouseDeliveryId(string barcode)
+        private ViewWareHouseInventory searchWarehouseInventoryId(string barcode)
         {
-            return _warehouse_delivery.FirstOrDefault(Warehouse => Warehouse.product_code == barcode);
+            return _warehouse_list.FirstOrDefault(Inventory => Inventory.product_code == barcode);
+        }
+        private ViewWarehouseDelivery searchWarehouseDeliveryId(int id)
+        {
+            return _warehouse_delivery.FirstOrDefault(Warehouse => Warehouse.delivery_id == id);
         }
         private ViewReturnWarehouse searchReturnId(int id)
         {
@@ -944,37 +948,40 @@ namespace Inventory.MainForm
             if (gridInventory.RowCount > 0)
                 try
                 {
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
                     var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    if (id.Length > 0)
+                    if (barcode.Length > 0)
                     {
-                        var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
+                        var w = searchWarehouseInventoryId(barcode);
                         cmbUser.Text = _userName;
                         txtInventoryId.Text = id;
-                        txtWarehouseSKU.Text = ((GridView)sender).GetFocusedRowCellValue("SKU").ToString(); ;
+                        txtWarehouseSKU.Text = w.sku;
                         txtBarcode.Text = barcode;
-                        txtQuantityStock.Text = ((GridView)sender).GetFocusedRowCellValue("Qty").ToString();
+                        txtQuantityStock.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
                         cmbProductName.Text = _products.FirstOrDefault(p => p.product_code == barcode).product_name;
-                        txtReorderLevel.Text = ((GridView)sender).GetFocusedRowCellValue("ReQty").ToString();
-                        cmbSupplier.Text = ((GridView)sender).GetFocusedRowCellValue("Supplier").ToString();
-                        txtCostPerUnit.Text = ((GridView)sender).GetFocusedRowCellValue("Price").ToString();
-                        txtLastCostPerUnit.Text = ((GridView)sender).GetFocusedRowCellValue("LastCost").ToString();
-                        txtTotalValue.Text = ((GridView)sender).GetFocusedRowCellValue("Total").ToString();
-                        cmbStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status").ToString();
-                        cmbItemLocation.Text = ((GridView)sender).GetFocusedRowCellValue("Location").ToString();
-                        dkpLastStockedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("LStocked");
-                        dkpLastOrderDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("LOrder");
-                        dpkExpirationDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Expire");
+                        txtReorderLevel.Text = w.reorder_level.ToString(CultureInfo.InvariantCulture);
+                        cmbSupplier.Text = w.supplier_name;
+                        txtCostPerUnit.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtLastCostPerUnit.Text = w.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtTotalValue.Text = w.total_value.ToString(CultureInfo.InvariantCulture);
+                        cmbStatus.Text = w.status_details;
+                        cmbItemLocation.Text = w.location_code;
+                        dkpLastStockedDate.Value = w.last_stocked_date;
+                        dkpLastOrderDate.Value = w.last_ordered_date;
+                        dpkExpirationDate.Value = w.expiration_date;
                         
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgInventory.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                             imgInventory.ImageLocation = location;
                         }
-                        else
-                            imgInventory.Image = null;
                     }
 
                 }
@@ -993,7 +1000,8 @@ namespace Inventory.MainForm
                     var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
                     if (barcode.Length > 0)
                     {
-                        var w = searchWarehouseDeliveryId(barcode);
+                        DeliveredId = int.Parse(deliveryId);
+                        var w = searchWarehouseDeliveryId(DeliveredId);
                         txtDelWarehouseId.Text = deliveryId;
                         txtDelProduct.Text = barcode;
                         txtDelWarehouseCode.Text = w.delivery_code;
@@ -1012,16 +1020,15 @@ namespace Inventory.MainForm
                         dkpDelUpdate.Value = w.update_on;
                         
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
                         {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-                            imgDelivery.ImageLocation = location;
-                            imgDelivery.Refresh();
+                            imgDelivery.ImageLocation = ConstantUtils.defaultImgEmpty;
                         }
                         else
                         {
-                            imgDelivery.Image = null;
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            imgDelivery.ImageLocation = location;
                         }
 
                     }
@@ -1053,16 +1060,16 @@ namespace Inventory.MainForm
                         txtReturnedRemarks.Text = ent.remarks;
                         dkpReturedDate.Value = ent.return_date;
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgReturn.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
                             imgReturn.ImageLocation = location;
                             imgReturn.Refresh();
-                        }
-                        else
-                        {
-                            imgReturn.Image = null;
                         }
 
                     }
@@ -1097,15 +1104,17 @@ namespace Inventory.MainForm
                         dkpSalesDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Date");
                         
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgSales.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                             imgSales.ImageLocation = location;
                         }
-                        else
-                            imgSales.Image = null;
                     }
 
                 }
@@ -1140,12 +1149,14 @@ namespace Inventory.MainForm
             gridController.Update();
 
             if (gridInventory.RowCount > 0)
+            {
                 gridInventory.Columns[0].Width = 40;
-            gridInventory.Columns[1].Width = 90;
-            gridInventory.Columns[2].Width = 65;
-            gridInventory.Columns[3].Width = 40;
-            gridInventory.Columns[4].Width = 40;
-            gridInventory.Columns[6].Width = 180;
+                gridInventory.Columns[1].Width = 90;
+                gridInventory.Columns[2].Width = 65;
+                gridInventory.Columns[3].Width = 40;
+                gridInventory.Columns[4].Width = 40;
+                gridInventory.Columns[6].Width = 180;
+            }
         }
 
         private void bindDeliveryList()

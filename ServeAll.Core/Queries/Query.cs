@@ -278,7 +278,7 @@
         public const string getUserId = "SELECT user_id FROM users";
         public const string getProfileName = "SELECT last_name,first_name,middle_initial FROM profile";
         public const string getProfileId = "SELECT profile_id, name FROM view_profile_entities";
-        public const string getViewUser = "SELECT user_id, user_code, name, username, role_type FROM view_user";
+        public const string getViewUser = "SELECT user_id, user_code, name, username, role_type FROM view_user ORDER BY user_id ASC";
         public const string getProductDetails = "select code, item, qty, retail_price, wholesale, status, branch from view_product_inventory where code = @barcode and branch = @branch and status = @status and qty >= 1";
         public const string getCustomerList = "select customer_id, customer_name from view_poscustomers";
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
@@ -332,7 +332,9 @@
         public const string getAcceptedDelivery = @"SELECT * FROM view_accepted_delivery WHERE branch_details = @branch ORDER BY received_id DESC";
         public const string getCreditSales = @"SELECT * FROM view_credit_sales WHERE branch = @branch ORDER BY id DESC";
         public const string getDailyExpenses = @"SELECT * FROM view_daily_expenses ORDER BY expense_id DESC";
+        public const string getLowQuantity = @"SELECT * FROM view_inventory WHERE quantity <= 5 ORDER BY quantity ASC";
         public const string getContactById = @"SELECT * FROM contact WHERE contact_id = @contact";
         public const string getAddressById = @"SELECT * FROM address WHERE address_id = @address";
+        public const string getMachineByKey = "SELECT * FROM authorized_machine where machine_key = @machineKey AND machine_name = @machineName";
     }
 }

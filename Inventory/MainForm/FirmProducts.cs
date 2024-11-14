@@ -820,17 +820,20 @@ namespace Inventory.MainForm
                         dkpDateRegister.Value = product.date_register;
 
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
+                        var imgLocation = img?.img_location;
 
-                        if (imgLocation.Length > 0)
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
+                            imgBigPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
                             imgProduct.ImageLocation = location;
                             imgBigPreview.ImageLocation = location;
                         }
-                        else
-                            imgProduct.Image = null;
-                            imgBigPreview.Image = null;
+                            
                     }
                 }
                 catch (Exception ex)
