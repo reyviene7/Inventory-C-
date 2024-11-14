@@ -352,12 +352,14 @@ namespace Inventory.MainForm
         private void buttonClear()
         {
             ButtonClr();
-            InputEnabimg();
+            InputWhit();
             InputWhitimg();
             InputCleaimg();
             InputClea();
             gridUserList.Enabled = true;
             bntBrowseImage.Enabled = true;
+            gridUserList.DataBindings.Clear();
+            gIMG.DataBindings.Clear();
         }
         private void buttonCancel()
         {
@@ -503,6 +505,15 @@ namespace Inventory.MainForm
                 }).ToList();
                 gridUserList.DataBindings.Clear();
                 gridUserList.DataSource = list;
+                gridUserList.Update();
+                if (gridUsers.RowCount > 0)
+                {
+                    gridUsers.Columns[0].Width = 40;
+                    gridUsers.Columns[1].Width = 100;
+                    gridUsers.Columns[2].Width = 300;
+                    gridUsers.Columns[3].Width = 200;
+                    gridUsers.Columns[4].Width = 80;
+                }
             }
             catch (Exception ex)
             {

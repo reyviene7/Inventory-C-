@@ -5,6 +5,7 @@ using Microsoft.Win32;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Helper;
 using ServeAll.Core.Repository;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Inventory.PopupForm
 {
@@ -123,6 +124,22 @@ namespace Inventory.PopupForm
             {
                 regWET.CloseWaitForm();
                 PopupNotification.PopUpMessages(0, "Sorry unable to register your PosWizard copy!", Messages.InventorySystem);
+            }
+        }
+
+        private void txtFirstKey_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFirstKey.Text.Length >= 5)
+            {
+                this.SelectNextControl(txtFirstKey, true, true, true, true);
+            }
+        }
+
+        private void txtSecondKey_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSecondKey.Text.Length >= 5)
+            {
+                this.SelectNextControl(txtSecondKey, true, true, true, true);
             }
         }
     }

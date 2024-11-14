@@ -287,7 +287,11 @@ namespace Inventory.MainForm
         private void ButClr()
         {
             ButtonClr();
+            InputWhit();
+            InputDisb();
             gridControl.Enabled = true;
+            txtCategoryCode.DataBindings.Clear();
+            txtCategoryDetails.DataBindings.Clear();
             cmbProductImage.DataBindings.Clear();
         }
         private void ButSav()

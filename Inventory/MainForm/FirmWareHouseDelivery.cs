@@ -141,6 +141,7 @@ namespace Inventory.MainForm
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
             imgList = EnumerableUtils.getImgProductList();
             ButtonClr();
+            InputWhit();
             splashDelivery.CloseWaitForm();
         }
         private void bntCAN_Click(object sender, EventArgs e)
