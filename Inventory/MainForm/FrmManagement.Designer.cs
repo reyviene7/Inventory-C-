@@ -1503,7 +1503,7 @@
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
             this.lblBarcode.Location = new System.Drawing.Point(21, 13);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(115, 32);
+            this.lblBarcode.Size = new System.Drawing.Size(114, 32);
             this.lblBarcode.TabIndex = 232;
             this.lblBarcode.Text = "Barcode:";
             // 
@@ -2766,6 +2766,7 @@
             this.gridQty.OptionsView.RowAutoHeight = true;
             this.gridQty.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
             this.gridQty.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridQty_FocusedRowChanged);
+            this.gridQty.DoubleClick += new System.EventHandler(this.gridQty_DoubleClick);
             // 
             // gridView19
             // 

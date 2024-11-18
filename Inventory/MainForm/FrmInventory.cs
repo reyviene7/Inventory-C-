@@ -617,7 +617,8 @@ namespace Inventory.MainForm
                         last_price_cost = Convert.ToDecimal(txtLastCost.Text),
                         inventory_date = dkpInventoryDate.Value.Date,
                         status_id = FetchUtils.getProductStatusId(cmbProductStatus.Text),
-                        user_id = 3
+                        user_id = 3,
+                        updatedOn = DateTime.Now
                     };
                     var result = repository.Add(inventory);
                     if (result > 0)
