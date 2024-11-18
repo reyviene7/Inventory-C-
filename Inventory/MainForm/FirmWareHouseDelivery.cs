@@ -141,6 +141,7 @@ namespace Inventory.MainForm
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
             imgList = EnumerableUtils.getImgProductList();
             ButtonClr();
+            InputWhit();
             splashDelivery.CloseWaitForm();
         }
         private void bntCAN_Click(object sender, EventArgs e)
@@ -992,17 +993,17 @@ namespace Inventory.MainForm
 
             if (gridDelivery.RowCount > 0)
             {
-                gridDelivery.Columns[0].Width = 50;
+                gridDelivery.Columns[0].Width = 40;
                 gridDelivery.Columns[1].Width = 100;
-                gridDelivery.Columns[2].Width = 40;
+                gridDelivery.Columns[2].Width = 70;
                 gridDelivery.Columns[3].Width = 250;
-                gridDelivery.Columns[4].Width = 70;
-                gridDelivery.Columns[5].Width = 70;
+                gridDelivery.Columns[4].Width = 90;
+                gridDelivery.Columns[5].Width = 90;
                 gridDelivery.Columns[6].Width = 70;
-                gridDelivery.Columns[7].Width = 50;
-                gridDelivery.Columns[8].Width = 30;
-                gridDelivery.Columns[9].Width = 70;
-                gridDelivery.Columns[10].Width = 80;
+                gridDelivery.Columns[7].Width = 65;
+                gridDelivery.Columns[8].Width = 40;
+                gridDelivery.Columns[9].Width = 65;
+                gridDelivery.Columns[10].Width = 90;
             }
         }
         private void InsertData()
@@ -1067,9 +1068,6 @@ namespace Inventory.MainForm
 
                     int deliveryResult = RepositoryEntity.UpdateEntity<WarehouseDelivery>(deliveryId, entity =>
                     {
-                        int oldDeliveryQty = entity.delivery_qty;
-                        qtyDifference = deliveryQty - oldDeliveryQty;
-
                         entity.delivery_code = txtDelWarehouseCode.Text.Trim();
                         entity.product_id = productId;
                         entity.warehouse_id = warehouseId;

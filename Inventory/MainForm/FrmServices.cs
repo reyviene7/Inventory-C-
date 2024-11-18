@@ -523,7 +523,6 @@ namespace Inventory.MainForm
             _edt = false;
             _del = true;
             gridController.Enabled = false;
-        
         }
         private void ButSav()
         {
@@ -574,6 +573,13 @@ namespace Inventory.MainForm
             imgProduct.Image = null;
          
         }
+        private void ButClr()
+        {
+            ButtonClr();
+            InputWhit();
+            InputDisb();
+            gridController.Enabled = true;
+        }
 
         private void bntHome_Click(object sender, EventArgs e)
         {
@@ -598,8 +604,7 @@ namespace Inventory.MainForm
 
         private void bntClear_Click(object sender, EventArgs e)
         {
-
-            InputWhit();
+            ButClr();
         }
 
         private void bntCancel_Click(object sender, EventArgs e)
@@ -611,8 +616,7 @@ namespace Inventory.MainForm
 
         private void bntDelete_Click(object sender, EventArgs e)
         {
-
-           
+            ButDel();
         }
      
         private void FirmWarehouseInvetory_MouseMove(object sender, MouseEventArgs e)

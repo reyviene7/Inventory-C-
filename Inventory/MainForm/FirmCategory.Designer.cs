@@ -733,6 +733,7 @@
             // bntClear
             // 
             this.bntClear.BackColor = System.Drawing.Color.Firebrick;
+            this.bntClear.Enabled = false;
             this.bntClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bntClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntClear.ForeColor = System.Drawing.Color.White;

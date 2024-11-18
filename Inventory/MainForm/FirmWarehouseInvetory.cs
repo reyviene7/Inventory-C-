@@ -331,30 +331,6 @@ namespace Inventory.MainForm
             cmbItemLocation.BackColor = Color.DimGray;
             cmbStatus.BackColor = Color.DimGray;
         }
-
-        private void insert()
-        {
-            ButtonAdd();
-            inputEnabled();
-            inputWhite();
-            inputClear();
-            cmbUser.Text = _userName;
-            cmbItemLocation.Text = Constant.DefaultSource;
-            cmbProductName.Focus();
-            _add = true;
-            _edt = false;
-            _del = false;
-            gridController.Enabled = false;
-            cmbProductName.DataBindings.Clear();
-            cmbSupplier.DataBindings.Clear();
-            cmbStatus.DataBindings.Clear();
-            cmbItemLocation.DataBindings.Clear();
-            cmbProductName.DataSource = _products.Select(p => p.product_name ).ToList();
-            cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
-            cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
-            cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
-            txtWarehouseSKU.Focus();
-        }
         private void ButtonAdd()
         {
             bntAdd.Enabled = true;
@@ -433,6 +409,30 @@ namespace Inventory.MainForm
             pbLogout.Enabled = true;
             pbExit.Enabled = true;
         }
+
+        private void insert()
+        {
+            ButtonAdd();
+            inputEnabled();
+            inputWhite();
+            inputClear();
+            cmbUser.Text = _userName;
+            cmbItemLocation.Text = Constant.DefaultSource;
+            cmbProductName.Focus();
+            _add = true;
+            _edt = false;
+            _del = false;
+            gridController.Enabled = false;
+            cmbProductName.DataBindings.Clear();
+            cmbSupplier.DataBindings.Clear();
+            cmbStatus.DataBindings.Clear();
+            cmbItemLocation.DataBindings.Clear();
+            cmbProductName.DataSource = _products.Select(p => p.product_name ).ToList();
+            cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
+            cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
+            cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
+            txtWarehouseSKU.Focus();
+        }
         private void update()
         {
             buttonUpdate();
@@ -442,7 +442,15 @@ namespace Inventory.MainForm
             _edt = true;
             _del = false;
             gridController.Enabled = false;
-        
+            cmbProductName.DataBindings.Clear();
+            cmbSupplier.DataBindings.Clear();
+            cmbStatus.DataBindings.Clear();
+            cmbItemLocation.DataBindings.Clear();
+            cmbProductName.DataSource = _products.Select(p => p.product_name).ToList();
+            cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
+            cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
+            cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
+            txtWarehouseSKU.Focus();
         }
         private void delete()
         {
@@ -465,6 +473,7 @@ namespace Inventory.MainForm
                 inputDisabled();
                 inputGray();
                 inputClear();
+                _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
             }
             if (_add == false && _edt && _del == false)
             {
@@ -474,6 +483,7 @@ namespace Inventory.MainForm
                 inputDisabled();
                 inputGray();
                 inputClear();
+                _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
             }
             if (_add == false && _edt == false && _del)
             {
@@ -482,6 +492,7 @@ namespace Inventory.MainForm
                 inputDisabled();
                 inputGray();
                 inputClear();
+                _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
             }
             _add = false;
             _edt = false;
@@ -490,7 +501,8 @@ namespace Inventory.MainForm
             cmbProductName.DataBindings.Clear();
             imgInventory.DataBindings.Clear();
             imgInventory.Image = null;
-           
+            bindWareHouse();
+            bindDeliveryList();
         }
         private void cancel()
         {
@@ -690,7 +702,7 @@ namespace Inventory.MainForm
 
         private void bntSave_Click(object sender, EventArgs e)
         {
-            buttonSave();
+            ButSav();
         }
 
         private void bntClear_Click(object sender, EventArgs e)
@@ -1135,13 +1147,13 @@ namespace Inventory.MainForm
                 ReQty = p.reorder_level,
                 Location = p.location_code,
                 Supplier = p.supplier_name,
-                LStocked = p.last_stocked_date,
-                LOrder = p.last_ordered_date,
-                Expire = p.expiration_date,
                 Price = p.cost_per_unit,
                 LastCost = p.last_cost_per_unit,
                 Total = p.total_value,
                 Status = p.status_details,
+                LStocked = p.last_stocked_date,
+                LOrder = p.last_ordered_date,
+                Expire = p.expiration_date,
                 Created = p.created_at,
                 Updated = p.updated_at
             }).ToList();
@@ -1151,11 +1163,21 @@ namespace Inventory.MainForm
             if (gridInventory.RowCount > 0)
             {
                 gridInventory.Columns[0].Width = 40;
-                gridInventory.Columns[1].Width = 90;
+                gridInventory.Columns[1].Width = 120;
                 gridInventory.Columns[2].Width = 65;
                 gridInventory.Columns[3].Width = 40;
                 gridInventory.Columns[4].Width = 40;
-                gridInventory.Columns[6].Width = 180;
+                gridInventory.Columns[5].Width = 80;
+                gridInventory.Columns[6].Width = 110;
+                gridInventory.Columns[7].Width = 50;
+                gridInventory.Columns[8].Width = 50;
+                gridInventory.Columns[9].Width = 65;
+                gridInventory.Columns[10].Width = 70;
+                gridInventory.Columns[11].Width = 80;
+                gridInventory.Columns[12].Width = 80;
+                gridInventory.Columns[13].Width = 80;
+                gridInventory.Columns[14].Width = 80;
+                gridInventory.Columns[15].Width = 80;
             }
         }
 
@@ -1182,17 +1204,17 @@ namespace Inventory.MainForm
             gridControlDelivery.Update();
             if (gridDelivery.RowCount > 0)
             {
-                gridDelivery.Columns[0].Width = 50;
+                gridDelivery.Columns[0].Width = 40;
                 gridDelivery.Columns[1].Width = 100;
-                gridDelivery.Columns[2].Width = 40;
+                gridDelivery.Columns[2].Width = 70;
                 gridDelivery.Columns[3].Width = 250;
-                gridDelivery.Columns[4].Width = 70;
-                gridDelivery.Columns[5].Width = 70;
+                gridDelivery.Columns[4].Width = 90;
+                gridDelivery.Columns[5].Width = 90;
                 gridDelivery.Columns[6].Width = 70;
-                gridDelivery.Columns[7].Width = 50;
-                gridDelivery.Columns[8].Width = 30;
-                gridDelivery.Columns[9].Width = 70;
-                gridDelivery.Columns[10].Width = 80;
+                gridDelivery.Columns[7].Width = 65;
+                gridDelivery.Columns[8].Width = 40;
+                gridDelivery.Columns[9].Width = 65;
+                gridDelivery.Columns[10].Width = 90;
             }
         }
         private void BindReturnWareHouse()
@@ -1250,13 +1272,13 @@ namespace Inventory.MainForm
                 gridSales.Columns[0].Width = 40;
                 gridSales.Columns[1].Width = 50;
                 gridSales.Columns[2].Width = 100;
-                gridSales.Columns[3].Width = 340;
+                gridSales.Columns[3].Width = 300;
                 gridSales.Columns[4].Width = 50;
                 gridSales.Columns[5].Width = 50;
                 gridSales.Columns[6].Width = 50;
                 gridSales.Columns[7].Width = 50;
                 gridSales.Columns[8].Width = 50;
-                gridSales.Columns[9].Width = 110;
+                gridSales.Columns[9].Width = 150;
                 gridSales.Columns[10].Width = 90;
                 gridSales.Columns[11].Width = 100;
             }

@@ -255,8 +255,8 @@ namespace Inventory.MainForm
         private void ButClr()
         {
             ButtonClr();
-            InputEnable();
-            InputDimGray();
+            InputDisable();
+            InputWhite();
             InputClear();
             gridControl.Enabled = true;
         }

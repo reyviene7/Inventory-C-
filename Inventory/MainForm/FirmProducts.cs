@@ -315,7 +315,7 @@ namespace Inventory.MainForm
         private void ButClr()
         {
             ButtonClr();
-            InputEnab();
+            InputDisb();
             InputWhit();
             InputClea();
             gridControl.Enabled = true;

@@ -468,8 +468,8 @@ namespace Inventory.MainForm
             ButtonClr();
             WhtInput();
             CleInput();
-            EnbInput();
-
+            gCON.Enabled = true;
+            gCON.Update();
         }
 
         private void ButCan()
@@ -478,7 +478,6 @@ namespace Inventory.MainForm
             DimInput();
             CleInput();
             DisInput();
-
         }
 
         private void pcAdd_Click(object sender, EventArgs e)
