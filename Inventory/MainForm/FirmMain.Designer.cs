@@ -754,6 +754,7 @@
             this.tileControl.Name = "tileControl";
             this.tileControl.Size = new System.Drawing.Size(1390, 757);
             this.tileControl.TabIndex = 207;
+            this.tileControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tileControl_KeyDown);
             // 
             // tileWarehouse
             // 

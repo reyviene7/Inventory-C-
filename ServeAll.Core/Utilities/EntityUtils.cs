@@ -116,6 +116,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static ViewInventory getInventory(int inventoryId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewInventory>(unWork);
+                    var parameter = new { inventoryId = inventoryId };
+                    return repository.SearchBy(Query.getInventoryById, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
+        }
+
         public static ViewSalesCredit getCredit(int creditId)
         {
             using (var session = new DalSession())
