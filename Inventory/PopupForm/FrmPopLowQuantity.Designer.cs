@@ -155,6 +155,7 @@
             // 
             // bntExit
             // 
+            this.bntExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntExit.ImageOptions.Image")));
             this.bntExit.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntExit.Location = new System.Drawing.Point(3, 516);
             this.bntExit.Name = "bntExit";
@@ -407,6 +408,7 @@
             // 
             this.bntAccept.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntAccept.Appearance.Options.UseFont = true;
+            this.bntAccept.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntAccept.ImageOptions.Image")));
             this.bntAccept.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntAccept.Location = new System.Drawing.Point(3, 389);
             this.bntAccept.Name = "bntAccept";
@@ -417,6 +419,7 @@
             // 
             // bntCancel
             // 
+            this.bntCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntCancel.ImageOptions.Image")));
             this.bntCancel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntCancel.Location = new System.Drawing.Point(3, 452);
             this.bntCancel.Name = "bntCancel";
