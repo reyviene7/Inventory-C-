@@ -885,6 +885,24 @@ namespace Inventory.MainForm
             }
         }
 
+        private void gridQty_DoubleClick(object sender, EventArgs e)
+        {
+            if (gridQty.RowCount > 0)
+            {
+                splashScreen.ShowWaitForm();
+                var id = ((GridView)sender).GetFocusedRowCellValue("Id")?.ToString();
+                var lowInventory = EntityUtils.getInventory(int.Parse(id));
+                var pop = new FrmPopLowQuantity(_userId, 1, lowInventory)
+                {
+                    main = this
+                };
+                splashScreen.CloseWaitForm();
+                pop.ShowDialog();
+                _inventory_list = EnumerableUtils.getLowQuantity();
+                bindLowQuantity();
+            }
+        }
+
         private void barReportDailyExpenses_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);

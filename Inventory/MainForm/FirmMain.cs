@@ -551,5 +551,45 @@ namespace Inventory.MainForm
                 this.Show();
             }
         }
+
+        private void tileControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                splashScreen.ShowWaitForm();
+                var view = new FrmManagement(_userId, _usrTyp, _userName)
+                {
+                    Main = this
+                };
+                splashScreen.CloseWaitForm();
+                if (view.DialogResult == DialogResult.OK)
+                {
+                    view.ShowDialog();
+                }
+                else
+                {
+                    this.Show();
+                }
+                e.Handled = true; 
+            }
+            if (e.KeyCode == Keys.F9)
+            {
+                var dep = new FirmWarehouse(_userId, _usrTyp, _userName)
+                {
+                    Main = this
+                };
+                if (dep.DialogResult == DialogResult.OK)
+                {
+                    Hide();
+                    dep.Show();
+                }
+                else
+                {
+                    this.Show();
+                }
+                e.Handled = true;
+            }
+
+        }
     }
 }
