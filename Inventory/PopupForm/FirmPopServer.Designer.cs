@@ -69,17 +69,19 @@
             this.gbCON.Location = new System.Drawing.Point(0, 0);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.gbCON.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(742, 308);
+            this.gbCON.Size = new System.Drawing.Size(989, 379);
             this.gbCON.TabIndex = 8;
             // 
             // bntCLR
             // 
             this.bntCLR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntCLR.ImageOptions.Image")));
             this.bntCLR.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntCLR.Location = new System.Drawing.Point(357, 224);
+            this.bntCLR.Location = new System.Drawing.Point(476, 276);
+            this.bntCLR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntCLR.Name = "bntCLR";
-            this.bntCLR.Size = new System.Drawing.Size(169, 44);
+            this.bntCLR.Size = new System.Drawing.Size(225, 54);
             this.bntCLR.TabIndex = 6;
             this.bntCLR.ToolTip = "Service Manual";
             this.bntCLR.Click += new System.EventHandler(this.bntCLR_Click);
@@ -89,16 +91,18 @@
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(213, 31);
+            this.lblMainTitle.Location = new System.Drawing.Point(284, 38);
+            this.lblMainTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(452, 47);
+            this.lblMainTitle.Size = new System.Drawing.Size(563, 60);
             this.lblMainTitle.TabIndex = 216;
             this.lblMainTitle.Text = "SET AUTHORIZATION KEY";
             // 
             // txtThirdKey
             // 
             this.txtThirdKey.EditValue = "";
-            this.txtThirdKey.Location = new System.Drawing.Point(532, 159);
+            this.txtThirdKey.Location = new System.Drawing.Point(709, 196);
+            this.txtThirdKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtThirdKey.Name = "txtThirdKey";
             this.txtThirdKey.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtThirdKey.Properties.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -107,37 +111,39 @@
             this.txtThirdKey.Properties.Appearance.Options.UseBackColor = true;
             this.txtThirdKey.Properties.Appearance.Options.UseBorderColor = true;
             this.txtThirdKey.Properties.Appearance.Options.UseFont = true;
-            this.txtThirdKey.Size = new System.Drawing.Size(169, 44);
+            this.txtThirdKey.Size = new System.Drawing.Size(225, 52);
             this.txtThirdKey.TabIndex = 4;
             this.txtThirdKey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPSS_KeyDown);
             // 
             // txtSecondKey
             // 
             this.txtSecondKey.EditValue = "";
-            this.txtSecondKey.Location = new System.Drawing.Point(357, 161);
+            this.txtSecondKey.Location = new System.Drawing.Point(476, 198);
+            this.txtSecondKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSecondKey.Name = "txtSecondKey";
             this.txtSecondKey.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtSecondKey.Properties.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtSecondKey.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.txtSecondKey.Properties.Appearance.Options.UseBackColor = true;
             this.txtSecondKey.Properties.Appearance.Options.UseFont = true;
-            this.txtSecondKey.Size = new System.Drawing.Size(169, 44);
-            this.txtSecondKey.TabIndex = 2;
+            this.txtSecondKey.Size = new System.Drawing.Size(225, 52);
+            this.txtSecondKey.TabIndex = 3;
             this.txtSecondKey.TextChanged += new System.EventHandler(this.txtSecondKey_TextChanged);
             this.txtSecondKey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUSR_KeyDown);
             // 
             // txtFirstKey
             // 
             this.txtFirstKey.EditValue = "";
-            this.txtFirstKey.Location = new System.Drawing.Point(182, 161);
+            this.txtFirstKey.Location = new System.Drawing.Point(243, 198);
+            this.txtFirstKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFirstKey.Name = "txtFirstKey";
             this.txtFirstKey.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtFirstKey.Properties.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtFirstKey.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstKey.Properties.Appearance.Options.UseBackColor = true;
             this.txtFirstKey.Properties.Appearance.Options.UseFont = true;
-            this.txtFirstKey.Size = new System.Drawing.Size(169, 44);
-            this.txtFirstKey.TabIndex = 3;
+            this.txtFirstKey.Size = new System.Drawing.Size(225, 52);
+            this.txtFirstKey.TabIndex = 2;
             this.txtFirstKey.TextChanged += new System.EventHandler(this.txtFirstKey_TextChanged);
             this.txtFirstKey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDAT_KeyDown);
             // 
@@ -145,14 +151,15 @@
             // 
             this.txtComputerName.EditValue = "";
             this.txtComputerName.Enabled = false;
-            this.txtComputerName.Location = new System.Drawing.Point(182, 109);
+            this.txtComputerName.Location = new System.Drawing.Point(243, 134);
+            this.txtComputerName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtComputerName.Name = "txtComputerName";
             this.txtComputerName.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtComputerName.Properties.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtComputerName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold);
             this.txtComputerName.Properties.Appearance.Options.UseBackColor = true;
             this.txtComputerName.Properties.Appearance.Options.UseFont = true;
-            this.txtComputerName.Size = new System.Drawing.Size(519, 46);
+            this.txtComputerName.Size = new System.Drawing.Size(692, 56);
             this.txtComputerName.TabIndex = 1;
             this.txtComputerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNAM_KeyDown);
             // 
@@ -162,9 +169,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.Navy;
-            this.label3.Location = new System.Drawing.Point(15, 112);
+            this.label3.Location = new System.Drawing.Point(20, 138);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 41);
+            this.label3.Size = new System.Drawing.Size(198, 50);
             this.label3.TabIndex = 181;
             this.label3.Text = "PC NAME:";
             // 
@@ -174,9 +182,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(15, 162);
+            this.label2.Location = new System.Drawing.Point(20, 199);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 37);
+            this.label2.Size = new System.Drawing.Size(204, 46);
             this.label2.TabIndex = 177;
             this.label2.Text = "PRIME KEY:";
             // 
@@ -186,9 +195,10 @@
             this.bntSVA.Appearance.Options.UseFont = true;
             this.bntSVA.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntSVA.ImageOptions.Image")));
             this.bntSVA.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntSVA.Location = new System.Drawing.Point(182, 224);
+            this.bntSVA.Location = new System.Drawing.Point(243, 276);
+            this.bntSVA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntSVA.Name = "bntSVA";
-            this.bntSVA.Size = new System.Drawing.Size(169, 44);
+            this.bntSVA.Size = new System.Drawing.Size(225, 54);
             this.bntSVA.TabIndex = 5;
             this.bntSVA.Text = "REG";
             this.bntSVA.ToolTip = "User Manual";
@@ -198,9 +208,10 @@
             // 
             this.bntCAN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntCAN.ImageOptions.Image")));
             this.bntCAN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntCAN.Location = new System.Drawing.Point(532, 224);
+            this.bntCAN.Location = new System.Drawing.Point(709, 276);
+            this.bntCAN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntCAN.Name = "bntCAN";
-            this.bntCAN.Size = new System.Drawing.Size(169, 44);
+            this.bntCAN.Size = new System.Drawing.Size(225, 54);
             this.bntCAN.TabIndex = 7;
             this.bntCAN.ToolTip = "Service Manual";
             this.bntCAN.Click += new System.EventHandler(this.bntCAN_Click);
@@ -211,11 +222,12 @@
             // 
             // FirmPopServer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 308);
+            this.ClientSize = new System.Drawing.Size(989, 379);
             this.Controls.Add(this.gbCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FirmPopServer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmPopServer";
