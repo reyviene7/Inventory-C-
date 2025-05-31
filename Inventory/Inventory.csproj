@@ -61,7 +61,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Graph.ico</ApplicationIcon>
+    <ApplicationIcon>wizard.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Inventory.Program</StartupObject>
@@ -765,6 +765,8 @@
   <ItemGroup>
     <Content Include="Graph.ico" />
     <Content Include="Resources\alert-triangle-svgrepo-com %281%29.png" />
+    <Content Include="wizard.ico" />
+    <Content Include="wizards.ico" />
     <None Include="Resources\shield-warning-svgrepo-com.png" />
     <None Include="Resources\Success %282%29.png" />
     <None Include="Resources\alert-triangle-svgrepo-com %281%291.png" />

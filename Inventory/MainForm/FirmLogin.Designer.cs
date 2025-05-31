@@ -58,9 +58,10 @@
             this.lblSubTitle.AutoSize = true;
             this.lblSubTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.lblSubTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.lblSubTitle.Location = new System.Drawing.Point(556, 162);
+            this.lblSubTitle.Location = new System.Drawing.Point(741, 199);
+            this.lblSubTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSubTitle.Name = "lblSubTitle";
-            this.lblSubTitle.Size = new System.Drawing.Size(309, 28);
+            this.lblSubTitle.Size = new System.Drawing.Size(384, 35);
             this.lblSubTitle.TabIndex = 98;
             this.lblSubTitle.Text = "Inventory Management System";
             // 
@@ -69,9 +70,10 @@
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(449, 51);
+            this.lblMainTitle.Location = new System.Drawing.Point(599, 63);
+            this.lblMainTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(532, 86);
+            this.lblMainTitle.Size = new System.Drawing.Size(661, 106);
             this.lblMainTitle.TabIndex = 96;
             this.lblMainTitle.Text = "The Wizards Inc.";
             this.lblMainTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -82,11 +84,12 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(38, 683);
+            this.label1.Location = new System.Drawing.Point(51, 841);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 19);
+            this.label1.Size = new System.Drawing.Size(223, 23);
             this.label1.TabIndex = 95;
-            this.label1.Text = "© 2024 All rights reserved";
+            this.label1.Text = "© 2025 All rights reserved";
             // 
             // DgClock
             // 
@@ -94,11 +97,11 @@
             this.DgClock.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DgClock.ForeColor = System.Drawing.Color.Red;
             this.DgClock.ImeMode = System.Windows.Forms.ImeMode.Katakana;
-            this.DgClock.Location = new System.Drawing.Point(4, 162);
-            this.DgClock.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.DgClock.Location = new System.Drawing.Point(5, 199);
+            this.DgClock.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
             this.DgClock.Name = "DgClock";
             this.DgClock.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.DgClock.Size = new System.Drawing.Size(272, 251);
+            this.DgClock.Size = new System.Drawing.Size(363, 309);
             this.DgClock.TabIndex = 87;
             // 
             // lblLicense
@@ -106,9 +109,10 @@
             this.lblLicense.AutoSize = true;
             this.lblLicense.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLicense.ForeColor = System.Drawing.Color.Black;
-            this.lblLicense.Location = new System.Drawing.Point(11, 657);
+            this.lblLicense.Location = new System.Drawing.Point(15, 809);
+            this.lblLicense.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLicense.Name = "lblLicense";
-            this.lblLicense.Size = new System.Drawing.Size(240, 16);
+            this.lblLicense.Size = new System.Drawing.Size(306, 20);
             this.lblLicense.TabIndex = 94;
             this.lblLicense.Text = "295A10691CD571763D3340413A6F17A";
             // 
@@ -117,9 +121,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(64, 637);
+            this.label2.Location = new System.Drawing.Point(85, 784);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 16);
+            this.label2.Size = new System.Drawing.Size(152, 20);
             this.label2.TabIndex = 93;
             this.label2.Text = "Product License:";
             // 
@@ -127,9 +132,10 @@
             // 
             this.imgEmployees.BackColor = System.Drawing.Color.White;
             this.imgEmployees.Image = ((System.Drawing.Image)(resources.GetObject("imgEmployees.Image")));
-            this.imgEmployees.Location = new System.Drawing.Point(603, 235);
+            this.imgEmployees.Location = new System.Drawing.Point(804, 289);
+            this.imgEmployees.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.imgEmployees.Name = "imgEmployees";
-            this.imgEmployees.Size = new System.Drawing.Size(204, 261);
+            this.imgEmployees.Size = new System.Drawing.Size(272, 321);
             this.imgEmployees.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgEmployees.TabIndex = 92;
             this.imgEmployees.TabStop = false;
@@ -143,9 +149,10 @@
             this.bntONL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntONL.ForeColor = System.Drawing.Color.White;
             this.bntONL.Image = ((System.Drawing.Image)(resources.GetObject("bntONL.Image")));
-            this.bntONL.Location = new System.Drawing.Point(140, 415);
+            this.bntONL.Location = new System.Drawing.Point(187, 511);
+            this.bntONL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntONL.Name = "bntONL";
-            this.bntONL.Size = new System.Drawing.Size(136, 109);
+            this.bntONL.Size = new System.Drawing.Size(181, 134);
             this.bntONL.TabIndex = 89;
             this.bntONL.Text = "SET SERVER";
             this.bntONL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -161,9 +168,10 @@
             this.bntLCL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntLCL.ForeColor = System.Drawing.Color.White;
             this.bntLCL.Image = ((System.Drawing.Image)(resources.GetObject("bntLCL.Image")));
-            this.bntLCL.Location = new System.Drawing.Point(4, 415);
+            this.bntLCL.Location = new System.Drawing.Point(5, 511);
+            this.bntLCL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntLCL.Name = "bntLCL";
-            this.bntLCL.Size = new System.Drawing.Size(135, 109);
+            this.bntLCL.Size = new System.Drawing.Size(180, 134);
             this.bntLCL.TabIndex = 88;
             this.bntLCL.Text = "GUESS";
             this.bntLCL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -179,9 +187,10 @@
             this.bntConf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntConf.ForeColor = System.Drawing.Color.White;
             this.bntConf.Image = ((System.Drawing.Image)(resources.GetObject("bntConf.Image")));
-            this.bntConf.Location = new System.Drawing.Point(4, 525);
+            this.bntConf.Location = new System.Drawing.Point(5, 646);
+            this.bntConf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntConf.Name = "bntConf";
-            this.bntConf.Size = new System.Drawing.Size(135, 109);
+            this.bntConf.Size = new System.Drawing.Size(180, 134);
             this.bntConf.TabIndex = 90;
             this.bntConf.Text = "ABOUT";
             this.bntConf.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -196,9 +205,10 @@
             this.bntExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntExit.ForeColor = System.Drawing.Color.White;
             this.bntExit.Image = ((System.Drawing.Image)(resources.GetObject("bntExit.Image")));
-            this.bntExit.Location = new System.Drawing.Point(140, 525);
+            this.bntExit.Location = new System.Drawing.Point(187, 646);
+            this.bntExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntExit.Name = "bntExit";
-            this.bntExit.Size = new System.Drawing.Size(136, 109);
+            this.bntExit.Size = new System.Drawing.Size(181, 134);
             this.bntExit.TabIndex = 91;
             this.bntExit.Text = "EXIT";
             this.bntExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -214,9 +224,10 @@
             this.bntAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntAdmin.ForeColor = System.Drawing.Color.White;
             this.bntAdmin.Image = ((System.Drawing.Image)(resources.GetObject("bntAdmin.Image")));
-            this.bntAdmin.Location = new System.Drawing.Point(140, 51);
+            this.bntAdmin.Location = new System.Drawing.Point(187, 63);
+            this.bntAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntAdmin.Name = "bntAdmin";
-            this.bntAdmin.Size = new System.Drawing.Size(136, 109);
+            this.bntAdmin.Size = new System.Drawing.Size(181, 134);
             this.bntAdmin.TabIndex = 86;
             this.bntAdmin.Text = "ADMIN";
             this.bntAdmin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -232,9 +243,10 @@
             this.bntUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntUser.ForeColor = System.Drawing.Color.White;
             this.bntUser.Image = ((System.Drawing.Image)(resources.GetObject("bntUser.Image")));
-            this.bntUser.Location = new System.Drawing.Point(4, 51);
+            this.bntUser.Location = new System.Drawing.Point(5, 63);
+            this.bntUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntUser.Name = "bntUser";
-            this.bntUser.Size = new System.Drawing.Size(135, 109);
+            this.bntUser.Size = new System.Drawing.Size(180, 134);
             this.bntUser.TabIndex = 85;
             this.bntUser.Text = "USER";
             this.bntUser.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -259,8 +271,9 @@
             this.pnlMain.Controls.Add(this.bntExit);
             this.pnlMain.Controls.Add(this.bntAdmin);
             this.pnlMain.Location = new System.Drawing.Point(1, -2);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1354, 735);
+            this.pnlMain.Size = new System.Drawing.Size(1805, 905);
             this.pnlMain.TabIndex = 99;
             // 
             // label3
@@ -268,20 +281,22 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(52)))), ((int)(((byte)(119)))));
-            this.label3.Location = new System.Drawing.Point(510, 542);
+            this.label3.Location = new System.Drawing.Point(680, 667);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(394, 28);
+            this.label3.Size = new System.Drawing.Size(493, 35);
             this.label3.TabIndex = 99;
             this.label3.Text = "Enchanting Efficiency in Every Stock Check";
             // 
             // FirmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1354, 733);
+            this.ClientSize = new System.Drawing.Size(1805, 902);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FirmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "                                                                                 " +
