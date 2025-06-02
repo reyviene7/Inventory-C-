@@ -356,16 +356,16 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static int getLastImageId()
+        public static int getLastSupplierId()
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<ProductImages>(unWork);
-                    return repository.SelectAll(Query.getLastImageIdQuery)
-                        .Select(x => x.image_id).FirstOrDefault();
+                    var repository = new Repository<Supplier>(unWork);
+                    return repository.SelectAll(Query.getLastSupplierIdQuery)
+                        .Select(x => x.supplier_id).FirstOrDefault();
                 }
                 catch (Exception e)
                 {
@@ -374,7 +374,6 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-
         public static int getNumberOfWarehouses()
         {
             using (var session = new DalSession())
@@ -472,6 +471,81 @@ namespace ServeAll.Core.Utilities
                     var repository = new Repository<Category>(unWork);
                     var query = repository.FindBy(x => x.category_details == categoryName);
                     return query.category_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public static int getContactId(string mobileNumber)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Contact>(unWork);
+                    var query = repository.FindBy(x => x.mobile_number == mobileNumber);
+                    return query.contact_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public static int getCompanyId(string Company)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Company>(unWork);
+                    var query = repository.FindBy(x => x.company_name == Company);
+                    return query.company_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public static int getAddressId(string fullAddress)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var parts = fullAddress.Split(',').Select(p => p.Trim()).ToArray();
+                    if (parts.Length != 4)
+                        throw new Exception("Invalid address format. Expected: 'Street, Barangay, City, Province'");
+
+                    string street = parts[0];
+                    string barangay = parts[1];
+                    string city = parts[2];
+                    string province = parts[3];
+
+                    var repository = new Repository<Address>(unWork);
+                    var query = repository.FindBy(x =>
+                        x.street == street &&
+                        x.barangay == barangay &&
+                        x.city == city &&
+                        x.province == province
+                    );
+
+                    return query != null ? query.address_id : 0;
                 }
                 catch (Exception ex)
                 {

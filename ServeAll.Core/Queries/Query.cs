@@ -53,6 +53,26 @@
 	                                       company_type, 
 	                                       date_register
                                      FROM view_company";
+        public const string AllContact = @"SELECT contact_id,
+	                                       contact_code, 
+	                                       contact_name, 
+	                                       position,
+                                           telephone_number,
+                                           mobile_number,
+                                           mobile_secondary,
+                                           email_address,
+                                           web_url,
+                                           fax_number,
+	                                       date_register
+                                     FROM contact";
+        public const string AllAddress = @"SELECT address_id,
+	                                       barangay, 
+	                                       street, 
+	                                       city,
+                                           province,
+                                           zip_code,
+                                           country
+                                     FROM address";
 
         public const string AllCustomers = @"SELECT customer_id, customer_code, customer_name, gender, email_address, telephone_number, mobile_number, fax_number, barangay, street, province, city, zip_code, client_type, date_register FROM view_customers";
         public const string PosCustomer = @"SELECT
@@ -152,6 +172,7 @@
         public const string AllItemFromDepots = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE Name LIKE '%LPG%'";
         public const string AllViewProducts = "SELECT * FROM view_product ORDER BY product_id DESC";
         public const string AllViewCategory = "SELECT * FROM view_category ORDER BY category_id DESC";
+        public const string AllViewSupplier = "SELECT * FROM view_supplier ORDER BY supplier_id DESC";
         public const string AllViewServiceImages = "SELECT * FROM view_service_images ORDER BY image_id DESC";
         public const string AllViewProfileImages = @"SELECT * FROM profile_image ORDER BY image_id DESC";
         public const string AllProductWarehouse = @"SELECT * FROM view_request_product";
@@ -304,6 +325,7 @@
         public const string getLastWarehouseDeliveryQuery = "SELECT MAX(delivery_code) AS delivery_code FROM warehouse_delivery";
         public const string getLastReceiptQuery = "SELECT MAX(receipt_number) AS receipt_number FROM warehouse_delivery";
         public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
+        public const string getLastSupplierIdQuery = "SELECT COUNT(supplier_id) as supplier_id FROM supplier";
         public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
         public const string getLastWarehousId = "SELECT COUNT(warehouse_id) as warehouse_id FROM warehouse";
         public const string getLastBranchCodeQuery = "SELECT MAX(branch_code) AS branch_code FROM branch";

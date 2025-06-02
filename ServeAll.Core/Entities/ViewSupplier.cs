@@ -8,7 +8,7 @@ namespace ServeAll.Core.Entities
     {
         [Key]
         public int supplier_id { get; set; }
-        public string supllier_code { get; set; }
+        public string supplier_code { get; set; }
         public string supplier_name{ get; set; }
         public string gender { get; set; }
         public string email_address { get; set; }

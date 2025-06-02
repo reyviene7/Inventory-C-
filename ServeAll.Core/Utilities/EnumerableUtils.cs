@@ -145,6 +145,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ViewSupplier> getSupplierList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewSupplier>(unWork);
+                    return repository.SelectAll(Query.AllViewSupplier).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewSupplier>();
+                }
+            }
+        }
 
         public static IEnumerable<ViewAcceptedDelivery> getAcceptedDelivery(string branch)
         {

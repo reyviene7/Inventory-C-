@@ -18,10 +18,11 @@ namespace Inventory.MainForm
     public partial class FirmCategory : Form
     {
         private FirmMain _main;
-        private bool _add, _edt, _del, _img, _cat;
+        private bool _add, _edt, _del, _img, _cat, _sup;
         private readonly int _userId;
         private readonly int _userTyp;
         private IEnumerable<ViewCategory> listCategory;
+        private IEnumerable<ViewSupplier> listSupplier;
         private string _title, _type, _location, _code;
         private int _imgHeight, _imgWidth;
 
@@ -55,8 +56,9 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
-            bindRefreshed();
-            _cat = true;
+            bindRefreshedCategory();
+            bindRefreshedSupplier();
+            XtraControl_SelectedPageChanged(xtraControl, null);
         }
         private void Options_Tick(object sender, EventArgs e)
         {
@@ -179,12 +181,34 @@ namespace Inventory.MainForm
             txtCategoryDetails.BackColor = Color.White;
             dkpDateRegister.BackColor = Color.White;
         }
+        private void InputWhitSup()
+        {
+            txtSupplierId.BackColor = Color.White;
+            txtSupplierCode.BackColor = Color.White;
+            txtSupplierName.BackColor = Color.White;
+            cmbGender.BackColor = Color.White;
+            cmbContact.BackColor = Color.White;
+            cmbAddress.BackColor = Color.White;
+            cmbCompany.BackColor = Color.White;
+            dkpSupplier.BackColor = Color.White;
+        }
         private void InputEnab()
         {
             txtCategoryId.Enabled = false;
             txtCategoryCode.Enabled = true;
             txtCategoryDetails.Enabled = true;
             dkpDateRegister.Enabled = true;
+        }
+        private void InputEnabSup()
+        {
+            txtSupplierId.Enabled = false;
+            txtSupplierCode.Enabled = true;
+            txtSupplierName.Enabled = true;
+            cmbGender.Enabled = true;
+            cmbContact.Enabled = true;
+            cmbAddress.Enabled = true;
+            cmbCompany.Enabled = true;
+            dkpSupplier.Enabled = true;
         }
         private void InputDisb()
         {
@@ -193,15 +217,32 @@ namespace Inventory.MainForm
             txtCategoryDetails.Enabled = false;
             dkpDateRegister.Enabled = false;
         }
+        private void InputDisbSup()
+        {
+            txtSupplierId.Enabled = false;
+            txtSupplierCode.Enabled = false;
+            txtSupplierName.Enabled = false;
+            cmbGender.Enabled = false;
+            cmbContact.Enabled = false;
+            cmbAddress.Enabled = false;
+            cmbCompany.Enabled = false;
+            dkpSupplier.Enabled = false;
+        }
         private void InputClea()
         {
             txtCategoryId.Clear();
+            txtSupplierId.Clear();
             if (!_add == false)
             {
                 txtCategoryCode.Clear();
+                txtSupplierCode.Clear();
             }
-           
             txtCategoryDetails.Clear();
+            txtSupplierName.Clear();
+            cmbGender.DataBindings.Clear();
+            cmbContact.DataBindings.Clear();
+            cmbAddress.DataBindings.Clear();
+            cmbCompany.DataBindings.Clear();
         }
         private void InputDimG()
         {
@@ -209,6 +250,17 @@ namespace Inventory.MainForm
             txtCategoryCode.BackColor = Color.DimGray;
             txtCategoryDetails.BackColor = Color.DimGray;
             dkpDateRegister.BackColor = Color.DimGray;
+        }
+        private void InputDimGSup()
+        {
+            txtSupplierId.BackColor = Color.DimGray;
+            txtSupplierCode.BackColor = Color.DimGray;
+            txtSupplierName.BackColor = Color.DimGray;
+            cmbGender.BackColor = Color.DimGray;
+            cmbContact.BackColor = Color.DimGray;
+            cmbAddress.BackColor = Color.DimGray;
+            cmbCompany.BackColor = Color.DimGray;
+            dkpSupplier.BackColor = Color.DimGray;
         }
 
         private void GenerateCode()
@@ -218,6 +270,13 @@ namespace Inventory.MainForm
             alphaNumeric.Increment();
             txtCategoryCode.Text = alphaNumeric.ToString();
         }
+        private void GenerateSupCode()
+        {
+            var lastSupplierId = FetchUtils.getLastSupplierId();
+            var alphaNumeric = new GenerateAlpaNum("SUP", 3, lastSupplierId);
+            alphaNumeric.Increment();
+            txtSupplierCode.Text = alphaNumeric.ToString();
+        }
 
         private void ButAdd()
         {
@@ -226,14 +285,24 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridControl.Enabled = false;
-            if (_cat && _img == false)
+            if (_cat && _sup == false)
             {
-               
                 InputEnab();
                 InputWhit();
                 InputClea();
                 txtCategoryDetails.Focus();
                 GenerateCode();
+            }
+            if (_cat == false && _sup )
+            {
+                BindContact();
+                BindCompany();
+                BindAddress();
+                InputEnabSup();
+                InputWhitSup();
+                InputClea();
+                txtSupplierName.Focus();
+                GenerateSupCode();
             }
         }
         private void ButUpd()
@@ -242,10 +311,15 @@ namespace Inventory.MainForm
             _add = false;
             _edt = true;
             _del = false;
-            if (_cat && _img == false)
+            if (_cat && _sup == false)
             {
                 InputEnab();
                 InputWhit();
+                gridControl.Enabled = false;
+            } else if (_cat == false && _sup)
+            {
+                InputEnabSup();
+                InputWhitSup();
                 gridControl.Enabled = false;
             }
         }
@@ -254,6 +328,8 @@ namespace Inventory.MainForm
             ButtonDel();
             InputDisb();
             InputWhit();
+            InputWhitSup();
+            InputDisbSup();
             _add = false;
             _edt = false;
             _del = true;
@@ -264,17 +340,17 @@ namespace Inventory.MainForm
             ButtonClr();
             InputWhit();
             InputDisb();
+            InputWhitSup();
+            InputDisbSup();
             gridControl.Enabled = true;
             txtCategoryCode.DataBindings.Clear();
             txtCategoryDetails.DataBindings.Clear();
+            txtSupplierCode.DataBindings.Clear();
+            txtSupplierName.DataBindings.Clear();
         }
         private void ButSav()
         {
-            if (_cat && _img == false)
-            {
-                SavCat();
-            }
-               
+            SavCat();
         }
         private void ButCan()
         {
@@ -282,51 +358,87 @@ namespace Inventory.MainForm
             InputDisb();
             InputDimG();
             InputClea();
+            InputDisbSup();
+            InputDimGSup();
             gridControl.Enabled = true;
         }
 
         private void SavCat()
         {
-            if (_add && _edt == false && _del == false && _img == false)
+            if (_add && _edt == false && _del == false && _sup == false)
             {
                 DataInsert();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindRefreshed();
+                bindRefreshedCategory();
             }
-            if (_add == false && _edt && _del == false && _img == false)
+            if (_add == false && _edt && _del == false && _sup == false)
             {
                 DataUpdate();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindRefreshed();
+                bindRefreshedCategory();
             }
-            if (_add == false && _edt == false && _del && _img == false)
+            if (_add == false && _edt == false && _del && _sup == false)
             {
                 DataDelete();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindRefreshed();
+                bindRefreshedCategory();
+            }
+            if (_add && _edt == false && _del == false && _cat == false)
+            {
+                DataInsertSup();
+                ButtonSav();
+                InputDisbSup();
+                InputDimGSup();
+                InputClea();
+                bindRefreshedSupplier();
+            }
+            if (_add == false && _edt && _del == false && _cat == false)
+            {
+                DataUpdateSup();
+                ButtonSav();
+                InputDisbSup();
+                InputDimGSup();
+                InputClea();
+                bindRefreshedSupplier();
+            }
+            if (_add == false && _edt == false && _del && _cat == false)
+            {
+                DataDeleteSup();
+                ButtonSav();
+                InputDisbSup();
+                InputDimGSup();
+                InputClea();
+                bindRefreshedSupplier();
             }
             _add = false;
             _edt = false;
             _del = false;
-            _cat = true;
-            _img = false;
             gridControl.Enabled = true;
-            bindRefreshed();
+            bindRefreshedCategory();
+            bindRefreshedSupplier();
         }
 
-        private void bindRefreshed()
+        private void bindRefreshedCategory()
         {
             listCategory = EnumerableUtils.getCategoryList();
             BindCategoryList();
+        }
+        private void bindRefreshedSupplier()
+        {
+            listSupplier = EnumerableUtils.getSupplierList();
+            BindSupplierList();
+            BindCompany();
+            BindContact();
+            BindAddress();
         }
 
         private void BindCategoryList()
@@ -354,7 +466,90 @@ namespace Inventory.MainForm
                 PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
             }
         }
+        private void BindSupplierList()
+        {
+            gridCtrlSupplier.Update();
+            try
+            {
+                var listCat = listSupplier.Select(x => new {
+                    Id = x.supplier_id,
+                    Code = x.supplier_code,
+                    SupplierName = x.supplier_name,
+                    Company = x.company_name,
+                    Email = x.email_address,
+                    Gender = x.gender,
+                    Telephone = x.telephone_number,
+                    Mobile = x.mobile_number,
+                    Barangay = x.barangay,
+                    Street = x.street,
+                    Province = x.province,
+                    DateRegister = x.date_register
+                });
 
+                gridCtrlSupplier.DataBindings.Clear();
+                gridCtrlSupplier.DataSource = listCat;
+                gridSupplier.Columns[0].Width = 40;
+                gridSupplier.Columns[1].Width = 90;
+                gridSupplier.Columns[2].Width = 250;
+                gridSupplier.Columns[3].Width = 100;
+                gridSupplier.Columns[4].Width = 100;
+                gridSupplier.Columns[5].Width = 90;
+                gridSupplier.Columns[6].Width = 100;
+                gridSupplier.Columns[7].Width = 100;
+                gridSupplier.Columns[8].Width = 100;
+                gridSupplier.Columns[9].Width = 100;
+                gridSupplier.Columns[10].Width = 100;
+                gridSupplier.Columns[11].Width = 100;
+
+            }
+            catch (Exception ex)
+            {
+                gridControl.EndUpdate();
+                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
+            }
+        }
+        private void BindContact()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                var repository = new Repository<Contact>(unWork);
+                var query = repository.SelectAll(Query.AllContact).Select(x => x.mobile_number).Distinct().ToList();
+                cmbContact.DataBindings.Clear();
+                cmbContact.DataSource = query;
+            }
+        }
+
+        private void BindAddress()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                var repository = new Repository<Address>(unWork);
+                var query = repository.SelectAll(Query.AllAddress)
+                            .Select(x => $"{x.street}, {x.barangay}, {x.city}, {x.province}")
+                            .Distinct()
+                            .OrderBy(addr => addr)
+                            .ToList();
+                cmbAddress.DataBindings.Clear();
+                cmbAddress.DataSource = query;
+            }
+        }
+
+        private void BindCompany()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                var repository = new Repository<Company>(unWork);
+                var query = repository.SelectAll(Query.AllCompany).Select(x => x.company_name).Distinct().ToList();
+                cmbCompany.DataBindings.Clear();
+                cmbCompany.DataSource = query;
+            }
+        }
         private void dkpREG_Leave(object sender, EventArgs e)
         {
             InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Image Register", Messages.TitleCategory);
@@ -371,6 +566,10 @@ namespace Inventory.MainForm
         private ViewCategory searchCategoryId(int id)
         {
             return listCategory.FirstOrDefault(view_category => view_category.category_id == id);
+        }
+        private ViewSupplier searchSupplierId(int id)
+        {
+            return listSupplier.FirstOrDefault(view_supplier => view_supplier.supplier_id == id);
         }
 
         private void gridCategory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -399,6 +598,37 @@ namespace Inventory.MainForm
             }
         }
 
+        private void GridSupplier_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (gridSupplier.RowCount > 0)
+            {
+                try
+                {
+                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    if (id.Length > 0)
+                    {
+                        var supplier_id = int.Parse(id);
+                        var supplier = searchSupplierId(supplier_id);
+                        var supplierCode = supplier.supplier_code;
+                        int supplierId = supplier.supplier_id;
+                        txtSupplierId.Text = supplierId.ToString();
+                        txtSupplierCode.Text = supplierCode;
+                        txtSupplierName.Text = supplier.supplier_name;
+                        cmbGender.Text = supplier.gender;
+                        cmbContact.Text = supplier.mobile_number;
+                        string fullAddress = $"{supplier.street}, {supplier.barangay}, {supplier.zip_code}, {supplier.province}";
+                        cmbAddress.Text = fullAddress;
+                        cmbCompany.Text = supplier.company_name;
+                        dkpDateRegister.Value = supplier.date_register;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
         private void gridCategory_RowClick(object sender, RowClickEventArgs e)
         {
             InputWhit();
@@ -407,6 +637,15 @@ namespace Inventory.MainForm
         private void gridCategory_LostFocus(object sender, EventArgs e)
         {
             InputDimG();
+        }
+        private void GridSupplier_RowClick(object sender, RowClickEventArgs e)
+        {
+            InputWhitSup();
+        }
+
+        private void GridSupplier_LostFocus(object sender, EventArgs e)
+        {
+            InputDimGSup();
         }
 
         private void bntAdd_Click(object sender, EventArgs e)
@@ -422,6 +661,46 @@ namespace Inventory.MainForm
         private void bntSave_Click(object sender, EventArgs e)
         {
             ButSav();
+        }
+
+        private void XtraControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (xtraControl.SelectedTabPage == xtraCategory)
+            {
+                _cat = true;
+                _sup = false;
+                lblMainTitle.Text = "Category";
+            }
+            else if (xtraControl.SelectedTabPage == xtraSupplierTab)
+            {
+                _sup = true;
+                _cat = false;
+                lblMainTitle.Text = "Supplier";
+            }
+        }
+
+        private void CmbContact_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                BindContact();
+            }
+        }
+
+        private void CmbAddress_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                BindAddress();
+            }
+        }
+
+        private void CmbCompany_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                BindCompany();
+            }
         }
 
         private void TxtCategoryDetails_KeyDown_1(object sender, KeyEventArgs e)
@@ -444,12 +723,29 @@ namespace Inventory.MainForm
 
         private void bntDelete_Click(object sender, EventArgs e)
         {
-            if (_cat && _img == false)
+            if (_cat && _sup == false)
             {
                 InputWhit();
                 var que =
                     PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delete Category Code: " + txtCategoryCode.Text.Trim(' ') + " " + "?", "Category Details");
+                        "Are you sure you want to Delete Category: " + txtCategoryDetails.Text.Trim(' ') + " " + "?", "Category Details");
+                if (que)
+                {
+                    ButDel();
+                    gridControl.Enabled = false;
+                }
+                else
+                {
+                    ButCan();
+                    gridControl.Enabled = true;
+                }
+            }
+            if (_cat == false && _sup )
+            {
+                InputWhitSup();
+                var que =
+                    PopupNotification.PopUpMessageQuestion(
+                        "Are you sure you want to Delete Supplier: " + txtSupplierName.Text.Trim(' ') + " " + "?", "Supplier Details");
                 if (que)
                 {
                     ButDel();
@@ -492,7 +788,44 @@ namespace Inventory.MainForm
                                                            txtCategoryCode.Text.Trim(' ')
                                                            + " " + Messages.SuccessInsert,
                             Messages.TitleSuccessInsert);
-                        bindRefreshed();
+                        bindRefreshedCategory();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    unWork.Rollback();
+                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
+                }
+            }
+        }
+        private void DataInsertSup()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<Supplier>(unWork);
+                    var supplier = new Supplier()
+                    {
+                        supplier_code = txtSupplierCode.Text.Trim(' '),
+                        supplier_name = txtSupplierName.Text.Trim(' '),
+                        gender = cmbGender.Text.Trim(' '),
+                        contact_id = FetchUtils.getContactId(cmbContact.Text),
+                        address_id = FetchUtils.getAddressId(cmbAddress.Text),
+                        company_id = FetchUtils.getCompanyId(cmbCompany.Text),
+                        date_register = dkpSupplier.Value.Date
+                    };
+                    var result = repository.Add(supplier);
+                    if (result > 0)
+                    {
+                        unWork.Commit();
+                        PopupNotification.PopUpMessages(1, "Supplier: " +
+                                                           txtSupplierName.Text.Trim(' ')
+                                                           + " " + Messages.SuccessInsert,
+                            Messages.TitleSuccessInsert);
+                        bindRefreshedSupplier();
                     }
                 }
                 catch (Exception ex)
@@ -526,7 +859,7 @@ namespace Inventory.MainForm
                                                            txtCategoryCode.Text.Trim(' ')
                                                            + " " + Messages.SuccessUpdate,
                             Messages.TitleSuccessUpdate);
-                        bindRefreshed();
+                        bindRefreshedCategory();
                     }
                 }
                 catch (Exception ex)
@@ -536,6 +869,55 @@ namespace Inventory.MainForm
                 }
             }
         }
+
+        private void DataUpdateSup()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var supplierId = Convert.ToInt32(txtSupplierId.Text);
+                    var repository = new Repository<Supplier>(unWork);
+                    var supplier = repository.Id(supplierId);
+
+                    int contactId = FetchUtils.getContactId(cmbContact.Text);
+                    int addressId = FetchUtils.getAddressId(cmbAddress.Text);
+                    int companyId = FetchUtils.getCompanyId(cmbCompany.Text);
+
+                    supplier.supplier_code = txtSupplierCode.Text.Trim();
+                    supplier.supplier_name = txtSupplierName.Text.Trim();
+                    supplier.gender = cmbGender.Text.Trim();
+                    supplier.contact_id = contactId;    
+                    supplier.address_id = addressId;    
+                    supplier.company_id = companyId;    
+                    supplier.date_register = dkpSupplier.Value.Date;
+
+                    var result = repository.Update(supplier);
+                    if (result)
+                    {
+                        unWork.Commit();
+                        PopupNotification.PopUpMessages(1, "Supplier: " +
+                                                           txtSupplierName.Text.Trim()
+                                                           + " " + Messages.SuccessUpdate,
+                            Messages.TitleSuccessUpdate);
+                        bindRefreshedSupplier();
+                    }
+                    else
+                    {
+                        unWork.Rollback();
+                        PopupNotification.PopUpMessages(0, "Update failed. Please check the input.", Messages.TitleFialedUpdate);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    unWork.Rollback();
+                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedUpdate);
+                }
+            }
+        }
+
         private void DataDelete()
         {
             using (var session = new DalSession())
@@ -555,7 +937,7 @@ namespace Inventory.MainForm
                                                            txtCategoryCode.Text.Trim(' ')
                                                            + " " + Messages.SuccessDelete,
                             Messages.TitleSuccessDelete);
-                        bindRefreshed();
+                        bindRefreshedCategory();
                     }
                 }
                 catch (Exception ex)
@@ -565,5 +947,44 @@ namespace Inventory.MainForm
                 }
             }
         }
+        private void DataDeleteSup()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var supplierId = Convert.ToInt32(txtSupplierId.Text); // You must have supplier_id in a hidden/visible field
+                    var repository = new Repository<Supplier>(unWork);
+                    var supplier = repository.Id(supplierId);
+
+                    if (supplier != null)
+                    {
+                        var result = repository.Delete(supplier);
+                        if (result)
+                        {
+                            unWork.Commit();
+                            PopupNotification.PopUpMessages(1, "Supplier: " +
+                                                               txtSupplierName.Text.Trim(' ')
+                                                               + " " + Messages.SuccessDelete,
+                                Messages.TitleSuccessDelete);
+                            bindRefreshedSupplier();
+                        }
+                    }
+                    else
+                    {
+                        PopupNotification.PopUpMessages(0, "Supplier not found.", Messages.TitleFialedDelete);
+                        unWork.Rollback();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    unWork.Rollback();
+                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedDelete);
+                }
+            }
+        }
+
     }
 }

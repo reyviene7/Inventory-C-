@@ -137,9 +137,10 @@
             this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
             this.pnlRightOptions.Controls.Add(this.pcRight);
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1296, 1);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1728, 1);
+            this.pnlRightOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlRightOptions.Name = "pnlRightOptions";
-            this.pnlRightOptions.Size = new System.Drawing.Size(77, 765);
+            this.pnlRightOptions.Size = new System.Drawing.Size(103, 942);
             this.pnlRightOptions.TabIndex = 71;
             // 
             // pcRight
@@ -147,9 +148,10 @@
             this.pcRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pcRight.Image = ((System.Drawing.Image)(resources.GetObject("pcRight.Image")));
             this.pcRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pcRight.Location = new System.Drawing.Point(3, 64);
+            this.pcRight.Location = new System.Drawing.Point(4, 79);
+            this.pcRight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcRight.Name = "pcRight";
-            this.pcRight.Size = new System.Drawing.Size(35, 34);
+            this.pcRight.Size = new System.Drawing.Size(47, 42);
             this.pcRight.TabIndex = 20;
             this.pcRight.TabStop = false;
             // 
@@ -158,18 +160,20 @@
             this.pnlRightMain.Controls.Add(this.pbExit);
             this.pnlRightMain.Controls.Add(this.pbHome);
             this.pnlRightMain.Controls.Add(this.pbLogout);
-            this.pnlRightMain.Location = new System.Drawing.Point(3, 98);
+            this.pnlRightMain.Location = new System.Drawing.Point(4, 121);
+            this.pnlRightMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlRightMain.Name = "pnlRightMain";
-            this.pnlRightMain.Size = new System.Drawing.Size(70, 529);
+            this.pnlRightMain.Size = new System.Drawing.Size(93, 651);
             this.pnlRightMain.TabIndex = 1;
             // 
             // pbExit
             // 
             this.pbExit.Image = ((System.Drawing.Image)(resources.GetObject("pbExit.Image")));
             this.pbExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbExit.Location = new System.Drawing.Point(3, 448);
+            this.pbExit.Location = new System.Drawing.Point(4, 551);
+            this.pbExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbExit.Name = "pbExit";
-            this.pbExit.Size = new System.Drawing.Size(70, 76);
+            this.pbExit.Size = new System.Drawing.Size(93, 94);
             this.pbExit.TabIndex = 5;
             this.pbExit.TabStop = false;
             this.pbExit.Click += new System.EventHandler(this.pbExit_Click);
@@ -178,9 +182,10 @@
             // 
             this.pbHome.Image = ((System.Drawing.Image)(resources.GetObject("pbHome.Image")));
             this.pbHome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbHome.Location = new System.Drawing.Point(-2, 269);
+            this.pbHome.Location = new System.Drawing.Point(-3, 331);
+            this.pbHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbHome.Name = "pbHome";
-            this.pbHome.Size = new System.Drawing.Size(76, 76);
+            this.pbHome.Size = new System.Drawing.Size(101, 94);
             this.pbHome.TabIndex = 4;
             this.pbHome.TabStop = false;
             this.pbHome.Click += new System.EventHandler(this.pbHome_Click);
@@ -189,9 +194,10 @@
             // 
             this.pbLogout.Image = ((System.Drawing.Image)(resources.GetObject("pbLogout.Image")));
             this.pbLogout.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbLogout.Location = new System.Drawing.Point(-3, 65);
+            this.pbLogout.Location = new System.Drawing.Point(-4, 80);
+            this.pbLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbLogout.Name = "pbLogout";
-            this.pbLogout.Size = new System.Drawing.Size(76, 76);
+            this.pbLogout.Size = new System.Drawing.Size(101, 94);
             this.pbLogout.TabIndex = 3;
             this.pbLogout.TabStop = false;
             this.pbLogout.Click += new System.EventHandler(this.pbLogout_Click);
@@ -202,8 +208,9 @@
             this.xtraDetails.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraDetails.Controls.Add(this.GbPersonal);
             this.xtraDetails.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraDetails.ImageOptions.Image")));
+            this.xtraDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.xtraDetails.Name = "xtraDetails";
-            this.xtraDetails.Size = new System.Drawing.Size(1010, 605);
+            this.xtraDetails.Size = new System.Drawing.Size(1347, 749);
             this.xtraDetails.Text = "Branch Details";
             // 
             // GbPersonal
@@ -244,8 +251,9 @@
             this.GbPersonal.Location = new System.Drawing.Point(0, 0);
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.GbPersonal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1010, 605);
+            this.GbPersonal.Size = new System.Drawing.Size(1347, 749);
             this.GbPersonal.TabIndex = 173;
             // 
             // label12
@@ -254,9 +262,10 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(422, 63);
+            this.label12.Location = new System.Drawing.Point(567, 189);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(92, 17);
+            this.label12.Size = new System.Drawing.Size(119, 23);
             this.label12.TabIndex = 203;
             this.label12.Text = "Branch Email:";
             // 
@@ -266,9 +275,10 @@
             this.txtBranchEmail.Enabled = false;
             this.txtBranchEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchEmail.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchEmail.Location = new System.Drawing.Point(557, 57);
+            this.txtBranchEmail.Location = new System.Drawing.Point(747, 181);
+            this.txtBranchEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchEmail.Name = "txtBranchEmail";
-            this.txtBranchEmail.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchEmail.Size = new System.Drawing.Size(357, 34);
             this.txtBranchEmail.TabIndex = 121;
             this.txtBranchEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBranchEmail_KeyDown);
             // 
@@ -278,9 +288,10 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(8, 273);
+            this.label8.Location = new System.Drawing.Point(566, 75);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 17);
+            this.label8.Size = new System.Drawing.Size(80, 23);
             this.label8.TabIndex = 201;
             this.label8.Text = "Country:";
             // 
@@ -290,9 +301,10 @@
             this.txtBranchCountry.Enabled = false;
             this.txtBranchCountry.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchCountry.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchCountry.Location = new System.Drawing.Point(140, 267);
+            this.txtBranchCountry.Location = new System.Drawing.Point(747, 68);
+            this.txtBranchCountry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchCountry.Name = "txtBranchCountry";
-            this.txtBranchCountry.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchCountry.Size = new System.Drawing.Size(357, 34);
             this.txtBranchCountry.TabIndex = 118;
             this.txtBranchCountry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBranchCountry_KeyDown);
             // 
@@ -302,9 +314,10 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(8, 243);
+            this.label9.Location = new System.Drawing.Point(566, 38);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 17);
+            this.label9.Size = new System.Drawing.Size(79, 23);
             this.label9.TabIndex = 199;
             this.label9.Text = "Zipcode:";
             // 
@@ -314,9 +327,10 @@
             this.txtBranchZip.Enabled = false;
             this.txtBranchZip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchZip.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchZip.Location = new System.Drawing.Point(140, 237);
+            this.txtBranchZip.Location = new System.Drawing.Point(747, 31);
+            this.txtBranchZip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchZip.Name = "txtBranchZip";
-            this.txtBranchZip.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchZip.Size = new System.Drawing.Size(357, 34);
             this.txtBranchZip.TabIndex = 117;
             this.txtBranchZip.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBranchZip_KeyDown);
             // 
@@ -326,9 +340,10 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(8, 183);
+            this.label10.Location = new System.Drawing.Point(11, 225);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 17);
+            this.label10.Size = new System.Drawing.Size(47, 23);
             this.label10.TabIndex = 198;
             this.label10.Text = "City:";
             // 
@@ -338,9 +353,10 @@
             this.txtBranchCity.Enabled = false;
             this.txtBranchCity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchCity.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchCity.Location = new System.Drawing.Point(140, 177);
+            this.txtBranchCity.Location = new System.Drawing.Point(187, 218);
+            this.txtBranchCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchCity.Name = "txtBranchCity";
-            this.txtBranchCity.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchCity.Size = new System.Drawing.Size(357, 34);
             this.txtBranchCity.TabIndex = 115;
             this.txtBranchCity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBranchCity_KeyDown);
             // 
@@ -350,9 +366,10 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(8, 153);
+            this.label11.Location = new System.Drawing.Point(11, 188);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 17);
+            this.label11.Size = new System.Drawing.Size(64, 23);
             this.label11.TabIndex = 197;
             this.label11.Text = "Street:";
             // 
@@ -362,9 +379,10 @@
             this.txtBranchStreet.Enabled = false;
             this.txtBranchStreet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchStreet.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchStreet.Location = new System.Drawing.Point(140, 147);
+            this.txtBranchStreet.Location = new System.Drawing.Point(187, 181);
+            this.txtBranchStreet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchStreet.Name = "txtBranchStreet";
-            this.txtBranchStreet.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchStreet.Size = new System.Drawing.Size(357, 34);
             this.txtBranchStreet.TabIndex = 114;
             this.txtBranchStreet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBranchStreet_KeyDown);
             // 
@@ -374,9 +392,10 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(422, 93);
+            this.label7.Location = new System.Drawing.Point(567, 225);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 17);
+            this.label7.Size = new System.Drawing.Size(101, 23);
             this.label7.TabIndex = 191;
             this.label7.Text = "Branch Fax:";
             // 
@@ -386,9 +405,10 @@
             this.txtBranchFax.Enabled = false;
             this.txtBranchFax.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchFax.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchFax.Location = new System.Drawing.Point(557, 87);
+            this.txtBranchFax.Location = new System.Drawing.Point(747, 218);
+            this.txtBranchFax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchFax.Name = "txtBranchFax";
-            this.txtBranchFax.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchFax.Size = new System.Drawing.Size(357, 34);
             this.txtBranchFax.TabIndex = 122;
             this.txtBranchFax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFAX_KeyDown);
             // 
@@ -398,9 +418,10 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(422, 33);
+            this.label6.Location = new System.Drawing.Point(567, 152);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 17);
+            this.label6.Size = new System.Drawing.Size(131, 23);
             this.label6.TabIndex = 189;
             this.label6.Text = "Branch Mobile:";
             // 
@@ -410,9 +431,10 @@
             this.txtBranchMobile.Enabled = false;
             this.txtBranchMobile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchMobile.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchMobile.Location = new System.Drawing.Point(557, 27);
+            this.txtBranchMobile.Location = new System.Drawing.Point(747, 143);
+            this.txtBranchMobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchMobile.Name = "txtBranchMobile";
-            this.txtBranchMobile.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchMobile.Size = new System.Drawing.Size(357, 34);
             this.txtBranchMobile.TabIndex = 120;
             this.txtBranchMobile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBAM_KeyDown);
             // 
@@ -422,9 +444,10 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(8, 303);
+            this.label5.Location = new System.Drawing.Point(566, 112);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 17);
+            this.label5.Size = new System.Drawing.Size(156, 23);
             this.label5.TabIndex = 187;
             this.label5.Text = "Branch Telephone:";
             // 
@@ -434,9 +457,10 @@
             this.txtBranchTel.Enabled = false;
             this.txtBranchTel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchTel.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchTel.Location = new System.Drawing.Point(139, 297);
+            this.txtBranchTel.Location = new System.Drawing.Point(747, 105);
+            this.txtBranchTel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchTel.Name = "txtBranchTel";
-            this.txtBranchTel.Size = new System.Drawing.Size(270, 29);
+            this.txtBranchTel.Size = new System.Drawing.Size(357, 34);
             this.txtBranchTel.TabIndex = 119;
             this.txtBranchTel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBAT_KeyDown);
             // 
@@ -532,9 +556,10 @@
             "Zamboanga del Sur",
             "Zamboanga Sibugay",
             "Metro Manila"});
-            this.cmbProvincialAddress.Location = new System.Drawing.Point(140, 207);
+            this.cmbProvincialAddress.Location = new System.Drawing.Point(187, 255);
+            this.cmbProvincialAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbProvincialAddress.Name = "cmbProvincialAddress";
-            this.cmbProvincialAddress.Size = new System.Drawing.Size(269, 29);
+            this.cmbProvincialAddress.Size = new System.Drawing.Size(357, 36);
             this.cmbProvincialAddress.TabIndex = 116;
             this.cmbProvincialAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPRV_KeyDown);
             // 
@@ -544,9 +569,10 @@
             this.lblProvicen.BackColor = System.Drawing.Color.Transparent;
             this.lblProvicen.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProvicen.ForeColor = System.Drawing.Color.White;
-            this.lblProvicen.Location = new System.Drawing.Point(8, 213);
+            this.lblProvicen.Location = new System.Drawing.Point(11, 262);
+            this.lblProvicen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProvicen.Name = "lblProvicen";
-            this.lblProvicen.Size = new System.Drawing.Size(126, 17);
+            this.lblProvicen.Size = new System.Drawing.Size(162, 23);
             this.lblProvicen.TabIndex = 185;
             this.lblProvicen.Text = "Provincial Address:";
             // 
@@ -556,9 +582,10 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(422, 123);
+            this.label4.Location = new System.Drawing.Point(567, 262);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 17);
+            this.label4.Size = new System.Drawing.Size(125, 23);
             this.label4.TabIndex = 183;
             this.label4.Text = "Date Register:";
             // 
@@ -568,9 +595,10 @@
             this.dkpDateRegister.Enabled = false;
             this.dkpDateRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDateRegister.Location = new System.Drawing.Point(557, 117);
+            this.dkpDateRegister.Location = new System.Drawing.Point(747, 255);
+            this.dkpDateRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dkpDateRegister.Name = "dkpDateRegister";
-            this.dkpDateRegister.Size = new System.Drawing.Size(269, 29);
+            this.dkpDateRegister.Size = new System.Drawing.Size(357, 34);
             this.dkpDateRegister.TabIndex = 123;
             this.dkpDateRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpREG_KeyDown);
             // 
@@ -580,9 +608,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(8, 123);
+            this.label3.Location = new System.Drawing.Point(11, 151);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 17);
+            this.label3.Size = new System.Drawing.Size(90, 23);
             this.label3.TabIndex = 178;
             this.label3.Text = "Barangay:";
             // 
@@ -592,9 +621,10 @@
             this.txtBranchBarangay.Enabled = false;
             this.txtBranchBarangay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchBarangay.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchBarangay.Location = new System.Drawing.Point(140, 117);
+            this.txtBranchBarangay.Location = new System.Drawing.Point(187, 144);
+            this.txtBranchBarangay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchBarangay.Name = "txtBranchBarangay";
-            this.txtBranchBarangay.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchBarangay.Size = new System.Drawing.Size(357, 34);
             this.txtBranchBarangay.TabIndex = 113;
             this.txtBranchBarangay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBAA_KeyDown);
             // 
@@ -604,9 +634,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(8, 93);
+            this.label2.Location = new System.Drawing.Point(11, 114);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 17);
+            this.label2.Size = new System.Drawing.Size(122, 23);
             this.label2.TabIndex = 176;
             this.label2.Text = "Branch Name:";
             // 
@@ -616,9 +647,10 @@
             this.txtBranchName.Enabled = false;
             this.txtBranchName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchName.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchName.Location = new System.Drawing.Point(140, 87);
+            this.txtBranchName.Location = new System.Drawing.Point(187, 107);
+            this.txtBranchName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchName.Name = "txtBranchName";
-            this.txtBranchName.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchName.Size = new System.Drawing.Size(357, 34);
             this.txtBranchName.TabIndex = 112;
             this.txtBranchName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBAD_KeyDown);
             // 
@@ -628,9 +660,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(8, 63);
+            this.label1.Location = new System.Drawing.Point(11, 78);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 17);
+            this.label1.Size = new System.Drawing.Size(116, 23);
             this.label1.TabIndex = 174;
             this.label1.Text = "Branch Code:";
             // 
@@ -640,9 +673,10 @@
             this.txtBranchCode.Enabled = false;
             this.txtBranchCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchCode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchCode.Location = new System.Drawing.Point(140, 57);
+            this.txtBranchCode.Location = new System.Drawing.Point(187, 70);
+            this.txtBranchCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchCode.Name = "txtBranchCode";
-            this.txtBranchCode.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchCode.Size = new System.Drawing.Size(357, 34);
             this.txtBranchCode.TabIndex = 111;
             this.txtBranchCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBAC_KeyDown);
             // 
@@ -653,11 +687,12 @@
             this.gbCON.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.gbCON.Controls.Add(this.gCON);
             this.gbCON.Controls.Add(this.txtPRI);
-            this.gbCON.Location = new System.Drawing.Point(-1, 333);
+            this.gbCON.Location = new System.Drawing.Point(-1, 317);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.gbCON.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(1007, 272);
+            this.gbCON.Size = new System.Drawing.Size(1343, 428);
             this.gbCON.TabIndex = 172;
             this.gbCON.Text = "Branch List";
             // 
@@ -667,11 +702,13 @@
             this.gCON.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gCON.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
             this.gCON.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gCON.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gCON.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.gCON.Location = new System.Drawing.Point(3, 18);
+            this.gCON.Location = new System.Drawing.Point(3, 21);
             this.gCON.MainView = this.gridBranch;
+            this.gCON.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gCON.Name = "gCON";
-            this.gCON.Size = new System.Drawing.Size(1001, 251);
+            this.gCON.Size = new System.Drawing.Size(1337, 404);
             this.gCON.TabIndex = 100;
             this.gCON.TabStop = false;
             this.gCON.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -724,6 +761,7 @@
             this.gridBranch.AppearancePrint.Row.Options.UseFont = true;
             this.gridBranch.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridBranch.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.gridBranch.DetailHeight = 431;
             this.gridBranch.GridControl = this.gCON;
             this.gridBranch.Name = "gridBranch";
             this.gridBranch.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -738,6 +776,7 @@
             // 
             // gridView2
             // 
+            this.gridView2.DetailHeight = 431;
             this.gridView2.GridControl = this.gCON;
             this.gridView2.Name = "gridView2";
             // 
@@ -771,6 +810,7 @@
             this.gridView3.AppearancePrint.Row.Options.UseFont = true;
             this.gridView3.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridView3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.gridView3.DetailHeight = 431;
             this.gridView3.GridControl = this.gCON;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -784,6 +824,7 @@
             // 
             // grdHIS
             // 
+            this.grdHIS.DetailHeight = 431;
             this.grdHIS.GridControl = this.gCON;
             this.grdHIS.Name = "grdHIS";
             // 
@@ -793,10 +834,11 @@
             this.txtPRI.Enabled = false;
             this.txtPRI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPRI.ForeColor = System.Drawing.Color.Maroon;
-            this.txtPRI.Location = new System.Drawing.Point(-8, 21);
+            this.txtPRI.Location = new System.Drawing.Point(-11, 26);
+            this.txtPRI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPRI.Multiline = true;
             this.txtPRI.Name = "txtPRI";
-            this.txtPRI.Size = new System.Drawing.Size(10, 10);
+            this.txtPRI.Size = new System.Drawing.Size(12, 11);
             this.txtPRI.TabIndex = 99;
             this.txtPRI.Visible = false;
             // 
@@ -806,9 +848,10 @@
             this.lblBarcode.BackColor = System.Drawing.Color.Transparent;
             this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
-            this.lblBarcode.Location = new System.Drawing.Point(8, 33);
+            this.lblBarcode.Location = new System.Drawing.Point(11, 41);
+            this.lblBarcode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(70, 17);
+            this.lblBarcode.Size = new System.Drawing.Size(91, 23);
             this.lblBarcode.TabIndex = 142;
             this.lblBarcode.Text = "Branch Id:";
             // 
@@ -818,9 +861,10 @@
             this.txtBranchId.Enabled = false;
             this.txtBranchId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranchId.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBranchId.Location = new System.Drawing.Point(140, 27);
+            this.txtBranchId.Location = new System.Drawing.Point(187, 33);
+            this.txtBranchId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBranchId.Name = "txtBranchId";
-            this.txtBranchId.Size = new System.Drawing.Size(269, 29);
+            this.txtBranchId.Size = new System.Drawing.Size(357, 34);
             this.txtBranchId.TabIndex = 110;
             // 
             // RightOptions
@@ -847,27 +891,30 @@
             this.pnlMain.Controls.Add(this.bntUPD);
             this.pnlMain.Controls.Add(this.bntADD);
             this.pnlMain.Location = new System.Drawing.Point(1, 1);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1207, 668);
+            this.pnlMain.Size = new System.Drawing.Size(1609, 822);
             this.pnlMain.TabIndex = 69;
             // 
             // pcLOG
             // 
             this.pcLOG.BackColor = System.Drawing.Color.Gray;
             this.pcLOG.Image = ((System.Drawing.Image)(resources.GetObject("pcLOG.Image")));
-            this.pcLOG.Location = new System.Drawing.Point(48, 3);
+            this.pcLOG.Location = new System.Drawing.Point(64, 4);
+            this.pcLOG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcLOG.Name = "pcLOG";
-            this.pcLOG.Size = new System.Drawing.Size(81, 116);
+            this.pcLOG.Size = new System.Drawing.Size(108, 143);
             this.pcLOG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcLOG.TabIndex = 204;
             this.pcLOG.TabStop = false;
             // 
             // xtraBranch
             // 
-            this.xtraBranch.Location = new System.Drawing.Point(192, 32);
+            this.xtraBranch.Location = new System.Drawing.Point(256, 39);
+            this.xtraBranch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.xtraBranch.Name = "xtraBranch";
             this.xtraBranch.SelectedTabPage = this.xtraDetails;
-            this.xtraBranch.Size = new System.Drawing.Size(1012, 633);
+            this.xtraBranch.Size = new System.Drawing.Size(1349, 779);
             this.xtraBranch.TabIndex = 1;
             this.xtraBranch.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraDetails});
@@ -877,9 +924,10 @@
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(11, 110);
+            this.lblMainTitle.Location = new System.Drawing.Point(15, 135);
+            this.lblMainTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(167, 47);
+            this.lblMainTitle.Size = new System.Drawing.Size(209, 60);
             this.lblMainTitle.TabIndex = 59;
             this.lblMainTitle.Text = "BRANCH";
             // 
@@ -890,9 +938,10 @@
             this.bntHOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntHOM.ForeColor = System.Drawing.Color.White;
             this.bntHOM.Image = ((System.Drawing.Image)(resources.GetObject("bntHOM.Image")));
-            this.bntHOM.Location = new System.Drawing.Point(97, 477);
+            this.bntHOM.Location = new System.Drawing.Point(129, 587);
+            this.bntHOM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntHOM.Name = "bntHOM";
-            this.bntHOM.Size = new System.Drawing.Size(91, 104);
+            this.bntHOM.Size = new System.Drawing.Size(121, 128);
             this.bntHOM.TabIndex = 55;
             this.bntHOM.Text = "HOME";
             this.bntHOM.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -906,9 +955,10 @@
             this.bntDEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntDEL.ForeColor = System.Drawing.Color.White;
             this.bntDEL.Image = ((System.Drawing.Image)(resources.GetObject("bntDEL.Image")));
-            this.bntDEL.Location = new System.Drawing.Point(5, 477);
+            this.bntDEL.Location = new System.Drawing.Point(7, 587);
+            this.bntDEL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntDEL.Name = "bntDEL";
-            this.bntDEL.Size = new System.Drawing.Size(91, 104);
+            this.bntDEL.Size = new System.Drawing.Size(121, 128);
             this.bntDEL.TabIndex = 54;
             this.bntDEL.Text = "DELETE";
             this.bntDEL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -922,9 +972,10 @@
             this.bntCLR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntCLR.ForeColor = System.Drawing.Color.White;
             this.bntCLR.Image = ((System.Drawing.Image)(resources.GetObject("bntCLR.Image")));
-            this.bntCLR.Location = new System.Drawing.Point(5, 372);
+            this.bntCLR.Location = new System.Drawing.Point(7, 458);
+            this.bntCLR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntCLR.Name = "bntCLR";
-            this.bntCLR.Size = new System.Drawing.Size(91, 104);
+            this.bntCLR.Size = new System.Drawing.Size(121, 128);
             this.bntCLR.TabIndex = 53;
             this.bntCLR.Text = "CLEAR";
             this.bntCLR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -939,9 +990,10 @@
             this.bntCAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntCAN.ForeColor = System.Drawing.Color.White;
             this.bntCAN.Image = ((System.Drawing.Image)(resources.GetObject("bntCAN.Image")));
-            this.bntCAN.Location = new System.Drawing.Point(97, 372);
+            this.bntCAN.Location = new System.Drawing.Point(129, 458);
+            this.bntCAN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntCAN.Name = "bntCAN";
-            this.bntCAN.Size = new System.Drawing.Size(91, 104);
+            this.bntCAN.Size = new System.Drawing.Size(121, 128);
             this.bntCAN.TabIndex = 52;
             this.bntCAN.Text = "CANCEL";
             this.bntCAN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -956,9 +1008,10 @@
             this.bntSAV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntSAV.ForeColor = System.Drawing.Color.White;
             this.bntSAV.Image = ((System.Drawing.Image)(resources.GetObject("bntSAV.Image")));
-            this.bntSAV.Location = new System.Drawing.Point(5, 267);
+            this.bntSAV.Location = new System.Drawing.Point(7, 329);
+            this.bntSAV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntSAV.Name = "bntSAV";
-            this.bntSAV.Size = new System.Drawing.Size(183, 104);
+            this.bntSAV.Size = new System.Drawing.Size(244, 128);
             this.bntSAV.TabIndex = 51;
             this.bntSAV.Text = "SAVE";
             this.bntSAV.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -972,9 +1025,10 @@
             this.bntUPD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntUPD.ForeColor = System.Drawing.Color.White;
             this.bntUPD.Image = ((System.Drawing.Image)(resources.GetObject("bntUPD.Image")));
-            this.bntUPD.Location = new System.Drawing.Point(97, 162);
+            this.bntUPD.Location = new System.Drawing.Point(129, 199);
+            this.bntUPD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntUPD.Name = "bntUPD";
-            this.bntUPD.Size = new System.Drawing.Size(91, 104);
+            this.bntUPD.Size = new System.Drawing.Size(121, 128);
             this.bntUPD.TabIndex = 50;
             this.bntUPD.Text = "EDIT";
             this.bntUPD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -988,9 +1042,10 @@
             this.bntADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntADD.ForeColor = System.Drawing.Color.White;
             this.bntADD.Image = ((System.Drawing.Image)(resources.GetObject("bntADD.Image")));
-            this.bntADD.Location = new System.Drawing.Point(5, 162);
+            this.bntADD.Location = new System.Drawing.Point(7, 199);
+            this.bntADD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntADD.Name = "bntADD";
-            this.bntADD.Size = new System.Drawing.Size(91, 104);
+            this.bntADD.Size = new System.Drawing.Size(121, 128);
             this.bntADD.TabIndex = 49;
             this.bntADD.Text = "ADD";
             this.bntADD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1003,9 +1058,10 @@
             this.pnlOptions.Controls.Add(this.pnlOptionsMain);
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
-            this.pnlOptions.Location = new System.Drawing.Point(-2, 691);
+            this.pnlOptions.Location = new System.Drawing.Point(-3, 850);
+            this.pnlOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlOptions.Name = "pnlOptions";
-            this.pnlOptions.Size = new System.Drawing.Size(1298, 74);
+            this.pnlOptions.Size = new System.Drawing.Size(1731, 91);
             this.pnlOptions.TabIndex = 70;
             // 
             // pnlOptionsMain
@@ -1020,18 +1076,20 @@
             this.pnlOptionsMain.Controls.Add(this.pcUser);
             this.pnlOptionsMain.Controls.Add(this.pcAdd);
             this.pnlOptionsMain.Controls.Add(this.pcChangePassword);
-            this.pnlOptionsMain.Location = new System.Drawing.Point(19, 4);
+            this.pnlOptionsMain.Location = new System.Drawing.Point(25, 5);
+            this.pnlOptionsMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlOptionsMain.Name = "pnlOptionsMain";
-            this.pnlOptionsMain.Size = new System.Drawing.Size(893, 67);
+            this.pnlOptionsMain.Size = new System.Drawing.Size(1191, 82);
             this.pnlOptionsMain.TabIndex = 21;
             // 
             // pictureBox17
             // 
             this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
-            this.pictureBox17.Location = new System.Drawing.Point(806, 3);
+            this.pictureBox17.Location = new System.Drawing.Point(1075, 4);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox17.Size = new System.Drawing.Size(101, 79);
             this.pictureBox17.TabIndex = 59;
             this.pictureBox17.TabStop = false;
             // 
@@ -1039,9 +1097,10 @@
             // 
             this.pcSettings.BackColor = System.Drawing.Color.Transparent;
             this.pcSettings.Image = ((System.Drawing.Image)(resources.GetObject("pcSettings.Image")));
-            this.pcSettings.Location = new System.Drawing.Point(714, 3);
+            this.pcSettings.Location = new System.Drawing.Point(952, 4);
+            this.pcSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcSettings.Name = "pcSettings";
-            this.pcSettings.Size = new System.Drawing.Size(76, 61);
+            this.pcSettings.Size = new System.Drawing.Size(101, 75);
             this.pcSettings.TabIndex = 58;
             this.pcSettings.TabStop = false;
             // 
@@ -1049,9 +1108,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(241, 1);
+            this.pictureBox1.Location = new System.Drawing.Point(321, 1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox1.Size = new System.Drawing.Size(101, 79);
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -1060,9 +1120,10 @@
             // 
             this.pcSchedule.BackColor = System.Drawing.Color.Transparent;
             this.pcSchedule.Image = ((System.Drawing.Image)(resources.GetObject("pcSchedule.Image")));
-            this.pcSchedule.Location = new System.Drawing.Point(616, 3);
+            this.pcSchedule.Location = new System.Drawing.Point(821, 4);
+            this.pcSchedule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcSchedule.Name = "pcSchedule";
-            this.pcSchedule.Size = new System.Drawing.Size(76, 64);
+            this.pcSchedule.Size = new System.Drawing.Size(101, 79);
             this.pcSchedule.TabIndex = 17;
             this.pcSchedule.TabStop = false;
             // 
@@ -1070,9 +1131,10 @@
             // 
             this.pcBL.BackColor = System.Drawing.Color.Transparent;
             this.pcBL.Image = ((System.Drawing.Image)(resources.GetObject("pcBL.Image")));
-            this.pcBL.Location = new System.Drawing.Point(523, 2);
+            this.pcBL.Location = new System.Drawing.Point(697, 2);
+            this.pcBL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcBL.Name = "pcBL";
-            this.pcBL.Size = new System.Drawing.Size(76, 64);
+            this.pcBL.Size = new System.Drawing.Size(101, 79);
             this.pcBL.TabIndex = 16;
             this.pcBL.TabStop = false;
             this.pcBL.Click += new System.EventHandler(this.pcBL_Click);
@@ -1081,9 +1143,10 @@
             // 
             this.pcList.BackColor = System.Drawing.Color.Transparent;
             this.pcList.Image = ((System.Drawing.Image)(resources.GetObject("pcList.Image")));
-            this.pcList.Location = new System.Drawing.Point(428, 1);
+            this.pcList.Location = new System.Drawing.Point(571, 1);
+            this.pcList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcList.Name = "pcList";
-            this.pcList.Size = new System.Drawing.Size(76, 64);
+            this.pcList.Size = new System.Drawing.Size(101, 79);
             this.pcList.TabIndex = 15;
             this.pcList.TabStop = false;
             // 
@@ -1091,9 +1154,10 @@
             // 
             this.pcUser.BackColor = System.Drawing.Color.Transparent;
             this.pcUser.Image = ((System.Drawing.Image)(resources.GetObject("pcUser.Image")));
-            this.pcUser.Location = new System.Drawing.Point(144, 2);
+            this.pcUser.Location = new System.Drawing.Point(192, 2);
+            this.pcUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcUser.Name = "pcUser";
-            this.pcUser.Size = new System.Drawing.Size(76, 64);
+            this.pcUser.Size = new System.Drawing.Size(101, 79);
             this.pcUser.TabIndex = 14;
             this.pcUser.TabStop = false;
             this.pcUser.Click += new System.EventHandler(this.pcUser_Click);
@@ -1102,9 +1166,10 @@
             // 
             this.pcAdd.BackColor = System.Drawing.Color.Transparent;
             this.pcAdd.Image = ((System.Drawing.Image)(resources.GetObject("pcAdd.Image")));
-            this.pcAdd.Location = new System.Drawing.Point(37, 2);
+            this.pcAdd.Location = new System.Drawing.Point(49, 2);
+            this.pcAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcAdd.Name = "pcAdd";
-            this.pcAdd.Size = new System.Drawing.Size(76, 64);
+            this.pcAdd.Size = new System.Drawing.Size(101, 79);
             this.pcAdd.TabIndex = 13;
             this.pcAdd.TabStop = false;
             this.pcAdd.Click += new System.EventHandler(this.pcAdd_Click);
@@ -1113,9 +1178,10 @@
             // 
             this.pcChangePassword.BackColor = System.Drawing.Color.Transparent;
             this.pcChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("pcChangePassword.Image")));
-            this.pcChangePassword.Location = new System.Drawing.Point(334, 2);
+            this.pcChangePassword.Location = new System.Drawing.Point(445, 2);
+            this.pcChangePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcChangePassword.Name = "pcChangePassword";
-            this.pcChangePassword.Size = new System.Drawing.Size(76, 64);
+            this.pcChangePassword.Size = new System.Drawing.Size(101, 79);
             this.pcChangePassword.TabIndex = 9;
             this.pcChangePassword.TabStop = false;
             this.pcChangePassword.Click += new System.EventHandler(this.pcChangePassword_Click);
@@ -1125,22 +1191,24 @@
             this.pbHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pbHide.Image = ((System.Drawing.Image)(resources.GetObject("pbHide.Image")));
             this.pbHide.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbHide.Location = new System.Drawing.Point(1154, 3);
+            this.pbHide.Location = new System.Drawing.Point(1539, 4);
+            this.pbHide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbHide.Name = "pbHide";
-            this.pbHide.Size = new System.Drawing.Size(38, 34);
+            this.pbHide.Size = new System.Drawing.Size(51, 42);
             this.pbHide.TabIndex = 14;
             this.pbHide.TabStop = false;
             // 
             // FrmBranch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1370, 767);
+            this.ClientSize = new System.Drawing.Size(1827, 944);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmBranch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmBranch";

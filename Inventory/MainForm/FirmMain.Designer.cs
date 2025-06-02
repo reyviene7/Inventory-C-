@@ -897,10 +897,10 @@
             this.tileCAT.Checked = true;
             tileItemElement41.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image18")));
             tileItemElement41.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement41.Text = "Product";
+            tileItemElement41.Text = "Category";
             tileItemElement42.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
-            tileItemElement42.Text = "Category";
-            tileItemElement42.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
+            tileItemElement42.Text = "Supplier";
+            tileItemElement42.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight;
             this.tileCAT.Elements.Add(tileItemElement41);
             this.tileCAT.Elements.Add(tileItemElement42);
             this.tileCAT.Id = 36;
