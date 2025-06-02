@@ -413,6 +413,34 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getImageId(string title)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ProductImages>(unWork);
+                    var result = repository.FindBy(x => x.title.Trim().ToLower() == title.Trim().ToLower());
+
+                    if (result == null)
+                    {
+                        Console.WriteLine($"No image found with title: '{title}'");
+                        return 0;
+                    }
+
+                    return result.image_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("getImageId error: " + ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+
         public static int getSupplierId(string supplier)
         {
             using (var session = new DalSession())

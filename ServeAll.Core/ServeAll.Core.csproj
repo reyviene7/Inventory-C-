@@ -145,8 +145,7 @@
     <Compile Include="Entities\TempSales.cs" />
     <Compile Include="Entities\users.cs" />
     <Compile Include="Entities\UserType.cs" />
-    <Compile Include="Entities\ViewCategoryImage.cs" />
-    <Compile Include="Entities\ViewCatImages.cs" />
+    <Compile Include="Entities\ViewCategory.cs" />
     <Compile Include="Entities\ViewCredit.cs" />
     <Compile Include="Entities\ViewCustomers.cs" />
     <Compile Include="Entities\ViewEmployees.cs" />

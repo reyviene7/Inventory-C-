@@ -21,6 +21,7 @@ namespace Inventory.MainForm
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewReturnWarehouse> _return_list;
+        private IEnumerable<ViewReturnWarehouse> warehouse_return;
         private readonly IEnumerable<ViewImageProduct> _imgList;
         private IEnumerable<ViewSalesPart> _sales_list;
         private IEnumerable<ViewAcceptedDelivery> _accepted_list;
@@ -38,9 +39,11 @@ namespace Inventory.MainForm
         public int received
         {
             get { return _received; }
-            set { 
+            set
+            {
                 _received = value;
-                if (_received == 1) {
+                if (_received == 1)
+                {
                     splashScreen.ShowWaitForm();
                     _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
                     bindDeliveryList(branch);
@@ -169,19 +172,19 @@ namespace Inventory.MainForm
             var list = _warehouse_delivery
                 .Where(p => p.branch_details == branch)
                 .Select(p => new
-            {
-                Id = "" + p.delivery_id,
-                Barcode = p.product_code,
-                Code = p.delivery_code,
-                Item = p.product_name,
-                Branch = p.branch_details,
-                Price = "P" + p.cost_per_unit,
-                LastCost = "P" + p.last_cost_per_unit,
-                Quantity = "" + p.delivery_qty,
-                Status = p.status_details,
-                Date = p.delivery_date,
-                Delivery = p.delivery_status
-            }).ToList();
+                {
+                    Id = "" + p.delivery_id,
+                    Barcode = p.product_code,
+                    Code = p.delivery_code,
+                    Item = p.product_name,
+                    Branch = p.branch_details,
+                    Price = "P" + p.cost_per_unit,
+                    LastCost = "P" + p.last_cost_per_unit,
+                    Quantity = "" + p.delivery_qty,
+                    Status = p.status_details,
+                    Date = p.delivery_date,
+                    Delivery = p.delivery_status
+                }).ToList();
             gridCtrlPending.DataSource = list;
             gridCtrlPending.Update();
         }
@@ -219,19 +222,19 @@ namespace Inventory.MainForm
             var list = _warehouse_delivery
                 .Where(p => p.branch_details == branch)
                 .Select(p => new
-            {
-                Id = "" + p.delivery_id,
-                Barcode = p.product_code,
-                Code = p.delivery_code,
-                Item = p.product_name,
-                Branch = p.branch_details,
-                Price = "P" + p.cost_per_unit,
-                LastCost = "P" + p.last_cost_per_unit,
-                Quantity = "" + p.delivery_qty,
-                Status = p.status_details,
-                Date = p.delivery_date,
-                Delivery = p.delivery_status
-            });
+                {
+                    Id = "" + p.delivery_id,
+                    Barcode = p.product_code,
+                    Code = p.delivery_code,
+                    Item = p.product_name,
+                    Branch = p.branch_details,
+                    Price = "P" + p.cost_per_unit,
+                    LastCost = "P" + p.last_cost_per_unit,
+                    Quantity = "" + p.delivery_qty,
+                    Status = p.status_details,
+                    Date = p.delivery_date,
+                    Delivery = p.delivery_status
+                });
             gridCtrlPending.DataSource = list;
             gridCtrlPending.Update();
         }
@@ -259,14 +262,14 @@ namespace Inventory.MainForm
             }).ToList();
             gridCtrlWarehouse.DataSource = list;
             gridCtrlWarehouse.Update();
-         
+
             if (gridWarehouseInventory.RowCount > 0)
                 gridWarehouseInventory.Columns[0].Width = 40;
-                gridWarehouseInventory.Columns[1].Width = 90;
-                gridWarehouseInventory.Columns[2].Width = 65;
-                gridWarehouseInventory.Columns[3].Width = 40;
-                gridWarehouseInventory.Columns[4].Width = 40;
-                gridWarehouseInventory.Columns[6].Width = 180;
+            gridWarehouseInventory.Columns[1].Width = 90;
+            gridWarehouseInventory.Columns[2].Width = 65;
+            gridWarehouseInventory.Columns[3].Width = 40;
+            gridWarehouseInventory.Columns[4].Width = 40;
+            gridWarehouseInventory.Columns[6].Width = 180;
         }
 
         private void bindSalesParticular()
@@ -309,38 +312,40 @@ namespace Inventory.MainForm
                 PopupNotification.PopUpMessages(0, ex.ToString(), "Sales Particular");
             }
         }
+        private void bindReturnRefresh()
+        {
+            warehouse_return = EnumerableUtils.getEnumerableWareHouse(branch);
+            bindReturnList();
+        }
         private void bindReturnList()
         {
-            
-                clearGridReturn();
-                var list = _return_list.Select(p => new {
-                    Id = p.return_id,
-                    Code = p.return_code,
-                    Barcode = p.product_code,
-                    Item = p.product_name,
-                    Quantity = p.return_quantity,
-                    Delivery = p.return_number,
-                    Branch = p.branch_details,
-                    Destination = p.destination,
-                    Status = p.status,
-                    Remarks = p.remarks,
-                    UpdateOn = p.update_on
-                }).ToList();
-                gridCtrlReturn.DataSource = list;
-                gridCtrlReturn.Update();
-
-                if (gridReturn.RowCount > 0)
-                gridReturn.Columns[0].Width = 40;
-                gridReturn.Columns[1].Width = 70;
-                gridReturn.Columns[2].Width = 120;
-                gridReturn.Columns[3].Width = 400;
-                gridReturn.Columns[4].Width = 40;
-                gridReturn.Columns[5].Width = 70;
-                gridReturn.Columns[6].Width = 80;
-                gridReturn.Columns[7].Width = 80;
-                gridReturn.Columns[8].Width = 100;
-                gridReturn.Columns[9].Width = 100;
-                gridReturn.Columns[10].Width = 100;
+            clearGridReturn();
+            var list = warehouse_return.Select(p => new {
+                Id = p.return_id,
+                Code = p.return_code,
+                Barcode = p.product_code,
+                Item = p.product_name,
+                Quantity = p.return_quantity,
+                Delivery = p.return_number,
+                Branch = p.branch_details,  
+                Destination = p.destination,
+                Status = p.status,
+                Remarks = p.remarks,
+                UpdateOn = p.update_on
+            }).ToList();
+            gridCtrlReturn.DataSource = list;
+            gridCtrlReturn.Update();
+            gridReturn.Columns[0].Width = 40;
+            gridReturn.Columns[1].Width = 70;
+            gridReturn.Columns[2].Width = 120;
+            gridReturn.Columns[3].Width = 400;
+            gridReturn.Columns[4].Width = 40;
+            gridReturn.Columns[5].Width = 70;
+            gridReturn.Columns[6].Width = 80;
+            gridReturn.Columns[7].Width = 80;
+            gridReturn.Columns[8].Width = 100;
+            gridReturn.Columns[9].Width = 100;
+            gridReturn.Columns[10].Width = 100;
         }
 
         private void bindCreditSales()
@@ -501,7 +506,8 @@ namespace Inventory.MainForm
                 {
                     imageToDraw = imgProcessing;
                 }
-                else if (status == "Completed") {
+                else if (status == "Completed")
+                {
                     imageToDraw = imgCompleted;
                 }
 
@@ -573,8 +579,7 @@ namespace Inventory.MainForm
         {
             splashScreen.ShowWaitForm();
             _return_list = Enumerable.Empty<ViewReturnWarehouse>();
-            _return_list = EnumerableUtils.getWareHouseReturnList();
-            bindReturnList();
+            bindReturnRefresh();
             xInventory.SelectedTabPage = xtraReturn;
             splashScreen.CloseWaitForm();
         }
@@ -630,7 +635,7 @@ namespace Inventory.MainForm
 
         private void gridSalesView(object sender)
         {
-            if(gridSales.RowCount > 0)
+            if (gridSales.RowCount > 0)
             {
                 var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
                 txtBarcode.Text = barcode;
@@ -659,7 +664,7 @@ namespace Inventory.MainForm
 
         private void gridCardView(object sender)
         {
-            if(cardPending.RowCount > 0)
+            if (cardPending.RowCount > 0)
             {
                 var barcode = ((CardView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
                 txtBarcode.Text = barcode;
@@ -688,7 +693,7 @@ namespace Inventory.MainForm
                 }
             }
         }
-        
+
         private void gridReturnView(object sender)
         {
             if (gridReturn.RowCount > 0)
@@ -752,11 +757,12 @@ namespace Inventory.MainForm
 
         private void cardPending_DoubleClick(object sender, EventArgs e)
         {
-            if (cardPending.RowCount > 0) {
+            if (cardPending.RowCount > 0)
+            {
                 splashScreen.ShowWaitForm();
                 var id = ((CardView)sender).GetFocusedRowCellValue("Id")?.ToString();
                 var delivery = EntityUtils.getWarehouseDelivery(int.Parse(id));
-                var pop = new FrmPopLauncher(_userId, 1, delivery) 
+                var pop = new FrmPopLauncher(_userId, 1, delivery)
                 {
                     main = this
                 };
@@ -821,8 +827,7 @@ namespace Inventory.MainForm
                 };
                 splashScreen.CloseWaitForm();
                 pop.ShowDialog();
-                _return_list = EnumerableUtils.getWareHouseReturnList();
-                bindReturnList();
+                bindReturnRefresh();
             }
             var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
             txtBarcode.Text = barcode;

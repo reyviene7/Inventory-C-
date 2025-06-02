@@ -177,10 +177,7 @@
             this.xtraReturn = new DevExpress.XtraTab.XtraTabPage();
             this.groupReturn = new DevExpress.XtraEditors.GroupControl();
             this.gridCtrlReturn = new DevExpress.XtraGrid.GridControl();
-            this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridReturn = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView12 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView13 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraPending = new DevExpress.XtraTab.XtraTabPage();
             this.groupInventoryDetail = new DevExpress.XtraEditors.GroupControl();
             this.gridCtrlPending = new DevExpress.XtraGrid.GridControl();
@@ -283,10 +280,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupReturn)).BeginInit();
             this.groupReturn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrlReturn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReturn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView13)).BeginInit();
             this.xtraPending.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupInventoryDetail)).BeginInit();
             this.groupInventoryDetail.SuspendLayout();
@@ -1706,23 +1700,14 @@
             this.gridCtrlReturn.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gridCtrlReturn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
             this.gridCtrlReturn.Location = new System.Drawing.Point(4, 22);
-            this.gridCtrlReturn.MainView = this.gridView8;
+            this.gridCtrlReturn.MainView = this.gridReturn;
             this.gridCtrlReturn.Margin = new System.Windows.Forms.Padding(4);
             this.gridCtrlReturn.Name = "gridCtrlReturn";
             this.gridCtrlReturn.Size = new System.Drawing.Size(2076, 629);
             this.gridCtrlReturn.TabIndex = 25;
             this.gridCtrlReturn.TabStop = false;
             this.gridCtrlReturn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView8,
-            this.gridReturn,
-            this.gridView12,
-            this.gridView13});
-            // 
-            // gridView8
-            // 
-            this.gridView8.DetailHeight = 431;
-            this.gridView8.GridControl = this.gridCtrlReturn;
-            this.gridView8.Name = "gridView8";
+            this.gridReturn});
             // 
             // gridReturn
             // 
@@ -1782,54 +1767,6 @@
             this.gridReturn.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
             this.gridReturn.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridReturn_FocusedRowChanged);
             this.gridReturn.DoubleClick += new System.EventHandler(this.gridReturn_DoubleClick);
-            // 
-            // gridView12
-            // 
-            this.gridView12.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridView12.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridView12.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridView12.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.gridView12.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Green;
-            this.gridView12.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridView12.Appearance.FocusedRow.Options.UseBorderColor = true;
-            this.gridView12.Appearance.FocusedRow.Options.UseFont = true;
-            this.gridView12.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.gridView12.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridView12.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.gridView12.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridView12.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.gridView12.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridView12.Appearance.HeaderPanel.Options.UseForeColor = true;
-            this.gridView12.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.gridView12.Appearance.Row.Options.UseFont = true;
-            this.gridView12.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridView12.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.gridView12.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
-            this.gridView12.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
-            this.gridView12.AppearancePrint.HeaderPanel.Options.UseFont = true;
-            this.gridView12.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
-            this.gridView12.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.gridView12.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
-            this.gridView12.AppearancePrint.Row.Options.UseFont = true;
-            this.gridView12.AppearancePrint.Row.Options.UseForeColor = true;
-            this.gridView12.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.gridView12.DetailHeight = 431;
-            this.gridView12.GridControl = this.gridCtrlReturn;
-            this.gridView12.Name = "gridView12";
-            this.gridView12.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView12.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView12.OptionsBehavior.Editable = false;
-            this.gridView12.OptionsBehavior.ReadOnly = true;
-            this.gridView12.OptionsCustomization.AllowRowSizing = true;
-            this.gridView12.OptionsDetail.AllowExpandEmptyDetails = true;
-            this.gridView12.OptionsSelection.MultiSelect = true;
-            this.gridView12.OptionsView.ColumnAutoWidth = false;
-            // 
-            // gridView13
-            // 
-            this.gridView13.DetailHeight = 431;
-            this.gridView13.GridControl = this.gridCtrlReturn;
-            this.gridView13.Name = "gridView13";
             // 
             // xtraPending
             // 
@@ -3290,10 +3227,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupReturn)).EndInit();
             this.groupReturn.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrlReturn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReturn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView13)).EndInit();
             this.xtraPending.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupInventoryDetail)).EndInit();
             this.groupInventoryDetail.ResumeLayout(false);
@@ -3549,11 +3483,6 @@
         private DevExpress.XtraGrid.Views.Layout.LayoutView gridAccepted;
         private DevExpress.XtraGrid.Views.Layout.LayoutViewCard layoutViewCard1;
         private DevExpress.XtraEditors.GroupControl groupReturn;
-        private DevExpress.XtraGrid.GridControl gridCtrlReturn;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridReturn;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView8;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView12;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView13;
         private System.Windows.Forms.TextBox txtDeliveryStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtStockStatus;
@@ -3598,5 +3527,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.BarSubItem barSubItem6;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
+        private DevExpress.XtraGrid.GridControl gridCtrlReturn;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridReturn;
     }
 }

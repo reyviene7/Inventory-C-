@@ -127,6 +127,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<ViewCategory> getCategoryList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewCategory>(unWork);
+                    return repository.SelectAll(Query.AllViewCategory).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewCategory>();
+                }
+            }
+        }
+
         public static IEnumerable<ViewAcceptedDelivery> getAcceptedDelivery(string branch)
         {
             using (var session = new DalSession())

@@ -21,9 +21,7 @@ namespace Inventory.MainForm
         private bool _add, _edt, _del, _img, _cat;
         private readonly int _userId;
         private readonly int _userTyp;
-        private IEnumerable<ViewCategoryImage> listCategory;
-        private IEnumerable<ProductImages> listProductImage;
-        private IEnumerable<ViewImageProduct> imgList;
+        private IEnumerable<ViewCategory> listCategory;
         private string _title, _type, _location, _code;
         private int _imgHeight, _imgWidth;
 
@@ -57,11 +55,7 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
-            listCategory = getCategoryImage();
-            listProductImage = EnumerableUtils.getProductImage();
-            imgList = EnumerableUtils.getImgProductList();
-            BindCategoryList();
-       
+            bindRefreshed();
             _cat = true;
         }
         private void Options_Tick(object sender, EventArgs e)
@@ -183,7 +177,6 @@ namespace Inventory.MainForm
             txtCategoryId.BackColor = Color.White;
             txtCategoryCode.BackColor = Color.White;
             txtCategoryDetails.BackColor = Color.White;
-            cmbProductImage.BackColor = Color.White;
             dkpDateRegister.BackColor = Color.White;
         }
         private void InputEnab()
@@ -191,7 +184,6 @@ namespace Inventory.MainForm
             txtCategoryId.Enabled = false;
             txtCategoryCode.Enabled = true;
             txtCategoryDetails.Enabled = true;
-            cmbProductImage.Enabled = true;
             dkpDateRegister.Enabled = true;
         }
         private void InputDisb()
@@ -199,7 +191,6 @@ namespace Inventory.MainForm
             txtCategoryId.Enabled = false;
             txtCategoryCode.Enabled = false;
             txtCategoryDetails.Enabled = false;
-            cmbProductImage.Enabled = false;
             dkpDateRegister.Enabled = false;
         }
         private void InputClea()
@@ -211,32 +202,22 @@ namespace Inventory.MainForm
             }
            
             txtCategoryDetails.Clear();
-            cmbProductImage.Text = "";
-
         }
         private void InputDimG()
         {
             txtCategoryId.BackColor = Color.DimGray;
             txtCategoryCode.BackColor = Color.DimGray;
             txtCategoryDetails.BackColor = Color.DimGray;
-            cmbProductImage.BackColor = Color.DimGray;
             dkpDateRegister.BackColor = Color.DimGray;
         }
 
         private void GenerateCode()
         {
             var lastCategoryId = FetchUtils.getLastCategoryId();
-            var alphaNumeric = new GenerateAlpaNum("C", 3, lastCategoryId);
+            var alphaNumeric = new GenerateAlpaNum("CAT", 3, lastCategoryId);
             alphaNumeric.Increment();
             txtCategoryCode.Text = alphaNumeric.ToString();
         }
-        private void GenerateImgCode()
-        {
-            var lastImageId = FetchUtils.getLastImageId();
-            var alphaNumeric = new GenerateAlpaNum("IP", 3, lastImageId);
-            alphaNumeric.Increment();
-        }
-
 
         private void ButAdd()
         {
@@ -248,18 +229,12 @@ namespace Inventory.MainForm
             if (_cat && _img == false)
             {
                
-                BindImage();
                 InputEnab();
                 InputWhit();
                 InputClea();
                 txtCategoryDetails.Focus();
                 GenerateCode();
             }
-            if (_cat == false && _img)
-            {
-                GenerateImgCode();
-            }
-
         }
         private void ButUpd()
         {
@@ -277,7 +252,7 @@ namespace Inventory.MainForm
         private void ButDel()
         {
             ButtonDel();
-            InputEnab();
+            InputDisb();
             InputWhit();
             _add = false;
             _edt = false;
@@ -292,7 +267,6 @@ namespace Inventory.MainForm
             gridControl.Enabled = true;
             txtCategoryCode.DataBindings.Clear();
             txtCategoryDetails.DataBindings.Clear();
-            cmbProductImage.DataBindings.Clear();
         }
         private void ButSav()
         {
@@ -309,7 +283,6 @@ namespace Inventory.MainForm
             InputDimG();
             InputClea();
             gridControl.Enabled = true;
-            cmbProductImage.DataBindings.Clear();
         }
 
         private void SavCat()
@@ -321,7 +294,7 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                BindCategoryList();
+                bindRefreshed();
             }
             if (_add == false && _edt && _del == false && _img == false)
             {
@@ -330,7 +303,7 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                BindCategoryList();
+                bindRefreshed();
             }
             if (_add == false && _edt == false && _del && _img == false)
             {
@@ -339,7 +312,7 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                BindCategoryList();
+                bindRefreshed();
             }
             _add = false;
             _edt = false;
@@ -347,7 +320,13 @@ namespace Inventory.MainForm
             _cat = true;
             _img = false;
             gridControl.Enabled = true;
-            cmbProductImage.DataBindings.Clear();
+            bindRefreshed();
+        }
+
+        private void bindRefreshed()
+        {
+            listCategory = EnumerableUtils.getCategoryList();
+            BindCategoryList();
         }
 
         private void BindCategoryList()
@@ -359,8 +338,6 @@ namespace Inventory.MainForm
                     Id = x.category_id,
                     CategoryCode = x.category_code,
                     Category = x.category_details,
-                    Title = x.title,
-                  
                     DateRegister = x.date_register
                 });
 
@@ -368,81 +345,14 @@ namespace Inventory.MainForm
                 gridControl.DataSource = listCat;
                 gridCategory.Columns[0].Width = 40;
                 gridCategory.Columns[1].Width = 90;
-                gridCategory.Columns[2].Width = 140;
-                gridCategory.Columns[3].Width = 250;
-                gridCategory.Columns[4].Width = 100;
+                gridCategory.Columns[2].Width = 250;
+                gridCategory.Columns[3].Width = 100;
             }
             catch (Exception ex)
             {
                 gridControl.EndUpdate();
                 PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
             }
-        }
-
-       
-        private IEnumerable<ViewCategoryImage> getCategoryImage()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ViewCategoryImage>(unWork);
-                    return repository.SelectAll(Query.AllCategoryImage).ToList();
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, Messages.ErrorInternal, Messages.TitleProducts);
-                    throw;
-                }
-            }
-        }
-
-        //BINDING 
-        private void BindImage()
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                var repository = new Repository<ProductImages>(unWork);
-                var query = repository.SelectAll(Query.AllProductImage).Select(x => x.title).Distinct().ToList();
-                cmbProductImage.DataBindings.Clear();
-                cmbProductImage.DataSource = query;
-            }
-        }
-        private int ProductImageId(string input)
-        {
-            using (var session = new DalSession())
-            {
-                var unWork = session.UnitofWrk;
-                unWork.Begin();
-                try
-                {
-                    var repository = new Repository<ProductImages>(unWork);
-                    var query = repository.FindBy(x => x.title == input);
-                    return query.image_id;
-
-                }
-                catch (Exception)
-                {
-                    PopupNotification.PopUpMessages(0, "Product Image Id Error", "Image Details");
-                    throw;
-                }
-            }
-        }
-
-        private void tabCategory_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-            if (tabCategory.SelectedTabPage == xtraCategory)
-            {
-                _cat = true;
-                _img = false;
-                gridControl.Enabled = true;
-             
-            }
-          
         }
 
         private void dkpREG_Leave(object sender, EventArgs e)
@@ -458,9 +368,9 @@ namespace Inventory.MainForm
             }
         }
 
-        private ViewCategoryImage searchCategoryId(int id)
+        private ViewCategory searchCategoryId(int id)
         {
-            return listCategory.FirstOrDefault(view_category_image => view_category_image.category_id == id);
+            return listCategory.FirstOrDefault(view_category => view_category.category_id == id);
         }
 
         private void gridCategory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -499,15 +409,6 @@ namespace Inventory.MainForm
             InputDimG();
         }
 
-        //CATEGORY LEAVE
-        private void cmbIMG_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbProductImage.Text.Length > 0)
-            {
-                var imgId = ProductImageId(cmbProductImage.Text);
-            }
-        }
-
         private void bntAdd_Click(object sender, EventArgs e)
         {
             ButAdd();
@@ -521,6 +422,14 @@ namespace Inventory.MainForm
         private void bntSave_Click(object sender, EventArgs e)
         {
             ButSav();
+        }
+
+        private void TxtCategoryDetails_KeyDown_1(object sender, KeyEventArgs e)
+        {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    InputManipulation.InputBoxLeave(txtCategoryDetails, dkpDateRegister, "Category Details", Messages.TitleCategory);
+                }
         }
 
         private void bntCancel_Click(object sender, EventArgs e)
@@ -560,37 +469,6 @@ namespace Inventory.MainForm
             Close();
         }
 
-        private void cmbProductImage_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                BindImage();
-            }
-            if (e.KeyCode == Keys.Enter)
-            {
-
-                InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
-            }
-        }
-
-        private void cmbProductImage_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(cmbProductImage, dkpDateRegister, "Image Title", Messages.TitleCategory);
-        }
-
-        private void txtCategoryDetails_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtCategoryDetails, cmbProductImage, "Category Details", Messages.TitleCategory);
-            }
-        }
-
-        private void txtCategoryDetails_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputBoxLeave(txtCategoryDetails, cmbProductImage, "Category Details", Messages.TitleCategory);
-        }
-
         private void DataInsert()
         {
             using (var session = new DalSession())
@@ -599,13 +477,11 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var imgName = cmbProductImage.Text.Trim(' ');
                     var repository = new Repository<Category>(unWork);
                     var category = new Category()
                     {
                         category_code = txtCategoryCode.Text.Trim(' '),
                         category_details = txtCategoryDetails.Text.Trim(' '),
-                        image_id = ProductImageId(imgName),
                         date_register = dkpDateRegister.Value.Date
                     };
                     var result = repository.Add(category);
@@ -616,6 +492,7 @@ namespace Inventory.MainForm
                                                            txtCategoryCode.Text.Trim(' ')
                                                            + " " + Messages.SuccessInsert,
                             Messages.TitleSuccessInsert);
+                        bindRefreshed();
                     }
                 }
                 catch (Exception ex)
@@ -635,13 +512,11 @@ namespace Inventory.MainForm
                 try
                 {
                     var catId = Convert.ToInt32(txtCategoryId.Text);
-                    var imgName = cmbProductImage.Text.Trim(' ');
                     var repository = new Repository<Category>(unWork);
                     var que = repository.Id(catId);
 
                     que.category_code = txtCategoryCode.Text.Trim(' ');
                     que.category_details = txtCategoryDetails.Text.Trim(' ');
-                    que.image_id = ProductImageId(imgName);
                     que.date_register = dkpDateRegister.Value.Date;
                     var result = repository.Update(que);
                     if (result)
@@ -651,6 +526,7 @@ namespace Inventory.MainForm
                                                            txtCategoryCode.Text.Trim(' ')
                                                            + " " + Messages.SuccessUpdate,
                             Messages.TitleSuccessUpdate);
+                        bindRefreshed();
                     }
                 }
                 catch (Exception ex)
@@ -679,6 +555,7 @@ namespace Inventory.MainForm
                                                            txtCategoryCode.Text.Trim(' ')
                                                            + " " + Messages.SuccessDelete,
                             Messages.TitleSuccessDelete);
+                        bindRefreshed();
                     }
                 }
                 catch (Exception ex)

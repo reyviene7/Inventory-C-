@@ -107,11 +107,8 @@
         public const string AllCategory = @"SELECT category_id, 
 	                                               category_code, 
 	                                               category_details, 
-	                                               image_id, 
 	                                               date_register
                                              FROM category ORDER BY category_id DESC";
-
-        public const string AllCategoryImage = @"SELECT * FROM view_category_image";
 
         public const string AllProducts = @"SELECT product_id
                                                   ,product_code
@@ -154,6 +151,7 @@
         public const string AllItemNotInDepot = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE ProductId NOT IN(SELECT ProductId FROM Products WHERE Name LIKE '%LPG%')";
         public const string AllItemFromDepots = "SELECT ProductId, Code,Name, Category, Supplier, StockCode, Brand, Model, Made, Serial, TareWeight, NetWeight, TradePrice, RetailPrice, WholeSale, Status, Register FROM view_products WHERE Name LIKE '%LPG%'";
         public const string AllViewProducts = "SELECT * FROM view_product ORDER BY product_id DESC";
+        public const string AllViewCategory = "SELECT * FROM view_category ORDER BY category_id DESC";
         public const string AllViewServiceImages = "SELECT * FROM view_service_images ORDER BY image_id DESC";
         public const string AllViewProfileImages = @"SELECT * FROM profile_image ORDER BY image_id DESC";
         public const string AllProductWarehouse = @"SELECT * FROM view_request_product";
