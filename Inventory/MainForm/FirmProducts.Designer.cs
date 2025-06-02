@@ -160,9 +160,10 @@
             // 
             this.pbExit.Image = ((System.Drawing.Image)(resources.GetObject("pbExit.Image")));
             this.pbExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbExit.Location = new System.Drawing.Point(0, 448);
+            this.pbExit.Location = new System.Drawing.Point(0, 551);
+            this.pbExit.Margin = new System.Windows.Forms.Padding(4);
             this.pbExit.Name = "pbExit";
-            this.pbExit.Size = new System.Drawing.Size(70, 76);
+            this.pbExit.Size = new System.Drawing.Size(93, 94);
             this.pbExit.TabIndex = 5;
             this.pbExit.TabStop = false;
             this.pbExit.Click += new System.EventHandler(this.pbExit_Click);
@@ -172,9 +173,10 @@
             this.pcRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pcRight.Image = ((System.Drawing.Image)(resources.GetObject("pcRight.Image")));
             this.pcRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pcRight.Location = new System.Drawing.Point(3, 64);
+            this.pcRight.Location = new System.Drawing.Point(4, 79);
+            this.pcRight.Margin = new System.Windows.Forms.Padding(4);
             this.pcRight.Name = "pcRight";
-            this.pcRight.Size = new System.Drawing.Size(35, 34);
+            this.pcRight.Size = new System.Drawing.Size(47, 42);
             this.pcRight.TabIndex = 20;
             this.pcRight.TabStop = false;
             // 
@@ -183,18 +185,20 @@
             this.pnlRightMain.Controls.Add(this.pbExit);
             this.pnlRightMain.Controls.Add(this.pbHome);
             this.pnlRightMain.Controls.Add(this.pbLogout);
-            this.pnlRightMain.Location = new System.Drawing.Point(3, 98);
+            this.pnlRightMain.Location = new System.Drawing.Point(4, 121);
+            this.pnlRightMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRightMain.Name = "pnlRightMain";
-            this.pnlRightMain.Size = new System.Drawing.Size(70, 529);
+            this.pnlRightMain.Size = new System.Drawing.Size(93, 651);
             this.pnlRightMain.TabIndex = 1;
             // 
             // pbHome
             // 
             this.pbHome.Image = ((System.Drawing.Image)(resources.GetObject("pbHome.Image")));
             this.pbHome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbHome.Location = new System.Drawing.Point(-2, 269);
+            this.pbHome.Location = new System.Drawing.Point(-3, 331);
+            this.pbHome.Margin = new System.Windows.Forms.Padding(4);
             this.pbHome.Name = "pbHome";
-            this.pbHome.Size = new System.Drawing.Size(76, 76);
+            this.pbHome.Size = new System.Drawing.Size(101, 94);
             this.pbHome.TabIndex = 4;
             this.pbHome.TabStop = false;
             this.pbHome.Click += new System.EventHandler(this.pbHome_Click);
@@ -203,9 +207,10 @@
             // 
             this.pbLogout.Image = ((System.Drawing.Image)(resources.GetObject("pbLogout.Image")));
             this.pbLogout.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbLogout.Location = new System.Drawing.Point(-3, 65);
+            this.pbLogout.Location = new System.Drawing.Point(-4, 80);
+            this.pbLogout.Margin = new System.Windows.Forms.Padding(4);
             this.pbLogout.Name = "pbLogout";
-            this.pbLogout.Size = new System.Drawing.Size(76, 76);
+            this.pbLogout.Size = new System.Drawing.Size(101, 94);
             this.pbLogout.TabIndex = 3;
             this.pbLogout.TabStop = false;
             this.pbLogout.Click += new System.EventHandler(this.pbLogout_Click);
@@ -215,9 +220,10 @@
             this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
             this.pnlRightOptions.Controls.Add(this.pcRight);
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1296, 1);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1728, 1);
+            this.pnlRightOptions.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRightOptions.Name = "pnlRightOptions";
-            this.pnlRightOptions.Size = new System.Drawing.Size(77, 764);
+            this.pnlRightOptions.Size = new System.Drawing.Size(103, 940);
             this.pnlRightOptions.TabIndex = 74;
             // 
             // RightOptions
@@ -231,8 +237,9 @@
             this.XtrPerProfile.Appearance.PageClient.Options.UseBackColor = true;
             this.XtrPerProfile.Controls.Add(this.GbPersonal);
             this.XtrPerProfile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("XtrPerProfile.ImageOptions.Image")));
+            this.XtrPerProfile.Margin = new System.Windows.Forms.Padding(4);
             this.XtrPerProfile.Name = "XtrPerProfile";
-            this.XtrPerProfile.Size = new System.Drawing.Size(1010, 561);
+            this.XtrPerProfile.Size = new System.Drawing.Size(1347, 691);
             this.XtrPerProfile.Text = "Product Details";
             // 
             // GbPersonal
@@ -278,8 +285,9 @@
             this.GbPersonal.Location = new System.Drawing.Point(0, 0);
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.GbPersonal.Margin = new System.Windows.Forms.Padding(4);
             this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1010, 561);
+            this.GbPersonal.Size = new System.Drawing.Size(1347, 691);
             this.GbPersonal.TabIndex = 173;
             // 
             // label12
@@ -288,9 +296,10 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(393, 103);
+            this.label12.Location = new System.Drawing.Point(524, 127);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 17);
+            this.label12.Size = new System.Drawing.Size(104, 23);
             this.label12.TabIndex = 208;
             this.label12.Text = "Trade Price:";
             // 
@@ -300,10 +309,11 @@
             this.txtTradePrice.Enabled = false;
             this.txtTradePrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTradePrice.ForeColor = System.Drawing.Color.Maroon;
-            this.txtTradePrice.Location = new System.Drawing.Point(499, 97);
+            this.txtTradePrice.Location = new System.Drawing.Point(665, 119);
+            this.txtTradePrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtTradePrice.Name = "txtTradePrice";
-            this.txtTradePrice.Size = new System.Drawing.Size(269, 29);
-            this.txtTradePrice.TabIndex = 122;
+            this.txtTradePrice.Size = new System.Drawing.Size(357, 34);
+            this.txtTradePrice.TabIndex = 12;
             this.txtTradePrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTradePrice_KeyDown);
             this.txtTradePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTradePrice_KeyPress);
             this.txtTradePrice.Leave += new System.EventHandler(this.txtTradePrice_Leave);
@@ -314,9 +324,10 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(393, 163);
+            this.label13.Location = new System.Drawing.Point(524, 201);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 17);
+            this.label13.Size = new System.Drawing.Size(104, 23);
             this.label13.TabIndex = 207;
             this.label13.Text = "Whole Sale:";
             // 
@@ -326,10 +337,11 @@
             this.txtWholesale.Enabled = false;
             this.txtWholesale.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWholesale.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWholesale.Location = new System.Drawing.Point(499, 157);
+            this.txtWholesale.Location = new System.Drawing.Point(665, 193);
+            this.txtWholesale.Margin = new System.Windows.Forms.Padding(4);
             this.txtWholesale.Name = "txtWholesale";
-            this.txtWholesale.Size = new System.Drawing.Size(269, 29);
-            this.txtWholesale.TabIndex = 124;
+            this.txtWholesale.Size = new System.Drawing.Size(357, 34);
+            this.txtWholesale.TabIndex = 14;
             this.txtWholesale.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWholesale_KeyDown);
             this.txtWholesale.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWholesale_KeyPress);
             this.txtWholesale.Leave += new System.EventHandler(this.txtWholesale_Leave);
@@ -340,9 +352,10 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(393, 133);
+            this.label14.Location = new System.Drawing.Point(524, 164);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(81, 17);
+            this.label14.Size = new System.Drawing.Size(105, 23);
             this.label14.TabIndex = 206;
             this.label14.Text = "Retail Price:";
             // 
@@ -352,10 +365,11 @@
             this.txtRetailPrice.Enabled = false;
             this.txtRetailPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRetailPrice.ForeColor = System.Drawing.Color.Maroon;
-            this.txtRetailPrice.Location = new System.Drawing.Point(499, 127);
+            this.txtRetailPrice.Location = new System.Drawing.Point(665, 156);
+            this.txtRetailPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtRetailPrice.Name = "txtRetailPrice";
-            this.txtRetailPrice.Size = new System.Drawing.Size(269, 29);
-            this.txtRetailPrice.TabIndex = 123;
+            this.txtRetailPrice.Size = new System.Drawing.Size(357, 34);
+            this.txtRetailPrice.TabIndex = 13;
             this.txtRetailPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRetailPrice_KeyDown);
             this.txtRetailPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRetailPrice_KeyPress);
             this.txtRetailPrice.Leave += new System.EventHandler(this.txtRetailPrice_Leave);
@@ -363,9 +377,10 @@
             // imgProduct
             // 
             this.imgProduct.BackColor = System.Drawing.Color.Gray;
-            this.imgProduct.Location = new System.Drawing.Point(772, 9);
+            this.imgProduct.Location = new System.Drawing.Point(1029, 11);
+            this.imgProduct.Margin = new System.Windows.Forms.Padding(4);
             this.imgProduct.Name = "imgProduct";
-            this.imgProduct.Size = new System.Drawing.Size(231, 237);
+            this.imgProduct.Size = new System.Drawing.Size(308, 292);
             this.imgProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgProduct.TabIndex = 202;
             this.imgProduct.TabStop = false;
@@ -375,13 +390,15 @@
             this.cmbCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCategory.BackColor = System.Drawing.Color.DimGray;
+            this.cmbCategory.Enabled = false;
             this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.ForeColor = System.Drawing.Color.Maroon;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(124, 67);
+            this.cmbCategory.Location = new System.Drawing.Point(165, 82);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(269, 29);
-            this.cmbCategory.TabIndex = 113;
+            this.cmbCategory.Size = new System.Drawing.Size(357, 36);
+            this.cmbCategory.TabIndex = 3;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             this.cmbCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCategory_KeyDown);
             // 
@@ -391,9 +408,10 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(4, 73);
+            this.label11.Location = new System.Drawing.Point(5, 90);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(68, 17);
+            this.label11.Size = new System.Drawing.Size(89, 23);
             this.label11.TabIndex = 200;
             this.label11.Text = "Category:";
             // 
@@ -402,6 +420,7 @@
             this.cmbSupplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbSupplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbSupplier.BackColor = System.Drawing.Color.DimGray;
+            this.cmbSupplier.Enabled = false;
             this.cmbSupplier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSupplier.ForeColor = System.Drawing.Color.Maroon;
             this.cmbSupplier.FormattingEnabled = true;
@@ -412,10 +431,11 @@
             "User",
             "Admin",
             "Programmer"});
-            this.cmbSupplier.Location = new System.Drawing.Point(124, 97);
+            this.cmbSupplier.Location = new System.Drawing.Point(165, 119);
+            this.cmbSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSupplier.Name = "cmbSupplier";
-            this.cmbSupplier.Size = new System.Drawing.Size(269, 29);
-            this.cmbSupplier.TabIndex = 114;
+            this.cmbSupplier.Size = new System.Drawing.Size(357, 36);
+            this.cmbSupplier.TabIndex = 4;
             this.cmbSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSupplier_KeyDown);
             // 
             // lblPostion
@@ -424,9 +444,10 @@
             this.lblPostion.BackColor = System.Drawing.Color.Transparent;
             this.lblPostion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPostion.ForeColor = System.Drawing.Color.White;
-            this.lblPostion.Location = new System.Drawing.Point(394, 193);
+            this.lblPostion.Location = new System.Drawing.Point(525, 238);
+            this.lblPostion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPostion.Name = "lblPostion";
-            this.lblPostion.Size = new System.Drawing.Size(102, 17);
+            this.lblPostion.Size = new System.Drawing.Size(133, 23);
             this.lblPostion.TabIndex = 198;
             this.lblPostion.Text = "Product Status:";
             // 
@@ -435,16 +456,18 @@
             this.cmbProductStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbProductStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbProductStatus.BackColor = System.Drawing.Color.DimGray;
+            this.cmbProductStatus.Enabled = false;
             this.cmbProductStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductStatus.ForeColor = System.Drawing.Color.Maroon;
             this.cmbProductStatus.FormattingEnabled = true;
             this.cmbProductStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbProductStatus.Location = new System.Drawing.Point(498, 187);
+            this.cmbProductStatus.Location = new System.Drawing.Point(664, 230);
+            this.cmbProductStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductStatus.Name = "cmbProductStatus";
-            this.cmbProductStatus.Size = new System.Drawing.Size(269, 29);
-            this.cmbProductStatus.TabIndex = 125;
+            this.cmbProductStatus.Size = new System.Drawing.Size(357, 36);
+            this.cmbProductStatus.TabIndex = 15;
             this.cmbProductStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductStatus_KeyDown);
             // 
             // lblHiredate
@@ -453,9 +476,10 @@
             this.lblHiredate.BackColor = System.Drawing.Color.Transparent;
             this.lblHiredate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHiredate.ForeColor = System.Drawing.Color.White;
-            this.lblHiredate.Location = new System.Drawing.Point(394, 223);
+            this.lblHiredate.Location = new System.Drawing.Point(525, 274);
+            this.lblHiredate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHiredate.Name = "lblHiredate";
-            this.lblHiredate.Size = new System.Drawing.Size(96, 17);
+            this.lblHiredate.Size = new System.Drawing.Size(125, 23);
             this.lblHiredate.TabIndex = 197;
             this.lblHiredate.Text = "Date Register:";
             // 
@@ -464,9 +488,10 @@
             this.dkpDateRegister.CustomFormat = "dd-MM-yyyy";
             this.dkpDateRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDateRegister.Location = new System.Drawing.Point(499, 217);
+            this.dkpDateRegister.Location = new System.Drawing.Point(665, 267);
+            this.dkpDateRegister.Margin = new System.Windows.Forms.Padding(4);
             this.dkpDateRegister.Name = "dkpDateRegister";
-            this.dkpDateRegister.Size = new System.Drawing.Size(269, 29);
+            this.dkpDateRegister.Size = new System.Drawing.Size(357, 34);
             this.dkpDateRegister.TabIndex = 126;
             this.dkpDateRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDateRegister_KeyDown);
             // 
@@ -476,9 +501,10 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(394, 72);
+            this.label10.Location = new System.Drawing.Point(525, 89);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 17);
+            this.label10.Size = new System.Drawing.Size(108, 23);
             this.label10.TabIndex = 192;
             this.label10.Text = "Net Weight:";
             // 
@@ -488,11 +514,12 @@
             this.txtNetWeight.Enabled = false;
             this.txtNetWeight.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNetWeight.ForeColor = System.Drawing.Color.Maroon;
-            this.txtNetWeight.Location = new System.Drawing.Point(499, 67);
+            this.txtNetWeight.Location = new System.Drawing.Point(665, 82);
+            this.txtNetWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txtNetWeight.MaxLength = 8;
             this.txtNetWeight.Name = "txtNetWeight";
-            this.txtNetWeight.Size = new System.Drawing.Size(269, 29);
-            this.txtNetWeight.TabIndex = 121;
+            this.txtNetWeight.Size = new System.Drawing.Size(357, 34);
+            this.txtNetWeight.TabIndex = 11;
             this.txtNetWeight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNetWeight_KeyDown);
             this.txtNetWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNetWeight_KeyPress);
             this.txtNetWeight.Leave += new System.EventHandler(this.txtNetWeight_Leave);
@@ -503,9 +530,10 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(394, 43);
+            this.label9.Location = new System.Drawing.Point(525, 53);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 17);
+            this.label9.Size = new System.Drawing.Size(113, 23);
             this.label9.TabIndex = 190;
             this.label9.Text = "Tare Weight:";
             // 
@@ -515,11 +543,12 @@
             this.txtTareWeight.Enabled = false;
             this.txtTareWeight.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTareWeight.ForeColor = System.Drawing.Color.Maroon;
-            this.txtTareWeight.Location = new System.Drawing.Point(499, 37);
+            this.txtTareWeight.Location = new System.Drawing.Point(665, 46);
+            this.txtTareWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txtTareWeight.MaxLength = 8;
             this.txtTareWeight.Name = "txtTareWeight";
-            this.txtTareWeight.Size = new System.Drawing.Size(269, 29);
-            this.txtTareWeight.TabIndex = 120;
+            this.txtTareWeight.Size = new System.Drawing.Size(357, 34);
+            this.txtTareWeight.TabIndex = 10;
             this.txtTareWeight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTareWeight_KeyDown);
             this.txtTareWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTareWeight_KeyPress);
             this.txtTareWeight.Leave += new System.EventHandler(this.txtTareWeight_Leave);
@@ -530,9 +559,10 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(394, 13);
+            this.label8.Location = new System.Drawing.Point(525, 16);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 17);
+            this.label8.Size = new System.Drawing.Size(132, 23);
             this.label8.TabIndex = 188;
             this.label8.Text = "Serial Number:";
             // 
@@ -542,10 +572,11 @@
             this.txtSerialNumber.Enabled = false;
             this.txtSerialNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSerialNumber.ForeColor = System.Drawing.Color.Maroon;
-            this.txtSerialNumber.Location = new System.Drawing.Point(499, 7);
+            this.txtSerialNumber.Location = new System.Drawing.Point(665, 9);
+            this.txtSerialNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtSerialNumber.Name = "txtSerialNumber";
-            this.txtSerialNumber.Size = new System.Drawing.Size(269, 29);
-            this.txtSerialNumber.TabIndex = 119;
+            this.txtSerialNumber.Size = new System.Drawing.Size(357, 34);
+            this.txtSerialNumber.TabIndex = 9;
             this.txtSerialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSerialNumber_KeyDown);
             // 
             // label7
@@ -554,9 +585,10 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(6, 223);
+            this.label7.Location = new System.Drawing.Point(5, 274);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 17);
+            this.label7.Size = new System.Drawing.Size(128, 23);
             this.label7.TabIndex = 186;
             this.label7.Text = "Product Made:";
             // 
@@ -566,10 +598,11 @@
             this.txtProductMade.Enabled = false;
             this.txtProductMade.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductMade.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductMade.Location = new System.Drawing.Point(125, 217);
+            this.txtProductMade.Location = new System.Drawing.Point(167, 267);
+            this.txtProductMade.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductMade.Name = "txtProductMade";
-            this.txtProductMade.Size = new System.Drawing.Size(269, 29);
-            this.txtProductMade.TabIndex = 118;
+            this.txtProductMade.Size = new System.Drawing.Size(357, 34);
+            this.txtProductMade.TabIndex = 8;
             this.txtProductMade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductMade_KeyDown);
             // 
             // label6
@@ -578,9 +611,10 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(4, 193);
+            this.label6.Location = new System.Drawing.Point(5, 238);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 17);
+            this.label6.Size = new System.Drawing.Size(134, 23);
             this.label6.TabIndex = 184;
             this.label6.Text = "Product Model:";
             // 
@@ -590,10 +624,11 @@
             this.txtProductModel.Enabled = false;
             this.txtProductModel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductModel.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductModel.Location = new System.Drawing.Point(125, 187);
+            this.txtProductModel.Location = new System.Drawing.Point(167, 230);
+            this.txtProductModel.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductModel.Name = "txtProductModel";
-            this.txtProductModel.Size = new System.Drawing.Size(269, 29);
-            this.txtProductModel.TabIndex = 117;
+            this.txtProductModel.Size = new System.Drawing.Size(357, 34);
+            this.txtProductModel.TabIndex = 7;
             this.txtProductModel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductModel_KeyDown);
             // 
             // label5
@@ -602,9 +637,10 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(4, 163);
+            this.label5.Location = new System.Drawing.Point(5, 201);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 17);
+            this.label5.Size = new System.Drawing.Size(131, 23);
             this.label5.TabIndex = 182;
             this.label5.Text = "Product Brand:";
             // 
@@ -614,10 +650,11 @@
             this.txtProductBrand.Enabled = false;
             this.txtProductBrand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductBrand.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductBrand.Location = new System.Drawing.Point(125, 157);
+            this.txtProductBrand.Location = new System.Drawing.Point(167, 193);
+            this.txtProductBrand.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductBrand.Name = "txtProductBrand";
-            this.txtProductBrand.Size = new System.Drawing.Size(269, 29);
-            this.txtProductBrand.TabIndex = 116;
+            this.txtProductBrand.Size = new System.Drawing.Size(357, 34);
+            this.txtProductBrand.TabIndex = 6;
             this.txtProductBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductBrand_KeyDown);
             // 
             // label4
@@ -626,9 +663,10 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(4, 133);
+            this.label4.Location = new System.Drawing.Point(5, 164);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 17);
+            this.label4.Size = new System.Drawing.Size(106, 23);
             this.label4.TabIndex = 180;
             this.label4.Text = "Stock Code:";
             // 
@@ -638,10 +676,11 @@
             this.txtStockCode.Enabled = false;
             this.txtStockCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStockCode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtStockCode.Location = new System.Drawing.Point(125, 127);
+            this.txtStockCode.Location = new System.Drawing.Point(167, 156);
+            this.txtStockCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtStockCode.Name = "txtStockCode";
-            this.txtStockCode.Size = new System.Drawing.Size(269, 29);
-            this.txtStockCode.TabIndex = 115;
+            this.txtStockCode.Size = new System.Drawing.Size(357, 34);
+            this.txtStockCode.TabIndex = 5;
             this.txtStockCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStockCode_KeyDown);
             // 
             // label3
@@ -650,9 +689,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(4, 103);
+            this.label3.Location = new System.Drawing.Point(5, 127);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 17);
+            this.label3.Size = new System.Drawing.Size(84, 23);
             this.label3.TabIndex = 178;
             this.label3.Text = "Supplier:";
             // 
@@ -662,9 +702,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(4, 43);
+            this.label2.Location = new System.Drawing.Point(5, 53);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 17);
+            this.label2.Size = new System.Drawing.Size(130, 23);
             this.label2.TabIndex = 176;
             this.label2.Text = "Product Name:";
             // 
@@ -674,10 +715,11 @@
             this.txtProductName.Enabled = false;
             this.txtProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductName.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductName.Location = new System.Drawing.Point(125, 37);
+            this.txtProductName.Location = new System.Drawing.Point(167, 46);
+            this.txtProductName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(269, 29);
-            this.txtProductName.TabIndex = 112;
+            this.txtProductName.Size = new System.Drawing.Size(357, 34);
+            this.txtProductName.TabIndex = 2;
             this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
             // 
             // label1
@@ -686,9 +728,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(4, 13);
+            this.label1.Location = new System.Drawing.Point(5, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 17);
+            this.label1.Size = new System.Drawing.Size(148, 23);
             this.label1.TabIndex = 174;
             this.label1.Text = "Product Barcode:";
             // 
@@ -698,10 +741,11 @@
             this.txtProductBarcode.Enabled = false;
             this.txtProductBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductBarcode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductBarcode.Location = new System.Drawing.Point(125, 7);
+            this.txtProductBarcode.Location = new System.Drawing.Point(167, 9);
+            this.txtProductBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductBarcode.Name = "txtProductBarcode";
-            this.txtProductBarcode.Size = new System.Drawing.Size(269, 29);
-            this.txtProductBarcode.TabIndex = 111;
+            this.txtProductBarcode.Size = new System.Drawing.Size(357, 34);
+            this.txtProductBarcode.TabIndex = 1;
             this.txtProductBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductBarcode_KeyDown);
             this.txtProductBarcode.Leave += new System.EventHandler(this.txtProductBarcode_Leave);
             // 
@@ -712,11 +756,12 @@
             this.gbCON.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.gbCON.Controls.Add(this.gridControl);
             this.gbCON.Controls.Add(this.txtPRI);
-            this.gbCON.Location = new System.Drawing.Point(-1, 252);
+            this.gbCON.Location = new System.Drawing.Point(-1, 310);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.gbCON.Margin = new System.Windows.Forms.Padding(4);
             this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(1007, 306);
+            this.gbCON.Size = new System.Drawing.Size(1343, 377);
             this.gbCON.TabIndex = 172;
             this.gbCON.Text = "Product List";
             // 
@@ -726,11 +771,13 @@
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
             this.gridControl.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.gridControl.Location = new System.Drawing.Point(3, 18);
+            this.gridControl.Location = new System.Drawing.Point(3, 21);
             this.gridControl.MainView = this.gridProductList;
+            this.gridControl.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1001, 285);
+            this.gridControl.Size = new System.Drawing.Size(1337, 353);
             this.gridControl.TabIndex = 101;
             this.gridControl.TabStop = false;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -783,6 +830,7 @@
             this.gridProductList.AppearancePrint.Row.Options.UseFont = true;
             this.gridProductList.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridProductList.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.gridProductList.DetailHeight = 431;
             this.gridProductList.GridControl = this.gridControl;
             this.gridProductList.Name = "gridProductList";
             this.gridProductList.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -797,6 +845,7 @@
             // 
             // gridView2
             // 
+            this.gridView2.DetailHeight = 431;
             this.gridView2.GridControl = this.gridControl;
             this.gridView2.Name = "gridView2";
             // 
@@ -830,6 +879,7 @@
             this.gridView3.AppearancePrint.Row.Options.UseFont = true;
             this.gridView3.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridView3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.gridView3.DetailHeight = 431;
             this.gridView3.GridControl = this.gridControl;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -843,6 +893,7 @@
             // 
             // grdHIS
             // 
+            this.grdHIS.DetailHeight = 431;
             this.grdHIS.GridControl = this.gridControl;
             this.grdHIS.Name = "grdHIS";
             // 
@@ -852,10 +903,11 @@
             this.txtPRI.Enabled = false;
             this.txtPRI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPRI.ForeColor = System.Drawing.Color.Maroon;
-            this.txtPRI.Location = new System.Drawing.Point(-8, 21);
+            this.txtPRI.Location = new System.Drawing.Point(-11, 26);
+            this.txtPRI.Margin = new System.Windows.Forms.Padding(4);
             this.txtPRI.Multiline = true;
             this.txtPRI.Name = "txtPRI";
-            this.txtPRI.Size = new System.Drawing.Size(10, 10);
+            this.txtPRI.Size = new System.Drawing.Size(12, 11);
             this.txtPRI.TabIndex = 99;
             this.txtPRI.Visible = false;
             // 
@@ -864,9 +916,10 @@
             this.pbHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pbHide.Image = ((System.Drawing.Image)(resources.GetObject("pbHide.Image")));
             this.pbHide.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbHide.Location = new System.Drawing.Point(1154, 3);
+            this.pbHide.Location = new System.Drawing.Point(1539, 4);
+            this.pbHide.Margin = new System.Windows.Forms.Padding(4);
             this.pbHide.Name = "pbHide";
-            this.pbHide.Size = new System.Drawing.Size(38, 34);
+            this.pbHide.Size = new System.Drawing.Size(51, 42);
             this.pbHide.TabIndex = 14;
             this.pbHide.TabStop = false;
             // 
@@ -889,37 +942,42 @@
             this.pnlMain.Controls.Add(this.bntUpdate);
             this.pnlMain.Controls.Add(this.bntAdd);
             this.pnlMain.Location = new System.Drawing.Point(1, 1);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1207, 626);
+            this.pnlMain.Size = new System.Drawing.Size(1609, 770);
             this.pnlMain.TabIndex = 72;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(53, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(71, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(93, 119);
+            this.pictureBox2.Size = new System.Drawing.Size(124, 146);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 121;
             this.pictureBox2.TabStop = false;
             // 
             // XtraEmployee
             // 
-            this.XtraEmployee.Location = new System.Drawing.Point(192, 32);
+            this.XtraEmployee.Location = new System.Drawing.Point(256, 39);
+            this.XtraEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.XtraEmployee.Name = "XtraEmployee";
             this.XtraEmployee.SelectedTabPage = this.XtrPerProfile;
-            this.XtraEmployee.Size = new System.Drawing.Size(1012, 586);
+            this.XtraEmployee.Size = new System.Drawing.Size(1349, 721);
             this.XtraEmployee.TabIndex = 1;
             this.XtraEmployee.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.XtrPerProfile,
             this.xtraTabImage});
+            this.XtraEmployee.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.XtraEmployee_SelectedPageChanged);
             // 
             // xtraTabImage
             // 
             this.xtraTabImage.Controls.Add(this.grpImage);
             this.xtraTabImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabImage.ImageOptions.Image")));
+            this.xtraTabImage.Margin = new System.Windows.Forms.Padding(4);
             this.xtraTabImage.Name = "xtraTabImage";
-            this.xtraTabImage.Size = new System.Drawing.Size(1010, 558);
+            this.xtraTabImage.Size = new System.Drawing.Size(1347, 691);
             this.xtraTabImage.Text = "Product Image";
             // 
             // grpImage
@@ -942,8 +1000,9 @@
             this.grpImage.Location = new System.Drawing.Point(0, 0);
             this.grpImage.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.grpImage.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.grpImage.Margin = new System.Windows.Forms.Padding(4);
             this.grpImage.Name = "grpImage";
-            this.grpImage.Size = new System.Drawing.Size(1010, 558);
+            this.grpImage.Size = new System.Drawing.Size(1347, 691);
             this.grpImage.TabIndex = 174;
             // 
             // txtImageType
@@ -958,10 +1017,11 @@
             "JPG",
             "PNG",
             "BMP"});
-            this.txtImageType.Location = new System.Drawing.Point(729, 104);
+            this.txtImageType.Location = new System.Drawing.Point(972, 128);
+            this.txtImageType.Margin = new System.Windows.Forms.Padding(4);
             this.txtImageType.Name = "txtImageType";
-            this.txtImageType.Size = new System.Drawing.Size(269, 29);
-            this.txtImageType.TabIndex = 212;
+            this.txtImageType.Size = new System.Drawing.Size(357, 36);
+            this.txtImageType.TabIndex = 24;
             this.txtImageType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxImageType_SelectedIndexChanged);
             // 
             // btnSaveImage
@@ -972,10 +1032,11 @@
             this.btnSaveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveImage.ForeColor = System.Drawing.Color.White;
             this.btnSaveImage.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveImage.Image")));
-            this.btnSaveImage.Location = new System.Drawing.Point(888, 193);
+            this.btnSaveImage.Location = new System.Drawing.Point(1184, 238);
+            this.btnSaveImage.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveImage.Name = "btnSaveImage";
-            this.btnSaveImage.Size = new System.Drawing.Size(111, 104);
-            this.btnSaveImage.TabIndex = 60;
+            this.btnSaveImage.Size = new System.Drawing.Size(148, 128);
+            this.btnSaveImage.TabIndex = 25;
             this.btnSaveImage.Text = "SAVE";
             this.btnSaveImage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSaveImage.UseVisualStyleBackColor = false;
@@ -988,10 +1049,11 @@
             this.btnBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBrowse.ForeColor = System.Drawing.Color.White;
             this.btnBrowse.Image = ((System.Drawing.Image)(resources.GetObject("btnBrowse.Image")));
-            this.btnBrowse.Location = new System.Drawing.Point(765, 193);
+            this.btnBrowse.Location = new System.Drawing.Point(1020, 238);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(117, 104);
-            this.btnBrowse.TabIndex = 60;
+            this.btnBrowse.Size = new System.Drawing.Size(156, 128);
+            this.btnBrowse.TabIndex = 23;
             this.btnBrowse.Text = "BROWSE";
             this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBrowse.UseVisualStyleBackColor = false;
@@ -1003,9 +1065,10 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(609, 145);
+            this.label16.Location = new System.Drawing.Point(812, 178);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(110, 17);
+            this.label16.Size = new System.Drawing.Size(142, 23);
             this.label16.TabIndex = 211;
             this.label16.Text = "Image Filename:";
             // 
@@ -1015,9 +1078,10 @@
             this.txtImageFilename.Enabled = false;
             this.txtImageFilename.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageFilename.ForeColor = System.Drawing.Color.Maroon;
-            this.txtImageFilename.Location = new System.Drawing.Point(730, 139);
+            this.txtImageFilename.Location = new System.Drawing.Point(973, 171);
+            this.txtImageFilename.Margin = new System.Windows.Forms.Padding(4);
             this.txtImageFilename.Name = "txtImageFilename";
-            this.txtImageFilename.Size = new System.Drawing.Size(269, 29);
+            this.txtImageFilename.Size = new System.Drawing.Size(357, 34);
             this.txtImageFilename.TabIndex = 210;
             // 
             // label17
@@ -1026,9 +1090,10 @@
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(609, 110);
+            this.label17.Location = new System.Drawing.Point(812, 135);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(83, 17);
+            this.label17.Size = new System.Drawing.Size(108, 23);
             this.label17.TabIndex = 209;
             this.label17.Text = "Image Type:";
             // 
@@ -1038,9 +1103,10 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(609, 76);
+            this.label15.Location = new System.Drawing.Point(812, 94);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(82, 17);
+            this.label15.Size = new System.Drawing.Size(106, 23);
             this.label15.TabIndex = 207;
             this.label15.Text = "Image Title:";
             // 
@@ -1050,9 +1116,10 @@
             this.txtImageTitle.Enabled = false;
             this.txtImageTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageTitle.ForeColor = System.Drawing.Color.Maroon;
-            this.txtImageTitle.Location = new System.Drawing.Point(730, 70);
+            this.txtImageTitle.Location = new System.Drawing.Point(973, 86);
+            this.txtImageTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtImageTitle.Name = "txtImageTitle";
-            this.txtImageTitle.Size = new System.Drawing.Size(269, 29);
+            this.txtImageTitle.Size = new System.Drawing.Size(357, 34);
             this.txtImageTitle.TabIndex = 206;
             // 
             // lblBarcode
@@ -1061,9 +1128,10 @@
             this.lblBarcode.BackColor = System.Drawing.Color.Transparent;
             this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
-            this.lblBarcode.Location = new System.Drawing.Point(609, 42);
+            this.lblBarcode.Location = new System.Drawing.Point(812, 52);
+            this.lblBarcode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(113, 17);
+            this.lblBarcode.Size = new System.Drawing.Size(148, 23);
             this.lblBarcode.TabIndex = 205;
             this.lblBarcode.Text = "Product Barcode:";
             // 
@@ -1073,17 +1141,19 @@
             this.txtProductBar.Enabled = false;
             this.txtProductBar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductBar.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductBar.Location = new System.Drawing.Point(730, 36);
+            this.txtProductBar.Location = new System.Drawing.Point(973, 44);
+            this.txtProductBar.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductBar.Name = "txtProductBar";
-            this.txtProductBar.Size = new System.Drawing.Size(269, 29);
-            this.txtProductBar.TabIndex = 204;
+            this.txtProductBar.Size = new System.Drawing.Size(357, 34);
+            this.txtProductBar.TabIndex = 205;
             // 
             // imgBigPreview
             // 
             this.imgBigPreview.BackColor = System.Drawing.Color.Gray;
-            this.imgBigPreview.Location = new System.Drawing.Point(5, 24);
+            this.imgBigPreview.Location = new System.Drawing.Point(7, 30);
+            this.imgBigPreview.Margin = new System.Windows.Forms.Padding(4);
             this.imgBigPreview.Name = "imgBigPreview";
-            this.imgBigPreview.Size = new System.Drawing.Size(546, 531);
+            this.imgBigPreview.Size = new System.Drawing.Size(728, 654);
             this.imgBigPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgBigPreview.TabIndex = 203;
             this.imgBigPreview.TabStop = false;
@@ -1093,9 +1163,10 @@
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(11, 109);
+            this.lblMainTitle.Location = new System.Drawing.Point(15, 134);
+            this.lblMainTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(166, 47);
+            this.lblMainTitle.Size = new System.Drawing.Size(208, 60);
             this.lblMainTitle.TabIndex = 59;
             this.lblMainTitle.Text = "Products";
             // 
@@ -1106,10 +1177,11 @@
             this.bntHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntHome.ForeColor = System.Drawing.Color.White;
             this.bntHome.Image = ((System.Drawing.Image)(resources.GetObject("bntHome.Image")));
-            this.bntHome.Location = new System.Drawing.Point(98, 474);
+            this.bntHome.Location = new System.Drawing.Point(131, 583);
+            this.bntHome.Margin = new System.Windows.Forms.Padding(4);
             this.bntHome.Name = "bntHome";
-            this.bntHome.Size = new System.Drawing.Size(91, 104);
-            this.bntHome.TabIndex = 55;
+            this.bntHome.Size = new System.Drawing.Size(121, 128);
+            this.bntHome.TabIndex = 22;
             this.bntHome.Text = "HOME";
             this.bntHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntHome.UseVisualStyleBackColor = false;
@@ -1122,10 +1194,11 @@
             this.bntDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntDelete.ForeColor = System.Drawing.Color.White;
             this.bntDelete.Image = ((System.Drawing.Image)(resources.GetObject("bntDelete.Image")));
-            this.bntDelete.Location = new System.Drawing.Point(6, 474);
+            this.bntDelete.Location = new System.Drawing.Point(8, 583);
+            this.bntDelete.Margin = new System.Windows.Forms.Padding(4);
             this.bntDelete.Name = "bntDelete";
-            this.bntDelete.Size = new System.Drawing.Size(91, 104);
-            this.bntDelete.TabIndex = 54;
+            this.bntDelete.Size = new System.Drawing.Size(121, 128);
+            this.bntDelete.TabIndex = 21;
             this.bntDelete.Text = "DELETE";
             this.bntDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntDelete.UseVisualStyleBackColor = false;
@@ -1138,10 +1211,11 @@
             this.bntClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntClear.ForeColor = System.Drawing.Color.White;
             this.bntClear.Image = ((System.Drawing.Image)(resources.GetObject("bntClear.Image")));
-            this.bntClear.Location = new System.Drawing.Point(6, 369);
+            this.bntClear.Location = new System.Drawing.Point(8, 454);
+            this.bntClear.Margin = new System.Windows.Forms.Padding(4);
             this.bntClear.Name = "bntClear";
-            this.bntClear.Size = new System.Drawing.Size(91, 104);
-            this.bntClear.TabIndex = 53;
+            this.bntClear.Size = new System.Drawing.Size(121, 128);
+            this.bntClear.TabIndex = 19;
             this.bntClear.Text = "CLEAR";
             this.bntClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntClear.UseVisualStyleBackColor = false;
@@ -1155,10 +1229,11 @@
             this.bntCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntCancel.ForeColor = System.Drawing.Color.White;
             this.bntCancel.Image = ((System.Drawing.Image)(resources.GetObject("bntCancel.Image")));
-            this.bntCancel.Location = new System.Drawing.Point(98, 369);
+            this.bntCancel.Location = new System.Drawing.Point(131, 454);
+            this.bntCancel.Margin = new System.Windows.Forms.Padding(4);
             this.bntCancel.Name = "bntCancel";
-            this.bntCancel.Size = new System.Drawing.Size(91, 104);
-            this.bntCancel.TabIndex = 52;
+            this.bntCancel.Size = new System.Drawing.Size(121, 128);
+            this.bntCancel.TabIndex = 20;
             this.bntCancel.Text = "CANCEL";
             this.bntCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntCancel.UseVisualStyleBackColor = false;
@@ -1172,10 +1247,11 @@
             this.bntSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntSave.ForeColor = System.Drawing.Color.White;
             this.bntSave.Image = ((System.Drawing.Image)(resources.GetObject("bntSave.Image")));
-            this.bntSave.Location = new System.Drawing.Point(6, 264);
+            this.bntSave.Location = new System.Drawing.Point(8, 325);
+            this.bntSave.Margin = new System.Windows.Forms.Padding(4);
             this.bntSave.Name = "bntSave";
-            this.bntSave.Size = new System.Drawing.Size(183, 104);
-            this.bntSave.TabIndex = 51;
+            this.bntSave.Size = new System.Drawing.Size(244, 128);
+            this.bntSave.TabIndex = 16;
             this.bntSave.Text = "SAVE";
             this.bntSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSave.UseVisualStyleBackColor = false;
@@ -1188,10 +1264,11 @@
             this.bntUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntUpdate.ForeColor = System.Drawing.Color.White;
             this.bntUpdate.Image = ((System.Drawing.Image)(resources.GetObject("bntUpdate.Image")));
-            this.bntUpdate.Location = new System.Drawing.Point(98, 159);
+            this.bntUpdate.Location = new System.Drawing.Point(131, 196);
+            this.bntUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.bntUpdate.Name = "bntUpdate";
-            this.bntUpdate.Size = new System.Drawing.Size(91, 104);
-            this.bntUpdate.TabIndex = 50;
+            this.bntUpdate.Size = new System.Drawing.Size(121, 128);
+            this.bntUpdate.TabIndex = 18;
             this.bntUpdate.Text = "EDIT";
             this.bntUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntUpdate.UseVisualStyleBackColor = false;
@@ -1204,10 +1281,11 @@
             this.bntAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntAdd.ForeColor = System.Drawing.Color.White;
             this.bntAdd.Image = ((System.Drawing.Image)(resources.GetObject("bntAdd.Image")));
-            this.bntAdd.Location = new System.Drawing.Point(6, 159);
+            this.bntAdd.Location = new System.Drawing.Point(8, 196);
+            this.bntAdd.Margin = new System.Windows.Forms.Padding(4);
             this.bntAdd.Name = "bntAdd";
-            this.bntAdd.Size = new System.Drawing.Size(91, 104);
-            this.bntAdd.TabIndex = 49;
+            this.bntAdd.Size = new System.Drawing.Size(121, 128);
+            this.bntAdd.TabIndex = 17;
             this.bntAdd.Text = "ADD";
             this.bntAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntAdd.UseVisualStyleBackColor = false;
@@ -1217,9 +1295,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(241, 1);
+            this.pictureBox1.Location = new System.Drawing.Point(321, 1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox1.Size = new System.Drawing.Size(101, 79);
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             // 
@@ -1227,9 +1306,10 @@
             // 
             this.pcSchedule.BackColor = System.Drawing.Color.Transparent;
             this.pcSchedule.Image = ((System.Drawing.Image)(resources.GetObject("pcSchedule.Image")));
-            this.pcSchedule.Location = new System.Drawing.Point(616, 3);
+            this.pcSchedule.Location = new System.Drawing.Point(821, 4);
+            this.pcSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.pcSchedule.Name = "pcSchedule";
-            this.pcSchedule.Size = new System.Drawing.Size(76, 64);
+            this.pcSchedule.Size = new System.Drawing.Size(101, 79);
             this.pcSchedule.TabIndex = 17;
             this.pcSchedule.TabStop = false;
             // 
@@ -1237,9 +1317,10 @@
             // 
             this.pcBL.BackColor = System.Drawing.Color.Transparent;
             this.pcBL.Image = ((System.Drawing.Image)(resources.GetObject("pcBL.Image")));
-            this.pcBL.Location = new System.Drawing.Point(523, 2);
+            this.pcBL.Location = new System.Drawing.Point(697, 2);
+            this.pcBL.Margin = new System.Windows.Forms.Padding(4);
             this.pcBL.Name = "pcBL";
-            this.pcBL.Size = new System.Drawing.Size(76, 64);
+            this.pcBL.Size = new System.Drawing.Size(101, 79);
             this.pcBL.TabIndex = 16;
             this.pcBL.TabStop = false;
             // 
@@ -1247,9 +1328,10 @@
             // 
             this.pcList.BackColor = System.Drawing.Color.Transparent;
             this.pcList.Image = ((System.Drawing.Image)(resources.GetObject("pcList.Image")));
-            this.pcList.Location = new System.Drawing.Point(428, 1);
+            this.pcList.Location = new System.Drawing.Point(571, 1);
+            this.pcList.Margin = new System.Windows.Forms.Padding(4);
             this.pcList.Name = "pcList";
-            this.pcList.Size = new System.Drawing.Size(76, 64);
+            this.pcList.Size = new System.Drawing.Size(101, 79);
             this.pcList.TabIndex = 15;
             this.pcList.TabStop = false;
             // 
@@ -1257,9 +1339,10 @@
             // 
             this.pcUser.BackColor = System.Drawing.Color.Transparent;
             this.pcUser.Image = ((System.Drawing.Image)(resources.GetObject("pcUser.Image")));
-            this.pcUser.Location = new System.Drawing.Point(144, 2);
+            this.pcUser.Location = new System.Drawing.Point(192, 2);
+            this.pcUser.Margin = new System.Windows.Forms.Padding(4);
             this.pcUser.Name = "pcUser";
-            this.pcUser.Size = new System.Drawing.Size(76, 64);
+            this.pcUser.Size = new System.Drawing.Size(101, 79);
             this.pcUser.TabIndex = 14;
             this.pcUser.TabStop = false;
             // 
@@ -1267,9 +1350,10 @@
             // 
             this.pcAdd.BackColor = System.Drawing.Color.Transparent;
             this.pcAdd.Image = ((System.Drawing.Image)(resources.GetObject("pcAdd.Image")));
-            this.pcAdd.Location = new System.Drawing.Point(37, 2);
+            this.pcAdd.Location = new System.Drawing.Point(49, 2);
+            this.pcAdd.Margin = new System.Windows.Forms.Padding(4);
             this.pcAdd.Name = "pcAdd";
-            this.pcAdd.Size = new System.Drawing.Size(76, 64);
+            this.pcAdd.Size = new System.Drawing.Size(101, 79);
             this.pcAdd.TabIndex = 13;
             this.pcAdd.TabStop = false;
             this.pcAdd.Click += new System.EventHandler(this.pcAdd_Click);
@@ -1278,9 +1362,10 @@
             // 
             this.pcChangePassword.BackColor = System.Drawing.Color.Transparent;
             this.pcChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("pcChangePassword.Image")));
-            this.pcChangePassword.Location = new System.Drawing.Point(334, 2);
+            this.pcChangePassword.Location = new System.Drawing.Point(445, 2);
+            this.pcChangePassword.Margin = new System.Windows.Forms.Padding(4);
             this.pcChangePassword.Name = "pcChangePassword";
-            this.pcChangePassword.Size = new System.Drawing.Size(76, 64);
+            this.pcChangePassword.Size = new System.Drawing.Size(101, 79);
             this.pcChangePassword.TabIndex = 9;
             this.pcChangePassword.TabStop = false;
             // 
@@ -1290,9 +1375,10 @@
             this.pnlOptions.Controls.Add(this.pnlOptionsMain);
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
-            this.pnlOptions.Location = new System.Drawing.Point(-2, 691);
+            this.pnlOptions.Location = new System.Drawing.Point(-3, 850);
+            this.pnlOptions.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOptions.Name = "pnlOptions";
-            this.pnlOptions.Size = new System.Drawing.Size(1298, 74);
+            this.pnlOptions.Size = new System.Drawing.Size(1731, 91);
             this.pnlOptions.TabIndex = 73;
             // 
             // pnlOptionsMain
@@ -1307,18 +1393,20 @@
             this.pnlOptionsMain.Controls.Add(this.pcUser);
             this.pnlOptionsMain.Controls.Add(this.pcAdd);
             this.pnlOptionsMain.Controls.Add(this.pcChangePassword);
-            this.pnlOptionsMain.Location = new System.Drawing.Point(19, 4);
+            this.pnlOptionsMain.Location = new System.Drawing.Point(25, 5);
+            this.pnlOptionsMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOptionsMain.Name = "pnlOptionsMain";
-            this.pnlOptionsMain.Size = new System.Drawing.Size(893, 67);
+            this.pnlOptionsMain.Size = new System.Drawing.Size(1191, 82);
             this.pnlOptionsMain.TabIndex = 21;
             // 
             // pictureBox17
             // 
             this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
-            this.pictureBox17.Location = new System.Drawing.Point(806, 3);
+            this.pictureBox17.Location = new System.Drawing.Point(1075, 4);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox17.Size = new System.Drawing.Size(101, 79);
             this.pictureBox17.TabIndex = 59;
             this.pictureBox17.TabStop = false;
             // 
@@ -1326,9 +1414,10 @@
             // 
             this.pcSettings.BackColor = System.Drawing.Color.Transparent;
             this.pcSettings.Image = ((System.Drawing.Image)(resources.GetObject("pcSettings.Image")));
-            this.pcSettings.Location = new System.Drawing.Point(714, 3);
+            this.pcSettings.Location = new System.Drawing.Point(952, 4);
+            this.pcSettings.Margin = new System.Windows.Forms.Padding(4);
             this.pcSettings.Name = "pcSettings";
-            this.pcSettings.Size = new System.Drawing.Size(76, 61);
+            this.pcSettings.Size = new System.Drawing.Size(101, 75);
             this.pcSettings.TabIndex = 58;
             this.pcSettings.TabStop = false;
             // 
@@ -1338,14 +1427,15 @@
             // 
             // FirmProducts
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1564, 872);
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmProducts";
@@ -1481,11 +1571,11 @@
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtImageFilename;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtImageTitle;
         private System.Windows.Forms.TextBox txtProductBar;
-        private System.Windows.Forms.ComboBox txtImageType;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ComboBox txtImageType;
+        private System.Windows.Forms.Label label17;
     }
 }

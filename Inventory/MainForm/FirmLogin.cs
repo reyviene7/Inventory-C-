@@ -44,7 +44,7 @@ namespace Inventory.MainForm
 
         private void FirmLogin_Load(object sender, EventArgs e)
         {
-            readAuthorization();
+            //readAuthorization();
             PanelInterface.SetMainPanelPosition(this, pnlMain);
         }
 

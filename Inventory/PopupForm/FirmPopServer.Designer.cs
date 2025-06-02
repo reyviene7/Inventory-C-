@@ -69,7 +69,7 @@
             this.gbCON.Location = new System.Drawing.Point(0, 0);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.gbCON.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCON.Margin = new System.Windows.Forms.Padding(4);
             this.gbCON.Name = "gbCON";
             this.gbCON.Size = new System.Drawing.Size(989, 379);
             this.gbCON.TabIndex = 8;
@@ -79,11 +79,11 @@
             this.bntCLR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntCLR.ImageOptions.Image")));
             this.bntCLR.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntCLR.Location = new System.Drawing.Point(476, 276);
-            this.bntCLR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntCLR.Margin = new System.Windows.Forms.Padding(4);
             this.bntCLR.Name = "bntCLR";
             this.bntCLR.Size = new System.Drawing.Size(225, 54);
             this.bntCLR.TabIndex = 6;
-            this.bntCLR.ToolTip = "Service Manual";
+            this.bntCLR.ToolTip = "Reset";
             this.bntCLR.Click += new System.EventHandler(this.bntCLR_Click);
             // 
             // lblMainTitle
@@ -102,7 +102,7 @@
             // 
             this.txtThirdKey.EditValue = "";
             this.txtThirdKey.Location = new System.Drawing.Point(709, 196);
-            this.txtThirdKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtThirdKey.Margin = new System.Windows.Forms.Padding(4);
             this.txtThirdKey.Name = "txtThirdKey";
             this.txtThirdKey.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtThirdKey.Properties.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -119,7 +119,7 @@
             // 
             this.txtSecondKey.EditValue = "";
             this.txtSecondKey.Location = new System.Drawing.Point(476, 198);
-            this.txtSecondKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSecondKey.Margin = new System.Windows.Forms.Padding(4);
             this.txtSecondKey.Name = "txtSecondKey";
             this.txtSecondKey.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtSecondKey.Properties.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -135,7 +135,7 @@
             // 
             this.txtFirstKey.EditValue = "";
             this.txtFirstKey.Location = new System.Drawing.Point(243, 198);
-            this.txtFirstKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFirstKey.Margin = new System.Windows.Forms.Padding(4);
             this.txtFirstKey.Name = "txtFirstKey";
             this.txtFirstKey.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtFirstKey.Properties.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -152,7 +152,7 @@
             this.txtComputerName.EditValue = "";
             this.txtComputerName.Enabled = false;
             this.txtComputerName.Location = new System.Drawing.Point(243, 134);
-            this.txtComputerName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtComputerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtComputerName.Name = "txtComputerName";
             this.txtComputerName.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtComputerName.Properties.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -196,12 +196,12 @@
             this.bntSVA.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntSVA.ImageOptions.Image")));
             this.bntSVA.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntSVA.Location = new System.Drawing.Point(243, 276);
-            this.bntSVA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntSVA.Margin = new System.Windows.Forms.Padding(4);
             this.bntSVA.Name = "bntSVA";
             this.bntSVA.Size = new System.Drawing.Size(225, 54);
             this.bntSVA.TabIndex = 5;
             this.bntSVA.Text = "REG";
-            this.bntSVA.ToolTip = "User Manual";
+            this.bntSVA.ToolTip = "Register";
             this.bntSVA.Click += new System.EventHandler(this.bntSVA_Click);
             // 
             // bntCAN
@@ -209,11 +209,11 @@
             this.bntCAN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntCAN.ImageOptions.Image")));
             this.bntCAN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntCAN.Location = new System.Drawing.Point(709, 276);
-            this.bntCAN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntCAN.Margin = new System.Windows.Forms.Padding(4);
             this.bntCAN.Name = "bntCAN";
             this.bntCAN.Size = new System.Drawing.Size(225, 54);
             this.bntCAN.TabIndex = 7;
-            this.bntCAN.ToolTip = "Service Manual";
+            this.bntCAN.ToolTip = "Exit";
             this.bntCAN.Click += new System.EventHandler(this.bntCAN_Click);
             // 
             // regWET
@@ -227,7 +227,7 @@
             this.ClientSize = new System.Drawing.Size(989, 379);
             this.Controls.Add(this.gbCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmPopServer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmPopServer";

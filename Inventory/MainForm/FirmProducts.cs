@@ -57,9 +57,7 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
-            listProducts = EnumerableUtils.getProductList();
-            imgList = EnumerableUtils.getImgProductList();
-            BindProductList();
+            bindRefreshed();
         }
 
         private void FrmProducts_MouseMove(object sender, MouseEventArgs e)
@@ -130,6 +128,7 @@ namespace Inventory.MainForm
         private void bntDelete_Click(object sender, EventArgs e)
         {
             InputWhit();
+            InputDisb();
             var que =
                 PopupNotification.PopUpMessageQuestion(
                     "Are you sure you want to Delete Product: " + txtProductName.Text.Trim(' ') + " " + "?", "Product Details");
@@ -159,6 +158,27 @@ namespace Inventory.MainForm
 
                     string fileNameAndExtension = getfileExntesion(selectedFilePath);
                     txtImageFilename.Text = fileNameAndExtension;
+
+                    if (imgBigPreview.Image != null)
+                    {
+                        imgBigPreview.Image.Dispose();
+                        imgBigPreview.Image = null;
+                    }
+
+                    try
+                    {
+                        using (var stream = new MemoryStream(File.ReadAllBytes(selectedFilePath)))
+                        {
+                            imgBigPreview.Image = Image.FromStream(stream);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error loading image: " + ex.Message, "Image Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        imgBigPreview.SizeMode = PictureBoxSizeMode.Zoom;
+                    }
+
+                    // Update button states
                     btnSaveImage.Enabled = true;
                     btnBrowse.Enabled = false;
                 }
@@ -179,7 +199,7 @@ namespace Inventory.MainForm
                     btnSaveImage.Enabled = false;
                     btnBrowse.Enabled = true;
                     listProducts = EnumerableUtils.getProductList();
-                    BindProductList();
+                    bindRefreshed();
                 }
             }
             else
@@ -301,16 +321,19 @@ namespace Inventory.MainForm
             _edt = true;
             _del = false;
             gridControl.Enabled = false;
+            bindRefreshed();
         }
         private void ButDel()
         {
             ButtonDel();
+            InputDisb();
             InputEnab();
             InputWhit();
             _add = false;
             _edt = false;
             _del = true;
             gridControl.Enabled = false;
+            bindRefreshed();
         }
         private void ButClr()
         {
@@ -321,6 +344,7 @@ namespace Inventory.MainForm
             gridControl.Enabled = true;
             cmbCategory.DataBindings.Clear();
             cmbSupplier.DataBindings.Clear();
+            bindRefreshed();
         }
         private void ButSav()
         {
@@ -333,8 +357,8 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                BindProductList();
-                
+                bindRefreshed();
+
             }
             if (_add == false && _edt && _del == false)
             {
@@ -344,8 +368,8 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                BindProductList();
-               
+                bindRefreshed();
+
             }
             if (_add == false && _edt == false && _del)
             {
@@ -355,8 +379,7 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                BindProductList();
-                
+                bindRefreshed();
             }
             _add = false;
             _edt = false;
@@ -368,6 +391,7 @@ namespace Inventory.MainForm
             imgBigPreview.DataBindings.Clear();
             imgBigPreview.Image = null;
             imgProduct.Image = null;
+            bindRefreshed();
         }
         private void ButCan()
         {
@@ -560,12 +584,6 @@ namespace Inventory.MainForm
         private void ComboBoxImageType_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedImageType = txtImageType.SelectedItem?.ToString();
-
-            if (selectedImageType != null)
-            {
-                // For demonstration, show a message box with the selected image type
-                MessageBox.Show("Selected Image Type: " + selectedImageType);
-            }
         }
 
         private void cmbSupplier_KeyDown(object sender, KeyEventArgs e)
@@ -844,6 +862,12 @@ namespace Inventory.MainForm
             }
         }
 
+        private void bindRefreshed() {
+            listProducts = EnumerableUtils.getProductList();
+            imgList = EnumerableUtils.getImgProductList();
+            BindProductList();
+        }
+
         private void BindProductList()
         {
             gridControl.Update();
@@ -1027,7 +1051,6 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    //splash.ShowWaitForm();
                     var repository = new Repository<Products>(unWork);
                     var product = new Products()
                     {
@@ -1051,15 +1074,14 @@ namespace Inventory.MainForm
                     var result = repository.Add(product);
                     if (result > 0)
                     {
-                        //splash.ShowWaitForm();
                         PopupNotification.PopUpMessages(1,
                             "Product Name: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
                             Messages.TitleSuccessInsert);
                         unWork.Commit();
+                        bindRefreshed();
                     }
                     else
                     {
-                        //splash.ShowWaitForm();
                         unWork.Rollback();
                     }
 
@@ -1105,8 +1127,7 @@ namespace Inventory.MainForm
                         PopupNotification.PopUpMessages(1, "Product Name: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
                          Messages.TitleSuccessUpdate);
                         unWork.Commit();
-                        listProducts = EnumerableUtils.getProductList();
-                        BindProductList();
+                        bindRefreshed();
                     }
                 }
                 catch (Exception ex)
@@ -1117,6 +1138,15 @@ namespace Inventory.MainForm
                 }
             }
         }
+
+        private void XtraEmployee_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (e.Page == XtrPerProfile)
+            {
+                bindRefreshed();
+            }
+        }
+
         private void DataDelete()
         {
             using (var session = new DalSession())
@@ -1125,33 +1155,65 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    splash.ShowWaitForm();
-                    var proId = Convert.ToInt32(txtProductBar.Text);
-                    var repository = new Repository<Products>(unWork);
-                    var que = repository.Id(proId);
-                    var result = repository.Delete(que);
-                    if (result)
+                    var productName = txtProductName.Text.Trim();
+
+                    var productId = FetchUtils.getProductId(productName);
+
+                    if (productId == 0)
                     {
-                        splash.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1,
-                            "Product Name: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessDelete,
-                            Messages.TitleSuccessDelete);
+                        PopupNotification.PopUpMessages(0, "Product not found: " + productName, Messages.TitleFialedDelete);
+                        return;
+                    }
+
+                    var productRepository = new Repository<Products>(unWork);
+                    var product = productRepository.Id(productId);
+
+                    if (product == null)
+                    {
+                        PopupNotification.PopUpMessages(0, "Product not found for deletion: " + productName, Messages.TitleFialedDelete);
+                        return;
+                    }
+
+                    // Use the productName as the image title to fetch image id
+                    var imageId = FetchUtils.getImageId(productName);
+
+                    var imageRepository = new Repository<ProductImages>(unWork);
+
+                    ProductImages productImage = null;
+                    if (imageId != 0)
+                    {
+                        productImage = imageRepository.Id(imageId);
+                    }
+
+                    // Delete product image if found
+                    bool imageDeleted = true;
+                    if (productImage != null)
+                    {
+                        imageDeleted = imageRepository.Delete(productImage);
+                    }
+
+                    var productDeleted = productRepository.Delete(product);
+
+                    if (productDeleted && imageDeleted)
+                    {
                         unWork.Commit();
+                        PopupNotification.PopUpMessages(1, $"Product '{productName}' and its image deleted successfully.", Messages.TitleSuccessDelete);
+                        bindRefreshed();
                     }
                     else
                     {
-                        splash.CloseWaitForm();
                         unWork.Rollback();
+                        PopupNotification.PopUpMessages(0, $"Failed to delete product or its image: {productName}", Messages.TitleFialedDelete);
                     }
                 }
                 catch (Exception ex)
                 {
-                   
+                    unWork.Rollback();
                     PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedDelete);
-
                 }
             }
         }
+
 
         private int saveProductImage()
         {
@@ -1180,6 +1242,7 @@ namespace Inventory.MainForm
                          Messages.TitleSuccessInsert);
                         unitWorks.Commit();
                         returnValue = 1;
+                        bindRefreshed();
                     }
 
                 }

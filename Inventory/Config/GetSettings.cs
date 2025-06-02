@@ -101,7 +101,7 @@ namespace Inventory.Config
 
         private static int GetLastUserId()
         {
-            using (var session = new DalSession())
+             using (var session = new DalSession())
             {
                 var unitWork = session.UnitofWrk;
                 unitWork.Begin();
