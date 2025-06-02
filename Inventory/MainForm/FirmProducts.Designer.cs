@@ -803,7 +803,7 @@
             this.gridProductList.Appearance.FocusedRow.Options.UseFont = true;
             this.gridProductList.Appearance.FocusedRow.Options.UseForeColor = true;
             this.gridProductList.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridProductList.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridProductList.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridProductList.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.Black;
             this.gridProductList.Appearance.HeaderPanel.Options.UseBackColor = true;
             this.gridProductList.Appearance.HeaderPanel.Options.UseFont = true;
