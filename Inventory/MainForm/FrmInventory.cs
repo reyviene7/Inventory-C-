@@ -770,69 +770,72 @@ namespace Inventory.MainForm
                 }
         }
 
-        private void gridProducts_SelectionChanged(object sender, EventArgs e)
+        private void GridProducts_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (gridProducts.SelectedRows.Count > 0)
+            var view = sender as GridView;
+            if (view == null || view.RowCount == 0)
+                return;
+
+            try
             {
-                try
+                var idValue = view.GetFocusedRowCellValue("ID");
+                if (idValue == null || idValue == DBNull.Value)
+                    return;
+
+                int productId = Convert.ToInt32(idValue);
+                var product = searchProductId(productId);
+                var barcode = product.product_code;
+                txtBarcode.Text = barcode;
+                var img = searchProductImg(barcode);
+                var imgLocation = img?.img_location;
+
+                if (img == null || string.IsNullOrEmpty(imgLocation))
                 {
-                    var selectedRow = gridProducts.SelectedRows[0];
-                    var productId = Convert.ToInt32(selectedRow.Cells["ID"].Value);
-
-                    var product = searchProductId(productId);
-                    var barcode = product.product_code;
-
-                    txtBarcode.Text = barcode;
-
-                    // Fetch and display product image
-                    var img = searchProductImg(barcode);
-                    var imgLocation = img?.img_location;
-                    if (img == null || string.IsNullOrEmpty(imgLocation))
-                    {
-                        ImageProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
-                    }
-                    else
-                    {
-                        var location = ConstantUtils.defaultImgLocation + imgLocation;
-                        ImageProduct.ImageLocation = location;
-                    }
+                    ImageProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine(ex.ToString());
+                    var location = ConstantUtils.defaultImgLocation + imgLocation;
+                    ImageProduct.ImageLocation = location;
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
 
-        private void gridSales_SelectionChanged(object sender, EventArgs e)
+        private void GridSales_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (gridSales.SelectedRows.Count > 0)
-            {
-                try
-                {
-                    var selectedRow = gridSales.SelectedRows[0];
-                    var salesId = Convert.ToInt32(selectedRow.Cells["ID"].Value);
+            var view = sender as GridView;
+            if (view == null || view.RowCount == 0)
+                return;
 
-                    // Assuming you have a method to search sales part by ID
-                    var salesPart = searchSalesId(salesId);
-                    var barcode = salesPart.barcode;
-                    // Fetch and display product image
-                    var img = searchProductImg(barcode);
-                    var imgLocation = img?.img_location;
-                    if (img == null || string.IsNullOrEmpty(imgLocation))
-                    {
-                        ImageSales.ImageLocation = ConstantUtils.defaultImgEmpty;
-                    }
-                    else
-                    {
-                        var location = ConstantUtils.defaultImgLocation + imgLocation;
-                        ImageSales.ImageLocation = location;
-                    }
-                }
-                catch (Exception ex)
+            try
+            {
+                var idValue = view.GetFocusedRowCellValue("ID");
+                if (idValue == null || idValue == DBNull.Value)
+                    return;
+
+                int salesId = Convert.ToInt32(idValue);
+                var salesPart = searchSalesId(salesId);
+                var barcode = salesPart.barcode;
+                var img = searchProductImg(barcode);
+                var imgLocation = img?.img_location;
+
+                if (img == null || string.IsNullOrEmpty(imgLocation))
                 {
-                    Console.WriteLine(ex.ToString());
+                    ImageSales.ImageLocation = ConstantUtils.defaultImgEmpty;
                 }
+                else
+                {
+                    var location = ConstantUtils.defaultImgLocation + imgLocation;
+                    ImageSales.ImageLocation = location;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
 
@@ -888,7 +891,7 @@ namespace Inventory.MainForm
         }
         private void BindWarehouseProduct()
         {
-            gridProducts.Update();
+            gridCtrlProducts.Update();
             try
             {
                 var list = listWarehouseProduct.Select(x => new
@@ -900,9 +903,9 @@ namespace Inventory.MainForm
                     RETAIL = x.retail_price
                 }).ToList();
 
-                gridProducts.DataSource = null; 
-                gridProducts.DataSource = list;
-                
+                gridCtrlProducts.DataSource = null;
+                gridCtrlProducts.DataSource = list;
+
                 gridProducts.Columns[0].Width = 80;
                 gridProducts.Columns[1].Width = 180;
                 gridProducts.Columns[2].Width = 580;
@@ -916,7 +919,7 @@ namespace Inventory.MainForm
         }
         private void BindSalesPart()
         {
-            gridSales.Update();
+            gridCtrlSales.Update();
             try
             {
                 var list = listSalesPart.Select(x => new
@@ -935,8 +938,8 @@ namespace Inventory.MainForm
                     DATE = x.date,
                 }).ToList();
 
-                gridSales.DataSource = null; 
-                gridSales.DataSource = list;
+                gridCtrlSales.DataSource = null; 
+                gridCtrlSales.DataSource = list;
 
                 gridSales.Columns[0].Width = 40;
                 gridSales.Columns[1].Width = 50;
@@ -1037,6 +1040,7 @@ namespace Inventory.MainForm
                 txtQty.Focus();
             }
         }
+
 
         private void txtLastCost_KeyDown(object sender, KeyEventArgs e)
         {
