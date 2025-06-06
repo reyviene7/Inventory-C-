@@ -826,7 +826,7 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-        public static IEnumerable<ViewProductList> getWarehouseProduct()
+        public static IEnumerable<ViewWarehouseDelivery> getWarehouseProduct()
         {
             using (var session = new DalSession())
             {
@@ -834,14 +834,14 @@ namespace ServeAll.Core.Utilities
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<ViewProductList>(unWork);
+                    var repository = new Repository<ViewWarehouseDelivery>(unWork);
                     return repository.SelectAll(Query.AllWarehouseProduct)
                         .ToList();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    return GetEmptyList<ViewProductList>();
+                    return GetEmptyList<ViewWarehouseDelivery>();
                 }
             }
         }

@@ -23,7 +23,8 @@ namespace Inventory.MainForm
         private readonly int _usrTyp;
         private readonly string _userName;
         private IEnumerable<ViewInventory> listInventory;
-        private IEnumerable<ViewProductList> listWarehouseProduct;
+        private IEnumerable<ViewWarehouseDelivery> listWarehouseProduct;
+        private IEnumerable<ViewProducts> listProducts;
         private IEnumerable<ViewSalesPart> listSalesPart;
         private IEnumerable<ViewImageProduct> imgList;
         private int InventoryId;
@@ -93,6 +94,7 @@ namespace Inventory.MainForm
             Options.Start();
             listInventory = EnumerableUtils.getInventory();
             listWarehouseProduct = EnumerableUtils.getWarehouseProduct();
+            listProducts = EnumerableUtils.getProductList();
             listSalesPart = EnumerableUtils.getSalesParticular();
             imgList = EnumerableUtils.getImgProductList();
             BindInventory();
@@ -345,30 +347,35 @@ namespace Inventory.MainForm
         }
         private void BindFilteredProducts()
         {
-            List<string> productNames;
-            List<string> inventoryProductNames;
-
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
-                var productRepository = new Repository<Products>(unWork);
-                productNames = productRepository.SelectAll(Query.AllViewProducts)
-                                                .Select(x => x.product_name)
-                                                .Distinct()
-                                                .ToList();
-            }
 
-            inventoryProductNames = listInventory.Select(x => x.product_name).Distinct().ToList();
-            var filteredProductNames = productNames.Except(inventoryProductNames).ToList();
-            cmbProductName.DataBindings.Clear();
-            cmbProductName.DataSource = filteredProductNames;
+                var productRepository = new Repository<ViewWarehouseDelivery>(unWork);
 
-            if (filteredProductNames.Any())
-            {
-                cmbProductName.Focus();
+                // Fetch all records from view_warehouse_delivery
+                var allProducts = productRepository.SelectAll(Query.AllWarehouseProduct)
+                                                   .Where(x => !string.IsNullOrEmpty(x.product_name))
+                                                   .Select(x => x.product_name)
+                                                   .Distinct()
+                                                   .OrderBy(name => name)
+                                                   .ToList();
+
+                unWork.Commit(); // Don't forget to commit if needed
+
+                // Bind the results to the ComboBox
+                cmbProductName.DataSource = null;
+                cmbProductName.DataSource = allProducts;
+
+                if (allProducts.Any())
+                {
+                    cmbProductName.SelectedIndex = 0;
+                    cmbProductName.Focus();
+                }
             }
         }
+
 
         private void BindProductList(string branchId)
         {
@@ -478,6 +485,7 @@ namespace Inventory.MainForm
             txtInventoryCode.BackColor = Color.White;
             cmbProductName.BackColor = Color.White;
             txtDeliveryNumber.BackColor = Color.White;
+            txtDeliveredQty.BackColor = Color.White;
             txtQty.BackColor = Color.White;
             cmbBranchName.BackColor = Color.White;
             txtLastCost.BackColor = Color.White;
@@ -843,9 +851,9 @@ namespace Inventory.MainForm
         {
             return listInventory.FirstOrDefault(Inventory => Inventory.inventory_id == id);
         }
-        private ViewProductList searchProductId(int id)
+        private ViewWarehouseDelivery searchProductId(int id)
         {
-            return listWarehouseProduct.FirstOrDefault(Product => Product.product_id == id);
+            return listWarehouseProduct.FirstOrDefault(Product => Product.delivery_id == id);
         }
         private ViewSalesPart searchSalesId(int id)
         {
@@ -896,11 +904,11 @@ namespace Inventory.MainForm
             {
                 var list = listWarehouseProduct.Select(x => new
                 {
-                    ID = x.product_id,
+                    ID = x.delivery_id,
                     BARCODE = x.product_code,
                     PRODUCT = x.product_name,
-                    TRADE = x.trade_price,
-                    RETAIL = x.retail_price
+                    TRADE = x.cost_per_unit,
+                    RETAIL = x.last_cost_per_unit
                 }).ToList();
 
                 gridCtrlProducts.DataSource = null;
@@ -1041,6 +1049,42 @@ namespace Inventory.MainForm
             }
         }
 
+        private void CmbProductName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedProductName = cmbProductName.SelectedItem?.ToString();
+
+            if (!string.IsNullOrEmpty(selectedProductName))
+            {
+                var matchedProduct = listWarehouseProduct
+                    .FirstOrDefault(x => x.product_name == selectedProductName);
+
+                if (matchedProduct != null)
+                {
+                    var barcode = matchedProduct.product_code;
+                    var img = searchProductImg(barcode);
+
+                    var imgLocation = img?.img_location;
+                    if (string.IsNullOrEmpty(imgLocation))
+                    {
+                        imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    }
+                    else
+                    {
+                        imgPreview.ImageLocation = ConstantUtils.defaultImgLocation + imgLocation;
+                    }
+
+                    lblPrice.Text = matchedProduct.last_cost_per_unit.ToString("N2");
+
+                    txtDeliveredQty.Text = matchedProduct.delivery_qty.ToString();
+                }
+                else
+                {
+                    imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    lblPrice.Text = "0.00";
+                    txtDeliveredQty.Text = "0";
+                }
+            }
+        }
 
         private void txtLastCost_KeyDown(object sender, KeyEventArgs e)
         {

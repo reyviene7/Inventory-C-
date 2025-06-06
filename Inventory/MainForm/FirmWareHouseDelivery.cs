@@ -599,7 +599,7 @@ namespace Inventory.MainForm
                 {
                     if (warehouseItem >= deliveryQty)
                     {
-                        txtWarehouseQty.Text = (warehouseItem - deliveryQty).ToString();
+                        // txtWarehouseQty.Text = (warehouseItem - deliveryQty).ToString();
                         txtDeliveryQty.BackColor = Color.White;
                         txtWarehouseQty.BackColor = Color.White;
                         cmbDeliveryStatus.Focus();
@@ -1012,7 +1012,7 @@ namespace Inventory.MainForm
             int deliveryQty = int.Parse(txtDeliveryQty.Text);
             int inventoryId = int.Parse(txtInventoryId.Text);
             var warehouseId = FetchUtils.getWarehouseId(cmbWarehouse.Text);
-            if (deliveryQty >= warehouseQty)
+            if (deliveryQty > warehouseQty)
             {
                 PopupNotification.PopUpMessages(0, "Delivery quantity must be less than the warehouse quantity.", "Invalid Input");
                 return;

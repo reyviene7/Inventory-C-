@@ -194,7 +194,7 @@
         public const string AllServiceStatus = @"SELECT * FROM service_status order by status_name ASC";
         public const string AllWarehouseList = @"SELECT warehouse_id, warehouse_name FROM warehouse";
         public const string AllInventory = @"SELECT * FROM view_inventory ORDER BY inventory_id DESC";
-        public const string AllWarehouseProduct = @"SELECT * FROM view_productlist ORDER BY product_id DESC";
+        public const string AllWarehouseProduct = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
         public const string AllSalesPart = @"SELECT * FROM view_sales_particular ORDER BY id DESC";
         public const string AllSalesParticularByBranch = "SELECT * FROM view_sales_particular WHERE branch = @branchName ORDER BY id DESC";
         public const string AllProductCategory = @"SELECT * FROM view_product_category";
