@@ -92,10 +92,7 @@ namespace Inventory.MainForm
             _staff = EnumerableUtils.getStaffList();
             _service_statuses = EnumerableUtils.getServiceStatusList();
             _warehouse = EnumerableUtils.getWarehouse();
-            cmbWarehouse.DataBindings.Clear();
-            cmbWarehouse.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
             bindServices();
-            bindServiceImgList();
         }
         private ViewServiceImages searchServiceImg(string param)
         {
@@ -127,20 +124,26 @@ namespace Inventory.MainForm
                         cmbStaff.Text = ((GridView)sender).GetFocusedRowCellValue("Staff").ToString();
                         cmbServiceStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status").ToString();
                         txtBarcode.Text = barcode;
+                        txtServiceImgBarcode.Text = barcode;
+                        txtServiceImgTitle.Text = ((GridView)sender).GetFocusedRowCellValue("ServiceName").ToString();
                         dpkServiceDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Date");
                         dpkCreatedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Created");
                         dpkUpdated.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Updated");
+
                         var img = searchServiceImg(barcode);
                         var imgLocation = img?.img_location;
+
                         if (img == null || string.IsNullOrEmpty(imgLocation))
                         {
                             imgProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
+                            imgServiceImages.ImageLocation = ConstantUtils.defaultImgEmpty;
                         }
                         else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
 
                             imgProduct.ImageLocation = location;
+                            imgServiceImages.ImageLocation = location;
                         }
                     }
                 }
@@ -148,37 +151,6 @@ namespace Inventory.MainForm
                 {
                     Console.WriteLine(ex.ToString());
                 }
-        }
-
-        private void gridImages_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            if (gridImages.RowCount > 0)
-            {
-                try
-                {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    if (id.Length > 0)
-                    {
-                        var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                        var img = searchServiceImg(barcode);
-                        var imgLocation = img?.img_location;
-                        if (img == null || string.IsNullOrEmpty(imgLocation))
-                        {
-                            imgServiceImages.ImageLocation = ConstantUtils.defaultImgEmpty;
-                        }
-                        else
-                        {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-
-                            imgServiceImages.ImageLocation = location;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
         }
 
         private void gridInventory_Click(object sender, EventArgs e)
@@ -396,12 +368,6 @@ namespace Inventory.MainForm
             gridServices.Columns.Clear();
         }
 
-        private void clearGridImg()
-        {
-            gridImageControl.DataSource = null;
-            gridImageControl.DataSource = "";
-            gridImages.Columns.Clear();
-        }
         private void ButAdd()
         {
             ButtonAdd();
@@ -654,14 +620,6 @@ namespace Inventory.MainForm
                 cmbStaff.DataSource = _staff.Select(p => p.staff).ToList();
             }
         }
-        private void cmbWarehouse_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                cmbWarehouse.DataBindings.Clear();
-                cmbWarehouse.DataSource = _warehouse.Select(p => p.warehouse_name);
-            }
-        }
 
         private void pcUser_Click(object sender, EventArgs e)
         {
@@ -705,7 +663,6 @@ namespace Inventory.MainForm
                 bntSaveImages.Enabled = false;
                 bntBrowseImage.Enabled = true;
                 _service_image_list = EnumerableUtils.getServiceImgList();
-                bindServiceImgList();
             }
             else
             {
@@ -738,9 +695,8 @@ namespace Inventory.MainForm
                 title = txtServiceImgTitle.Text.Trim(' '),
                 img_type = cmbServiceImgType.Text.Trim(' '),
                 img_location = filePath,
-                warehouse_id = FetchUtils.getWarehouseId(cmbWarehouse.Text),
-                created_on = dkpImgCreadOn.Value.Date,
-                updated_on = dkpImgUpdatedOn.Value.Date
+                created_on = DateTime.Now,
+                updated_on = DateTime.Now
             };
             var result = RepositoryEntity.AddEntity<ServiceImages>(img);
             if (result > 0)
@@ -763,44 +719,6 @@ namespace Inventory.MainForm
             txtBarcode.Text = alphaNumeric.ToString();
         }
 
-        private void generateLastServiceImgCode()
-        {
-            var lastProductId = FetchUtils.getLastServiceImgId();
-            var alphaNumeric = new GenerateAlpaNum("S", 3, lastProductId);
-            alphaNumeric.Increment();
-            txtBarcode.Text = alphaNumeric.ToString();
-        }
-
-        private void gridProfile_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-
-        }
-
-        private void bindServiceImgList()
-        {
-            clearGridImg();
-            var list = _service_image_list.Select(p => new {
-                Id = p.image_id,
-                Barcode = p.image_code,
-                Title = p.title,
-                ImageType = p.img_type,
-                Location = p.img_location,
-                Warehouse = p.warehouse,
-                Created = p.created_on,
-                Updated = p.updated_on
-            }).ToList();
-            gridImageControl.DataSource = list;
-            gridImageControl.Update();
-            if (gridImages.RowCount > 0)
-                gridImages.Columns[0].Width = 50;
-                gridImages.Columns[1].Width = 120;
-                gridImages.Columns[2].Width = 200;
-                gridImages.Columns[3].Width = 140;
-                gridImages.Columns[4].Width = 180;
-                gridImages.Columns[5].Width = 100;
-                gridImages.Columns[6].Width = 100;
-                gridImages.Columns[7].Width = 100;
-        }
         private void bindServices()
         {
             clearGrid();
