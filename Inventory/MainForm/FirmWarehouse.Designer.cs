@@ -139,18 +139,20 @@
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(22, 194);
+            this.lblMainTitle.Location = new System.Drawing.Point(29, 239);
+            this.lblMainTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(203, 47);
+            this.lblMainTitle.Size = new System.Drawing.Size(256, 60);
             this.lblMainTitle.TabIndex = 101;
             this.lblMainTitle.Text = "Warehouse";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(59, 32);
+            this.pictureBox1.Location = new System.Drawing.Point(79, 39);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 162);
+            this.pictureBox1.Size = new System.Drawing.Size(169, 199);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 110;
             this.pictureBox1.TabStop = false;
@@ -159,10 +161,11 @@
             // 
             this.XtraWarehouse.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.XtraWarehouse.Appearance.Options.UseBackColor = true;
-            this.XtraWarehouse.Location = new System.Drawing.Point(217, 32);
+            this.XtraWarehouse.Location = new System.Drawing.Point(289, 39);
+            this.XtraWarehouse.Margin = new System.Windows.Forms.Padding(4);
             this.XtraWarehouse.Name = "XtraWarehouse";
             this.XtraWarehouse.SelectedTabPage = this.XtabWHdetails;
-            this.XtraWarehouse.Size = new System.Drawing.Size(1133, 674);
+            this.XtraWarehouse.Size = new System.Drawing.Size(1511, 830);
             this.XtraWarehouse.TabIndex = 111;
             this.XtraWarehouse.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.XtabWHdetails});
@@ -173,8 +176,9 @@
             this.XtabWHdetails.Appearance.PageClient.Options.UseBackColor = true;
             this.XtabWHdetails.Controls.Add(this.GbWHDetails);
             this.XtabWHdetails.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("XtabWHdetails.ImageOptions.Image")));
+            this.XtabWHdetails.Margin = new System.Windows.Forms.Padding(4);
             this.XtabWHdetails.Name = "XtabWHdetails";
-            this.XtabWHdetails.Size = new System.Drawing.Size(1131, 646);
+            this.XtabWHdetails.Size = new System.Drawing.Size(1509, 800);
             this.XtabWHdetails.Text = "Warehouse Details";
             // 
             // GbWHDetails
@@ -216,8 +220,9 @@
             this.GbWHDetails.Location = new System.Drawing.Point(0, 0);
             this.GbWHDetails.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbWHDetails.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.GbWHDetails.Margin = new System.Windows.Forms.Padding(4);
             this.GbWHDetails.Name = "GbWHDetails";
-            this.GbWHDetails.Size = new System.Drawing.Size(1131, 646);
+            this.GbWHDetails.Size = new System.Drawing.Size(1509, 800);
             this.GbWHDetails.TabIndex = 173;
             // 
             // label12
@@ -226,9 +231,10 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(446, 171);
+            this.label12.Location = new System.Drawing.Point(595, 210);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(99, 17);
+            this.label12.Size = new System.Drawing.Size(128, 23);
             this.label12.TabIndex = 203;
             this.label12.Text = "Email Address:";
             // 
@@ -238,9 +244,10 @@
             this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Maroon;
-            this.txtEmail.Location = new System.Drawing.Point(581, 165);
+            this.txtEmail.Location = new System.Drawing.Point(775, 203);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(269, 29);
+            this.txtEmail.Size = new System.Drawing.Size(357, 34);
             this.txtEmail.TabIndex = 121;
             this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             // 
@@ -250,9 +257,10 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(446, 31);
+            this.label8.Location = new System.Drawing.Point(595, 38);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 17);
+            this.label8.Size = new System.Drawing.Size(80, 23);
             this.label8.TabIndex = 201;
             this.label8.Text = "Country:";
             // 
@@ -262,9 +270,10 @@
             this.txtCountry.Enabled = false;
             this.txtCountry.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountry.ForeColor = System.Drawing.Color.Maroon;
-            this.txtCountry.Location = new System.Drawing.Point(581, 25);
+            this.txtCountry.Location = new System.Drawing.Point(775, 31);
+            this.txtCountry.Margin = new System.Windows.Forms.Padding(4);
             this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(269, 29);
+            this.txtCountry.Size = new System.Drawing.Size(357, 34);
             this.txtCountry.TabIndex = 118;
             this.txtCountry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCountry_KeyDown);
             // 
@@ -274,9 +283,10 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(18, 276);
+            this.label9.Location = new System.Drawing.Point(24, 340);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 17);
+            this.label9.Size = new System.Drawing.Size(79, 23);
             this.label9.TabIndex = 199;
             this.label9.Text = "Zipcode:";
             // 
@@ -286,9 +296,10 @@
             this.txtZipCode.Enabled = false;
             this.txtZipCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtZipCode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtZipCode.Location = new System.Drawing.Point(153, 270);
+            this.txtZipCode.Location = new System.Drawing.Point(204, 332);
+            this.txtZipCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtZipCode.Name = "txtZipCode";
-            this.txtZipCode.Size = new System.Drawing.Size(269, 29);
+            this.txtZipCode.Size = new System.Drawing.Size(357, 34);
             this.txtZipCode.TabIndex = 117;
             this.txtZipCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtZipCode_KeyDown);
             // 
@@ -298,9 +309,10 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(18, 206);
+            this.label10.Location = new System.Drawing.Point(24, 254);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 17);
+            this.label10.Size = new System.Drawing.Size(47, 23);
             this.label10.TabIndex = 198;
             this.label10.Text = "City:";
             // 
@@ -310,9 +322,10 @@
             this.txtCity.Enabled = false;
             this.txtCity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.ForeColor = System.Drawing.Color.Maroon;
-            this.txtCity.Location = new System.Drawing.Point(153, 200);
+            this.txtCity.Location = new System.Drawing.Point(204, 246);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(4);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(269, 29);
+            this.txtCity.Size = new System.Drawing.Size(357, 34);
             this.txtCity.TabIndex = 115;
             this.txtCity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCity_KeyDown);
             // 
@@ -322,9 +335,10 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(18, 171);
+            this.label11.Location = new System.Drawing.Point(24, 210);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 17);
+            this.label11.Size = new System.Drawing.Size(90, 23);
             this.label11.TabIndex = 197;
             this.label11.Text = "Barangay:";
             // 
@@ -334,9 +348,10 @@
             this.txtBarangay.Enabled = false;
             this.txtBarangay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarangay.ForeColor = System.Drawing.Color.Maroon;
-            this.txtBarangay.Location = new System.Drawing.Point(153, 165);
+            this.txtBarangay.Location = new System.Drawing.Point(204, 203);
+            this.txtBarangay.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarangay.Name = "txtBarangay";
-            this.txtBarangay.Size = new System.Drawing.Size(269, 29);
+            this.txtBarangay.Size = new System.Drawing.Size(357, 34);
             this.txtBarangay.TabIndex = 114;
             this.txtBarangay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarangay_KeyDown);
             // 
@@ -346,9 +361,10 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(446, 206);
+            this.label7.Location = new System.Drawing.Point(595, 254);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 17);
+            this.label7.Size = new System.Drawing.Size(113, 23);
             this.label7.TabIndex = 191;
             this.label7.Text = "Fax Number:";
             // 
@@ -358,9 +374,10 @@
             this.txtFax.Enabled = false;
             this.txtFax.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFax.ForeColor = System.Drawing.Color.Maroon;
-            this.txtFax.Location = new System.Drawing.Point(581, 200);
+            this.txtFax.Location = new System.Drawing.Point(775, 246);
+            this.txtFax.Margin = new System.Windows.Forms.Padding(4);
             this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(269, 29);
+            this.txtFax.Size = new System.Drawing.Size(357, 34);
             this.txtFax.TabIndex = 122;
             this.txtFax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFax_KeyDown);
             // 
@@ -370,9 +387,10 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(446, 136);
+            this.label6.Location = new System.Drawing.Point(595, 167);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 17);
+            this.label6.Size = new System.Drawing.Size(143, 23);
             this.label6.TabIndex = 189;
             this.label6.Text = "Mobile Number:";
             // 
@@ -382,9 +400,10 @@
             this.txtMobile.Enabled = false;
             this.txtMobile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMobile.ForeColor = System.Drawing.Color.Maroon;
-            this.txtMobile.Location = new System.Drawing.Point(581, 130);
+            this.txtMobile.Location = new System.Drawing.Point(775, 160);
+            this.txtMobile.Margin = new System.Windows.Forms.Padding(4);
             this.txtMobile.Name = "txtMobile";
-            this.txtMobile.Size = new System.Drawing.Size(269, 29);
+            this.txtMobile.Size = new System.Drawing.Size(357, 34);
             this.txtMobile.TabIndex = 120;
             this.txtMobile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMobile_KeyDown);
             // 
@@ -394,9 +413,10 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(446, 101);
+            this.label5.Location = new System.Drawing.Point(595, 124);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 17);
+            this.label5.Size = new System.Drawing.Size(96, 23);
             this.label5.TabIndex = 187;
             this.label5.Text = "Telephone:";
             // 
@@ -406,9 +426,10 @@
             this.txtTelephone.Enabled = false;
             this.txtTelephone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelephone.ForeColor = System.Drawing.Color.Maroon;
-            this.txtTelephone.Location = new System.Drawing.Point(581, 95);
+            this.txtTelephone.Location = new System.Drawing.Point(775, 117);
+            this.txtTelephone.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(269, 29);
+            this.txtTelephone.Size = new System.Drawing.Size(357, 34);
             this.txtTelephone.TabIndex = 119;
             this.txtTelephone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelephone_KeyDown);
             // 
@@ -504,9 +525,10 @@
             "Zamboanga del Sur",
             "Zamboanga Sibugay",
             "Metro Manila"});
-            this.cmbProvincialAddress.Location = new System.Drawing.Point(152, 235);
+            this.cmbProvincialAddress.Location = new System.Drawing.Point(203, 289);
+            this.cmbProvincialAddress.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProvincialAddress.Name = "cmbProvincialAddress";
-            this.cmbProvincialAddress.Size = new System.Drawing.Size(269, 29);
+            this.cmbProvincialAddress.Size = new System.Drawing.Size(357, 36);
             this.cmbProvincialAddress.TabIndex = 116;
             this.cmbProvincialAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProvincialAddress_KeyDown);
             // 
@@ -516,9 +538,10 @@
             this.lblProvicen.BackColor = System.Drawing.Color.Transparent;
             this.lblProvicen.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProvicen.ForeColor = System.Drawing.Color.White;
-            this.lblProvicen.Location = new System.Drawing.Point(18, 241);
+            this.lblProvicen.Location = new System.Drawing.Point(24, 297);
+            this.lblProvicen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProvicen.Name = "lblProvicen";
-            this.lblProvicen.Size = new System.Drawing.Size(126, 17);
+            this.lblProvicen.Size = new System.Drawing.Size(162, 23);
             this.lblProvicen.TabIndex = 185;
             this.lblProvicen.Text = "Provincial Address:";
             // 
@@ -528,9 +551,10 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(446, 66);
+            this.label4.Location = new System.Drawing.Point(595, 81);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 17);
+            this.label4.Size = new System.Drawing.Size(125, 23);
             this.label4.TabIndex = 183;
             this.label4.Text = "Date Register:";
             // 
@@ -540,9 +564,10 @@
             this.dkpDateRegister.Enabled = false;
             this.dkpDateRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDateRegister.Location = new System.Drawing.Point(581, 60);
+            this.dkpDateRegister.Location = new System.Drawing.Point(775, 74);
+            this.dkpDateRegister.Margin = new System.Windows.Forms.Padding(4);
             this.dkpDateRegister.Name = "dkpDateRegister";
-            this.dkpDateRegister.Size = new System.Drawing.Size(269, 29);
+            this.dkpDateRegister.Size = new System.Drawing.Size(357, 34);
             this.dkpDateRegister.TabIndex = 123;
             this.dkpDateRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDateRegister_KeyDown);
             // 
@@ -552,9 +577,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(18, 136);
+            this.label3.Location = new System.Drawing.Point(24, 167);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 17);
+            this.label3.Size = new System.Drawing.Size(69, 23);
             this.label3.TabIndex = 178;
             this.label3.Text = "Street: ";
             // 
@@ -564,9 +590,10 @@
             this.txtStreet.Enabled = false;
             this.txtStreet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStreet.ForeColor = System.Drawing.Color.Maroon;
-            this.txtStreet.Location = new System.Drawing.Point(153, 130);
+            this.txtStreet.Location = new System.Drawing.Point(204, 160);
+            this.txtStreet.Margin = new System.Windows.Forms.Padding(4);
             this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(269, 29);
+            this.txtStreet.Size = new System.Drawing.Size(357, 34);
             this.txtStreet.TabIndex = 113;
             this.txtStreet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStreet_KeyDown);
             // 
@@ -576,9 +603,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(18, 101);
+            this.label2.Location = new System.Drawing.Point(24, 124);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 17);
+            this.label2.Size = new System.Drawing.Size(154, 23);
             this.label2.TabIndex = 176;
             this.label2.Text = "Warehouse Name:";
             // 
@@ -588,9 +616,10 @@
             this.txtWarehouseName.Enabled = false;
             this.txtWarehouseName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWarehouseName.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWarehouseName.Location = new System.Drawing.Point(153, 95);
+            this.txtWarehouseName.Location = new System.Drawing.Point(204, 117);
+            this.txtWarehouseName.Margin = new System.Windows.Forms.Padding(4);
             this.txtWarehouseName.Name = "txtWarehouseName";
-            this.txtWarehouseName.Size = new System.Drawing.Size(269, 29);
+            this.txtWarehouseName.Size = new System.Drawing.Size(357, 34);
             this.txtWarehouseName.TabIndex = 112;
             this.txtWarehouseName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWarehouseName_KeyDown);
             // 
@@ -600,9 +629,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(18, 66);
+            this.label1.Location = new System.Drawing.Point(24, 81);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 17);
+            this.label1.Size = new System.Drawing.Size(148, 23);
             this.label1.TabIndex = 174;
             this.label1.Text = "Warehouse Code:";
             // 
@@ -612,9 +642,10 @@
             this.txtWarehouseCode.Enabled = false;
             this.txtWarehouseCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWarehouseCode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWarehouseCode.Location = new System.Drawing.Point(153, 60);
+            this.txtWarehouseCode.Location = new System.Drawing.Point(204, 74);
+            this.txtWarehouseCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtWarehouseCode.Name = "txtWarehouseCode";
-            this.txtWarehouseCode.Size = new System.Drawing.Size(269, 29);
+            this.txtWarehouseCode.Size = new System.Drawing.Size(357, 34);
             this.txtWarehouseCode.TabIndex = 111;
             // 
             // gbCON
@@ -624,11 +655,12 @@
             this.gbCON.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.gbCON.Controls.Add(this.gridControl);
             this.gbCON.Controls.Add(this.txtPRI);
-            this.gbCON.Location = new System.Drawing.Point(-1, 318);
+            this.gbCON.Location = new System.Drawing.Point(-1, 391);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.gbCON.Margin = new System.Windows.Forms.Padding(4);
             this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(1133, 335);
+            this.gbCON.Size = new System.Drawing.Size(1511, 412);
             this.gbCON.TabIndex = 172;
             this.gbCON.Text = "Warehouse List:";
             // 
@@ -638,11 +670,13 @@
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
             this.gridControl.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.gridControl.Location = new System.Drawing.Point(3, 18);
+            this.gridControl.Location = new System.Drawing.Point(3, 21);
             this.gridControl.MainView = this.gridWarehouse;
+            this.gridControl.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1127, 314);
+            this.gridControl.Size = new System.Drawing.Size(1505, 388);
             this.gridControl.TabIndex = 100;
             this.gridControl.TabStop = false;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -695,6 +729,7 @@
             this.gridWarehouse.AppearancePrint.Row.Options.UseFont = true;
             this.gridWarehouse.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridWarehouse.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.gridWarehouse.DetailHeight = 431;
             this.gridWarehouse.GridControl = this.gridControl;
             this.gridWarehouse.Name = "gridWarehouse";
             this.gridWarehouse.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -709,6 +744,7 @@
             // 
             // gridView2
             // 
+            this.gridView2.DetailHeight = 431;
             this.gridView2.GridControl = this.gridControl;
             this.gridView2.Name = "gridView2";
             // 
@@ -742,6 +778,7 @@
             this.gridView3.AppearancePrint.Row.Options.UseFont = true;
             this.gridView3.AppearancePrint.Row.Options.UseForeColor = true;
             this.gridView3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.gridView3.DetailHeight = 431;
             this.gridView3.GridControl = this.gridControl;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -755,6 +792,7 @@
             // 
             // grdHIS
             // 
+            this.grdHIS.DetailHeight = 431;
             this.grdHIS.GridControl = this.gridControl;
             this.grdHIS.Name = "grdHIS";
             // 
@@ -764,10 +802,11 @@
             this.txtPRI.Enabled = false;
             this.txtPRI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPRI.ForeColor = System.Drawing.Color.Maroon;
-            this.txtPRI.Location = new System.Drawing.Point(-8, 21);
+            this.txtPRI.Location = new System.Drawing.Point(-11, 26);
+            this.txtPRI.Margin = new System.Windows.Forms.Padding(4);
             this.txtPRI.Multiline = true;
             this.txtPRI.Name = "txtPRI";
-            this.txtPRI.Size = new System.Drawing.Size(10, 10);
+            this.txtPRI.Size = new System.Drawing.Size(12, 11);
             this.txtPRI.TabIndex = 99;
             this.txtPRI.Visible = false;
             // 
@@ -777,9 +816,10 @@
             this.lblBarcode.BackColor = System.Drawing.Color.Transparent;
             this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
-            this.lblBarcode.Location = new System.Drawing.Point(18, 31);
+            this.lblBarcode.Location = new System.Drawing.Point(24, 38);
+            this.lblBarcode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(96, 17);
+            this.lblBarcode.Size = new System.Drawing.Size(123, 23);
             this.lblBarcode.TabIndex = 142;
             this.lblBarcode.Text = "Warehouse Id:";
             // 
@@ -789,9 +829,10 @@
             this.txtWarehouseId.Enabled = false;
             this.txtWarehouseId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWarehouseId.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWarehouseId.Location = new System.Drawing.Point(153, 25);
+            this.txtWarehouseId.Location = new System.Drawing.Point(204, 31);
+            this.txtWarehouseId.Margin = new System.Windows.Forms.Padding(4);
             this.txtWarehouseId.Name = "txtWarehouseId";
-            this.txtWarehouseId.Size = new System.Drawing.Size(269, 29);
+            this.txtWarehouseId.Size = new System.Drawing.Size(357, 34);
             this.txtWarehouseId.TabIndex = 110;
             // 
             // txtPIR
@@ -800,29 +841,33 @@
             this.txtPIR.Enabled = false;
             this.txtPIR.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPIR.ForeColor = System.Drawing.Color.Maroon;
-            this.txtPIR.Location = new System.Drawing.Point(-8, 19);
+            this.txtPIR.Location = new System.Drawing.Point(-11, 23);
+            this.txtPIR.Margin = new System.Windows.Forms.Padding(4);
             this.txtPIR.Multiline = true;
             this.txtPIR.Name = "txtPIR";
-            this.txtPIR.Size = new System.Drawing.Size(10, 10);
+            this.txtPIR.Size = new System.Drawing.Size(12, 11);
             this.txtPIR.TabIndex = 109;
             this.txtPIR.Visible = false;
             // 
             // Options
             // 
             this.Options.Interval = 1;
+            this.Options.Tick += new System.EventHandler(this.Options_Tick);
             // 
             // RightOptions
             // 
             this.RightOptions.Interval = 1;
+            this.RightOptions.Tick += new System.EventHandler(this.RightOptions_Tick);
             // 
             // pnlRightOptions
             // 
             this.pnlRightOptions.BackColor = System.Drawing.Color.RoyalBlue;
             this.pnlRightOptions.Controls.Add(this.pcRight);
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
-            this.pnlRightOptions.Location = new System.Drawing.Point(1375, 1);
+            this.pnlRightOptions.Location = new System.Drawing.Point(1833, 1);
+            this.pnlRightOptions.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRightOptions.Name = "pnlRightOptions";
-            this.pnlRightOptions.Size = new System.Drawing.Size(77, 810);
+            this.pnlRightOptions.Size = new System.Drawing.Size(103, 997);
             this.pnlRightOptions.TabIndex = 112;
             // 
             // pcRight
@@ -830,9 +875,10 @@
             this.pcRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pcRight.Image = ((System.Drawing.Image)(resources.GetObject("pcRight.Image")));
             this.pcRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pcRight.Location = new System.Drawing.Point(3, 64);
+            this.pcRight.Location = new System.Drawing.Point(4, 79);
+            this.pcRight.Margin = new System.Windows.Forms.Padding(4);
             this.pcRight.Name = "pcRight";
-            this.pcRight.Size = new System.Drawing.Size(35, 34);
+            this.pcRight.Size = new System.Drawing.Size(47, 42);
             this.pcRight.TabIndex = 20;
             this.pcRight.TabStop = false;
             // 
@@ -841,18 +887,20 @@
             this.pnlRightMain.Controls.Add(this.pbExit);
             this.pnlRightMain.Controls.Add(this.pbHome);
             this.pnlRightMain.Controls.Add(this.pbLogout);
-            this.pnlRightMain.Location = new System.Drawing.Point(3, 98);
+            this.pnlRightMain.Location = new System.Drawing.Point(4, 121);
+            this.pnlRightMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRightMain.Name = "pnlRightMain";
-            this.pnlRightMain.Size = new System.Drawing.Size(70, 529);
+            this.pnlRightMain.Size = new System.Drawing.Size(93, 651);
             this.pnlRightMain.TabIndex = 1;
             // 
             // pbExit
             // 
             this.pbExit.Image = ((System.Drawing.Image)(resources.GetObject("pbExit.Image")));
             this.pbExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbExit.Location = new System.Drawing.Point(3, 448);
+            this.pbExit.Location = new System.Drawing.Point(4, 551);
+            this.pbExit.Margin = new System.Windows.Forms.Padding(4);
             this.pbExit.Name = "pbExit";
-            this.pbExit.Size = new System.Drawing.Size(70, 76);
+            this.pbExit.Size = new System.Drawing.Size(93, 94);
             this.pbExit.TabIndex = 5;
             this.pbExit.TabStop = false;
             this.pbExit.Click += new System.EventHandler(this.pbExit_Click);
@@ -861,9 +909,10 @@
             // 
             this.pbHome.Image = ((System.Drawing.Image)(resources.GetObject("pbHome.Image")));
             this.pbHome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbHome.Location = new System.Drawing.Point(-2, 269);
+            this.pbHome.Location = new System.Drawing.Point(-3, 331);
+            this.pbHome.Margin = new System.Windows.Forms.Padding(4);
             this.pbHome.Name = "pbHome";
-            this.pbHome.Size = new System.Drawing.Size(76, 76);
+            this.pbHome.Size = new System.Drawing.Size(101, 94);
             this.pbHome.TabIndex = 4;
             this.pbHome.TabStop = false;
             this.pbHome.Click += new System.EventHandler(this.pbHome_Click);
@@ -872,9 +921,10 @@
             // 
             this.pbLogout.Image = ((System.Drawing.Image)(resources.GetObject("pbLogout.Image")));
             this.pbLogout.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbLogout.Location = new System.Drawing.Point(-3, 65);
+            this.pbLogout.Location = new System.Drawing.Point(-4, 80);
+            this.pbLogout.Margin = new System.Windows.Forms.Padding(4);
             this.pbLogout.Name = "pbLogout";
-            this.pbLogout.Size = new System.Drawing.Size(76, 76);
+            this.pbLogout.Size = new System.Drawing.Size(101, 94);
             this.pbLogout.TabIndex = 3;
             this.pbLogout.TabStop = false;
             this.pbLogout.Click += new System.EventHandler(this.pbLogout_Click);
@@ -885,9 +935,10 @@
             this.pnlOptions.Controls.Add(this.pnlOptionsMain);
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
-            this.pnlOptions.Location = new System.Drawing.Point(2, 737);
+            this.pnlOptions.Location = new System.Drawing.Point(3, 907);
+            this.pnlOptions.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOptions.Name = "pnlOptions";
-            this.pnlOptions.Size = new System.Drawing.Size(1377, 74);
+            this.pnlOptions.Size = new System.Drawing.Size(1836, 91);
             this.pnlOptions.TabIndex = 71;
             // 
             // pnlOptionsMain
@@ -902,18 +953,20 @@
             this.pnlOptionsMain.Controls.Add(this.pcUser);
             this.pnlOptionsMain.Controls.Add(this.pcAdd);
             this.pnlOptionsMain.Controls.Add(this.pcChangePassword);
-            this.pnlOptionsMain.Location = new System.Drawing.Point(19, 4);
+            this.pnlOptionsMain.Location = new System.Drawing.Point(25, 5);
+            this.pnlOptionsMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOptionsMain.Name = "pnlOptionsMain";
-            this.pnlOptionsMain.Size = new System.Drawing.Size(893, 67);
+            this.pnlOptionsMain.Size = new System.Drawing.Size(1191, 82);
             this.pnlOptionsMain.TabIndex = 21;
             // 
             // pictureBox17
             // 
             this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
-            this.pictureBox17.Location = new System.Drawing.Point(806, 3);
+            this.pictureBox17.Location = new System.Drawing.Point(1075, 4);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox17.Size = new System.Drawing.Size(101, 79);
             this.pictureBox17.TabIndex = 59;
             this.pictureBox17.TabStop = false;
             // 
@@ -921,9 +974,10 @@
             // 
             this.pcSettings.BackColor = System.Drawing.Color.Transparent;
             this.pcSettings.Image = ((System.Drawing.Image)(resources.GetObject("pcSettings.Image")));
-            this.pcSettings.Location = new System.Drawing.Point(714, 3);
+            this.pcSettings.Location = new System.Drawing.Point(952, 4);
+            this.pcSettings.Margin = new System.Windows.Forms.Padding(4);
             this.pcSettings.Name = "pcSettings";
-            this.pcSettings.Size = new System.Drawing.Size(76, 61);
+            this.pcSettings.Size = new System.Drawing.Size(101, 75);
             this.pcSettings.TabIndex = 58;
             this.pcSettings.TabStop = false;
             // 
@@ -931,9 +985,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(241, 1);
+            this.pictureBox2.Location = new System.Drawing.Point(321, 1);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(76, 64);
+            this.pictureBox2.Size = new System.Drawing.Size(101, 79);
             this.pictureBox2.TabIndex = 29;
             this.pictureBox2.TabStop = false;
             // 
@@ -941,9 +996,10 @@
             // 
             this.pcSchedule.BackColor = System.Drawing.Color.Transparent;
             this.pcSchedule.Image = ((System.Drawing.Image)(resources.GetObject("pcSchedule.Image")));
-            this.pcSchedule.Location = new System.Drawing.Point(616, 3);
+            this.pcSchedule.Location = new System.Drawing.Point(821, 4);
+            this.pcSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.pcSchedule.Name = "pcSchedule";
-            this.pcSchedule.Size = new System.Drawing.Size(76, 64);
+            this.pcSchedule.Size = new System.Drawing.Size(101, 79);
             this.pcSchedule.TabIndex = 17;
             this.pcSchedule.TabStop = false;
             // 
@@ -951,9 +1007,10 @@
             // 
             this.pcBL.BackColor = System.Drawing.Color.Transparent;
             this.pcBL.Image = ((System.Drawing.Image)(resources.GetObject("pcBL.Image")));
-            this.pcBL.Location = new System.Drawing.Point(523, 2);
+            this.pcBL.Location = new System.Drawing.Point(697, 2);
+            this.pcBL.Margin = new System.Windows.Forms.Padding(4);
             this.pcBL.Name = "pcBL";
-            this.pcBL.Size = new System.Drawing.Size(76, 64);
+            this.pcBL.Size = new System.Drawing.Size(101, 79);
             this.pcBL.TabIndex = 16;
             this.pcBL.TabStop = false;
             // 
@@ -961,9 +1018,10 @@
             // 
             this.pcList.BackColor = System.Drawing.Color.Transparent;
             this.pcList.Image = ((System.Drawing.Image)(resources.GetObject("pcList.Image")));
-            this.pcList.Location = new System.Drawing.Point(428, 1);
+            this.pcList.Location = new System.Drawing.Point(571, 1);
+            this.pcList.Margin = new System.Windows.Forms.Padding(4);
             this.pcList.Name = "pcList";
-            this.pcList.Size = new System.Drawing.Size(76, 64);
+            this.pcList.Size = new System.Drawing.Size(101, 79);
             this.pcList.TabIndex = 15;
             this.pcList.TabStop = false;
             // 
@@ -971,9 +1029,10 @@
             // 
             this.pcUser.BackColor = System.Drawing.Color.Transparent;
             this.pcUser.Image = ((System.Drawing.Image)(resources.GetObject("pcUser.Image")));
-            this.pcUser.Location = new System.Drawing.Point(144, 2);
+            this.pcUser.Location = new System.Drawing.Point(192, 2);
+            this.pcUser.Margin = new System.Windows.Forms.Padding(4);
             this.pcUser.Name = "pcUser";
-            this.pcUser.Size = new System.Drawing.Size(76, 64);
+            this.pcUser.Size = new System.Drawing.Size(101, 79);
             this.pcUser.TabIndex = 14;
             this.pcUser.TabStop = false;
             // 
@@ -981,9 +1040,10 @@
             // 
             this.pcAdd.BackColor = System.Drawing.Color.Transparent;
             this.pcAdd.Image = ((System.Drawing.Image)(resources.GetObject("pcAdd.Image")));
-            this.pcAdd.Location = new System.Drawing.Point(37, 2);
+            this.pcAdd.Location = new System.Drawing.Point(49, 2);
+            this.pcAdd.Margin = new System.Windows.Forms.Padding(4);
             this.pcAdd.Name = "pcAdd";
-            this.pcAdd.Size = new System.Drawing.Size(76, 64);
+            this.pcAdd.Size = new System.Drawing.Size(101, 79);
             this.pcAdd.TabIndex = 13;
             this.pcAdd.TabStop = false;
             // 
@@ -991,9 +1051,10 @@
             // 
             this.pcChangePassword.BackColor = System.Drawing.Color.Transparent;
             this.pcChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("pcChangePassword.Image")));
-            this.pcChangePassword.Location = new System.Drawing.Point(334, 2);
+            this.pcChangePassword.Location = new System.Drawing.Point(445, 2);
+            this.pcChangePassword.Margin = new System.Windows.Forms.Padding(4);
             this.pcChangePassword.Name = "pcChangePassword";
-            this.pcChangePassword.Size = new System.Drawing.Size(76, 64);
+            this.pcChangePassword.Size = new System.Drawing.Size(101, 79);
             this.pcChangePassword.TabIndex = 9;
             this.pcChangePassword.TabStop = false;
             // 
@@ -1002,9 +1063,10 @@
             this.pbHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pbHide.Image = ((System.Drawing.Image)(resources.GetObject("pbHide.Image")));
             this.pbHide.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbHide.Location = new System.Drawing.Point(1154, 3);
+            this.pbHide.Location = new System.Drawing.Point(1539, 4);
+            this.pbHide.Margin = new System.Windows.Forms.Padding(4);
             this.pbHide.Name = "pbHide";
-            this.pbHide.Size = new System.Drawing.Size(38, 34);
+            this.pbHide.Size = new System.Drawing.Size(51, 42);
             this.pbHide.TabIndex = 14;
             this.pbHide.TabStop = false;
             // 
@@ -1015,9 +1077,10 @@
             this.bntHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntHome.ForeColor = System.Drawing.Color.White;
             this.bntHome.Image = ((System.Drawing.Image)(resources.GetObject("bntHome.Image")));
-            this.bntHome.Location = new System.Drawing.Point(122, 559);
+            this.bntHome.Location = new System.Drawing.Point(163, 688);
+            this.bntHome.Margin = new System.Windows.Forms.Padding(4);
             this.bntHome.Name = "bntHome";
-            this.bntHome.Size = new System.Drawing.Size(91, 104);
+            this.bntHome.Size = new System.Drawing.Size(121, 128);
             this.bntHome.TabIndex = 62;
             this.bntHome.Text = "HOME";
             this.bntHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1031,9 +1094,10 @@
             this.bntDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntDelete.ForeColor = System.Drawing.Color.White;
             this.bntDelete.Image = ((System.Drawing.Image)(resources.GetObject("bntDelete.Image")));
-            this.bntDelete.Location = new System.Drawing.Point(30, 559);
+            this.bntDelete.Location = new System.Drawing.Point(40, 688);
+            this.bntDelete.Margin = new System.Windows.Forms.Padding(4);
             this.bntDelete.Name = "bntDelete";
-            this.bntDelete.Size = new System.Drawing.Size(91, 104);
+            this.bntDelete.Size = new System.Drawing.Size(121, 128);
             this.bntDelete.TabIndex = 61;
             this.bntDelete.Text = "DELETE";
             this.bntDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1047,9 +1111,10 @@
             this.bntClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntClear.ForeColor = System.Drawing.Color.White;
             this.bntClear.Image = ((System.Drawing.Image)(resources.GetObject("bntClear.Image")));
-            this.bntClear.Location = new System.Drawing.Point(30, 454);
+            this.bntClear.Location = new System.Drawing.Point(40, 559);
+            this.bntClear.Margin = new System.Windows.Forms.Padding(4);
             this.bntClear.Name = "bntClear";
-            this.bntClear.Size = new System.Drawing.Size(91, 104);
+            this.bntClear.Size = new System.Drawing.Size(121, 128);
             this.bntClear.TabIndex = 60;
             this.bntClear.Text = "CLEAR";
             this.bntClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1064,9 +1129,10 @@
             this.bntCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntCancel.ForeColor = System.Drawing.Color.White;
             this.bntCancel.Image = ((System.Drawing.Image)(resources.GetObject("bntCancel.Image")));
-            this.bntCancel.Location = new System.Drawing.Point(122, 454);
+            this.bntCancel.Location = new System.Drawing.Point(163, 559);
+            this.bntCancel.Margin = new System.Windows.Forms.Padding(4);
             this.bntCancel.Name = "bntCancel";
-            this.bntCancel.Size = new System.Drawing.Size(91, 104);
+            this.bntCancel.Size = new System.Drawing.Size(121, 128);
             this.bntCancel.TabIndex = 59;
             this.bntCancel.Text = "CANCEL";
             this.bntCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1081,9 +1147,10 @@
             this.bntSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntSave.ForeColor = System.Drawing.Color.White;
             this.bntSave.Image = ((System.Drawing.Image)(resources.GetObject("bntSave.Image")));
-            this.bntSave.Location = new System.Drawing.Point(30, 349);
+            this.bntSave.Location = new System.Drawing.Point(40, 430);
+            this.bntSave.Margin = new System.Windows.Forms.Padding(4);
             this.bntSave.Name = "bntSave";
-            this.bntSave.Size = new System.Drawing.Size(183, 104);
+            this.bntSave.Size = new System.Drawing.Size(244, 128);
             this.bntSave.TabIndex = 58;
             this.bntSave.Text = "SAVE";
             this.bntSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1097,9 +1164,10 @@
             this.bntUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntUpdate.ForeColor = System.Drawing.Color.White;
             this.bntUpdate.Image = ((System.Drawing.Image)(resources.GetObject("bntUpdate.Image")));
-            this.bntUpdate.Location = new System.Drawing.Point(122, 244);
+            this.bntUpdate.Location = new System.Drawing.Point(163, 300);
+            this.bntUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.bntUpdate.Name = "bntUpdate";
-            this.bntUpdate.Size = new System.Drawing.Size(91, 104);
+            this.bntUpdate.Size = new System.Drawing.Size(121, 128);
             this.bntUpdate.TabIndex = 57;
             this.bntUpdate.Text = "EDIT";
             this.bntUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1113,9 +1181,10 @@
             this.bntAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntAdd.ForeColor = System.Drawing.Color.White;
             this.bntAdd.Image = ((System.Drawing.Image)(resources.GetObject("bntAdd.Image")));
-            this.bntAdd.Location = new System.Drawing.Point(30, 244);
+            this.bntAdd.Location = new System.Drawing.Point(40, 300);
+            this.bntAdd.Margin = new System.Windows.Forms.Padding(4);
             this.bntAdd.Name = "bntAdd";
-            this.bntAdd.Size = new System.Drawing.Size(91, 104);
+            this.bntAdd.Size = new System.Drawing.Size(121, 128);
             this.bntAdd.TabIndex = 56;
             this.bntAdd.Text = "ADD";
             this.bntAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1135,26 +1204,29 @@
             this.pnlMain.Controls.Add(this.bntClear);
             this.pnlMain.Controls.Add(this.lblMainTitle);
             this.pnlMain.Controls.Add(this.bntCancel);
-            this.pnlMain.Location = new System.Drawing.Point(12, 12);
+            this.pnlMain.Location = new System.Drawing.Point(16, 15);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1357, 719);
+            this.pnlMain.Size = new System.Drawing.Size(1809, 885);
             this.pnlMain.TabIndex = 113;
             // 
             // FirmWarehouse
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1450, 813);
+            this.ClientSize = new System.Drawing.Size(1933, 1001);
+            this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlOptions);
-            this.Controls.Add(this.pnlRightOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmWarehouse";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FirmWarehouseInvetory";
-            this.Load += new System.EventHandler(this.FirmWarehouseInvetory_Load);
+            this.Text = "FirmWarehouse";
+            this.Load += new System.EventHandler(this.FirmWarehouse_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirmWarehouse_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XtraWarehouse)).EndInit();
             this.XtraWarehouse.ResumeLayout(false);

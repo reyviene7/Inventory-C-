@@ -88,15 +88,15 @@ namespace Inventory.MainForm
             this.DialogResult = DialogResult.OK;
             _warehouse_list = EnumerableUtils.getWarehouseList();
         }
-        private void FirmWarehouseInvetory_Load(object sender, EventArgs e)
+        private void FirmWarehouse_Load(object sender, EventArgs e)
         {
-            wareWet.ShowWaitForm();
             PanelInterface.SetFullScreen(this);
-            PanelInterface.SetOptionsPanelPosition(this, pnlOptions, pbHide);
             PanelInterface.SetMainPanelPosition(this, pnlMain);
+            PanelInterface.SetOptionsPanelPosition(this, pnlOptions, pbHide);
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
+            wareWet.ShowWaitForm();
             _warehouse_list = EnumerableUtils.getWarehouseList();
             BindWarehouse();
             wareWet.CloseWaitForm();
@@ -988,6 +988,22 @@ namespace Inventory.MainForm
                 }
             }
         }
+
+        private void FirmWarehouse_MouseMove(object sender, MouseEventArgs e)
+        {
+            PanelInterface.MouseMOve(this, pnlRightOptions, e);
+        }
+
+        private void Options_Tick(object sender, EventArgs e)
+        {
+            PanelInterface.OptionTick(this, pnlOptions);
+        }
+
+        private void RightOptions_Tick(object sender, EventArgs e)
+        {
+            PanelInterface.RightOptionTick(this, pnlRightOptions);
+        }
+
         private void txtEmail_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)

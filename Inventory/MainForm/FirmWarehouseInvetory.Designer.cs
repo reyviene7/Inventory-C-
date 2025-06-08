@@ -344,7 +344,7 @@
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
             this.pnlOptions.Location = new System.Drawing.Point(-3, 945);
-            this.pnlOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOptions.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOptions.Name = "pnlOptions";
             this.pnlOptions.Size = new System.Drawing.Size(1909, 91);
             this.pnlOptions.TabIndex = 129;
@@ -362,7 +362,7 @@
             this.pnlOptionsMain.Controls.Add(this.pcAdd);
             this.pnlOptionsMain.Controls.Add(this.pcChangePassword);
             this.pnlOptionsMain.Location = new System.Drawing.Point(25, 5);
-            this.pnlOptionsMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOptionsMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOptionsMain.Name = "pnlOptionsMain";
             this.pnlOptionsMain.Size = new System.Drawing.Size(1191, 82);
             this.pnlOptionsMain.TabIndex = 21;
@@ -3041,7 +3041,7 @@
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmWarehouseInvetory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmWarehouseInvetory";
