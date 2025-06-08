@@ -89,8 +89,6 @@
             this.txtServiceId = new System.Windows.Forms.TextBox();
             this.tabImage = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtServiceImgId = new System.Windows.Forms.TextBox();
             this.bntBrowseImage = new DevExpress.XtraEditors.SimpleButton();
             this.bntSaveImages = new DevExpress.XtraEditors.SimpleButton();
             this.cmbServiceImgType = new System.Windows.Forms.ComboBox();
@@ -974,8 +972,6 @@
             this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupControl1.Controls.Add(this.label12);
-            this.groupControl1.Controls.Add(this.txtServiceImgId);
             this.groupControl1.Controls.Add(this.bntBrowseImage);
             this.groupControl1.Controls.Add(this.bntSaveImages);
             this.groupControl1.Controls.Add(this.cmbServiceImgType);
@@ -996,39 +992,14 @@
             this.groupControl1.Size = new System.Drawing.Size(1475, 910);
             this.groupControl1.TabIndex = 174;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(848, 75);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(149, 23);
-            this.label12.TabIndex = 236;
-            this.label12.Text = "Service Image Id:";
-            // 
-            // txtServiceImgId
-            // 
-            this.txtServiceImgId.BackColor = System.Drawing.Color.White;
-            this.txtServiceImgId.Enabled = false;
-            this.txtServiceImgId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServiceImgId.ForeColor = System.Drawing.Color.Maroon;
-            this.txtServiceImgId.Location = new System.Drawing.Point(1033, 68);
-            this.txtServiceImgId.Margin = new System.Windows.Forms.Padding(4);
-            this.txtServiceImgId.Name = "txtServiceImgId";
-            this.txtServiceImgId.Size = new System.Drawing.Size(393, 34);
-            this.txtServiceImgId.TabIndex = 100;
-            // 
             // bntBrowseImage
             // 
             this.bntBrowseImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntBrowseImage.ImageOptions.Image")));
             this.bntBrowseImage.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntBrowseImage.Location = new System.Drawing.Point(1031, 258);
+            this.bntBrowseImage.Location = new System.Drawing.Point(1035, 220);
             this.bntBrowseImage.Margin = new System.Windows.Forms.Padding(4);
             this.bntBrowseImage.Name = "bntBrowseImage";
-            this.bntBrowseImage.Size = new System.Drawing.Size(187, 46);
+            this.bntBrowseImage.Size = new System.Drawing.Size(198, 71);
             this.bntBrowseImage.TabIndex = 108;
             this.bntBrowseImage.ToolTip = "User Manual";
             this.bntBrowseImage.Click += new System.EventHandler(this.bntBrowseImage_Click);
@@ -1037,10 +1008,10 @@
             // 
             this.bntSaveImages.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntSaveImages.ImageOptions.Image")));
             this.bntSaveImages.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntSaveImages.Location = new System.Drawing.Point(1218, 258);
+            this.bntSaveImages.Location = new System.Drawing.Point(1233, 220);
             this.bntSaveImages.Margin = new System.Windows.Forms.Padding(4);
             this.bntSaveImages.Name = "bntSaveImages";
-            this.bntSaveImages.Size = new System.Drawing.Size(209, 46);
+            this.bntSaveImages.Size = new System.Drawing.Size(198, 71);
             this.bntSaveImages.TabIndex = 109;
             this.bntSaveImages.ToolTip = "Service Manual";
             this.bntSaveImages.Click += new System.EventHandler(this.bntSaveImages_Click);
@@ -1057,7 +1028,7 @@
             "JPG",
             "PNG",
             "BMP"});
-            this.cmbServiceImgType.Location = new System.Drawing.Point(1032, 177);
+            this.cmbServiceImgType.Location = new System.Drawing.Point(1036, 141);
             this.cmbServiceImgType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbServiceImgType.Name = "cmbServiceImgType";
             this.cmbServiceImgType.Size = new System.Drawing.Size(395, 36);
@@ -1069,7 +1040,7 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(844, 224);
+            this.label16.Location = new System.Drawing.Point(848, 188);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(150, 23);
@@ -1081,7 +1052,7 @@
             this.txtServiceImgFileName.BackColor = System.Drawing.Color.White;
             this.txtServiceImgFileName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtServiceImgFileName.ForeColor = System.Drawing.Color.Maroon;
-            this.txtServiceImgFileName.Location = new System.Drawing.Point(1033, 216);
+            this.txtServiceImgFileName.Location = new System.Drawing.Point(1037, 180);
             this.txtServiceImgFileName.Margin = new System.Windows.Forms.Padding(4);
             this.txtServiceImgFileName.Name = "txtServiceImgFileName";
             this.txtServiceImgFileName.Size = new System.Drawing.Size(393, 34);
@@ -1093,7 +1064,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(849, 185);
+            this.label5.Location = new System.Drawing.Point(853, 149);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(171, 23);
@@ -1106,7 +1077,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(848, 149);
+            this.label10.Location = new System.Drawing.Point(852, 113);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(169, 23);
@@ -1116,9 +1087,10 @@
             // txtServiceImgTitle
             // 
             this.txtServiceImgTitle.BackColor = System.Drawing.Color.White;
+            this.txtServiceImgTitle.Enabled = false;
             this.txtServiceImgTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtServiceImgTitle.ForeColor = System.Drawing.Color.Maroon;
-            this.txtServiceImgTitle.Location = new System.Drawing.Point(1033, 141);
+            this.txtServiceImgTitle.Location = new System.Drawing.Point(1037, 105);
             this.txtServiceImgTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtServiceImgTitle.Name = "txtServiceImgTitle";
             this.txtServiceImgTitle.Size = new System.Drawing.Size(393, 34);
@@ -1130,7 +1102,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(848, 112);
+            this.label11.Location = new System.Drawing.Point(852, 76);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(174, 23);
@@ -1140,9 +1112,10 @@
             // txtServiceImgBarcode
             // 
             this.txtServiceImgBarcode.BackColor = System.Drawing.Color.White;
+            this.txtServiceImgBarcode.Enabled = false;
             this.txtServiceImgBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtServiceImgBarcode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtServiceImgBarcode.Location = new System.Drawing.Point(1033, 105);
+            this.txtServiceImgBarcode.Location = new System.Drawing.Point(1037, 69);
             this.txtServiceImgBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtServiceImgBarcode.Name = "txtServiceImgBarcode";
             this.txtServiceImgBarcode.Size = new System.Drawing.Size(393, 34);
@@ -1292,9 +1265,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1827, 970);
+            this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
-            this.Controls.Add(this.pnlOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmServices";
@@ -1424,8 +1397,6 @@
         private System.Windows.Forms.TextBox txtServiceImgTitle;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtServiceImgBarcode;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtServiceImgId;
         private DevExpress.XtraEditors.SimpleButton bntBrowseImage;
         private DevExpress.XtraEditors.SimpleButton bntSaveImages;
     }

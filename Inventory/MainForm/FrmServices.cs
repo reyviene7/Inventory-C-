@@ -640,6 +640,26 @@ namespace Inventory.MainForm
 
                     string fileNameAndExtension = getfileExntesion(selectedFilePath);
                     txtServiceImgFileName.Text = fileNameAndExtension;
+
+                    if (imgServiceImages.Image != null)
+                    {
+                        imgServiceImages.Image.Dispose();
+                        imgServiceImages.Image = null;
+                    }
+
+                    try
+                    {
+                        using (var stream = new MemoryStream(File.ReadAllBytes(selectedFilePath)))
+                        {
+                            imgServiceImages.Image = Image.FromStream(stream);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error loading image: " + ex.Message, "Image Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        imgServiceImages.SizeMode = PictureBoxSizeMode.Zoom;
+                    }
+
                     bntSaveImages.Enabled = true;
                     bntBrowseImage.Enabled = false;
                 }

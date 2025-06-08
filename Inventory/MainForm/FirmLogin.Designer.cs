@@ -133,7 +133,7 @@
             this.imgEmployees.BackColor = System.Drawing.Color.White;
             this.imgEmployees.Image = ((System.Drawing.Image)(resources.GetObject("imgEmployees.Image")));
             this.imgEmployees.Location = new System.Drawing.Point(804, 289);
-            this.imgEmployees.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imgEmployees.Margin = new System.Windows.Forms.Padding(4);
             this.imgEmployees.Name = "imgEmployees";
             this.imgEmployees.Size = new System.Drawing.Size(272, 321);
             this.imgEmployees.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -150,7 +150,7 @@
             this.bntONL.ForeColor = System.Drawing.Color.White;
             this.bntONL.Image = ((System.Drawing.Image)(resources.GetObject("bntONL.Image")));
             this.bntONL.Location = new System.Drawing.Point(187, 511);
-            this.bntONL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntONL.Margin = new System.Windows.Forms.Padding(4);
             this.bntONL.Name = "bntONL";
             this.bntONL.Size = new System.Drawing.Size(181, 134);
             this.bntONL.TabIndex = 89;
@@ -169,7 +169,7 @@
             this.bntLCL.ForeColor = System.Drawing.Color.White;
             this.bntLCL.Image = ((System.Drawing.Image)(resources.GetObject("bntLCL.Image")));
             this.bntLCL.Location = new System.Drawing.Point(5, 511);
-            this.bntLCL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntLCL.Margin = new System.Windows.Forms.Padding(4);
             this.bntLCL.Name = "bntLCL";
             this.bntLCL.Size = new System.Drawing.Size(180, 134);
             this.bntLCL.TabIndex = 88;
@@ -188,7 +188,7 @@
             this.bntConf.ForeColor = System.Drawing.Color.White;
             this.bntConf.Image = ((System.Drawing.Image)(resources.GetObject("bntConf.Image")));
             this.bntConf.Location = new System.Drawing.Point(5, 646);
-            this.bntConf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntConf.Margin = new System.Windows.Forms.Padding(4);
             this.bntConf.Name = "bntConf";
             this.bntConf.Size = new System.Drawing.Size(180, 134);
             this.bntConf.TabIndex = 90;
@@ -206,7 +206,7 @@
             this.bntExit.ForeColor = System.Drawing.Color.White;
             this.bntExit.Image = ((System.Drawing.Image)(resources.GetObject("bntExit.Image")));
             this.bntExit.Location = new System.Drawing.Point(187, 646);
-            this.bntExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntExit.Margin = new System.Windows.Forms.Padding(4);
             this.bntExit.Name = "bntExit";
             this.bntExit.Size = new System.Drawing.Size(181, 134);
             this.bntExit.TabIndex = 91;
@@ -225,7 +225,7 @@
             this.bntAdmin.ForeColor = System.Drawing.Color.White;
             this.bntAdmin.Image = ((System.Drawing.Image)(resources.GetObject("bntAdmin.Image")));
             this.bntAdmin.Location = new System.Drawing.Point(187, 63);
-            this.bntAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.bntAdmin.Name = "bntAdmin";
             this.bntAdmin.Size = new System.Drawing.Size(181, 134);
             this.bntAdmin.TabIndex = 86;
@@ -244,7 +244,7 @@
             this.bntUser.ForeColor = System.Drawing.Color.White;
             this.bntUser.Image = ((System.Drawing.Image)(resources.GetObject("bntUser.Image")));
             this.bntUser.Location = new System.Drawing.Point(5, 63);
-            this.bntUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntUser.Margin = new System.Windows.Forms.Padding(4);
             this.bntUser.Name = "bntUser";
             this.bntUser.Size = new System.Drawing.Size(180, 134);
             this.bntUser.TabIndex = 85;
@@ -271,7 +271,7 @@
             this.pnlMain.Controls.Add(this.bntExit);
             this.pnlMain.Controls.Add(this.bntAdmin);
             this.pnlMain.Location = new System.Drawing.Point(1, -2);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1805, 905);
             this.pnlMain.TabIndex = 99;
@@ -296,7 +296,7 @@
             this.ClientSize = new System.Drawing.Size(1805, 902);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "                                                                                 " +

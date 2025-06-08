@@ -91,18 +91,9 @@ namespace Inventory.MainForm
             barBranch.EditValue = branch;
             barDate.EditValue = DateTime.Now.Date.ToString();
 
-            int targetWidth = 1366;
-            int targetHeight = 768;
-            int originalWidth = 1589;
-            int originalHeight = 844;
-
-            float scaleWidth = (float)targetWidth / originalWidth;
-            float scaleHeight = (float)targetHeight / originalHeight;
-
-            this.Scale(new SizeF(scaleWidth, scaleHeight));
-            this.Size = new Size(targetWidth, targetHeight);
-            this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - targetWidth) / 2,
-                (Screen.PrimaryScreen.Bounds.Height - targetHeight) / 2);
+            // Make the form fullscreen
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None; // Optional: remove title bar and borders
         }
         private void barMainMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
