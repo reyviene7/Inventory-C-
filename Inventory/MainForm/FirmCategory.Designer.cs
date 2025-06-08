@@ -657,6 +657,7 @@
             this.txtCategoryCode.Name = "txtCategoryCode";
             this.txtCategoryCode.Size = new System.Drawing.Size(431, 34);
             this.txtCategoryCode.TabIndex = 2;
+            this.txtCategoryCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtCategoryCode_KeyDown);
             // 
             // txtCategoryDetails
             // 

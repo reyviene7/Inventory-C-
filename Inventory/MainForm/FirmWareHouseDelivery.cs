@@ -27,7 +27,8 @@ namespace Inventory.MainForm
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewImageProduct> imgList;
-        private int previousDelQty = 0;
+        private IEnumerable<RequestQuantity> qtyList;
+        private int previousQty = 0;
         public FirmMain Main
         {
             get { return _main; }
@@ -201,6 +202,7 @@ namespace Inventory.MainForm
             cmbDelProductStatus.DataSource = _warehouseStatus.Select(p => p.status_details).ToList();
             cmbDelWarehouseCode.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
             cmbDelDeliveryStatus.DataSource = _delivery.Select(p => p.delivery_status).ToList();
+            txtDelProductName.Focus();
             _add = false;
             _edt = true;
             _del = false;
@@ -584,33 +586,41 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                var warehouseItem = int.Parse(txtWarehouseQty.Text);
-
-                if (!int.TryParse(txtDeliveryQty.Text, out int deliveryQty) || deliveryQty <= 0)
+                if (int.TryParse(txtWarehouseQty.Text, out int currentRemainQty) &&
+                    int.TryParse(txtDeliveryQty.Text, out int currentDelQty))
                 {
-                    PopupNotification.PopUpMessages(0, "Invalid delivery quantity. Please enter a valid number.", "INVALID ENTRY");
-                    txtDeliveryQty.BackColor = Color.Red;
-                    txtDeliveryQty.Focus();
-                    e.SuppressKeyPress = true;
-                    return;
-                }
+                    int difference = currentDelQty - previousQty;
 
-                if (warehouseItem > 0)
-                {
-                    if (warehouseItem >= deliveryQty)
+                    int updatedRemainQty = currentRemainQty - difference;
+
+                    if (updatedRemainQty >= 0)
                     {
-                        // txtWarehouseQty.Text = (warehouseItem - deliveryQty).ToString();
-                        txtDeliveryQty.BackColor = Color.White;
+                        txtWarehouseQty.Text = updatedRemainQty.ToString();
                         txtWarehouseQty.BackColor = Color.White;
-                        cmbDeliveryStatus.Focus();
+                        cmbWarehouseBranch.Focus();
+
+                        previousQty = currentDelQty; 
+
+                        InputManipulation.InputBoxLeave(
+                            txtDeliveryQty,
+                            cmbWarehouseBranch,
+                            "Delivery Quantity",
+                            Messages.TitleWarehouseDelivery
+                        );
                     }
                     else
                     {
                         PopupNotification.PopUpMessages(0, "Insufficient warehouse quantity!", "INVALID ENTRY");
-                        e.Handled = true; 
+                        e.Handled = true;
                         txtWarehouseQty.Focus();
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Invalid quantity input.");
+                }
+
+                e.SuppressKeyPress = true; 
             }
         }
 
@@ -678,45 +688,6 @@ namespace Inventory.MainForm
             }
         }
 
-        private void txtDelQty_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
-            {
-                var warehouseDelItem = int.Parse(txtDelRemainQty.Text);
-                var deliveryDelQty = int.Parse(txtDelQty.Text);
-                var qtyDifference = deliveryDelQty - previousDelQty; 
-                if (warehouseDelItem > 0)
-                {
-                    if (warehouseDelItem >= qtyDifference)
-                    {
-                        txtDelRemainQty.Text = (warehouseDelItem - qtyDifference).ToString();
-                        txtDelRemainQty.BackColor = Color.White;
-                        cmbDelDeliveryStatus.Focus();
-                        previousDelQty = deliveryDelQty;
-                    }
-                    else
-                    {
-                        PopupNotification.PopUpMessages(0, "Insufficient warehouse quantity!", "INVALID ENTRY");
-                        e.Handled = true; 
-                        txtDelRemainQty.Focus();
-                    }
-                }
-            }
-            else
-            {
-                previousDelQty = int.Parse(txtDelQty.Text); 
-            }
-        }
-
-
-        private void cmbDelProductStatus_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                cmbDelProductStatus.DataBindings.Clear();
-                cmbDelProductStatus.DataSource = _warehouseStatus.Select(p => p.status_details).ToList();
-            }
-        }
         private void cmbProductStatus_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -731,14 +702,6 @@ namespace Inventory.MainForm
             {
                 cmbWarehouse.DataBindings.Clear();
                 cmbWarehouse.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
-            }
-        }
-        private void cmbDelWarehouseCode_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                cmbDelWarehouseCode.DataBindings.Clear();
-                cmbDelWarehouseCode.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
             }
         }
         private void cmbDeliveryStatus_KeyDown(object sender, KeyEventArgs e)
@@ -763,23 +726,6 @@ namespace Inventory.MainForm
                     cmbDeliveryStatus.BackColor = Color.Yellow;
                     cmbDeliveryStatus.Focus();
                 }
-            }
-        }
-        private void cmbDelDeliveryStatus_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                cmbDelDeliveryStatus.DataBindings.Clear();
-                cmbDelDeliveryStatus.DataSource = _delivery.Select(p => p.delivery_status).ToList();
-            }
-        }
-
-        private void cmbDelBranch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                cmbDelBranch.DataBindings.Clear();
-                cmbDelBranch.DataSource = _branch.Select(p => p.branch_details).ToList();
             }
         }
 
@@ -850,6 +796,8 @@ namespace Inventory.MainForm
                         txtDelProductName.Text = w.product_name;
                         txtDelLastCost.Text = w.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
                         txtDelReceipt.Text = w.receipt_number;
+                        originalWarehouseQty = w.quantity_in_stock; 
+                        previousDelQty = w.delivery_qty;            
                         txtDelRemainQty.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
                         cmbDelBranch.Text = w.branch_details;
                         dkpDelDeliveryDate.Value = w.delivery_date;
@@ -1051,6 +999,173 @@ namespace Inventory.MainForm
                     splashDelivery.CloseWaitForm();
                     PopupNotification.PopUpMessages(0, "Delivery Code: " + txtDeliveryCode.Text.Trim() + " Failed to Add!", Messages.InventorySystem);
                 }
+            }
+        }
+
+        private void TxtDelProductName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtDelProductName, cmbDelProductStatus, "Delivery Product Name", Messages.TitleWarehouseDelivery);
+            }
+        }
+
+        private void cmbDelProductStatus_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbDelProductStatus.DataBindings.Clear();
+                cmbDelProductStatus.DataSource = _warehouseStatus.Select(p => p.status_details).ToList();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(cmbDelProductStatus, cmbDelWarehouseCode, "Delivery Product Status", Messages.TitleWarehouseDelivery);
+            }
+        }
+        private void cmbDelWarehouseCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbDelWarehouseCode.DataBindings.Clear();
+                cmbDelWarehouseCode.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(cmbDelWarehouseCode, txtDelLastCost, "Delivery Warehouse Code", Messages.TitleWarehouseDelivery);
+            }
+        }
+
+        private void TxtDelLastCost_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtDelLastCost, txtDelItemPrice, "Delivery Last Cost", Messages.TitleWarehouseDelivery);
+            }
+        }
+
+        private void TxtDelItemPrice_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtDelItemPrice, cmbDelBranch, "Delivery Item Price", Messages.TitleWarehouseDelivery);
+            }
+        }
+
+        private void cmbDelBranch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbDelBranch.DataBindings.Clear();
+                cmbDelBranch.DataSource = _branch.Select(p => p.branch_details).ToList();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(cmbDelBranch, txtDelWarehouseCode, "Delivery Branch", Messages.TitleWarehouseDelivery);
+            }
+        }
+
+        private void TxtDelWarehouseCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtDelWarehouseCode, txtDelReceipt, "Delivery Code", Messages.TitleWarehouseDelivery);
+            }
+        }
+
+        private void TxtDelReceipt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtDelReceipt, txtDelQty, "Delivery Receipt", Messages.TitleWarehouseDelivery);
+            }
+        }
+        private RequestQuantity searchQuantity(int inventoryId)
+        {
+            return qtyList.FirstOrDefault(qty => qty.inventory_id == inventoryId);
+        }
+        private int previousDelQty = 0;
+        private int originalWarehouseQty = 0;
+
+        private void txtDelQty_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                if (int.TryParse(txtDelQty.Text, out int currentDelQty) &&
+                    int.TryParse(txtDelRemainQty.Text, out int currentRemainQty))
+                {
+                    int delta = currentDelQty - previousDelQty;
+
+                    // Increase qty, subtract from remaining
+                    if (delta > 0)
+                    {
+                        int updatedRemain = currentRemainQty - delta;
+                        if (updatedRemain >= 0)
+                        {
+                            txtDelRemainQty.Text = updatedRemain.ToString();
+                            previousDelQty = currentDelQty;
+                            cmbDelDeliveryStatus.Focus();
+                        }
+                        else
+                        {
+                            PopupNotification.PopUpMessages(0, "Insufficient warehouse quantity!", "INVALID ENTRY");
+                            txtDelQty.Text = previousDelQty.ToString(); // rollback
+                            txtDelQty.SelectAll();
+                        }
+                    }
+                    // Decrease qty, add to remaining
+                    else if (delta < 0)
+                    {
+                        int updatedRemain = currentRemainQty + Math.Abs(delta);
+                        txtDelRemainQty.Text = updatedRemain.ToString();
+                        previousDelQty = currentDelQty;
+                        cmbDelDeliveryStatus.Focus();
+                    }
+                    else
+                    {
+                        // No change in quantity
+                        cmbDelDeliveryStatus.Focus();
+                    }
+
+                    InputManipulation.InputBoxLeave(txtDelQty, cmbDelDeliveryStatus, "Delivery Quantity", Messages.TitleWarehouseDelivery);
+                    e.SuppressKeyPress = true;
+                }
+            }
+        }
+
+        private void cmbDelDeliveryStatus_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbDelDeliveryStatus.DataBindings.Clear();
+                cmbDelDeliveryStatus.DataSource = _delivery.Select(p => p.delivery_status).ToList();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(cmbDelDeliveryStatus, txtDelRemarks, "Delivery Product Name", Messages.TitleWarehouseDelivery);
+            }
+        }
+
+        private void TxtDelRemarks_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtDelRemarks, dkpDelDeliveryDate, "Delivery Remarks", Messages.TitleWarehouseDelivery);
+            }
+        }
+
+        private void DkpDelDeliveryDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(dkpDelDeliveryDate, dkpDelUpdate, "Delivery Date", Messages.TitleWarehouseDelivery);
+            }
+        }
+
+        private void DkpDelUpdate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(dkpDelUpdate, bntSAVE, "Delivery Update", Messages.TitleWarehouseDelivery);
             }
         }
 

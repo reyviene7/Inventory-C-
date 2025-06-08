@@ -552,14 +552,14 @@ namespace Inventory.MainForm
         }
         private void dkpREG_Leave(object sender, EventArgs e)
         {
-            InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Image Register", Messages.TitleCategory);
+            InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Date Register", Messages.TitleCategory);
         }
 
         private void dkpREG_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Image Register", Messages.TitleCategory);
+                InputManipulation.InputBoxLeave(dkpDateRegister, bntSave, "Date Register", Messages.TitleCategory);
             }
         }
 
@@ -754,6 +754,15 @@ namespace Inventory.MainForm
             if (e.KeyCode == Keys.Enter)
             {
                 InputManipulation.InputBoxLeave(dkpSupplier, bntSave, "Supplier Date",
+                Messages.TitleSupplier);
+            }
+        }
+
+        private void TxtCategoryCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtCategoryCode, txtCategoryDetails, "Category Code",
                 Messages.TitleSupplier);
             }
         }

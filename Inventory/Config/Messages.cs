@@ -53,6 +53,9 @@ namespace Inventory.Config
         public const string TitleCompany = "COMPANY DETAILS";
         public const string TitleCustomer = "CUSTOMER DETAILS";
         public const string TitleSupplier = "SUPPLIER DETAILS";
+        public const string TitleWarehouse = "WAREHOUSE DETAILS";
+        public const string TitleWarehouseDelivery = "WAREHOUSE DELIVERY DETAILS";
+        public const string TitleWarehouseInventory = "WAREHOUSE INVENTORY DETAILS";
         public const string TitleManufacturer = "Manufacturer DETAILS";
         public const string TitleProductImage = "IMAGE DETAILS";
         public const string TitleCategory = "CATEGORY DETAILS";
