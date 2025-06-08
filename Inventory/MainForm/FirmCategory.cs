@@ -685,6 +685,11 @@ namespace Inventory.MainForm
             {
                 BindContact();
             }
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(cmbContact, cmbAddress, "Supplier Contact",
+                Messages.TitleSupplier);
+            }
         }
 
         private void CmbAddress_KeyDown(object sender, KeyEventArgs e)
@@ -693,6 +698,11 @@ namespace Inventory.MainForm
             {
                 BindAddress();
             }
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(cmbAddress, cmbCompany, "Supplier Address",
+                Messages.TitleSupplier);
+            }
         }
 
         private void CmbCompany_KeyDown(object sender, KeyEventArgs e)
@@ -700,6 +710,11 @@ namespace Inventory.MainForm
             if (e.KeyCode == Keys.F1)
             {
                 BindCompany();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(cmbCompany, dkpSupplier, "Supplier Company",
+                Messages.TitleSupplier);
             }
         }
 
@@ -714,6 +729,33 @@ namespace Inventory.MainForm
         private void bntCancel_Click(object sender, EventArgs e)
         {
             ButCan();
+        }
+
+        private void TxtSupplierName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtSupplierName, cmbGender, "Supplier Name",
+                Messages.TitleSupplier);
+            }
+        }
+
+        private void CmbGender_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(cmbGender, cmbContact, "Supplier Name",
+                Messages.TitleSupplier);
+            }
+        }
+
+        private void DkpSupplier_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(dkpSupplier, bntSave, "Supplier Date",
+                Messages.TitleSupplier);
+            }
         }
 
         private void bntClear_Click(object sender, EventArgs e)
@@ -878,29 +920,47 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var supplierId = Convert.ToInt32(txtSupplierId.Text);
+                    // Validate and parse supplier ID
+                    if (!int.TryParse(txtSupplierId.Text, out int supplierId) || supplierId <= 0)
+                    {
+                        PopupNotification.PopUpMessages(0, "Invalid supplier ID.", Messages.TitleFialedUpdate);
+                        return;
+                    }
+
+                    // Initialize repository and fetch supplier
                     var repository = new Repository<Supplier>(unWork);
                     var supplier = repository.Id(supplierId);
+                    if (supplier == null)
+                    {
+                        PopupNotification.PopUpMessages(0, "Supplier not found.", Messages.TitleFialedUpdate);
+                        return;
+                    }
 
+                    // Fetch and validate foreign key IDs, use existing values if invalid
                     int contactId = FetchUtils.getContactId(cmbContact.Text);
+                    if (contactId <= 0) contactId = supplier.contact_id; // Retain existing if invalid
+
                     int addressId = FetchUtils.getAddressId(cmbAddress.Text);
+                    if (addressId <= 0) addressId = supplier.address_id; // Retain existing if invalid
+
                     int companyId = FetchUtils.getCompanyId(cmbCompany.Text);
+                    if (companyId <= 0) companyId = supplier.company_id; // Retain existing if invalid
 
-                    supplier.supplier_code = txtSupplierCode.Text.Trim();
-                    supplier.supplier_name = txtSupplierName.Text.Trim();
-                    supplier.gender = cmbGender.Text.Trim();
-                    supplier.contact_id = contactId;    
-                    supplier.address_id = addressId;    
-                    supplier.company_id = companyId;    
-                    supplier.date_register = dkpSupplier.Value.Date;
+                    // Update supplier properties with new or existing values
+                    supplier.supplier_code = string.IsNullOrWhiteSpace(txtSupplierCode.Text.Trim()) ? supplier.supplier_code : txtSupplierCode.Text.Trim();
+                    supplier.supplier_name = string.IsNullOrWhiteSpace(txtSupplierName.Text.Trim()) ? supplier.supplier_name : txtSupplierName.Text.Trim();
+                    supplier.gender = string.IsNullOrWhiteSpace(cmbGender.Text.Trim()) ? supplier.gender : cmbGender.Text.Trim();
+                    supplier.contact_id = contactId;
+                    supplier.address_id = addressId;
+                    supplier.company_id = companyId;
+                    supplier.date_register = dkpSupplier.Checked ? dkpSupplier.Value.Date : supplier.date_register;
 
+                    // Perform update
                     var result = repository.Update(supplier);
                     if (result)
                     {
                         unWork.Commit();
-                        PopupNotification.PopUpMessages(1, "Supplier: " +
-                                                           txtSupplierName.Text.Trim()
-                                                           + " " + Messages.SuccessUpdate,
+                        PopupNotification.PopUpMessages(1, $"Supplier: {supplier.supplier_name} {Messages.SuccessUpdate}",
                             Messages.TitleSuccessUpdate);
                         bindRefreshedSupplier();
                     }
@@ -913,11 +973,10 @@ namespace Inventory.MainForm
                 catch (Exception ex)
                 {
                     unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedUpdate);
+                    PopupNotification.PopUpMessages(0, $"Update failed due to an error: {ex.Message}", Messages.TitleFialedUpdate);
                 }
             }
         }
-
         private void DataDelete()
         {
             using (var session = new DalSession())

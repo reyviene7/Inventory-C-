@@ -312,8 +312,8 @@ namespace Inventory.MainForm
             };
             if (proc.DialogResult == DialogResult.OK)
             {
-                Hide();
                 proc.Show();
+                Hide();
             }
             else
             {
@@ -346,8 +346,8 @@ namespace Inventory.MainForm
             };
             if (dep.DialogResult == DialogResult.OK)
             {
-                Hide();
                 dep.Show();
+                Hide();
             }
             else
             {
@@ -363,8 +363,8 @@ namespace Inventory.MainForm
             };
             if (bra.DialogResult == DialogResult.OK)
             {
-                Hide();
                 bra.Show();
+                Hide();
             }
             else
             {
@@ -380,8 +380,8 @@ namespace Inventory.MainForm
             };
             if (dep.DialogResult == DialogResult.OK)
             {
-                Hide();
                 dep.Show();
+                Hide();
             }
             else
             {
@@ -397,8 +397,8 @@ namespace Inventory.MainForm
             };
             if (ret.DialogResult == DialogResult.OK)
             {
-                Hide();
                 ret.Show();
+                Hide();
             }
             else
             {
@@ -580,8 +580,8 @@ namespace Inventory.MainForm
                 };
                 if (dep.DialogResult == DialogResult.OK)
                 {
-                    Hide();
                     dep.Show();
+                    Hide();
                 }
                 else
                 {

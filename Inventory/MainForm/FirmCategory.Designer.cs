@@ -787,6 +787,7 @@
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(434, 36);
             this.cmbGender.TabIndex = 192;
+            this.cmbGender.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CmbGender_KeyDown);
             // 
             // label11
             // 
@@ -864,6 +865,7 @@
             this.dkpSupplier.Name = "dkpSupplier";
             this.dkpSupplier.Size = new System.Drawing.Size(431, 34);
             this.dkpSupplier.TabIndex = 20;
+            this.dkpSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DkpSupplier_KeyDown);
             // 
             // groupControl3
             // 
@@ -1082,6 +1084,7 @@
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.Size = new System.Drawing.Size(431, 34);
             this.txtSupplierName.TabIndex = 14;
+            this.txtSupplierName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSupplierName_KeyDown);
             // 
             // label7
             // 
