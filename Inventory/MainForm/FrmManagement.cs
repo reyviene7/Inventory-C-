@@ -610,6 +610,11 @@ namespace Inventory.MainForm
             gridCardView(sender);
         }
 
+        private void GridAccepted_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            gridAcceptView(sender);
+        }
+
         private void gridSales_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridSalesView(sender);
@@ -624,6 +629,40 @@ namespace Inventory.MainForm
             gridLowQuantityView(sender);
         }
 
+        private void GridWarehouseInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            gridWarehouseView(sender);
+        }
+        private void gridWarehouseView(object sender)
+        {
+            if (gridWarehouseInventory.RowCount > 0)
+            {
+                var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
+                txtBarcode.Text = barcode;
+                txtControl.Text = ((GridView)sender).GetFocusedRowCellValue("SKU")?.ToString();
+                txtQuantity.Text = ((GridView)sender).GetFocusedRowCellValue("Qty")?.ToString();
+                txtStockStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status")?.ToString();
+                txtCostPrice.Text = ((GridView)sender).GetFocusedRowCellValue("Price")?.ToString();
+                txtLastCost.Text = ((GridView)sender).GetFocusedRowCellValue("LastCost")?.ToString();
+                dkpDeliveryDate.Value = Convert.ToDateTime(((GridView)sender).GetFocusedRowCellValue("Created")?.ToString());
+                dpkUpdated.Value = Convert.ToDateTime(((GridView)sender).GetFocusedRowCellValue("Updated")?.ToString());
+                if (barcode != null)
+                {
+                    var img = searchProductImg(barcode);
+                    var imgLocation = img.img_location;
+                    if (imgLocation.Length > 0)
+                    {
+                        var location = ConstantUtils.defaultImgLocation + imgLocation;
+                        imgPreview.ImageLocation = location;
+                        imgPreview.Refresh();
+                    }
+                    else
+                    {
+                        imgPreview.Image = null;
+                    }
+                }
+            }
+        }
         private void gridSalesView(object sender)
         {
             if (gridSales.RowCount > 0)
@@ -633,7 +672,7 @@ namespace Inventory.MainForm
                 txtBranch.Text = ((GridView)sender).GetFocusedRowCellValue("Branch")?.ToString();
                 txtItemName.Text = ((GridView)sender).GetFocusedRowCellValue("Item")?.ToString();
                 txtControl.Text = ((GridView)sender).GetFocusedRowCellValue("Invoice")?.ToString();
-                txtQuantity.Text = ((GridView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
+                txtQuantity.Text = ((GridView)sender).GetFocusedRowCellValue("Qty")?.ToString();
                 txtRetail.Text = ((GridView)sender).GetFocusedRowCellValue("UnitPrice")?.ToString();
                 if (barcode != null)
                 {
@@ -652,7 +691,6 @@ namespace Inventory.MainForm
                 }
             }
         }
-
         private void gridCardView(object sender)
         {
             if (cardPending.RowCount > 0)
@@ -667,6 +705,42 @@ namespace Inventory.MainForm
                 txtCostPrice.Text = ((CardView)sender).GetFocusedRowCellValue("Price")?.ToString();
                 txtLastCost.Text = ((CardView)sender).GetFocusedRowCellValue("LastCost")?.ToString();
                 txtBranch.Text = ((CardView)sender).GetFocusedRowCellValue("Branch")?.ToString();
+                if (barcode != null)
+                {
+                    var img = searchProductImg(barcode);
+                    var imgLocation = img.img_location;
+                    if (imgLocation.Length > 0)
+                    {
+                        var location = ConstantUtils.defaultImgLocation + imgLocation;
+                        imgPreview.ImageLocation = location;
+                        imgPreview.Refresh();
+                    }
+                    else
+                    {
+                        imgPreview.Image = null;
+                    }
+                }
+            }
+        }
+
+        private void gridAcceptView(object sender)
+        {
+            if (gridAccepted.RowCount > 0)
+            {
+                var barcode = ((LayoutView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
+                txtBarcode.Text = barcode;
+                txtItemName.Text = ((LayoutView)sender).GetFocusedRowCellValue("Item")?.ToString();
+                txtControl.Text = ((LayoutView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
+                txtQuantity.Text = ((LayoutView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
+                txtDeliveryStatus.Text = ((LayoutView)sender).GetFocusedRowCellValue("DeliverySta")?.ToString();
+                txtStockStatus.Text = ((LayoutView)sender).GetFocusedRowCellValue("Status")?.ToString();
+                txtRetail.Text = ((LayoutView)sender).GetFocusedRowCellValue("RetailPrice")?.ToString();
+                txtWholeSale.Text = ((LayoutView)sender).GetFocusedRowCellValue("WholeSale")?.ToString();
+                txtCostPrice.Text = ((LayoutView)sender).GetFocusedRowCellValue("ItemPrice")?.ToString();
+                txtLastCost.Text = ((LayoutView)sender).GetFocusedRowCellValue("LastCost")?.ToString();
+                txtBranch.Text = ((LayoutView)sender).GetFocusedRowCellValue("Branch")?.ToString();
+                dkpDeliveryDate.Value = Convert.ToDateTime(((LayoutView)sender).GetFocusedRowCellValue("Received")?.ToString());
+                dpkUpdated.Value = Convert.ToDateTime(((LayoutView)sender).GetFocusedRowCellValue("UpdateOn")?.ToString());
                 if (barcode != null)
                 {
                     var img = searchProductImg(barcode);

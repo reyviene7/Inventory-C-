@@ -2001,6 +2001,7 @@
             this.gridAccepted.OptionsBehavior.Editable = false;
             this.gridAccepted.OptionsSelection.MultiSelect = true;
             this.gridAccepted.TemplateCard = this.layoutViewCard1;
+            this.gridAccepted.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.GridAccepted_FocusedRowChanged);
             this.gridAccepted.DoubleClick += new System.EventHandler(this.gridAccepted_DoubleClick);
             // 
             // layoutViewCard1
@@ -2164,6 +2165,7 @@
             this.gridWarehouseInventory.OptionsView.EnableAppearanceEvenRow = true;
             this.gridWarehouseInventory.OptionsView.RowAutoHeight = true;
             this.gridWarehouseInventory.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridWarehouseInventory.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.GridWarehouseInventory_FocusedRowChanged);
             // 
             // gridView5
             // 
@@ -2995,6 +2997,12 @@
             this.groupOperator.Appearance.BorderColor = System.Drawing.Color.White;
             this.groupOperator.Appearance.Options.UseBackColor = true;
             this.groupOperator.Appearance.Options.UseBorderColor = true;
+            this.groupOperator.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupOperator.AppearanceCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.groupOperator.AppearanceCaption.Options.UseFont = true;
+            this.groupOperator.AppearanceCaption.Options.UseTextOptions = true;
+            this.groupOperator.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.groupOperator.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.groupOperator.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.groupOperator.CaptionLocation = DevExpress.Utils.Locations.Left;
             this.groupOperator.Controls.Add(this.label11);
@@ -3024,7 +3032,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.DimGray;
-            this.label11.Location = new System.Drawing.Point(1244, 46);
+            this.label11.Location = new System.Drawing.Point(1245, 46);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(130, 28);
@@ -3037,7 +3045,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.DimGray;
-            this.label10.Location = new System.Drawing.Point(1244, 10);
+            this.label10.Location = new System.Drawing.Point(1245, 10);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(148, 28);
@@ -3086,7 +3094,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(655, 44);
+            this.label9.Location = new System.Drawing.Point(656, 44);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 28);
@@ -3110,7 +3118,7 @@
             this.lblInvoice.BackColor = System.Drawing.Color.Transparent;
             this.lblInvoice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblInvoice.ForeColor = System.Drawing.Color.White;
-            this.lblInvoice.Location = new System.Drawing.Point(901, 44);
+            this.lblInvoice.Location = new System.Drawing.Point(902, 44);
             this.lblInvoice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInvoice.Name = "lblInvoice";
             this.lblInvoice.Size = new System.Drawing.Size(100, 28);
@@ -3133,7 +3141,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(23, 7);
+            this.label2.Location = new System.Drawing.Point(24, 7);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 30);
@@ -3146,7 +3154,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(23, 43);
+            this.label1.Location = new System.Drawing.Point(24, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 30);
@@ -3192,7 +3200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1942, 1048);
+            this.ClientSize = new System.Drawing.Size(1924, 1048);
             this.Controls.Add(this.spCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
