@@ -90,6 +90,7 @@ namespace Inventory.MainForm
             barSoftware.EditValue = "Inventory System V1.0";
             barBranch.EditValue = branch;
             barDate.EditValue = DateTime.Now.Date.ToString();
+            xInventory.SelectedTabPage = null;
 
             // Make the form fullscreen
             this.WindowState = FormWindowState.Maximized;
@@ -103,6 +104,45 @@ namespace Inventory.MainForm
         private ViewImageProduct searchProductImg(string param)
         {
             return _imgList.FirstOrDefault(img => img.image_code == param);
+        }
+
+        private void FrmManagement_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                barWarehouse_ItemClick(sender, null);
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                barItemDelivery_ItemClick(sender, null);
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                barReturn_ItemClick(sender, null);
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.F4)
+            {
+                barDailyExpenses_ItemClick(sender, null);
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                barSalesItem_ItemClick(sender, null);
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.F6)
+            {
+                barCreditLine_ItemClick(sender, null);
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.X)
+            {
+                barMainMenu_ItemClick(sender, null);
+                e.Handled = true;
+            }
         }
 
         private void ClearGrid()

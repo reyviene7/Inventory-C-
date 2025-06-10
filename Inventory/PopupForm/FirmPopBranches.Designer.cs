@@ -52,8 +52,9 @@
             this.gbCON.Location = new System.Drawing.Point(0, 0);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.gbCON.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(457, 201);
+            this.gbCON.Size = new System.Drawing.Size(609, 247);
             this.gbCON.TabIndex = 5;
             // 
             // cmbBranchName
@@ -64,9 +65,10 @@
             this.cmbBranchName.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBranchName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.cmbBranchName.FormattingEnabled = true;
-            this.cmbBranchName.Location = new System.Drawing.Point(13, 88);
+            this.cmbBranchName.Location = new System.Drawing.Point(17, 108);
+            this.cmbBranchName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbBranchName.Name = "cmbBranchName";
-            this.cmbBranchName.Size = new System.Drawing.Size(433, 40);
+            this.cmbBranchName.Size = new System.Drawing.Size(576, 49);
             this.cmbBranchName.TabIndex = 1;
             // 
             // lblMainTitle
@@ -74,41 +76,45 @@
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(54, 29);
+            this.lblMainTitle.Location = new System.Drawing.Point(132, 36);
+            this.lblMainTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(350, 47);
+            this.lblMainTitle.Size = new System.Drawing.Size(360, 60);
             this.lblMainTitle.TabIndex = 249;
-            this.lblMainTitle.Text = "Warehouse Delivery";
+            this.lblMainTitle.Text = "Branch Location";
             // 
-            // bntSVA
+            // bntGoBranch
             // 
             this.bntGoBranch.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntGoBranch.ImageOptions.Image")));
             this.bntGoBranch.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntGoBranch.Location = new System.Drawing.Point(69, 152);
+            this.bntGoBranch.Location = new System.Drawing.Point(92, 187);
+            this.bntGoBranch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntGoBranch.Name = "bntGoBranch";
-            this.bntGoBranch.Size = new System.Drawing.Size(157, 37);
+            this.bntGoBranch.Size = new System.Drawing.Size(209, 46);
             this.bntGoBranch.TabIndex = 2;
             this.bntGoBranch.ToolTip = "User Manual";
             this.bntGoBranch.Click += new System.EventHandler(this.bntGoBranch_Click);
             // 
             // bntClose
             // 
-            this.bntClose.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntCAN.ImageOptions.Image")));
+            this.bntClose.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntClose.ImageOptions.Image")));
             this.bntClose.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntClose.Location = new System.Drawing.Point(232, 152);
+            this.bntClose.Location = new System.Drawing.Point(309, 187);
+            this.bntClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntClose.Name = "bntClose";
-            this.bntClose.Size = new System.Drawing.Size(157, 37);
+            this.bntClose.Size = new System.Drawing.Size(209, 46);
             this.bntClose.TabIndex = 3;
             this.bntClose.ToolTip = "Service Manual";
             this.bntClose.Click += new System.EventHandler(this.bntClose_Click);
             // 
             // FirmPopBranches
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 201);
+            this.ClientSize = new System.Drawing.Size(609, 247);
             this.Controls.Add(this.gbCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FirmPopBranches";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirmPopBranches";
