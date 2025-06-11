@@ -277,6 +277,8 @@ namespace Inventory.MainForm
             ButtonClr();
             InputDisb();
             InputWhit();
+            InputWhitDel();
+            InputWhitSales();
             InputClea();
             gCON.Enabled = true;
             cmbProductName.DataBindings.Clear();
@@ -328,17 +330,27 @@ namespace Inventory.MainForm
             cmbProductName.DataBindings.Clear();
             imgPreview.DataBindings.Clear();
             imgPreview.Image = null;
+            ImageProduct.DataBindings.Clear();
+            ImageProduct.Image = null;
+            ImageSales.DataBindings.Clear();
+            ImageSales.Image = null;
         }
         private void ButCan()
         {
             ButtonCan();
             InputDisb();
             InputDimG();
+            InputDimGDel();
+            InputDimGSales();
             InputClea();
             gCON.Enabled = true;
             cmbProductName.DataBindings.Clear();
             imgPreview.DataBindings.Clear();
             imgPreview.Image = null;
+            ImageProduct.DataBindings.Clear();
+            ImageProduct.Image = null;
+            ImageSales.DataBindings.Clear();
+            ImageSales.Image = null;
         }
         #endregion
         private bool IsProductInInventory(string productName)
@@ -516,6 +528,36 @@ namespace Inventory.MainForm
             txtLastCost.Enabled = false;
             dkpInventoryDate.Enabled = false;
             cmbProductStatus.Enabled = false;
+            cmbProductStatus.Enabled = false;
+            txtDelDeliveryID.Enabled = false;
+            txtDelBarcode.Enabled = false;
+            cmbDelProductName.Enabled = false;
+            txtDelDeliveryNo.Enabled = false;
+            txtDelDeliveryQty.Enabled = false;
+            txtDelQty.Enabled = false;
+            cmbDelBranch.Enabled = false;
+            txtDelLastCost.Enabled = false;
+            txtDelCostPerItem.Enabled = false;
+            txtDelTotal.Enabled = false;
+            cmbDelStatus.Enabled = false;
+            txtDelReceiptNo.Enabled = false;
+            txtDelRemarks.Enabled = false;
+            cmbDelDeliveryStatus.Enabled = false;
+            dkpDelDeliveryDate.Enabled = false;
+            dkpDelUpdate.Enabled = false;
+            txtSalesId.Enabled = false;
+            txtSalesInvoice.Enabled = false;
+            txtSalesBarcode.Enabled = false;
+            cmbSalesProductName.Enabled = false;
+            txtSalesQty.Enabled = false;
+            txtSalesPrice.Enabled = false;
+            txtSalesDiscount.Enabled = false;
+            txtSalesGross.Enabled = false;
+            txtSalesNet.Enabled = false;
+            txtSalesCustomer.Enabled = false;
+            cmbSalesBranch.Enabled = false;
+            cmbSalesStatus.Enabled = false;
+            dkpSalesDate.Enabled = false;
         }
         private void InputClea()
         {
@@ -528,6 +570,35 @@ namespace Inventory.MainForm
             txtLastCost.Clear();
             dkpInventoryDate.Value = DateTime.Now.Date;
             cmbProductStatus.Text = "";
+            txtDelDeliveryID.Clear();
+            txtDelBarcode.Clear();
+            cmbDelProductName.Text = "";
+            txtDelDeliveryNo.Clear();
+            txtDelDeliveryQty.Clear();
+            txtDelQty.Clear();
+            cmbDelBranch.Text = "";
+            txtDelLastCost.Clear();
+            txtDelCostPerItem.Clear();
+            txtDelTotal.Clear();
+            cmbDelStatus.Text = "";
+            txtDelReceiptNo.Clear();
+            txtDelRemarks.Clear();
+            cmbDelDeliveryStatus.Text = "";
+            dkpDelDeliveryDate.Value = DateTime.Now.Date;
+            dkpDelUpdate.Value = DateTime.Now.Date;
+            txtSalesId.Clear();
+            txtSalesInvoice.Clear();
+            txtSalesBarcode.Clear();
+            cmbSalesProductName.Text = "";
+            txtSalesQty.Clear();
+            txtSalesPrice.Clear();
+            txtSalesDiscount.Clear();
+            txtSalesGross.Clear();
+            txtSalesNet.Clear();
+            txtSalesCustomer.Clear();
+            cmbSalesBranch.Text = "";
+            cmbSalesStatus.Text = "";
+            dkpSalesDate.Value = DateTime.Now.Date;
         }
         private void InputDimG()
         {
@@ -578,6 +649,39 @@ namespace Inventory.MainForm
             cmbDelDeliveryStatus.BackColor = Color.DimGray;
             dkpDelDeliveryDate.BackColor = Color.DimGray;
             dkpDelUpdate.BackColor = Color.DimGray;
+        }
+
+        private void InputWhitSales()
+        {
+            txtSalesId.BackColor = Color.White;
+            txtSalesInvoice.BackColor = Color.White;
+            txtSalesBarcode.BackColor = Color.White;
+            cmbSalesProductName.BackColor = Color.White;
+            txtSalesQty.BackColor = Color.White;
+            txtSalesPrice.BackColor = Color.White;
+            txtSalesDiscount.BackColor = Color.White;
+            txtSalesGross.BackColor = Color.White;
+            txtSalesNet.BackColor = Color.White;
+            txtSalesCustomer.BackColor = Color.White;
+            cmbSalesBranch.BackColor = Color.White;
+            cmbSalesStatus.BackColor = Color.White;
+            dkpSalesDate.BackColor = Color.White;
+        }
+        private void InputDimGSales()
+        {
+            txtSalesId.BackColor = Color.DimGray;
+            txtSalesInvoice.BackColor = Color.DimGray;
+            txtSalesBarcode.BackColor = Color.DimGray;
+            cmbSalesProductName.BackColor = Color.DimGray;
+            txtSalesQty.BackColor = Color.DimGray;
+            txtSalesPrice.BackColor = Color.DimGray;
+            txtSalesDiscount.BackColor = Color.DimGray;
+            txtSalesGross.BackColor = Color.DimGray;
+            txtSalesNet.BackColor = Color.DimGray;
+            txtSalesCustomer.BackColor = Color.DimGray;
+            cmbSalesBranch.BackColor = Color.DimGray;
+            cmbSalesStatus.BackColor = Color.DimGray;
+            dkpSalesDate.BackColor = Color.DimGray;
         }
         /* private void GenerateCode()
         {
@@ -896,6 +1000,48 @@ namespace Inventory.MainForm
             {
                 Console.WriteLine(ex.ToString());
             }
+            if (gridProducts.RowCount > 0)
+                try
+                {
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
+                    if (id.Length > 0)
+                    {
+                        int SalesId = Convert.ToInt32(id);
+                        var ent = searchSalesId(SalesId);
+                        var barcode = ent.barcode;
+                        txtSalesId.Text = ent.id.ToString();
+                        txtSalesInvoice.Text = ent.invoice;
+                        txtSalesBarcode.Text = barcode;
+                        cmbSalesProductName.Text = ent.item;
+                        txtSalesQty.Text = ent.qty.ToString(CultureInfo.InvariantCulture);
+                        txtSalesPrice.Text = ent.price.ToString(CultureInfo.InvariantCulture);
+                        txtSalesDiscount.Text = ent.discount.ToString(CultureInfo.InvariantCulture);
+                        txtSalesGross.Text = ent.gross.ToString(CultureInfo.InvariantCulture);
+                        txtSalesNet.Text = ent.net.ToString(CultureInfo.InvariantCulture);
+                        txtSalesCustomer.Text = ent.customer;
+                        cmbSalesBranch.Text = ent.branch;
+                        cmbSalesStatus.Text = ent.status;
+                        dkpSalesDate.Value = ent.date;
+
+                        var img = searchProductImg(barcode);
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            ImageSales.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
+                        {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                            ImageSales.ImageLocation = location;
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
         }
 
         private ViewInventory searchInventoryId(int id)
@@ -1021,12 +1167,21 @@ namespace Inventory.MainForm
         private void gridInventory_RowClick(object sender, RowClickEventArgs e)
         {
             InputWhit();
+            bntCancel.Enabled = true;
         }
 
         private void GridProducts_RowClick(object sender, RowClickEventArgs e)
         {
             InputWhitDel();
+            bntCancel.Enabled = true;
         }
+
+        private void GridSales_RowClick(object sender, RowClickEventArgs e)
+        {
+            InputWhitSales();
+            bntCancel.Enabled = true;
+        }
+
         private void gridInventory_LostFocus(object sender, EventArgs e)
         {
             InputDimG();
@@ -1035,6 +1190,11 @@ namespace Inventory.MainForm
         private void GridProducts_LostFocus(object sender, EventArgs e)
         {
             InputDimGDel();
+        }
+
+        private void GridSales_LostFocus(object sender, EventArgs e)
+        {
+            InputDimGSales();
         }
         private void pbExit_Click(object sender, EventArgs e)
         {

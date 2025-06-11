@@ -122,6 +122,32 @@
             this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraSales = new DevExpress.XtraTab.XtraTabPage();
             this.groupSalesDetails = new DevExpress.XtraEditors.GroupControl();
+            this.cmbSalesStatus = new System.Windows.Forms.ComboBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtSalesDiscount = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtSalesCustomer = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtSalesQty = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtSalesNet = new System.Windows.Forms.TextBox();
+            this.cmbSalesProductName = new System.Windows.Forms.ComboBox();
+            this.cmbSalesBranch = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.dkpSalesDate = new System.Windows.Forms.DateTimePicker();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtSalesGross = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.txtSalesPrice = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txtSalesInvoice = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtSalesBarcode = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txtSalesId = new System.Windows.Forms.TextBox();
             this.ImageSales = new System.Windows.Forms.PictureBox();
             this.groupSales = new DevExpress.XtraEditors.GroupControl();
             this.gridCtrlSales = new DevExpress.XtraGrid.GridControl();
@@ -1590,6 +1616,32 @@
             this.groupSalesDetails.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupSalesDetails.Appearance.Options.UseBackColor = true;
             this.groupSalesDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupSalesDetails.Controls.Add(this.cmbSalesStatus);
+            this.groupSalesDetails.Controls.Add(this.label38);
+            this.groupSalesDetails.Controls.Add(this.label26);
+            this.groupSalesDetails.Controls.Add(this.txtSalesDiscount);
+            this.groupSalesDetails.Controls.Add(this.label27);
+            this.groupSalesDetails.Controls.Add(this.txtSalesCustomer);
+            this.groupSalesDetails.Controls.Add(this.label28);
+            this.groupSalesDetails.Controls.Add(this.txtSalesQty);
+            this.groupSalesDetails.Controls.Add(this.label29);
+            this.groupSalesDetails.Controls.Add(this.txtSalesNet);
+            this.groupSalesDetails.Controls.Add(this.cmbSalesProductName);
+            this.groupSalesDetails.Controls.Add(this.cmbSalesBranch);
+            this.groupSalesDetails.Controls.Add(this.label30);
+            this.groupSalesDetails.Controls.Add(this.label31);
+            this.groupSalesDetails.Controls.Add(this.dkpSalesDate);
+            this.groupSalesDetails.Controls.Add(this.label32);
+            this.groupSalesDetails.Controls.Add(this.txtSalesGross);
+            this.groupSalesDetails.Controls.Add(this.label33);
+            this.groupSalesDetails.Controls.Add(this.txtSalesPrice);
+            this.groupSalesDetails.Controls.Add(this.label34);
+            this.groupSalesDetails.Controls.Add(this.txtSalesInvoice);
+            this.groupSalesDetails.Controls.Add(this.label35);
+            this.groupSalesDetails.Controls.Add(this.label36);
+            this.groupSalesDetails.Controls.Add(this.txtSalesBarcode);
+            this.groupSalesDetails.Controls.Add(this.label37);
+            this.groupSalesDetails.Controls.Add(this.txtSalesId);
             this.groupSalesDetails.Controls.Add(this.ImageSales);
             this.groupSalesDetails.Controls.Add(this.groupSales);
             this.groupSalesDetails.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1600,6 +1652,340 @@
             this.groupSalesDetails.Name = "groupSalesDetails";
             this.groupSalesDetails.Size = new System.Drawing.Size(1479, 903);
             this.groupSalesDetails.TabIndex = 176;
+            // 
+            // cmbSalesStatus
+            // 
+            this.cmbSalesStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbSalesStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbSalesStatus.BackColor = System.Drawing.Color.DimGray;
+            this.cmbSalesStatus.Enabled = false;
+            this.cmbSalesStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSalesStatus.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbSalesStatus.FormattingEnabled = true;
+            this.cmbSalesStatus.Location = new System.Drawing.Point(729, 100);
+            this.cmbSalesStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbSalesStatus.Name = "cmbSalesStatus";
+            this.cmbSalesStatus.Size = new System.Drawing.Size(357, 36);
+            this.cmbSalesStatus.TabIndex = 285;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Transparent;
+            this.label38.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.Color.White;
+            this.label38.Location = new System.Drawing.Point(566, 108);
+            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(65, 23);
+            this.label38.TabIndex = 286;
+            this.label38.Text = "Status:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(14, 255);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(85, 23);
+            this.label26.TabIndex = 284;
+            this.label26.Text = "Discount:";
+            // 
+            // txtSalesDiscount
+            // 
+            this.txtSalesDiscount.BackColor = System.Drawing.Color.DimGray;
+            this.txtSalesDiscount.Enabled = false;
+            this.txtSalesDiscount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesDiscount.ForeColor = System.Drawing.Color.Maroon;
+            this.txtSalesDiscount.Location = new System.Drawing.Point(178, 247);
+            this.txtSalesDiscount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSalesDiscount.Name = "txtSalesDiscount";
+            this.txtSalesDiscount.Size = new System.Drawing.Size(357, 34);
+            this.txtSalesDiscount.TabIndex = 283;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.White;
+            this.label27.Location = new System.Drawing.Point(565, 36);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(93, 23);
+            this.label27.TabIndex = 282;
+            this.label27.Text = "Customer:";
+            // 
+            // txtSalesCustomer
+            // 
+            this.txtSalesCustomer.BackColor = System.Drawing.Color.DimGray;
+            this.txtSalesCustomer.Enabled = false;
+            this.txtSalesCustomer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesCustomer.ForeColor = System.Drawing.Color.Maroon;
+            this.txtSalesCustomer.Location = new System.Drawing.Point(729, 28);
+            this.txtSalesCustomer.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSalesCustomer.Name = "txtSalesCustomer";
+            this.txtSalesCustomer.Size = new System.Drawing.Size(357, 34);
+            this.txtSalesCustomer.TabIndex = 281;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.White;
+            this.label28.Location = new System.Drawing.Point(14, 182);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(85, 23);
+            this.label28.TabIndex = 280;
+            this.label28.Text = "Quantity:";
+            // 
+            // txtSalesQty
+            // 
+            this.txtSalesQty.BackColor = System.Drawing.Color.DimGray;
+            this.txtSalesQty.Enabled = false;
+            this.txtSalesQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesQty.ForeColor = System.Drawing.Color.Maroon;
+            this.txtSalesQty.Location = new System.Drawing.Point(178, 174);
+            this.txtSalesQty.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSalesQty.Name = "txtSalesQty";
+            this.txtSalesQty.Size = new System.Drawing.Size(357, 34);
+            this.txtSalesQty.TabIndex = 279;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.White;
+            this.label29.Location = new System.Drawing.Point(14, 328);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(44, 23);
+            this.label29.TabIndex = 278;
+            this.label29.Text = "Net:";
+            // 
+            // txtSalesNet
+            // 
+            this.txtSalesNet.BackColor = System.Drawing.Color.DimGray;
+            this.txtSalesNet.Enabled = false;
+            this.txtSalesNet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesNet.ForeColor = System.Drawing.Color.Maroon;
+            this.txtSalesNet.Location = new System.Drawing.Point(178, 320);
+            this.txtSalesNet.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSalesNet.Name = "txtSalesNet";
+            this.txtSalesNet.Size = new System.Drawing.Size(357, 34);
+            this.txtSalesNet.TabIndex = 268;
+            // 
+            // cmbSalesProductName
+            // 
+            this.cmbSalesProductName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbSalesProductName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbSalesProductName.BackColor = System.Drawing.Color.DimGray;
+            this.cmbSalesProductName.Enabled = false;
+            this.cmbSalesProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSalesProductName.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbSalesProductName.FormattingEnabled = true;
+            this.cmbSalesProductName.Location = new System.Drawing.Point(177, 136);
+            this.cmbSalesProductName.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbSalesProductName.Name = "cmbSalesProductName";
+            this.cmbSalesProductName.Size = new System.Drawing.Size(357, 36);
+            this.cmbSalesProductName.TabIndex = 263;
+            // 
+            // cmbSalesBranch
+            // 
+            this.cmbSalesBranch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbSalesBranch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbSalesBranch.BackColor = System.Drawing.Color.DimGray;
+            this.cmbSalesBranch.Enabled = false;
+            this.cmbSalesBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSalesBranch.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbSalesBranch.FormattingEnabled = true;
+            this.cmbSalesBranch.Location = new System.Drawing.Point(729, 63);
+            this.cmbSalesBranch.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbSalesBranch.Name = "cmbSalesBranch";
+            this.cmbSalesBranch.Size = new System.Drawing.Size(357, 36);
+            this.cmbSalesBranch.TabIndex = 266;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.White;
+            this.label30.Location = new System.Drawing.Point(566, 71);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(122, 23);
+            this.label30.TabIndex = 277;
+            this.label30.Text = "Branch Name:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.White;
+            this.label31.Location = new System.Drawing.Point(565, 144);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(98, 23);
+            this.label31.TabIndex = 276;
+            this.label31.Text = "Sales Date:";
+            // 
+            // dkpSalesDate
+            // 
+            this.dkpSalesDate.CustomFormat = "dd-MM-yyyy";
+            this.dkpSalesDate.Enabled = false;
+            this.dkpSalesDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dkpSalesDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dkpSalesDate.Location = new System.Drawing.Point(729, 137);
+            this.dkpSalesDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dkpSalesDate.Name = "dkpSalesDate";
+            this.dkpSalesDate.Size = new System.Drawing.Size(357, 34);
+            this.dkpSalesDate.TabIndex = 269;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.White;
+            this.label32.Location = new System.Drawing.Point(14, 292);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(58, 23);
+            this.label32.TabIndex = 275;
+            this.label32.Text = "Gross:";
+            // 
+            // txtSalesGross
+            // 
+            this.txtSalesGross.BackColor = System.Drawing.Color.DimGray;
+            this.txtSalesGross.Enabled = false;
+            this.txtSalesGross.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesGross.ForeColor = System.Drawing.Color.Maroon;
+            this.txtSalesGross.Location = new System.Drawing.Point(178, 284);
+            this.txtSalesGross.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSalesGross.Name = "txtSalesGross";
+            this.txtSalesGross.Size = new System.Drawing.Size(357, 34);
+            this.txtSalesGross.TabIndex = 267;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.Transparent;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.White;
+            this.label33.Location = new System.Drawing.Point(14, 218);
+            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(54, 23);
+            this.label33.TabIndex = 274;
+            this.label33.Text = "Price:";
+            // 
+            // txtSalesPrice
+            // 
+            this.txtSalesPrice.BackColor = System.Drawing.Color.DimGray;
+            this.txtSalesPrice.Enabled = false;
+            this.txtSalesPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesPrice.ForeColor = System.Drawing.Color.Maroon;
+            this.txtSalesPrice.Location = new System.Drawing.Point(178, 210);
+            this.txtSalesPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSalesPrice.Name = "txtSalesPrice";
+            this.txtSalesPrice.Size = new System.Drawing.Size(357, 34);
+            this.txtSalesPrice.TabIndex = 265;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.Transparent;
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.White;
+            this.label34.Location = new System.Drawing.Point(14, 141);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(130, 23);
+            this.label34.TabIndex = 273;
+            this.label34.Text = "Product Name:";
+            // 
+            // txtSalesInvoice
+            // 
+            this.txtSalesInvoice.BackColor = System.Drawing.Color.DimGray;
+            this.txtSalesInvoice.Enabled = false;
+            this.txtSalesInvoice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesInvoice.ForeColor = System.Drawing.Color.Maroon;
+            this.txtSalesInvoice.Location = new System.Drawing.Point(178, 64);
+            this.txtSalesInvoice.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSalesInvoice.Name = "txtSalesInvoice";
+            this.txtSalesInvoice.Size = new System.Drawing.Size(357, 34);
+            this.txtSalesInvoice.TabIndex = 264;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.White;
+            this.label35.Location = new System.Drawing.Point(14, 71);
+            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(71, 23);
+            this.label35.TabIndex = 272;
+            this.label35.Text = "Invoice:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.White;
+            this.label36.Location = new System.Drawing.Point(14, 106);
+            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(80, 23);
+            this.label36.TabIndex = 271;
+            this.label36.Text = "Barcode:";
+            // 
+            // txtSalesBarcode
+            // 
+            this.txtSalesBarcode.BackColor = System.Drawing.Color.DimGray;
+            this.txtSalesBarcode.Enabled = false;
+            this.txtSalesBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesBarcode.ForeColor = System.Drawing.Color.Maroon;
+            this.txtSalesBarcode.Location = new System.Drawing.Point(178, 100);
+            this.txtSalesBarcode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSalesBarcode.Name = "txtSalesBarcode";
+            this.txtSalesBarcode.Size = new System.Drawing.Size(357, 34);
+            this.txtSalesBarcode.TabIndex = 262;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.Transparent;
+            this.label37.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.Color.White;
+            this.label37.Location = new System.Drawing.Point(14, 35);
+            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(76, 23);
+            this.label37.TabIndex = 270;
+            this.label37.Text = "Sales Id:";
+            // 
+            // txtSalesId
+            // 
+            this.txtSalesId.BackColor = System.Drawing.Color.DimGray;
+            this.txtSalesId.Enabled = false;
+            this.txtSalesId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesId.ForeColor = System.Drawing.Color.Maroon;
+            this.txtSalesId.Location = new System.Drawing.Point(178, 28);
+            this.txtSalesId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSalesId.Name = "txtSalesId";
+            this.txtSalesId.Size = new System.Drawing.Size(357, 34);
+            this.txtSalesId.TabIndex = 261;
             // 
             // ImageSales
             // 
@@ -1704,7 +2090,9 @@
             this.gridSales.OptionsView.EnableAppearanceEvenRow = true;
             this.gridSales.OptionsView.RowAutoHeight = true;
             this.gridSales.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridSales.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.GridSales_RowClick);
             this.gridSales.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.GridSales_FocusedRowChanged);
+            this.gridSales.LostFocus += new System.EventHandler(this.GridSales_LostFocus);
             // 
             // gridView8
             // 
@@ -1763,6 +2151,7 @@
             // bntClear
             // 
             this.bntClear.BackColor = System.Drawing.Color.Firebrick;
+            this.bntClear.Enabled = false;
             this.bntClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bntClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntClear.ForeColor = System.Drawing.Color.White;
@@ -2056,6 +2445,7 @@
             this.xtraSales.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupSalesDetails)).EndInit();
             this.groupSalesDetails.ResumeLayout(false);
+            this.groupSalesDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupSales)).EndInit();
             this.groupSales.ResumeLayout(false);
@@ -2201,5 +2591,31 @@
         private System.Windows.Forms.TextBox txtDelBarcode;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtDelDeliveryID;
+        private System.Windows.Forms.ComboBox cmbSalesStatus;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtSalesDiscount;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox txtSalesCustomer;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txtSalesQty;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox txtSalesNet;
+        private System.Windows.Forms.ComboBox cmbSalesProductName;
+        private System.Windows.Forms.ComboBox cmbSalesBranch;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.DateTimePicker dkpSalesDate;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox txtSalesGross;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox txtSalesPrice;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox txtSalesInvoice;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtSalesBarcode;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox txtSalesId;
     }
 }

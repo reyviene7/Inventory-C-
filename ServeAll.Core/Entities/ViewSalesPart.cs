@@ -17,6 +17,7 @@ namespace ServeAll.Core.Entities
         public decimal  gross { get; set; }
         public  decimal net { get; set; }
         public string customer { get; set; }
+        public string status { get; set; }
         public string branch{ get; set; }
         public DateTime date { get; set; }
     }
