@@ -14331,21 +14331,15 @@
   <data name="bntClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAztJREFUeF7t2j9oFEEUBvBgYRBBbGInWGgVtBBEghbBJogQbNKlENPFTkghWhw2
-        okVAIZ2IYJfKIEIqI1j4pxBEDiGkERGOIIIEw1125n3ywm54fubAu9s9b+L7wTZ5m3nz5m5352Z2aMg5
-        55xzzjnnnHPOOeec+/8AOBZCuArgHoBnIvJRRL6KyE8R2RKRdRFZFZG3McbHAOYAnKnVavu4rT1LBynG
-        eFtE1tAlEfkGYAHAKW5/z9jY2DgC4KGICA9AL0Tk6ebm5lHOl7Qsy8b18qJamyGES61Wa7STI8uyC9SO
-        DtpGCOEi500SgPN6P9qlyBBCuKKD2ckBYEr/d5f2trIsm+D8yRGRT1xchT5z/qQ0m83jtpr8m/ZORF6W
-        dLwA8MPmSPp+BmDSFpNl2Tk+p1f6pLQ5AIzzOckAMG0K+cLxsgCwD5RJjicDwGxRhYi85nhZROS9GbBp
-        jicDQM0U8oTjZQGwZPLMcjwZAOZNIXc4XhbKU+N4MnRmbwqp7JOPMd4weeY5ngwAi6aQym7G9HBZ4Hgy
-        ACybQk5zvCwAxkyeRY4nQ5+MppBDHC+LTlZNnmWOJwNAPS+iybEyARguRqvK6UvlzIRyjWNl04lxnqvO
-        sWToNyv/1FdjjNeqPPSHdz5g69yPJNjLpM8qvfwrA2CEK+mjYe7PwAMwylX00Qj3Z+DR3KjfRrk/Aw/A
-        hK0gXzz80MtuEdPdI92C0zV9Co1xfwaerr2bAhoATujfdU8xxqhbZD2JMT6q1+v7tU2duOp+pgmnt4gI
-        YMYUN0exw6a4rjQajYO2zRjjTROesrEkxBivmwJmbCyfcmzP0br0x9Qhn4sVfsuXBFo8fAXggInZy7Ur
-        +opB0Z5e5vmGyDb9sHY6kop8K3+H3uxjjA/03rPbPmU3ROR5jPEugDcUSm8RUZekqYh+Sm9NjNbZ+62y
-        /YPKAFjhKvpoifsz8Mxa2L+wwv0ZePriW/ECiW7rc0UhhMv8osnfHvq/3J7mKOKam/uTFNoMKXT9A7nN
-        Ski6a/nMB6xDbQas602RNgOW3pOxnVardZLeE7vP53QKwK1ilUJEvgM4y+c455xzzjnnnHPOOeecc3vI
-        L+/yyayi/Lv7AAAAAElFTkSuQmCC
+        vAAADrwBlbxySQAAAdJJREFUeF7t2k2KE1EUhuFegxMRcSZOBBFXIIgDEZw5cxtuxh04E5yJC3DkAhw4
+        66kSJEUlqXyfXPDC8VillXTS8Yb3GeYU1fe8dDf5u7gAAAAAAAAAAAAAgAbZfmr7ve3vPgJJa0mXtt/Y
+        vpl/flNsv84LHpOkr33f38vnaMIwDM/yQteh/LY1GU3Sx7DHh9VqdT9fcyi2X0haNh3Ndl8XWC6Xt/L8
+        0DabzeOmo9WDF3l2LE1H2yXYYrG4YftBfjwry3dddzs/HjUbbW6wEkvSZ0nf1uv1ozyvytJleUlfzjLa
+        nGA1VlhsNFqNFa47v2j1oEWeVX3f340hihwtx6rX2H74+93+1FS0uGCeRVNBSrS/zfJ9poxF67ruTr7u
+        5OKSeZZNhRl7bJdYVY5m+1O+5uTC4f4ZrBiLFu0bq7L9RNJQ73fMJ9J7icvm2ZSpaFeNVUl6F277Ms9P
+        Khzsvwm23W7fhtu+yvOTCgebFWwqVnXVaGf1JzkWi3/6E6Zi8bRiBE9cg7hgnlW8NArqQYs8i3jx/cvc
+        YAVv7+wY7FCajVXEYLxFPcN1fggyDMPzpmMVfMy2Bz7I3UP9qoCkH3nBQzirrwoAAAAAAAAAAAAAQPIT
+        awr8O+qAJKoAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="bntCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

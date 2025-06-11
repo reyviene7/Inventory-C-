@@ -1530,13 +1530,13 @@
             this.bntCLEAR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bntCLEAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntCLEAR.ForeColor = System.Drawing.Color.White;
-            this.bntCLEAR.Image = ((System.Drawing.Image)(resources.GetObject("bntCLEAR.Image")));
+            this.bntCLEAR.Image = ((System.Drawing.Image)(resources.GetObject("bntCLR.Image")));
             this.bntCLEAR.Location = new System.Drawing.Point(1, 491);
             this.bntCLEAR.Margin = new System.Windows.Forms.Padding(4);
             this.bntCLEAR.Name = "bntCLEAR";
             this.bntCLEAR.Size = new System.Drawing.Size(121, 128);
             this.bntCLEAR.TabIndex = 20;
-            this.bntCLEAR.Text = "DATA";
+            this.bntCLEAR.Text = "CLEAR";
             this.bntCLEAR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntCLEAR.UseVisualStyleBackColor = false;
             this.bntCLEAR.Click += new System.EventHandler(this.bntCLR_Click);

@@ -46,6 +46,8 @@
             this.xtraInventory = new DevExpress.XtraTab.XtraTabControl();
             this.xtraIntake = new DevExpress.XtraTab.XtraTabPage();
             this.groupIntakeDetails = new DevExpress.XtraEditors.GroupControl();
+            this.lblDeliveredQty = new System.Windows.Forms.Label();
+            this.txtDeliveredQty = new System.Windows.Forms.TextBox();
             this.gBAL = new DevExpress.XtraEditors.GroupControl();
             this.lblSign = new DevExpress.XtraEditors.LabelControl();
             this.lblPrice = new DevExpress.XtraEditors.LabelControl();
@@ -114,8 +116,6 @@
             this.pcChangePassword = new System.Windows.Forms.PictureBox();
             this.pbHide = new System.Windows.Forms.PictureBox();
             this.Options = new System.Windows.Forms.Timer(this.components);
-            this.lblDeliveredQty = new System.Windows.Forms.Label();
-            this.txtDeliveredQty = new System.Windows.Forms.TextBox();
             this.pnlRightOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRight)).BeginInit();
             this.pnlRightMain.SuspendLayout();
@@ -393,6 +393,31 @@
             this.groupIntakeDetails.Name = "groupIntakeDetails";
             this.groupIntakeDetails.Size = new System.Drawing.Size(1479, 903);
             this.groupIntakeDetails.TabIndex = 173;
+            // 
+            // lblDeliveredQty
+            // 
+            this.lblDeliveredQty.AutoSize = true;
+            this.lblDeliveredQty.BackColor = System.Drawing.Color.Transparent;
+            this.lblDeliveredQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeliveredQty.ForeColor = System.Drawing.Color.White;
+            this.lblDeliveredQty.Location = new System.Drawing.Point(17, 181);
+            this.lblDeliveredQty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDeliveredQty.Name = "lblDeliveredQty";
+            this.lblDeliveredQty.Size = new System.Drawing.Size(126, 23);
+            this.lblDeliveredQty.TabIndex = 232;
+            this.lblDeliveredQty.Text = "Delivered Qty:";
+            // 
+            // txtDeliveredQty
+            // 
+            this.txtDeliveredQty.BackColor = System.Drawing.Color.DimGray;
+            this.txtDeliveredQty.Enabled = false;
+            this.txtDeliveredQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveredQty.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDeliveredQty.Location = new System.Drawing.Point(181, 173);
+            this.txtDeliveredQty.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDeliveredQty.Name = "txtDeliveredQty";
+            this.txtDeliveredQty.Size = new System.Drawing.Size(357, 34);
+            this.txtDeliveredQty.TabIndex = 231;
             // 
             // gBAL
             // 
@@ -1269,7 +1294,7 @@
             this.bntClear.Name = "bntClear";
             this.bntClear.Size = new System.Drawing.Size(121, 128);
             this.bntClear.TabIndex = 124;
-            this.bntClear.Text = "BRANCH";
+            this.bntClear.Text = "CLEAR";
             this.bntClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntClear.UseVisualStyleBackColor = false;
             this.bntClear.Click += new System.EventHandler(this.bntCLR_Click);
@@ -1493,31 +1518,6 @@
             // 
             this.Options.Interval = 1;
             this.Options.Tick += new System.EventHandler(this.Options_Tick);
-            // 
-            // lblDeliveredQty
-            // 
-            this.lblDeliveredQty.AutoSize = true;
-            this.lblDeliveredQty.BackColor = System.Drawing.Color.Transparent;
-            this.lblDeliveredQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeliveredQty.ForeColor = System.Drawing.Color.White;
-            this.lblDeliveredQty.Location = new System.Drawing.Point(17, 181);
-            this.lblDeliveredQty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDeliveredQty.Name = "lblDeliveredQty";
-            this.lblDeliveredQty.Size = new System.Drawing.Size(126, 23);
-            this.lblDeliveredQty.TabIndex = 232;
-            this.lblDeliveredQty.Text = "Delivered Qty:";
-            // 
-            // txtDeliveredQty
-            // 
-            this.txtDeliveredQty.BackColor = System.Drawing.Color.DimGray;
-            this.txtDeliveredQty.Enabled = false;
-            this.txtDeliveredQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveredQty.ForeColor = System.Drawing.Color.Maroon;
-            this.txtDeliveredQty.Location = new System.Drawing.Point(181, 173);
-            this.txtDeliveredQty.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDeliveredQty.Name = "txtDeliveredQty";
-            this.txtDeliveredQty.Size = new System.Drawing.Size(357, 34);
-            this.txtDeliveredQty.TabIndex = 231;
             // 
             // FrmInventory
             // 
