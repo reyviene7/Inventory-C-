@@ -741,6 +741,7 @@
             this.gridWarehouse.OptionsView.ShowGroupPanel = false;
             this.gridWarehouse.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridWarehouse_FocusedRowChanged);
             this.gridWarehouse.Click += new System.EventHandler(this.gridWarehouse_Click);
+            this.gridWarehouse.LostFocus += new System.EventHandler(this.GridWarehouse_LostFocus);
             // 
             // gridView2
             // 
@@ -1107,6 +1108,7 @@
             // bntClear
             // 
             this.bntClear.BackColor = System.Drawing.Color.Firebrick;
+            this.bntClear.Enabled = false;
             this.bntClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bntClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntClear.ForeColor = System.Drawing.Color.White;

@@ -166,6 +166,8 @@ namespace Inventory.MainForm
             InputLpg();
             InputDisb();
             InputWhit();
+            InputClea();
+            InputCleaRet();
             cmbFromBranch.Text = branch;
             cmbToBranch.Text = Constant.DefaultWareHouse;
             txtProductStatus.Text = Constant.DefaultReturn;
@@ -326,17 +328,16 @@ namespace Inventory.MainForm
         }
         private void ButtonReturn()
         {
-            bntADD.Enabled = false;
-            bntUPD.Enabled = false;
-            bntDEL.Enabled = false;
-            bntSAV.Enabled = true;
+            bntADD.Enabled = true;
+            bntUPD.Enabled = true;
+            bntDEL.Enabled = true;
+            bntSAV.Enabled = false;
             bntCLR.Enabled = false;
-            bntCAN.Enabled = true;
-            bntHOM.Enabled = false;
-            pbHome.Enabled = false;
-            pbLogout.Enabled = false;
-            pbExit.Enabled = false;
-
+            bntCAN.Enabled = false;
+            bntHOM.Enabled = true;
+            pbHome.Enabled = true;
+            pbLogout.Enabled = true;
+            pbExit.Enabled = true;
         }
         private void ButtonCan()
         {
@@ -687,6 +688,7 @@ namespace Inventory.MainForm
             {
                 InputWhit();
             }
+            bntCAN.Enabled = true;
         }
         private void gridDelivery_RowClick(object sender, RowClickEventArgs e)
         {
@@ -694,6 +696,12 @@ namespace Inventory.MainForm
             {
                 InputWhitRet();
             }
+            bntCAN.Enabled = true;
+        }
+
+        private void GridReturn_LostFocus(object sender, EventArgs e)
+        {
+            InputDimG();
         }
         private void GenerateReturnId()
         {

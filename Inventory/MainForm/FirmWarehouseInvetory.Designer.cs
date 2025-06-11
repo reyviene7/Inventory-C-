@@ -1165,7 +1165,9 @@
             this.gridInventory.OptionsView.EnableAppearanceEvenRow = true;
             this.gridInventory.OptionsView.RowAutoHeight = true;
             this.gridInventory.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridInventory.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.GridInventory_RowClick);
             this.gridInventory.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridInventory_FocusedRowChanged);
+            this.gridInventory.LostFocus += new System.EventHandler(this.GridInventory_LostFocus);
             // 
             // gridView2
             // 
@@ -1822,6 +1824,7 @@
             this.gridDelivery.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
             this.gridDelivery.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridDelivery_RowClick);
             this.gridDelivery.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridDelivery_FocusedRowChanged);
+            this.gridDelivery.LostFocus += new System.EventHandler(this.GridDelivery_LostFocus);
             // 
             // gridView4
             // 
@@ -2323,7 +2326,9 @@
             this.gridReturn.OptionsView.EnableAppearanceEvenRow = true;
             this.gridReturn.OptionsView.RowAutoHeight = true;
             this.gridReturn.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridReturn.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.GridReturn_RowClick);
             this.gridReturn.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridReturn_FocusedRowChanged);
+            this.gridReturn.LostFocus += new System.EventHandler(this.GridReturn_LostFocus);
             // 
             // gridView8
             // 
@@ -2849,6 +2854,7 @@
             this.gridSales.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
             this.gridSales.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridSales_RowClick);
             this.gridSales.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridSales_FocusedRowChanged);
+            this.gridSales.LostFocus += new System.EventHandler(this.GridSales_LostFocus);
             // 
             // gridView12
             // 

@@ -468,6 +468,7 @@ namespace Inventory.MainForm
             ButtonClr();
             WhtInput();
             CleInput();
+            DisInput();
             gCON.Enabled = true;
             gCON.Update();
         }
@@ -728,13 +729,10 @@ namespace Inventory.MainForm
             bntCAN.Enabled = true;
         }
 
-
-
         private void gridBranch_LostFocus(object sender, EventArgs e)
         {
             DimInput();
         }
-
 
         private void gridBranch_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {

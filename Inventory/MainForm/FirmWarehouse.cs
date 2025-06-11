@@ -204,13 +204,6 @@ namespace Inventory.MainForm
             Main.Show();
             Close();
         }
-
-        private void gridInventory_Click(object sender, EventArgs e)
-        {
-            if (gridWarehouse.RowCount > 0)
-                InputWhite();
-            bntClear.Enabled = true;
-        }
         private void ButAdd()
         {
             ButtonAdd();
@@ -259,6 +252,14 @@ namespace Inventory.MainForm
             InputWhite();
             InputClear();
             gridControl.Enabled = true;
+            gridControl.Update();
+        }
+        private void ButCan()
+        {
+            ButtonCan();
+            InputDisable();
+            InputDimGray();
+            InputClear();
         }
         private void ButSav()
         {
@@ -293,14 +294,6 @@ namespace Inventory.MainForm
             _del = false;
             gridControl.Enabled = true;
             BindWarehouse();
-        }
-        private void ButCan()
-        {
-            ButtonCan();
-            InputDisable();
-            InputDimGray();
-            InputClear();
-            gridControl.Enabled = true;
         }
         private void ButtonAdd()
         {
@@ -360,7 +353,7 @@ namespace Inventory.MainForm
             bntUpdate.Enabled = true;
             bntDelete.Enabled = true;
             bntSave.Enabled = false;
-            bntClear.Enabled = true;
+            bntClear.Enabled = false;
             bntCancel.Enabled = false;
             bntHome.Enabled = true;
             pbHome.Enabled = true;
@@ -755,7 +748,6 @@ namespace Inventory.MainForm
             }
             */
         }
-
         private void gridWarehouse_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (gridWarehouse.RowCount > 0)
@@ -788,10 +780,15 @@ namespace Inventory.MainForm
         }
         private void gridWarehouse_Click(object sender, EventArgs e)
         {
-            if (gridWarehouse.RowCount > 0)
-                InputWhite();
-            bntClear.Enabled = true;
+            InputWhite();
+            bntCancel.Enabled = true;
         }
+
+        private void GridWarehouse_LostFocus(object sender, EventArgs e)
+        {
+            InputDimGray();
+        }
+
         private ViewWarehouse searchWarehouseId(int id)
         {
             return _warehouse_list.FirstOrDefault(Branch => Branch.warehouse_id == id);

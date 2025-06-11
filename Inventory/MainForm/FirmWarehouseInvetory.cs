@@ -216,22 +216,6 @@ namespace Inventory.MainForm
             dkpSalesDate.Enabled = false;
         }
 
-        private void clearSales()
-        {
-            txtSalesId.Clear();
-            txtSalesInvoice.Clear();
-            txtSalesBarcode.Clear();
-            txtItemName.Clear();
-            txtSalesQty.Clear();
-            txtSalesPrice.Clear();
-            txtSalesDiscount.Clear();
-            txtCustomerName.Clear();
-            txtGrossSales.Clear();
-            txtNetSales.Clear();
-            txtBranchName.Clear();
-            dkpSalesDate.Value = DateTime.Now;
-        }
-
         private void whiteDelivery()
         {
             txtDelWarehouseId.BackColor = Color.White;
@@ -275,7 +259,35 @@ namespace Inventory.MainForm
             txtNetSales.BackColor = Color.White;
             txtBranchName.BackColor = Color.White;
         }
-
+        private void grayReturn()
+        {
+            txtReturnedId.BackColor = Color.Gray;
+            txtReturnedCode.BackColor = Color.Gray;
+            txtReturnedProduct.BackColor = Color.Gray;
+            txtReturnedDelivery.BackColor = Color.Gray;
+            txtReturnedQty.BackColor = Color.Gray;
+            cmbReturnedBranch.BackColor = Color.Gray;
+            cmbReturnedWarehouse.BackColor = Color.Gray;
+            txtReturnedStatus.BackColor = Color.Gray;
+            txtReturnedRemarks.BackColor = Color.Gray;
+        }
+        private void grayDelivery()
+        {
+            txtDelWarehouseId.BackColor = Color.Gray;
+            txtDelProduct.BackColor = Color.Gray;
+            txtDelProductName.BackColor = Color.Gray;
+            cmbDelProductStatus.BackColor = Color.Gray;
+            cmbDelWarehouseCode.BackColor = Color.Gray;
+            txtDelLastCost.BackColor = Color.Gray;
+            txtDelItemPrice.BackColor = Color.Gray;
+            txtDelRemainQty.BackColor = Color.Gray;
+            cmbDelBranch.BackColor = Color.Gray;
+            txtDelWarehouseCode.BackColor = Color.Gray;
+            txtDelReceipt.BackColor = Color.Gray;
+            txtDelQty.BackColor = Color.Gray;
+            cmbDelDeliveryStatus.BackColor = Color.Gray;
+            txtDelRemarks.BackColor = Color.Gray;
+        }
         private void graySales()
         {
             txtSalesId.BackColor = Color.Gray;
@@ -314,6 +326,51 @@ namespace Inventory.MainForm
             dkpLastStockedDate.Value = DateTime.Now.Date;
             dkpLastOrderDate.Value = DateTime.Now.Date;
             cmbUser.Text = "";
+        }
+
+        private void clearSales()
+        {
+            txtSalesId.Clear();
+            txtSalesInvoice.Clear();
+            txtSalesBarcode.Clear();
+            txtItemName.Clear();
+            txtSalesQty.Clear();
+            txtSalesPrice.Clear();
+            txtSalesDiscount.Clear();
+            txtCustomerName.Clear();
+            txtGrossSales.Clear();
+            txtNetSales.Clear();
+            txtBranchName.Clear();
+            dkpSalesDate.Value = DateTime.Now;
+        }
+        private void clearDelivery()
+        {
+            txtDelWarehouseId.Clear();
+            txtDelProduct.Clear();
+            txtDelProductName.Clear();
+            cmbDelProductStatus.Text = "";
+            cmbDelWarehouseCode.Text = "";
+            txtDelLastCost.Clear();
+            txtDelItemPrice.Clear();
+            txtDelRemainQty.Clear();
+            cmbDelBranch.Text = "";
+            txtDelWarehouseCode.Clear();
+            txtDelReceipt.Clear();
+            txtDelQty.Clear();
+            cmbDelDeliveryStatus.Text = "";
+            txtDelRemarks.Clear();
+        }
+        private void ClearReturn()
+        {
+            txtReturnedId.Clear();
+            txtReturnedCode.Clear();
+            txtReturnedProduct.Clear();
+            txtReturnedDelivery.Clear();
+            txtReturnedQty.Clear();
+            cmbReturnedBranch.Text = "";
+            cmbReturnedWarehouse.Text = "";
+            txtReturnedStatus.Clear();
+            txtReturnedRemarks.Clear();
         }
         private void inputGray()
         {
@@ -707,7 +764,15 @@ namespace Inventory.MainForm
 
         private void bntClear_Click(object sender, EventArgs e)
         {
+            buttonClear();
             inputWhite();
+            inputClear();
+            whiteReturn();
+            whiteDelivery();
+            whiteSales();
+            clearDelivery();
+            clearSales();
+            ClearReturn();
         }
 
         private void bntCancel_Click(object sender, EventArgs e)
@@ -840,12 +905,47 @@ namespace Inventory.MainForm
         private void gridSales_RowClick(object sender, RowClickEventArgs e)
         {
             gridViewSales(sender);
+            bntCancel.Enabled = true;
         }
 
         private void gridDelivery_RowClick(object sender, RowClickEventArgs e)
         {
             gridViewDelivery(sender);
+            bntCancel.Enabled = true;
         }
+
+        private void GridInventory_RowClick(object sender, RowClickEventArgs e)
+        {
+            inputWhite();
+            bntCancel.Enabled = true;
+        }
+
+        private void GridReturn_RowClick(object sender, RowClickEventArgs e)
+        {
+            whiteReturn();
+            bntCancel.Enabled = true;
+        }
+
+        private void GridInventory_LostFocus(object sender, EventArgs e)
+        {
+            inputGray();
+        }
+
+        private void GridSales_LostFocus(object sender, EventArgs e)
+        {
+            graySales();
+        }
+
+        private void GridReturn_LostFocus(object sender, EventArgs e)
+        {
+            grayReturn();
+        }
+
+        private void GridDelivery_LostFocus(object sender, EventArgs e)
+        {
+            grayDelivery();
+        }
+
         private ViewWareHouseInventory searchWarehouseInventoryId(string barcode)
         {
             return _warehouse_list.FirstOrDefault(Inventory => Inventory.product_code == barcode);

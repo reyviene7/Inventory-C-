@@ -137,13 +137,12 @@ namespace Inventory.MainForm
         }
         private void bntCLR_Click(object sender, EventArgs e)
         {
-            splashDelivery.ShowWaitForm();
             _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
             imgList = EnumerableUtils.getImgProductList();
             ButtonClr();
             InputWhit();
-            splashDelivery.CloseWaitForm();
+            InputClea();
         }
         private void bntCAN_Click(object sender, EventArgs e)
         {
@@ -849,6 +848,7 @@ namespace Inventory.MainForm
             {
                 InputWhit();
             }
+            bntCANCEL.Enabled = true;
         }
 
         private void gridBranch_RowClick(object sender, RowClickEventArgs e)
@@ -857,6 +857,12 @@ namespace Inventory.MainForm
             {
                 InputWhit();
             }
+            bntCANCEL.Enabled = true;
+        }
+
+        private void GridInventory_LostFocus(object sender, EventArgs e)
+        {
+            InputDimG();
         }
         private void GenerateWareHouseCode()
         {

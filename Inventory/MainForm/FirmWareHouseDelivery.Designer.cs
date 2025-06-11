@@ -783,6 +783,7 @@
             this.gridInventory.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
             this.gridInventory.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridBranch_RowClick);
             this.gridInventory.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridList_FocusedRowChanged);
+            this.gridInventory.LostFocus += new System.EventHandler(this.GridInventory_LostFocus);
             // 
             // gridView2
             // 
@@ -1530,7 +1531,7 @@
             this.bntCLEAR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bntCLEAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntCLEAR.ForeColor = System.Drawing.Color.White;
-            this.bntCLEAR.Image = ((System.Drawing.Image)(resources.GetObject("bntCLR.Image")));
+            this.bntCLEAR.Image = ((System.Drawing.Image)(resources.GetObject("bntCLEAR.Image")));
             this.bntCLEAR.Location = new System.Drawing.Point(1, 491);
             this.bntCLEAR.Margin = new System.Windows.Forms.Padding(4);
             this.bntCLEAR.Name = "bntCLEAR";
