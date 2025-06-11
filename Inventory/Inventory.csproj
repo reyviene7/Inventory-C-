@@ -69,7 +69,7 @@
   <ItemGroup>
     <Reference Include="CalendarClock, Version=1.0.5147.28403, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Downloads\CalendarClock.dll</HintPath>
+      <HintPath>..\ServeAll.Core\bin\Debug\CalendarClock.dll</HintPath>
     </Reference>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -570,7 +570,13 @@ namespace Inventory.MainForm
             gridController.Enabled = true;
             cmbProductName.DataBindings.Clear();
             imgInventory.DataBindings.Clear();
+            imgDelivery.DataBindings.Clear();
+            imgReturn.DataBindings.Clear();
+            imgSales.DataBindings.Clear();
             imgInventory.Image = null;
+            imgDelivery.Image = null;
+            imgReturn.Image = null;
+            imgSales.Image = null;
             cmbProductName.Size = new System.Drawing.Size(285, 29);
         }
         private void cmbNAM_KeyDown(object sender, KeyEventArgs e)

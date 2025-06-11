@@ -166,6 +166,7 @@ namespace Inventory.MainForm
             InputLpg();
             InputDisb();
             InputWhit();
+            InputWhitRet();
             InputClea();
             InputCleaRet();
             cmbFromBranch.Text = branch;
@@ -218,6 +219,7 @@ namespace Inventory.MainForm
             ButtonCan();
             InputDisb();
             InputDimG();
+            InputDimGRet();
             InputClea();
             gCON.Enabled = true;
             gDEL.Enabled = true;

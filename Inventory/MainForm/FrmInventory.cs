@@ -541,7 +541,44 @@ namespace Inventory.MainForm
             dkpInventoryDate.BackColor = Color.DimGray;
             cmbProductStatus.BackColor = Color.DimGray;
         }
-
+        private void InputWhitDel()
+        {
+            txtDelDeliveryID.BackColor = Color.White;
+            txtDelBarcode.BackColor = Color.White;
+            cmbDelProductName.BackColor = Color.White;
+            txtDelDeliveryNo.BackColor = Color.White;
+            txtDelDeliveryQty.BackColor = Color.White;
+            txtDelQty.BackColor = Color.White;
+            cmbDelBranch.BackColor = Color.White;
+            txtDelLastCost.BackColor = Color.White;
+            txtDelCostPerItem.BackColor = Color.White;
+            txtDelTotal.BackColor = Color.White;
+            cmbDelStatus.BackColor = Color.White;
+            txtDelReceiptNo.BackColor = Color.White;
+            txtDelRemarks.BackColor = Color.White;
+            cmbDelDeliveryStatus.BackColor = Color.White;
+            dkpDelDeliveryDate.BackColor = Color.White;
+            dkpDelUpdate.BackColor = Color.White;
+        }
+        private void InputDimGDel()
+        {
+            txtDelDeliveryID.BackColor = Color.DimGray;
+            txtDelBarcode.BackColor = Color.DimGray;
+            cmbDelProductName.BackColor = Color.DimGray;
+            txtDelDeliveryNo.BackColor = Color.DimGray;
+            txtDelDeliveryQty.BackColor = Color.DimGray;
+            txtDelQty.BackColor = Color.DimGray;
+            cmbDelBranch.BackColor = Color.DimGray;
+            txtDelLastCost.BackColor = Color.DimGray;
+            txtDelCostPerItem.BackColor = Color.DimGray;
+            txtDelTotal.BackColor = Color.DimGray;
+            cmbDelStatus.BackColor = Color.DimGray;
+            txtDelReceiptNo.BackColor = Color.DimGray;
+            txtDelRemarks.BackColor = Color.DimGray;
+            cmbDelDeliveryStatus.BackColor = Color.DimGray;
+            dkpDelDeliveryDate.BackColor = Color.DimGray;
+            dkpDelUpdate.BackColor = Color.DimGray;
+        }
         /* private void GenerateCode()
         {
             var lastProductId = FetchUtils.GetLastId();
@@ -780,37 +817,51 @@ namespace Inventory.MainForm
 
         private void GridProducts_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            var view = sender as GridView;
-            if (view == null || view.RowCount == 0)
-                return;
-
-            try
-            {
-                var idValue = view.GetFocusedRowCellValue("ID");
-                if (idValue == null || idValue == DBNull.Value)
-                    return;
-
-                int productId = Convert.ToInt32(idValue);
-                var product = searchProductId(productId);
-                var barcode = product.product_code;
-                txtBarcode.Text = barcode;
-                var img = searchProductImg(barcode);
-                var imgLocation = img?.img_location;
-
-                if (img == null || string.IsNullOrEmpty(imgLocation))
+            if (gridProducts.RowCount > 0)
+                try
                 {
-                    ImageProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
+                    if (id.Length > 0)
+                    {
+                        int DeliveryId = Convert.ToInt32(id);
+                        var ent = searchProductId(DeliveryId);
+                        var barcode = ent.product_code;
+                        txtDelDeliveryID.Text = ent.delivery_id.ToString();
+                        txtDelBarcode.Text = barcode;
+                        cmbDelProductName.Text = ent.product_name;
+                        txtDelDeliveryNo.Text = ent.delivery_code;
+                        txtDelDeliveryQty.Text = ent.delivery_qty.ToString(CultureInfo.InvariantCulture);
+                        txtDelQty.Text = ent.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
+                        cmbDelBranch.Text = ent.branch_details;
+                        txtDelLastCost.Text = ent.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtDelCostPerItem.Text = ent.cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                        txtDelTotal.Text = ent.total_value.ToString(CultureInfo.InvariantCulture);
+                        cmbDelStatus.Text = ent.status_details;
+                        txtDelReceiptNo.Text = ent.receipt_number;
+                        txtDelRemarks.Text = ent.remarks;
+                        cmbDelDeliveryStatus.Text = ent.delivery_status;
+                        dkpDelDeliveryDate.Value = ent.delivery_date;
+                        dkpDelUpdate.Value = ent.update_on;
+
+                        var img = searchProductImg(barcode);
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            ImageProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
+                        {
+                            var location = ConstantUtils.defaultImgLocation + imgLocation;
+
+                            ImageProduct.ImageLocation = location;
+                        }
+                    }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    var location = ConstantUtils.defaultImgLocation + imgLocation;
-                    ImageProduct.ImageLocation = location;
+                    Console.WriteLine(ex.ToString());
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
         }
 
         private void GridSales_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -971,9 +1022,19 @@ namespace Inventory.MainForm
         {
             InputWhit();
         }
+
+        private void GridProducts_RowClick(object sender, RowClickEventArgs e)
+        {
+            InputWhitDel();
+        }
         private void gridInventory_LostFocus(object sender, EventArgs e)
         {
             InputDimG();
+        }
+
+        private void GridProducts_LostFocus(object sender, EventArgs e)
+        {
+            InputDimGDel();
         }
         private void pbExit_Click(object sender, EventArgs e)
         {
