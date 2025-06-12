@@ -98,6 +98,7 @@ namespace Inventory.MainForm
         private void gridProduct_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             InputWhit();
+            bntCancel.Enabled = true;
         }
 
         private void bntAdd_Click(object sender, EventArgs e)
@@ -198,8 +199,6 @@ namespace Inventory.MainForm
                 {
                     btnSaveImage.Enabled = false;
                     btnBrowse.Enabled = true;
-                    listProducts = EnumerableUtils.getProductList();
-                    bindRefreshed();
                 }
             }
             else
@@ -343,7 +342,6 @@ namespace Inventory.MainForm
             gridControl.Enabled = true;
             cmbCategory.DataBindings.Clear();
             cmbSupplier.DataBindings.Clear();
-            bindRefreshed();
         }
         private void ButSav()
         {
@@ -1213,7 +1211,6 @@ namespace Inventory.MainForm
             }
         }
 
-
         private int saveProductImage()
         {
             var returnValue = 0;
@@ -1226,24 +1223,45 @@ namespace Inventory.MainForm
                     var filePathLocation = txtImageFilename.Text.Trim(' ');
                     var filePath = ExtractFileName(filePathLocation);
                     var repository = new Repository<ProductImages>(unitWorks);
-                    var img = new ProductImages()
-                    {
-                        image_code = txtProductBar.Text.Trim(' '),
-                        title = txtImageTitle.Text.Trim(' '),
-                        img_type = txtImageType.Text.Trim(' '),
-                        img_location = filePath,
-                        branch_id = 1
-                    };
-                    var result = repository.Add(img);
-                    if (result > 0)
-                    {
-                        PopupNotification.PopUpMessages(1, "Product image: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
-                         Messages.TitleSuccessInsert);
-                        unitWorks.Commit();
-                        returnValue = 1;
-                        bindRefreshed();
-                    }
+                    var imageCode = txtProductBar.Text.Trim(' ');
 
+                    var existingImg = repository.FindBy(x => x.image_code == imageCode);
+
+                    if (existingImg != null)
+                    {
+                        existingImg.title = txtImageTitle.Text.Trim(' ');
+                        existingImg.img_type = txtImageType.Text.Trim(' ');
+                        existingImg.img_location = filePath;
+                        existingImg.branch_id = 1;
+
+                        var updated = repository.Update(existingImg);
+                        if (updated)
+                        {
+                            PopupNotification.PopUpMessages(1, "Product image updated: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
+                                Messages.TitleSuccessUpdate);
+                            unitWorks.Commit();
+                            returnValue = 1;
+                        }
+                    }
+                    else
+                    {
+                        var img = new ProductImages()
+                        {
+                            image_code = imageCode,
+                            title = txtImageTitle.Text.Trim(' '),
+                            img_type = txtImageType.Text.Trim(' '),
+                            img_location = filePath,
+                            branch_id = 1
+                        };
+                        var result = repository.Add(img);
+                        if (result > 0)
+                        {
+                            PopupNotification.PopUpMessages(1, "Product image added: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
+                                Messages.TitleSuccessInsert);
+                            unitWorks.Commit();
+                            returnValue = 1;
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -1251,7 +1269,6 @@ namespace Inventory.MainForm
                     PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
                     returnValue = 0;
                 }
-
             }
             return returnValue;
         }
