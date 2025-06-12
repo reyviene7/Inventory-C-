@@ -770,6 +770,7 @@ namespace Inventory.MainForm
 
         private void bntClear_Click(object sender, EventArgs e)
         {
+            bindRefreshed();
             buttonClear();
             inputWhite();
             inputClear();
@@ -848,8 +849,17 @@ namespace Inventory.MainForm
                 imgInventory.ImageLocation = location;
             }
         }
-
-        /** when tab is selected **/
+        private void bindRefreshed()
+        {
+            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            bindWareHouse();
+            _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
+            bindDeliveryList();
+            warehouse_return = EnumerableUtils.getWareHouseReturn();
+            BindReturnWareHouse();
+            _transaction_list = EnumerableUtils.getSalesParticular();
+            bindSalesParticular();
+        }
         private void xInventory_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             if(e.Page == xtraInventory)

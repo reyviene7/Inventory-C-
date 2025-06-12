@@ -351,6 +351,7 @@ namespace Inventory.MainForm
         }
         private void buttonClear()
         {
+            bindingUserList();
             ButtonClr();
             InputWhit();
             InputWhitimg();
@@ -931,6 +932,12 @@ namespace Inventory.MainForm
                 PopupNotification.PopUpMessages(0, "User image: " + txtImageName.Text.Trim(' ') + " " + Messages.ErrorInsert,
                     Messages.TitleFailedInsert);
             }
+        }
+
+        private void GridUsers_LostFocus(object sender, EventArgs e)
+        {
+            InputDimG();
+            InputDimGimg();
         }
 
         /*

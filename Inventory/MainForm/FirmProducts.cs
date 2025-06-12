@@ -335,6 +335,7 @@ namespace Inventory.MainForm
         }
         private void ButClr()
         {
+            bindRefreshed();
             ButtonClr();
             InputDisb();
             InputWhit();

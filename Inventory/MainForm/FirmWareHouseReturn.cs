@@ -162,6 +162,8 @@ namespace Inventory.MainForm
         }
         private void ButClear()
         {
+            BindInventory(_branch);
+            BindReturnWareHouse();
             ButtonReturn();
             InputLpg();
             InputDisb();

@@ -465,6 +465,7 @@ namespace Inventory.MainForm
 
         private void ButClr()
         {
+            BindBranch();
             ButtonClr();
             WhtInput();
             CleInput();

@@ -337,6 +337,8 @@ namespace Inventory.MainForm
         }
         private void ButClr()
         {
+            bindRefreshedCategory();
+            bindRefreshedSupplier();
             ButtonClr();
             InputWhit();
             InputDisb();
@@ -632,6 +634,7 @@ namespace Inventory.MainForm
         private void gridCategory_RowClick(object sender, RowClickEventArgs e)
         {
             InputWhit();
+            bntCancel.Enabled = true;
         }
 
         private void gridCategory_LostFocus(object sender, EventArgs e)
@@ -641,6 +644,7 @@ namespace Inventory.MainForm
         private void GridSupplier_RowClick(object sender, RowClickEventArgs e)
         {
             InputWhitSup();
+            bntCancel.Enabled = true;
         }
 
         private void GridSupplier_LostFocus(object sender, EventArgs e)

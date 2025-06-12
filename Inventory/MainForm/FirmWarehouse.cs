@@ -247,6 +247,7 @@ namespace Inventory.MainForm
         }
         private void ButClr()
         {
+            BindWarehouse();
             ButtonClr();
             InputDisable();
             InputWhite();

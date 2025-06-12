@@ -878,6 +878,8 @@
             this.gridServices.OptionsView.EnableAppearanceEvenRow = true;
             this.gridServices.OptionsView.RowAutoHeight = true;
             this.gridServices.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
+            this.gridServices.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.GridServices_RowClick);
+            this.gridServices.LostFocus += new System.EventHandler(this.GridServices_LostFocus);
             // 
             // gridView2
             // 

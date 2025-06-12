@@ -92,14 +92,7 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             RightOptions.Start();
             Options.Start();
-            listInventory = EnumerableUtils.getInventory();
-            listWarehouseProduct = EnumerableUtils.getWarehouseProduct();
-            listProducts = EnumerableUtils.getProductList();
-            listSalesPart = EnumerableUtils.getSalesParticular();
-            imgList = EnumerableUtils.getImgProductList();
-            BindInventory();
-            BindWarehouseProduct();
-            BindSalesPart();
+            bindRefreshed();
         }
         private void bntADD_Click(object sender, EventArgs e)
         {
@@ -274,6 +267,7 @@ namespace Inventory.MainForm
         }
         private void ButClr()
         {
+            bindRefreshed();
             ButtonClr();
             InputDisb();
             InputWhit();
@@ -282,6 +276,7 @@ namespace Inventory.MainForm
             InputClea();
             gCON.Enabled = true;
             cmbProductName.DataBindings.Clear();
+            cmbBranchName.DataBindings.Clear();
         }
         private void ButSav()
         {
@@ -1059,6 +1054,17 @@ namespace Inventory.MainForm
         private ViewImageProduct searchProductImg(string param)
         {
             return imgList.FirstOrDefault(img => img.image_code == param);
+        }
+        private void bindRefreshed ()
+        {
+            listInventory = EnumerableUtils.getInventory();
+            listWarehouseProduct = EnumerableUtils.getWarehouseProduct();
+            listProducts = EnumerableUtils.getProductList();
+            listSalesPart = EnumerableUtils.getSalesParticular();
+            imgList = EnumerableUtils.getImgProductList();
+            BindInventory();
+            BindWarehouseProduct();
+            BindSalesPart();
         }
         private void BindInventory()
         {

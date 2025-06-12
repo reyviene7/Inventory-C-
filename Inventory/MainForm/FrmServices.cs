@@ -157,7 +157,7 @@ namespace Inventory.MainForm
         {
             if (gridServices.RowCount > 0)
                 InputWhit();
-            bntClear.Enabled = true;
+            bntCancel.Enabled = true;
         }
 
         private void addInventory()
@@ -534,14 +534,15 @@ namespace Inventory.MainForm
             InputDimG();
             InputClea();
             gridController.Enabled = true;
-         
             imgProduct.DataBindings.Clear();
             imgProduct.Image = null;
          
         }
         private void ButClr()
         {
+            bindServices();
             ButtonClr();
+            InputClea();
             InputWhit();
             InputDisb();
             gridController.Enabled = true;
@@ -729,6 +730,17 @@ namespace Inventory.MainForm
                 PopupNotification.PopUpMessages(0, "Service image: " + txtServiceImgTitle.Text.Trim(' ') + " " + Messages.ErrorInsert,
                  Messages.TitleFailedInsert);
             }
+        }
+
+        private void GridServices_RowClick(object sender, RowClickEventArgs e)
+        {
+            InputWhit();
+            bntCancel.Enabled = true;
+        }
+
+        private void GridServices_LostFocus(object sender, EventArgs e)
+        {
+            InputDimG();
         }
 
         private void generateLastServiceCode()
