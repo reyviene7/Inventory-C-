@@ -95,6 +95,9 @@ namespace Inventory.MainForm
             // Make the form fullscreen
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None; // Optional: remove title bar and borders
+
+            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
+            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
         }
         private void barMainMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
