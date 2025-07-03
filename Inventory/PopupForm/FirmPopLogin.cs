@@ -79,8 +79,24 @@ namespace Inventory.PopupForm
                     await Task.Delay((int)TimeSpan.FromMilliseconds(1).TotalMilliseconds);
                     var unWork = session.UnitofWrk;
                     var repository = new Repository<users>(unWork);
-                    var query = repository.ExecLoginUser(StoredProcedure.UspGetPasswordLogin, SqlVariables.UserName, userName, SqlVariables.UserType, userType);
-                    if (query.Length <= 0) return;
+
+                    var query = repository.ExecLoginUser(
+                        StoredProcedure.UspGetPasswordLogin, 
+                        SqlVariables.UserName, userName, 
+                        SqlVariables.UserType, userType
+                        );
+
+                    if (string.IsNullOrEmpty(query))
+                    {
+                        // 🚫 Username not found
+                        splashScreen.CloseWaitForm();
+                        PopupNotification.PopUpMessages(0, "Username not found. Please try again.", "POS Authentication");
+                        txtUSR.Text = "";
+                        txtPASS.Text = "";
+                        txtUSR.Focus();
+                        return;
+                    }
+
                     const string salt = PasswordCipter.EncryptionPass;
                     var que = StringCipher.Decrypt(query.Trim(' '), salt);
                     if (string.Equals(userPass, que))

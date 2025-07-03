@@ -764,6 +764,7 @@
             this.txtCostPerUnit.Size = new System.Drawing.Size(379, 34);
             this.txtCostPerUnit.TabIndex = 7;
             this.txtCostPerUnit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCostPerUnit_KeyDown);
+            this.txtCostPerUnit.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtCostPerUnit_PreviewKeyDown);
             // 
             // label9
             // 

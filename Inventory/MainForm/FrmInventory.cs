@@ -293,7 +293,7 @@ namespace Inventory.MainForm
                 InputDimG();
                 InputClea();
                 BindProductList(_branch);
-                BindInventory();
+                bindRefreshed();
             }
             if (_add == false && _edt && _del == false)
             {
@@ -304,7 +304,7 @@ namespace Inventory.MainForm
                 InputDimG();
                 InputClea();
                 BindProductList(_branch);
-                BindInventory();
+                bindRefreshed();
             }
             if (_add == false && _edt == false && _del)
             {
@@ -315,8 +315,7 @@ namespace Inventory.MainForm
                 InputDimG();
                 InputClea();
                 BindProductList(_branch);
-                BindInventory();
-
+                bindRefreshed();
             }
             _add = false;
             _edt = false;
@@ -329,6 +328,8 @@ namespace Inventory.MainForm
             ImageProduct.Image = null;
             ImageSales.DataBindings.Clear();
             ImageSales.Image = null;
+            BindProductList(_branch);
+            bindRefreshed();
         }
         private void ButCan()
         {
@@ -749,70 +750,81 @@ namespace Inventory.MainForm
                 try
                 {
                     posWET.ShowWaitForm();
-                    var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
+
+                    var inventoryRepo = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
+                    var deliveryRepo = new Repository<ServeAll.Core.Entities.WarehouseDelivery>(unWork);
 
                     int quantity = int.Parse(txtQty.Text);
                     string deliveryCode = txtDeliveryNumber.Text;
+                    int productId = FetchUtils.getProductId(cmbProductName.Text);
+                    int branchId = FetchUtils.getBranchId(cmbBranchName.Text);
 
-                    ServeAll.Core.Entities.Inventory inventory = new ServeAll.Core.Entities.Inventory
+                    var existingInventory = inventoryRepo
+                        .FindBy(x => x.product_id == productId && x.branch_id == branchId);
+
+                    if (existingInventory != null)
                     {
-                        inventory_code = txtInventoryCode.Text,
-                        product_id = FetchUtils.getProductId(cmbProductName.Text),
-                        delivery_code = deliveryCode,
-                        quantity = quantity,
-                        branch_id = FetchUtils.getBranchId(cmbBranchName.Text),
-                        last_price_cost = Convert.ToDecimal(txtLastCost.Text),
-                        inventory_date = dkpInventoryDate.Value.Date,
-                        status_id = FetchUtils.getProductStatusId(cmbProductStatus.Text),
-                        user_id = 3,
-                        updatedOn = DateTime.Now
-                    };
-                    var result = repository.Add(inventory);
-                    if (result > 0)
-                    {
-                        var deliveryRepo = new Repository<ServeAll.Core.Entities.WarehouseDelivery>(unWork);
-                        var delivery = deliveryRepo.Id(_selectedDeliveryId);
-
-                        if (delivery != null)
-                        {
-                            int deliveredQty = int.Parse(txtDeliveredQty.Text);
-
-                            if (quantity == delivery.delivery_qty)
-                            {
-                                deliveryRepo.Delete(delivery); // Delete if equal
-                            }
-                            else if (quantity < delivery.delivery_qty)
-                            {
-                                delivery.delivery_qty -= quantity;
-                                deliveryRepo.Update(delivery); // Update if less
-                            }
-                            else if (quantity > deliveredQty)
-                            {
-                                posWET.CloseWaitForm(); // Close wait screen if open
-                                PopupNotification.PopUpMessages(
-                                    0,
-                                    "Inventory quantity exceeds the delivery quantity. Please check your input.",
-                                    "Invalid Quantity"
-                                );
-                                unWork.Rollback(); // Cancel the DB transaction
-                                return;
-                            }
-                        }
-
-                        posWET.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
-                         Messages.TitleSuccessInsert);
-                        unWork.Commit();
-                        listInventory = EnumerableUtils.getInventory();
-                        BindInventory();
+                        existingInventory.quantity += quantity;
+                        existingInventory.updatedOn = DateTime.Now;
+                        inventoryRepo.Update(existingInventory);
                     }
+                    else
+                    {
+                        ServeAll.Core.Entities.Inventory newInventory = new ServeAll.Core.Entities.Inventory
+                        {
+                            inventory_code = txtInventoryCode.Text,
+                            product_id = productId,
+                            delivery_code = deliveryCode,
+                            quantity = quantity,
+                            branch_id = branchId,
+                            last_price_cost = Convert.ToDecimal(txtLastCost.Text),
+                            inventory_date = dkpInventoryDate.Value.Date,
+                            status_id = FetchUtils.getProductStatusId(cmbProductStatus.Text),
+                            user_id = 3,
+                            updatedOn = DateTime.Now
+                        };
+                        inventoryRepo.Add(newInventory);
+                    }
+
+                    var delivery = deliveryRepo.Id(_selectedDeliveryId);
+                    if (delivery != null)
+                    {
+                        int deliveredQty = int.Parse(txtDeliveredQty.Text);
+
+                        if (quantity == delivery.delivery_qty)
+                        {
+                            deliveryRepo.Delete(delivery); 
+                        }
+                        else if (quantity < delivery.delivery_qty)
+                        {
+                            delivery.delivery_qty -= quantity;
+                            deliveryRepo.Update(delivery); 
+                        }
+                        else if (quantity > deliveredQty)
+                        {
+                            posWET.CloseWaitForm();
+                            PopupNotification.PopUpMessages(0,
+                                "Inventory quantity exceeds the delivery quantity.",
+                                "Invalid Quantity");
+                            unWork.Rollback();
+                            return;
+                        }
+                    }
+
+                    unWork.Commit();
+                    posWET.CloseWaitForm();
+                    PopupNotification.PopUpMessages(1,
+                        "Product Name: " + cmbProductName.Text.Trim() + " " + Messages.SuccessInsert,
+                        Messages.TitleSuccessInsert);
+
+                    listInventory = EnumerableUtils.getInventory();
+                    BindInventory();
                 }
                 catch (Exception ex)
                 {
-                    posWET.CloseWaitForm();
                     unWork.Rollback();
+                    posWET.CloseWaitForm();
                     PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
-
                 }
             }
         }
@@ -1351,6 +1363,14 @@ namespace Inventory.MainForm
             }
         }
 
+        private void cmbProductStatus_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                cmbProductStatus_KeyDown(sender, new KeyEventArgs(Keys.Tab));
+            }
+        }
+
         private void txtLastCost_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -1370,7 +1390,7 @@ namespace Inventory.MainForm
             }
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputCaseLeave(cmbProductStatus, txtBarcode, "Product Status",
+                InputManipulation.InputCaseLeave(cmbProductStatus, bntSave, "Product Status",
                     Messages.TitleInventory);
             }
         }

@@ -582,6 +582,7 @@
             this.cmbProductStatus.Size = new System.Drawing.Size(357, 36);
             this.cmbProductStatus.TabIndex = 118;
             this.cmbProductStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductStatus_KeyDown);
+            this.cmbProductStatus.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.cmbProductStatus_PreviewKeyDown);
             // 
             // cmbProductName
             // 

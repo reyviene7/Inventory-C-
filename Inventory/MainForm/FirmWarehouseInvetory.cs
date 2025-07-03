@@ -661,6 +661,8 @@ namespace Inventory.MainForm
 
                 txtCostPerUnit.Text = selectedProduct.trade_price.ToString("N2");
                 txtLastCostPerUnit.Text = selectedProduct.retail_price.ToString("N2");
+                cmbSupplier.Text = selectedProduct.supplier_name;
+                txtBarcode.Text = selectedProduct.product_code;
             }
         }
 
@@ -1231,7 +1233,7 @@ namespace Inventory.MainForm
 
         private void TxtWarehouseSKU_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 txtWarehouseSKU.Text = txtWarehouseSKU.Text.ToUpper(); 
 
@@ -1242,7 +1244,7 @@ namespace Inventory.MainForm
 
         private void cmbProductName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 InputManipulation.InputBoxLeave(cmbProductName, txtQuantityStock, "Product Name",
                 Messages.TitleWarehouseInventory);
@@ -1251,7 +1253,7 @@ namespace Inventory.MainForm
 
         private void txtQuantityStock_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 var len = txtQuantityStock.Text.Length;
                 if (len > 0)
@@ -1275,29 +1277,32 @@ namespace Inventory.MainForm
         }
         private void txtReorderLevel_KeyDown(object sender, KeyEventArgs e)
         {
-            var len = txtReorderLevel.Text.Length;
-            if (len > 0)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                txtReorderLevel.BackColor = Color.White;
-                InputManipulation.InputBoxLeave(txtReorderLevel, cmbSupplier, "Reorder Level",
-                Messages.TitleWarehouseInventory);
-            }
-            else
-            {
-                txtReorderLevel.Text = @"0";
-                txtReorderLevel.BackColor = Color.Yellow;
-                txtReorderLevel.Focus();
-            }
-            if (txtReorderLevel.Text == "0" && e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtReorderLevel, cmbSupplier, "Reorder Level",
+                var len = txtReorderLevel.Text.Length;
+                if (len > 0)
+                {
+                    txtReorderLevel.BackColor = Color.White;
+                    InputManipulation.InputBoxLeave(txtReorderLevel, cmbSupplier, "Reorder Level",
                     Messages.TitleWarehouseInventory);
+                }
+                else
+                {
+                    txtReorderLevel.Text = @"0";
+                    txtReorderLevel.BackColor = Color.Yellow;
+                    txtReorderLevel.Focus();
+                }
+                if (txtReorderLevel.Text == "0" && e.KeyCode == Keys.Enter)
+                {
+                    InputManipulation.InputBoxLeave(txtReorderLevel, cmbSupplier, "Reorder Level",
+                        Messages.TitleWarehouseInventory);
+                }
             }
         }
 
         private void cmbSupplier_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 InputManipulation.InputBoxLeave(cmbSupplier, txtCostPerUnit, "Supplier Name",
                 Messages.TitleWarehouseInventory);
@@ -1369,7 +1374,7 @@ namespace Inventory.MainForm
 
         private void dkpLastStockedDate_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 InputManipulation.InputBoxLeave(dkpLastStockedDate, dkpLastOrderDate, "Last Stocked Date",
                 Messages.TitleWarehouseInventory);
@@ -1378,7 +1383,7 @@ namespace Inventory.MainForm
 
         private void dkpLastOrderDate_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 InputManipulation.InputBoxLeave(dkpLastOrderDate, dpkExpirationDate, "Last Order Date",
                 Messages.TitleWarehouseInventory);
@@ -1387,7 +1392,7 @@ namespace Inventory.MainForm
 
         private void dpkExpirationDate_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 InputManipulation.InputBoxLeave(dpkExpirationDate, dpkCreatedDate, "Expiration Date",
                 Messages.TitleWarehouseInventory);
@@ -1396,7 +1401,7 @@ namespace Inventory.MainForm
 
         private void dpkCreatedDate_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 InputManipulation.InputBoxLeave(dpkCreatedDate, dpkLastUpdated, "Created Date",
                 Messages.TitleWarehouseInventory);
@@ -1405,7 +1410,7 @@ namespace Inventory.MainForm
 
         private void dpkLastUpdated_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 InputManipulation.InputBoxLeave(dpkLastUpdated, cmbUser, "Last Updated",
                 Messages.TitleWarehouseInventory);
@@ -1414,7 +1419,7 @@ namespace Inventory.MainForm
 
         private void cmbUser_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 InputManipulation.InputBoxLeave(cmbUser, cmbItemLocation, "Operator",
                 Messages.TitleWarehouseInventory);
@@ -1423,7 +1428,7 @@ namespace Inventory.MainForm
 
         private void cmbItemLocation_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 InputManipulation.InputBoxLeave(cmbItemLocation, cmbStatus, "Item Location",
                 Messages.TitleWarehouseInventory);
@@ -1432,7 +1437,7 @@ namespace Inventory.MainForm
 
         private void cmbStatus_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab   )
             {
                 InputManipulation.InputBoxLeave(cmbStatus, bntSave, "Status",
                 Messages.TitleWarehouseInventory);
@@ -1444,6 +1449,14 @@ namespace Inventory.MainForm
             int selectionStart = txtWarehouseSKU.SelectionStart;
             txtWarehouseSKU.Text = txtWarehouseSKU.Text.ToUpper();
             txtWarehouseSKU.SelectionStart = selectionStart;
+        }
+
+        private void txtCostPerUnit_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                txtCostPerUnit_KeyDown(sender, new KeyEventArgs(Keys.Tab));
+            }
         }
 
         private void editInventory()
