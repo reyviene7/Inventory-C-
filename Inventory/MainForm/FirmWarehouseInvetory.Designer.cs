@@ -823,8 +823,6 @@
             this.cmbProductName.TabIndex = 3;
             this.cmbProductName.SelectedIndexChanged += new System.EventHandler(this.cmbProductName_SelectedIndexChanged);
             this.cmbProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductName_KeyDown);
-            this.cmbProductName.Leave += new System.EventHandler(this.cmbProductName_Leave);
-            this.cmbProductName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbProductName_MouseClick);
             // 
             // imgInventory
             // 
@@ -1071,6 +1069,7 @@
             this.txtWarehouseSKU.Name = "txtWarehouseSKU";
             this.txtWarehouseSKU.Size = new System.Drawing.Size(379, 34);
             this.txtWarehouseSKU.TabIndex = 2;
+            this.txtWarehouseSKU.TextChanged += new System.EventHandler(this.txtWarehouseSKU_TextChanged);
             this.txtWarehouseSKU.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtWarehouseSKU_KeyDown);
             // 
             // groupInventory

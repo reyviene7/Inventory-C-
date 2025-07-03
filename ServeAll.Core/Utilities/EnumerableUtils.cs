@@ -3,6 +3,7 @@ using ServeAll.Core.Entities.request;
 using ServeAll.Core.Helper;
 using ServeAll.Core.Queries;
 using ServeAll.Core.Repository;
+using ServeAll.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -339,7 +340,7 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static IEnumerable<RequestProducts> getProductWarehouseList()
+        public static IEnumerable<ViewReportProductList> getProductWarehouseList()
         {
             using (var session = new DalSession())
             {
@@ -347,13 +348,13 @@ namespace ServeAll.Core.Utilities
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<RequestProducts>(unWork);
+                    var repository = new Repository<ViewReportProductList>(unWork);
                     return repository.SelectAll(Query.AllProductWarehouse).ToList();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    return GetEmptyList<RequestProducts>();
+                    return GetEmptyList<ViewReportProductList>();
                 }
             }
         }

@@ -120,6 +120,7 @@
     <Compile Include="Entities\Sales.cs" />
     <Compile Include="Entities\SalesParticular.cs" />
     <Compile Include="Entities\ViewDailyExpenses.cs" />
+    <Compile Include="Entities\ViewReportProductList.cs" />
     <Compile Include="Entities\ViewUserImage.cs" />
     <Compile Include="Entities\ViewRequestCategory .cs" />
     <Compile Include="Entities\ViewRequestStaff.cs" />

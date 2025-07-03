@@ -10,6 +10,7 @@ using ServeAll.Core.Entities;
 using ServeAll.Core.Entities.request;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
+using ServeAll.Entities;
 
 namespace Inventory.MainForm
 {
@@ -21,7 +22,7 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userTyp;
         private readonly string _userName;
-        private IEnumerable<RequestProducts> _products;
+        private IEnumerable<ViewReportProductList> _products;
         private IEnumerable<RequestSupplier> _suppliers;
         private IEnumerable<WarehouseStatus> _statuses;
         private IEnumerable<Location> _locations;
@@ -38,7 +39,7 @@ namespace Inventory.MainForm
                 _deliver = value;
                 if (_deliver > 0)
                 {
-                    
+
                 }
             }
         }
@@ -62,7 +63,7 @@ namespace Inventory.MainForm
             {
                 _branchId = value;
                 cmbItemLocation.Text = _branch;
-               
+
             }
         }
         private FirmMain _main;
@@ -105,7 +106,7 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             splashScreen.ShowWaitForm();
-            _products = EnumerableUtils.getProductWarehouseList();
+            _products = (IEnumerable<ViewReportProductList>)EnumerableUtils.getProductWarehouseList();
             _suppliers = EnumerableUtils.getSupplierWarehouseList();
             _statuses = EnumerableUtils.getStatusWarehouseList();
             _locations = EnumerableUtils.getLocationWarehouseList();
@@ -484,7 +485,7 @@ namespace Inventory.MainForm
             cmbSupplier.DataBindings.Clear();
             cmbStatus.DataBindings.Clear();
             cmbItemLocation.DataBindings.Clear();
-            cmbProductName.DataSource = _products.Select(p => p.product_name ).ToList();
+            cmbProductName.DataSource = _products.Select(p => p.product_name).ToList();
             cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
             cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
             cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
@@ -518,7 +519,7 @@ namespace Inventory.MainForm
             _edt = false;
             _del = true;
             gridController.Enabled = false;
-        
+
         }
         private void ButSav()
         {
@@ -578,174 +579,6 @@ namespace Inventory.MainForm
             imgReturn.Image = null;
             imgSales.Image = null;
             cmbProductName.Size = new System.Drawing.Size(285, 29);
-        }
-        private void cmbNAM_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = cmbProductName.Text.Length;
-                if (len > 0)
-                {
-                    cmbProductName.BackColor = Color.White;
-                    txtQuantityStock.BackColor = Color.Yellow;
-                    txtQuantityStock.Focus();
-
-                   
-                }
-                else
-                {
-                    PopupNotification.PopUpMessages(0, "Product Name in inventory must not be empty!", Messages.InventorySystem);
-                    cmbProductName.BackColor = Color.Yellow;
-                    cmbProductName.Focus();
-                }
-            }
-        }
-        private void cmbNAM_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbProductName.Text.Length > 0)
-            {
-              
-            }
-        }
-
-        private void txtDEL_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtQuantityStock, txtReorderLevel, "Inventory Delivery No.",
-                Messages.TitleInventory);
-            }
-        }
-        private void txtREC_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(txtReorderLevel, txtCostPerUnit, "Inventory Receipt No.",
-                Messages.TitleInventory);
-            }
-        }
-        private void txtQTY_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtCostPerUnit.Focus();
-                txtCostPerUnit.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtCostPerUnit.BackColor = Color.White;
-            }
-        }
-        private void cmbDIS_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputCaseLeave(cmbItemLocation, txtLastCostPerUnit, "Branch Name",
-                Messages.TitleInventory);
-            }
-            if (e.KeyCode == Keys.F1)
-            {
-                 
-            }
-        }
-        private void txtLST_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = txtLastCostPerUnit.Text.Length;
-                if (len > 0)
-                {
-                    txtLastCostPerUnit.BackColor = Color.White;
-                    txtTotalValue.BackColor = Color.Yellow;
-                    txtTotalValue.Focus();
-                }
-                else
-                {
-                    txtLastCostPerUnit.Text = @"0";
-                    txtLastCostPerUnit.BackColor = Color.White;
-                    txtTotalValue.BackColor = Color.Yellow;
-                    txtTotalValue.Focus();
-                }
-
-
-            }
-        }
-
-        private void txtORD_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = txtTotalValue.Text.Length;
-                if (len > 0)
-                {
-                    txtTotalValue.BackColor = Color.White;
-                    dkpLastStockedDate.Focus();
-                }
-                else
-                {
-                    txtTotalValue.Text = @"0";
-                    txtTotalValue.BackColor = Color.White;
-                    dkpLastStockedDate.Focus();
-                }
-
-            }
-        }
-        private void txtORD_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtTotalValue.Focus();
-                txtTotalValue.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtTotalValue.BackColor = Color.White;
-            }
-        }
-        private void dkpPUR_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                dkpLastOrderDate.Focus();
-            }
-        }
-        private void dkpDET_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                cmbUser.Focus();
-            }
-        }
-        private void cmbSAT_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-              
-            }
-            if (e.KeyCode == Keys.Enter)
-            {
-                var len = cmbUser.Text.Length;
-                if (len > 0)
-                {
-                    cmbUser.BackColor = Color.White;
-                }
-            }
-        }
-        private void cmbWAR_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-             
-            }
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputCaseLeave(cmbUser, bntSave, "Product Warranty",
-                    Messages.TitleInventory);
-            }
         }
         private void bntHome_Click(object sender, EventArgs e)
         {
@@ -820,19 +653,27 @@ namespace Inventory.MainForm
         private void cmbProductName_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = cmbProductName.SelectedIndex;
-            var productCode = _products.ElementAt(selectedIndex).product_code;
-            bindImage(productCode);
+            if (selectedIndex >= 0 && selectedIndex < _products.Count())
+            {
+                var selectedProduct = _products.ElementAt(selectedIndex);
+
+                bindImage(selectedProduct.product_code);
+
+                txtCostPerUnit.Text = selectedProduct.trade_price.ToString("N2");
+                txtLastCostPerUnit.Text = selectedProduct.retail_price.ToString("N2");
+            }
         }
 
+        /*
         private void cmbProductName_Leave(object sender, EventArgs e)
         {
             cmbProductName.Size = new System.Drawing.Size(285, 29);
-        }
-
+        }*/
+        /*
         private void cmbProductName_MouseClick(object sender, MouseEventArgs e)
         {
             cmbProductName.Size = new System.Drawing.Size(422, 29);
-        }
+        }*/
 
         private void bindImage(string barcode)
         {
@@ -862,7 +703,7 @@ namespace Inventory.MainForm
         }
         private void xInventory_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if(e.Page == xtraInventory)
+            if (e.Page == xtraInventory)
             {
                 splashScreen.ShowWaitForm();
                 inputWhite();
@@ -887,7 +728,7 @@ namespace Inventory.MainForm
                 BindReturnWareHouse();
                 splashScreen.CloseWaitForm();
             }
-            if(e.Page == xtraSales)
+            if (e.Page == xtraSales)
             {
                 splashScreen.ShowWaitForm();
                 whiteSales();
@@ -970,7 +811,7 @@ namespace Inventory.MainForm
         {
             return _warehouse_delivery.FirstOrDefault(Warehouse => Warehouse.delivery_id == id);
         }
-        private ViewReturnWarehouse searchReturnId(int id)
+        private ServeAll.Core.Entities.ViewReturnWarehouse searchReturnId(int id)
         {
             return warehouse_return.FirstOrDefault(Return => Return.return_id == id);
         }
@@ -1001,7 +842,7 @@ namespace Inventory.MainForm
                         dkpLastStockedDate.Value = w.last_stocked_date;
                         dkpLastOrderDate.Value = w.last_ordered_date;
                         dpkExpirationDate.Value = w.expiration_date;
-                        
+
                         var img = searchProductImg(barcode);
                         var imgLocation = img?.img_location;
                         if (img == null || string.IsNullOrEmpty(imgLocation))
@@ -1050,7 +891,7 @@ namespace Inventory.MainForm
                         cmbDelDeliveryStatus.Text = w.delivery_status;
                         txtDelRemarks.Text = w.remarks;
                         dkpDelUpdate.Value = w.update_on;
-                        
+
                         var img = searchProductImg(barcode);
                         var imgLocation = img?.img_location;
                         if (img == null || string.IsNullOrEmpty(imgLocation))
@@ -1134,7 +975,7 @@ namespace Inventory.MainForm
                         txtNetSales.Text = ((GridView)sender).GetFocusedRowCellValue("NetSales").ToString();
                         txtBranchName.Text = ((GridView)sender).GetFocusedRowCellValue("Branch").ToString();
                         dkpSalesDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Date");
-                        
+
                         var img = searchProductImg(barcode);
                         var imgLocation = img?.img_location;
                         if (img == null || string.IsNullOrEmpty(imgLocation))
@@ -1159,7 +1000,8 @@ namespace Inventory.MainForm
         private void bindWareHouse()
         {
             clearGrid();
-            var list = _warehouse_list.Select(p => new {
+            var list = _warehouse_list.Select(p => new
+            {
                 Id = p.inventory_id,
                 Barcode = p.product_code,
                 SKU = p.sku,
@@ -1337,13 +1179,14 @@ namespace Inventory.MainForm
 
         private void addInventory()
         {
-            var item = cmbProductName.Text.Trim(' ');
+            var item = cmbProductName.Text.Trim();
             var supplier = cmbSupplier.Text.Trim(' ');
             var location = cmbItemLocation.Text.Trim(' ');
             var status = cmbStatus.Text.Trim(' ');
             if (item.Length > 0)
             {
                 var productId = FetchUtils.getProductId(item);
+                Console.WriteLine("Resolved Product ID: " + productId);
                 var supplierId = FetchUtils.getSupplierId(supplier);
                 var locationId = FetchUtils.getLocationId(location);
                 var statusId = FetchUtils.getStatusId(status);
@@ -1390,8 +1233,10 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.Enter)
             {
+                txtWarehouseSKU.Text = txtWarehouseSKU.Text.ToUpper(); 
+
                 InputManipulation.InputBoxLeave(txtWarehouseSKU, cmbProductName, "Warehouse SKU",
-                Messages.TitleWarehouseInventory);
+                    Messages.TitleWarehouseInventory);
             }
         }
 
@@ -1408,21 +1253,20 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                var len = txtCostPerUnit.Text.Length;
+                var len = txtQuantityStock.Text.Length;
                 if (len > 0)
                 {
-                    txtCostPerUnit.BackColor = Color.White;
+                    txtQuantityStock.BackColor = Color.White;
                     InputManipulation.InputBoxLeave(txtQuantityStock, txtReorderLevel, "Warehouse Inventory Quantity",
                     Messages.TitleWarehouseInventory);
                 }
                 else
                 {
-                    txtCostPerUnit.Text = @"0";
-                    txtCostPerUnit.BackColor = Color.White;
-                    cmbItemLocation.BackColor = Color.Yellow;
-                    cmbItemLocation.Focus();
+                    txtQuantityStock.Text = @"0";
+                    txtQuantityStock.BackColor = Color.Yellow;
+                    txtQuantityStock.Focus();
                 }
-                if (txtCostPerUnit.Text == "0" && e.KeyCode == Keys.Enter)
+                if (txtQuantityStock.Text == "0" && e.KeyCode == Keys.Enter)
                 {
                     InputManipulation.InputBoxLeave(txtQuantityStock, txtReorderLevel, "Warehouse Inventory Quantity",
                         Messages.TitleWarehouseInventory);
@@ -1431,10 +1275,23 @@ namespace Inventory.MainForm
         }
         private void txtReorderLevel_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            var len = txtReorderLevel.Text.Length;
+            if (len > 0)
             {
+                txtReorderLevel.BackColor = Color.White;
                 InputManipulation.InputBoxLeave(txtReorderLevel, cmbSupplier, "Reorder Level",
                 Messages.TitleWarehouseInventory);
+            }
+            else
+            {
+                txtReorderLevel.Text = @"0";
+                txtReorderLevel.BackColor = Color.Yellow;
+                txtReorderLevel.Focus();
+            }
+            if (txtReorderLevel.Text == "0" && e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtReorderLevel, cmbSupplier, "Reorder Level",
+                    Messages.TitleWarehouseInventory);
             }
         }
 
@@ -1449,21 +1306,66 @@ namespace Inventory.MainForm
 
         private void txtCostPerUnit_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                InputManipulation.InputBoxLeave(txtCostPerUnit, txtLastCostPerUnit, "Cost Per Unit",
-                Messages.TitleWarehouseInventory);
+                var len = txtCostPerUnit.Text.Length;
+
+                if (len > 0)
+                {
+                    txtCostPerUnit.BackColor = Color.White;
+                    InputManipulation.InputBoxLeave(txtCostPerUnit, txtLastCostPerUnit, "Cost Per Unit", Messages.TitleWarehouseInventory);
+
+                    // Calculate total value here
+                    if (decimal.TryParse(txtQuantityStock.Text, out decimal quantity) &&
+                        decimal.TryParse(txtCostPerUnit.Text, out decimal costPerUnit))
+                    {
+                        decimal totalValue = quantity * costPerUnit;
+                        txtTotalValue.Text = totalValue.ToString("N2");
+
+                        if (costPerUnit == 0)
+                        {
+                            InputManipulation.InputBoxLeave(txtCostPerUnit, txtReorderLevel, "Warehouse Inventory Quantity", Messages.TitleWarehouseInventory);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter valid numeric values for Quantity and Cost Per Unit.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    txtCostPerUnit.Text = @"0";
+                    txtCostPerUnit.BackColor = Color.Yellow;
+                    txtCostPerUnit.Focus();
+                }
+
+                e.SuppressKeyPress = true; // Prevent beep sound
             }
         }
 
+
         private void txtLastCostPerUnit_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                InputManipulation.InputBoxLeave(txtLastCostPerUnit, dkpLastStockedDate, "Last Cost Per Unit",
-                Messages.TitleWarehouseInventory);
+                var len = txtLastCostPerUnit.Text.Length;
+
+                if (len > 0)
+                {
+                    txtLastCostPerUnit.BackColor = Color.White;
+                    InputManipulation.InputBoxLeave(txtLastCostPerUnit, dkpLastStockedDate, "Last Cost Per Unit", Messages.TitleWarehouseInventory);
+                }
+                else
+                {
+                    txtLastCostPerUnit.Text = @"0";
+                    txtLastCostPerUnit.BackColor = Color.Yellow;
+                    txtLastCostPerUnit.Focus();
+                }
+
+                e.SuppressKeyPress = true;
             }
         }
+
 
         private void dkpLastStockedDate_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1537,6 +1439,13 @@ namespace Inventory.MainForm
             }
         }
 
+        private void txtWarehouseSKU_TextChanged(object sender, EventArgs e)
+        {
+            int selectionStart = txtWarehouseSKU.SelectionStart;
+            txtWarehouseSKU.Text = txtWarehouseSKU.Text.ToUpper();
+            txtWarehouseSKU.SelectionStart = selectionStart;
+        }
+
         private void editInventory()
         {
             var inventoryId = int.Parse(txtInventoryId.Text.Trim(' '));
@@ -1590,7 +1499,33 @@ namespace Inventory.MainForm
 
         private void deleteInventory()
         {
+            var inventoryId = Convert.ToInt32(txtInventoryId.Text.Trim());
 
+            if (inventoryId > 0)
+            {
+                splashScreen.ShowWaitForm();
+
+                int deleteResult = RepositoryEntity.DeleteEntity<WarehouseInventory>(inventoryId, entity =>
+                {
+                    // Optional: Add logging or cleanup before delete
+                });
+
+                splashScreen.CloseWaitForm();
+
+                if (deleteResult > 0)
+                {
+                    PopupNotification.PopUpMessages(1,
+                        "Warehouse Inventory: " + inventoryId + " Successfully Deleted!",
+                        Messages.TitleSuccessDelete);
+
+                    _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+                    bindWareHouse();
+                }
+                else
+                {
+                    PopupNotification.PopUpMessages(0, "Failed to delete inventory.", "DELETE FAILED");
+                }
+            }
         }
     }
 }

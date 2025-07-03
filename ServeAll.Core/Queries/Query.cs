@@ -175,7 +175,7 @@
         public const string AllViewSupplier = "SELECT * FROM view_supplier ORDER BY supplier_id DESC";
         public const string AllViewServiceImages = "SELECT * FROM view_service_images ORDER BY image_id DESC";
         public const string AllViewProfileImages = @"SELECT * FROM profile_image ORDER BY image_id DESC";
-        public const string AllProductWarehouse = @"SELECT * FROM view_request_product";
+        public const string AllProductWarehouse = @"SELECT * FROM report_product_list";
         public const string AllQuantityWarehouse = @"SELECT * FROM view_request_quantity";
         public const string AllSupplierWarehouse = @"SELECT * FROM view_request_supplier";
         public const string AllRequestCategory = @"SELECT * FROM view_request_category";

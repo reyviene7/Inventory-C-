@@ -28,7 +28,7 @@ namespace Inventory.MainForm
         private IEnumerable<ViewSalesPart> listSalesPart;
         private IEnumerable<ViewImageProduct> imgList;
         private int InventoryId;
-
+        private int _selectedDeliveryId = 0;
         private bool _extInvent;
         public bool ExiInven
         {
@@ -751,12 +751,15 @@ namespace Inventory.MainForm
                     posWET.ShowWaitForm();
                     var repository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
 
+                    int quantity = int.Parse(txtQty.Text);
+                    string deliveryCode = txtDeliveryNumber.Text;
+
                     ServeAll.Core.Entities.Inventory inventory = new ServeAll.Core.Entities.Inventory
                     {
                         inventory_code = txtInventoryCode.Text,
                         product_id = FetchUtils.getProductId(cmbProductName.Text),
-                        delivery_code = txtDeliveryNumber.Text,
-                        quantity = int.Parse(txtQty.Text),
+                        delivery_code = deliveryCode,
+                        quantity = quantity,
                         branch_id = FetchUtils.getBranchId(cmbBranchName.Text),
                         last_price_cost = Convert.ToDecimal(txtLastCost.Text),
                         inventory_date = dkpInventoryDate.Value.Date,
@@ -767,6 +770,35 @@ namespace Inventory.MainForm
                     var result = repository.Add(inventory);
                     if (result > 0)
                     {
+                        var deliveryRepo = new Repository<ServeAll.Core.Entities.WarehouseDelivery>(unWork);
+                        var delivery = deliveryRepo.Id(_selectedDeliveryId);
+
+                        if (delivery != null)
+                        {
+                            int deliveredQty = int.Parse(txtDeliveredQty.Text);
+
+                            if (quantity == delivery.delivery_qty)
+                            {
+                                deliveryRepo.Delete(delivery); // Delete if equal
+                            }
+                            else if (quantity < delivery.delivery_qty)
+                            {
+                                delivery.delivery_qty -= quantity;
+                                deliveryRepo.Update(delivery); // Update if less
+                            }
+                            else if (quantity > deliveredQty)
+                            {
+                                posWET.CloseWaitForm(); // Close wait screen if open
+                                PopupNotification.PopUpMessages(
+                                    0,
+                                    "Inventory quantity exceeds the delivery quantity. Please check your input.",
+                                    "Invalid Quantity"
+                                );
+                                unWork.Rollback(); // Cancel the DB transaction
+                                return;
+                            }
+                        }
+
                         posWET.CloseWaitForm();
                         PopupNotification.PopUpMessages(1, "Product Name: " + cmbProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
                          Messages.TitleSuccessInsert);
@@ -1110,8 +1142,10 @@ namespace Inventory.MainForm
                     ID = x.delivery_id,
                     BARCODE = x.product_code,
                     PRODUCT = x.product_name,
+                    QUANTITY = x.delivery_qty,
                     TRADE = x.cost_per_unit,
-                    RETAIL = x.last_cost_per_unit
+                    RETAIL = x.last_cost_per_unit,
+                    TOTAL = x.total_value
                 }).ToList();
 
                 gridCtrlProducts.DataSource = null;
@@ -1120,8 +1154,10 @@ namespace Inventory.MainForm
                 gridProducts.Columns[0].Width = 80;
                 gridProducts.Columns[1].Width = 180;
                 gridProducts.Columns[2].Width = 580;
-                gridProducts.Columns[3].Width = 125;
+                gridProducts.Columns[3].Width = 80;
                 gridProducts.Columns[4].Width = 125;
+                gridProducts.Columns[5].Width = 125;
+                gridProducts.Columns[6].Width = 125;
             }
             catch (Exception ex)
             {
@@ -1287,6 +1323,7 @@ namespace Inventory.MainForm
 
                 if (matchedProduct != null)
                 {
+                    _selectedDeliveryId = matchedProduct.delivery_id;
                     var barcode = matchedProduct.product_code;
                     var img = searchProductImg(barcode);
 
@@ -1301,8 +1338,9 @@ namespace Inventory.MainForm
                     }
 
                     lblPrice.Text = matchedProduct.last_cost_per_unit.ToString("N2");
-
+                    txtLastCost.Text = matchedProduct.last_cost_per_unit.ToString("N2");
                     txtDeliveredQty.Text = matchedProduct.delivery_qty.ToString();
+                    txtQty.Text = matchedProduct.delivery_qty.ToString();
                 }
                 else
                 {

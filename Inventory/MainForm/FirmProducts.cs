@@ -320,7 +320,6 @@ namespace Inventory.MainForm
             _edt = true;
             _del = false;
             gridControl.Enabled = false;
-            bindRefreshed();
         }
         private void ButDel()
         {
@@ -331,11 +330,9 @@ namespace Inventory.MainForm
             _edt = false;
             _del = true;
             gridControl.Enabled = false;
-            bindRefreshed();
         }
         private void ButClr()
         {
-            bindRefreshed();
             ButtonClr();
             InputDisb();
             InputWhit();

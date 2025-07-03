@@ -13,6 +13,7 @@ using ServeAll.Core.Entities.request;
 using ServeAll.Core.Helper;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
+using ServeAll.Entities;
 using Query = ServeAll.Core.Queries.Query;
 
 namespace Inventory.MainForm
@@ -24,7 +25,7 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userTy;
         private IEnumerable<ViewReturnWarehouse> _return_list;
-        private IEnumerable<RequestProducts> _products;
+        private IEnumerable<ViewReportProductList> _products;
         private IEnumerable<ViewReturnWarehouse> warehouse_return;
         private IEnumerable<ViewInventory> listInventory;
         private IEnumerable<ViewImageProduct> imgList;

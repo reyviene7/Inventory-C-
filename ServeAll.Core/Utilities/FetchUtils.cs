@@ -401,8 +401,13 @@ namespace ServeAll.Core.Utilities
                 try
                 {
                     var repository = new Repository<Products>(unWork);
-                    var query = repository.FindBy(x => x.product_name == productName);
-                    return query.product_id;
+                    var query = repository.FindBy(x => x.product_name.Equals(productName, StringComparison.OrdinalIgnoreCase));
+                    if (query != null)
+                        return query.product_id;
+
+                    Console.WriteLine("Product not found: " + productName);
+
+                    return 0;
                 }
                 catch (Exception ex)
                 {
@@ -625,8 +630,12 @@ namespace ServeAll.Core.Utilities
                 try
                 {
                     var repository = new Repository<Location>(unWork);
-                    var query = repository.FindBy(x => x.location_code == locationCode);
-                    return query.location_id;
+                    var query = repository.FindBy(x => x.location_code.Equals(locationCode, StringComparison.OrdinalIgnoreCase));
+                    if (query != null)
+                        return query.location_id;
+
+                    Console.WriteLine("Location not found for code: " + locationCode);
+                    return 0;
                 }
                 catch (Exception ex)
                 {

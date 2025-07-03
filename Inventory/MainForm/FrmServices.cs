@@ -11,6 +11,7 @@ using ServeAll.Core.Entities;
 using ServeAll.Core.Entities.request;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
+using ServeAll.Entities;
 
 namespace Inventory.MainForm
 {
@@ -20,7 +21,7 @@ namespace Inventory.MainForm
         private readonly int _userId;
         private readonly int _userTyp;
         private readonly string _userName;
-        private IEnumerable<RequestProducts> _products;
+        private IEnumerable<ServeAll.Entities.ViewReportProductList> _products;
         private IEnumerable<ViewRequestCategory> _category;
         private IEnumerable<ViewRequestStaff> _staff;
         private IEnumerable<ServiceStatus> _service_statuses;

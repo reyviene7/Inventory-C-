@@ -10,6 +10,7 @@ using ServeAll.Core.Entities;
 using ServeAll.Core.Entities.request;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
+using ServeAll.Entities;
 
 namespace Inventory.MainForm
 {
@@ -19,7 +20,7 @@ namespace Inventory.MainForm
         private bool _add, _del, _edt;
         private readonly int _userId;
         private readonly int _userTy;
-        private IEnumerable<RequestProducts> _products;
+        private IEnumerable<ViewReportProductList> _products;
         private IEnumerable<WarehouseStatus> _warehouseStatus;
         private IEnumerable<Warehouse> _warehouse;
         private IEnumerable<DeliveryStatus> _delivery;
@@ -28,7 +29,6 @@ namespace Inventory.MainForm
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
         private IEnumerable<ViewImageProduct> imgList;
         private IEnumerable<RequestQuantity> qtyList;
-        private int previousQty = 0;
         public FirmMain Main
         {
             get { return _main; }
@@ -588,17 +588,13 @@ namespace Inventory.MainForm
                 if (int.TryParse(txtWarehouseQty.Text, out int currentRemainQty) &&
                     int.TryParse(txtDeliveryQty.Text, out int currentDelQty))
                 {
-                    int difference = currentDelQty - previousQty;
-
-                    int updatedRemainQty = currentRemainQty - difference;
+                    // Subtract delivery from warehouse
+                    int updatedRemainQty = currentRemainQty - currentDelQty;
 
                     if (updatedRemainQty >= 0)
                     {
                         txtWarehouseQty.Text = updatedRemainQty.ToString();
                         txtWarehouseQty.BackColor = Color.White;
-                        cmbWarehouseBranch.Focus();
-
-                        previousQty = currentDelQty; 
 
                         InputManipulation.InputBoxLeave(
                             txtDeliveryQty,
@@ -606,12 +602,15 @@ namespace Inventory.MainForm
                             "Delivery Quantity",
                             Messages.TitleWarehouseDelivery
                         );
+
+                        cmbWarehouseBranch.Focus();
                     }
                     else
                     {
                         PopupNotification.PopUpMessages(0, "Insufficient warehouse quantity!", "INVALID ENTRY");
                         e.Handled = true;
-                        txtWarehouseQty.Focus();
+                        txtDeliveryQty.Focus();
+                        txtWarehouseQty.BackColor = Color.Yellow;
                     }
                 }
                 else
@@ -619,9 +618,10 @@ namespace Inventory.MainForm
                     MessageBox.Show("Invalid quantity input.");
                 }
 
-                e.SuppressKeyPress = true; 
+                e.SuppressKeyPress = true;
             }
         }
+
 
         private void cmbWarehouseBranch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -966,11 +966,6 @@ namespace Inventory.MainForm
             int deliveryQty = int.Parse(txtDeliveryQty.Text);
             int inventoryId = int.Parse(txtInventoryId.Text);
             var warehouseId = FetchUtils.getWarehouseId(cmbWarehouse.Text);
-            if (deliveryQty > warehouseQty)
-            {
-                PopupNotification.PopUpMessages(0, "Delivery quantity must be less than the warehouse quantity.", "Invalid Input");
-                return;
-            }
             if (deliveryQty > 0)
             {
                 splashDelivery.ShowWaitForm();
