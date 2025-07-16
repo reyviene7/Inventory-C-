@@ -695,7 +695,7 @@
             this.gridWarehouse.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.gridWarehouse.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gridWarehouse.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridWarehouse.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridWarehouse.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.gridWarehouse.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.gridWarehouse.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridWarehouse.Appearance.FocusedRow.Options.UseBorderColor = true;
@@ -738,6 +738,7 @@
             this.gridWarehouse.OptionsCustomization.AllowRowSizing = true;
             this.gridWarehouse.OptionsDetail.AllowExpandEmptyDetails = true;
             this.gridWarehouse.OptionsSelection.MultiSelect = true;
+            this.gridWarehouse.OptionsView.EnableAppearanceEvenRow = true;
             this.gridWarehouse.OptionsView.ShowGroupPanel = false;
             this.gridWarehouse.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridWarehouse_FocusedRowChanged);
             this.gridWarehouse.Click += new System.EventHandler(this.gridWarehouse_Click);

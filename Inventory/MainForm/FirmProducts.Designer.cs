@@ -239,7 +239,7 @@
             this.XtrPerProfile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("XtrPerProfile.ImageOptions.Image")));
             this.XtrPerProfile.Margin = new System.Windows.Forms.Padding(4);
             this.XtrPerProfile.Name = "XtrPerProfile";
-            this.XtrPerProfile.Size = new System.Drawing.Size(1347, 691);
+            this.XtrPerProfile.Size = new System.Drawing.Size(1347, 873);
             this.XtrPerProfile.Text = "Product Details";
             // 
             // GbPersonal
@@ -287,7 +287,7 @@
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GbPersonal.Margin = new System.Windows.Forms.Padding(4);
             this.GbPersonal.Name = "GbPersonal";
-            this.GbPersonal.Size = new System.Drawing.Size(1347, 691);
+            this.GbPersonal.Size = new System.Drawing.Size(1347, 873);
             this.GbPersonal.TabIndex = 173;
             // 
             // label12
@@ -296,7 +296,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(524, 127);
+            this.label12.Location = new System.Drawing.Point(524, 144);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(104, 23);
@@ -309,7 +309,7 @@
             this.txtTradePrice.Enabled = false;
             this.txtTradePrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTradePrice.ForeColor = System.Drawing.Color.Maroon;
-            this.txtTradePrice.Location = new System.Drawing.Point(665, 119);
+            this.txtTradePrice.Location = new System.Drawing.Point(665, 137);
             this.txtTradePrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtTradePrice.Name = "txtTradePrice";
             this.txtTradePrice.Size = new System.Drawing.Size(357, 34);
@@ -324,7 +324,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(524, 201);
+            this.label13.Location = new System.Drawing.Point(524, 218);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(104, 23);
@@ -337,7 +337,7 @@
             this.txtWholesale.Enabled = false;
             this.txtWholesale.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWholesale.ForeColor = System.Drawing.Color.Maroon;
-            this.txtWholesale.Location = new System.Drawing.Point(665, 193);
+            this.txtWholesale.Location = new System.Drawing.Point(665, 211);
             this.txtWholesale.Margin = new System.Windows.Forms.Padding(4);
             this.txtWholesale.Name = "txtWholesale";
             this.txtWholesale.Size = new System.Drawing.Size(357, 34);
@@ -352,7 +352,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(524, 164);
+            this.label14.Location = new System.Drawing.Point(524, 181);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(105, 23);
@@ -365,7 +365,7 @@
             this.txtRetailPrice.Enabled = false;
             this.txtRetailPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRetailPrice.ForeColor = System.Drawing.Color.Maroon;
-            this.txtRetailPrice.Location = new System.Drawing.Point(665, 156);
+            this.txtRetailPrice.Location = new System.Drawing.Point(665, 174);
             this.txtRetailPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtRetailPrice.Name = "txtRetailPrice";
             this.txtRetailPrice.Size = new System.Drawing.Size(357, 34);
@@ -377,7 +377,7 @@
             // imgProduct
             // 
             this.imgProduct.BackColor = System.Drawing.Color.Gray;
-            this.imgProduct.Location = new System.Drawing.Point(1029, 11);
+            this.imgProduct.Location = new System.Drawing.Point(1029, 29);
             this.imgProduct.Margin = new System.Windows.Forms.Padding(4);
             this.imgProduct.Name = "imgProduct";
             this.imgProduct.Size = new System.Drawing.Size(308, 292);
@@ -394,7 +394,7 @@
             this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.ForeColor = System.Drawing.Color.Maroon;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(165, 82);
+            this.cmbCategory.Location = new System.Drawing.Point(165, 100);
             this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(357, 36);
@@ -408,7 +408,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(5, 90);
+            this.label11.Location = new System.Drawing.Point(5, 108);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 23);
@@ -431,7 +431,7 @@
             "User",
             "Admin",
             "Programmer"});
-            this.cmbSupplier.Location = new System.Drawing.Point(165, 119);
+            this.cmbSupplier.Location = new System.Drawing.Point(165, 137);
             this.cmbSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(357, 36);
@@ -444,7 +444,7 @@
             this.lblPostion.BackColor = System.Drawing.Color.Transparent;
             this.lblPostion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPostion.ForeColor = System.Drawing.Color.White;
-            this.lblPostion.Location = new System.Drawing.Point(525, 238);
+            this.lblPostion.Location = new System.Drawing.Point(525, 255);
             this.lblPostion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPostion.Name = "lblPostion";
             this.lblPostion.Size = new System.Drawing.Size(133, 23);
@@ -463,7 +463,7 @@
             this.cmbProductStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbProductStatus.Location = new System.Drawing.Point(664, 230);
+            this.cmbProductStatus.Location = new System.Drawing.Point(664, 248);
             this.cmbProductStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductStatus.Name = "cmbProductStatus";
             this.cmbProductStatus.Size = new System.Drawing.Size(357, 36);
@@ -476,7 +476,7 @@
             this.lblHiredate.BackColor = System.Drawing.Color.Transparent;
             this.lblHiredate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHiredate.ForeColor = System.Drawing.Color.White;
-            this.lblHiredate.Location = new System.Drawing.Point(525, 274);
+            this.lblHiredate.Location = new System.Drawing.Point(525, 291);
             this.lblHiredate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHiredate.Name = "lblHiredate";
             this.lblHiredate.Size = new System.Drawing.Size(125, 23);
@@ -488,7 +488,7 @@
             this.dkpDateRegister.CustomFormat = "dd-MM-yyyy";
             this.dkpDateRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDateRegister.Location = new System.Drawing.Point(665, 267);
+            this.dkpDateRegister.Location = new System.Drawing.Point(665, 285);
             this.dkpDateRegister.Margin = new System.Windows.Forms.Padding(4);
             this.dkpDateRegister.Name = "dkpDateRegister";
             this.dkpDateRegister.Size = new System.Drawing.Size(357, 34);
@@ -501,7 +501,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(525, 89);
+            this.label10.Location = new System.Drawing.Point(525, 106);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(108, 23);
@@ -514,7 +514,7 @@
             this.txtNetWeight.Enabled = false;
             this.txtNetWeight.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNetWeight.ForeColor = System.Drawing.Color.Maroon;
-            this.txtNetWeight.Location = new System.Drawing.Point(665, 82);
+            this.txtNetWeight.Location = new System.Drawing.Point(665, 100);
             this.txtNetWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txtNetWeight.MaxLength = 8;
             this.txtNetWeight.Name = "txtNetWeight";
@@ -530,7 +530,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(525, 53);
+            this.label9.Location = new System.Drawing.Point(525, 70);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(113, 23);
@@ -543,7 +543,7 @@
             this.txtTareWeight.Enabled = false;
             this.txtTareWeight.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTareWeight.ForeColor = System.Drawing.Color.Maroon;
-            this.txtTareWeight.Location = new System.Drawing.Point(665, 46);
+            this.txtTareWeight.Location = new System.Drawing.Point(665, 64);
             this.txtTareWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txtTareWeight.MaxLength = 8;
             this.txtTareWeight.Name = "txtTareWeight";
@@ -559,7 +559,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(525, 16);
+            this.label8.Location = new System.Drawing.Point(525, 34);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(132, 23);
@@ -572,7 +572,7 @@
             this.txtSerialNumber.Enabled = false;
             this.txtSerialNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSerialNumber.ForeColor = System.Drawing.Color.Maroon;
-            this.txtSerialNumber.Location = new System.Drawing.Point(665, 9);
+            this.txtSerialNumber.Location = new System.Drawing.Point(665, 27);
             this.txtSerialNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtSerialNumber.Name = "txtSerialNumber";
             this.txtSerialNumber.Size = new System.Drawing.Size(357, 34);
@@ -585,7 +585,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(5, 274);
+            this.label7.Location = new System.Drawing.Point(5, 292);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(128, 23);
@@ -598,7 +598,7 @@
             this.txtProductMade.Enabled = false;
             this.txtProductMade.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductMade.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductMade.Location = new System.Drawing.Point(167, 267);
+            this.txtProductMade.Location = new System.Drawing.Point(167, 285);
             this.txtProductMade.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductMade.Name = "txtProductMade";
             this.txtProductMade.Size = new System.Drawing.Size(357, 34);
@@ -611,7 +611,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(5, 238);
+            this.label6.Location = new System.Drawing.Point(5, 256);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(134, 23);
@@ -624,7 +624,7 @@
             this.txtProductModel.Enabled = false;
             this.txtProductModel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductModel.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductModel.Location = new System.Drawing.Point(167, 230);
+            this.txtProductModel.Location = new System.Drawing.Point(167, 248);
             this.txtProductModel.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductModel.Name = "txtProductModel";
             this.txtProductModel.Size = new System.Drawing.Size(357, 34);
@@ -637,7 +637,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(5, 201);
+            this.label5.Location = new System.Drawing.Point(5, 219);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 23);
@@ -650,7 +650,7 @@
             this.txtProductBrand.Enabled = false;
             this.txtProductBrand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductBrand.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductBrand.Location = new System.Drawing.Point(167, 193);
+            this.txtProductBrand.Location = new System.Drawing.Point(167, 211);
             this.txtProductBrand.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductBrand.Name = "txtProductBrand";
             this.txtProductBrand.Size = new System.Drawing.Size(357, 34);
@@ -663,7 +663,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(5, 164);
+            this.label4.Location = new System.Drawing.Point(5, 182);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 23);
@@ -676,7 +676,7 @@
             this.txtStockCode.Enabled = false;
             this.txtStockCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStockCode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtStockCode.Location = new System.Drawing.Point(167, 156);
+            this.txtStockCode.Location = new System.Drawing.Point(167, 174);
             this.txtStockCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtStockCode.Name = "txtStockCode";
             this.txtStockCode.Size = new System.Drawing.Size(357, 34);
@@ -689,7 +689,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(5, 127);
+            this.label3.Location = new System.Drawing.Point(5, 145);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 23);
@@ -702,7 +702,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(5, 53);
+            this.label2.Location = new System.Drawing.Point(5, 71);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 23);
@@ -715,7 +715,7 @@
             this.txtProductName.Enabled = false;
             this.txtProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductName.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductName.Location = new System.Drawing.Point(167, 46);
+            this.txtProductName.Location = new System.Drawing.Point(167, 64);
             this.txtProductName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(357, 34);
@@ -728,7 +728,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(5, 16);
+            this.label1.Location = new System.Drawing.Point(5, 34);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 23);
@@ -741,7 +741,7 @@
             this.txtProductBarcode.Enabled = false;
             this.txtProductBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductBarcode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductBarcode.Location = new System.Drawing.Point(167, 9);
+            this.txtProductBarcode.Location = new System.Drawing.Point(167, 27);
             this.txtProductBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductBarcode.Name = "txtProductBarcode";
             this.txtProductBarcode.Size = new System.Drawing.Size(357, 34);
@@ -756,12 +756,12 @@
             this.gbCON.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.gbCON.Controls.Add(this.gridControl);
             this.gbCON.Controls.Add(this.txtPRI);
-            this.gbCON.Location = new System.Drawing.Point(-1, 310);
+            this.gbCON.Location = new System.Drawing.Point(-1, 327);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gbCON.Margin = new System.Windows.Forms.Padding(4);
             this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(1343, 377);
+            this.gbCON.Size = new System.Drawing.Size(1348, 542);
             this.gbCON.TabIndex = 172;
             this.gbCON.Text = "Product List";
             // 
@@ -777,7 +777,7 @@
             this.gridControl.MainView = this.gridProductList;
             this.gridControl.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1337, 353);
+            this.gridControl.Size = new System.Drawing.Size(1342, 518);
             this.gridControl.TabIndex = 101;
             this.gridControl.TabStop = false;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -796,7 +796,7 @@
             this.gridProductList.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.gridProductList.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gridProductList.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridProductList.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridProductList.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.gridProductList.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.gridProductList.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridProductList.Appearance.FocusedRow.Options.UseBorderColor = true;
@@ -808,6 +808,8 @@
             this.gridProductList.Appearance.HeaderPanel.Options.UseBackColor = true;
             this.gridProductList.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridProductList.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridProductList.Appearance.Preview.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.gridProductList.Appearance.Preview.Options.UseFont = true;
             this.gridProductList.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
             this.gridProductList.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gridProductList.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -839,6 +841,7 @@
             this.gridProductList.OptionsCustomization.AllowRowSizing = true;
             this.gridProductList.OptionsDetail.AllowExpandEmptyDetails = true;
             this.gridProductList.OptionsSelection.MultiSelect = true;
+            this.gridProductList.OptionsView.EnableAppearanceEvenRow = true;
             this.gridProductList.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridProduct_RowClick);
             this.gridProductList.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridProduct_FocusedRowChanged);
             this.gridProductList.LostFocus += new System.EventHandler(this.gridProduct_LostFocus);
@@ -944,7 +947,7 @@
             this.pnlMain.Location = new System.Drawing.Point(1, 1);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1609, 770);
+            this.pnlMain.Size = new System.Drawing.Size(1735, 940);
             this.pnlMain.TabIndex = 72;
             // 
             // pictureBox2
@@ -964,7 +967,7 @@
             this.XtraEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.XtraEmployee.Name = "XtraEmployee";
             this.XtraEmployee.SelectedTabPage = this.XtrPerProfile;
-            this.XtraEmployee.Size = new System.Drawing.Size(1349, 721);
+            this.XtraEmployee.Size = new System.Drawing.Size(1349, 903);
             this.XtraEmployee.TabIndex = 1;
             this.XtraEmployee.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.XtrPerProfile,
@@ -977,7 +980,7 @@
             this.xtraTabImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabImage.ImageOptions.Image")));
             this.xtraTabImage.Margin = new System.Windows.Forms.Padding(4);
             this.xtraTabImage.Name = "xtraTabImage";
-            this.xtraTabImage.Size = new System.Drawing.Size(1347, 691);
+            this.xtraTabImage.Size = new System.Drawing.Size(1347, 873);
             this.xtraTabImage.Text = "Product Image";
             // 
             // grpImage
@@ -1002,7 +1005,7 @@
             this.grpImage.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grpImage.Margin = new System.Windows.Forms.Padding(4);
             this.grpImage.Name = "grpImage";
-            this.grpImage.Size = new System.Drawing.Size(1347, 691);
+            this.grpImage.Size = new System.Drawing.Size(1347, 873);
             this.grpImage.TabIndex = 174;
             // 
             // txtImageType
@@ -1150,10 +1153,10 @@
             // imgBigPreview
             // 
             this.imgBigPreview.BackColor = System.Drawing.Color.Gray;
-            this.imgBigPreview.Location = new System.Drawing.Point(7, 30);
+            this.imgBigPreview.Location = new System.Drawing.Point(7, 52);
             this.imgBigPreview.Margin = new System.Windows.Forms.Padding(4);
             this.imgBigPreview.Name = "imgBigPreview";
-            this.imgBigPreview.Size = new System.Drawing.Size(728, 654);
+            this.imgBigPreview.Size = new System.Drawing.Size(797, 755);
             this.imgBigPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgBigPreview.TabIndex = 203;
             this.imgBigPreview.TabStop = false;
@@ -1376,7 +1379,7 @@
             this.pnlOptions.Controls.Add(this.pnlOptionsMain);
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
-            this.pnlOptions.Location = new System.Drawing.Point(-3, 850);
+            this.pnlOptions.Location = new System.Drawing.Point(4, 950);
             this.pnlOptions.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOptions.Name = "pnlOptions";
             this.pnlOptions.Size = new System.Drawing.Size(1731, 91);
@@ -1432,9 +1435,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
-            this.Controls.Add(this.pnlOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmProducts";

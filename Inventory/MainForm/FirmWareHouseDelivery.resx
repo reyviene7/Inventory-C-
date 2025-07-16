@@ -179,7 +179,7 @@
   <data name="bntCLEAR.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAAdJJREFUeF7t2k2KE1EUhuFegxMRcSZOBBFXIIgDEZw5cxtuxh04E5yJC3DkAhw4
+        vgAADr4B6kKxwAAAAdJJREFUeF7t2k2KE1EUhuFegxMRcSZOBBFXIIgDEZw5cxtuxh04E5yJC3DkAhw4
         66kSJEUlqXyfXPDC8VillXTS8Yb3GeYU1fe8dDf5u7gAAAAAAAAAAAAAgAbZfmr7ve3vPgJJa0mXtt/Y
         vpl/flNsv84LHpOkr33f38vnaMIwDM/yQteh/LY1GU3Sx7DHh9VqdT9fcyi2X0haNh3Ndl8XWC6Xt/L8
         0DabzeOmo9WDF3l2LE1H2yXYYrG4YftBfjwry3dddzs/HjUbbW6wEkvSZ0nf1uv1ozyvytJleUlfzjLa
@@ -14093,10 +14093,10 @@
 </value>
   </data>
   <metadata name="Options.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>171, 17</value>
+    <value>172, 17</value>
   </metadata>
   <metadata name="RightOptions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>282, 17</value>
+    <value>284, 17</value>
   </metadata>
   <data name="pcRight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

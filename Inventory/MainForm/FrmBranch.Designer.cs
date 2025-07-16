@@ -770,6 +770,7 @@
             this.gridBranch.OptionsCustomization.AllowRowSizing = true;
             this.gridBranch.OptionsDetail.AllowExpandEmptyDetails = true;
             this.gridBranch.OptionsSelection.MultiSelect = true;
+            this.gridBranch.OptionsView.EnableAppearanceEvenRow = true;
             this.gridBranch.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridBranch_RowClick);
             this.gridBranch.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridBranch_FocusedRowChanged);
             this.gridBranch.LostFocus += new System.EventHandler(this.gridBranch_LostFocus);
