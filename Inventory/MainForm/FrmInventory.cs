@@ -508,7 +508,7 @@ namespace Inventory.MainForm
             txtDeliveryNumber.Enabled = true;
             txtQty.Enabled = true;
             cmbBranchName.Enabled = true;
-            txtLastCost.Enabled = true;
+            txtLastCost.Enabled = false;
             dkpInventoryDate.Enabled = true;
             cmbProductStatus.Enabled = true;
             txtInventoryCode.Focus();

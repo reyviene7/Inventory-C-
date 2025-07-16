@@ -180,8 +180,8 @@ namespace Inventory.MainForm
             cmbProductStatus.DataSource = _warehouseStatus.Select(p => p.status_details).ToList();
             cmbWarehouse.DataSource = _warehouse.Select(p => p.warehouse_name).ToList();
             cmbDeliveryStatus.DataSource = _delivery.Select(p => p.delivery_status).ToList();
-            txtLastCost.BackColor = Color.Yellow;
-            txtLastCost.Focus();
+            txtDeliveryQty.BackColor = Color.Yellow;
+            txtDeliveryQty.Focus();
             _add = true;
             _edt = false;
             _del = false;
@@ -389,11 +389,11 @@ namespace Inventory.MainForm
             txtDeliveryCode.Enabled = true;
             cmbWarehouse.Enabled = true;
             txtProductName.Enabled = true;
-            txtLastCost.Enabled = true;
+            txtLastCost.Enabled = false;
             txtReceiptNum.Enabled = true;
             cmbWarehouseBranch.Enabled = true;
             dkpDeliveryDate.Enabled = true;
-            txtItemPrice.Enabled = true;
+            txtItemPrice.Enabled = false;
             txtDeliveryQty.Enabled = true;
             cmbProductStatus.Enabled = true;
             cmbDeliveryStatus.Enabled = true;
@@ -404,11 +404,11 @@ namespace Inventory.MainForm
             txtDelWarehouseCode.Enabled = true;
             cmbDelWarehouseCode.Enabled = true;
             txtDelProductName.Enabled = true;
-            txtDelLastCost.Enabled = true;
+            txtDelLastCost.Enabled = false;
             txtDelReceipt.Enabled = true;
             cmbDelBranch.Enabled = true;
             dkpDelDeliveryDate.Enabled = true;
-            txtDelItemPrice.Enabled = true;
+            txtDelItemPrice.Enabled = false;
             txtDelQty.Enabled = true;
             cmbDelProductStatus.Enabled = true;
             cmbDelDeliveryStatus.Enabled = true;
@@ -906,7 +906,7 @@ namespace Inventory.MainForm
                 SUPPLIER = p.supplier_name,
                 COST = p.cost_per_unit,
                 PRICE = p.last_cost_per_unit,
-                TOTAL = p.total_value,
+                TOTAL = p.total_value.ToString("N2"),
                 EXPIRE = p.expiration_date,
                 STATUS = p.status_details
             }).ToList();
@@ -938,7 +938,7 @@ namespace Inventory.MainForm
                 STATUS = p.status_details,
                 COST = p.cost_per_unit,
                 QTY = p.delivery_qty,
-                TOTAL = p.total_value,
+                TOTAL = p.total_value.ToString("N2"),
                 DELIVERYSTATUS = p.delivery_status,
                 UPDATE = p.update_on,
             }).ToList();

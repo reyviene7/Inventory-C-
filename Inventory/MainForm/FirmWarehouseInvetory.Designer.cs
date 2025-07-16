@@ -518,7 +518,7 @@
             this.bntAdd.Margin = new System.Windows.Forms.Padding(4);
             this.bntAdd.Name = "bntAdd";
             this.bntAdd.Size = new System.Drawing.Size(121, 128);
-            this.bntAdd.TabIndex = 129;
+            this.bntAdd.TabIndex = 130;
             this.bntAdd.Text = "ADD";
             this.bntAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntAdd.UseVisualStyleBackColor = false;
@@ -638,7 +638,7 @@
             this.cmbStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStatus.ForeColor = System.Drawing.Color.Maroon;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(739, 321);
+            this.cmbStatus.Location = new System.Drawing.Point(739, 322);
             this.cmbStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(329, 36);
@@ -664,7 +664,7 @@
             this.dpkLastUpdated.Enabled = false;
             this.dpkLastUpdated.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkLastUpdated.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpkLastUpdated.Location = new System.Drawing.Point(739, 212);
+            this.dpkLastUpdated.Location = new System.Drawing.Point(739, 211);
             this.dpkLastUpdated.Margin = new System.Windows.Forms.Padding(4);
             this.dpkLastUpdated.Name = "dpkLastUpdated";
             this.dpkLastUpdated.Size = new System.Drawing.Size(329, 34);
@@ -735,7 +735,7 @@
             this.cmbSupplier.Location = new System.Drawing.Point(159, 247);
             this.cmbSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSupplier.Name = "cmbSupplier";
-            this.cmbSupplier.Size = new System.Drawing.Size(379, 36);
+            this.cmbSupplier.Size = new System.Drawing.Size(380, 36);
             this.cmbSupplier.TabIndex = 6;
             this.cmbSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSupplier_KeyDown);
             // 
@@ -758,7 +758,7 @@
             this.txtCostPerUnit.Enabled = false;
             this.txtCostPerUnit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCostPerUnit.ForeColor = System.Drawing.Color.Maroon;
-            this.txtCostPerUnit.Location = new System.Drawing.Point(160, 284);
+            this.txtCostPerUnit.Location = new System.Drawing.Point(160, 285);
             this.txtCostPerUnit.Margin = new System.Windows.Forms.Padding(4);
             this.txtCostPerUnit.Name = "txtCostPerUnit";
             this.txtCostPerUnit.Size = new System.Drawing.Size(379, 34);
@@ -801,7 +801,7 @@
             this.cmbUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUser.ForeColor = System.Drawing.Color.Maroon;
             this.cmbUser.FormattingEnabled = true;
-            this.cmbUser.Location = new System.Drawing.Point(739, 249);
+            this.cmbUser.Location = new System.Drawing.Point(739, 247);
             this.cmbUser.Margin = new System.Windows.Forms.Padding(4);
             this.cmbUser.Name = "cmbUser";
             this.cmbUser.Size = new System.Drawing.Size(329, 36);
@@ -817,10 +817,10 @@
             this.cmbProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductName.ForeColor = System.Drawing.Color.Maroon;
             this.cmbProductName.FormattingEnabled = true;
-            this.cmbProductName.Location = new System.Drawing.Point(159, 137);
+            this.cmbProductName.Location = new System.Drawing.Point(159, 136);
             this.cmbProductName.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductName.Name = "cmbProductName";
-            this.cmbProductName.Size = new System.Drawing.Size(379, 36);
+            this.cmbProductName.Size = new System.Drawing.Size(380, 36);
             this.cmbProductName.TabIndex = 3;
             this.cmbProductName.SelectedIndexChanged += new System.EventHandler(this.cmbProductName_SelectedIndexChanged);
             this.cmbProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProductName_KeyDown);
@@ -845,7 +845,7 @@
             this.cmbItemLocation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbItemLocation.ForeColor = System.Drawing.Color.Maroon;
             this.cmbItemLocation.FormattingEnabled = true;
-            this.cmbItemLocation.Location = new System.Drawing.Point(739, 284);
+            this.cmbItemLocation.Location = new System.Drawing.Point(739, 285);
             this.cmbItemLocation.Margin = new System.Windows.Forms.Padding(4);
             this.cmbItemLocation.Name = "cmbItemLocation";
             this.cmbItemLocation.Size = new System.Drawing.Size(329, 36);
@@ -910,7 +910,7 @@
             this.txtTotalValue.Enabled = false;
             this.txtTotalValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalValue.ForeColor = System.Drawing.Color.Maroon;
-            this.txtTotalValue.Location = new System.Drawing.Point(739, 26);
+            this.txtTotalValue.Location = new System.Drawing.Point(739, 28);
             this.txtTotalValue.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalValue.Name = "txtTotalValue";
             this.txtTotalValue.Size = new System.Drawing.Size(329, 34);
@@ -961,7 +961,7 @@
             this.txtLastCostPerUnit.Enabled = false;
             this.txtLastCostPerUnit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastCostPerUnit.ForeColor = System.Drawing.Color.Maroon;
-            this.txtLastCostPerUnit.Location = new System.Drawing.Point(160, 321);
+            this.txtLastCostPerUnit.Location = new System.Drawing.Point(160, 322);
             this.txtLastCostPerUnit.Margin = new System.Windows.Forms.Padding(4);
             this.txtLastCostPerUnit.Name = "txtLastCostPerUnit";
             this.txtLastCostPerUnit.Size = new System.Drawing.Size(379, 34);
@@ -1013,7 +1013,7 @@
             this.txtReorderLevel.Enabled = false;
             this.txtReorderLevel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReorderLevel.ForeColor = System.Drawing.Color.Maroon;
-            this.txtReorderLevel.Location = new System.Drawing.Point(160, 210);
+            this.txtReorderLevel.Location = new System.Drawing.Point(160, 211);
             this.txtReorderLevel.Margin = new System.Windows.Forms.Padding(4);
             this.txtReorderLevel.Name = "txtReorderLevel";
             this.txtReorderLevel.Size = new System.Drawing.Size(379, 34);
@@ -1026,7 +1026,7 @@
             this.txtQuantityStock.Enabled = false;
             this.txtQuantityStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantityStock.ForeColor = System.Drawing.Color.Maroon;
-            this.txtQuantityStock.Location = new System.Drawing.Point(160, 174);
+            this.txtQuantityStock.Location = new System.Drawing.Point(160, 175);
             this.txtQuantityStock.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuantityStock.Name = "txtQuantityStock";
             this.txtQuantityStock.Size = new System.Drawing.Size(379, 34);
@@ -2958,7 +2958,7 @@
             this.bntSave.Margin = new System.Windows.Forms.Padding(4);
             this.bntSave.Name = "bntSave";
             this.bntSave.Size = new System.Drawing.Size(244, 128);
-            this.bntSave.TabIndex = 131;
+            this.bntSave.TabIndex = 129;
             this.bntSave.Text = "SAVE";
             this.bntSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSave.UseVisualStyleBackColor = false;
@@ -2975,7 +2975,7 @@
             this.bntUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.bntUpdate.Name = "bntUpdate";
             this.bntUpdate.Size = new System.Drawing.Size(121, 128);
-            this.bntUpdate.TabIndex = 130;
+            this.bntUpdate.TabIndex = 131;
             this.bntUpdate.Text = "EDIT";
             this.bntUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntUpdate.UseVisualStyleBackColor = false;

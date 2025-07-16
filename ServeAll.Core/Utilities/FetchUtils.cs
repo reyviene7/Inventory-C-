@@ -374,6 +374,25 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+
+        public static int getLastWarehouseInventoryId()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<WarehouseInventory>(unWork);
+                    return repository.SelectAll(Query.getLastWarehouseInventoryIdQuery)
+                        .Select(x => x.warehouse_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
         public static int getNumberOfWarehouses()
         {
             using (var session = new DalSession())

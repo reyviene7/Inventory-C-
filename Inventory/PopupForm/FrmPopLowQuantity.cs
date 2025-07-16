@@ -56,16 +56,16 @@ namespace Inventory.PopupForm
             if (barcode != null)
             {
                 var img = searchProductImg(barcode);
-                var imgLocation = img.img_location;
-                if (imgLocation.Length > 0)
+                var imgLocation = img?.img_location;
+                if (img == null || string.IsNullOrEmpty(imgLocation))
+                {
+                    imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                }
+                else
                 {
                     var location = ConstantUtils.defaultImgLocation + imgLocation;
                     imgPreview.ImageLocation = location;
                     imgPreview.Refresh();
-                }
-                else
-                {
-                    imgPreview.Image = null;
                 }
             }
         }

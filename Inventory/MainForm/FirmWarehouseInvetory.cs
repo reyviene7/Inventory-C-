@@ -168,8 +168,8 @@ namespace Inventory.MainForm
             txtQuantityStock.Enabled = true;
             txtReorderLevel.Enabled = true;
             cmbSupplier.Enabled = true;
-            txtCostPerUnit.Enabled = true;
-            txtLastCostPerUnit.Enabled = true;
+            txtCostPerUnit.Enabled = false;
+            txtLastCostPerUnit.Enabled = false;
             txtTotalValue.Enabled = false;
             dkpLastStockedDate.Enabled = true;
             dkpLastOrderDate.Enabled = true;
@@ -467,7 +467,13 @@ namespace Inventory.MainForm
             pbLogout.Enabled = true;
             pbExit.Enabled = true;
         }
-
+        private void GenerateCode()
+        {
+            var lastWarehouseInventoryId = FetchUtils.getLastWarehouseInventoryId();
+            var alphaNumeric = new GenerateAlpaNum("SKU", 3, lastWarehouseInventoryId);
+            alphaNumeric.Increment();
+            txtWarehouseSKU.Text = alphaNumeric.ToString();
+        }
         private void insert()
         {
             ButtonAdd();
@@ -489,7 +495,13 @@ namespace Inventory.MainForm
             cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
             cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
             cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
-            txtWarehouseSKU.Focus();
+            txtQuantityStock.Focus();
+            if (_products.Any())
+            {
+                cmbProductName.SelectedIndex = 0;
+                cmbProductName_SelectedIndexChanged(cmbProductName, EventArgs.Empty); // 👈 this line is key
+            }
+            GenerateCode();
         }
         private void update()
         {
@@ -838,7 +850,7 @@ namespace Inventory.MainForm
                         cmbSupplier.Text = w.supplier_name;
                         txtCostPerUnit.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
                         txtLastCostPerUnit.Text = w.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtTotalValue.Text = w.total_value.ToString(CultureInfo.InvariantCulture);
+                        txtTotalValue.Text = w.total_value.ToString("N2", CultureInfo.InvariantCulture);
                         cmbStatus.Text = w.status_details;
                         cmbItemLocation.Text = w.location_code;
                         dkpLastStockedDate.Value = w.last_stocked_date;
@@ -1013,7 +1025,7 @@ namespace Inventory.MainForm
                 SUPPLIER = p.supplier_name,
                 COST = p.cost_per_unit,
                 PRICE = p.last_cost_per_unit,
-                TOTAL = p.total_value,
+                TOTAL = p.total_value.ToString("N2"),
                 STATUS = p.status_details,
                 LSTOCKED = p.last_stocked_date,
                 LORDERED = p.last_ordered_date,
@@ -1059,7 +1071,7 @@ namespace Inventory.MainForm
                 STATUS = p.status_details,
                 COST = p.cost_per_unit,
                 QTY = p.delivery_qty,
-                TOTAL = p.total_value,
+                TOTAL = p.total_value.ToString("N2"),
                 DELIVERYSTATUS = p.delivery_status,
                 UPDATE = p.update_on,
             });
@@ -1516,17 +1528,16 @@ namespace Inventory.MainForm
 
             if (inventoryId > 0)
             {
-                splashScreen.ShowWaitForm();
 
                 int deleteResult = RepositoryEntity.DeleteEntity<WarehouseInventory>(inventoryId, entity =>
                 {
                     // Optional: Add logging or cleanup before delete
                 });
 
-                splashScreen.CloseWaitForm();
 
                 if (deleteResult > 0)
                 {
+                    splashScreen.CloseWaitForm();
                     PopupNotification.PopUpMessages(1,
                         "Warehouse Inventory: " + inventoryId + " Successfully Deleted!",
                         Messages.TitleSuccessDelete);
@@ -1536,6 +1547,7 @@ namespace Inventory.MainForm
                 }
                 else
                 {
+                    splashScreen.CloseWaitForm();
                     PopupNotification.PopUpMessages(0, "Failed to delete inventory.", "DELETE FAILED");
                 }
             }
