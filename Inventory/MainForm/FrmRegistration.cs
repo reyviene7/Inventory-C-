@@ -981,13 +981,13 @@ namespace Inventory.MainForm
         private void bindProfileImgList()
         {
             var list = _image_list.Select(p => new {
-                Id = p.image_id,
-                Barcode = p.image_code,
-                Title = p.title,
-                ImageType = p.img_type,
-                Location = p.img_location,
-                Created = p.created_on,
-                Updated = p.updated_on
+                ID = p.image_id,
+                CODE = p.image_code,
+                TITLE = p.title,
+                IMAGETYPE = p.img_type,
+                LOCATION = p.img_location,
+                CREATED = p.created_on,
+                UPDATED = p.updated_on
             }).ToList();
 
             gridImageControl.DataSource = list;
@@ -1013,23 +1013,23 @@ namespace Inventory.MainForm
                 gridCtlProfile.DataBindings.Clear();
                 var list = _profileList.Select(p => new
                 {
-                    Id = p.profile_id,
-                    Code = p.profile_code,
-                    Name = p.first_name + " " + p.middle_initial + " " + p.last_name,
-                    Sex = p.gender,
-                    DOB = p.birthdate,
-                    Status = p.civil_status,
-                    TelNo = p.telephone_number,
-                    Mobile = p.mobile_number,
-                    Email = p.email_address,
-                    Brgy = p.barangay,
-                    PRV = p.province,
+                    ID = p.profile_id,
+                    CODE = p.profile_code,
+                    NAME = p.first_name + " " + p.middle_initial + " " + p.last_name,
+                    SEX = p.gender,
+                    BIRTHDATE = p.birthdate,
+                    STATUS = p.civil_status,
+                    TEL = p.telephone_number,
+                    MOBILE = p.mobile_number,
+                    EMAIL = p.email_address,
+                    BRGY = p.barangay,
+                    PROVINCE = p.province,
                     SSS = p.sss_number,
                     PH = p.phil_health,
-                    Pos = p.position,
-                    Hire = p.hire_date,
-                    Reg = p.date_register,
-                    Dept = p.department_name
+                    POSITION = p.position,
+                    HIREDATE = p.hire_date,
+                    REGISTERED = p.date_register,
+                    DEPARTMENT = p.department_name
                 }).ToList();
                 gridCtlProfile.DataSource = list;
                if (gridProfile.RowCount > 0)
@@ -1060,17 +1060,17 @@ namespace Inventory.MainForm
                     gridContact.Columns.Clear();
                     var list = EnumerableUtils.getContactList(_profile.contact_id).ToList();
                     gridControlContact.DataSource = list.Select(p => new {
-                        Id = p.contact_id,
-                        Barcode = p.contact_code,
-                        Name = p.contact_name,
-                        Position = p.position,
-                        Telephone = p.telephone_number,
-                        MobileNo1 = p.mobile_number,
-                        MobileNo2 = p.mobile_secondary,
-                        EmailAdd = p.email_address,
-                        WebSite = p.web_url,
-                        FaxNo = p.fax_number,
-                        Registered = p.date_register
+                        ID = p.contact_id,
+                        CODE = p.contact_code,
+                        NAME = p.contact_name,
+                        POSITION = p.position,
+                        TELEPHONE = p.telephone_number,
+                        MOBILE = p.mobile_number,
+                        SECONDARY = p.mobile_secondary,
+                        EMAIL = p.email_address,
+                        WEB = p.web_url,
+                        FAX = p.fax_number,
+                        DATE = p.date_register
                     });
                     gridControlContact.Update();
                 }
@@ -1089,13 +1089,13 @@ namespace Inventory.MainForm
                     gridAddress.Columns.Clear();
                     var list = EnumerableUtils.getAddressList(_profile.address_id).ToList();
                     gridControlAddress.DataSource = list.Select(p => new {
-                        Id = p.address_id,
-                        Barangay = p.barangay,
-                        Street = p.street,
-                        City = p.city,
-                        Province = p.province,
-                        ZipCode = p.zip_code,
-                        Country = p.country
+                        ID = p.address_id,
+                        BARANGAY = p.barangay,
+                        STREET = p.street,
+                        CITY = p.city,
+                        PROVINCE = p.province,
+                        ZIPCODE = p.zip_code,
+                        COUNTRY = p.country
                     }).ToList();
                     gridControlAddress.Update();
                 }
@@ -1106,15 +1106,15 @@ namespace Inventory.MainForm
         {
             if(gridAddress.RowCount > 0)
             {
-                var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                 txtAddressID.Text = id;
                 txtBarcodeAddress.Text = "AS001";
-                txtBarangay.Text = ((GridView)sender).GetFocusedRowCellValue("Barangay").ToString();
-                txtStreet.Text = ((GridView)sender).GetFocusedRowCellValue("Street").ToString();
-                txtCity.Text = ((GridView)sender).GetFocusedRowCellValue("City").ToString();
-                txtZipCode.Text = ((GridView)sender).GetFocusedRowCellValue("ZipCode").ToString();
-                txtProvince.Text = ((GridView)sender).GetFocusedRowCellValue("Province").ToString();
-                cmbCountry.Text = ((GridView)sender).GetFocusedRowCellValue("Country").ToString();
+                txtBarangay.Text = ((GridView)sender).GetFocusedRowCellValue("BARANGAY").ToString();
+                txtStreet.Text = ((GridView)sender).GetFocusedRowCellValue("STREET").ToString();
+                txtCity.Text = ((GridView)sender).GetFocusedRowCellValue("CITY").ToString();
+                txtZipCode.Text = ((GridView)sender).GetFocusedRowCellValue("ZIPCODE").ToString();
+                txtProvince.Text = ((GridView)sender).GetFocusedRowCellValue("PROVINCE").ToString();
+                cmbCountry.Text = ((GridView)sender).GetFocusedRowCellValue("COUNTRY").ToString();
             }
         }
 
@@ -1129,10 +1129,10 @@ namespace Inventory.MainForm
             {
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
-                        var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
+                        var barcode = ((GridView)sender).GetFocusedRowCellValue("CODE").ToString();
                         var img = searchProfileImg(barcode);
                         var imgLocation = img?.img_location;
                         if (img == null || string.IsNullOrEmpty(imgLocation))
@@ -1157,18 +1157,18 @@ namespace Inventory.MainForm
         private void gridViewContact(object sender)
         {
             if (gridContact.RowCount > 0) {
-                var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                 txtContactId.Text = id;
-                txtContactBarcode.Text = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                txtContactName.Text = ((GridView)sender).GetFocusedRowCellValue("Name").ToString();
-                txtPositionName.Text = ((GridView)sender).GetFocusedRowCellValue("Position").ToString();
-                txtPhoneNumber.Text = ((GridView)sender).GetFocusedRowCellValue("Telephone").ToString();
-                txtFirstMobile.Text = ((GridView)sender).GetFocusedRowCellValue("MobileNo1").ToString();
-                txtSecondMobile.Text = ((GridView)sender).GetFocusedRowCellValue("MobileNo2").ToString();
-                txtEmailAddress.Text = ((GridView)sender).GetFocusedRowCellValue("EmailAdd").ToString();
-                txtWebUrl.Text = ((GridView)sender).GetFocusedRowCellValue("WebSite").ToString();
-                txtFaxNumber.Text = ((GridView)sender).GetFocusedRowCellValue("FaxNo").ToString();
-                dkpContactDateReg.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Registered");
+                txtContactBarcode.Text = ((GridView)sender).GetFocusedRowCellValue("CODE").ToString();
+                txtContactName.Text = ((GridView)sender).GetFocusedRowCellValue("NAME").ToString();
+                txtPositionName.Text = ((GridView)sender).GetFocusedRowCellValue("POSITION").ToString();
+                txtPhoneNumber.Text = ((GridView)sender).GetFocusedRowCellValue("TELEPHONE").ToString();
+                txtFirstMobile.Text = ((GridView)sender).GetFocusedRowCellValue("MOBILE").ToString();
+                txtSecondMobile.Text = ((GridView)sender).GetFocusedRowCellValue("SECONDARY").ToString();
+                txtEmailAddress.Text = ((GridView)sender).GetFocusedRowCellValue("EMAIL").ToString();
+                txtWebUrl.Text = ((GridView)sender).GetFocusedRowCellValue("WEB").ToString();
+                txtFaxNumber.Text = ((GridView)sender).GetFocusedRowCellValue("FAX").ToString();
+                dkpContactDateReg.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DATE");
             }
         }
 
@@ -1178,8 +1178,8 @@ namespace Inventory.MainForm
             if (grid.RowCount > 0)
                 try
                 {
-                    txtProfileID.Text = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Code").ToString();
+                    txtProfileID.Text = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("CODE").ToString();
                     var profileId = txtProfileID.Text.Trim(' ');
                     if (!_add && !_edt && !_del) {
                         _profile = _profileList.FirstOrDefault(p => p.profile_id == int.Parse(profileId));
@@ -1189,19 +1189,19 @@ namespace Inventory.MainForm
                         cmbDepartment.Text = _profile.department_name;
                     }
                     txtBarcode.Text = barcode;
-                    cmbgender.Text = ((GridView)sender).GetFocusedRowCellValue("Sex").ToString();
-                    dkpBirthdate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DOB");
-                    cmbCivilStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status").ToString();
-                    txtPhone.Text = ((GridView)sender).GetFocusedRowCellValue("TelNo").ToString();
-                    txtMobile.Text = ((GridView)sender).GetFocusedRowCellValue("Mobile").ToString();
-                    txtEmail.Text = ((GridView)sender).GetFocusedRowCellValue("Email").ToString();
-                    txtAddress.Text = ((GridView)sender).GetFocusedRowCellValue("Brgy").ToString();
-                    cmbProvince.Text = ((GridView)sender).GetFocusedRowCellValue("PRV").ToString();
+                    cmbgender.Text = ((GridView)sender).GetFocusedRowCellValue("SEX").ToString();
+                    dkpBirthdate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("BIRTHDATE");
+                    cmbCivilStatus.Text = ((GridView)sender).GetFocusedRowCellValue("STATUS").ToString();
+                    txtPhone.Text = ((GridView)sender).GetFocusedRowCellValue("TEL").ToString();
+                    txtMobile.Text = ((GridView)sender).GetFocusedRowCellValue("MOBILE").ToString();
+                    txtEmail.Text = ((GridView)sender).GetFocusedRowCellValue("EMAIL").ToString();
+                    txtAddress.Text = ((GridView)sender).GetFocusedRowCellValue("BRGY").ToString();
+                    cmbProvince.Text = ((GridView)sender).GetFocusedRowCellValue("PROVINCE").ToString();
                     txtSSSNumber.Text = ((GridView)sender).GetFocusedRowCellValue("SSS").ToString();
                     txtPhilhealthNumber.Text = ((GridView)sender).GetFocusedRowCellValue("PH").ToString();
-                    cmbPosition.Text = ((GridView)sender).GetFocusedRowCellValue("Pos").ToString();
-                    dkpDateHired.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Hire");
-                    dkpDateRegistered.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Reg");
+                    cmbPosition.Text = ((GridView)sender).GetFocusedRowCellValue("POSITION").ToString();
+                    dkpDateHired.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("HIREDATE");
+                    dkpDateRegistered.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("REGISTERED");
                     
                     var img = searchProfileImg(barcode);
                     var imgLocation = img?.img_location;

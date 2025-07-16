@@ -919,7 +919,7 @@ namespace Inventory.MainForm
             if (gridInventory.RowCount > 0)
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
                         InventoryId = int.Parse(id);
@@ -1117,15 +1117,15 @@ namespace Inventory.MainForm
             {
                 var list = listInventory.Select(x => new
                 {
-                    Id = x.inventory_id,
-                    InveCode = x.inventory_code,
-                    Item = x.product_name,
-                    DelCode = x.delivery_code,
-                    Qty = x.quantity,
-                    Branch = x.branch_details,
-                    Retail = x.retail_price,
-                    InveDate = x.inventory_date,
-                    Status = x.status
+                    ID = x.inventory_id,
+                    CODE = x.inventory_code,
+                    PRODUCT = x.product_name,
+                    DELCODE = x.delivery_code,
+                    QTY = x.quantity,
+                    BRANCH = x.branch_details,
+                    RETAIL = x.retail_price,
+                    DATE = x.inventory_date,
+                    STATUS = x.status
                 });
 
                 gCON.DataBindings.Clear();

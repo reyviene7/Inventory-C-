@@ -498,11 +498,11 @@ namespace Inventory.MainForm
             {
                 var list = _user_list.Select(u => new
                 {
-                    Id = u.user_id,
-                    UserCode = u.user_code,
-                    Name = u.name,
-                    UserName = u.username,
-                    UserRole = u.role_type
+                    ID = u.user_id,
+                    CODE = u.user_code,
+                    NAME = u.name,
+                    USERNAME = u.username,
+                    ROLE = u.role_type
                 }).ToList();
                 gridUserList.DataBindings.Clear();
                 gridUserList.DataSource = list;
@@ -527,13 +527,13 @@ namespace Inventory.MainForm
         {
             var list = _user_image.Select(i => new
             {
-                Id = i.image_id,
-                Code = i.image_code,
-                Title = i.title,
-                Type = i.img_type,
-                Location = i.img_location,
-                Created = i.created_on,
-                Updated = i.updated_on
+                ID = i.image_id,
+                CODE = i.image_code,
+                TITLE = i.title,
+                TYPE = i.img_type,
+                LOCATION = i.img_location,
+                CREATED = i.created_on,
+                UPDATED = i.updated_on
             }).ToList();
             gIMG.DataSource = list;
             gIMG.Update();
@@ -780,7 +780,7 @@ namespace Inventory.MainForm
             if (gridUsers.RowCount > 0)
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
                         userId = int.Parse(id);
@@ -836,8 +836,8 @@ namespace Inventory.MainForm
             if (grid.RowCount > 0)
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
-                    var code = ((GridView)sender).GetFocusedRowCellValue("Code").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
+                    var code = ((GridView)sender).GetFocusedRowCellValue("CODE").ToString();
                     if (code.Length > 0)
                     {
                         var user = searchUserImage(code);

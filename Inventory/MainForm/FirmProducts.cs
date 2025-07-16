@@ -807,7 +807,7 @@ namespace Inventory.MainForm
             {
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
                         productId = int.Parse(id);
@@ -869,14 +869,14 @@ namespace Inventory.MainForm
             try
             {
                 var list = listProducts.Select(x => new {
-                    Id = x.product_id,
-                    Barcode = x.product_code,
-                    Item = x.product_name,
-                    Category = x.category_details,
-                    SerialNo = x.serial_number,
-                    Trade = x.trade_price,
-                    Retail = x.retail_price,
-                    Status = x.status_details
+                    ID = x.product_id,
+                    BARCODE = x.product_code,
+                    ITEM = x.product_name,
+                    CATEGORY = x.category_details,
+                    SERIAL = x.serial_number,
+                    TRADE = x.trade_price,
+                    RETAIL = x.retail_price,
+                    STATUS = x.status_details
                 });
 
                 //splash.ShowWaitForm();

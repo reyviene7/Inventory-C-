@@ -743,8 +743,8 @@ namespace Inventory.MainForm
             if (gridInventory.RowCount > 0)
                 try
                 {
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                    var inventoryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("BARCODE").ToString();
+                    var inventoryId = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (barcode.Length > 0)
                     {
 
@@ -783,8 +783,8 @@ namespace Inventory.MainForm
             if (gridDelivery.RowCount > 0)
                 try
                 {
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                    var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("BARCODE").ToString();
+                    var deliveryId = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (barcode.Length > 0)
                     {
                         var w = searchWarehouseDeliveryId(barcode);
@@ -898,17 +898,17 @@ namespace Inventory.MainForm
         {
             clearGridWarehouse();
             var list = _warehouse_list.Select(p => new {
-                Id = p.inventory_id,
-                Barcode = p.product_code,
+                ID = p.inventory_id,
+                BARCODE = p.product_code,
                 SKU = p.sku,
-                Qty = p.quantity_in_stock,
-                Location = p.location_code,
-                Supplier = p.supplier_name,
-                Price = p.cost_per_unit,
-                LastCost = p.last_cost_per_unit,
-                Total = p.total_value,
-                Expire = p.expiration_date,
-                Status = p.status_details
+                QTY = p.quantity_in_stock,
+                LOCATION = p.location_code,
+                SUPPLIER = p.supplier_name,
+                COST = p.cost_per_unit,
+                PRICE = p.last_cost_per_unit,
+                TOTAL = p.total_value,
+                EXPIRE = p.expiration_date,
+                STATUS = p.status_details
             }).ToList();
 
             gridControl.DataSource = list;
@@ -929,18 +929,18 @@ namespace Inventory.MainForm
             clearGridDelivery();
             var list = _warehouse_delivery.Select(p => new
             {
-                Id = p.delivery_id,
-                Barcode = p.product_code,
-                Code = p.delivery_code,
-                Product = p.product_name,
-                Destination = p.branch_details,
-                DeliveryDate = p.delivery_date,
-                Status = p.status_details,
-                CostPerItem = p.cost_per_unit,
-                Qty = p.delivery_qty,
-                Total = p.total_value,
-                DeliveryStatus = p.delivery_status,
-                Update = p.update_on,
+                ID = p.delivery_id,
+                BARCODE = p.product_code,
+                DELCODE = p.delivery_code,
+                PRODUCT = p.product_name,
+                BRANCH = p.branch_details,
+                DELIVERYDATE = p.delivery_date,
+                STATUS = p.status_details,
+                COST = p.cost_per_unit,
+                QTY = p.delivery_qty,
+                TOTAL = p.total_value,
+                DELIVERYSTATUS = p.delivery_status,
+                UPDATE = p.update_on,
             }).ToList();
             gridControlDelivery.DataSource = list;
             gridControlDelivery.Update();

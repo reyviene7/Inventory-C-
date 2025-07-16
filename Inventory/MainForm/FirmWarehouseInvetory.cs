@@ -823,8 +823,8 @@ namespace Inventory.MainForm
             if (gridInventory.RowCount > 0)
                 try
                 {
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("BARCODE").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (barcode.Length > 0)
                     {
                         var w = searchWarehouseInventoryId(barcode);
@@ -871,8 +871,8 @@ namespace Inventory.MainForm
             if (gridDelivery.RowCount > 0)
                 try
                 {
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                    var deliveryId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("BARCODE").ToString();
+                    var deliveryId = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (barcode.Length > 0)
                     {
                         DeliveredId = int.Parse(deliveryId);
@@ -918,8 +918,8 @@ namespace Inventory.MainForm
             if (gridReturn.RowCount > 0)
                 try
                 {
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                    var ReturnId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var barcode = ((GridView)sender).GetFocusedRowCellValue("BARCODE").ToString();
+                    var ReturnId = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (barcode.Length > 0)
                     {
                         ReturnedId = int.Parse(ReturnId);
@@ -960,23 +960,23 @@ namespace Inventory.MainForm
             if (gridSales.RowCount > 0)
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
-                        var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
-                        var invoice = ((GridView)sender).GetFocusedRowCellValue("Invoice").ToString();
+                        var barcode = ((GridView)sender).GetFocusedRowCellValue("BARCODE").ToString();
+                        var invoice = ((GridView)sender).GetFocusedRowCellValue("INVOICE").ToString();
                         txtSalesId.Text = id;
                         txtSalesBarcode.Text = barcode;
                         txtSalesInvoice.Text = invoice;
-                        txtItemName.Text = ((GridView)sender).GetFocusedRowCellValue("Item").ToString();
-                        txtSalesQty.Text = ((GridView)sender).GetFocusedRowCellValue("Qty").ToString();
-                        txtSalesPrice.Text = ((GridView)sender).GetFocusedRowCellValue("UnitPrice").ToString();
-                        txtSalesDiscount.Text = ((GridView)sender).GetFocusedRowCellValue("Discount").ToString();
-                        txtCustomerName.Text = ((GridView)sender).GetFocusedRowCellValue("Customer").ToString();
-                        txtGrossSales.Text = ((GridView)sender).GetFocusedRowCellValue("Gross").ToString();
-                        txtNetSales.Text = ((GridView)sender).GetFocusedRowCellValue("NetSales").ToString();
-                        txtBranchName.Text = ((GridView)sender).GetFocusedRowCellValue("Branch").ToString();
-                        dkpSalesDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Date");
+                        txtItemName.Text = ((GridView)sender).GetFocusedRowCellValue("PRODUCT").ToString();
+                        txtSalesQty.Text = ((GridView)sender).GetFocusedRowCellValue("QTY").ToString();
+                        txtSalesPrice.Text = ((GridView)sender).GetFocusedRowCellValue("UNITPRICE").ToString();
+                        txtSalesDiscount.Text = ((GridView)sender).GetFocusedRowCellValue("DISCOUNT").ToString();
+                        txtCustomerName.Text = ((GridView)sender).GetFocusedRowCellValue("CUSTOMER").ToString();
+                        txtGrossSales.Text = ((GridView)sender).GetFocusedRowCellValue("GROSS").ToString();
+                        txtNetSales.Text = ((GridView)sender).GetFocusedRowCellValue("NETSALES").ToString();
+                        txtBranchName.Text = ((GridView)sender).GetFocusedRowCellValue("BRANCH").ToString();
+                        dkpSalesDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DATE");
 
                         var img = searchProductImg(barcode);
                         var imgLocation = img?.img_location;
@@ -1004,22 +1004,22 @@ namespace Inventory.MainForm
             clearGrid();
             var list = _warehouse_list.Select(p => new
             {
-                Id = p.inventory_id,
-                Barcode = p.product_code,
+                ID = p.inventory_id,
+                BARCODE = p.product_code,
                 SKU = p.sku,
-                Qty = p.quantity_in_stock,
-                ReQty = p.reorder_level,
-                Location = p.location_code,
-                Supplier = p.supplier_name,
-                Price = p.cost_per_unit,
-                LastCost = p.last_cost_per_unit,
-                Total = p.total_value,
-                Status = p.status_details,
-                LStocked = p.last_stocked_date,
-                LOrder = p.last_ordered_date,
-                Expire = p.expiration_date,
-                Created = p.created_at,
-                Updated = p.updated_at
+                QTY = p.quantity_in_stock,
+                REORDER = p.reorder_level,
+                LOCATION = p.location_code,
+                SUPPLIER = p.supplier_name,
+                COST = p.cost_per_unit,
+                PRICE = p.last_cost_per_unit,
+                TOTAL = p.total_value,
+                STATUS = p.status_details,
+                LSTOCKED = p.last_stocked_date,
+                LORDERED = p.last_ordered_date,
+                EXPIRY = p.expiration_date,
+                CREATED = p.created_at,
+                UPDATED = p.updated_at
             }).ToList();
             gridController.DataSource = list;
             gridController.Update();
@@ -1050,18 +1050,18 @@ namespace Inventory.MainForm
             clearGridDelivery();
             var list = _warehouse_delivery.Select(p => new
             {
-                Id = p.delivery_id,
-                Barcode = p.product_code,
-                Code = p.delivery_code,
-                Product = p.product_name,
-                Destination = p.branch_details,
-                DeliveryDate = p.delivery_date,
-                Status = p.status_details,
-                CostPerItem = p.cost_per_unit,
-                Qty = p.delivery_qty,
-                Total = p.total_value,
-                DeliveryStatus = p.delivery_status,
-                Update = p.update_on,
+                ID = p.delivery_id,
+                BARCODE = p.product_code,
+                DELCODE = p.delivery_code,
+                PRODUCT = p.product_name,
+                BRANCH = p.branch_details,
+                DELIVERYDATE = p.delivery_date,
+                STATUS = p.status_details,
+                COST = p.cost_per_unit,
+                QTY = p.delivery_qty,
+                TOTAL = p.total_value,
+                DELIVERYSTATUS = p.delivery_status,
+                UPDATE = p.update_on,
             });
 
             gridControlDelivery.DataSource = list;
@@ -1086,15 +1086,15 @@ namespace Inventory.MainForm
             clearGridReturn();
             var list = warehouse_return.Select(r => new
             {
-                Id = r.return_id,
-                Code = r.return_code,
-                Barcode = r.product_code,
-                Item = r.product_name,
-                Qty = r.return_quantity,
-                Destination = r.destination,
-                Status = r.status,
-                Remarks = r.remarks,
-                ReturnDate = r.return_date
+                ID = r.return_id,
+                CODE = r.return_code,
+                BARCODE = r.product_code,
+                PRODUCT = r.product_name,
+                QTY = r.return_quantity,
+                DESTINATION = r.destination,
+                STATUS = r.status,
+                REMARKS = r.remarks,
+                DATE = r.return_date
             }).ToList();
             gridControlReturn.DataSource = list;
             gridControlReturn.Update();
@@ -1118,18 +1118,18 @@ namespace Inventory.MainForm
                 clearGridSales();
                 var list = _transaction_list.Select(x => new
                 {
-                    Id = x.id,
-                    Invoice = x.invoice,
-                    Barcode = x.barcode,
-                    Item = x.item,
-                    Qty = x.qty,
-                    UnitPrice = x.price,
-                    Discount = x.discount,
-                    Gross = x.gross,
-                    NetSales = x.net,
-                    Customer = x.customer,
-                    Branch = x.branch,
-                    Date = x.date,
+                    ID = x.id,
+                    INVOICE = x.invoice,
+                    BARCODE = x.barcode,
+                    PRODUCT = x.item,
+                    QTY = x.qty,
+                    UNITPRICE = x.price,
+                    DISCOUNT = x.discount,
+                    GROSS = x.gross,
+                    NETSALES = x.net,
+                    CUSTOMER = x.customer,
+                    BRANCH = x.branch,
+                    DATE = x.date,
                 }).ToList();
                 gridControlSales.DataSource = list;
                 gridControlSales.Update();

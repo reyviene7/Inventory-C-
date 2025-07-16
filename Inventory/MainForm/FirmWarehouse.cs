@@ -115,15 +115,15 @@ namespace Inventory.MainForm
             {
                 var list = _warehouse_list.Select(x => new
                 {
-                    Id = x.warehouse_id,
-                    Code = x.warehouse_code,
-                    Warehouse = x.warehouse_name,
-                    Address = x.street + ", " + x.barangay + ", " + x.city + ", " + x.zip_code + ", " + x.country,
-                    Telephone = x.telephone_number,
-                    Mobile = x.mobile_number,
-                    Email = x.email_address,
-                    Fax = x.fax_number,
-                    Date = x.date_added
+                    ID = x.warehouse_id,
+                    CODE = x.warehouse_code,
+                    WAREHOUSE = x.warehouse_name,
+                    ADDRESS = x.street + ", " + x.barangay + ", " + x.city + ", " + x.zip_code + ", " + x.country,
+                    TELEPHONE = x.telephone_number,
+                    MOBILE = x.mobile_number,
+                    EMAIL = x.email_address,
+                    FAX = x.fax_number,
+                    DATE = x.date_added
                 });
 
                 gridControl.DataSource = list;
@@ -754,7 +754,7 @@ namespace Inventory.MainForm
             if (gridWarehouse.RowCount > 0)
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
                         var ent = searchWarehouseId(int.Parse(id));

@@ -110,26 +110,26 @@ namespace Inventory.MainForm
             if (gridServices.RowCount > 0)
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
-                        var barcode = ((GridView)sender).GetFocusedRowCellValue("Barcode").ToString();
+                        var barcode = ((GridView)sender).GetFocusedRowCellValue("BARCODE").ToString();
                         cmbOperator.Text = _userName;
                         txtServiceId.Text = id;
-                        txtServiceName.Text = ((GridView)sender).GetFocusedRowCellValue("ServiceName").ToString();
-                        txtServiceDescription.Text = ((GridView)sender).GetFocusedRowCellValue("Details").ToString();
-                        cmbServiceCategory.Text = ((GridView)sender).GetFocusedRowCellValue("Category").ToString();
-                        txtServiceCharges.Text = ((GridView)sender).GetFocusedRowCellValue("Charges").ToString();
-                        txtServiceCommision.Text = ((GridView)sender).GetFocusedRowCellValue("Commision").ToString();
-                        cmbOperator.Text = ((GridView)sender).GetFocusedRowCellValue("User").ToString();
-                        cmbStaff.Text = ((GridView)sender).GetFocusedRowCellValue("Staff").ToString();
-                        cmbServiceStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status").ToString();
+                        txtServiceName.Text = ((GridView)sender).GetFocusedRowCellValue("SERVICE").ToString();
+                        txtServiceDescription.Text = ((GridView)sender).GetFocusedRowCellValue("DETAILS").ToString();
+                        cmbServiceCategory.Text = ((GridView)sender).GetFocusedRowCellValue("CATEGORY").ToString();
+                        txtServiceCharges.Text = ((GridView)sender).GetFocusedRowCellValue("CHARGES").ToString();
+                        txtServiceCommision.Text = ((GridView)sender).GetFocusedRowCellValue("COMMISSION").ToString();
+                        cmbOperator.Text = ((GridView)sender).GetFocusedRowCellValue("USER").ToString();
+                        cmbStaff.Text = ((GridView)sender).GetFocusedRowCellValue("STAFF").ToString();
+                        cmbServiceStatus.Text = ((GridView)sender).GetFocusedRowCellValue("STATUS").ToString();
                         txtBarcode.Text = barcode;
                         txtServiceImgBarcode.Text = barcode;
-                        txtServiceImgTitle.Text = ((GridView)sender).GetFocusedRowCellValue("ServiceName").ToString();
-                        dpkServiceDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Date");
-                        dpkCreatedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Created");
-                        dpkUpdated.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("Updated");
+                        txtServiceImgTitle.Text = ((GridView)sender).GetFocusedRowCellValue("SERVICE").ToString();
+                        dpkServiceDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DATE");
+                        dpkCreatedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("CREATED");
+                        dpkUpdated.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("UPDATED");
 
                         var img = searchServiceImg(barcode);
                         var imgLocation = img?.img_location;
@@ -756,19 +756,19 @@ namespace Inventory.MainForm
         {
             clearGrid();
             var list = _services_list.Select(p => new {
-                Id = p.service_id,
-                Barcode = p.service_code,
-                ServiceName = p.service_name,
-                Details = p.service_details,
-                Category = p.category,
-                Charges = p.service_charges,
-                Commision = p.service_commission,
-                User = p.username,
-                Staff = p.staff,
-                Status = p.status,
-                Date = p.service_date,
-                Created = p.created_date,
-                Updated = p.updated_date
+                ID = p.service_id,
+                BARCODE = p.service_code,
+                SERVICE = p.service_name,
+                DETAILS = p.service_details,
+                CATEGORY = p.category,
+                CHARGES = p.service_charges,
+                COMMISSION = p.service_commission,
+                USER = p.username,
+                STAFF = p.staff,
+                STATUS = p.status,
+                DATE = p.service_date,
+                CREATED = p.created_date,
+                UPDATED = p.updated_date
             }).ToList();
             gridController.DataSource = list;
             gridController.Update();

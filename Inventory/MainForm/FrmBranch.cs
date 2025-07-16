@@ -73,19 +73,19 @@ namespace Inventory.MainForm
 
                 var list = listbranch.Select(x => new
                 {
-                    Id = x.branch_id,
-                    Code = x.branch_code,
-                    Branch = x.branch_details,
-                    Barangay = x.barangay,
-                    Street = x.street,
-                    City = x.city,
-                    Province = x.province,
-                    ZipCode = x.zip_code,
-                    Telephone = x.telephone_number,
-                    Mobile = x.mobile_number,
-                    Email = x.email_address,
-                    Fax = x.fax_number,
-                    Date = x.date_register
+                    ID = x.branch_id,
+                    CODE = x.branch_code,
+                    BRANCH = x.branch_details,
+                    BARANGAY = x.barangay,
+                    STREET = x.street,
+                    CITY = x.city,
+                    PROVINCE = x.province,
+                    ZIPCODE = x.zip_code,
+                    TELEPHONE = x.telephone_number,
+                    MOBILE = x.mobile_number,
+                    EMAIL = x.email_address,
+                    FAX = x.fax_number,
+                    DATE = x.date_register
                 });
 
                 gCON.DataSource = list;
@@ -740,7 +740,7 @@ namespace Inventory.MainForm
             if (gridBranch.RowCount > 0)
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
                         BranchId = int.Parse(id);

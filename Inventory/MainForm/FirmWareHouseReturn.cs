@@ -602,7 +602,7 @@ namespace Inventory.MainForm
             {
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
                         InventoryId = int.Parse(id);
@@ -639,7 +639,7 @@ namespace Inventory.MainForm
             {
                 try
                 {
-                    var ReturnId = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var ReturnId = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (ReturnId.Length > 0)
                     {
                         ReturnedId = int.Parse(ReturnId);
@@ -741,15 +741,15 @@ namespace Inventory.MainForm
             ClearGrid();
             var list = warehouse_return.Select(r => new
             {
-                Id = r.return_id,
-                Code = r.return_code,
-                ProductCode = r.product_code,
-                Item = r.product_name,
-                Qty = r.return_quantity,
-                Destination = r.destination,
-                Status = r.status,
-                Remarks = r.remarks,
-                ReturnDate = r.return_date
+                ID = r.return_id,
+                CODE = r.return_code,
+                BARCODE = r.product_code,
+                PRODUCT = r.product_name,
+                QTY = r.return_quantity,
+                DESTINATION = r.destination,
+                STATUS = r.status,
+                REMARKS = r.remarks,
+                DATE = r.return_date
             }).ToList();
             gDEL.DataSource = list;
             gDEL.Update();
@@ -770,11 +770,11 @@ namespace Inventory.MainForm
             splashReturn.ShowWaitForm();
             ClearGrid();
             gCON.DataSource = listInventory.Select(p => new {
-                Id = p.inventory_id,
-                Item = p.product_name,
-                Qty = p.quantity,
-                Status = p.status,
-                Branch = p.branch_details
+                ID = p.inventory_id,
+                PRODUCT = p.product_name,
+                QTY = p.quantity,
+                STATUS = p.status,
+                BRANCH = p.branch_details
             });
             gCON.Update();
             if (gridReturn.RowCount > 0)

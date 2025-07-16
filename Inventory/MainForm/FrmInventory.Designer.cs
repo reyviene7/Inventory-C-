@@ -837,8 +837,8 @@
             this.gridInventory.Appearance.FocusedRow.Options.UseFont = true;
             this.gridInventory.Appearance.FocusedRow.Options.UseForeColor = true;
             this.gridInventory.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridInventory.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridInventory.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridInventory.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridInventory.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.gridInventory.Appearance.HeaderPanel.Options.UseBackColor = true;
             this.gridInventory.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridInventory.Appearance.HeaderPanel.Options.UseForeColor = true;
@@ -1506,8 +1506,8 @@
             this.gridProducts.Appearance.FocusedRow.Options.UseFont = true;
             this.gridProducts.Appearance.FocusedRow.Options.UseForeColor = true;
             this.gridProducts.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridProducts.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridProducts.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridProducts.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridProducts.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.gridProducts.Appearance.HeaderPanel.Options.UseBackColor = true;
             this.gridProducts.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridProducts.Appearance.HeaderPanel.Options.UseForeColor = true;
@@ -2052,8 +2052,8 @@
             this.gridSales.Appearance.FocusedRow.Options.UseFont = true;
             this.gridSales.Appearance.FocusedRow.Options.UseForeColor = true;
             this.gridSales.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridSales.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridSales.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridSales.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridSales.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.gridSales.Appearance.HeaderPanel.Options.UseBackColor = true;
             this.gridSales.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridSales.Appearance.HeaderPanel.Options.UseForeColor = true;

@@ -449,10 +449,10 @@ namespace Inventory.MainForm
             try
             {
                 var listCat = listCategory.Select(x => new {
-                    Id = x.category_id,
-                    CategoryCode = x.category_code,
-                    Category = x.category_details,
-                    DateRegister = x.date_register
+                    ID = x.category_id,
+                    CODE = x.category_code,
+                    CATEGORY = x.category_details,
+                    DATE = x.date_register
                 });
 
                 gridControl.DataBindings.Clear();
@@ -474,18 +474,18 @@ namespace Inventory.MainForm
             try
             {
                 var listCat = listSupplier.Select(x => new {
-                    Id = x.supplier_id,
-                    Code = x.supplier_code,
-                    SupplierName = x.supplier_name,
-                    Company = x.company_name,
-                    Email = x.email_address,
-                    Gender = x.gender,
-                    Telephone = x.telephone_number,
-                    Mobile = x.mobile_number,
-                    Barangay = x.barangay,
-                    Street = x.street,
-                    Province = x.province,
-                    DateRegister = x.date_register
+                    ID = x.supplier_id,
+                    CODE = x.supplier_code,
+                    SUPPLIER = x.supplier_name,
+                    COMPANY = x.company_name,
+                    EMAIL = x.email_address,
+                    GENDER = x.gender,
+                    TELEPHONE = x.telephone_number,
+                    MOBILE = x.mobile_number,
+                    BARANGAY = x.barangay,
+                    STREET = x.street,
+                    PROVINCE = x.province,
+                    DATE = x.date_register
                 });
 
                 gridCtrlSupplier.DataBindings.Clear();
@@ -580,7 +580,7 @@ namespace Inventory.MainForm
             {
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
                         var category_id = int.Parse(id);
@@ -606,7 +606,7 @@ namespace Inventory.MainForm
             {
                 try
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("Id").ToString();
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
                     if (id.Length > 0)
                     {
                         var supplier_id = int.Parse(id);

@@ -702,8 +702,8 @@
             this.gridWarehouse.Appearance.FocusedRow.Options.UseFont = true;
             this.gridWarehouse.Appearance.FocusedRow.Options.UseForeColor = true;
             this.gridWarehouse.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridWarehouse.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridWarehouse.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridWarehouse.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridWarehouse.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.gridWarehouse.Appearance.HeaderPanel.Options.UseBackColor = true;
             this.gridWarehouse.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridWarehouse.Appearance.HeaderPanel.Options.UseForeColor = true;
@@ -802,7 +802,7 @@
             this.txtPRI.BackColor = System.Drawing.Color.DimGray;
             this.txtPRI.Enabled = false;
             this.txtPRI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPRI.ForeColor = System.Drawing.Color.Maroon;
+            this.txtPRI.ForeColor = System.Drawing.Color.Black;
             this.txtPRI.Location = new System.Drawing.Point(-11, 26);
             this.txtPRI.Margin = new System.Windows.Forms.Padding(4);
             this.txtPRI.Multiline = true;

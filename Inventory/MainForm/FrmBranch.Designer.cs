@@ -734,8 +734,8 @@
             this.gridBranch.Appearance.FocusedRow.Options.UseFont = true;
             this.gridBranch.Appearance.FocusedRow.Options.UseForeColor = true;
             this.gridBranch.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridBranch.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridBranch.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridBranch.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridBranch.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.gridBranch.Appearance.HeaderPanel.Options.UseBackColor = true;
             this.gridBranch.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridBranch.Appearance.HeaderPanel.Options.UseForeColor = true;
