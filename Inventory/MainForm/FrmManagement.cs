@@ -493,14 +493,17 @@ namespace Inventory.MainForm
                          txtDelRemarks.Text = w.remarks; */
                         txtBarcode.Text = barcode;
                         var img = searchProductImg(barcode);
-                        var imgLocation = img.img_location;
-                        if (imgLocation.Length > 0)
+                        var imgLocation = img?.img_location;
+                        if (img == null || string.IsNullOrEmpty(imgLocation))
+                        {
+                            imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                        else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
                             imgPreview.ImageLocation = location;
+                            imgPreview.Refresh();
                         }
-                        else
-                            imgPreview.Image = null;
                     }
                 }
                 catch (Exception ex)
@@ -692,16 +695,16 @@ namespace Inventory.MainForm
                 if (barcode != null)
                 {
                     var img = searchProductImg(barcode);
-                    var imgLocation = img.img_location;
-                    if (imgLocation.Length > 0)
+                    var imgLocation = img?.img_location;
+                    if (img == null || string.IsNullOrEmpty(imgLocation))
+                    {
+                        imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    }
+                    else
                     {
                         var location = ConstantUtils.defaultImgLocation + imgLocation;
                         imgPreview.ImageLocation = location;
                         imgPreview.Refresh();
-                    }
-                    else
-                    {
-                        imgPreview.Image = null;
                     }
                 }
             }
@@ -720,16 +723,16 @@ namespace Inventory.MainForm
                 if (barcode != null)
                 {
                     var img = searchProductImg(barcode);
-                    var imgLocation = img.img_location;
-                    if (imgLocation.Length > 0)
+                    var imgLocation = img?.img_location;
+                    if (img == null || string.IsNullOrEmpty(imgLocation))
+                    {
+                        imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    }
+                    else
                     {
                         var location = ConstantUtils.defaultImgLocation + imgLocation;
                         imgPreview.ImageLocation = location;
                         imgPreview.Refresh();
-                    }
-                    else
-                    {
-                        imgPreview.Image = null;
                     }
                 }
             }
@@ -751,16 +754,16 @@ namespace Inventory.MainForm
                 if (barcode != null)
                 {
                     var img = searchProductImg(barcode);
-                    var imgLocation = img.img_location;
-                    if (imgLocation.Length > 0)
+                    var imgLocation = img?.img_location;
+                    if (img == null || string.IsNullOrEmpty(imgLocation))
+                    {
+                        imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    }
+                    else
                     {
                         var location = ConstantUtils.defaultImgLocation + imgLocation;
                         imgPreview.ImageLocation = location;
                         imgPreview.Refresh();
-                    }
-                    else
-                    {
-                        imgPreview.Image = null;
                     }
                 }
             }
@@ -787,16 +790,16 @@ namespace Inventory.MainForm
                 if (barcode != null)
                 {
                     var img = searchProductImg(barcode);
-                    var imgLocation = img.img_location;
-                    if (imgLocation.Length > 0)
+                    var imgLocation = img?.img_location;
+                    if (img == null || string.IsNullOrEmpty(imgLocation))
+                    {
+                        imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    }
+                    else
                     {
                         var location = ConstantUtils.defaultImgLocation + imgLocation;
                         imgPreview.ImageLocation = location;
                         imgPreview.Refresh();
-                    }
-                    else
-                    {
-                        imgPreview.Image = null;
                     }
                 }
             }
@@ -816,16 +819,16 @@ namespace Inventory.MainForm
                 if (barcode != null)
                 {
                     var img = searchProductImg(barcode);
-                    var imgLocation = img.img_location;
-                    if (imgLocation.Length > 0)
+                    var imgLocation = img?.img_location;
+                    if (img == null || string.IsNullOrEmpty(imgLocation))
+                    {
+                        imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    }
+                    else
                     {
                         var location = ConstantUtils.defaultImgLocation + imgLocation;
                         imgPreview.ImageLocation = location;
                         imgPreview.Refresh();
-                    }
-                    else
-                    {
-                        imgPreview.Image = null;
                     }
                 }
             }
@@ -848,16 +851,16 @@ namespace Inventory.MainForm
                 if (barcode != null)
                 {
                     var img = searchProductImg(barcode);
-                    var imgLocation = img.img_location;
-                    if (imgLocation.Length > 0)
+                    var imgLocation = img?.img_location;
+                    if (img == null || string.IsNullOrEmpty(imgLocation))
+                    {
+                        imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    }
+                    else
                     {
                         var location = ConstantUtils.defaultImgLocation + imgLocation;
                         imgPreview.ImageLocation = location;
                         imgPreview.Refresh();
-                    }
-                    else
-                    {
-                        imgPreview.Image = null;
                     }
                 }
             }
@@ -890,16 +893,16 @@ namespace Inventory.MainForm
             if (barcode != null)
             {
                 var img = searchProductImg(barcode);
-                var imgLocation = img.img_location;
-                if (imgLocation.Length > 0)
+                var imgLocation = img?.img_location;
+                if (img == null || string.IsNullOrEmpty(imgLocation))
+                {
+                    imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                }
+                else
                 {
                     var location = ConstantUtils.defaultImgLocation + imgLocation;
                     imgPreview.ImageLocation = location;
                     imgPreview.Refresh();
-                }
-                else
-                {
-                    imgPreview.Image = null;
                 }
             }
         }
@@ -947,16 +950,16 @@ namespace Inventory.MainForm
             if (barcode != null)
             {
                 var img = searchProductImg(barcode);
-                var imgLocation = img.img_location;
-                if (imgLocation.Length > 0)
+                var imgLocation = img?.img_location;
+                if (img == null || string.IsNullOrEmpty(imgLocation))
+                {
+                    imgPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                }
+                else
                 {
                     var location = ConstantUtils.defaultImgLocation + imgLocation;
                     imgPreview.ImageLocation = location;
                     imgPreview.Refresh();
-                }
-                else
-                {
-                    imgPreview.Image = null;
                 }
             }
         }
