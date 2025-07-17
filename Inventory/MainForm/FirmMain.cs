@@ -81,7 +81,7 @@ namespace Inventory.MainForm
             {
                 if (rightX > Width - pnlRightOptions.Width)
                 {
-                    rightX -= 2;
+                    rightX -= 3;
                     pnlRightOptions.Location = new Point(rightX, _rightY);
                 }
             }
@@ -89,7 +89,7 @@ namespace Inventory.MainForm
             {
                 if (rightX < Width)
                 {
-                    rightX += 2;
+                    rightX += 3;
                 }
                 pnlRightOptions.Location = new Point(rightX, _rightY);
             }
@@ -109,7 +109,7 @@ namespace Inventory.MainForm
             }
             if (_optionsDirection == "up")
             {
-                if (optionsY > Height - pnlOptions.Height + 3)
+                if (optionsY > Height - pnlOptions.Height + 10)
                 {
                     optionsY -= 3;
                     pnlOptions.Location = new Point(_optionsX, optionsY);
@@ -126,13 +126,13 @@ namespace Inventory.MainForm
         }
         private void FirmMain_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Y >= Height - 15 && e.X < (Width - pnlRightOptions.Width))
+            if (e.Y >= Height - 20 && e.X < (Width - pnlRightOptions.Width))
             {
                 _optionsDirection = "up";
                 _rightDirection = "right";
                 _optionsTimeOut = 0;
             }
-            if (e.X >= Width - 15)
+            if (e.X >= Width - 11)
             {
                 _rightDirection = "left";
                 _rightTimeOut = 0;

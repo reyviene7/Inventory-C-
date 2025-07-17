@@ -146,7 +146,7 @@
             this.bntONL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.bntONL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bntONL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntONL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.bntONL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntONL.ForeColor = System.Drawing.Color.White;
             this.bntONL.Image = ((System.Drawing.Image)(resources.GetObject("bntONL.Image")));
             this.bntONL.Location = new System.Drawing.Point(187, 511);
@@ -165,7 +165,7 @@
             this.bntLCL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.bntLCL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bntLCL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntLCL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.bntLCL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntLCL.ForeColor = System.Drawing.Color.White;
             this.bntLCL.Image = ((System.Drawing.Image)(resources.GetObject("bntLCL.Image")));
             this.bntLCL.Location = new System.Drawing.Point(5, 511);
