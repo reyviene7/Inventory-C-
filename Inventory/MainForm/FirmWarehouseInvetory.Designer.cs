@@ -638,7 +638,7 @@
             this.cmbStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStatus.ForeColor = System.Drawing.Color.Maroon;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(739, 322);
+            this.cmbStatus.Location = new System.Drawing.Point(739, 323);
             this.cmbStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(329, 36);
@@ -651,7 +651,7 @@
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(568, 218);
+            this.label17.Location = new System.Drawing.Point(568, 220);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(128, 23);
@@ -664,7 +664,7 @@
             this.dpkLastUpdated.Enabled = false;
             this.dpkLastUpdated.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkLastUpdated.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpkLastUpdated.Location = new System.Drawing.Point(739, 211);
+            this.dpkLastUpdated.Location = new System.Drawing.Point(739, 213);
             this.dpkLastUpdated.Margin = new System.Windows.Forms.Padding(4);
             this.dpkLastUpdated.Name = "dpkLastUpdated";
             this.dpkLastUpdated.Size = new System.Drawing.Size(329, 34);
@@ -677,7 +677,7 @@
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(568, 181);
+            this.label18.Location = new System.Drawing.Point(568, 182);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(121, 23);
@@ -690,7 +690,7 @@
             this.dpkCreatedDate.Enabled = false;
             this.dpkCreatedDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkCreatedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpkCreatedDate.Location = new System.Drawing.Point(739, 175);
+            this.dpkCreatedDate.Location = new System.Drawing.Point(739, 176);
             this.dpkCreatedDate.Margin = new System.Windows.Forms.Padding(4);
             this.dpkCreatedDate.Name = "dpkCreatedDate";
             this.dpkCreatedDate.Size = new System.Drawing.Size(329, 34);
@@ -703,7 +703,7 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(568, 144);
+            this.label16.Location = new System.Drawing.Point(568, 145);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(140, 23);
@@ -716,7 +716,7 @@
             this.dpkExpirationDate.Enabled = false;
             this.dpkExpirationDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpkExpirationDate.Location = new System.Drawing.Point(739, 138);
+            this.dpkExpirationDate.Location = new System.Drawing.Point(739, 139);
             this.dpkExpirationDate.Margin = new System.Windows.Forms.Padding(4);
             this.dpkExpirationDate.Name = "dpkExpirationDate";
             this.dpkExpirationDate.Size = new System.Drawing.Size(329, 34);
@@ -732,7 +732,7 @@
             this.cmbSupplier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSupplier.ForeColor = System.Drawing.Color.Maroon;
             this.cmbSupplier.FormattingEnabled = true;
-            this.cmbSupplier.Location = new System.Drawing.Point(159, 247);
+            this.cmbSupplier.Location = new System.Drawing.Point(159, 248);
             this.cmbSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(380, 36);
@@ -745,7 +745,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(7, 255);
+            this.label15.Location = new System.Drawing.Point(7, 256);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(84, 23);
@@ -772,7 +772,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(568, 255);
+            this.label9.Location = new System.Drawing.Point(568, 257);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 23);
@@ -785,7 +785,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(568, 329);
+            this.label4.Location = new System.Drawing.Point(568, 330);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 23);
@@ -801,7 +801,7 @@
             this.cmbUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUser.ForeColor = System.Drawing.Color.Maroon;
             this.cmbUser.FormattingEnabled = true;
-            this.cmbUser.Location = new System.Drawing.Point(739, 247);
+            this.cmbUser.Location = new System.Drawing.Point(739, 249);
             this.cmbUser.Margin = new System.Windows.Forms.Padding(4);
             this.cmbUser.Name = "cmbUser";
             this.cmbUser.Size = new System.Drawing.Size(329, 36);
@@ -817,7 +817,7 @@
             this.cmbProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductName.ForeColor = System.Drawing.Color.Maroon;
             this.cmbProductName.FormattingEnabled = true;
-            this.cmbProductName.Location = new System.Drawing.Point(159, 136);
+            this.cmbProductName.Location = new System.Drawing.Point(159, 137);
             this.cmbProductName.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductName.Name = "cmbProductName";
             this.cmbProductName.Size = new System.Drawing.Size(380, 36);
@@ -845,7 +845,7 @@
             this.cmbItemLocation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbItemLocation.ForeColor = System.Drawing.Color.Maroon;
             this.cmbItemLocation.FormattingEnabled = true;
-            this.cmbItemLocation.Location = new System.Drawing.Point(739, 285);
+            this.cmbItemLocation.Location = new System.Drawing.Point(739, 286);
             this.cmbItemLocation.Margin = new System.Windows.Forms.Padding(4);
             this.cmbItemLocation.Name = "cmbItemLocation";
             this.cmbItemLocation.Size = new System.Drawing.Size(329, 36);
@@ -871,7 +871,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(568, 107);
+            this.label12.Location = new System.Drawing.Point(568, 108);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(162, 23);
@@ -884,7 +884,7 @@
             this.dkpLastOrderDate.Enabled = false;
             this.dkpLastOrderDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpLastOrderDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpLastOrderDate.Location = new System.Drawing.Point(739, 101);
+            this.dkpLastOrderDate.Location = new System.Drawing.Point(739, 102);
             this.dkpLastOrderDate.Margin = new System.Windows.Forms.Padding(4);
             this.dkpLastOrderDate.Name = "dkpLastOrderDate";
             this.dkpLastOrderDate.Size = new System.Drawing.Size(329, 34);
@@ -922,7 +922,7 @@
             this.lblHiredate.BackColor = System.Drawing.Color.Transparent;
             this.lblHiredate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHiredate.ForeColor = System.Drawing.Color.White;
-            this.lblHiredate.Location = new System.Drawing.Point(568, 70);
+            this.lblHiredate.Location = new System.Drawing.Point(568, 71);
             this.lblHiredate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHiredate.Name = "lblHiredate";
             this.lblHiredate.Size = new System.Drawing.Size(160, 23);
@@ -935,7 +935,7 @@
             this.dkpLastStockedDate.Enabled = false;
             this.dkpLastStockedDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpLastStockedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpLastStockedDate.Location = new System.Drawing.Point(739, 64);
+            this.dkpLastStockedDate.Location = new System.Drawing.Point(739, 65);
             this.dkpLastStockedDate.Margin = new System.Windows.Forms.Padding(4);
             this.dkpLastStockedDate.Name = "dkpLastStockedDate";
             this.dkpLastStockedDate.Size = new System.Drawing.Size(329, 34);
@@ -974,7 +974,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(7, 218);
+            this.label3.Location = new System.Drawing.Point(7, 219);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(126, 23);
@@ -987,7 +987,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(568, 292);
+            this.label6.Location = new System.Drawing.Point(568, 293);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 23);
@@ -1000,7 +1000,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(7, 144);
+            this.label5.Location = new System.Drawing.Point(7, 145);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 23);
@@ -1013,7 +1013,7 @@
             this.txtReorderLevel.Enabled = false;
             this.txtReorderLevel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReorderLevel.ForeColor = System.Drawing.Color.Maroon;
-            this.txtReorderLevel.Location = new System.Drawing.Point(160, 211);
+            this.txtReorderLevel.Location = new System.Drawing.Point(160, 212);
             this.txtReorderLevel.Margin = new System.Windows.Forms.Padding(4);
             this.txtReorderLevel.Name = "txtReorderLevel";
             this.txtReorderLevel.Size = new System.Drawing.Size(379, 34);
@@ -1032,6 +1032,7 @@
             this.txtQuantityStock.Size = new System.Drawing.Size(379, 34);
             this.txtQuantityStock.TabIndex = 4;
             this.txtQuantityStock.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantityStock_KeyDown);
+            this.txtQuantityStock.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtQuantityStock_PreviewKeyDown);
             // 
             // label2
             // 
@@ -1354,7 +1355,7 @@
             this.cmbDelWarehouseCode.Location = new System.Drawing.Point(169, 178);
             this.cmbDelWarehouseCode.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDelWarehouseCode.Name = "cmbDelWarehouseCode";
-            this.cmbDelWarehouseCode.Size = new System.Drawing.Size(357, 36);
+            this.cmbDelWarehouseCode.Size = new System.Drawing.Size(359, 36);
             this.cmbDelWarehouseCode.TabIndex = 272;
             // 
             // label10
@@ -1382,7 +1383,7 @@
             this.cmbDelDeliveryStatus.Location = new System.Drawing.Point(724, 178);
             this.cmbDelDeliveryStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDelDeliveryStatus.Name = "cmbDelDeliveryStatus";
-            this.cmbDelDeliveryStatus.Size = new System.Drawing.Size(357, 36);
+            this.cmbDelDeliveryStatus.Size = new System.Drawing.Size(358, 36);
             this.cmbDelDeliveryStatus.TabIndex = 278;
             // 
             // txtDelRemarks
@@ -1522,7 +1523,7 @@
             this.cmbDelProductStatus.Location = new System.Drawing.Point(169, 142);
             this.cmbDelProductStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDelProductStatus.Name = "cmbDelProductStatus";
-            this.cmbDelProductStatus.Size = new System.Drawing.Size(357, 36);
+            this.cmbDelProductStatus.Size = new System.Drawing.Size(359, 36);
             this.cmbDelProductStatus.TabIndex = 295;
             // 
             // cmbDelBranch
@@ -1537,7 +1538,7 @@
             this.cmbDelBranch.Location = new System.Drawing.Point(724, 31);
             this.cmbDelBranch.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDelBranch.Name = "cmbDelBranch";
-            this.cmbDelBranch.Size = new System.Drawing.Size(357, 36);
+            this.cmbDelBranch.Size = new System.Drawing.Size(358, 36);
             this.cmbDelBranch.TabIndex = 294;
             this.cmbDelBranch.Text = "SELECT BRANCH";
             // 
@@ -1776,7 +1777,7 @@
             this.gridDelivery.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.gridDelivery.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gridDelivery.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridDelivery.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridDelivery.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.gridDelivery.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.gridDelivery.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridDelivery.Appearance.FocusedRow.Options.UseBorderColor = true;
@@ -2002,7 +2003,7 @@
             this.cmbReturnedWarehouse.Location = new System.Drawing.Point(167, 251);
             this.cmbReturnedWarehouse.Margin = new System.Windows.Forms.Padding(4);
             this.cmbReturnedWarehouse.Name = "cmbReturnedWarehouse";
-            this.cmbReturnedWarehouse.Size = new System.Drawing.Size(357, 36);
+            this.cmbReturnedWarehouse.Size = new System.Drawing.Size(358, 36);
             this.cmbReturnedWarehouse.TabIndex = 275;
             // 
             // label41
@@ -2055,7 +2056,7 @@
             this.cmbReturnedBranch.Location = new System.Drawing.Point(167, 214);
             this.cmbReturnedBranch.Margin = new System.Windows.Forms.Padding(4);
             this.cmbReturnedBranch.Name = "cmbReturnedBranch";
-            this.cmbReturnedBranch.Size = new System.Drawing.Size(357, 36);
+            this.cmbReturnedBranch.Size = new System.Drawing.Size(358, 36);
             this.cmbReturnedBranch.TabIndex = 274;
             // 
             // label44
@@ -2280,7 +2281,7 @@
             this.gridReturn.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.gridReturn.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gridReturn.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridReturn.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridReturn.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.gridReturn.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.gridReturn.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridReturn.Appearance.FocusedRow.Options.UseBorderColor = true;
@@ -2645,9 +2646,9 @@
             this.label43.Location = new System.Drawing.Point(15, 261);
             this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(120, 23);
+            this.label43.Size = new System.Drawing.Size(127, 23);
             this.label43.TabIndex = 318;
-            this.label43.Text = "Item Dicount:";
+            this.label43.Text = "Item Discount:";
             // 
             // label45
             // 
@@ -2806,7 +2807,7 @@
             this.gridSales.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.gridSales.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gridSales.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridSales.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridSales.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.gridSales.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.gridSales.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridSales.Appearance.FocusedRow.Options.UseBorderColor = true;

@@ -1170,6 +1170,16 @@ namespace Inventory.MainForm
             }
         }
 
+        private void gridInventory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                bntADD_Click(bntADD, EventArgs.Empty); // Simulate Add click
+                InputWhit(); // Reset all controls' backgrounds
+            }
+        }
+
         private void UpdateDelivery()
         {
             var deliveryId = int.Parse(txtDelWarehouseId.Text.Trim());

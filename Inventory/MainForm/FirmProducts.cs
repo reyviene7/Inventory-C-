@@ -641,10 +641,26 @@ namespace Inventory.MainForm
 
         private void txtTareWeight_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                InputManipulation.InputBoxLeave(txtTareWeight, txtNetWeight, "Tare Weight",
-                Messages.TitleProducts);
+                var len = txtTareWeight.Text.Length;
+                if (len > 0)
+                {
+                    txtTareWeight.BackColor = Color.White;
+                    InputManipulation.InputBoxLeave(txtTareWeight, txtNetWeight, "Tare Weight",
+                    Messages.TitleProducts);
+                }
+                else
+                {
+                    txtTareWeight.Text = @"0";
+                    txtTareWeight.BackColor = Color.Yellow;
+                    txtTareWeight.Focus();
+                }
+                if (txtTareWeight.Text == "0" && e.KeyCode == Keys.Enter)
+                {
+                    InputManipulation.InputBoxLeave(txtTareWeight, txtNetWeight, "Tare Weight",
+                        Messages.TitleProducts);
+                }
             }
         }
 
@@ -669,10 +685,26 @@ namespace Inventory.MainForm
 
         private void txtNetWeight_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                InputManipulation.InputBoxLeave(txtNetWeight, txtTradePrice, "Net Weight",
-                Messages.TitleProducts);
+                var len = txtNetWeight.Text.Length;
+                if (len > 0)
+                {
+                    txtNetWeight.BackColor = Color.White;
+                    InputManipulation.InputBoxLeave(txtNetWeight, txtTradePrice, "Net Weight",
+                    Messages.TitleProducts);
+                }
+                else
+                {
+                    txtNetWeight.Text = @"0";
+                    txtNetWeight.BackColor = Color.Yellow;
+                    txtNetWeight.Focus();
+                }
+                if (txtNetWeight.Text == "0" && e.KeyCode == Keys.Enter)
+                {
+                    InputManipulation.InputBoxLeave(txtNetWeight, txtTradePrice, "Net Weight",
+                        Messages.TitleProducts);
+                }
             }
         }
 
@@ -697,10 +729,26 @@ namespace Inventory.MainForm
 
         private void txtTradePrice_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                InputManipulation.InputBoxLeave(txtTradePrice, txtRetailPrice, "Trade Price",
-                Messages.TitleProducts);
+                var len = txtTradePrice.Text.Length;
+                if (len > 0)
+                {
+                    txtTradePrice.BackColor = Color.White;
+                    InputManipulation.InputBoxLeave(txtTradePrice, txtRetailPrice, "Trade Price",
+                    Messages.TitleProducts);
+                }
+                else
+                {
+                    txtTradePrice.Text = @"0";
+                    txtTradePrice.BackColor = Color.Yellow;
+                    txtTradePrice.Focus();
+                }
+                if (txtTradePrice.Text == "0" && e.KeyCode == Keys.Enter)
+                {
+                    InputManipulation.InputBoxLeave(txtTradePrice, txtRetailPrice, "Trade Price",
+                        Messages.TitleProducts);
+                }
             }
         }
 
@@ -725,10 +773,26 @@ namespace Inventory.MainForm
 
         private void txtRetailPrice_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                InputManipulation.InputBoxLeave(txtRetailPrice, txtWholesale, "Retail Price",
-                Messages.TitleProducts);
+                var len = txtRetailPrice.Text.Length;
+                if (len > 0)
+                {
+                    txtRetailPrice.BackColor = Color.White;
+                    InputManipulation.InputBoxLeave(txtRetailPrice, txtWholesale, "Retail Price",
+                    Messages.TitleProducts);
+                }
+                else
+                {
+                    txtRetailPrice.Text = @"0";
+                    txtRetailPrice.BackColor = Color.Yellow;
+                    txtRetailPrice.Focus();
+                }
+                if (txtRetailPrice.Text == "0" && e.KeyCode == Keys.Enter)
+                {
+                    InputManipulation.InputBoxLeave(txtRetailPrice, txtWholesale, "Retail Price",
+                        Messages.TitleProducts);
+                }
             }
         }
 
@@ -753,10 +817,26 @@ namespace Inventory.MainForm
 
         private void txtWholesale_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                InputManipulation.InputBoxLeave(txtWholesale, cmbProductStatus, "Whole Sale Price",
-                Messages.TitleProducts);
+                var len = txtWholesale.Text.Length;
+                if (len > 0)
+                {
+                    txtWholesale.BackColor = Color.White;
+                    InputManipulation.InputBoxLeave(txtWholesale, cmbProductStatus, "Whole Sale Price",
+                    Messages.TitleProducts);
+                }
+                else
+                {
+                    txtWholesale.Text = @"0";
+                    txtWholesale.BackColor = Color.Yellow;
+                    txtWholesale.Focus();
+                }
+                if (txtWholesale.Text == "0" && e.KeyCode == Keys.Enter)
+                {
+                    InputManipulation.InputBoxLeave(txtWholesale, cmbProductStatus, "Whole Sale Price",
+                        Messages.TitleProducts);
+                }
             }
         }
 

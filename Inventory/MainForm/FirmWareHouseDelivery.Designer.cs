@@ -202,7 +202,7 @@
             this.bntADD.Margin = new System.Windows.Forms.Padding(4);
             this.bntADD.Name = "bntADD";
             this.bntADD.Size = new System.Drawing.Size(121, 128);
-            this.bntADD.TabIndex = 17;
+            this.bntADD.TabIndex = 18;
             this.bntADD.Text = "Delivery";
             this.bntADD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntADD.UseVisualStyleBackColor = false;
@@ -783,6 +783,7 @@
             this.gridInventory.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
             this.gridInventory.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridBranch_RowClick);
             this.gridInventory.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridList_FocusedRowChanged);
+            this.gridInventory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridInventory_KeyDown);
             this.gridInventory.LostFocus += new System.EventHandler(this.GridInventory_LostFocus);
             // 
             // gridView2
@@ -1407,7 +1408,7 @@
             this.gridDelivery.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.gridDelivery.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gridDelivery.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridDelivery.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridDelivery.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.gridDelivery.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.gridDelivery.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridDelivery.Appearance.FocusedRow.Options.UseBorderColor = true;
@@ -1572,7 +1573,7 @@
             this.bntSAVE.Margin = new System.Windows.Forms.Padding(4);
             this.bntSAVE.Name = "bntSAVE";
             this.bntSAVE.Size = new System.Drawing.Size(244, 128);
-            this.bntSAVE.TabIndex = 19;
+            this.bntSAVE.TabIndex = 17;
             this.bntSAVE.Text = "SAVE";
             this.bntSAVE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSAVE.UseVisualStyleBackColor = false;
@@ -1589,7 +1590,7 @@
             this.bntUPDATE.Margin = new System.Windows.Forms.Padding(4);
             this.bntUPDATE.Name = "bntUPDATE";
             this.bntUPDATE.Size = new System.Drawing.Size(121, 128);
-            this.bntUPDATE.TabIndex = 18;
+            this.bntUPDATE.TabIndex = 19;
             this.bntUPDATE.Text = "EDIT";
             this.bntUPDATE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntUPDATE.UseVisualStyleBackColor = false;

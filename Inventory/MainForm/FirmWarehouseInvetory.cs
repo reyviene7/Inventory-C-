@@ -1268,11 +1268,28 @@ namespace Inventory.MainForm
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 var len = txtQuantityStock.Text.Length;
+
                 if (len > 0)
                 {
                     txtQuantityStock.BackColor = Color.White;
-                    InputManipulation.InputBoxLeave(txtQuantityStock, txtReorderLevel, "Warehouse Inventory Quantity",
-                    Messages.TitleWarehouseInventory);
+                    InputManipulation.InputBoxLeave(txtQuantityStock, txtReorderLevel, "Warehouse Inventory Quantity", Messages.TitleWarehouseInventory);
+
+                    // Calculate total value here
+                    if (decimal.TryParse(txtQuantityStock.Text, out decimal quantity) &&
+                        decimal.TryParse(txtCostPerUnit.Text, out decimal costPerUnit))
+                    {
+                        decimal totalValue = quantity * costPerUnit;
+                        txtTotalValue.Text = totalValue.ToString("N2");
+
+                        if (quantity == 0)
+                        {
+                            InputManipulation.InputBoxLeave(txtQuantityStock, txtReorderLevel, "Warehouse Inventory Quantity", Messages.TitleWarehouseInventory);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter valid numeric values for Quantity and Cost Per Unit.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
@@ -1280,13 +1297,11 @@ namespace Inventory.MainForm
                     txtQuantityStock.BackColor = Color.Yellow;
                     txtQuantityStock.Focus();
                 }
-                if (txtQuantityStock.Text == "0" && e.KeyCode == Keys.Enter)
-                {
-                    InputManipulation.InputBoxLeave(txtQuantityStock, txtReorderLevel, "Warehouse Inventory Quantity",
-                        Messages.TitleWarehouseInventory);
-                }
+
+                e.SuppressKeyPress = true; // Prevent beep sound
             }
         }
+
         private void txtReorderLevel_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -1316,7 +1331,7 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                InputManipulation.InputBoxLeave(cmbSupplier, txtCostPerUnit, "Supplier Name",
+                InputManipulation.InputBoxLeave(cmbSupplier, dkpLastStockedDate, "Supplier Name",
                 Messages.TitleWarehouseInventory);
             }
         }
@@ -1468,6 +1483,14 @@ namespace Inventory.MainForm
             if (e.KeyCode == Keys.Tab)
             {
                 txtCostPerUnit_KeyDown(sender, new KeyEventArgs(Keys.Tab));
+            }
+        }
+
+        private void txtQuantityStock_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                txtQuantityStock_KeyDown(sender, new KeyEventArgs(Keys.Tab));
             }
         }
 

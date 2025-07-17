@@ -394,7 +394,7 @@
             this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.ForeColor = System.Drawing.Color.Maroon;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(165, 100);
+            this.cmbCategory.Location = new System.Drawing.Point(165, 101);
             this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(357, 36);
@@ -408,7 +408,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(5, 108);
+            this.label11.Location = new System.Drawing.Point(5, 109);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 23);
@@ -431,7 +431,7 @@
             "User",
             "Admin",
             "Programmer"});
-            this.cmbSupplier.Location = new System.Drawing.Point(165, 137);
+            this.cmbSupplier.Location = new System.Drawing.Point(165, 138);
             this.cmbSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(357, 36);
@@ -463,7 +463,7 @@
             this.cmbProductStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbProductStatus.Location = new System.Drawing.Point(664, 248);
+            this.cmbProductStatus.Location = new System.Drawing.Point(665, 248);
             this.cmbProductStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductStatus.Name = "cmbProductStatus";
             this.cmbProductStatus.Size = new System.Drawing.Size(357, 36);
@@ -637,7 +637,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(5, 219);
+            this.label5.Location = new System.Drawing.Point(5, 220);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 23);
@@ -650,7 +650,7 @@
             this.txtProductBrand.Enabled = false;
             this.txtProductBrand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductBrand.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductBrand.Location = new System.Drawing.Point(167, 211);
+            this.txtProductBrand.Location = new System.Drawing.Point(167, 212);
             this.txtProductBrand.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductBrand.Name = "txtProductBrand";
             this.txtProductBrand.Size = new System.Drawing.Size(357, 34);
@@ -663,7 +663,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(5, 182);
+            this.label4.Location = new System.Drawing.Point(5, 183);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 23);
@@ -676,7 +676,7 @@
             this.txtStockCode.Enabled = false;
             this.txtStockCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStockCode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtStockCode.Location = new System.Drawing.Point(167, 174);
+            this.txtStockCode.Location = new System.Drawing.Point(167, 175);
             this.txtStockCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtStockCode.Name = "txtStockCode";
             this.txtStockCode.Size = new System.Drawing.Size(357, 34);
@@ -689,7 +689,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(5, 145);
+            this.label3.Location = new System.Drawing.Point(5, 146);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 23);

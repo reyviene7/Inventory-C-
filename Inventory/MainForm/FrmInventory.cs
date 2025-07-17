@@ -978,7 +978,7 @@ namespace Inventory.MainForm
                         cmbDelBranch.Text = ent.branch_details;
                         txtDelLastCost.Text = ent.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
                         txtDelCostPerItem.Text = ent.cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtDelTotal.Text = ent.total_value.ToString(CultureInfo.InvariantCulture);
+                        txtDelTotal.Text = ent.total_value.ToString("N2", CultureInfo.InvariantCulture);
                         cmbDelStatus.Text = ent.status_details;
                         txtDelReceiptNo.Text = ent.receipt_number;
                         txtDelRemarks.Text = ent.remarks;
@@ -1157,7 +1157,7 @@ namespace Inventory.MainForm
                     QUANTITY = x.delivery_qty,
                     TRADE = x.cost_per_unit,
                     RETAIL = x.last_cost_per_unit,
-                    TOTAL = x.total_value
+                    TOTAL = x.total_value.ToString("N2"),
                 }).ToList();
 
                 gridCtrlProducts.DataSource = null;
@@ -1316,7 +1316,7 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                txtLastCost.Focus();
+                cmbProductStatus.Focus();
             }
             if (e.KeyCode == Keys.Up)
             {
@@ -1388,7 +1388,7 @@ namespace Inventory.MainForm
             {
                 BindProductStatus();
             }
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 InputManipulation.InputCaseLeave(cmbProductStatus, bntSave, "Product Status",
                     Messages.TitleInventory);
