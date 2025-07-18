@@ -479,7 +479,7 @@ namespace Inventory.MainForm
             _edt = true;
             _del = false;
             gridController.Enabled = false;
-        
+            txtServiceName.Focus();
         }
         private void ButDel()
         {

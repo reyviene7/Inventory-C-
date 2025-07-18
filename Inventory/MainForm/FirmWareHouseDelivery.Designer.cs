@@ -203,7 +203,7 @@
             this.bntADD.Name = "bntADD";
             this.bntADD.Size = new System.Drawing.Size(121, 128);
             this.bntADD.TabIndex = 18;
-            this.bntADD.Text = "DELIVERY";
+            this.bntADD.Text = "DELIVER";
             this.bntADD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntADD.UseVisualStyleBackColor = false;
             this.bntADD.Click += new System.EventHandler(this.bntADD_Click);

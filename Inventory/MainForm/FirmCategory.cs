@@ -316,11 +316,14 @@ namespace Inventory.MainForm
                 InputEnab();
                 InputWhit();
                 gridControl.Enabled = false;
-            } else if (_cat == false && _sup)
+                txtCategoryDetails.Focus();
+            }
+            else if (_cat == false && _sup)
             {
                 InputEnabSup();
                 InputWhitSup();
                 gridControl.Enabled = false;
+                txtSupplierName.Focus();
             }
         }
         private void ButDel()

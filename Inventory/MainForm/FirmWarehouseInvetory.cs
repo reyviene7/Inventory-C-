@@ -495,7 +495,6 @@ namespace Inventory.MainForm
             cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
             cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
             cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
-            txtQuantityStock.Focus();
             if (_products.Any())
             {
                 cmbProductName.SelectedIndex = 0;

@@ -416,6 +416,7 @@ namespace Inventory.MainForm
             _add = false;
             _edt = true;
             _del = false;
+            txtBranchName.Focus();
         }
 
         private void ButDel()

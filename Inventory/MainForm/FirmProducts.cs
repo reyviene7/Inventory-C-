@@ -320,6 +320,7 @@ namespace Inventory.MainForm
             _edt = true;
             _del = false;
             gridControl.Enabled = false;
+            txtProductName.Focus();
         }
         private void ButDel()
         {
