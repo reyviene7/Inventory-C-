@@ -1,4 +1,6 @@
-﻿namespace Inventory.MainForm
+﻿using System.Drawing;
+
+namespace Inventory.MainForm
 {
     partial class FrmUsers
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsers));
             this.label6 = new System.Windows.Forms.Label();
@@ -1379,7 +1382,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmUsers";
-            this.Text = "FrmUsers";
+            this.Text = "Users";
             this.Load += new System.EventHandler(this.FrmUsers_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmUsers_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();

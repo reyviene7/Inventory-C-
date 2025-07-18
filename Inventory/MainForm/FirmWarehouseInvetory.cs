@@ -488,7 +488,6 @@ namespace Inventory.MainForm
             _del = false;
             gridController.Enabled = false;
             cmbProductName.DataBindings.Clear();
-            cmbSupplier.DataBindings.Clear();
             cmbStatus.DataBindings.Clear();
             cmbItemLocation.DataBindings.Clear();
             cmbProductName.DataSource = _products.Select(p => p.product_name).ToList();

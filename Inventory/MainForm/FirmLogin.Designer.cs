@@ -1,4 +1,6 @@
-﻿namespace Inventory.MainForm
+﻿using System.Drawing;
+
+namespace Inventory.MainForm
 {
     partial class FirmLogin
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Text = "Login";
+            this.Icon = new Icon("wizard.ico");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmLogin));
             this.intWET = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.lblSubTitle = new System.Windows.Forms.Label();
@@ -299,8 +303,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "                                                                                 " +
-    "                     ";
+            this.Text = "Login";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FirmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgEmployees)).EndInit();

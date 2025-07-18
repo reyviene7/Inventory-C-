@@ -212,9 +212,9 @@
         ObAiB1bkwMzMzMzMzMzMzMzMztVfaqPmxmANFfQAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="RightOptions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="RightOptions.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>131, 17</value>
-  </metadata>
+  </data>
   <data name="pcLOG.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAwYAAAUACAYAAAD9T0XzAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s
@@ -11101,10 +11101,18 @@
         JxHlE1EWEWW8MfWbN0Z+vsrED4joe8sm/gMerpha1tbnPwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="Options.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="Options.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>278, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
     <value>25</value>
-  </metadata>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Wizard.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wizard-removebg-preview.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="wizard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\wizard.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

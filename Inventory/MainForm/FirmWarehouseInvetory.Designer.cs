@@ -1,4 +1,6 @@
-﻿namespace Inventory.MainForm
+﻿using System.Drawing;
+
+namespace Inventory.MainForm
 {
     partial class FirmWarehouseInvetory
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmWarehouseInvetory));
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
@@ -3051,7 +3054,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmWarehouseInvetory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FirmWarehouseInvetory";
+            this.Text = "Warehouse Inventory";
             this.Load += new System.EventHandler(this.FirmWarehouseInvetory_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirmWarehouseInvetory_MouseMove);
             this.pnlRightOptions.ResumeLayout(false);

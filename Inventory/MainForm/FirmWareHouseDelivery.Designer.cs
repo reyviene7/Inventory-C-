@@ -1,4 +1,6 @@
-﻿namespace Inventory.MainForm
+﻿using System.Drawing;
+
+namespace Inventory.MainForm
 {
     partial class FirmWareHouseDelivery
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmWareHouseDelivery));
             this.bntADD = new System.Windows.Forms.Button();
@@ -1911,7 +1914,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmWareHouseDelivery";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FirmWareHouseDelivery";
+            this.Text = "Warehouse Delivery";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FirmWarehouseDelivery_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirmWareHouseDelivery_MouseMove);

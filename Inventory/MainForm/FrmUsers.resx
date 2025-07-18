@@ -246,9 +246,9 @@
         EUWIMBHxIizmD3hg45eT+sNQAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="RightOptions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="RightOptions.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>177, 17</value>
-  </metadata>
+  </data>
   <data name="bntHome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -14446,12 +14446,12 @@
         CIIgCIIgCIIgCILgEPE3+kB8fUjdIXoAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="imgOFD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="imgOFD.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>324, 17</value>
-  </metadata>
-  <metadata name="Options.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="Options.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>439, 17</value>
-  </metadata>
+  </data>
   <data name="pcRight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAD
@@ -14528,5 +14528,9 @@
         TvbnsfV8LjySxzrUf3Ss53PhObAiB1bkwIocWJEDK3JgRQ6syIEVObAiB1bkwIocWJEDK3JgRQ6syIEV
         ObAiB1bkwMzMzMzMzMzMzMzMztVfaqPmxmANFfQAAAAASUVORK5CYII=
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="wizard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\wizard.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

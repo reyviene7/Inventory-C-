@@ -1,4 +1,6 @@
-﻿namespace Inventory.MainForm
+﻿using System.Drawing;
+
+namespace Inventory.MainForm
 {
     partial class FirmMain
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmMain));
@@ -1684,7 +1687,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FirmMain";
+            this.Text = "Inventory";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FirmMain_FormClosed);
             this.Load += new System.EventHandler(this.FirmMain_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirmMain_MouseMove);

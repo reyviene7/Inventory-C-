@@ -25,6 +25,7 @@ namespace Inventory.Properties {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
         internal static Image wizards;
+        internal static Icon wizard;
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;

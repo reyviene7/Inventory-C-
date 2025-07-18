@@ -1,4 +1,6 @@
-﻿namespace Inventory.MainForm
+﻿using System.Drawing;
+
+namespace Inventory.MainForm
 {
     partial class FrmBranch
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBranch));
             this.pnlRightOptions = new System.Windows.Forms.Panel();
@@ -1213,7 +1216,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmBranch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmBranch";
+            this.Text = "Branch";
             this.Load += new System.EventHandler(this.FrmBranch_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmBranch_MouseMove);
             this.pnlRightOptions.ResumeLayout(false);
