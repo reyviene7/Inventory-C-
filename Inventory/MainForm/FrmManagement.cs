@@ -1071,7 +1071,12 @@ namespace Inventory.MainForm
         private void barReportSales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var name = GetUseFullName(_userId);
-            ReportSetting.ListofSalesItem(name);
+
+            var view = new FirmPopCategoryReport(name, 6)
+            {
+                main = this
+            };
+            view.ShowDialog();
         }
         private void barReportSalesPart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

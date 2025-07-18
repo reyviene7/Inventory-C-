@@ -8,6 +8,6 @@ namespace Inventory.Interface
 {
     public interface ISalesItem
     {
-        IEnumerable<ViewReportSales> SalesItem(DateTime startDate, DateTime endDate);
+        IEnumerable<ViewReportSales> SalesItem(string branch, DateTime startDate, DateTime endDate);
     }
 }

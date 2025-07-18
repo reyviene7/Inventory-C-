@@ -348,12 +348,36 @@ namespace Inventory.Config
             band?.Controls.Add(appPared);
             report.ShowPreviewDialog();
         }
-        public static void ListofSalesItem(string fullName)
+        public static void ListofSalesItem(string branch, DateTime startDate, DateTime endngDate, string fullName)
         {
             var report = new RepSalesItem();
             var serv = new ServReportSales();
-            var dataSource = serv.DataSource();
+            var dataSource = serv.DataSource(branch, startDate, endngDate);
             report.Load(dataSource);
+            var starBrnd = new XRLabel
+            {
+                Text = branch,
+                LocationF = new PointF(Constant.LocDBranX, Constant.LocDBranY),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Regular),
+                SizeF = new SizeF(Constant.DetSizeWidth, Constant.DetSizeheight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+            var starDate = new XRLabel
+            {
+                Text = startDate.Date.ToString(Constant.DateFormat),
+                LocationF = new PointF(Constant.LocDStarX, Constant.LocDStarY),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Regular),
+                SizeF = new SizeF(Constant.DetSizeWidth, Constant.DetSizeheight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+            var endDate = new XRLabel
+            {
+                Text = endngDate.Date.ToString(Constant.DateFormat),
+                LocationF = new PointF(Constant.LocDEndsX, Constant.LocDEndsY),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Regular),
+                SizeF = new SizeF(Constant.DetSizeWidth, Constant.DetSizeheight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
             var prePared = new XRLabel
             {
                 Text = fullName,
@@ -371,6 +395,10 @@ namespace Inventory.Config
                 TextAlignment = TextAlignment.MiddleCenter,
             };
             var band = report.Bands[BandKind.ReportFooter] as ReportFooterBand;
+            var bandH = report.Bands[BandKind.ReportHeader] as ReportHeaderBand;
+            bandH?.Controls.Add(starBrnd);
+            bandH?.Controls.Add(starDate);
+            bandH?.Controls.Add(endDate);
             band?.Controls.Add(prePared);
             band?.Controls.Add(appPared);
             report.ShowPreviewDialog();

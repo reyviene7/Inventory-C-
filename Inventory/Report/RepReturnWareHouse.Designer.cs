@@ -291,7 +291,7 @@
             // xrLabel1
             // 
             this.xrLabel1.Font = new System.Drawing.Font("Verdana", 9F);
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(22.7599F, 27.7908F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10F, 27.7908F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(94.375F, 20.91665F);
@@ -315,7 +315,7 @@
             // xrLabel4
             // 
             this.xrLabel4.Font = new System.Drawing.Font("Verdana", 9F);
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(25.56199F, 50.56171F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(12.80209F, 50.56171F);
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel4.SizeF = new System.Drawing.SizeF(56.45013F, 27.54164F);
@@ -343,7 +343,7 @@
             // xrLabel2
             // 
             this.xrLabel2.Font = new System.Drawing.Font("Verdana", 9F);
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(25.56199F, 78.10335F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(12.80209F, 78.10335F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel2.SizeF = new System.Drawing.SizeF(56.45013F, 20.91666F);
@@ -355,7 +355,7 @@
             // xrLabel7
             // 
             this.xrLabel7.Font = new System.Drawing.Font("Verdana", 9F);
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(25.56192F, 99.02F);
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(12.80202F, 99.02F);
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel7.SizeF = new System.Drawing.SizeF(56.45013F, 20.91666F);
@@ -715,7 +715,7 @@
             this.objSource});
             this.DataSource = this.objSource;
             this.Margins = new System.Drawing.Printing.Margins(50, 50, 100, 50);
-            this.Version = "19.2";
+            this.Version = "21.2";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).EndInit();

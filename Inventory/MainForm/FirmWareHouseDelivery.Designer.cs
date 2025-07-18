@@ -195,7 +195,7 @@
             // 
             this.bntADD.BackColor = System.Drawing.Color.Red;
             this.bntADD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bntADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.bntADD.ForeColor = System.Drawing.Color.White;
             this.bntADD.Image = ((System.Drawing.Image)(resources.GetObject("bntADD.Image")));
             this.bntADD.Location = new System.Drawing.Point(1, 233);
@@ -203,7 +203,7 @@
             this.bntADD.Name = "bntADD";
             this.bntADD.Size = new System.Drawing.Size(121, 128);
             this.bntADD.TabIndex = 18;
-            this.bntADD.Text = "Delivery";
+            this.bntADD.Text = "DELIVERY";
             this.bntADD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntADD.UseVisualStyleBackColor = false;
             this.bntADD.Click += new System.EventHandler(this.bntADD_Click);
@@ -1669,10 +1669,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(88, 25);
+            this.pictureBox1.Location = new System.Drawing.Point(55, 6);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(124, 146);
+            this.pictureBox1.Size = new System.Drawing.Size(124, 167);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 123;
             this.pictureBox1.TabStop = false;

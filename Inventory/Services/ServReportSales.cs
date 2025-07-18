@@ -15,10 +15,10 @@ namespace Inventory.Services
     {
         private IList<SalesList> _list;
 
-        public IEnumerable<SalesList> DataSource()
+        public IEnumerable<SalesList> DataSource(string branch, DateTime startDate, DateTime endDate)
         {
             _list = new List<SalesList>();
-            var sources = Source();
+            var sources = SalesItem(branch, startDate, endDate);
             if (sources != null)
             {
                 foreach (var source in sources)
@@ -40,7 +40,7 @@ namespace Inventory.Services
             }
             return _list;
         }
-        public IEnumerable<ViewReportSales> SalesItem(DateTime startDate, DateTime endDate)
+        public IEnumerable<ViewReportSales> SalesItem(string branch, DateTime startDate, DateTime endDate)
         {
             using (var session = new DalSession())
             {
@@ -49,6 +49,7 @@ namespace Inventory.Services
                 {
                     var repository = new Repository<ViewReportSales>(unWork);
                     return repository.SelectAll(Query.SelectReportSales)
+                        .Where(x => x.branch_details == branch)
                         .Where(x => x.sale_date >= startDate)
                         .Where(x => x.sale_date <= endDate)
                         .ToList();

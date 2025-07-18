@@ -481,7 +481,12 @@ namespace Inventory.MainForm
         private void tileReportSales_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             var name = GetUseFullName(_userId);
-            ReportSetting.ListofSalesItem(name);
+
+            var view = new FirmPopCategoryReport(name, 6)
+            {
+                Main = this
+            };
+            view.ShowDialog();
         }
 
         private void tileInventory_itemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)

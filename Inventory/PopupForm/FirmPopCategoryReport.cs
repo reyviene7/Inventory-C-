@@ -50,6 +50,14 @@ namespace Inventory.PopupForm
             var branchNam = cmbDIS.Text.Trim(' ');
             ReportSetting.DailySummaryWareHouseDelivery(startDate, endngDate, _fullName, branchNam);
         }
+
+        public void ShowSalesReport()
+        {
+            var startDate = dkpSTR.Value.Date;
+            var endngDate = dkpEND.Value.Date;
+            var branchNam = cmbDIS.Text.Trim(' ');
+            ReportSetting.ListofSalesItem(branchNam, startDate, endngDate, _fullName);
+        }
         private void bntSVA_Click(object sender, EventArgs e)
         {
             try
@@ -64,6 +72,9 @@ namespace Inventory.PopupForm
                         break;
                     case 5:
                         ShowSummaryWarehouseDelivery();
+                        break;
+                    case 6:
+                        ShowSalesReport();
                         break;
                     default:
                         MessageBox.Show("Invalid report type.");

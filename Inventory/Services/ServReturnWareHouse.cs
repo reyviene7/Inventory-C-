@@ -18,7 +18,7 @@ namespace Inventory.Services
         public IEnumerable<ReturnWarehouse> DataSource(string branch, DateTime startDate, DateTime endDate)
         {
             _list = new List<ReturnWarehouse>();
-            var sources = Source();
+            var sources = ReturnWarehouse(branch, startDate, endDate);
             if (sources != null)
             {
                 foreach (var source in sources)
