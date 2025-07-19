@@ -1,4 +1,6 @@
-﻿namespace Inventory.PopupForm
+﻿using System.Drawing;
+
+namespace Inventory.PopupForm
 {
     partial class FirmPopCategoryReport
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Text = "Category Report";
+            this.Icon = new Icon("wizard.ico");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmPopCategoryReport));
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
             this.label3 = new System.Windows.Forms.Label();

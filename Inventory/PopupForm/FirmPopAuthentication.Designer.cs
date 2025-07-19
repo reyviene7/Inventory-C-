@@ -1,4 +1,6 @@
-﻿namespace Inventory.PopupForm
+﻿using System.Drawing;
+
+namespace Inventory.PopupForm
 {
     partial class FirmPopAuthentication
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmPopAuthentication));
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
             this.txtPSS = new DevExpress.XtraEditors.TextEdit();
@@ -193,7 +196,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmPopAuthentication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FirmPopAuthentication";
+            this.Text = "Authentication";
             this.Load += new System.EventHandler(this.FirmPopAuthentication_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
             this.gbCON.ResumeLayout(false);

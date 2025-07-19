@@ -1,4 +1,6 @@
-﻿namespace Inventory.PopupForm
+﻿using System.Drawing;
+
+namespace Inventory.PopupForm
 {
     partial class FrmPopUpdateExpenses
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPopUpdateExpenses));
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.groupLauncher = new DevExpress.XtraEditors.GroupControl();
@@ -284,7 +287,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPopUpdateExpenses";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FrmPopAccept";
+            this.Text = "Update Expenses";
             this.Load += new System.EventHandler(this.FrmPopUpdateExpenses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupLauncher)).EndInit();
             this.groupLauncher.ResumeLayout(false);

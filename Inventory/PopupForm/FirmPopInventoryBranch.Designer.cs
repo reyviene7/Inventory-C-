@@ -1,4 +1,6 @@
-﻿namespace Inventory.PopupForm
+﻿using System.Drawing;
+
+namespace Inventory.PopupForm
 {
     partial class FirmPopInventoryBranch
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmPopInventoryBranch));
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
             this.cmbDIS = new System.Windows.Forms.ComboBox();
@@ -111,7 +114,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmPopInventoryBranch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FirmPopBranches";
+            this.Text = "Inventory Branches";
             this.Load += new System.EventHandler(this.FirmPopInventoryBranch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
             this.gbCON.ResumeLayout(false);

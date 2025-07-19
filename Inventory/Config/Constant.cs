@@ -31,7 +31,7 @@ namespace Inventory.Config
         public const int SizeWidth = 215;
         public const int SizeHeight = 21;
         public const int FontSize = 10;
-        public const string DefaultApprove = "Angela Reyes-Javier";
+        public const string DefaultApprove = "Mechelle Rose Castillano";
         public const float DetSizeWidth = (float) 118.84;
         public const float DetSizeheight = (float)20.92;
         public const string DefaultInvoice = "#000";

@@ -1,4 +1,6 @@
-﻿namespace Inventory.PopupForm
+﻿using System.Drawing;
+
+namespace Inventory.PopupForm
 {
     partial class FirmPopDateEntries
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
+
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmPopDateEntries));
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
             this.lblMainTitle = new System.Windows.Forms.Label();
@@ -150,7 +154,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirmPopDateEntries";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FirmPopShowReport";
+            this.Text = "Show Report";
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
             this.gbCON.ResumeLayout(false);
             this.gbCON.PerformLayout();

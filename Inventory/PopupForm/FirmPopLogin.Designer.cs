@@ -1,4 +1,6 @@
-﻿namespace Inventory.PopupForm
+﻿using System.Drawing;
+
+namespace Inventory.PopupForm
 {
     partial class FirmPopLogin
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
+            this.Text = "Login";
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmPopLogin));
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
             this.txtPASS = new DevExpress.XtraEditors.TextEdit();

@@ -1,4 +1,6 @@
-﻿namespace Inventory.PopupForm
+﻿using System.Drawing;
+
+namespace Inventory.PopupForm
 {
     partial class FirmPopServer
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmPopServer));
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
             this.bntCLR = new DevExpress.XtraEditors.SimpleButton();
@@ -230,7 +233,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmPopServer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FirmPopServer";
+            this.Text = "Server";
             this.Load += new System.EventHandler(this.FirmPopServer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gbCON)).EndInit();
             this.gbCON.ResumeLayout(false);
