@@ -151,7 +151,7 @@ namespace Inventory.MainForm
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(381, 22);
+            this.label6.Location = new System.Drawing.Point(303, 21);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(259, 60);
@@ -164,7 +164,7 @@ namespace Inventory.MainForm
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(163, 98);
+            this.label7.Location = new System.Drawing.Point(29, 96);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 23);
@@ -177,7 +177,7 @@ namespace Inventory.MainForm
             this.txtImageId.Enabled = false;
             this.txtImageId.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageId.ForeColor = System.Drawing.Color.Black;
-            this.txtImageId.Location = new System.Drawing.Point(335, 90);
+            this.txtImageId.Location = new System.Drawing.Point(201, 88);
             this.txtImageId.Margin = new System.Windows.Forms.Padding(4);
             this.txtImageId.Name = "txtImageId";
             this.txtImageId.Size = new System.Drawing.Size(468, 36);
@@ -189,7 +189,7 @@ namespace Inventory.MainForm
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(163, 252);
+            this.label5.Location = new System.Drawing.Point(29, 250);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(138, 23);
@@ -202,7 +202,7 @@ namespace Inventory.MainForm
             this.label45.BackColor = System.Drawing.Color.Transparent;
             this.label45.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label45.ForeColor = System.Drawing.Color.White;
-            this.label45.Location = new System.Drawing.Point(163, 137);
+            this.label45.Location = new System.Drawing.Point(29, 135);
             this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(111, 23);
@@ -251,7 +251,7 @@ namespace Inventory.MainForm
             "JPG",
             "PNG",
             "BMP"});
-            this.txtImageType.Location = new System.Drawing.Point(335, 204);
+            this.txtImageType.Location = new System.Drawing.Point(201, 202);
             this.txtImageType.Margin = new System.Windows.Forms.Padding(4);
             this.txtImageType.Name = "txtImageType";
             this.txtImageType.Size = new System.Drawing.Size(468, 36);
@@ -263,7 +263,7 @@ namespace Inventory.MainForm
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(163, 213);
+            this.label11.Location = new System.Drawing.Point(29, 211);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 23);
@@ -274,7 +274,7 @@ namespace Inventory.MainForm
             // 
             this.bntSaveImages.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntSaveImages.ImageOptions.Image")));
             this.bntSaveImages.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntSaveImages.Location = new System.Drawing.Point(569, 288);
+            this.bntSaveImages.Location = new System.Drawing.Point(435, 286);
             this.bntSaveImages.Margin = new System.Windows.Forms.Padding(4);
             this.bntSaveImages.Name = "bntSaveImages";
             this.bntSaveImages.Size = new System.Drawing.Size(235, 46);
@@ -286,7 +286,7 @@ namespace Inventory.MainForm
             // 
             this.bntBrowseImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntBrowseImage.ImageOptions.Image")));
             this.bntBrowseImage.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntBrowseImage.Location = new System.Drawing.Point(335, 288);
+            this.bntBrowseImage.Location = new System.Drawing.Point(201, 286);
             this.bntBrowseImage.Margin = new System.Windows.Forms.Padding(4);
             this.bntBrowseImage.Name = "bntBrowseImage";
             this.bntBrowseImage.Size = new System.Drawing.Size(235, 46);
@@ -300,7 +300,7 @@ namespace Inventory.MainForm
             this.txtImageCode.Enabled = false;
             this.txtImageCode.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageCode.ForeColor = System.Drawing.Color.Black;
-            this.txtImageCode.Location = new System.Drawing.Point(335, 128);
+            this.txtImageCode.Location = new System.Drawing.Point(201, 126);
             this.txtImageCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtImageCode.Name = "txtImageCode";
             this.txtImageCode.Size = new System.Drawing.Size(468, 36);
@@ -312,7 +312,7 @@ namespace Inventory.MainForm
             this.label46.BackColor = System.Drawing.Color.Transparent;
             this.label46.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label46.ForeColor = System.Drawing.Color.White;
-            this.label46.Location = new System.Drawing.Point(163, 175);
+            this.label46.Location = new System.Drawing.Point(29, 173);
             this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(117, 23);
@@ -325,7 +325,7 @@ namespace Inventory.MainForm
             this.txtImageName.Enabled = false;
             this.txtImageName.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageName.ForeColor = System.Drawing.Color.Black;
-            this.txtImageName.Location = new System.Drawing.Point(335, 166);
+            this.txtImageName.Location = new System.Drawing.Point(201, 164);
             this.txtImageName.Margin = new System.Windows.Forms.Padding(4);
             this.txtImageName.Name = "txtImageName";
             this.txtImageName.Size = new System.Drawing.Size(468, 36);
@@ -337,7 +337,7 @@ namespace Inventory.MainForm
             this.txtImageLocation.Enabled = false;
             this.txtImageLocation.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageLocation.ForeColor = System.Drawing.Color.Black;
-            this.txtImageLocation.Location = new System.Drawing.Point(335, 241);
+            this.txtImageLocation.Location = new System.Drawing.Point(201, 239);
             this.txtImageLocation.Margin = new System.Windows.Forms.Padding(4);
             this.txtImageLocation.Name = "txtImageLocation";
             this.txtImageLocation.Size = new System.Drawing.Size(468, 39);
@@ -346,10 +346,10 @@ namespace Inventory.MainForm
             // imgPro
             // 
             this.imgPro.BackColor = System.Drawing.Color.Gray;
-            this.imgPro.Location = new System.Drawing.Point(964, 26);
+            this.imgPro.Location = new System.Drawing.Point(800, 44);
             this.imgPro.Margin = new System.Windows.Forms.Padding(4);
             this.imgPro.Name = "imgPro";
-            this.imgPro.Size = new System.Drawing.Size(364, 320);
+            this.imgPro.Size = new System.Drawing.Size(497, 421);
             this.imgPro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgPro.TabIndex = 180;
             this.imgPro.TabStop = false;
