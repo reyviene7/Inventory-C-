@@ -60,7 +60,6 @@ namespace Inventory.MainForm
             PanelInterface.SetRightOptionsPanelPosition(this, pnlRightOptions, pnlRightMain);
             Options.Start();
             RightOptions.Start();
-            splashManager.ShowWaitForm();
             var roles = EnumerableUtils.getRoleType();
             var profile = EnumerableUtils.getProfileNames();
             var roleType = roles.Select(type => type.role_type).ToList();
@@ -77,12 +76,8 @@ namespace Inventory.MainForm
                 cmbName.Text = profileName.First();
             }
             user_image = EnumerableUtils.getViewUserImage();
-            _user_image = EnumerableUtils.getUserImage();
             _users = EnumerableUtils.getUserNameList();
-            _user_list = EnumerableUtils.getUserList();
-            bindingUserList();
-            BindUserImg();
-            splashManager.CloseWaitForm();
+            bindRefreshed();
         }
 
         private void FrmUsers_MouseMove(object sender, MouseEventArgs e)
@@ -286,14 +281,6 @@ namespace Inventory.MainForm
             txtImageLocation.Clear();
         }
 
-        private void InputDimGimg()
-        {
-            txtImageId.BackColor = Color.DimGray;
-            txtImageCode.BackColor = Color.DimGray;
-            txtImageName.BackColor = Color.DimGray;
-            txtImageType.BackColor = Color.DimGray;
-            txtImageLocation.BackColor = Color.DimGray;
-        }
         private void buttonAdd()
         {
             ButtonAdd();
@@ -301,23 +288,11 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridUserList.Enabled = false;
-            if (_usr && _img == false)
-            {
-                cmbName.Focus();
-                InputEnab();
-                InputWhit();
-                InputClea();
-                generateUserCode();
-            }
-            if (_usr == false && _img)
-            {
-              //  GenerateImgCode();
-                InputEnabimg();
-                InputWhitimg();
-                InputCleaimg();
-                txtImageName.Focus();
-            }
-
+            cmbName.Focus();
+            InputEnab();
+            InputWhit();
+            InputClea();
+            generateUserCode();
         }
         private void buttonUpdate()
         {
@@ -325,19 +300,10 @@ namespace Inventory.MainForm
             _add = false;
             _edt = true;
             _del = false;
-            if (_usr && _img == false)
-            {
-                InputEnab();
-                InputWhit();
-                gridUserList.Enabled = false;
-                txtPassword.Focus();
-            }
-            if (_usr == false && _img)
-            {
-                InputEnabimg();
-                InputWhitimg();
-                gIMG.Enabled = false;
-            }
+            InputEnab();
+            InputWhit();
+            gridUserList.Enabled = false;
+            txtPassword.Focus();
         }
         private void buttonDelete()
         {
@@ -351,7 +317,7 @@ namespace Inventory.MainForm
         }
         private void buttonClear()
         {
-            bindingUserList();
+            bindRefreshed();
             ButtonClr();
             InputWhit();
             InputWhitimg();
@@ -360,7 +326,6 @@ namespace Inventory.MainForm
             gridUserList.Enabled = true;
             bntBrowseImage.Enabled = true;
             gridUserList.DataBindings.Clear();
-            gIMG.DataBindings.Clear();
         }
         private void buttonCancel()
         {
@@ -370,100 +335,51 @@ namespace Inventory.MainForm
             InputClea();
             InputDisbimg();
             InputCleaimg();
-            InputDimGimg();
             gridUserList.Enabled = true;
             cmbName.DataBindings.Clear();
             bntBrowseImage.Enabled = true;
         }
         private void buttonSave()
         {
-            if (_usr && _img == false)
-            {
-                SavUser();
-            }
-            if (_usr == false && _img)
-            {
-                SavImg();
-            }
+            SavUser();
         }
 
         #region SaveUSers
-        #region SaveImages
-
-        private void SavImg()
-        {
-            if (_add && _img && _edt == false && _del == false && _usr == false)
-            {
-                DataImgInsert();
-                ButtonSav();
-                InputDisbimg();
-                InputDimGimg();
-                InputCleaimg();
-              //  BindImageList();
-            }
-            if (_add == false && _edt && _img && _del == false && _usr == false)
-            {
-                DataImgUpdate();
-                ButtonSav();
-                InputDisbimg();
-                InputDimG();
-                InputCleaimg();
-              //  BindImageList();
-            }
-            if (_add == false && _edt == false && _del && _img && _usr == false)
-            {
-                DataImgDelete();
-                ButtonSav();
-                InputDisbimg();
-                InputDimGimg();
-                InputCleaimg();
-             //   BindImageList();
-            }
-            _add = false;
-            _edt = false;
-            _del = false;
-            _img = true;
-            _usr = false;
-            gIMG.Enabled = true;
-        }
-        #endregion
         private void SavUser()
         {
-            if (_add && _edt == false && _del == false && _img == false)
+            if (_add && _edt == false && _del == false )
             {
                 DataInsert();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindingUserList();
+                bindRefreshed();
             }
-            if (_add == false && _edt && _del == false && _img == false)
+            if (_add == false && _edt && _del == false )
             {
                 DataUpdate();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindingUserList();
+                bindRefreshed();
             }
-            if (_add == false && _edt == false && _del && _img == false)
+            if (_add == false && _edt == false && _del )
             {
                 DataDelete();
                 ButtonSav();
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindingUserList();
+                bindRefreshed();
             }
             _add = false;
             _edt = false;
             _del = false;
             _usr = true;
-            _img = false;
             gridUserList.Enabled = true;
-            _user_list = EnumerableUtils.getUserList();
-            bindingUserList();
+            bindRefreshed();
         }
         #endregion
 
@@ -487,9 +403,21 @@ namespace Inventory.MainForm
         private void generateUserCode()
         {
             var lastId = getLastUserId();
-            var alphaNumeric = new GenerateAlpaNum("CA", 3, lastId);
+            var alphaNumeric = new GenerateAlpaNum("C", 3, lastId); // Use "C" for the middle part
             alphaNumeric.Increment();
-            txtUserCode.Text = alphaNumeric.ToString();
+
+            // Construct final code format: S24-C###-CA
+            var yearPrefix = "S24";
+            var suffix = "CA";
+            txtUserCode.Text = $"{yearPrefix}-{alphaNumeric}-{suffix}";
+        }
+
+        private void bindRefreshed()
+        {
+            _user_image = EnumerableUtils.getUserImage();
+            _user_list = EnumerableUtils.getUserList();
+            bindingUserList();
+            BindUserImg();
         }
         private void bindingUserList()
         {
@@ -535,18 +463,6 @@ namespace Inventory.MainForm
                 CREATED = i.created_on,
                 UPDATED = i.updated_on
             }).ToList();
-            gIMG.DataSource = list;
-            gIMG.Update();
-            if (gridImg.RowCount > 0)
-            {
-                gridImg.Columns[0].Width = 40;
-                gridImg.Columns[1].Width = 60;
-                gridImg.Columns[2].Width = 200;
-                gridImg.Columns[3].Width = 50;
-                gridImg.Columns[4].Width = 150;
-                gridImg.Columns[5].Width = 100;
-                gridImg.Columns[6].Width = 100;
-            }
         }
 
         private void DataInsert()
@@ -640,14 +556,12 @@ namespace Inventory.MainForm
                 _usr = true;
                 _img = false;
                 gridUserList.Enabled = true;
-                gIMG.Enabled = false;
             }
             if (tabUsers.SelectedTabPage == xIMG)
             {
                 _img = true;
                 _usr = false;
                 gridUserList.Enabled = false;
-                gIMG.Enabled = true;
             }
         }
         private void DataDelete() { }
@@ -703,12 +617,10 @@ namespace Inventory.MainForm
                 if (que)
                 {
                     buttonDelete();
-                    gIMG.Enabled = false;
                 }
                 else
                 {
                     buttonCancel();
-                    gIMG.Enabled = true;
                 }
             }
         }
@@ -802,11 +714,13 @@ namespace Inventory.MainForm
                         if (img == null || string.IsNullOrEmpty(imgLocation))
                         {
                             imgUser.ImageLocation = ConstantUtils.defaultUserImgEmpty;
+                            imgPro.ImageLocation = ConstantUtils.defaultUserImgEmpty;
                         }
                         else
                         {
                             var location = ConstantUtils.defaultUserImgLocation + imgLocation;
                             imgUser.ImageLocation = location;
+                            imgPro.ImageLocation = location;
                         }
                     }
                 }
@@ -825,11 +739,7 @@ namespace Inventory.MainForm
             return user_image.FirstOrDefault(img => img.image_code == param);
         }
 
-        private void gridImg_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            gridImage(sender);
-        }
-
+        /*
         private void gridImage(object sender)
         {
             var grid = gridImg;
@@ -867,6 +777,7 @@ namespace Inventory.MainForm
                     Console.WriteLine(ex.ToString());
                 }
         }
+        */
         private string getfileExntesion(string filePath)
         {
             return Path.GetFileName(filePath);
@@ -884,60 +795,140 @@ namespace Inventory.MainForm
                 {
                     string selectedFilePath = openFileDialog.FileName;
 
+                    // Set filename text field
                     string fileNameAndExtension = getfileExntesion(selectedFilePath);
                     txtImageLocation.Text = fileNameAndExtension;
+
+                    // Clear previous image preview
+                    if (imgPro.Image != null)
+                    {
+                        imgPro.Image.Dispose();
+                        imgPro.Image = null;
+                    }
+
+                    try
+                    {
+                        using (var stream = new MemoryStream(File.ReadAllBytes(selectedFilePath)))
+                        {
+                            imgPro.Image = Image.FromStream(stream);
+                            imgPro.SizeMode = PictureBoxSizeMode.Zoom;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error loading image: " + ex.Message, "Image Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    // Update button states
                     bntSaveImages.Enabled = true;
                     bntBrowseImage.Enabled = false;
                 }
             }
         }
 
+
         private void bntSaveImages_Click(object sender, EventArgs e)
         {
-            saveUserImage();
-            ButtonSav();
+            var code = txtImageCode.Text.Trim(' ');
+            var title = txtImageName.Text.Trim(' ');
+            var imgtype = txtImageType.Text.Trim(' ');
+            var imgLocation = txtImageLocation.Text.Trim(' ');
+
+            if (code.Length > 0 && title.Length > 0 && imgtype.Length > 0 && imgLocation.Length > 0)
+            {
+                var result = saveUserImage();
+                if (result > 0)
+                {
+                    bntSaveImages.Enabled = false;
+                    bntBrowseImage.Enabled = true;
+                }
+            }
+            else
+            {
+                PopupNotification.PopUpMessages(0, "Please fill all the entries!", Messages.TitleFailedInsert);
+            }
         }
+
 
         private string ExtractFileName(string filePath)
         {
             return Path.GetFileName(filePath);
         }
 
-        private void saveUserImage()
+        private int saveUserImage()
         {
-            splashManager.ShowWaitForm();
-            var filePathLocation = txtImageLocation.Text.Trim(' ');
-            var filePath = ExtractFileName(filePathLocation);
-            var img = new UserImage()
+            var returnValue = 0;
+
+            using (var session = new DalSession())
             {
-                image_code = txtImageCode.Text.Trim(' '),
-                title = txtImageName.Text.Trim(' '),
-                img_type = txtImageType.Text.Trim(' '),
-                img_location = filePath,
-                created_on = DateTime.Now,
-                updated_on = DateTime.Now
-            };
-            var result = RepositoryEntity.AddEntity<UserImage>(img);
-            if (result > 0)
-            {
-                splashManager.CloseWaitForm();
-                PopupNotification.PopUpMessages(1, "User image: " + txtImageName.Text.Trim(' ') + " " + Messages.SuccessInsert,
-                    Messages.TitleSuccessInsert);
-                _user_image = EnumerableUtils.getUserImage();
-                BindUserImg();
+                var unitWorks = session.UnitofWrk;
+                unitWorks.Begin();
+
+                try
+                {
+                    var filePathLocation = txtImageLocation.Text.Trim(' ');
+                    var filePath = ExtractFileName(filePathLocation);
+                    var repository = new Repository<UserImage>(unitWorks);
+                    var imageCode = txtImageCode.Text.Trim(' ');
+
+                    var existingImg = repository.FindBy(x => x.image_code == imageCode);
+
+                    if (existingImg != null)
+                    {
+                        existingImg.title = txtImageName.Text.Trim(' ');
+                        existingImg.img_type = txtImageType.Text.Trim(' ');
+                        existingImg.img_location = filePath;
+                        existingImg.updated_on = DateTime.Now;
+
+                        var updated = repository.Update(existingImg);
+                        if (updated)
+                        {
+                            PopupNotification.PopUpMessages(1, "User image updated: " + txtImageName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
+                                Messages.TitleSuccessUpdate);
+                            unitWorks.Commit();
+                            returnValue = 1;
+                        }
+                    }
+                    else
+                    {
+                        var img = new UserImage()
+                        {
+                            image_code = imageCode,
+                            title = txtImageName.Text.Trim(' '),
+                            img_type = txtImageType.Text.Trim(' '),
+                            img_location = filePath,
+                            created_on = DateTime.Now,
+                            updated_on = DateTime.Now
+                        };
+
+                        var result = repository.Add(img);
+                        if (result > 0)
+                        {
+                            PopupNotification.PopUpMessages(1, "User image added: " + txtImageName.Text.Trim(' ') + " " + Messages.SuccessInsert,
+                                Messages.TitleSuccessInsert);
+                            unitWorks.Commit();
+                            returnValue = 1;
+                        }
+                    }
+
+                    _user_image = EnumerableUtils.getUserImage();
+                    BindUserImg();
+                }
+                catch (Exception ex)
+                {
+                    unitWorks.Rollback();
+                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
+                    returnValue = 0;
+                }
             }
-            else
-            {
-                splashManager.CloseWaitForm();
-                PopupNotification.PopUpMessages(0, "User image: " + txtImageName.Text.Trim(' ') + " " + Messages.ErrorInsert,
-                    Messages.TitleFailedInsert);
-            }
+
+            return returnValue;
         }
+
 
         private void GridUsers_LostFocus(object sender, EventArgs e)
         {
             InputDimG();
-            InputDimGimg();
         }
 
         /*
