@@ -484,6 +484,83 @@ namespace Inventory.Config
             band?.Controls.Add(appPared);
             report.ShowPreviewDialog();
         }
+        public static void ZReadingSummary(DateTime selectedDate, string terminal, string fullName, int userId)
+        {
+            var report = new RepZReading();
+
+            // Get the data summary
+            var summary = EntityUtils.GetZReadingSummary(selectedDate, userId);
+            summary.Terminal = terminal;
+            summary.Cashier = fullName;
+
+            // Load data into report
+            report.LoadData(
+                summary.Terminal,
+                summary.Cashier,
+                summary.Date.ToString(Constant.DateFormat),
+                summary.NumberOfTransactions,
+                summary.GrossSales,
+                summary.Discount,
+                summary.VAT,
+                summary.NetSales,
+                summary.Cash,
+                summary.GCash,
+                summary.Credit
+            );
+
+            // XRLabel: Prepared By
+            var prePared = new XRLabel
+            {
+                Text = fullName,
+                LocationF = new PointF(Constant.PreXStar, Constant.PreYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+
+            // XRLabel: Approved By
+            var appPared = new XRLabel
+            {
+                Text = Constant.DefaultApprove,
+                LocationF = new PointF(Constant.AppXStar, Constant.AppYStar),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Underline),
+                Size = new Size(Constant.SizeWidth, Constant.SizeHeight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+
+            // XRLabel: Date (Header)
+            var starDate = new XRLabel
+            {
+                Text = selectedDate.ToString(Constant.DateFormat),
+                LocationF = new PointF(Constant.LocDStarX, Constant.LocDStarY),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Regular),
+                SizeF = new SizeF(Constant.DetSizeWidth, Constant.DetSizeheight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+
+            // XRLabel: Terminal (Header)
+            var terminalLbl = new XRLabel
+            {
+                Text = terminal,
+                LocationF = new PointF(Constant.LocDBranX, Constant.LocDBranY),
+                Font = new Font(Constant.VernadaFont, Constant.FontSize, FontStyle.Regular),
+                SizeF = new SizeF(Constant.DetSizeWidth, Constant.DetSizeheight),
+                TextAlignment = TextAlignment.MiddleCenter
+            };
+
+            // Add to bands
+            var band = report.Bands[BandKind.ReportFooter] as ReportFooterBand;
+            var bandH = report.Bands[BandKind.ReportHeader] as ReportHeaderBand;
+
+            bandH?.Controls.Add(terminalLbl);
+            bandH?.Controls.Add(starDate);
+            band?.Controls.Add(prePared);
+            band?.Controls.Add(appPared);
+
+            // Show report preview
+            report.ShowPreviewDialog();
+        }
+
         public static void ListofServiceItem(string fullName)
         {
             var report = new RepServiceItem();

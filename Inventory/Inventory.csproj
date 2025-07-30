@@ -481,6 +481,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Report\RepZReading.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RepZReading.Designer.cs">
+      <DependentUpon>RepZReading.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\RepDailyExpenses.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -699,6 +705,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RepZReading.resx">
+      <DependentUpon>RepZReading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RepDailyExpenses.resx">
       <DependentUpon>RepDailyExpenses.cs</DependentUpon>

@@ -1,14 +1,16 @@
-﻿using System;
+﻿using DevExpress.Xpo.DB;
+using Inventory.Alert;
+using Inventory.Config;
+using Inventory.PopupForm;
+using ServeAll.Core.Entities;
+using ServeAll.Core.Repository;
+using ServeAll.Core.Utilities;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Inventory.PopupForm;
-using ServeAll.Core.Entities;
-using ServeAll.Core.Repository;
-using Inventory.Config;
-using Inventory.Alert;
-using ServeAll.Core.Utilities;
+using static DevExpress.XtraEditors.Mask.MaskSettings;
 using Query = ServeAll.Core.Queries.Query;
 
 namespace Inventory.MainForm
@@ -440,9 +442,18 @@ namespace Inventory.MainForm
             }
         }
         private void tileReportInventoryList_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
-        {
+        { 
+
             var name = GetUseFullName(_userId);
             ReportSetting.ListofInventoryProducts(name);
+            /* Testing for Z-Reading
+            var fullName = GetUseFullName(_userId);                // e.g., from users table
+            var selectedDate = DateTime.Today;                     // or show date picker
+            var terminal = "T01";                                  // or get from config/db
+            var userId = _userId;
+
+            ReportSetting.ZReadingSummary(selectedDate, terminal, fullName, userId);
+            */
         }
         private void tileReportProducts_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
