@@ -116,7 +116,7 @@ namespace Inventory.MainForm
                         var barcode = ((GridView)sender).GetFocusedRowCellValue("BARCODE").ToString();
                         cmbOperator.Text = _userName;
                         txtServiceId.Text = id;
-                        txtServiceName.Text = ((GridView)sender).GetFocusedRowCellValue("SERVICE").ToString();
+                        txtServiceName.Text = ((GridView)sender).GetFocusedRowCellValue("EXPENSES").ToString();
                         txtServiceDescription.Text = ((GridView)sender).GetFocusedRowCellValue("DETAILS").ToString();
                         cmbServiceCategory.Text = ((GridView)sender).GetFocusedRowCellValue("CATEGORY").ToString();
                         txtServiceCharges.Text = ((GridView)sender).GetFocusedRowCellValue("CHARGES").ToString();
@@ -126,7 +126,7 @@ namespace Inventory.MainForm
                         cmbServiceStatus.Text = ((GridView)sender).GetFocusedRowCellValue("STATUS").ToString();
                         txtBarcode.Text = barcode;
                         txtServiceImgBarcode.Text = barcode;
-                        txtServiceImgTitle.Text = ((GridView)sender).GetFocusedRowCellValue("SERVICE").ToString();
+                        txtServiceImgTitle.Text = ((GridView)sender).GetFocusedRowCellValue("EXPENSES").ToString();
                         dpkServiceDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DATE");
                         dpkCreatedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("CREATED");
                         dpkUpdated.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("UPDATED");
@@ -217,6 +217,7 @@ namespace Inventory.MainForm
                 {
                     entity.service_code = txtBarcode.Text.Trim(' ');
                     entity.service_name = txtServiceName.Text.Trim(' ');
+                    entity.service_details = txtServiceDescription.Text.Trim(' ');
                     entity.service_charges = decimal.Parse(txtServiceCharges.Text);
                     entity.category_id = FetchUtils.getCategoryId(cmbServiceCategory.Text.Trim(' '));
                     entity.service_commission = decimal.Parse(txtServiceCommision.Text);
@@ -758,7 +759,7 @@ namespace Inventory.MainForm
             var list = _services_list.Select(p => new {
                 ID = p.service_id,
                 BARCODE = p.service_code,
-                SERVICE = p.service_name,
+                EXPENSES = p.service_name,
                 DETAILS = p.service_details,
                 CATEGORY = p.category,
                 CHARGES = p.service_charges,
