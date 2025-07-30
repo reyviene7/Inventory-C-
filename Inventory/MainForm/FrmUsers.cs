@@ -931,6 +931,15 @@ namespace Inventory.MainForm
             InputDimG();
         }
 
+        private void cmbRoleType_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                InputManipulation.InputBoxLeave(cmbRoleType, bntSave, "Role Type",
+                Messages.TitleUsers);
+            }
+        }
+
         /*
         private void txtImageType_SelectedIndexChanged(object sender, EventArgs e)
         {

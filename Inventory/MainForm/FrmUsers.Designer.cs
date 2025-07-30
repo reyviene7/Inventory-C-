@@ -699,6 +699,7 @@ namespace Inventory.MainForm
             this.cmbRoleType.Name = "cmbRoleType";
             this.cmbRoleType.Size = new System.Drawing.Size(357, 36);
             this.cmbRoleType.TabIndex = 116;
+            this.cmbRoleType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbRoleType_KeyDown);
             // 
             // label2
             // 
