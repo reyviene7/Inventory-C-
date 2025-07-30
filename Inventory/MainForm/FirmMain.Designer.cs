@@ -1330,7 +1330,7 @@ namespace Inventory.MainForm
             tileItemElement71.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileItemElement71.Text = "Manage";
             tileItemElement72.ImageOptions.ImageBorder = DevExpress.XtraEditors.TileItemElementImageBorderMode.None;
-            tileItemElement72.Text = "Services";
+            tileItemElement72.Text = "Expenses";
             tileItemElement72.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
             this.tileServices.Elements.Add(tileItemElement71);
             this.tileServices.Elements.Add(tileItemElement72);
