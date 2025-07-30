@@ -348,6 +348,23 @@
                                                         created_at,
                                                         updated_at
                                                     FROM view_warehouse_inventory ORDER BY inventory_id DESC";
+        public const string getZReadingSummary = @"
+            SELECT 
+                'T01' AS Terminal,
+                (SELECT name FROM view_user_profile WHERE user_id = @userId) AS Cashier,
+                @selectedDate AS Date,
+                COUNT(*) AS NumberOfTransactions,
+                SUM(s.total_amount) AS GrossSales,
+                SUM(s.discount) AS Discount,
+                SUM(s.total_amount - s.discount) * 0.12 AS VAT,
+                SUM(s.total_amount - s.discount) AS NetSales,
+                SUM(CASE WHEN s.payment_method = 'Cash' THEN s.total_amount - s.discount ELSE 0 END) AS Cash,
+                SUM(CASE WHEN s.payment_method = 'GCash' THEN s.total_amount - s.discount ELSE 0 END) AS GCash,
+                SUM(CASE WHEN s.payment_method = 'Credit' THEN s.total_amount - s.discount ELSE 0 END) AS Credit
+            FROM sales s
+            WHERE DATE(s.datetime_created) = @selectedDate
+              AND s.created_by = @userId
+        ";
         public const string getWarehouseReturn = @"SELECT * FROM view_return_warehouse ";
         public const string getServices = "SELECT * FROM view_services ORDER BY service_id DESC";
         public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";

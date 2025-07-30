@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\ZReadingSummary.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\AuthorizedMachine.cs" />
     <Compile Include="Entities\Delivery.cs" />

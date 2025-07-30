@@ -211,6 +211,40 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static ZReadingSummary GetZReadingSummary(DateTime selectedDate, int userId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repo = new Repository<ZReadingSummary>(unWork);
+                    var parameter = new { selectedDate = selectedDate.Date, userId = userId };
+
+                    return repo.SearchBy(Query.getZReadingSummary, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return new ZReadingSummary
+                    {
+                        Terminal = "N/A",
+                        Cashier = "N/A",
+                        Date = selectedDate,
+                        NumberOfTransactions = 0,
+                        GrossSales = 0,
+                        Discount = 0,
+                        VAT = 0,
+                        NetSales = 0,
+                        Cash = 0,
+                        GCash = 0,
+                        Credit = 0
+                    };
+                }
+            }
+        }
+
+
         public static AuthorizedMachine getMachineDetails(string machineKey, string machineName)
         {
             using (var session = new VultrSession())
