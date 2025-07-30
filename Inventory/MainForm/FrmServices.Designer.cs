@@ -30,6 +30,7 @@ namespace Inventory.MainForm
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmServices));
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
@@ -417,7 +418,7 @@ namespace Inventory.MainForm
             this.tabServices.Margin = new System.Windows.Forms.Padding(4);
             this.tabServices.Name = "tabServices";
             this.tabServices.Size = new System.Drawing.Size(1475, 910);
-            this.tabServices.Text = "Expenses Details";
+            this.tabServices.Text = "Services Details";
             // 
             // GbPersonal
             // 
@@ -470,9 +471,9 @@ namespace Inventory.MainForm
             this.label7.Location = new System.Drawing.Point(4, 82);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 23);
+            this.label7.Size = new System.Drawing.Size(143, 23);
             this.label7.TabIndex = 244;
-            this.label7.Text = "Expenses Code:";
+            this.label7.Text = "Service Barcode:";
             // 
             // txtBarcode
             // 
@@ -587,7 +588,7 @@ namespace Inventory.MainForm
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(4, 267);
+            this.label9.Location = new System.Drawing.Point(8, 267);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 23);
@@ -658,9 +659,9 @@ namespace Inventory.MainForm
             this.lblHiredate.Location = new System.Drawing.Point(576, 38);
             this.lblHiredate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHiredate.Name = "lblHiredate";
-            this.lblHiredate.Size = new System.Drawing.Size(129, 23);
+            this.lblHiredate.Size = new System.Drawing.Size(116, 23);
             this.lblHiredate.TabIndex = 208;
-            this.lblHiredate.Text = "Expenses Date:";
+            this.lblHiredate.Text = "Service Date:";
             // 
             // dpkServiceDate
             // 
@@ -708,9 +709,9 @@ namespace Inventory.MainForm
             this.label3.Location = new System.Drawing.Point(4, 193);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 23);
+            this.label3.Size = new System.Drawing.Size(135, 23);
             this.label3.TabIndex = 200;
-            this.label3.Text = "Expenses Charge:";
+            this.label3.Text = "Service Charge:";
             // 
             // label6
             // 
@@ -771,9 +772,9 @@ namespace Inventory.MainForm
             this.label1.Location = new System.Drawing.Point(4, 118);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 23);
+            this.label1.Size = new System.Drawing.Size(125, 23);
             this.label1.TabIndex = 174;
-            this.label1.Text = "Expenses Name:";
+            this.label1.Text = "Service Name:";
             // 
             // txtServiceName
             // 
@@ -801,7 +802,7 @@ namespace Inventory.MainForm
             this.gbCON.Name = "gbCON";
             this.gbCON.Size = new System.Drawing.Size(1477, 546);
             this.gbCON.TabIndex = 172;
-            this.gbCON.Text = "Expenses Details List";
+            this.gbCON.Text = "Services Details List";
             // 
             // gridController
             // 
@@ -946,9 +947,9 @@ namespace Inventory.MainForm
             this.lblBarcode.Location = new System.Drawing.Point(4, 44);
             this.lblBarcode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(107, 23);
+            this.lblBarcode.Size = new System.Drawing.Size(101, 23);
             this.lblBarcode.TabIndex = 142;
-            this.lblBarcode.Text = "Expenses Id:";
+            this.lblBarcode.Text = "Services Id:";
             // 
             // txtServiceId
             // 
@@ -969,7 +970,7 @@ namespace Inventory.MainForm
             this.tabImage.Margin = new System.Windows.Forms.Padding(4);
             this.tabImage.Name = "tabImage";
             this.tabImage.Size = new System.Drawing.Size(1475, 910);
-            this.tabImage.Text = "Expenses Image Details";
+            this.tabImage.Text = "Service Image Details";
             // 
             // groupControl1
             // 
@@ -1044,7 +1045,7 @@ namespace Inventory.MainForm
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(836, 188);
+            this.label16.Location = new System.Drawing.Point(848, 188);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(150, 23);
@@ -1068,12 +1069,12 @@ namespace Inventory.MainForm
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(841, 149);
+            this.label5.Location = new System.Drawing.Point(853, 149);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(184, 23);
+            this.label5.Size = new System.Drawing.Size(171, 23);
             this.label5.TabIndex = 229;
-            this.label5.Text = "Expenses Image Type:";
+            this.label5.Text = "Service Image Type:";
             // 
             // label10
             // 
@@ -1081,12 +1082,12 @@ namespace Inventory.MainForm
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(840, 113);
+            this.label10.Location = new System.Drawing.Point(852, 113);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(182, 23);
+            this.label10.Size = new System.Drawing.Size(169, 23);
             this.label10.TabIndex = 228;
-            this.label10.Text = "Expenses Image Title:";
+            this.label10.Text = "Service Image Title:";
             // 
             // txtServiceImgTitle
             // 
@@ -1106,12 +1107,12 @@ namespace Inventory.MainForm
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(840, 76);
+            this.label11.Location = new System.Drawing.Point(852, 76);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(187, 23);
+            this.label11.Size = new System.Drawing.Size(174, 23);
             this.label11.TabIndex = 226;
-            this.label11.Text = "Expenses Image Code:";
+            this.label11.Text = "Service Image Code:";
             // 
             // txtServiceImgBarcode
             // 
@@ -1246,12 +1247,12 @@ namespace Inventory.MainForm
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(16, 208);
+            this.lblMainTitle.Location = new System.Drawing.Point(15, 208);
             this.lblMainTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(212, 60);
+            this.lblMainTitle.Size = new System.Drawing.Size(195, 60);
             this.lblMainTitle.TabIndex = 136;
-            this.lblMainTitle.Text = "Expenses";
+            this.lblMainTitle.Text = "Services";
             // 
             // RightOptions
             // 
@@ -1273,7 +1274,6 @@ namespace Inventory.MainForm
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmServices";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

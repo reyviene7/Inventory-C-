@@ -36,7 +36,7 @@ namespace Inventory.MainForm
                 _deliver = value;
                 if (_deliver > 0)
                 {
-                    
+
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace Inventory.MainForm
                         var barcode = ((GridView)sender).GetFocusedRowCellValue("BARCODE").ToString();
                         cmbOperator.Text = _userName;
                         txtServiceId.Text = id;
-                        txtServiceName.Text = ((GridView)sender).GetFocusedRowCellValue("EXPENSES").ToString();
+                        txtServiceName.Text = ((GridView)sender).GetFocusedRowCellValue("SERVICE").ToString();
                         txtServiceDescription.Text = ((GridView)sender).GetFocusedRowCellValue("DETAILS").ToString();
                         cmbServiceCategory.Text = ((GridView)sender).GetFocusedRowCellValue("CATEGORY").ToString();
                         txtServiceCharges.Text = ((GridView)sender).GetFocusedRowCellValue("CHARGES").ToString();
@@ -126,7 +126,7 @@ namespace Inventory.MainForm
                         cmbServiceStatus.Text = ((GridView)sender).GetFocusedRowCellValue("STATUS").ToString();
                         txtBarcode.Text = barcode;
                         txtServiceImgBarcode.Text = barcode;
-                        txtServiceImgTitle.Text = ((GridView)sender).GetFocusedRowCellValue("EXPENSES").ToString();
+                        txtServiceImgTitle.Text = ((GridView)sender).GetFocusedRowCellValue("SERVICE").ToString();
                         dpkServiceDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DATE");
                         dpkCreatedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("CREATED");
                         dpkUpdated.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("UPDATED");
@@ -148,7 +148,7 @@ namespace Inventory.MainForm
                         }
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                 }
@@ -201,7 +201,8 @@ namespace Inventory.MainForm
                             Messages.TitleFailedInsert);
                 }
             }
-            else {
+            else
+            {
                 splashScreen.CloseWaitForm();
                 PopupNotification.PopUpMessages(0, "Status Id and Staff Id must not be null!",
                             Messages.TitleFailedInsert);
@@ -279,9 +280,9 @@ namespace Inventory.MainForm
             txtServiceDescription.Enabled = true;
             txtServiceCharges.Enabled = true;
             cmbServiceCategory.Enabled = true;
-   
+
             txtServiceCommision.Enabled = true;
-      
+
             dpkServiceDate.Enabled = true;
             dpkCreatedDate.Enabled = true;
             dpkUpdated.Enabled = true;
@@ -335,8 +336,8 @@ namespace Inventory.MainForm
             cmbStaff.BackColor = Color.DimGray;
             cmbServiceStatus.BackColor = Color.DimGray;
         }
-       
-         
+
+
         private void DataDelete()
         {
             using (var session = new DalSession())
@@ -538,7 +539,7 @@ namespace Inventory.MainForm
             gridController.Enabled = true;
             imgProduct.DataBindings.Clear();
             imgProduct.Image = null;
-         
+
         }
         private void ButClr()
         {
@@ -587,7 +588,7 @@ namespace Inventory.MainForm
         {
             ButDel();
         }
-     
+
         private void FirmWarehouseInvetory_MouseMove(object sender, MouseEventArgs e)
         {
             PanelInterface.MouseMOve(this, pnlRightOptions, e);
@@ -704,7 +705,8 @@ namespace Inventory.MainForm
         }
         private void txtServiceName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab) {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
                 txtServiceDescription.Focus();
             }
         }
@@ -759,7 +761,7 @@ namespace Inventory.MainForm
             var list = _services_list.Select(p => new {
                 ID = p.service_id,
                 BARCODE = p.service_code,
-                EXPENSES = p.service_name,
+                SERVICE = p.service_name,
                 DETAILS = p.service_details,
                 CATEGORY = p.category,
                 CHARGES = p.service_charges,
