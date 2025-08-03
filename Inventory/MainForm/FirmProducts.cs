@@ -1,17 +1,18 @@
-﻿using System;
+﻿using DevExpress.Utils.About;
+using DevExpress.Utils.DirectXPaint;
+using DevExpress.XtraExport.Helpers;
+using DevExpress.XtraGrid.Views.Grid;
+using Inventory.Config;
+using ServeAll.Core.Entities;
+using ServeAll.Core.Repository;
+using ServeAll.Core.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using DevExpress.Utils.About;
-using DevExpress.Utils.DirectXPaint;
-using DevExpress.XtraGrid.Views.Grid;
-using Inventory.Config;
-using ServeAll.Core.Entities;
-using ServeAll.Core.Repository;
-using ServeAll.Core.Utilities;
 using Query = ServeAll.Core.Queries.Query;
 
 
@@ -168,20 +169,22 @@ namespace Inventory.MainForm
 
                     try
                     {
-                        using (var stream = new MemoryStream(File.ReadAllBytes(selectedFilePath)))
+                        using (FileStream fs = new FileStream(selectedFilePath, FileMode.Open, FileAccess.Read))
                         {
-                            imgBigPreview.Image = Image.FromStream(stream);
+                            using (Image temp = Image.FromStream(fs))
+                            {
+                                imgBigPreview.Image?.Dispose();
+                                imgBigPreview.Image = new Bitmap(temp);
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error loading image: " + ex.Message, "Image Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        imgBigPreview.SizeMode = PictureBoxSizeMode.Zoom;
+                        PopupNotification.PopUpMessages(0, "Image Load Failed: " + ex.Message, "Load Error");
+                        imgBigPreview.Image = null;
+                        return;
                     }
-
-                    // Update button states
                     btnSaveImage.Enabled = true;
-                    btnBrowse.Enabled = false;
                 }
             }
         }
@@ -197,8 +200,17 @@ namespace Inventory.MainForm
                 var result = saveProductImage();
                 if (result > 0)
                 {
+                    if (imgBigPreview.Image != null)
+                    {
+                        imgBigPreview.Image.Dispose();
+                        imgBigPreview.Image = null;
+                    }
+
                     btnSaveImage.Enabled = false;
                     btnBrowse.Enabled = true;
+
+                    txtImageFilename.Text = "";
+                    txtImageTitle.Text = "";
                 }
             }
             else
@@ -342,12 +354,30 @@ namespace Inventory.MainForm
             cmbCategory.DataBindings.Clear();
             cmbSupplier.DataBindings.Clear();
         }
+        private bool IsProduct(string productCode)
+        {
+            return listProducts.Any(x => x.product_code == productCode);
+        }
+        private ViewProducts GetSelectedProduct()
+        {
+            if (gridProductList.FocusedRowHandle >= 0)
+            {
+                return gridProductList.GetRow(gridProductList.FocusedRowHandle) as ViewProducts;
+            }
+            return null;
+        }
+
         private void ButSav()
         {
-            
+            string productCode = txtProductBarcode.Text.Trim();
+
             if (_add && _edt == false && _del == false)
             {
-                
+                if (IsProduct(productCode))
+                {
+                    PopupNotification.PopUpMessages(0, "Product Barcode: " + productCode + " already exists in the Product.", Messages.TitleFailedInsert);
+                    return;
+                }
                 DataInsert();
                 ButtonSav();
                 InputDisb();
@@ -358,7 +388,6 @@ namespace Inventory.MainForm
             }
             if (_add == false && _edt && _del == false)
             {
-              
                 DataUpdate();
                 ButtonSav();
                 InputDisb();
@@ -893,6 +922,18 @@ namespace Inventory.MainForm
                     {
                         productId = int.Parse(id);
                         var product = searchProductId(productId);
+                        if (product == null)
+                        {
+                            PopupNotification.PopUpMessages(0, "Product Details", "No product found for this ID.");
+                            return;
+                        }
+
+                        if (product.date_register == null)
+                        {
+                            PopupNotification.PopUpMessages(0, "Product Details", "Date Registered is missing.");
+                            return;
+                        }
+
                         var barcode = product.product_code;
                         txtProductBar.Text = barcode;
                         txtImageTitle.Text = product.product_name;
@@ -932,7 +973,7 @@ namespace Inventory.MainForm
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableProduct);
                 }
 
             }
@@ -956,6 +997,7 @@ namespace Inventory.MainForm
                     CATEGORY = x.category_details,
                     SERIAL = x.serial_number,
                     TRADE = x.trade_price,
+                    WHOLESALE = x.wholesale,
                     RETAIL = x.retail_price,
                     STATUS = x.status_details
                 });
@@ -1217,8 +1259,47 @@ namespace Inventory.MainForm
 
         private void XtraEmployee_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
+            if (e.Page == xtraTabImage && e.PrevPage == XtrPerProfile)
+            {
+                _add = false;
+                _edt = false;
+                _del = false;
+
+                bntAdd.Enabled = false;
+                bntUpdate.Enabled = false;
+                bntDelete.Enabled = false;
+                bntSave.Enabled = false;
+                bntClear.Enabled = false;
+                bntCancel.Enabled = false;
+            }
+
+            if (e.Page == XtrPerProfile && e.PrevPage == xtraTabImage)
+            {
+                txtImageFilename.Text = string.Empty;
+                imgBigPreview.Image = null;
+                bntAdd.Enabled = true;
+                bntUpdate.Enabled = true;
+                bntDelete.Enabled = true;
+                bntSave.Enabled = false;
+                bntClear.Enabled = false;
+                bntCancel.Enabled = true;
+            }
+
             if (e.Page == XtrPerProfile)
             {
+                try
+                {
+                    if (imgBigPreview.Image != null)
+                    {
+                        imgBigPreview.Image.Dispose();
+                        imgBigPreview.Image = null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error disposing image: " + ex.Message);
+                }
+
                 bindRefreshed();
             }
         }

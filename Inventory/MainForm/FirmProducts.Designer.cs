@@ -30,7 +30,6 @@ namespace Inventory.MainForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmProducts));
             this.pbExit = new System.Windows.Forms.PictureBox();
@@ -489,6 +488,7 @@ namespace Inventory.MainForm
             // dkpDateRegister
             // 
             this.dkpDateRegister.CustomFormat = "dd-MM-yyyy";
+            this.dkpDateRegister.Enabled = false;
             this.dkpDateRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dkpDateRegister.Location = new System.Drawing.Point(665, 285);
@@ -1442,6 +1442,7 @@ namespace Inventory.MainForm
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
