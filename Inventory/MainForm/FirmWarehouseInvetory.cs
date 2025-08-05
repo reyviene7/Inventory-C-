@@ -830,51 +830,72 @@ namespace Inventory.MainForm
 
         private void gridViewInventory(object sender)
         {
-            if (gridInventory.RowCount > 0)
-                try
+            if (gridInventory.RowCount <= 0) return;
+
+            try
+            {
+                var view = sender as GridView;
+                if (view == null) return;
+
+                var barcodeObj = view.GetFocusedRowCellValue("BARCODE");
+                var idObj = view.GetFocusedRowCellValue("ID");
+
+                if (barcodeObj == null || idObj == null) return;
+
+                var barcode = barcodeObj.ToString();
+                var id = idObj.ToString();
+
+                if (string.IsNullOrWhiteSpace(barcode)) return;
+
+                var w = searchWarehouseInventoryId(barcode);
+                if (w == null)
                 {
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("BARCODE").ToString();
-                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
-                    if (barcode.Length > 0)
-                    {
-                        var w = searchWarehouseInventoryId(barcode);
-                        cmbUser.Text = _userName;
-                        txtInventoryId.Text = id;
-                        txtWarehouseSKU.Text = w.sku;
-                        txtBarcode.Text = barcode;
-                        txtQuantityStock.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
-                        cmbProductName.Text = _products.FirstOrDefault(p => p.product_code == barcode).product_name;
-                        txtReorderLevel.Text = w.reorder_level.ToString(CultureInfo.InvariantCulture);
-                        cmbSupplier.Text = w.supplier_name;
-                        txtCostPerUnit.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtLastCostPerUnit.Text = w.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
-                        txtTotalValue.Text = w.total_value.ToString("N2", CultureInfo.InvariantCulture);
-                        cmbStatus.Text = w.status_details;
-                        cmbItemLocation.Text = w.location_code;
-                        dkpLastStockedDate.Value = w.last_stocked_date;
-                        dkpLastOrderDate.Value = w.last_ordered_date;
-                        dpkExpirationDate.Value = w.expiration_date;
-
-                        var img = searchProductImg(barcode);
-                        var imgLocation = img?.img_location;
-                        if (img == null || string.IsNullOrEmpty(imgLocation))
-                        {
-                            imgInventory.ImageLocation = ConstantUtils.defaultImgEmpty;
-                        }
-                        else
-                        {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-
-                            imgInventory.ImageLocation = location;
-                        }
-                    }
-
+                    Console.WriteLine($"No warehouse inventory found for barcode: {barcode}");
+                    return;
                 }
-                catch (Exception ex)
+
+                cmbUser.Text = _userName ?? "";
+
+                txtInventoryId.Text = id;
+                txtWarehouseSKU.Text = w.sku ?? "";
+                txtBarcode.Text = barcode;
+                txtQuantityStock.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
+
+                var product = _products.FirstOrDefault(p => p.product_code == barcode);
+                cmbProductName.Text = product?.product_name ?? "";
+
+                txtReorderLevel.Text = w.reorder_level.ToString(CultureInfo.InvariantCulture);
+                cmbSupplier.Text = w.supplier_name ?? "";
+                txtCostPerUnit.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                txtLastCostPerUnit.Text = w.last_cost_per_unit.ToString(CultureInfo.InvariantCulture);
+                txtTotalValue.Text = w.total_value.ToString("N2", CultureInfo.InvariantCulture);
+                cmbStatus.Text = w.status_details ?? "";
+                cmbItemLocation.Text = w.location_code ?? "";
+
+                // DateTime? safety checks  
+                if (w.last_stocked_date != null)
+                    dkpLastStockedDate.Value = w.last_stocked_date;
+                if (w.last_ordered_date != null)
+                    dkpLastOrderDate.Value = w.last_ordered_date;
+                if (w.expiration_date != null)
+                    dpkExpirationDate.Value = w.expiration_date;
+
+                var img = searchProductImg(barcode);
+                var imgLocation = img?.img_location;
+
+                if (imgInventory != null)
                 {
-                    Console.WriteLine(ex.ToString());
+                    imgInventory.ImageLocation = string.IsNullOrEmpty(imgLocation)
+                        ? ConstantUtils.defaultImgEmpty
+                        : ConstantUtils.defaultImgLocation + imgLocation;
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in gridViewInventory: " + ex.ToString());
+            }
         }
+
 
         private void gridViewDelivery(object sender)
         {
