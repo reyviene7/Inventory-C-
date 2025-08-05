@@ -1,6 +1,7 @@
 ﻿using DevExpress.Utils.About;
 using DevExpress.Utils.DirectXPaint;
 using DevExpress.XtraExport.Helpers;
+using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using Inventory.Config;
 using ServeAll.Core.Entities;
@@ -508,7 +509,7 @@ namespace Inventory.MainForm
             txtTradePrice.Clear();
             txtRetailPrice.Clear();
             txtWholesale.Clear();
-
+            imgProduct.Image = null;
             dkpDateRegister.Value = DateTime.Now.Date;
         }
         private void InputDimG() {
@@ -529,6 +530,7 @@ namespace Inventory.MainForm
             txtWholesale.BackColor = Color.DimGray;
             cmbProductStatus.BackColor = Color.DimGray;
             dkpDateRegister.BackColor = Color.DimGray;
+            imgProduct.BackColor = Color.DimGray;
         }
 
         private void txtProductBarcode_KeyDown(object sender, KeyEventArgs e)
@@ -911,73 +913,76 @@ namespace Inventory.MainForm
             }
         }
 
-        private void gridProduct_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        private void gridProduct_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
-            if (gridProductList.RowCount > 0)
+            if (gridProductList.RowCount <= 0) return;
+
+            try
             {
-                try
+                var view = sender as GridView;
+                if (view == null) return;
+
+                var idObj = view.GetFocusedRowCellValue("ID");
+                if (idObj == null) return;
+
+                var id = idObj.ToString();
+                if (id.Length == 0) return;
+
+                productId = int.Parse(id);
+                var product = searchProductId(productId);
+
+                if (product == null)
                 {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
-                    if (id.Length > 0)
-                    {
-                        productId = int.Parse(id);
-                        var product = searchProductId(productId);
-                        if (product == null)
-                        {
-                            PopupNotification.PopUpMessages(0, "Product Details", "No product found for this ID.");
-                            return;
-                        }
-
-                        if (product.date_register == null)
-                        {
-                            PopupNotification.PopUpMessages(0, "Product Details", "Date Registered is missing.");
-                            return;
-                        }
-
-                        var barcode = product.product_code;
-                        txtProductBar.Text = barcode;
-                        txtImageTitle.Text = product.product_name;
-                        txtProductBarcode.Text = barcode;
-                        txtProductName.Text = product.product_name;
-                        cmbCategory.Text = product.category_details;
-                        cmbSupplier.Text = product.supplier_name;
-                        txtStockCode.Text = product.stock_code;
-                        txtProductBrand.Text = product.brand;
-                        txtProductModel.Text = product.model;
-                        txtProductMade.Text = product.made;
-                        txtSerialNumber.Text = product.serial_number;
-                        txtTareWeight.Text = product.tare_weight.ToString(CultureInfo.InvariantCulture);
-                        txtNetWeight.Text = product.net_weight.ToString(CultureInfo.InvariantCulture);
-                        txtTradePrice.Text = product.trade_price.ToString(CultureInfo.InvariantCulture);
-                        txtRetailPrice.Text = product.retail_price.ToString(CultureInfo.InvariantCulture);
-                        txtWholesale.Text = product.wholesale.ToString(CultureInfo.InvariantCulture);
-                        cmbProductStatus.Text = product.status_details;
-                        dkpDateRegister.Value = product.date_register;
-
-                        var img = searchProductImg(barcode);
-                        var imgLocation = img?.img_location;
-
-                        if (img == null || string.IsNullOrEmpty(imgLocation))
-                        {
-                            imgProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
-                            imgBigPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
-                        }
-                        else
-                        {
-                            var location = ConstantUtils.defaultImgLocation + imgLocation;
-                            imgProduct.ImageLocation = location;
-                            imgBigPreview.ImageLocation = location;
-                        }
-                            
-                    }
-                }
-                catch (Exception ex)
-                {
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableProduct);
+                    PopupNotification.PopUpMessages(0, "Product Details", "No product found for this ID.");
+                    return;
                 }
 
+                if (product.date_register == null)
+                {
+                    PopupNotification.PopUpMessages(0, "Product Details", "Date Registered is missing.");
+                    return;
+                }
+
+                txtProductBar.Text = product.product_code ?? "";
+                txtImageTitle.Text = product.product_name ?? "";
+                txtProductBarcode.Text = product.product_code ?? "";
+                txtProductName.Text = product.product_name ?? "";
+                cmbCategory.Text = product.category_details ?? "";
+                cmbSupplier.Text = product.supplier_name ?? "";
+                txtStockCode.Text = product.stock_code ?? "";
+                txtProductBrand.Text = product.brand ?? "";
+                txtProductModel.Text = product.model ?? "";
+                txtProductMade.Text = product.made ?? "";
+                txtSerialNumber.Text = product.serial_number ?? "";
+                txtTareWeight.Text = product.tare_weight.ToString(CultureInfo.InvariantCulture) ?? "0";
+                txtNetWeight.Text = product.net_weight.ToString(CultureInfo.InvariantCulture) ?? "0";
+                txtTradePrice.Text = product.trade_price.ToString(CultureInfo.InvariantCulture) ?? "0";
+                txtRetailPrice.Text = product.retail_price.ToString(CultureInfo.InvariantCulture) ?? "0";
+                txtWholesale.Text = product.wholesale.ToString(CultureInfo.InvariantCulture) ?? "0";
+                cmbProductStatus.Text = product.status_details ?? "";
+                dkpDateRegister.Value = product.date_register;
+
+                var img = searchProductImg(product.product_code);
+                var imgLocation = img?.img_location;
+
+                if (string.IsNullOrEmpty(imgLocation))
+                {
+                    if (imgProduct != null) imgProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    if (imgBigPreview != null) imgBigPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                }
+                else
+                {
+                    var location = ConstantUtils.defaultImgLocation + imgLocation;
+                    if (imgProduct != null) imgProduct.ImageLocation = location;
+                    if (imgBigPreview != null) imgBigPreview.ImageLocation = location;
+                }
+            }
+            catch (Exception ex)
+            {
+                PopupNotification.PopUpMessages(0, ex.Message, Messages.TableProduct);
             }
         }
+
 
         private void bindRefreshed() {
             listProducts = EnumerableUtils.getProductList();

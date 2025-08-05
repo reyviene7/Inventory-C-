@@ -378,7 +378,7 @@ namespace Inventory.MainForm
             // 
             // imgProduct
             // 
-            this.imgProduct.BackColor = System.Drawing.Color.Gray;
+            this.imgProduct.BackColor = System.Drawing.Color.White;
             this.imgProduct.Location = new System.Drawing.Point(1029, 29);
             this.imgProduct.Margin = new System.Windows.Forms.Padding(4);
             this.imgProduct.Name = "imgProduct";
