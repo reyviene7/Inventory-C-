@@ -93,7 +93,7 @@ namespace Inventory.MainForm
         {
             var que = PopupNotification.PopUpMessageQuestion("WARNING: Any alteration of Default Settings may result to unable to access the INVENTORY PROGRAM. Are you sure you want to continue?", Messages.InventorySystem);
             if (!que) return;
-            var auth = new FirmPopAuthentication()
+            var auth = new FrmPopAuthen()
             {
                 Main = this
             };
