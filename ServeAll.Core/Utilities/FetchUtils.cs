@@ -279,6 +279,26 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getLastCompanyId()
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewCompany>(unWork);
+                    return repository.SelectAll(Query.getLastCompanyIdQuery)
+                        .Select(x => x.company_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
         public static int getLastAddressId()
         {
 
@@ -532,7 +552,7 @@ namespace ServeAll.Core.Utilities
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<Company>(unWork);
+                    var repository = new Repository<ViewCompany>(unWork);
                     var query = repository.FindBy(x => x.company_name == Company);
                     return query.company_id;
                 }

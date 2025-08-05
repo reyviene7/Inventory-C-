@@ -314,6 +314,7 @@
         public const string getLastProfileIdQuery = "SELECT COUNT(profile_id) as profile_id FROM profile";
         public const string getLastProfileImgQuery = "SELECT COUNT(image_id) as image_id FROM profile_image";
         public const string getLastContactIdQuery = "SELECT COUNT(contact_id) as contact_id FROM contact";
+        public const string getLastCompanyIdQuery = "SELECT COUNT(company_id) as company_id FROM company";
         public const string getLastAddressIdQuery = "SELECT COUNT(address_id) as address_id FROM address";
         public const string getLastServiceIdQuery = "SELECT COUNT(service_id) as service_id FROM services";
         public const string getLastServiceImgQuery = "SELECT COUNT(image_id) as image_id FROM service_image";

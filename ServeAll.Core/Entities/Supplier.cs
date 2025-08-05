@@ -15,5 +15,14 @@ namespace ServeAll.Core.Entities
         public int address_id { get; set; }
         public int company_id { get; set; }
         public DateTime date_register { get; set; }
+
+        [Write(false)]
+        public Address Address { get; set; }
+
+        [Write(false)]
+        public Contact Contact { get; set; }
+
+        [Write(false)]
+        public Company Company { get; set; }
     }
 } 
