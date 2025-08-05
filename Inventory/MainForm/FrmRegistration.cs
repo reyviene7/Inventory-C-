@@ -104,8 +104,33 @@ namespace Inventory.MainForm
         }
         private void bntSaveImages_Click(object sender, EventArgs e)
         {
-            saveProfileImage();
+            var code = txtProfileImgBarcode.Text.Trim();
+            var title = txtProfileImgTitle.Text.Trim();
+            var imgType = cmbProfileImgType.Text.Trim();
+            var imgLocation = txtProfileImgFileName.Text.Trim();
+
+            if (code.Length > 0 && title.Length > 0 && imgType.Length > 0 && imgLocation.Length > 0)
+            {
+                var result = saveProfileImage();
+                if (result > 0)
+                {
+                    if (imgProfile.Image != null)
+                    {
+                        imgProfile.Image.Dispose();
+                        imgProfile.Image = null;
+                    }
+
+                    bntBrowseImage.Enabled = true;
+                    txtProfileImgFileName.Text = "";
+                    txtProfileImgTitle.Text = "";
+                }
+            }
+            else
+            {
+                PopupNotification.PopUpMessages(0, "Please fill all the entries!", Messages.TitleFailedInsert);
+            }
         }
+
 
         private void buttonInsert()
         {
@@ -223,6 +248,8 @@ namespace Inventory.MainForm
             cmbPosition.DataBindings.Clear();
             imgProfile.DataBindings.Clear();
             imgProfile.Image = null;
+            imgProfileImages.DataBindings.Clear();
+            imgProfileImages.Image = null;
             bindRefreshed();
         }
 
@@ -742,42 +769,110 @@ namespace Inventory.MainForm
                     string selectedFilePath = openFileDialog.FileName;
                     string fileNameAndExtension = getfileExntesion(selectedFilePath);
                     txtProfileImgFileName.Text = fileNameAndExtension;
+
+                    if (imgProfileImages.Image != null)
+                    {
+                        imgProfileImages.Image.Dispose();
+                        imgProfileImages.Image = null;
+                    }
+
+                    try
+                    {
+                        using (FileStream fs = new FileStream(selectedFilePath, FileMode.Open, FileAccess.Read))
+                        {
+                            using (Image temp = Image.FromStream(fs))
+                            {
+                                imgProfileImages.Image?.Dispose();
+                                imgProfileImages.Image = new Bitmap(temp);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        PopupNotification.PopUpMessages(0, "Image Load Failed: " + ex.Message, "Load Error");
+                        imgProfileImages.Image = null;
+                        return;
+                    }
                     bntSaveImages.Enabled = true;
-                    bntBrowseImage.Enabled = false;
                 }
             }
         }
 
-        private void saveProfileImage()
+        private int saveProfileImage()
         {
-            splashManager.ShowWaitForm();
-            var filePathLocation = txtProfileImgFileName.Text.Trim(' ');
-            var filePath = ExtractFileName(filePathLocation);
-            var img = new ProfileImages()
+            var returnValue = 0;
+
+            using (var session = new DalSession())
             {
-                image_code = txtProfileImgBarcode.Text.Trim(' '),
-                title = txtProfileImgTitle.Text.Trim(' '),
-                img_type = cmbProfileImgType.Text.Trim(' '),
-                img_location = filePath,
-                created_on = dkpImgCreadOn.Value.Date,
-                updated_on = dkpImgUpdatedOn.Value.Date
-            };
-            var result = RepositoryEntity.AddEntity<ProfileImages>(img);
-            if (result > 0)
-            {
-                splashManager.CloseWaitForm();
-                PopupNotification.PopUpMessages(1, "Profile image: " + txtProfileImgTitle.Text.Trim(' ') + " " + Messages.SuccessInsert,
-                 Messages.TitleSuccessInsert);
-                _image_list = EnumerableUtils.getProfileImgList();
-                bindRefreshed();
+                var unitWorks = session.UnitofWrk;
+                unitWorks.Begin();
+
+                try
+                {
+                    splashManager.ShowWaitForm();
+
+                    var filePathLocation = txtProfileImgFileName.Text.Trim();
+                    var filePath = ExtractFileName(filePathLocation);
+                    var imageCode = txtProfileImgBarcode.Text.Trim();
+
+                    var repository = new Repository<ProfileImages>(unitWorks);
+                    var existingImg = repository.FindBy(x => x.image_code == imageCode);
+
+                    if (existingImg != null)
+                    {
+                        existingImg.title = txtProfileImgTitle.Text.Trim();
+                        existingImg.img_type = cmbProfileImgType.Text.Trim();
+                        existingImg.img_location = filePath;
+                        existingImg.updated_on = DateTime.Now;
+
+                        var updated = repository.Update(existingImg);
+                        if (updated)
+                        {
+                            unitWorks.Commit();
+                            PopupNotification.PopUpMessages(1, "Profile image updated: " + existingImg.title + " " + Messages.SuccessUpdate,
+                                Messages.TitleSuccessUpdate);
+                            returnValue = 1;
+                        }
+                    }
+                    else
+                    {
+                        var newImg = new ProfileImages()
+                        {
+                            image_code = imageCode,
+                            title = txtProfileImgTitle.Text.Trim(),
+                            img_type = cmbProfileImgType.Text.Trim(),
+                            img_location = filePath,
+                            created_on = dkpImgCreadOn.Value.Date,
+                            updated_on = DateTime.Now
+                        };
+
+                        var result = repository.Add(newImg);
+                        if (result > 0)
+                        {
+                            unitWorks.Commit();
+                            PopupNotification.PopUpMessages(1, "Profile image added: " + newImg.title + " " + Messages.SuccessInsert,
+                                Messages.TitleSuccessInsert);
+                            returnValue = 1;
+                        }
+                    }
+
+                    _image_list = EnumerableUtils.getProfileImgList();
+                    bindRefreshed();
+                }
+                catch (Exception ex)
+                {
+                    unitWorks.Rollback();
+                    PopupNotification.PopUpMessages(0, "Error saving image: " + ex.Message, Messages.TitleFailedInsert);
+                }
+                finally
+                {
+                    splashManager.CloseWaitForm();
+                }
             }
-            else
-            {
-                splashManager.CloseWaitForm();
-                PopupNotification.PopUpMessages(0, "Profile image: " + txtProfileImgTitle.Text.Trim(' ') + " " + Messages.ErrorInsert,
-                 Messages.TitleFailedInsert);
-            }
+
+            return returnValue;
         }
+
 
         private string ExtractFileName(string filePath)
         {
@@ -880,10 +975,6 @@ namespace Inventory.MainForm
         private void gridContact_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             gridViewContact(sender);
-        }
-        private void gridImage_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            gridViewImages(sender);
         }
 
         private void gridEmployee_RowClick(object sender, RowClickEventArgs e)
@@ -1188,7 +1279,6 @@ namespace Inventory.MainForm
             bindAddress();
             bindContact();
             BindDepartment();
-            bindProfileImgList();
             bindProfileList();
         }
 
@@ -1205,33 +1295,7 @@ namespace Inventory.MainForm
             }
         }
 
-        private void bindProfileImgList()
-        {
-            var list = _image_list.Select(p => new {
-                ID = p.image_id,
-                CODE = p.image_code,
-                TITLE = p.title,
-                IMAGETYPE = p.img_type,
-                LOCATION = p.img_location,
-                CREATED = p.created_on,
-                UPDATED = p.updated_on
-            }).ToList();
-
-            gridImageControl.DataSource = list;
-            gridImageControl.Update();
-
-            if (gridImage.RowCount > 0)
-            {
-                gridImage.Columns[0].Width = 50;
-                gridImage.Columns[1].Width = 120;
-                gridImage.Columns[2].Width = 200;
-                gridImage.Columns[3].Width = 140;
-                gridImage.Columns[4].Width = 180;
-                gridImage.Columns[5].Width = 100;
-                gridImage.Columns[6].Width = 100;
-            }
-        }
-
+        
         private void bindProfileList()
         {
             gridCtlProfile.Update();
@@ -1343,37 +1407,6 @@ namespace Inventory.MainForm
         private string getfileExntesion(string filePath)
         {
             return Path.GetFileName(filePath);
-        }
-
-        private void gridViewImages(object sender)
-        {
-            if (gridImage.RowCount > 0)
-            {
-                try
-                {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
-                    if (id.Length > 0)
-                    {
-                        var barcode = ((GridView)sender).GetFocusedRowCellValue("CODE").ToString();
-                        var img = searchProfileImg(barcode);
-                        var imgLocation = img?.img_location;
-                        if (img == null || string.IsNullOrEmpty(imgLocation))
-                        {
-                            imgProfileImages.ImageLocation = ConstantUtils.defaultUserImgEmpty;
-                        }
-                        else
-                        {
-                            var location = ConstantUtils.defaultUserImgLocation + imgLocation;
-
-                            imgProfileImages.ImageLocation = location;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
         }
 
         private void txtStreet_KeyDown(object sender, KeyEventArgs e)
@@ -1572,12 +1605,14 @@ namespace Inventory.MainForm
                 var imgLocation = img?.img_location;
                 if (string.IsNullOrEmpty(imgLocation))
                 {
-                    imgProfile.ImageLocation = ConstantUtils.defaultUserImgEmpty;
+                    if (imgProfile != null) imgProfile.ImageLocation = ConstantUtils.defaultUserImgEmpty;
+                    if (imgProfileImages != null) imgProfileImages.ImageLocation = ConstantUtils.defaultUserImgEmpty;
                 }
                 else
                 {
                     var location = ConstantUtils.defaultUserImgLocation + imgLocation;
-                    imgProfile.ImageLocation = location;
+                    if (imgProfile != null) imgProfile.ImageLocation = location;
+                    if (imgProfileImages != null) imgProfileImages.ImageLocation = location;
                 }
             }
             catch (Exception ex)

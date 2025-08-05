@@ -140,12 +140,8 @@ namespace Inventory.MainForm
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.xtraImage = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.label19 = new System.Windows.Forms.Label();
-            this.dkpImgUpdatedOn = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
             this.dkpImgCreadOn = new System.Windows.Forms.DateTimePicker();
-            this.label27 = new System.Windows.Forms.Label();
-            this.txtProfileImgId = new System.Windows.Forms.TextBox();
             this.bntBrowseImage = new DevExpress.XtraEditors.SimpleButton();
             this.bntSaveImages = new DevExpress.XtraEditors.SimpleButton();
             this.cmbProfileImgType = new System.Windows.Forms.ComboBox();
@@ -157,12 +153,6 @@ namespace Inventory.MainForm
             this.label31 = new System.Windows.Forms.Label();
             this.txtProfileImgBarcode = new System.Windows.Forms.TextBox();
             this.imgProfileImages = new System.Windows.Forms.PictureBox();
-            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.gridImageControl = new DevExpress.XtraGrid.GridControl();
-            this.gridImage = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.bntHome = new System.Windows.Forms.Button();
             this.bntDelete = new System.Windows.Forms.Button();
@@ -225,13 +215,6 @@ namespace Inventory.MainForm
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgProfileImages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
-            this.groupControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridImageControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             this.pnlRightOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRight)).BeginInit();
             this.pnlRightMain.SuspendLayout();
@@ -2020,12 +2003,8 @@ namespace Inventory.MainForm
             this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupControl1.Controls.Add(this.label19);
-            this.groupControl1.Controls.Add(this.dkpImgUpdatedOn);
             this.groupControl1.Controls.Add(this.label20);
             this.groupControl1.Controls.Add(this.dkpImgCreadOn);
-            this.groupControl1.Controls.Add(this.label27);
-            this.groupControl1.Controls.Add(this.txtProfileImgId);
             this.groupControl1.Controls.Add(this.bntBrowseImage);
             this.groupControl1.Controls.Add(this.bntSaveImages);
             this.groupControl1.Controls.Add(this.cmbProfileImgType);
@@ -2037,7 +2016,6 @@ namespace Inventory.MainForm
             this.groupControl1.Controls.Add(this.label31);
             this.groupControl1.Controls.Add(this.txtProfileImgBarcode);
             this.groupControl1.Controls.Add(this.imgProfileImages);
-            this.groupControl1.Controls.Add(this.groupControl4);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
@@ -2047,37 +2025,13 @@ namespace Inventory.MainForm
             this.groupControl1.Size = new System.Drawing.Size(1351, 758);
             this.groupControl1.TabIndex = 175;
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(8, 274);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(128, 23);
-            this.label19.TabIndex = 246;
-            this.label19.Text = "Updated Date:";
-            // 
-            // dkpImgUpdatedOn
-            // 
-            this.dkpImgUpdatedOn.CustomFormat = "dd-MM-yyyy";
-            this.dkpImgUpdatedOn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dkpImgUpdatedOn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpImgUpdatedOn.Location = new System.Drawing.Point(193, 263);
-            this.dkpImgUpdatedOn.Margin = new System.Windows.Forms.Padding(4);
-            this.dkpImgUpdatedOn.Name = "dkpImgUpdatedOn";
-            this.dkpImgUpdatedOn.Size = new System.Drawing.Size(393, 34);
-            this.dkpImgUpdatedOn.TabIndex = 107;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(9, 238);
+            this.label20.Location = new System.Drawing.Point(735, 199);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(121, 23);
@@ -2089,45 +2043,20 @@ namespace Inventory.MainForm
             this.dkpImgCreadOn.CustomFormat = "dd-MM-yyyy";
             this.dkpImgCreadOn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpImgCreadOn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpImgCreadOn.Location = new System.Drawing.Point(193, 226);
+            this.dkpImgCreadOn.Location = new System.Drawing.Point(919, 190);
             this.dkpImgCreadOn.Margin = new System.Windows.Forms.Padding(4);
             this.dkpImgCreadOn.Name = "dkpImgCreadOn";
             this.dkpImgCreadOn.Size = new System.Drawing.Size(393, 34);
             this.dkpImgCreadOn.TabIndex = 106;
             // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(8, 48);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(144, 23);
-            this.label27.TabIndex = 236;
-            this.label27.Text = "Profile Image Id:";
-            // 
-            // txtProfileImgId
-            // 
-            this.txtProfileImgId.BackColor = System.Drawing.Color.White;
-            this.txtProfileImgId.Enabled = false;
-            this.txtProfileImgId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProfileImgId.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProfileImgId.Location = new System.Drawing.Point(193, 41);
-            this.txtProfileImgId.Margin = new System.Windows.Forms.Padding(4);
-            this.txtProfileImgId.Name = "txtProfileImgId";
-            this.txtProfileImgId.Size = new System.Drawing.Size(393, 34);
-            this.txtProfileImgId.TabIndex = 100;
-            // 
             // bntBrowseImage
             // 
             this.bntBrowseImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntBrowseImage.ImageOptions.Image")));
             this.bntBrowseImage.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntBrowseImage.Location = new System.Drawing.Point(193, 320);
+            this.bntBrowseImage.Location = new System.Drawing.Point(919, 268);
             this.bntBrowseImage.Margin = new System.Windows.Forms.Padding(4);
             this.bntBrowseImage.Name = "bntBrowseImage";
-            this.bntBrowseImage.Size = new System.Drawing.Size(187, 46);
+            this.bntBrowseImage.Size = new System.Drawing.Size(198, 71);
             this.bntBrowseImage.TabIndex = 108;
             this.bntBrowseImage.ToolTip = "User Manual";
             this.bntBrowseImage.Click += new System.EventHandler(this.bntBrowseImage_Click);
@@ -2136,10 +2065,10 @@ namespace Inventory.MainForm
             // 
             this.bntSaveImages.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntSaveImages.ImageOptions.Image")));
             this.bntSaveImages.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.bntSaveImages.Location = new System.Drawing.Point(380, 320);
+            this.bntSaveImages.Location = new System.Drawing.Point(1114, 268);
             this.bntSaveImages.Margin = new System.Windows.Forms.Padding(4);
             this.bntSaveImages.Name = "bntSaveImages";
-            this.bntSaveImages.Size = new System.Drawing.Size(209, 46);
+            this.bntSaveImages.Size = new System.Drawing.Size(198, 71);
             this.bntSaveImages.TabIndex = 109;
             this.bntSaveImages.ToolTip = "Service Manual";
             this.bntSaveImages.Click += new System.EventHandler(this.bntSaveImages_Click);
@@ -2156,7 +2085,7 @@ namespace Inventory.MainForm
             "JPG",
             "PNG",
             "BMP"});
-            this.cmbProfileImgType.Location = new System.Drawing.Point(193, 151);
+            this.cmbProfileImgType.Location = new System.Drawing.Point(919, 117);
             this.cmbProfileImgType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProfileImgType.Name = "cmbProfileImgType";
             this.cmbProfileImgType.Size = new System.Drawing.Size(393, 36);
@@ -2168,7 +2097,7 @@ namespace Inventory.MainForm
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(8, 197);
+            this.label28.Location = new System.Drawing.Point(734, 161);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(148, 23);
@@ -2178,9 +2107,10 @@ namespace Inventory.MainForm
             // txtProfileImgFileName
             // 
             this.txtProfileImgFileName.BackColor = System.Drawing.Color.White;
+            this.txtProfileImgFileName.Enabled = false;
             this.txtProfileImgFileName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgFileName.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProfileImgFileName.Location = new System.Drawing.Point(193, 190);
+            this.txtProfileImgFileName.Location = new System.Drawing.Point(919, 154);
             this.txtProfileImgFileName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfileImgFileName.Name = "txtProfileImgFileName";
             this.txtProfileImgFileName.Size = new System.Drawing.Size(393, 34);
@@ -2192,7 +2122,7 @@ namespace Inventory.MainForm
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(9, 159);
+            this.label29.Location = new System.Drawing.Point(735, 125);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(166, 23);
@@ -2205,7 +2135,7 @@ namespace Inventory.MainForm
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(8, 122);
+            this.label30.Location = new System.Drawing.Point(734, 87);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(164, 23);
@@ -2215,9 +2145,10 @@ namespace Inventory.MainForm
             // txtProfileImgTitle
             // 
             this.txtProfileImgTitle.BackColor = System.Drawing.Color.White;
+            this.txtProfileImgTitle.Enabled = false;
             this.txtProfileImgTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgTitle.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProfileImgTitle.Location = new System.Drawing.Point(193, 114);
+            this.txtProfileImgTitle.Location = new System.Drawing.Point(919, 79);
             this.txtProfileImgTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfileImgTitle.Name = "txtProfileImgTitle";
             this.txtProfileImgTitle.Size = new System.Drawing.Size(393, 34);
@@ -2229,7 +2160,7 @@ namespace Inventory.MainForm
             this.label31.BackColor = System.Drawing.Color.Transparent;
             this.label31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(8, 85);
+            this.label31.Location = new System.Drawing.Point(734, 50);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(169, 23);
@@ -2242,7 +2173,7 @@ namespace Inventory.MainForm
             this.txtProfileImgBarcode.Enabled = false;
             this.txtProfileImgBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgBarcode.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProfileImgBarcode.Location = new System.Drawing.Point(193, 78);
+            this.txtProfileImgBarcode.Location = new System.Drawing.Point(919, 43);
             this.txtProfileImgBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfileImgBarcode.Name = "txtProfileImgBarcode";
             this.txtProfileImgBarcode.Size = new System.Drawing.Size(393, 34);
@@ -2251,161 +2182,13 @@ namespace Inventory.MainForm
             // imgProfileImages
             // 
             this.imgProfileImages.BackColor = System.Drawing.Color.Gray;
-            this.imgProfileImages.Location = new System.Drawing.Point(967, 25);
+            this.imgProfileImages.Location = new System.Drawing.Point(35, 43);
             this.imgProfileImages.Margin = new System.Windows.Forms.Padding(4);
             this.imgProfileImages.Name = "imgProfileImages";
-            this.imgProfileImages.Size = new System.Drawing.Size(380, 342);
+            this.imgProfileImages.Size = new System.Drawing.Size(660, 636);
             this.imgProfileImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgProfileImages.TabIndex = 224;
             this.imgProfileImages.TabStop = false;
-            // 
-            // groupControl4
-            // 
-            this.groupControl4.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.groupControl4.Appearance.Options.UseBackColor = true;
-            this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.groupControl4.Controls.Add(this.gridImageControl);
-            this.groupControl4.Location = new System.Drawing.Point(-1, 368);
-            this.groupControl4.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
-            this.groupControl4.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl4.Margin = new System.Windows.Forms.Padding(4);
-            this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1349, 382);
-            this.groupControl4.TabIndex = 173;
-            this.groupControl4.Text = "Profile Pictures:";
-            // 
-            // gridImageControl
-            // 
-            this.gridImageControl.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridImageControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridImageControl.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.gridImageControl.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
-            this.gridImageControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gridImageControl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.gridImageControl.Location = new System.Drawing.Point(3, 21);
-            this.gridImageControl.MainView = this.gridImage;
-            this.gridImageControl.Margin = new System.Windows.Forms.Padding(4);
-            this.gridImageControl.Name = "gridImageControl";
-            this.gridImageControl.Size = new System.Drawing.Size(1343, 358);
-            this.gridImageControl.TabIndex = 27;
-            this.gridImageControl.TabStop = false;
-            this.gridImageControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridImage,
-            this.gridView4,
-            this.gridView5,
-            this.gridView6});
-            // 
-            // gridImage
-            // 
-            this.gridImage.Appearance.Empty.BackColor = System.Drawing.Color.LightGray;
-            this.gridImage.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridImage.Appearance.Empty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridImage.Appearance.Empty.Options.UseBackColor = true;
-            this.gridImage.Appearance.Empty.Options.UseBorderColor = true;
-            this.gridImage.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.gridImage.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridImage.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridImage.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridImage.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridImage.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridImage.Appearance.FocusedRow.Options.UseBorderColor = true;
-            this.gridImage.Appearance.FocusedRow.Options.UseFont = true;
-            this.gridImage.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.gridImage.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridImage.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridImage.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.gridImage.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.gridImage.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridImage.Appearance.HeaderPanel.Options.UseForeColor = true;
-            this.gridImage.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
-            this.gridImage.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridImage.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridImage.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridImage.Appearance.Row.Options.UseBackColor = true;
-            this.gridImage.Appearance.Row.Options.UseBorderColor = true;
-            this.gridImage.Appearance.Row.Options.UseFont = true;
-            this.gridImage.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridImage.Appearance.ViewCaption.Options.UseFont = true;
-            this.gridImage.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridImage.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridImage.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
-            this.gridImage.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
-            this.gridImage.AppearancePrint.HeaderPanel.Options.UseFont = true;
-            this.gridImage.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
-            this.gridImage.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
-            this.gridImage.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridImage.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridImage.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
-            this.gridImage.AppearancePrint.Row.Options.UseFont = true;
-            this.gridImage.AppearancePrint.Row.Options.UseForeColor = true;
-            this.gridImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.gridImage.DetailHeight = 431;
-            this.gridImage.GridControl = this.gridImageControl;
-            this.gridImage.Name = "gridImage";
-            this.gridImage.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridImage.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridImage.OptionsBehavior.Editable = false;
-            this.gridImage.OptionsCustomization.AllowRowSizing = true;
-            this.gridImage.OptionsDetail.AllowExpandEmptyDetails = true;
-            this.gridImage.OptionsSelection.MultiSelect = true;
-            this.gridImage.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridImage.OptionsView.RowAutoHeight = true;
-            this.gridImage.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
-            this.gridImage.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridImage_FocusedRowChanged);
-            // 
-            // gridView4
-            // 
-            this.gridView4.DetailHeight = 431;
-            this.gridView4.GridControl = this.gridImageControl;
-            this.gridView4.Name = "gridView4";
-            // 
-            // gridView5
-            // 
-            this.gridView5.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gridView5.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridView5.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
-            this.gridView5.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.gridView5.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Green;
-            this.gridView5.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridView5.Appearance.FocusedRow.Options.UseBorderColor = true;
-            this.gridView5.Appearance.FocusedRow.Options.UseFont = true;
-            this.gridView5.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.gridView5.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridView5.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.gridView5.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridView5.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.gridView5.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridView5.Appearance.HeaderPanel.Options.UseForeColor = true;
-            this.gridView5.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.gridView5.Appearance.Row.Options.UseFont = true;
-            this.gridView5.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridView5.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.gridView5.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
-            this.gridView5.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
-            this.gridView5.AppearancePrint.HeaderPanel.Options.UseFont = true;
-            this.gridView5.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
-            this.gridView5.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.gridView5.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
-            this.gridView5.AppearancePrint.Row.Options.UseFont = true;
-            this.gridView5.AppearancePrint.Row.Options.UseForeColor = true;
-            this.gridView5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.gridView5.DetailHeight = 431;
-            this.gridView5.GridControl = this.gridImageControl;
-            this.gridView5.Name = "gridView5";
-            this.gridView5.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView5.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView5.OptionsBehavior.Editable = false;
-            this.gridView5.OptionsBehavior.ReadOnly = true;
-            this.gridView5.OptionsCustomization.AllowRowSizing = true;
-            this.gridView5.OptionsDetail.AllowExpandEmptyDetails = true;
-            this.gridView5.OptionsSelection.MultiSelect = true;
-            this.gridView5.OptionsView.ColumnAutoWidth = false;
-            // 
-            // gridView6
-            // 
-            this.gridView6.DetailHeight = 431;
-            this.gridView6.GridControl = this.gridImageControl;
-            this.gridView6.Name = "gridView6";
             // 
             // lblMainTitle
             // 
@@ -2831,13 +2614,6 @@ namespace Inventory.MainForm
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgProfileImages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
-            this.groupControl4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridImageControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             this.pnlRightOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcRight)).EndInit();
             this.pnlRightMain.ResumeLayout(false);
@@ -2998,12 +2774,8 @@ namespace Inventory.MainForm
         private System.Windows.Forms.TextBox txtBarcodeAddress;
         private DevExpress.XtraTab.XtraTabPage xtraImage;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DateTimePicker dkpImgUpdatedOn;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.DateTimePicker dkpImgCreadOn;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox txtProfileImgId;
         private DevExpress.XtraEditors.SimpleButton bntBrowseImage;
         private DevExpress.XtraEditors.SimpleButton bntSaveImages;
         private System.Windows.Forms.ComboBox cmbProfileImgType;
@@ -3015,12 +2787,6 @@ namespace Inventory.MainForm
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox txtProfileImgBarcode;
         private System.Windows.Forms.PictureBox imgProfileImages;
-        private DevExpress.XtraEditors.GroupControl groupControl4;
-        private DevExpress.XtraGrid.GridControl gridImageControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridImage;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashManager;
     }
 }
