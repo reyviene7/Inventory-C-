@@ -47,6 +47,7 @@ namespace Inventory.Config
         public const string TitleSuccessInsert = "SUCCESSFULLY ADDED";
         public const string TitleSuccessUpdate = "SUCCESSFULLY UPDATED";
         public const string TitleSuccessDelete = "SUCCESSFULLY DELETED";
+        public const string TheWizards = "THE WIZARDS";
 
         public const string TitleBranch = "BRANCH DETAILS";
         public const string TitleEmployees = "EMPLOYEE DETAILS";
