@@ -32,6 +32,7 @@
                                                 phil_health,
                                                 position,
                                                 department_id,
+                                                department_name,
                                                 hire_date,
                                                 date_register
                                                 FROM view_profile ORDER BY profile_id DESC";
@@ -129,6 +130,11 @@
 	                                               category_details, 
 	                                               date_register
                                              FROM category ORDER BY category_id DESC";
+        public const string AllDepartment = @"SELECT department_id, 
+	                                               department_name, 
+	                                               address_id, 
+	                                               contact_id
+                                             FROM department ORDER BY department_id DESC";
 
         public const string AllProducts = @"SELECT product_id
                                                   ,product_code

@@ -30,7 +30,6 @@ namespace Inventory.MainForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegistration));
             this.splashManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
@@ -267,7 +266,7 @@ namespace Inventory.MainForm
             this.pnlMain.Controls.Add(this.bntUpdate);
             this.pnlMain.Controls.Add(this.bntInsert);
             this.pnlMain.Location = new System.Drawing.Point(1, 1);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1720, 827);
             this.pnlMain.TabIndex = 63;
@@ -277,7 +276,7 @@ namespace Inventory.MainForm
             this.pcLOG.BackColor = System.Drawing.Color.Gray;
             this.pcLOG.Image = ((System.Drawing.Image)(resources.GetObject("pcLOG.Image")));
             this.pcLOG.Location = new System.Drawing.Point(64, 62);
-            this.pcLOG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcLOG.Margin = new System.Windows.Forms.Padding(4);
             this.pcLOG.Name = "pcLOG";
             this.pcLOG.Size = new System.Drawing.Size(120, 135);
             this.pcLOG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -287,7 +286,7 @@ namespace Inventory.MainForm
             // xtraControl
             // 
             this.xtraControl.Location = new System.Drawing.Point(256, 39);
-            this.xtraControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.xtraControl.Margin = new System.Windows.Forms.Padding(4);
             this.xtraControl.Name = "xtraControl";
             this.xtraControl.SelectedTabPage = this.xtraProfile;
             this.xtraControl.Size = new System.Drawing.Size(1353, 788);
@@ -305,7 +304,7 @@ namespace Inventory.MainForm
             this.xtraProfile.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraProfile.Controls.Add(this.GbPersonal);
             this.xtraProfile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraProfile.ImageOptions.Image")));
-            this.xtraProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.xtraProfile.Margin = new System.Windows.Forms.Padding(4);
             this.xtraProfile.Name = "xtraProfile";
             this.xtraProfile.Size = new System.Drawing.Size(1351, 758);
             this.xtraProfile.Text = "Personal Profile";
@@ -360,7 +359,7 @@ namespace Inventory.MainForm
             this.GbPersonal.Location = new System.Drawing.Point(0, 0);
             this.GbPersonal.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.GbPersonal.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.GbPersonal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GbPersonal.Margin = new System.Windows.Forms.Padding(4);
             this.GbPersonal.Name = "GbPersonal";
             this.GbPersonal.Size = new System.Drawing.Size(1351, 758);
             this.GbPersonal.TabIndex = 173;
@@ -371,7 +370,7 @@ namespace Inventory.MainForm
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(3, 69);
+            this.label14.Location = new System.Drawing.Point(4, 69);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(80, 23);
@@ -385,7 +384,7 @@ namespace Inventory.MainForm
             this.txtBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarcode.ForeColor = System.Drawing.Color.Black;
             this.txtBarcode.Location = new System.Drawing.Point(133, 62);
-            this.txtBarcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(356, 34);
             this.txtBarcode.TabIndex = 175;
@@ -423,7 +422,7 @@ namespace Inventory.MainForm
             this.dkpDateRegistered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDateRegistered.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dkpDateRegistered.Location = new System.Drawing.Point(613, 321);
-            this.dkpDateRegistered.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dkpDateRegistered.Margin = new System.Windows.Forms.Padding(4);
             this.dkpDateRegistered.Name = "dkpDateRegistered";
             this.dkpDateRegistered.Size = new System.Drawing.Size(317, 34);
             this.dkpDateRegistered.TabIndex = 19;
@@ -438,7 +437,7 @@ namespace Inventory.MainForm
             this.gbCON.Location = new System.Drawing.Point(1, 394);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.gbCON.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCON.Margin = new System.Windows.Forms.Padding(4);
             this.gbCON.Name = "gbCON";
             this.gbCON.Size = new System.Drawing.Size(1347, 357);
             this.gbCON.TabIndex = 172;
@@ -450,11 +449,11 @@ namespace Inventory.MainForm
             this.gridCtlProfile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCtlProfile.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
             this.gridCtlProfile.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
-            this.gridCtlProfile.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridCtlProfile.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gridCtlProfile.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
             this.gridCtlProfile.Location = new System.Drawing.Point(3, 21);
             this.gridCtlProfile.MainView = this.gridProfile;
-            this.gridCtlProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridCtlProfile.Margin = new System.Windows.Forms.Padding(4);
             this.gridCtlProfile.Name = "gridCtlProfile";
             this.gridCtlProfile.Size = new System.Drawing.Size(1341, 333);
             this.gridCtlProfile.TabIndex = 101;
@@ -552,7 +551,7 @@ namespace Inventory.MainForm
             this.cmbDepartment.ForeColor = System.Drawing.Color.Black;
             this.cmbDepartment.FormattingEnabled = true;
             this.cmbDepartment.Location = new System.Drawing.Point(613, 247);
-            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(317, 36);
             this.cmbDepartment.TabIndex = 17;
@@ -565,7 +564,7 @@ namespace Inventory.MainForm
             this.txtMobile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMobile.ForeColor = System.Drawing.Color.Black;
             this.txtMobile.Location = new System.Drawing.Point(133, 357);
-            this.txtMobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMobile.Margin = new System.Windows.Forms.Padding(4);
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(356, 34);
             this.txtMobile.TabIndex = 10;
@@ -577,7 +576,7 @@ namespace Inventory.MainForm
             this.lblBarcode.BackColor = System.Drawing.Color.Transparent;
             this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBarcode.ForeColor = System.Drawing.Color.White;
-            this.lblBarcode.Location = new System.Drawing.Point(3, 34);
+            this.lblBarcode.Location = new System.Drawing.Point(4, 34);
             this.lblBarcode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBarcode.Name = "lblBarcode";
             this.lblBarcode.Size = new System.Drawing.Size(89, 23);
@@ -590,7 +589,7 @@ namespace Inventory.MainForm
             this.lblMobile.BackColor = System.Drawing.Color.Transparent;
             this.lblMobile.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMobile.ForeColor = System.Drawing.Color.White;
-            this.lblMobile.Location = new System.Drawing.Point(5, 366);
+            this.lblMobile.Location = new System.Drawing.Point(4, 363);
             this.lblMobile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMobile.Name = "lblMobile";
             this.lblMobile.Size = new System.Drawing.Size(86, 23);
@@ -604,7 +603,7 @@ namespace Inventory.MainForm
             this.dkpDateHired.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDateHired.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dkpDateHired.Location = new System.Drawing.Point(613, 284);
-            this.dkpDateHired.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dkpDateHired.Margin = new System.Windows.Forms.Padding(4);
             this.dkpDateHired.Name = "dkpDateHired";
             this.dkpDateHired.Size = new System.Drawing.Size(317, 34);
             this.dkpDateHired.TabIndex = 18;
@@ -616,7 +615,7 @@ namespace Inventory.MainForm
             this.lblPostion.BackColor = System.Drawing.Color.Transparent;
             this.lblPostion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPostion.ForeColor = System.Drawing.Color.White;
-            this.lblPostion.Location = new System.Drawing.Point(500, 218);
+            this.lblPostion.Location = new System.Drawing.Point(499, 218);
             this.lblPostion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPostion.Name = "lblPostion";
             this.lblPostion.Size = new System.Drawing.Size(78, 23);
@@ -629,12 +628,12 @@ namespace Inventory.MainForm
             this.lblPhone.BackColor = System.Drawing.Color.Transparent;
             this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhone.ForeColor = System.Drawing.Color.White;
-            this.lblPhone.Location = new System.Drawing.Point(5, 327);
+            this.lblPhone.Location = new System.Drawing.Point(4, 328);
             this.lblPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(64, 23);
+            this.lblPhone.Size = new System.Drawing.Size(96, 23);
             this.lblPhone.TabIndex = 137;
-            this.lblPhone.Text = "Phone:";
+            this.lblPhone.Text = "Telephone:";
             // 
             // cmbPosition
             // 
@@ -666,7 +665,7 @@ namespace Inventory.MainForm
             "Assistant Driver ",
             "Helper"});
             this.cmbPosition.Location = new System.Drawing.Point(613, 210);
-            this.cmbPosition.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbPosition.Margin = new System.Windows.Forms.Padding(4);
             this.cmbPosition.Name = "cmbPosition";
             this.cmbPosition.Size = new System.Drawing.Size(317, 36);
             this.cmbPosition.TabIndex = 16;
@@ -680,7 +679,7 @@ namespace Inventory.MainForm
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.ForeColor = System.Drawing.Color.Black;
             this.txtPhone.Location = new System.Drawing.Point(133, 320);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(357, 34);
             this.txtPhone.TabIndex = 9;
@@ -693,7 +692,7 @@ namespace Inventory.MainForm
             this.txtProfileID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileID.ForeColor = System.Drawing.Color.Black;
             this.txtProfileID.Location = new System.Drawing.Point(133, 25);
-            this.txtProfileID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProfileID.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfileID.Name = "txtProfileID";
             this.txtProfileID.Size = new System.Drawing.Size(356, 34);
             this.txtProfileID.TabIndex = 1;
@@ -704,7 +703,7 @@ namespace Inventory.MainForm
             this.lblCivilStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblCivilStatus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCivilStatus.ForeColor = System.Drawing.Color.White;
-            this.lblCivilStatus.Location = new System.Drawing.Point(5, 288);
+            this.lblCivilStatus.Location = new System.Drawing.Point(4, 293);
             this.lblCivilStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCivilStatus.Name = "lblCivilStatus";
             this.lblCivilStatus.Size = new System.Drawing.Size(105, 23);
@@ -730,7 +729,7 @@ namespace Inventory.MainForm
             "Married",
             "Divorse"});
             this.cmbCivilStatus.Location = new System.Drawing.Point(133, 283);
-            this.cmbCivilStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCivilStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCivilStatus.Name = "cmbCivilStatus";
             this.cmbCivilStatus.Size = new System.Drawing.Size(357, 36);
             this.cmbCivilStatus.TabIndex = 8;
@@ -740,7 +739,7 @@ namespace Inventory.MainForm
             // 
             this.imgProfile.BackColor = System.Drawing.Color.Gray;
             this.imgProfile.Location = new System.Drawing.Point(940, 28);
-            this.imgProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imgProfile.Margin = new System.Windows.Forms.Padding(4);
             this.imgProfile.Name = "imgProfile";
             this.imgProfile.Size = new System.Drawing.Size(400, 358);
             this.imgProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -767,7 +766,7 @@ namespace Inventory.MainForm
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.ForeColor = System.Drawing.Color.Black;
             this.txtAddress.Location = new System.Drawing.Point(613, 63);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(317, 34);
             this.txtAddress.TabIndex = 12;
@@ -780,7 +779,7 @@ namespace Inventory.MainForm
             this.txtPhilhealthNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhilhealthNumber.ForeColor = System.Drawing.Color.Black;
             this.txtPhilhealthNumber.Location = new System.Drawing.Point(613, 174);
-            this.txtPhilhealthNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPhilhealthNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhilhealthNumber.Name = "txtPhilhealthNumber";
             this.txtPhilhealthNumber.Size = new System.Drawing.Size(317, 34);
             this.txtPhilhealthNumber.TabIndex = 15;
@@ -792,7 +791,7 @@ namespace Inventory.MainForm
             this.lblPhilhealth.BackColor = System.Drawing.Color.Transparent;
             this.lblPhilhealth.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhilhealth.ForeColor = System.Drawing.Color.White;
-            this.lblPhilhealth.Location = new System.Drawing.Point(500, 181);
+            this.lblPhilhealth.Location = new System.Drawing.Point(499, 181);
             this.lblPhilhealth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhilhealth.Name = "lblPhilhealth";
             this.lblPhilhealth.Size = new System.Drawing.Size(105, 23);
@@ -892,7 +891,7 @@ namespace Inventory.MainForm
             "Zamboanga Sibugay",
             "Metro Manila"});
             this.cmbProvince.Location = new System.Drawing.Point(613, 100);
-            this.cmbProvince.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbProvince.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProvince.Name = "cmbProvince";
             this.cmbProvince.Size = new System.Drawing.Size(317, 36);
             this.cmbProvince.TabIndex = 13;
@@ -905,7 +904,7 @@ namespace Inventory.MainForm
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
             this.txtEmail.Location = new System.Drawing.Point(613, 26);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(317, 34);
             this.txtEmail.TabIndex = 11;
@@ -918,7 +917,7 @@ namespace Inventory.MainForm
             this.txtSSSNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSSSNumber.ForeColor = System.Drawing.Color.Black;
             this.txtSSSNumber.Location = new System.Drawing.Point(613, 137);
-            this.txtSSSNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSSSNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtSSSNumber.Name = "txtSSSNumber";
             this.txtSSSNumber.Size = new System.Drawing.Size(317, 34);
             this.txtSSSNumber.TabIndex = 14;
@@ -969,7 +968,7 @@ namespace Inventory.MainForm
             this.lblDatebirth.BackColor = System.Drawing.Color.Transparent;
             this.lblDatebirth.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatebirth.ForeColor = System.Drawing.Color.White;
-            this.lblDatebirth.Location = new System.Drawing.Point(5, 257);
+            this.lblDatebirth.Location = new System.Drawing.Point(4, 257);
             this.lblDatebirth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDatebirth.Name = "lblDatebirth";
             this.lblDatebirth.Size = new System.Drawing.Size(98, 23);
@@ -983,7 +982,7 @@ namespace Inventory.MainForm
             this.dkpBirthdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dkpBirthdate.Location = new System.Drawing.Point(135, 246);
-            this.dkpBirthdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dkpBirthdate.Margin = new System.Windows.Forms.Padding(4);
             this.dkpBirthdate.Name = "dkpBirthdate";
             this.dkpBirthdate.Size = new System.Drawing.Size(356, 34);
             this.dkpBirthdate.TabIndex = 6;
@@ -995,7 +994,7 @@ namespace Inventory.MainForm
             this.lblGender.BackColor = System.Drawing.Color.Transparent;
             this.lblGender.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGender.ForeColor = System.Drawing.Color.White;
-            this.lblGender.Location = new System.Drawing.Point(5, 217);
+            this.lblGender.Location = new System.Drawing.Point(4, 217);
             this.lblGender.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(74, 23);
@@ -1018,7 +1017,7 @@ namespace Inventory.MainForm
             "Female",
             "Male"});
             this.cmbgender.Location = new System.Drawing.Point(133, 209);
-            this.cmbgender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbgender.Margin = new System.Windows.Forms.Padding(4);
             this.cmbgender.Name = "cmbgender";
             this.cmbgender.Size = new System.Drawing.Size(357, 36);
             this.cmbgender.TabIndex = 5;
@@ -1031,7 +1030,7 @@ namespace Inventory.MainForm
             this.txtMiddleInitial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMiddleInitial.ForeColor = System.Drawing.Color.Black;
             this.txtMiddleInitial.Location = new System.Drawing.Point(133, 172);
-            this.txtMiddleInitial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMiddleInitial.Margin = new System.Windows.Forms.Padding(4);
             this.txtMiddleInitial.MaxLength = 2;
             this.txtMiddleInitial.Name = "txtMiddleInitial";
             this.txtMiddleInitial.Size = new System.Drawing.Size(356, 34);
@@ -1044,7 +1043,7 @@ namespace Inventory.MainForm
             this.lblMiddleInitial.BackColor = System.Drawing.Color.Transparent;
             this.lblMiddleInitial.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMiddleInitial.ForeColor = System.Drawing.Color.White;
-            this.lblMiddleInitial.Location = new System.Drawing.Point(1, 180);
+            this.lblMiddleInitial.Location = new System.Drawing.Point(4, 180);
             this.lblMiddleInitial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMiddleInitial.Name = "lblMiddleInitial";
             this.lblMiddleInitial.Size = new System.Drawing.Size(123, 23);
@@ -1058,7 +1057,7 @@ namespace Inventory.MainForm
             this.txtLastName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.ForeColor = System.Drawing.Color.Black;
             this.txtLastName.Location = new System.Drawing.Point(133, 135);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(356, 34);
             this.txtLastName.TabIndex = 3;
@@ -1070,7 +1069,7 @@ namespace Inventory.MainForm
             this.lblLastName.BackColor = System.Drawing.Color.Transparent;
             this.lblLastName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLastName.ForeColor = System.Drawing.Color.White;
-            this.lblLastName.Location = new System.Drawing.Point(3, 143);
+            this.lblLastName.Location = new System.Drawing.Point(4, 143);
             this.lblLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(99, 23);
@@ -1084,7 +1083,7 @@ namespace Inventory.MainForm
             this.txtFirstName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.ForeColor = System.Drawing.Color.Black;
             this.txtFirstName.Location = new System.Drawing.Point(133, 98);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(356, 34);
             this.txtFirstName.TabIndex = 2;
@@ -1096,7 +1095,7 @@ namespace Inventory.MainForm
             this.lblFName.BackColor = System.Drawing.Color.Transparent;
             this.lblFName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFName.ForeColor = System.Drawing.Color.White;
-            this.lblFName.Location = new System.Drawing.Point(5, 106);
+            this.lblFName.Location = new System.Drawing.Point(4, 106);
             this.lblFName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFName.Name = "lblFName";
             this.lblFName.Size = new System.Drawing.Size(102, 23);
@@ -1110,7 +1109,7 @@ namespace Inventory.MainForm
             this.txtPIR.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPIR.ForeColor = System.Drawing.Color.Maroon;
             this.txtPIR.Location = new System.Drawing.Point(-15, 23);
-            this.txtPIR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPIR.Margin = new System.Windows.Forms.Padding(4);
             this.txtPIR.Multiline = true;
             this.txtPIR.Name = "txtPIR";
             this.txtPIR.Size = new System.Drawing.Size(12, 11);
@@ -1123,7 +1122,7 @@ namespace Inventory.MainForm
             this.xtraAddress.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraAddress.Controls.Add(this.groupAddress);
             this.xtraAddress.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraAddress.ImageOptions.Image")));
-            this.xtraAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.xtraAddress.Margin = new System.Windows.Forms.Padding(4);
             this.xtraAddress.Name = "xtraAddress";
             this.xtraAddress.Size = new System.Drawing.Size(1351, 758);
             this.xtraAddress.Text = "Profile Address";
@@ -1157,7 +1156,7 @@ namespace Inventory.MainForm
             this.groupAddress.Location = new System.Drawing.Point(0, 0);
             this.groupAddress.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupAddress.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupAddress.Margin = new System.Windows.Forms.Padding(4);
             this.groupAddress.Name = "groupAddress";
             this.groupAddress.Size = new System.Drawing.Size(1351, 758);
             this.groupAddress.TabIndex = 174;
@@ -1182,7 +1181,7 @@ namespace Inventory.MainForm
             this.txtBarcodeAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarcodeAddress.ForeColor = System.Drawing.Color.Black;
             this.txtBarcodeAddress.Location = new System.Drawing.Point(133, 76);
-            this.txtBarcodeAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBarcodeAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarcodeAddress.Name = "txtBarcodeAddress";
             this.txtBarcodeAddress.Size = new System.Drawing.Size(357, 34);
             this.txtBarcodeAddress.TabIndex = 175;
@@ -1207,7 +1206,7 @@ namespace Inventory.MainForm
             this.txtAddressID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddressID.ForeColor = System.Drawing.Color.Black;
             this.txtAddressID.Location = new System.Drawing.Point(133, 39);
-            this.txtAddressID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddressID.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddressID.Name = "txtAddressID";
             this.txtAddressID.Size = new System.Drawing.Size(357, 34);
             this.txtAddressID.TabIndex = 27;
@@ -1222,7 +1221,7 @@ namespace Inventory.MainForm
             this.groupControl2.Location = new System.Drawing.Point(-1, 390);
             this.groupControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl2.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupControl2.Margin = new System.Windows.Forms.Padding(4);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(1347, 361);
             this.groupControl2.TabIndex = 172;
@@ -1234,11 +1233,11 @@ namespace Inventory.MainForm
             this.gridControlAddress.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControlAddress.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
             this.gridControlAddress.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
-            this.gridControlAddress.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridControlAddress.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gridControlAddress.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
             this.gridControlAddress.Location = new System.Drawing.Point(3, 21);
             this.gridControlAddress.MainView = this.gridAddress;
-            this.gridControlAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridControlAddress.Margin = new System.Windows.Forms.Padding(4);
             this.gridControlAddress.Name = "gridControlAddress";
             this.gridControlAddress.Size = new System.Drawing.Size(1341, 337);
             this.gridControlAddress.TabIndex = 101;
@@ -1318,7 +1317,7 @@ namespace Inventory.MainForm
             this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.Color.Maroon;
             this.textBox2.Location = new System.Drawing.Point(-11, 26);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(12, 11);
@@ -1331,7 +1330,7 @@ namespace Inventory.MainForm
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(8, 121);
+            this.label12.Location = new System.Drawing.Point(8, 158);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(90, 23);
@@ -1344,11 +1343,12 @@ namespace Inventory.MainForm
             this.txtBarangay.Enabled = false;
             this.txtBarangay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarangay.ForeColor = System.Drawing.Color.Black;
-            this.txtBarangay.Location = new System.Drawing.Point(133, 113);
-            this.txtBarangay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBarangay.Location = new System.Drawing.Point(133, 150);
+            this.txtBarangay.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarangay.Name = "txtBarangay";
             this.txtBarangay.Size = new System.Drawing.Size(357, 34);
             this.txtBarangay.TabIndex = 28;
+            this.txtBarangay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarangay_KeyDown);
             // 
             // label16
             // 
@@ -1356,7 +1356,7 @@ namespace Inventory.MainForm
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(8, 305);
+            this.label16.Location = new System.Drawing.Point(498, 122);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(80, 23);
@@ -1377,12 +1377,13 @@ namespace Inventory.MainForm
             this.cmbCountry.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCountry.ForeColor = System.Drawing.Color.Black;
             this.cmbCountry.FormattingEnabled = true;
-            this.cmbCountry.Location = new System.Drawing.Point(135, 298);
-            this.cmbCountry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCountry.Location = new System.Drawing.Point(613, 115);
+            this.cmbCountry.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(357, 36);
             this.cmbCountry.TabIndex = 33;
             this.cmbCountry.Text = "Philippines";
+            this.cmbCountry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCountry_KeyDown);
             // 
             // label22
             // 
@@ -1390,7 +1391,7 @@ namespace Inventory.MainForm
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(9, 346);
+            this.label22.Location = new System.Drawing.Point(498, 160);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(89, 23);
@@ -1403,11 +1404,12 @@ namespace Inventory.MainForm
             this.dkpDateRegister.Enabled = false;
             this.dkpDateRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDateRegister.Location = new System.Drawing.Point(137, 335);
-            this.dkpDateRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dkpDateRegister.Location = new System.Drawing.Point(612, 154);
+            this.dkpDateRegister.Margin = new System.Windows.Forms.Padding(4);
             this.dkpDateRegister.Name = "dkpDateRegister";
             this.dkpDateRegister.Size = new System.Drawing.Size(356, 34);
             this.dkpDateRegister.TabIndex = 34;
+            this.dkpDateRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDateRegister_KeyDown);
             // 
             // label23
             // 
@@ -1415,7 +1417,7 @@ namespace Inventory.MainForm
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(8, 268);
+            this.label23.Location = new System.Drawing.Point(498, 85);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(83, 23);
@@ -1437,11 +1439,12 @@ namespace Inventory.MainForm
             this.txtProvince.Items.AddRange(new object[] {
             "Female",
             "Male"});
-            this.txtProvince.Location = new System.Drawing.Point(135, 261);
-            this.txtProvince.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProvince.Location = new System.Drawing.Point(612, 76);
+            this.txtProvince.Margin = new System.Windows.Forms.Padding(4);
             this.txtProvince.Name = "txtProvince";
             this.txtProvince.Size = new System.Drawing.Size(357, 36);
             this.txtProvince.TabIndex = 32;
+            this.txtProvince.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProvince_KeyDown);
             // 
             // txtZipCode
             // 
@@ -1449,12 +1452,13 @@ namespace Inventory.MainForm
             this.txtZipCode.Enabled = false;
             this.txtZipCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtZipCode.ForeColor = System.Drawing.Color.Black;
-            this.txtZipCode.Location = new System.Drawing.Point(135, 224);
-            this.txtZipCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtZipCode.Location = new System.Drawing.Point(612, 39);
+            this.txtZipCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtZipCode.MaxLength = 25;
             this.txtZipCode.Name = "txtZipCode";
             this.txtZipCode.Size = new System.Drawing.Size(356, 34);
             this.txtZipCode.TabIndex = 31;
+            this.txtZipCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtZipCode_KeyDown);
             // 
             // label24
             // 
@@ -1462,7 +1466,7 @@ namespace Inventory.MainForm
             this.label24.BackColor = System.Drawing.Color.Transparent;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(8, 231);
+            this.label24.Location = new System.Drawing.Point(498, 46);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(87, 23);
@@ -1475,11 +1479,12 @@ namespace Inventory.MainForm
             this.txtCity.Enabled = false;
             this.txtCity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.ForeColor = System.Drawing.Color.Black;
-            this.txtCity.Location = new System.Drawing.Point(135, 187);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCity.Location = new System.Drawing.Point(133, 187);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(4);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(356, 34);
+            this.txtCity.Size = new System.Drawing.Size(357, 34);
             this.txtCity.TabIndex = 30;
+            this.txtCity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCity_KeyDown);
             // 
             // label25
             // 
@@ -1487,7 +1492,7 @@ namespace Inventory.MainForm
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(9, 194);
+            this.label25.Location = new System.Drawing.Point(8, 194);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(47, 23);
@@ -1500,11 +1505,12 @@ namespace Inventory.MainForm
             this.txtStreet.Enabled = false;
             this.txtStreet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStreet.ForeColor = System.Drawing.Color.Black;
-            this.txtStreet.Location = new System.Drawing.Point(135, 150);
-            this.txtStreet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStreet.Location = new System.Drawing.Point(133, 113);
+            this.txtStreet.Margin = new System.Windows.Forms.Padding(4);
             this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(356, 34);
+            this.txtStreet.Size = new System.Drawing.Size(357, 34);
             this.txtStreet.TabIndex = 29;
+            this.txtStreet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStreet_KeyDown);
             // 
             // label26
             // 
@@ -1512,7 +1518,7 @@ namespace Inventory.MainForm
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(8, 158);
+            this.label26.Location = new System.Drawing.Point(8, 121);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(64, 23);
@@ -1526,7 +1532,7 @@ namespace Inventory.MainForm
             this.textBox17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox17.ForeColor = System.Drawing.Color.Maroon;
             this.textBox17.Location = new System.Drawing.Point(-15, 23);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox17.Margin = new System.Windows.Forms.Padding(4);
             this.textBox17.Multiline = true;
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(12, 11);
@@ -1537,7 +1543,7 @@ namespace Inventory.MainForm
             // 
             this.xtraContact.Controls.Add(this.groupContact);
             this.xtraContact.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraContact.ImageOptions.Image")));
-            this.xtraContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.xtraContact.Margin = new System.Windows.Forms.Padding(4);
             this.xtraContact.Name = "xtraContact";
             this.xtraContact.Size = new System.Drawing.Size(1351, 758);
             this.xtraContact.Text = "Profile Contact";
@@ -1575,7 +1581,7 @@ namespace Inventory.MainForm
             this.groupContact.Location = new System.Drawing.Point(0, 0);
             this.groupContact.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupContact.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupContact.Margin = new System.Windows.Forms.Padding(4);
             this.groupContact.Name = "groupContact";
             this.groupContact.Size = new System.Drawing.Size(1351, 758);
             this.groupContact.TabIndex = 175;
@@ -1586,7 +1592,7 @@ namespace Inventory.MainForm
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(4, 69);
+            this.label17.Location = new System.Drawing.Point(4, 82);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(80, 23);
@@ -1599,8 +1605,8 @@ namespace Inventory.MainForm
             this.txtContactBarcode.Enabled = false;
             this.txtContactBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactBarcode.ForeColor = System.Drawing.Color.Black;
-            this.txtContactBarcode.Location = new System.Drawing.Point(133, 62);
-            this.txtContactBarcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactBarcode.Location = new System.Drawing.Point(134, 75);
+            this.txtContactBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactBarcode.Name = "txtContactBarcode";
             this.txtContactBarcode.Size = new System.Drawing.Size(357, 34);
             this.txtContactBarcode.TabIndex = 185;
@@ -1611,13 +1617,14 @@ namespace Inventory.MainForm
             this.txtFaxNumber.Enabled = false;
             this.txtFaxNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFaxNumber.ForeColor = System.Drawing.Color.Black;
-            this.txtFaxNumber.Location = new System.Drawing.Point(133, 357);
-            this.txtFaxNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFaxNumber.Location = new System.Drawing.Point(636, 151);
+            this.txtFaxNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtFaxNumber.MaxLength = 100;
             this.txtFaxNumber.Name = "txtFaxNumber";
             this.txtFaxNumber.Size = new System.Drawing.Size(356, 34);
             this.txtFaxNumber.TabIndex = 43;
             this.txtFaxNumber.Text = "000-000-000";
+            this.txtFaxNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFaxNumber_KeyDown);
             // 
             // label15
             // 
@@ -1625,7 +1632,7 @@ namespace Inventory.MainForm
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(3, 364);
+            this.label15.Location = new System.Drawing.Point(499, 158);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(113, 23);
@@ -1638,13 +1645,14 @@ namespace Inventory.MainForm
             this.txtWebUrl.Enabled = false;
             this.txtWebUrl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWebUrl.ForeColor = System.Drawing.Color.Black;
-            this.txtWebUrl.Location = new System.Drawing.Point(135, 320);
-            this.txtWebUrl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWebUrl.Location = new System.Drawing.Point(636, 114);
+            this.txtWebUrl.Margin = new System.Windows.Forms.Padding(4);
             this.txtWebUrl.MaxLength = 100;
             this.txtWebUrl.Name = "txtWebUrl";
             this.txtWebUrl.Size = new System.Drawing.Size(356, 34);
             this.txtWebUrl.TabIndex = 42;
             this.txtWebUrl.Text = "www.google.com";
+            this.txtWebUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWebUrl_KeyDown);
             // 
             // label13
             // 
@@ -1652,7 +1660,7 @@ namespace Inventory.MainForm
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(4, 327);
+            this.label13.Location = new System.Drawing.Point(499, 121);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(81, 23);
@@ -1665,13 +1673,14 @@ namespace Inventory.MainForm
             this.txtEmailAddress.Enabled = false;
             this.txtEmailAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmailAddress.ForeColor = System.Drawing.Color.Black;
-            this.txtEmailAddress.Location = new System.Drawing.Point(135, 283);
-            this.txtEmailAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress.Location = new System.Drawing.Point(636, 77);
+            this.txtEmailAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress.MaxLength = 100;
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(356, 34);
             this.txtEmailAddress.TabIndex = 41;
             this.txtEmailAddress.Text = "myemail@gmail.com";
+            this.txtEmailAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmailAddress_KeyDown);
             // 
             // label8
             // 
@@ -1679,7 +1688,7 @@ namespace Inventory.MainForm
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(4, 290);
+            this.label8.Location = new System.Drawing.Point(499, 84);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 23);
@@ -1692,13 +1701,14 @@ namespace Inventory.MainForm
             this.txtSecondMobile.Enabled = false;
             this.txtSecondMobile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSecondMobile.ForeColor = System.Drawing.Color.Black;
-            this.txtSecondMobile.Location = new System.Drawing.Point(135, 246);
-            this.txtSecondMobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSecondMobile.Location = new System.Drawing.Point(636, 38);
+            this.txtSecondMobile.Margin = new System.Windows.Forms.Padding(4);
             this.txtSecondMobile.MaxLength = 50;
             this.txtSecondMobile.Name = "txtSecondMobile";
             this.txtSecondMobile.Size = new System.Drawing.Size(356, 34);
             this.txtSecondMobile.TabIndex = 40;
             this.txtSecondMobile.Text = "09000000";
+            this.txtSecondMobile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSecondMobile_KeyDown);
             // 
             // label6
             // 
@@ -1706,12 +1716,12 @@ namespace Inventory.MainForm
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(4, 254);
+            this.label6.Location = new System.Drawing.Point(499, 46);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 23);
+            this.label6.Size = new System.Drawing.Size(114, 23);
             this.label6.TabIndex = 176;
-            this.label6.Text = "Mobile No2:";
+            this.label6.Text = "Mobile No 2:";
             // 
             // label4
             // 
@@ -1719,7 +1729,7 @@ namespace Inventory.MainForm
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(4, 32);
+            this.label4.Location = new System.Drawing.Point(4, 45);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 23);
@@ -1732,8 +1742,8 @@ namespace Inventory.MainForm
             this.txtContactId.Enabled = false;
             this.txtContactId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactId.ForeColor = System.Drawing.Color.Black;
-            this.txtContactId.Location = new System.Drawing.Point(133, 25);
-            this.txtContactId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactId.Location = new System.Drawing.Point(134, 38);
+            this.txtContactId.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactId.Name = "txtContactId";
             this.txtContactId.Size = new System.Drawing.Size(357, 34);
             this.txtContactId.TabIndex = 35;
@@ -1748,7 +1758,7 @@ namespace Inventory.MainForm
             this.groupControl3.Location = new System.Drawing.Point(-1, 430);
             this.groupControl3.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl3.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupControl3.Margin = new System.Windows.Forms.Padding(4);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(1347, 320);
             this.groupControl3.TabIndex = 172;
@@ -1760,11 +1770,11 @@ namespace Inventory.MainForm
             this.gridControlContact.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControlContact.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
             this.gridControlContact.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
-            this.gridControlContact.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridControlContact.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gridControlContact.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
             this.gridControlContact.Location = new System.Drawing.Point(3, 21);
             this.gridControlContact.MainView = this.gridContact;
-            this.gridControlContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridControlContact.Margin = new System.Windows.Forms.Padding(4);
             this.gridControlContact.Name = "gridControlContact";
             this.gridControlContact.Size = new System.Drawing.Size(1341, 296);
             this.gridControlContact.TabIndex = 101;
@@ -1844,7 +1854,7 @@ namespace Inventory.MainForm
             this.textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.Color.Maroon;
             this.textBox4.Location = new System.Drawing.Point(-11, 26);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(12, 11);
@@ -1857,7 +1867,7 @@ namespace Inventory.MainForm
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(4, 102);
+            this.label5.Location = new System.Drawing.Point(4, 118);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 23);
@@ -1870,11 +1880,12 @@ namespace Inventory.MainForm
             this.txtContactName.Enabled = false;
             this.txtContactName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactName.ForeColor = System.Drawing.Color.Black;
-            this.txtContactName.Location = new System.Drawing.Point(133, 98);
-            this.txtContactName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactName.Location = new System.Drawing.Point(134, 111);
+            this.txtContactName.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactName.Name = "txtContactName";
             this.txtContactName.Size = new System.Drawing.Size(357, 34);
             this.txtContactName.TabIndex = 36;
+            this.txtContactName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContactName_KeyDown);
             // 
             // label7
             // 
@@ -1882,7 +1893,7 @@ namespace Inventory.MainForm
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(3, 401);
+            this.label7.Location = new System.Drawing.Point(499, 195);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 23);
@@ -1895,11 +1906,12 @@ namespace Inventory.MainForm
             this.dkpContactDateReg.Enabled = false;
             this.dkpContactDateReg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpContactDateReg.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpContactDateReg.Location = new System.Drawing.Point(133, 394);
-            this.dkpContactDateReg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dkpContactDateReg.Location = new System.Drawing.Point(636, 188);
+            this.dkpContactDateReg.Margin = new System.Windows.Forms.Padding(4);
             this.dkpContactDateReg.Name = "dkpContactDateReg";
             this.dkpContactDateReg.Size = new System.Drawing.Size(356, 34);
             this.dkpContactDateReg.TabIndex = 44;
+            this.dkpContactDateReg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpContactDateReg_KeyDown);
             // 
             // txtFirstMobile
             // 
@@ -1907,12 +1919,13 @@ namespace Inventory.MainForm
             this.txtFirstMobile.Enabled = false;
             this.txtFirstMobile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstMobile.ForeColor = System.Drawing.Color.Black;
-            this.txtFirstMobile.Location = new System.Drawing.Point(135, 209);
-            this.txtFirstMobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFirstMobile.Location = new System.Drawing.Point(134, 222);
+            this.txtFirstMobile.Margin = new System.Windows.Forms.Padding(4);
             this.txtFirstMobile.MaxLength = 50;
             this.txtFirstMobile.Name = "txtFirstMobile";
-            this.txtFirstMobile.Size = new System.Drawing.Size(356, 34);
+            this.txtFirstMobile.Size = new System.Drawing.Size(357, 34);
             this.txtFirstMobile.TabIndex = 39;
+            this.txtFirstMobile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFirstMobile_KeyDown);
             // 
             // label9
             // 
@@ -1920,7 +1933,7 @@ namespace Inventory.MainForm
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(4, 217);
+            this.label9.Location = new System.Drawing.Point(4, 230);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(99, 23);
@@ -1933,11 +1946,12 @@ namespace Inventory.MainForm
             this.txtPhoneNumber.Enabled = false;
             this.txtPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoneNumber.ForeColor = System.Drawing.Color.Black;
-            this.txtPhoneNumber.Location = new System.Drawing.Point(135, 172);
-            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(134, 185);
+            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(356, 34);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(357, 34);
             this.txtPhoneNumber.TabIndex = 38;
+            this.txtPhoneNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPhoneNumber_KeyDown);
             // 
             // label10
             // 
@@ -1945,12 +1959,12 @@ namespace Inventory.MainForm
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(4, 180);
+            this.label10.Location = new System.Drawing.Point(4, 193);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(124, 23);
+            this.label10.Size = new System.Drawing.Size(96, 23);
             this.label10.TabIndex = 115;
-            this.label10.Text = "Telephone No:";
+            this.label10.Text = "Telephone:";
             // 
             // txtPositionName
             // 
@@ -1958,11 +1972,12 @@ namespace Inventory.MainForm
             this.txtPositionName.Enabled = false;
             this.txtPositionName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPositionName.ForeColor = System.Drawing.Color.Black;
-            this.txtPositionName.Location = new System.Drawing.Point(135, 135);
-            this.txtPositionName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPositionName.Location = new System.Drawing.Point(134, 148);
+            this.txtPositionName.Margin = new System.Windows.Forms.Padding(4);
             this.txtPositionName.Name = "txtPositionName";
-            this.txtPositionName.Size = new System.Drawing.Size(356, 34);
+            this.txtPositionName.Size = new System.Drawing.Size(357, 34);
             this.txtPositionName.TabIndex = 37;
+            this.txtPositionName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPositionName_KeyDown);
             // 
             // label11
             // 
@@ -1970,7 +1985,7 @@ namespace Inventory.MainForm
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(4, 143);
+            this.label11.Location = new System.Drawing.Point(4, 156);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(78, 23);
@@ -1984,7 +1999,7 @@ namespace Inventory.MainForm
             this.textBox10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox10.ForeColor = System.Drawing.Color.Maroon;
             this.textBox10.Location = new System.Drawing.Point(-15, 23);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(4);
             this.textBox10.Multiline = true;
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(12, 11);
@@ -1995,7 +2010,7 @@ namespace Inventory.MainForm
             // 
             this.xtraImage.Controls.Add(this.groupControl1);
             this.xtraImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraImage.ImageOptions.Image")));
-            this.xtraImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.xtraImage.Margin = new System.Windows.Forms.Padding(4);
             this.xtraImage.Name = "xtraImage";
             this.xtraImage.Size = new System.Drawing.Size(1351, 758);
             this.xtraImage.Text = "Profile Picture";
@@ -2027,7 +2042,7 @@ namespace Inventory.MainForm
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(4);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(1351, 758);
             this.groupControl1.TabIndex = 175;
@@ -2051,7 +2066,7 @@ namespace Inventory.MainForm
             this.dkpImgUpdatedOn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpImgUpdatedOn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dkpImgUpdatedOn.Location = new System.Drawing.Point(193, 263);
-            this.dkpImgUpdatedOn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dkpImgUpdatedOn.Margin = new System.Windows.Forms.Padding(4);
             this.dkpImgUpdatedOn.Name = "dkpImgUpdatedOn";
             this.dkpImgUpdatedOn.Size = new System.Drawing.Size(393, 34);
             this.dkpImgUpdatedOn.TabIndex = 107;
@@ -2075,7 +2090,7 @@ namespace Inventory.MainForm
             this.dkpImgCreadOn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dkpImgCreadOn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dkpImgCreadOn.Location = new System.Drawing.Point(193, 226);
-            this.dkpImgCreadOn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dkpImgCreadOn.Margin = new System.Windows.Forms.Padding(4);
             this.dkpImgCreadOn.Name = "dkpImgCreadOn";
             this.dkpImgCreadOn.Size = new System.Drawing.Size(393, 34);
             this.dkpImgCreadOn.TabIndex = 106;
@@ -2100,7 +2115,7 @@ namespace Inventory.MainForm
             this.txtProfileImgId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgId.ForeColor = System.Drawing.Color.Maroon;
             this.txtProfileImgId.Location = new System.Drawing.Point(193, 41);
-            this.txtProfileImgId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProfileImgId.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfileImgId.Name = "txtProfileImgId";
             this.txtProfileImgId.Size = new System.Drawing.Size(393, 34);
             this.txtProfileImgId.TabIndex = 100;
@@ -2110,7 +2125,7 @@ namespace Inventory.MainForm
             this.bntBrowseImage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntBrowseImage.ImageOptions.Image")));
             this.bntBrowseImage.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntBrowseImage.Location = new System.Drawing.Point(193, 320);
-            this.bntBrowseImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntBrowseImage.Margin = new System.Windows.Forms.Padding(4);
             this.bntBrowseImage.Name = "bntBrowseImage";
             this.bntBrowseImage.Size = new System.Drawing.Size(187, 46);
             this.bntBrowseImage.TabIndex = 108;
@@ -2122,7 +2137,7 @@ namespace Inventory.MainForm
             this.bntSaveImages.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntSaveImages.ImageOptions.Image")));
             this.bntSaveImages.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntSaveImages.Location = new System.Drawing.Point(380, 320);
-            this.bntSaveImages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntSaveImages.Margin = new System.Windows.Forms.Padding(4);
             this.bntSaveImages.Name = "bntSaveImages";
             this.bntSaveImages.Size = new System.Drawing.Size(209, 46);
             this.bntSaveImages.TabIndex = 109;
@@ -2142,7 +2157,7 @@ namespace Inventory.MainForm
             "PNG",
             "BMP"});
             this.cmbProfileImgType.Location = new System.Drawing.Point(193, 151);
-            this.cmbProfileImgType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbProfileImgType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProfileImgType.Name = "cmbProfileImgType";
             this.cmbProfileImgType.Size = new System.Drawing.Size(393, 36);
             this.cmbProfileImgType.TabIndex = 103;
@@ -2166,7 +2181,7 @@ namespace Inventory.MainForm
             this.txtProfileImgFileName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgFileName.ForeColor = System.Drawing.Color.Maroon;
             this.txtProfileImgFileName.Location = new System.Drawing.Point(193, 190);
-            this.txtProfileImgFileName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProfileImgFileName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfileImgFileName.Name = "txtProfileImgFileName";
             this.txtProfileImgFileName.Size = new System.Drawing.Size(393, 34);
             this.txtProfileImgFileName.TabIndex = 105;
@@ -2203,7 +2218,7 @@ namespace Inventory.MainForm
             this.txtProfileImgTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgTitle.ForeColor = System.Drawing.Color.Maroon;
             this.txtProfileImgTitle.Location = new System.Drawing.Point(193, 114);
-            this.txtProfileImgTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProfileImgTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfileImgTitle.Name = "txtProfileImgTitle";
             this.txtProfileImgTitle.Size = new System.Drawing.Size(393, 34);
             this.txtProfileImgTitle.TabIndex = 102;
@@ -2228,7 +2243,7 @@ namespace Inventory.MainForm
             this.txtProfileImgBarcode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProfileImgBarcode.ForeColor = System.Drawing.Color.Maroon;
             this.txtProfileImgBarcode.Location = new System.Drawing.Point(193, 78);
-            this.txtProfileImgBarcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProfileImgBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfileImgBarcode.Name = "txtProfileImgBarcode";
             this.txtProfileImgBarcode.Size = new System.Drawing.Size(393, 34);
             this.txtProfileImgBarcode.TabIndex = 101;
@@ -2237,7 +2252,7 @@ namespace Inventory.MainForm
             // 
             this.imgProfileImages.BackColor = System.Drawing.Color.Gray;
             this.imgProfileImages.Location = new System.Drawing.Point(967, 25);
-            this.imgProfileImages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imgProfileImages.Margin = new System.Windows.Forms.Padding(4);
             this.imgProfileImages.Name = "imgProfileImages";
             this.imgProfileImages.Size = new System.Drawing.Size(380, 342);
             this.imgProfileImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2253,7 +2268,7 @@ namespace Inventory.MainForm
             this.groupControl4.Location = new System.Drawing.Point(-1, 368);
             this.groupControl4.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.groupControl4.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupControl4.Margin = new System.Windows.Forms.Padding(4);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.Size = new System.Drawing.Size(1349, 382);
             this.groupControl4.TabIndex = 173;
@@ -2265,11 +2280,11 @@ namespace Inventory.MainForm
             this.gridImageControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridImageControl.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
             this.gridImageControl.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
-            this.gridImageControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridImageControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gridImageControl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
             this.gridImageControl.Location = new System.Drawing.Point(3, 21);
             this.gridImageControl.MainView = this.gridImage;
-            this.gridImageControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridImageControl.Margin = new System.Windows.Forms.Padding(4);
             this.gridImageControl.Name = "gridImageControl";
             this.gridImageControl.Size = new System.Drawing.Size(1343, 358);
             this.gridImageControl.TabIndex = 27;
@@ -2412,7 +2427,7 @@ namespace Inventory.MainForm
             this.bntHome.ForeColor = System.Drawing.Color.White;
             this.bntHome.Image = ((System.Drawing.Image)(resources.GetObject("bntHome.Image")));
             this.bntHome.Location = new System.Drawing.Point(127, 594);
-            this.bntHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntHome.Margin = new System.Windows.Forms.Padding(4);
             this.bntHome.Name = "bntHome";
             this.bntHome.Size = new System.Drawing.Size(121, 128);
             this.bntHome.TabIndex = 16;
@@ -2429,7 +2444,7 @@ namespace Inventory.MainForm
             this.bntDelete.ForeColor = System.Drawing.Color.White;
             this.bntDelete.Image = ((System.Drawing.Image)(resources.GetObject("bntDelete.Image")));
             this.bntDelete.Location = new System.Drawing.Point(4, 594);
-            this.bntDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntDelete.Margin = new System.Windows.Forms.Padding(4);
             this.bntDelete.Name = "bntDelete";
             this.bntDelete.Size = new System.Drawing.Size(121, 128);
             this.bntDelete.TabIndex = 25;
@@ -2446,7 +2461,7 @@ namespace Inventory.MainForm
             this.bntClear.ForeColor = System.Drawing.Color.White;
             this.bntClear.Image = ((System.Drawing.Image)(resources.GetObject("bntClear.Image")));
             this.bntClear.Location = new System.Drawing.Point(4, 465);
-            this.bntClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntClear.Margin = new System.Windows.Forms.Padding(4);
             this.bntClear.Name = "bntClear";
             this.bntClear.Size = new System.Drawing.Size(121, 128);
             this.bntClear.TabIndex = 23;
@@ -2464,7 +2479,7 @@ namespace Inventory.MainForm
             this.bntCancel.ForeColor = System.Drawing.Color.White;
             this.bntCancel.Image = ((System.Drawing.Image)(resources.GetObject("bntCancel.Image")));
             this.bntCancel.Location = new System.Drawing.Point(127, 465);
-            this.bntCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntCancel.Margin = new System.Windows.Forms.Padding(4);
             this.bntCancel.Name = "bntCancel";
             this.bntCancel.Size = new System.Drawing.Size(121, 128);
             this.bntCancel.TabIndex = 24;
@@ -2482,10 +2497,10 @@ namespace Inventory.MainForm
             this.bntSave.ForeColor = System.Drawing.Color.White;
             this.bntSave.Image = ((System.Drawing.Image)(resources.GetObject("bntSave.Image")));
             this.bntSave.Location = new System.Drawing.Point(4, 336);
-            this.bntSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntSave.Margin = new System.Windows.Forms.Padding(4);
             this.bntSave.Name = "bntSave";
             this.bntSave.Size = new System.Drawing.Size(244, 128);
-            this.bntSave.TabIndex = 22;
+            this.bntSave.TabIndex = 20;
             this.bntSave.Text = "SAVE";
             this.bntSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSave.UseVisualStyleBackColor = false;
@@ -2499,10 +2514,10 @@ namespace Inventory.MainForm
             this.bntUpdate.ForeColor = System.Drawing.Color.White;
             this.bntUpdate.Image = ((System.Drawing.Image)(resources.GetObject("bntUpdate.Image")));
             this.bntUpdate.Location = new System.Drawing.Point(127, 207);
-            this.bntUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.bntUpdate.Name = "bntUpdate";
             this.bntUpdate.Size = new System.Drawing.Size(121, 128);
-            this.bntUpdate.TabIndex = 21;
+            this.bntUpdate.TabIndex = 22;
             this.bntUpdate.Text = "EDIT";
             this.bntUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntUpdate.UseVisualStyleBackColor = false;
@@ -2516,10 +2531,10 @@ namespace Inventory.MainForm
             this.bntInsert.ForeColor = System.Drawing.Color.White;
             this.bntInsert.Image = ((System.Drawing.Image)(resources.GetObject("bntInsert.Image")));
             this.bntInsert.Location = new System.Drawing.Point(4, 207);
-            this.bntInsert.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntInsert.Margin = new System.Windows.Forms.Padding(4);
             this.bntInsert.Name = "bntInsert";
             this.bntInsert.Size = new System.Drawing.Size(121, 128);
-            this.bntInsert.TabIndex = 20;
+            this.bntInsert.TabIndex = 21;
             this.bntInsert.Text = "ADD";
             this.bntInsert.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntInsert.UseVisualStyleBackColor = false;
@@ -2531,7 +2546,7 @@ namespace Inventory.MainForm
             this.pnlRightOptions.Controls.Add(this.pcRight);
             this.pnlRightOptions.Controls.Add(this.pnlRightMain);
             this.pnlRightOptions.Location = new System.Drawing.Point(1728, 1);
-            this.pnlRightOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlRightOptions.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRightOptions.Name = "pnlRightOptions";
             this.pnlRightOptions.Size = new System.Drawing.Size(103, 942);
             this.pnlRightOptions.TabIndex = 65;
@@ -2542,7 +2557,7 @@ namespace Inventory.MainForm
             this.pcRight.Image = ((System.Drawing.Image)(resources.GetObject("pcRight.Image")));
             this.pcRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pcRight.Location = new System.Drawing.Point(4, 79);
-            this.pcRight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcRight.Margin = new System.Windows.Forms.Padding(4);
             this.pcRight.Name = "pcRight";
             this.pcRight.Size = new System.Drawing.Size(47, 42);
             this.pcRight.TabIndex = 20;
@@ -2554,7 +2569,7 @@ namespace Inventory.MainForm
             this.pnlRightMain.Controls.Add(this.pbHome);
             this.pnlRightMain.Controls.Add(this.pbLogout);
             this.pnlRightMain.Location = new System.Drawing.Point(4, 121);
-            this.pnlRightMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlRightMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRightMain.Name = "pnlRightMain";
             this.pnlRightMain.Size = new System.Drawing.Size(93, 651);
             this.pnlRightMain.TabIndex = 1;
@@ -2564,7 +2579,7 @@ namespace Inventory.MainForm
             this.pbExit.Image = ((System.Drawing.Image)(resources.GetObject("pbExit.Image")));
             this.pbExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pbExit.Location = new System.Drawing.Point(4, 551);
-            this.pbExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbExit.Margin = new System.Windows.Forms.Padding(4);
             this.pbExit.Name = "pbExit";
             this.pbExit.Size = new System.Drawing.Size(93, 94);
             this.pbExit.TabIndex = 5;
@@ -2576,7 +2591,7 @@ namespace Inventory.MainForm
             this.pbHome.Image = ((System.Drawing.Image)(resources.GetObject("pbHome.Image")));
             this.pbHome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pbHome.Location = new System.Drawing.Point(-3, 331);
-            this.pbHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbHome.Margin = new System.Windows.Forms.Padding(4);
             this.pbHome.Name = "pbHome";
             this.pbHome.Size = new System.Drawing.Size(101, 94);
             this.pbHome.TabIndex = 4;
@@ -2588,7 +2603,7 @@ namespace Inventory.MainForm
             this.pbLogout.Image = ((System.Drawing.Image)(resources.GetObject("pbLogout.Image")));
             this.pbLogout.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pbLogout.Location = new System.Drawing.Point(-4, 80);
-            this.pbLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbLogout.Margin = new System.Windows.Forms.Padding(4);
             this.pbLogout.Name = "pbLogout";
             this.pbLogout.Size = new System.Drawing.Size(101, 94);
             this.pbLogout.TabIndex = 3;
@@ -2602,7 +2617,7 @@ namespace Inventory.MainForm
             this.pnlOptions.Controls.Add(this.pbHide);
             this.pnlOptions.ForeColor = System.Drawing.Color.Black;
             this.pnlOptions.Location = new System.Drawing.Point(-3, 850);
-            this.pnlOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOptions.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOptions.Name = "pnlOptions";
             this.pnlOptions.Size = new System.Drawing.Size(1731, 91);
             this.pnlOptions.TabIndex = 64;
@@ -2620,7 +2635,7 @@ namespace Inventory.MainForm
             this.pnlOptionsMain.Controls.Add(this.pcAdd);
             this.pnlOptionsMain.Controls.Add(this.pcChangePassword);
             this.pnlOptionsMain.Location = new System.Drawing.Point(25, 5);
-            this.pnlOptionsMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOptionsMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOptionsMain.Name = "pnlOptionsMain";
             this.pnlOptionsMain.Size = new System.Drawing.Size(1191, 82);
             this.pnlOptionsMain.TabIndex = 21;
@@ -2630,7 +2645,7 @@ namespace Inventory.MainForm
             this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
             this.pictureBox17.Location = new System.Drawing.Point(1075, 4);
-            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(101, 79);
             this.pictureBox17.TabIndex = 59;
@@ -2641,7 +2656,7 @@ namespace Inventory.MainForm
             this.pcSettings.BackColor = System.Drawing.Color.Transparent;
             this.pcSettings.Image = ((System.Drawing.Image)(resources.GetObject("pcSettings.Image")));
             this.pcSettings.Location = new System.Drawing.Point(952, 4);
-            this.pcSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcSettings.Margin = new System.Windows.Forms.Padding(4);
             this.pcSettings.Name = "pcSettings";
             this.pcSettings.Size = new System.Drawing.Size(101, 75);
             this.pcSettings.TabIndex = 58;
@@ -2652,7 +2667,7 @@ namespace Inventory.MainForm
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(321, 1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(101, 79);
             this.pictureBox1.TabIndex = 29;
@@ -2663,7 +2678,7 @@ namespace Inventory.MainForm
             this.pcSchedule.BackColor = System.Drawing.Color.Transparent;
             this.pcSchedule.Image = ((System.Drawing.Image)(resources.GetObject("pcSchedule.Image")));
             this.pcSchedule.Location = new System.Drawing.Point(821, 4);
-            this.pcSchedule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.pcSchedule.Name = "pcSchedule";
             this.pcSchedule.Size = new System.Drawing.Size(101, 79);
             this.pcSchedule.TabIndex = 17;
@@ -2674,7 +2689,7 @@ namespace Inventory.MainForm
             this.pcBL.BackColor = System.Drawing.Color.Transparent;
             this.pcBL.Image = ((System.Drawing.Image)(resources.GetObject("pcBL.Image")));
             this.pcBL.Location = new System.Drawing.Point(697, 2);
-            this.pcBL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcBL.Margin = new System.Windows.Forms.Padding(4);
             this.pcBL.Name = "pcBL";
             this.pcBL.Size = new System.Drawing.Size(101, 79);
             this.pcBL.TabIndex = 16;
@@ -2685,7 +2700,7 @@ namespace Inventory.MainForm
             this.pcList.BackColor = System.Drawing.Color.Transparent;
             this.pcList.Image = ((System.Drawing.Image)(resources.GetObject("pcList.Image")));
             this.pcList.Location = new System.Drawing.Point(571, 1);
-            this.pcList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcList.Margin = new System.Windows.Forms.Padding(4);
             this.pcList.Name = "pcList";
             this.pcList.Size = new System.Drawing.Size(101, 79);
             this.pcList.TabIndex = 15;
@@ -2696,7 +2711,7 @@ namespace Inventory.MainForm
             this.pcUser.BackColor = System.Drawing.Color.Transparent;
             this.pcUser.Image = ((System.Drawing.Image)(resources.GetObject("pcUser.Image")));
             this.pcUser.Location = new System.Drawing.Point(192, 2);
-            this.pcUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcUser.Margin = new System.Windows.Forms.Padding(4);
             this.pcUser.Name = "pcUser";
             this.pcUser.Size = new System.Drawing.Size(101, 79);
             this.pcUser.TabIndex = 14;
@@ -2707,7 +2722,7 @@ namespace Inventory.MainForm
             this.pcAdd.BackColor = System.Drawing.Color.Transparent;
             this.pcAdd.Image = ((System.Drawing.Image)(resources.GetObject("pcAdd.Image")));
             this.pcAdd.Location = new System.Drawing.Point(49, 2);
-            this.pcAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcAdd.Margin = new System.Windows.Forms.Padding(4);
             this.pcAdd.Name = "pcAdd";
             this.pcAdd.Size = new System.Drawing.Size(101, 79);
             this.pcAdd.TabIndex = 13;
@@ -2718,7 +2733,7 @@ namespace Inventory.MainForm
             this.pcChangePassword.BackColor = System.Drawing.Color.Transparent;
             this.pcChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("pcChangePassword.Image")));
             this.pcChangePassword.Location = new System.Drawing.Point(445, 2);
-            this.pcChangePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcChangePassword.Margin = new System.Windows.Forms.Padding(4);
             this.pcChangePassword.Name = "pcChangePassword";
             this.pcChangePassword.Size = new System.Drawing.Size(101, 79);
             this.pcChangePassword.TabIndex = 9;
@@ -2730,7 +2745,7 @@ namespace Inventory.MainForm
             this.pbHide.Image = ((System.Drawing.Image)(resources.GetObject("pbHide.Image")));
             this.pbHide.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pbHide.Location = new System.Drawing.Point(1539, 4);
-            this.pbHide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbHide.Margin = new System.Windows.Forms.Padding(4);
             this.pbHide.Name = "pbHide";
             this.pbHide.Size = new System.Drawing.Size(51, 42);
             this.pbHide.TabIndex = 14;
@@ -2768,7 +2783,8 @@ namespace Inventory.MainForm
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmRegistration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Employee Registration";

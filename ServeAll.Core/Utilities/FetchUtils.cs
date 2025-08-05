@@ -85,6 +85,26 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+
+        public static int getDepartment(string departmentName)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ServeAll.Core.Entities.Department>(unWork);
+                    var query = repository.FindBy(x => x.department_name == departmentName);
+                    return query.department_id;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
         public static int getPaymentMethod(string method)
         {
             using (var session = new DalSession())
@@ -482,7 +502,6 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
-
 
         public static int getSupplierId(string supplier)
         {

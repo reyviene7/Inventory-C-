@@ -53,12 +53,9 @@ namespace Inventory.MainForm
             splashManager.ShowWaitForm();
             _profileList = EnumerableUtils.getProfileList();
             _image_list = EnumerableUtils.getProfileImgList();
+            bindRefreshed();
+            xtraControl_SelectedPageChanged(xtraProfile, null);
             splashManager.CloseWaitForm();
-            bindProfileList();
-            bindProfileImgList();
-            _add = false;
-            _edt = false;
-            _del = false;
         }
         private void Options_Tick(object sender, EventArgs e)
         {
@@ -114,8 +111,15 @@ namespace Inventory.MainForm
         {
             ButtonAdd();
             enabledProfile();
+            enableContact();
+            enabledAddress();
             whiteProfile();
+            whiteContact();
+            whiteAddress();
             clearProfile();
+            clearAddress();
+            clearContact();
+            BindDepartment();
             generateProfileCode();
             generateAddressCode();
             generateContactCode();
@@ -124,78 +128,119 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridCtlProfile.Enabled = false;
+            gridControlAddress.Enabled = false;
+            gridControlContact.Enabled = false;
         }
         private void buttonUpdate()
         {
             ButtonUpd();
-            enabledProfile();
-            whiteProfile();
             _add = false;
             _edt = true;
             _del = false;
+            enabledProfile();
+            enabledAddress();
+            enableContact();
+            whiteProfile();
+            whiteAddress();
+            whiteContact();
             gridCtlProfile.Enabled = false;
+            gridControlAddress.Enabled = false;
+            gridControlContact.Enabled = false;
         }
         private void ButDel()
         {
             ButtonDel();
-            enabledProfile();
+            disabledProfile();
+            disabledAddress();
+            disabledContact();
             whiteProfile();
+            whiteAddress();
+            whiteContact();
             _add = false;
             _edt = false;
             _del = true;
             gridCtlProfile.Enabled = false;
+            gridControlAddress.Enabled = false;
+            gridControlContact.Enabled = false;
         }
         private void buttonSave()
         {
-            if (_add && !_edt && !_del)
+            splashManager.ShowWaitForm();
+            if (_add && _edt == false && _del == false)
             {
-                splashManager.ShowWaitForm();
                 addProfile();
                 ButtonSav();
                 disabledProfile();
+                disabledAddress();
+                disabledContact();
                 grayProfile();
                 grayContact();
                 grayAddress();
                 clearAddress();
                 clearContact();
                 clearProfile();
+                bindRefreshed();
             }
-            if (!_add && _edt && !_del)
+            if (_add == false && _edt && _del == false)
             {
-                splashManager.ShowWaitForm();
                 updateProfile();
                 ButtonSav();
                 disabledProfile();
+                disabledAddress();
+                disabledContact();
                 grayProfile();
                 grayContact();
                 grayAddress();
                 clearAddress();
                 clearContact();
                 clearProfile();
+                bindRefreshed();
             }
-            if (!_add && !_edt && _del)
+            if (_add == false && _edt == false && _del)
             {
                 deleteProfile();
                 ButtonSav();
                 disabledProfile();
+                disabledAddress();
+                disabledContact();
                 grayProfile();
+                grayContact();
+                grayAddress();
+                clearAddress();
+                clearContact();
                 clearProfile();
+                bindRefreshed();
             }
-            xtraControl.SelectedTabPage = xtraProfile;
-            gridCtlProfile.Enabled = true;
-            bindProfileList();
             _add = false;
             _edt = false;
             _del = false;
+            xtraControl.SelectedTabPage = xtraProfile;
+            gridCtlProfile.Enabled = true;
+            cmbgender.DataBindings.Clear();
+            cmbCivilStatus.DataBindings.Clear();
+            cmbProvince.DataBindings.Clear();
+            cmbDepartment.DataBindings.Clear();
+            cmbPosition.DataBindings.Clear();
+            imgProfile.DataBindings.Clear();
+            imgProfile.Image = null;
+            bindRefreshed();
         }
 
         private void buttonClear()
         {
             ButtonClr();
             disabledProfile();
+            disabledContact();
+            disabledAddress();
             whiteProfile();
+            whiteContact();
+            whiteAddress();
             clearProfile();
+            clearAddress();
+            clearContact();
             gridCtlProfile.Enabled = true;
+            gridControlAddress.Enabled = true;
+            gridControlContact.Enabled = true;
         }
 
         private void buttonCancel()
@@ -205,9 +250,17 @@ namespace Inventory.MainForm
             _del = false;
             ButtonCan();
             disabledProfile();
+            disabledAddress();
+            disabledContact();
+            grayAddress();
+            grayContact();
             grayProfile();
             clearProfile();
+            clearAddress();
+            clearContact();
             gridCtlProfile.Enabled = true;
+            gridControlAddress.Enabled = true;
+            gridControlContact.Enabled = true;
         }
 
         private void ButtonAdd()
@@ -296,7 +349,6 @@ namespace Inventory.MainForm
 
         private void enabledProfile()
         {
-            txtProfileID.Enabled = true;
             txtFirstName.Enabled = true;
             txtLastName.Enabled = true;
             txtMiddleInitial.Enabled = true;
@@ -522,7 +574,7 @@ namespace Inventory.MainForm
             txtProvince.Text = "";
             dkpDateRegister.Value = DateTime.Now;
         }
-
+        
         private void addProfile()
         {
             var address = new Address()
@@ -564,7 +616,7 @@ namespace Inventory.MainForm
                 sss_number = txtSSSNumber.Text.Trim(),
                 phil_health = txtPhilhealthNumber.Text.Trim(),
                 position = cmbPosition.Text.Trim(),
-                department_id = 1,
+                department_id = FetchUtils.getDepartment(cmbDepartment.Text),
                 hire_date = dkpDateHired.Value.Date,
                 date_register = dkpDateRegistered.Value.Date,
                 user_id = _userId
@@ -576,6 +628,7 @@ namespace Inventory.MainForm
                 splashManager.CloseWaitForm();
                 PopupNotification.PopUpMessages(1, "Profile barcode:" + profileCode + " successfully added!", "ADD PROFILE");
                 _profileList = EnumerableUtils.getProfileList();
+                bindRefreshed();
             }
             else {
                 splashManager.CloseWaitForm();
@@ -585,67 +638,96 @@ namespace Inventory.MainForm
 
         private void updateProfile()
         {
-            var profile = txtProfileID.Text.Trim();
-            var contactId = txtContactId.Text.Trim();
-            var addressId = txtAddressID.Text.Trim();
-            
-            if (profile.Length > 0 && contactId.Length > 0 && addressId.Length > 0)
-            {
-                var profileId = int.Parse(profile);
+            int profileId, contactId, addressId;
+            bool validProfile = int.TryParse(txtProfileID.Text.Trim(), out profileId);
+            bool validContact = int.TryParse(txtContactId.Text.Trim(), out contactId);
+            bool validAddress = int.TryParse(txtAddressID.Text.Trim(), out addressId);
 
-                    int addressResult = RepositoryEntity.UpdateEntity<Address>(int.Parse(addressId), entity => {
-                        entity.barangay = txtBarangay.Text.Trim(' ');
-                        entity.street = txtStreet.Text.Trim(' ');
-                        entity.city = txtCity.Text.Trim(' ');
-                        entity.province = cmbProvince.Text.Trim(' ');
-                        entity.zip_code = txtZipCode.Text.Trim(' ');
+            if (!validProfile)
+            {
+                splashManager.CloseWaitForm();
+                PopupNotification.PopUpMessages(0, "Invalid Profile ID.", "UPDATE FAILED");
+                return;
+            }
+
+            try
+            {
+                int deptId = FetchUtils.getDepartment(cmbDepartment.Text.Trim());
+
+                // Update Address (if address ID is valid)
+                int addressResult = 1;
+                if (validAddress)
+                {
+                    addressResult = RepositoryEntity.UpdateEntity<Address>(addressId, entity =>
+                    {
+                        entity.barangay = txtBarangay.Text.Trim();
+                        entity.street = txtStreet.Text.Trim();
+                        entity.city = txtCity.Text.Trim();
+                        entity.province = cmbProvince.Text.Trim();
+                        entity.zip_code = txtZipCode.Text.Trim();
                         entity.country = "Philippines";
                     });
+                }
 
-                    int contactResult = RepositoryEntity.UpdateEntity<Contact>(int.Parse(contactId), entity => {
-                    entity.contact_name = txtLastName.Text.Trim(' ') + ", " + txtFirstName.Text.Trim(' ') + " " + txtMiddleInitial.Text.Trim(' ') + " " + txtLastName.Text;
-                    entity.contact_code = txtContactBarcode.Text;
-                    entity.position = cmbPosition.Text.Trim(' ');
-                    entity.telephone_number = txtPhone.Text.Trim(' ');
-                    entity.mobile_number = txtMobile.Text.Trim(' ');
-                    entity.mobile_secondary = txtSecondMobile.Text.Trim(' ');
-                    entity.email_address = txtEmail.Text.Trim(' ');
-                    entity.web_url = txtWebUrl.Text.Trim(' ');
-                    entity.fax_number = txtFaxNumber.Text.Trim(' ');
-                    entity.date_register = dkpContactDateReg.Value.Date;
-                });
-                
-                int profileResult = RepositoryEntity.UpdateEntity<Profile>(profileId, entity => {
-                    entity.profile_code = txtBarcode.Text.Trim(' ');
+                // Update Contact (if contact ID is valid)
+                int contactResult = 1;
+                if (validContact)
+                {
+                    contactResult = RepositoryEntity.UpdateEntity<Contact>(contactId, entity =>
+                    {
+                        entity.contact_name = $"{txtLastName.Text.Trim()}, {txtFirstName.Text.Trim()} {txtMiddleInitial.Text.Trim()}";
+                        entity.contact_code = txtContactBarcode.Text.Trim();
+                        entity.position = cmbPosition.Text.Trim();
+                        entity.telephone_number = txtPhone.Text.Trim();
+                        entity.mobile_number = txtMobile.Text.Trim();
+                        entity.mobile_secondary = txtSecondMobile.Text.Trim();
+                        entity.email_address = txtEmail.Text.Trim();
+                        entity.web_url = txtWebUrl.Text.Trim();
+                        entity.fax_number = txtFaxNumber.Text.Trim();
+                        entity.date_register = dkpContactDateReg.Value.Date;
+                    });
+                }
+
+                // Update Profile (always done)
+                int profileResult = RepositoryEntity.UpdateEntity<Profile>(profileId, entity =>
+                {
+                    entity.profile_code = txtBarcode.Text.Trim();
                     entity.first_name = txtFirstName.Text.Trim();
                     entity.last_name = txtLastName.Text.Trim();
                     entity.middle_initial = txtMiddleInitial.Text.Trim();
                     entity.gender = cmbgender.Text.Trim();
                     entity.birthdate = dkpBirthdate.Value.Date;
                     entity.civil_status = cmbCivilStatus.Text.Trim();
-                    entity.contact_id = int.Parse(contactId);
-                    entity.address_id = int.Parse(addressId);
+                    entity.contact_id = validContact ? contactId : 0;
+                    entity.address_id = validAddress ? addressId : 0;
                     entity.sss_number = txtSSSNumber.Text.Trim();
                     entity.phil_health = txtPhilhealthNumber.Text.Trim();
                     entity.position = cmbPosition.Text.Trim();
-                    entity.department_id = 1;
+                    entity.department_id = deptId;
                     entity.hire_date = dkpDateHired.Value.Date;
                     entity.date_register = dkpDateRegistered.Value.Date;
                     entity.user_id = _userId;
                 });
 
-                if (addressResult > 0 && contactResult > 0 && profileResult > 0)
+                splashManager.CloseWaitForm(); // ✅ Close BEFORE showing notification
+
+                if (profileResult > 0 && addressResult > 0 && contactResult > 0)
                 {
-                    splashManager.CloseWaitForm();
-                    PopupNotification.PopUpMessages(1, "Profile barcode:" + txtBarcode.Text.Trim(' ') + " successfully updated!", "UPDATE PROFILE");
+                    PopupNotification.PopUpMessages(1, $"Profile barcode: {txtBarcode.Text.Trim()} successfully updated!", "UPDATE PROFILE");
                     _profileList = EnumerableUtils.getProfileList();
-                } else
+                }
+                else
                 {
-                    splashManager.CloseWaitForm();
-                    PopupNotification.PopUpMessages(0, "Profile barcode:" + txtBarcode.Text.Trim(' ') + " was not updated to profile!", "UPDATE FAILED");
+                    PopupNotification.PopUpMessages(0, $"Profile barcode: {txtBarcode.Text.Trim()} was not fully updated!", "UPDATE WARNING");
                 }
             }
+            catch (Exception ex)
+            {
+                splashManager.CloseWaitForm(); // ✅ Ensure it's closed even on error
+                PopupNotification.PopUpMessages(0, $"Error: {ex.Message}", "UPDATE FAILED");
+            }
         }
+
 
         private void browseProfileImage()
         {
@@ -687,7 +769,7 @@ namespace Inventory.MainForm
                 PopupNotification.PopUpMessages(1, "Profile image: " + txtProfileImgTitle.Text.Trim(' ') + " " + Messages.SuccessInsert,
                  Messages.TitleSuccessInsert);
                 _image_list = EnumerableUtils.getProfileImgList();
-                bindProfileImgList();
+                bindRefreshed();
             }
             else
             {
@@ -704,8 +786,87 @@ namespace Inventory.MainForm
 
         private void deleteProfile()
         {
-            // use RepositoryEntity.Delete
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+
+                try
+                {
+                    if (!int.TryParse(txtProfileID.Text.Trim(), out var profileId) || profileId <= 0)
+                    {
+                        PopupNotification.PopUpMessages(0, "Invalid Profile ID.", Messages.TitleFialedDelete);
+                        return;
+                    }
+
+                    var profileRepo = new Repository<Profile>(unWork);
+                    var profile = profileRepo.Id(profileId);
+
+                    if (profile == null)
+                    {
+                        PopupNotification.PopUpMessages(0, "Profile not found.", Messages.TitleFialedDelete);
+                        unWork.Rollback();
+                        return;
+                    }
+
+                    // Initialize repositories
+                    var addressRepo = new Repository<Address>(unWork);
+                    var contactRepo = new Repository<Contact>(unWork);
+                    var imageRepo = new Repository<ProfileImages>(unWork);
+
+                    // Load related entities
+                    var address = profile.address_id > 0 ? addressRepo.Id(profile.address_id) : null;
+                    var contact = profile.contact_id > 0 ? contactRepo.Id(profile.contact_id) : null;
+
+                    // Use profile_code to find related profile image
+                    var imageCode = profile.profile_code;
+                    var profileImage = imageRepo.All("SELECT * FROM profile_image")
+                                                .FirstOrDefault(img => img.image_code == imageCode);
+
+                    // Delete profile image if exists
+                    bool imageDeleted = true;
+                    if (profileImage != null)
+                        imageDeleted = imageRepo.Delete(profileImage);
+
+                    // Delete profile
+                    bool profileDeleted = profileRepo.Delete(profile);
+
+                    // Delete related address and contact
+                    if (address != null)
+                        addressRepo.Delete(address);
+
+                    if (contact != null)
+                        contactRepo.Delete(contact);
+
+                    // Final check
+                    if (profileDeleted && imageDeleted)
+                    {
+                        splashManager.CloseWaitForm();
+                        unWork.Commit();
+                        PopupNotification.PopUpMessages(1,
+                            $"Profile: {profile.profile_code} and related data deleted successfully.",
+                            Messages.TitleSuccessDelete);
+
+                        _profileList = EnumerableUtils.getProfileList();
+                    }
+                    else
+                    {
+                        splashManager.CloseWaitForm();
+                        unWork.Rollback();
+                        PopupNotification.PopUpMessages(0,
+                            $"Failed to delete profile or its related data.",
+                            Messages.TitleFialedDelete);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    splashManager.CloseWaitForm();
+                    unWork.Rollback();
+                    PopupNotification.PopUpMessages(0, $"Deletion failed: {ex.Message}", Messages.TitleFialedDelete);
+                }
+            }
         }
+
 
         private void gridEmployee_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
@@ -728,6 +889,7 @@ namespace Inventory.MainForm
         private void gridEmployee_RowClick(object sender, RowClickEventArgs e)
         {
             whiteProfile();
+            bntCancel.Enabled = true;
             gridViewProfile(sender);
         }
 
@@ -879,6 +1041,10 @@ namespace Inventory.MainForm
             {
                 InputManipulation.InputBoxLeave(cmbDepartment, dkpDateHired, "Department", Messages.TitleEmployees);
             }
+            if (e.KeyCode == Keys.F1)
+            {
+                BindDepartment();
+            }
         }
 
         private void dkpHIR_KeyDown(object sender, KeyEventArgs e)
@@ -894,6 +1060,7 @@ namespace Inventory.MainForm
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 xtraControl.SelectedTabPage = xtraAddress;
+                txtBarangay.Focus();
             }
         }
         private void bntUpdate_Click(object sender, EventArgs e)
@@ -919,15 +1086,12 @@ namespace Inventory.MainForm
 
         private void bntDelete_Click(object sender, EventArgs e)
         {
-
+            ButDel();
         }
         private void bntHome_Click(object sender, EventArgs e)
         {
            HomePage();
         }
-
-
-
 
         private ProfileImages searchProfileImg(string param)
         {
@@ -936,45 +1100,108 @@ namespace Inventory.MainForm
 
         private void xtraControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if (e.Page == xtraContact) {
+            if (e == null || e.Page == null) return;
+
+            if (e.Page == xtraContact)
+            {
                 bindContact();
-                enableContact();
                 whiteContact();
-                disabledAddress();
-                disabledProfile();
+
+                if (_add || _edt)
+                {
+                    enableContact();
+                    enabledAddress();
+                    enabledProfile();
+                    txtContactName.Focus();
+                }
+                else
+                {
+                    disabledAddress();
+                    disabledProfile();
+                }
+
                 grayAddress();
                 grayProfile();
                 txtContactName.Text = txtFirstName.Text + " " + txtMiddleInitial.Text + " " + txtLastName.Text;
                 txtPositionName.Text = cmbPosition.Text;
                 gridContact.Focus();
             }
-            if(e.Page == xtraProfile)
+
+            if (e.Page == xtraProfile)
             {
-                disabledProfile();
-                disabledContact();
-                disabledAddress();
                 whiteProfile();
                 grayContact();
                 grayAddress();
+
+                if (_add || _edt)
+                {
+                    enabledProfile();
+                    enabledAddress();
+                    enableContact();
+                    txtFirstName.Focus();
+                }
+                else
+                {
+                    disabledProfile();
+                    disabledContact();
+                    disabledAddress();
+                }
+
                 gridProfile.Focus();
             }
-            if(e.Page == xtraAddress)
+
+            if (e.Page == xtraAddress)
             {
-                enabledAddress();
                 bindAddress();
                 whiteAddress();
                 grayProfile();
                 grayContact();
-                disabledContact();
+
+                if (_add || _edt)
+                {
+                    enabledAddress();
+                    enabledProfile();
+                    enableContact();
+                    txtBarangay.Focus();
+                }
+                else
+                {
+                    disabledContact();
+                }
+
                 gridAddress.Focus();
             }
-            if(e.Page == xtraImage)
+
+            if (e.Page == xtraImage)
             {
                 var firstName = txtFirstName.Text.Trim(' ');
                 var middleName = txtMiddleInitial.Text.Trim(' ');
                 var lastName = txtLastName.Text.Trim(' ');
                 txtProfileImgTitle.Text = firstName + " " + middleName + " " + lastName;
                 txtProfileImgBarcode.Text = txtBarcode.Text.Trim(' ');
+            }
+        }
+
+
+        private void bindRefreshed()
+        {
+            bindAddress();
+            bindContact();
+            BindDepartment();
+            bindProfileImgList();
+            bindProfileList();
+        }
+
+        private void BindDepartment()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                var repository = new Repository<Department>(unWork);
+                var query = repository.SelectAll(ServeAll.Core.Queries.Query.AllDepartment).Select(x => x.department_name).Distinct().ToList();
+                cmbDepartment.DataBindings.Clear();
+                cmbDepartment.DataSource = query;
             }
         }
 
@@ -1017,15 +1244,11 @@ namespace Inventory.MainForm
                     CODE = p.profile_code,
                     NAME = p.first_name + " " + p.middle_initial + " " + p.last_name,
                     SEX = p.gender,
-                    BIRTHDATE = p.birthdate,
                     STATUS = p.civil_status,
                     TEL = p.telephone_number,
                     MOBILE = p.mobile_number,
                     EMAIL = p.email_address,
-                    BRGY = p.barangay,
-                    PROVINCE = p.province,
-                    SSS = p.sss_number,
-                    PH = p.phil_health,
+                    ADDRESS = $"{p.street}, {p.barangay}, {p.province}",
                     POSITION = p.position,
                     HIREDATE = p.hire_date,
                     REGISTERED = p.date_register,
@@ -1035,9 +1258,8 @@ namespace Inventory.MainForm
                if (gridProfile.RowCount > 0)
                 {
                     gridProfile.Columns[0].Width = 40;
-                    gridProfile.Columns[1].Width = 50;
+                    gridProfile.Columns[1].Width = 40;
                     gridProfile.Columns[2].Width = 150;
-                    gridProfile.Columns[16].Width = 40;
                 }
             }
             catch (Exception)
@@ -1090,8 +1312,8 @@ namespace Inventory.MainForm
                     var list = EnumerableUtils.getAddressList(_profile.address_id).ToList();
                     gridControlAddress.DataSource = list.Select(p => new {
                         ID = p.address_id,
-                        BARANGAY = p.barangay,
                         STREET = p.street,
+                        BARANGAY = p.barangay,
                         CITY = p.city,
                         PROVINCE = p.province,
                         ZIPCODE = p.zip_code,
@@ -1154,6 +1376,135 @@ namespace Inventory.MainForm
             }
         }
 
+        private void txtStreet_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtStreet, txtBarangay, "Street Address", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtBarangay_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtBarangay, txtCity, "Barangay", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtCity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtCity, txtZipCode, "City", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtZipCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtZipCode, txtProvince, "Zip Code", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtProvince_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtProvince, cmbCountry, "Province", Messages.TitleEmployees);
+            }
+        }
+
+        private void cmbCountry_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(cmbCountry, dkpDateRegister, "Country", Messages.TitleEmployees);
+            }
+        }
+
+        private void dkpDateRegister_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                xtraControl.SelectedTabPage = xtraContact;
+                txtContactName.Focus();
+            }
+        }
+
+        private void txtContactName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtContactName, txtPositionName, "Contact Person", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtPositionName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtPositionName, txtPhoneNumber, "Postion Name", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtPhoneNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtPhoneNumber, txtFirstMobile, "Telephone Number", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtFirstMobile_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtFirstMobile, txtSecondMobile, "First Mobile Number", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtSecondMobile_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtSecondMobile, txtEmailAddress, "Second Mobile Number", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtEmailAddress_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtEmailAddress, txtWebUrl, "Email Address", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtWebUrl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtWebUrl, txtFaxNumber, "Web URL", Messages.TitleEmployees);
+            }
+        }
+
+        private void txtFaxNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(txtFaxNumber, dkpContactDateReg, "Fax Number", Messages.TitleEmployees);
+            }
+        }
+
+        private void dkpContactDateReg_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InputManipulation.InputBoxLeave(dkpContactDateReg, bntSave, "Contact Date", Messages.TitleEmployees);
+            }
+        }
+
         private void gridViewContact(object sender)
         {
             if (gridContact.RowCount > 0) {
@@ -1174,52 +1525,65 @@ namespace Inventory.MainForm
 
         private void gridViewProfile(object sender)
         {
-            var grid = gridProfile;
-            if (grid.RowCount > 0)
-                try
-                {
-                    txtProfileID.Text = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
-                    var barcode = ((GridView)sender).GetFocusedRowCellValue("CODE").ToString();
-                    var profileId = txtProfileID.Text.Trim(' ');
-                    if (!_add && !_edt && !_del) {
-                        _profile = _profileList.FirstOrDefault(p => p.profile_id == int.Parse(profileId));
-                        txtFirstName.Text = _profile.first_name;
-                        txtLastName.Text = _profile.last_name;
-                        txtMiddleInitial.Text = _profile.middle_initial;
-                        cmbDepartment.Text = _profile.department_name;
-                    }
-                    txtBarcode.Text = barcode;
-                    cmbgender.Text = ((GridView)sender).GetFocusedRowCellValue("SEX").ToString();
-                    dkpBirthdate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("BIRTHDATE");
-                    cmbCivilStatus.Text = ((GridView)sender).GetFocusedRowCellValue("STATUS").ToString();
-                    txtPhone.Text = ((GridView)sender).GetFocusedRowCellValue("TEL").ToString();
-                    txtMobile.Text = ((GridView)sender).GetFocusedRowCellValue("MOBILE").ToString();
-                    txtEmail.Text = ((GridView)sender).GetFocusedRowCellValue("EMAIL").ToString();
-                    txtAddress.Text = ((GridView)sender).GetFocusedRowCellValue("BRGY").ToString();
-                    cmbProvince.Text = ((GridView)sender).GetFocusedRowCellValue("PROVINCE").ToString();
-                    txtSSSNumber.Text = ((GridView)sender).GetFocusedRowCellValue("SSS").ToString();
-                    txtPhilhealthNumber.Text = ((GridView)sender).GetFocusedRowCellValue("PH").ToString();
-                    cmbPosition.Text = ((GridView)sender).GetFocusedRowCellValue("POSITION").ToString();
-                    dkpDateHired.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("HIREDATE");
-                    dkpDateRegistered.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("REGISTERED");
-                    
-                    var img = searchProfileImg(barcode);
-                    var imgLocation = img?.img_location;
-                    if (img == null || string.IsNullOrEmpty(imgLocation))
-                    {
-                        imgProfile.ImageLocation = ConstantUtils.defaultUserImgEmpty;
+            if (gridProfile.RowCount <= 0) return;
 
-                    }
-                    else
-                    {
-                        var location = ConstantUtils.defaultUserImgLocation + imgLocation;
-                        imgProfile.ImageLocation = location;
-                    }
-                }
-                catch (Exception ex)
+            try
+            {
+                var view = sender as GridView;
+                if (view == null) return;
+
+                var idObj = view.GetFocusedRowCellValue("ID");
+                if (idObj == null) return;
+
+                var idText = idObj.ToString().Trim();
+                if (string.IsNullOrEmpty(idText)) return;
+
+                int profileId = int.Parse(idText);
+                var profile = _profileList.FirstOrDefault(p => p.profile_id == profileId);
+                if (profile == null)
                 {
-                    Console.WriteLine(ex.ToString());
+                    PopupNotification.PopUpMessages(0, "Profile Details", "No profile found for this ID.");
+                    return;
                 }
+
+                // Fill fields
+                txtProfileID.Text = profile.profile_id.ToString();
+                txtBarcode.Text = profile.profile_code ?? "";
+                txtFirstName.Text = profile.first_name ?? "";
+                txtLastName.Text = profile.last_name ?? "";
+                txtMiddleInitial.Text = profile.middle_initial ?? "";
+                cmbDepartment.Text = profile.department_name ?? "";
+                cmbgender.Text = profile.gender ?? "";
+                dkpBirthdate.Value = profile.birthdate;
+                cmbCivilStatus.Text = profile.civil_status ?? "";
+                txtPhone.Text = profile.telephone_number ?? "";
+                txtMobile.Text = profile.mobile_number ?? "";
+                txtEmail.Text = profile.email_address ?? "";
+                txtAddress.Text = profile.barangay ?? "";
+                cmbProvince.Text = profile.province ?? "";
+                txtSSSNumber.Text = profile.sss_number ?? "";
+                txtPhilhealthNumber.Text = profile.phil_health ?? "";
+                cmbPosition.Text = profile.position ?? "";
+                dkpDateHired.Value = profile.hire_date;
+                dkpDateRegistered.Value = profile.date_register;
+
+                // Load Image
+                var img = searchProfileImg(profile.profile_code);
+                var imgLocation = img?.img_location;
+                if (string.IsNullOrEmpty(imgLocation))
+                {
+                    imgProfile.ImageLocation = ConstantUtils.defaultUserImgEmpty;
+                }
+                else
+                {
+                    var location = ConstantUtils.defaultUserImgLocation + imgLocation;
+                    imgProfile.ImageLocation = location;
+                }
+            }
+            catch (Exception ex)
+            {
+                PopupNotification.PopUpMessages(0, ex.Message, "Profile Details");
+            }
         }
     }
 }
