@@ -37,13 +37,16 @@ namespace Inventory.MainForm
             _userId = userId;
             _userTyp = userTy;
 
-            if (_userTyp != 1)
+            var allowedRoles = new List<int> { 1, 2 }; // Admin and User
+
+            if (!allowedRoles.Contains(_userTyp))
             {
                 PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
 
                 this.DialogResult = DialogResult.Cancel;
                 return;
             }
+
             InitializeComponent();
             this.DialogResult = DialogResult.OK;
         }
@@ -187,9 +190,16 @@ namespace Inventory.MainForm
             txtSupplierCode.BackColor = Color.White;
             txtSupplierName.BackColor = Color.White;
             cmbGender.BackColor = Color.White;
-            cmbContact.BackColor = Color.White;
-            cmbAddress.BackColor = Color.White;
-            cmbCompany.BackColor = Color.White;
+            txtBarangay.BackColor = Color.White;
+            txtCity.BackColor = Color.White;
+            txtProvince.BackColor = Color.White;
+            txtZipCode.BackColor = Color.White;
+            txtContactPerson.BackColor = Color.White;
+            txtTelephone.BackColor = Color.White;
+            txtMobile.BackColor = Color.White;
+            txtEmail.BackColor = Color.White;
+            txtCompanyType.BackColor = Color.White;
+            txtWeb.BackColor = Color.White;
             dkpSupplier.BackColor = Color.White;
         }
         private void InputEnab()
@@ -205,9 +215,16 @@ namespace Inventory.MainForm
             txtSupplierCode.Enabled = true;
             txtSupplierName.Enabled = true;
             cmbGender.Enabled = true;
-            cmbContact.Enabled = true;
-            cmbAddress.Enabled = true;
-            cmbCompany.Enabled = true;
+            txtBarangay.Enabled = true;
+            txtCity.Enabled = true;
+            txtProvince.Enabled = true;
+            txtZipCode.Enabled = true;
+            txtContactPerson.Enabled = true;
+            txtTelephone.Enabled = true;
+            txtMobile.Enabled = true;
+            txtEmail.Enabled = true;
+            txtWeb.Enabled = true;
+            txtCompanyType.Enabled = true;
             dkpSupplier.Enabled = true;
         }
         private void InputDisb()
@@ -223,9 +240,16 @@ namespace Inventory.MainForm
             txtSupplierCode.Enabled = false;
             txtSupplierName.Enabled = false;
             cmbGender.Enabled = false;
-            cmbContact.Enabled = false;
-            cmbAddress.Enabled = false;
-            cmbCompany.Enabled = false;
+            txtBarangay.Enabled = false;
+            txtCity.Enabled = false;
+            txtProvince.Enabled = false;
+            txtZipCode.Enabled = false;
+            txtContactPerson.Enabled = false;
+            txtTelephone.Enabled = false;
+            txtMobile.Enabled = false;
+            txtEmail.Enabled = false;
+            txtWeb.Enabled = false;
+            txtCompanyType.Enabled = false;
             dkpSupplier.Enabled = false;
         }
         private void InputClea()
@@ -240,9 +264,15 @@ namespace Inventory.MainForm
             txtCategoryDetails.Clear();
             txtSupplierName.Clear();
             cmbGender.DataBindings.Clear();
-            cmbContact.DataBindings.Clear();
-            cmbAddress.DataBindings.Clear();
-            cmbCompany.DataBindings.Clear();
+            txtBarangay.DataBindings.Clear();
+            txtCity.DataBindings.Clear();
+            txtProvince.DataBindings.Clear();
+            txtZipCode.DataBindings.Clear();
+            txtContactPerson.DataBindings.Clear();
+            txtTelephone.DataBindings.Clear();
+            txtMobile.DataBindings.Clear();
+            txtEmail.DataBindings.Clear();
+            txtCompanyType.DataBindings.Clear();
         }
         private void InputDimG()
         {
@@ -257,9 +287,16 @@ namespace Inventory.MainForm
             txtSupplierCode.BackColor = Color.DimGray;
             txtSupplierName.BackColor = Color.DimGray;
             cmbGender.BackColor = Color.DimGray;
-            cmbContact.BackColor = Color.DimGray;
-            cmbAddress.BackColor = Color.DimGray;
-            cmbCompany.BackColor = Color.DimGray;
+            txtBarangay.BackColor = Color.DimGray;
+            txtCity.BackColor = Color.DimGray;
+            txtProvince.BackColor = Color.DimGray;
+            txtZipCode.BackColor = Color.DimGray;
+            txtContactPerson.BackColor = Color.DimGray;
+            txtTelephone.BackColor = Color.DimGray;
+            txtMobile.BackColor = Color.DimGray;
+            txtEmail.BackColor = Color.DimGray;
+            txtWeb.BackColor = Color.DimGray;
+            txtCompanyType.BackColor = Color.DimGray;
             dkpSupplier.BackColor = Color.DimGray;
         }
 
@@ -276,6 +313,13 @@ namespace Inventory.MainForm
             var alphaNumeric = new GenerateAlpaNum("SUP", 3, lastSupplierId);
             alphaNumeric.Increment();
             txtSupplierCode.Text = alphaNumeric.ToString();
+        }
+
+        private void GenerateContactCode()
+        {
+            var lastContactId = FetchUtils.getLastContactId();
+            var alphaNumeric = new GenerateAlpaNum("C", 3, lastContactId);
+            alphaNumeric.Increment();
         }
 
         private void ButAdd()
@@ -485,9 +529,7 @@ namespace Inventory.MainForm
                     GENDER = x.gender,
                     TELEPHONE = x.telephone_number,
                     MOBILE = x.mobile_number,
-                    BARANGAY = x.barangay,
-                    STREET = x.street,
-                    PROVINCE = x.province,
+                    ADDRESS = $"{x.street}, {x.barangay}, {x.province}",
                     DATE = x.date_register
                 });
 
@@ -501,10 +543,8 @@ namespace Inventory.MainForm
                 gridSupplier.Columns[5].Width = 90;
                 gridSupplier.Columns[6].Width = 100;
                 gridSupplier.Columns[7].Width = 100;
-                gridSupplier.Columns[8].Width = 100;
+                gridSupplier.Columns[8].Width = 120;
                 gridSupplier.Columns[9].Width = 100;
-                gridSupplier.Columns[10].Width = 100;
-                gridSupplier.Columns[11].Width = 100;
 
             }
             catch (Exception ex)
@@ -521,8 +561,6 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 var repository = new Repository<Contact>(unWork);
                 var query = repository.SelectAll(Query.AllContact).Select(x => x.mobile_number).Distinct().ToList();
-                cmbContact.DataBindings.Clear();
-                cmbContact.DataSource = query;
             }
         }
 
@@ -538,8 +576,6 @@ namespace Inventory.MainForm
                             .Distinct()
                             .OrderBy(addr => addr)
                             .ToList();
-                cmbAddress.DataBindings.Clear();
-                cmbAddress.DataSource = query;
             }
         }
 
@@ -549,10 +585,8 @@ namespace Inventory.MainForm
             {
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
-                var repository = new Repository<Company>(unWork);
+                var repository = new Repository<ViewCompany>(unWork);
                 var query = repository.SelectAll(Query.AllCompany).Select(x => x.company_name).Distinct().ToList();
-                cmbCompany.DataBindings.Clear();
-                cmbCompany.DataSource = query;
             }
         }
         private void dkpREG_Leave(object sender, EventArgs e)
@@ -620,10 +654,16 @@ namespace Inventory.MainForm
                         txtSupplierCode.Text = supplierCode;
                         txtSupplierName.Text = supplier.supplier_name;
                         cmbGender.Text = supplier.gender;
-                        cmbContact.Text = supplier.mobile_number;
-                        string fullAddress = $"{supplier.street}, {supplier.barangay}, {supplier.zip_code}, {supplier.province}";
-                        cmbAddress.Text = fullAddress;
-                        cmbCompany.Text = supplier.company_name;
+                        txtBarangay.Text = supplier.barangay;
+                        txtCity.Text = supplier.street;      
+                        txtZipCode.Text = supplier.zip_code.ToString();
+                        txtProvince.Text = supplier.province;
+                        txtContactPerson.Text = supplier.contact_name;
+                        txtTelephone.Text = supplier.telephone_number;
+                        txtMobile.Text = supplier.mobile_number;
+                        txtEmail.Text = supplier.email_address;
+                        txtWeb.Text = supplier.web;
+                        txtCompanyType.Text = supplier.company_type;
                         dkpDateRegister.Value = supplier.date_register;
                     }
                 }
@@ -686,45 +726,6 @@ namespace Inventory.MainForm
             }
         }
 
-        private void CmbContact_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                BindContact();
-            }
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(cmbContact, cmbAddress, "Supplier Contact",
-                Messages.TitleSupplier);
-            }
-        }
-
-        private void CmbAddress_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                BindAddress();
-            }
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(cmbAddress, cmbCompany, "Supplier Address",
-                Messages.TitleSupplier);
-            }
-        }
-
-        private void CmbCompany_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                BindCompany();
-            }
-            if (e.KeyCode == Keys.Enter)
-            {
-                InputManipulation.InputBoxLeave(cmbCompany, dkpSupplier, "Supplier Company",
-                Messages.TitleSupplier);
-            }
-        }
-
         private void TxtCategoryDetails_KeyDown_1(object sender, KeyEventArgs e)
         {
                 if (e.KeyCode == Keys.Enter)
@@ -751,7 +752,7 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputBoxLeave(cmbGender, cmbContact, "Supplier Name",
+                InputManipulation.InputBoxLeave(cmbGender, txtBarangay, "Supplier Name",
                 Messages.TitleSupplier);
             }
         }
@@ -856,6 +857,22 @@ namespace Inventory.MainForm
                 }
             }
         }
+        private string GetGenerateContactCode()
+        {
+            var lastContactId = FetchUtils.getLastContactId();
+            var alphaNumeric = new GenerateAlpaNum("C", 3, lastContactId);
+            alphaNumeric.Increment();
+            return alphaNumeric.ToString();
+        }
+
+        private string GetGenerateCompanyCode()
+        {
+            var lastCompanyId = FetchUtils.getLastCompanyId();
+            var alphaNumeric = new GenerateAlpaNum("COMP", 3, lastCompanyId);
+            alphaNumeric.Increment();
+            return alphaNumeric.ToString();
+        }
+
         private void DataInsertSup()
         {
             using (var session = new DalSession())
@@ -864,32 +881,74 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    var repository = new Repository<Supplier>(unWork);
-                    var supplier = new Supplier()
+                    // 1. Add Contact
+                    var contact = new Contact
                     {
-                        supplier_code = txtSupplierCode.Text.Trim(' '),
-                        supplier_name = txtSupplierName.Text.Trim(' '),
-                        gender = cmbGender.Text.Trim(' '),
-                        contact_id = FetchUtils.getContactId(cmbContact.Text),
-                        address_id = FetchUtils.getAddressId(cmbAddress.Text),
-                        company_id = FetchUtils.getCompanyId(cmbCompany.Text),
+                        contact_code = GetGenerateContactCode(),
+                        contact_name = txtContactPerson.Text.Trim(),
+                        position = "Supervisor/Authorized Person",
+                        telephone_number = txtTelephone.Text.Trim(),
+                        mobile_number = txtMobile.Text.Trim(),
+                        mobile_secondary = txtMobile.Text.Trim(),
+                        email_address = txtEmail.Text.Trim(),
+                        web_url = txtWeb.Text.Trim(),
+                        fax_number = null,
+                        date_register = DateTime.Now
+                    };
+                    var contactRepo = new Repository<Contact>(unWork);
+                    var contactId = (int)contactRepo.Add(contact);
+
+                    // 2. Add Address
+                    var address = new Address
+                    {
+                        street = null,
+                        barangay = txtBarangay.Text.Trim(),
+                        city = txtCity.Text.Trim(),
+                        province = txtProvince.Text.Trim(),
+                        zip_code = int.TryParse(txtZipCode.Text.Trim(), out var zip) ? zip.ToString() : "0",
+                        country = "Philippines"
+                    };
+                    var addressRepo = new Repository<Address>(unWork);
+                    var addressId = (int)addressRepo.Add(address);
+
+                    // 3. Add Company
+                    var company = new Company
+                    {
+                        company_code = GetGenerateCompanyCode(),
+                        company_name = txtSupplierName.Text.Trim(),
+                        company_type = txtCompanyType.Text.Trim(),
+                        date_register = DateTime.Now,
+                        address_id = addressId,
+                        contact_id = contactId
+                    };
+                    var companyRepo = new Repository<Company>(unWork);
+                    var companyId = (int)companyRepo.Add(company);
+
+                    // 4. Add Supplier
+                    var supplier = new Supplier
+                    {
+                        supplier_code = txtSupplierCode.Text.Trim(),
+                        supplier_name = txtSupplierName.Text.Trim(),
+                        gender = cmbGender.Text.Trim(),
+                        contact_id = contactId,
+                        address_id = addressId,
+                        company_id = companyId,
                         date_register = dkpSupplier.Value.Date
                     };
-                    var result = repository.Add(supplier);
+                    var supplierRepo = new Repository<Supplier>(unWork);
+                    var result = (int)supplierRepo.Add(supplier);
+
                     if (result > 0)
                     {
                         unWork.Commit();
-                        PopupNotification.PopUpMessages(1, "Supplier: " +
-                                                           txtSupplierName.Text.Trim(' ')
-                                                           + " " + Messages.SuccessInsert,
-                            Messages.TitleSuccessInsert);
+                        PopupNotification.PopUpMessages(1, "Supplier: " + supplier.supplier_name + " added successfully!", "Success");
                         bindRefreshedSupplier();
                     }
                 }
                 catch (Exception ex)
                 {
                     unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
+                    PopupNotification.PopUpMessages(0, ex.Message, "Insert Failed");
                 }
             }
         }
@@ -936,48 +995,72 @@ namespace Inventory.MainForm
                 unWork.Begin();
                 try
                 {
-                    // Validate and parse supplier ID
                     if (!int.TryParse(txtSupplierId.Text, out int supplierId) || supplierId <= 0)
                     {
                         PopupNotification.PopUpMessages(0, "Invalid supplier ID.", Messages.TitleFialedUpdate);
                         return;
                     }
 
-                    // Initialize repository and fetch supplier
-                    var repository = new Repository<Supplier>(unWork);
-                    var supplier = repository.Id(supplierId);
+                    var supplierRepo = new Repository<Supplier>(unWork);
+                    var supplier = supplierRepo.Id(supplierId);
                     if (supplier == null)
                     {
                         PopupNotification.PopUpMessages(0, "Supplier not found.", Messages.TitleFialedUpdate);
                         return;
                     }
 
-                    // Fetch and validate foreign key IDs, use existing values if invalid
-                    int contactId = FetchUtils.getContactId(cmbContact.Text);
-                    if (contactId <= 0) contactId = supplier.contact_id; // Retain existing if invalid
+                    // === Update Contact ===
+                    var contactRepo = new Repository<Contact>(unWork);
+                    var contact = contactRepo.Id(supplier.contact_id);
+                    if (contact != null)
+                    {
+                        contact.contact_name = txtSupplierName.Text.Trim();
+                        contact.position = "Supervisor/Authorized Person";
+                        contact.telephone_number = txtTelephone.Text.Trim();
+                        contact.mobile_number = txtMobile.Text.Trim();
+                        contact.mobile_secondary = txtMobile.Text.Trim();
+                        contact.email_address = txtEmail.Text.Trim();
+                        contact.web_url = txtWeb.Text.Trim();
+                        contact.date_register = DateTime.Now;
+                        contactRepo.Update(contact);
+                    }
 
-                    int addressId = FetchUtils.getAddressId(cmbAddress.Text);
-                    if (addressId <= 0) addressId = supplier.address_id; // Retain existing if invalid
+                    // === Update Address ===
+                    var addressRepo = new Repository<Address>(unWork);
+                    var address = addressRepo.Id(supplier.address_id);
+                    if (address != null)
+                    {
+                        address.barangay = txtBarangay.Text.Trim();
+                        address.city = txtCity.Text.Trim();
+                        address.province = txtProvince.Text.Trim();
+                        address.zip_code = int.TryParse(txtZipCode.Text.Trim(), out var zip) ? zip.ToString() : "0";
+                        address.country = "Philippines";
+                        addressRepo.Update(address);
+                    }
 
-                    int companyId = FetchUtils.getCompanyId(cmbCompany.Text);
-                    if (companyId <= 0) companyId = supplier.company_id; // Retain existing if invalid
+                    // === Update Company ===
+                    var companyRepo = new Repository<Company>(unWork);
+                    var company = companyRepo.Id(supplier.company_id);
+                    if (company != null)
+                    {
+                        company.company_name = txtSupplierName.Text.Trim();
+                        company.company_type = txtCompanyType.Text.Trim();
+                        company.date_register = DateTime.Now;
+                        companyRepo.Update(company);
+                    }
 
-                    // Update supplier properties with new or existing values
-                    supplier.supplier_code = string.IsNullOrWhiteSpace(txtSupplierCode.Text.Trim()) ? supplier.supplier_code : txtSupplierCode.Text.Trim();
-                    supplier.supplier_name = string.IsNullOrWhiteSpace(txtSupplierName.Text.Trim()) ? supplier.supplier_name : txtSupplierName.Text.Trim();
-                    supplier.gender = string.IsNullOrWhiteSpace(cmbGender.Text.Trim()) ? supplier.gender : cmbGender.Text.Trim();
-                    supplier.contact_id = contactId;
-                    supplier.address_id = addressId;
-                    supplier.company_id = companyId;
+                    // === Update Supplier ===
+                    supplier.supplier_code = txtSupplierCode.Text.Trim();
+                    supplier.supplier_name = txtSupplierName.Text.Trim();
+                    supplier.gender = cmbGender.Text.Trim();
                     supplier.date_register = dkpSupplier.Checked ? dkpSupplier.Value.Date : supplier.date_register;
 
-                    // Perform update
-                    var result = repository.Update(supplier);
+                    var result = supplierRepo.Update(supplier);
+
                     if (result)
                     {
                         unWork.Commit();
-                        PopupNotification.PopUpMessages(1, $"Supplier: {supplier.supplier_name} {Messages.SuccessUpdate}",
-                            Messages.TitleSuccessUpdate);
+                        PopupNotification.PopUpMessages(1, $"Supplier: {supplier.supplier_name} successfully updated!", Messages.TitleSuccessUpdate);
                         bindRefreshedSupplier();
                     }
                     else
@@ -993,6 +1076,7 @@ namespace Inventory.MainForm
                 }
             }
         }
+
         private void DataDelete()
         {
             using (var session = new DalSession())
@@ -1028,35 +1112,60 @@ namespace Inventory.MainForm
             {
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
+
                 try
                 {
-                    var supplierId = Convert.ToInt32(txtSupplierId.Text); // You must have supplier_id in a hidden/visible field
-                    var repository = new Repository<Supplier>(unWork);
-                    var supplier = repository.Id(supplierId);
-
-                    if (supplier != null)
+                    if (!int.TryParse(txtSupplierId.Text.Trim(), out var supplierId) || supplierId <= 0)
                     {
-                        var result = repository.Delete(supplier);
-                        if (result)
-                        {
-                            unWork.Commit();
-                            PopupNotification.PopUpMessages(1, "Supplier: " +
-                                                               txtSupplierName.Text.Trim(' ')
-                                                               + " " + Messages.SuccessDelete,
-                                Messages.TitleSuccessDelete);
-                            bindRefreshedSupplier();
-                        }
+                        PopupNotification.PopUpMessages(0, "Invalid Supplier ID.", Messages.TitleFialedDelete);
+                        return;
                     }
-                    else
+
+                    var supplierRepo = new Repository<Supplier>(unWork);
+                    var supplier = supplierRepo.Id(supplierId);
+
+                    if (supplier == null)
                     {
                         PopupNotification.PopUpMessages(0, "Supplier not found.", Messages.TitleFialedDelete);
                         unWork.Rollback();
+                        return;
                     }
+
+                    // Repositories for related tables
+                    var addressRepo = new Repository<Address>(unWork);
+                    var contactRepo = new Repository<Contact>(unWork);
+                    var companyRepo = new Repository<Company>(unWork);
+
+                    // Load related entities manually using their IDs
+                    var address = addressRepo.Id(supplier.address_id);
+                    var contact = contactRepo.Id(supplier.contact_id);
+                    var company = companyRepo.Id(supplier.company_id);
+
+                    // Delete Supplier first (or last if you have ON DELETE CASCADE configured)
+                    var supplierDeleted = supplierRepo.Delete(supplier);
+
+                    // Delete related entities only if they exist
+                    if (address != null)
+                        addressRepo.Delete(address);
+
+                    if (contact != null)
+                        contactRepo.Delete(contact);
+
+                    if (company != null)
+                        companyRepo.Delete(company);
+
+                    unWork.Commit();
+
+                    PopupNotification.PopUpMessages(1,
+                        $"Supplier: {txtSupplierName.Text.Trim()} {Messages.SuccessDelete}",
+                        Messages.TitleSuccessDelete);
+
+                    bindRefreshedSupplier();
                 }
                 catch (Exception ex)
                 {
                     unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedDelete);
+                    PopupNotification.PopUpMessages(0, $"Deletion failed: {ex.Message}", Messages.TitleFialedDelete);
                 }
             }
         }
