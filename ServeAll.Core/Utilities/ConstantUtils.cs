@@ -2,12 +2,12 @@
 {
     public static class ConstantUtils
     {
-        public static string defaultUserImgLocation = @"C:\user_images\user\";
-        public static string defaultUserImgEmpty = @"C:\user_images\user\empty-image.jpg";
-        public static string defaultImgLocation = @"C:\images\products\";
-        public static string defaultImgEmpty = @"C:\images\products\no-picture.jpg";
-        public static string imgProcessing = @"C:\images\products\processing.png";
-        public static string imgCancelled = @"C:\images\products\cancelled.png";
-        public static string imgCompleted = @"C:\images\products\completed.png";
+        public static string defaultUserImgLocation = @"\\192.168.8.25\user_images\user\";
+        public static string defaultUserImgEmpty = @"\\192.168.8.25\user_images\user\empty-image.jpg";
+        public static string defaultImgLocation = @"\\192.168.8.25\images\products\";
+        public static string defaultImgEmpty = @"\\192.168.8.25\images\products\no-picture.jpg";
+        public static string imgProcessing = @"\\192.168.8.25\images\products\processing.png";
+        public static string imgCancelled = @"\\192.168.8.25\images\products\cancelled.png";
+        public static string imgCompleted = @"\\192.168.8.25\images\products\completed.png";
     }
 }
