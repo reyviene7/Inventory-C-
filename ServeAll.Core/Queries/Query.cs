@@ -282,7 +282,7 @@
         public const string SelectReportReturnDepotDl = "SELECT * FROM report_return_delivery_depot";
         public const string SelectReportAllItem = "SELECT inventory_id, product_code, product_name, quantity, trade_price, retail_price, status FROM view_inventoryList";
         public const string SelectReportDailyExpenses = "SELECT * FROM view_daily_expenses";
-        public const string SelectReportProduct = "SELECT product_id, product_code, product_name, trade_price, retail_price FROM report_product_list";
+        public const string SelectReportProduct = "SELECT product_id, product_code, product_name, trade_price, wholesale, retail_price FROM report_product_list";
         public const string SelectReportSales = "SELECT sale_id, customer_name, amount_due, paid_amount, gross, discount, net_sales, branch_details, receipt_number, sale_date  FROM report_sales";
         public const string SelectReportService = "SELECT service_id, service_name, service_details, service_charges, category_details, service_commission, full_name, status_name, service_date FROM report_service";
         public const string SelectReportPayment = "SELECT payment_id, amount_due, amount_paid, remaining_balance, payment_method, customer_name, branch_details, credit_code, receipt_number, payment_date FROM report_payment";

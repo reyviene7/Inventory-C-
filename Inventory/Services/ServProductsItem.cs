@@ -29,6 +29,7 @@ namespace Inventory.Services
                         Id = source.product_id,
                         Barcode = source.product_code,
                         Name = source.product_name,
+                        Wholesale = source.wholesale,
                         TradePrice = source.trade_price,
                         RetailPrice = source.retail_price,
                     });

@@ -1,7 +1,8 @@
 ﻿ 
-using System.Collections.Generic;
  
 using Inventory.Class;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Inventory.Report
 {
@@ -15,6 +16,9 @@ namespace Inventory.Report
         public void Load(IEnumerable<ProductList> source)
         {
             DataSource = source;
+            int recordCount = source != null ? source.Count() : 0;
+            System.Diagnostics.Debug.WriteLine($"Record Count: {recordCount}"); // Log count for debugging
+            xrLabel8.Text = $"Total: {recordCount}";
         }
     }
 }
