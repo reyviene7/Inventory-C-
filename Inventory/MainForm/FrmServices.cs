@@ -385,6 +385,8 @@ namespace Inventory.MainForm
             gridController.Enabled = false;
             imgProduct.DataBindings.Clear();
             imgProduct.Image = null;
+            imgServiceImages.DataBindings.Clear();
+            imgServiceImages.Image = null;
             cmbServiceCategory.DataBindings.Clear();
             cmbServiceStatus.DataBindings.Clear();
             cmbStaff.DataBindings.Clear();
@@ -527,6 +529,8 @@ namespace Inventory.MainForm
             gridController.Enabled = true;
             imgProduct.DataBindings.Clear();
             imgProduct.Image = null;
+            imgServiceImages.DataBindings.Clear();
+            imgServiceImages.Image = null;
             _services_list = EnumerableUtils.getServicesList();
             bindServices();
         }
@@ -653,19 +657,23 @@ namespace Inventory.MainForm
 
                     try
                     {
-                        using (var stream = new MemoryStream(File.ReadAllBytes(selectedFilePath)))
+                        using (FileStream fs = new FileStream(selectedFilePath, FileMode.Open, FileAccess.Read))
                         {
-                            imgServiceImages.Image = Image.FromStream(stream);
+                            using (Image temp = Image.FromStream(fs))
+                            {
+                                imgServiceImages.Image?.Dispose();
+                                imgServiceImages.Image = new Bitmap(temp);
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error loading image: " + ex.Message, "Image Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        imgServiceImages.SizeMode = PictureBoxSizeMode.Zoom;
+                        PopupNotification.PopUpMessages(0, "Image Load Failed: " + ex.Message, "Load Error");
+                        imgServiceImages.Image = null;
+                        return;
                     }
 
                     bntSaveImages.Enabled = true;
-                    bntBrowseImage.Enabled = false;
                 }
             }
         }
@@ -677,22 +685,38 @@ namespace Inventory.MainForm
 
         private void bntSaveImages_Click(object sender, EventArgs e)
         {
-            var code = txtServiceImgBarcode.Text.Trim(' ');
-            var title = txtServiceImgTitle.Text.Trim(' ');
-            var imgtype = cmbServiceImgType.Text.Trim(' ');
-            var imgLocation = txtServiceImgFileName.Text.Trim(' ');
-            if (code.Length > 0 && title.Length > 0 && imgtype.Length > 0 && imgLocation.Length > 0)
+            var code = txtServiceImgBarcode.Text.Trim();
+            var title = txtServiceImgTitle.Text.Trim();
+            var imgType = cmbServiceImgType.Text.Trim();
+            var imgLocation = txtServiceImgFileName.Text.Trim();
+
+            if (code.Length > 0 && title.Length > 0 && imgType.Length > 0 && imgLocation.Length > 0)
             {
-                saveProductImage();
-                bntSaveImages.Enabled = false;
-                bntBrowseImage.Enabled = true;
-                _service_image_list = EnumerableUtils.getServiceImgList();
+                var result = saveServiceImage();
+                if (result > 0)
+                {
+                    if (imgServiceImages.Image != null)
+                    {
+                        imgServiceImages.Image.Dispose();
+                        imgServiceImages.Image = null;
+                    }
+
+                    bntSaveImages.Enabled = false;
+                    bntBrowseImage.Enabled = true;
+
+                    txtServiceImgFileName.Text = "";
+                    txtServiceImgTitle.Text = "";
+                    cmbServiceImgType.SelectedIndex = -1;
+
+                    _service_image_list = EnumerableUtils.getServiceImgList();
+                }
             }
             else
             {
                 PopupNotification.PopUpMessages(0, "Please fill all the entries!", Messages.TitleFailedInsert);
             }
         }
+
 
         private string ExtractFileName(string filePath)
         {
@@ -710,31 +734,74 @@ namespace Inventory.MainForm
                 txtServiceDescription.Focus();
             }
         }
-        private void saveProductImage()
+        private int saveServiceImage()
         {
-            var filePathLocation = txtServiceImgFileName.Text.Trim(' ');
-            var filePath = ExtractFileName(filePathLocation);
-            var img = new ServiceImages()
+            var returnValue = 0;
+
+            using (var session = new DalSession())
             {
-                image_code = txtServiceImgBarcode.Text.Trim(' '),
-                title = txtServiceImgTitle.Text.Trim(' '),
-                img_type = cmbServiceImgType.Text.Trim(' '),
-                img_location = filePath,
-                created_on = DateTime.Now,
-                updated_on = DateTime.Now
-            };
-            var result = RepositoryEntity.AddEntity<ServiceImages>(img);
-            if (result > 0)
-            {
-                PopupNotification.PopUpMessages(1, "Service image: " + txtServiceImgTitle.Text.Trim(' ') + " " + Messages.SuccessInsert,
-                 Messages.TitleSuccessInsert);
+                var unitWorks = session.UnitofWrk;
+                unitWorks.Begin();
+
+                try
+                {
+                    var filePathLocation = txtServiceImgFileName.Text.Trim();
+                    var filePath = ExtractFileName(filePathLocation);
+                    var imageCode = txtServiceImgBarcode.Text.Trim();
+
+                    var repository = new Repository<ServiceImages>(unitWorks);
+                    var existingImg = repository.FindBy(x => x.image_code == imageCode);
+
+                    if (existingImg != null)
+                    {
+                        // Update existing
+                        existingImg.title = txtServiceImgTitle.Text.Trim();
+                        existingImg.img_type = cmbServiceImgType.Text.Trim();
+                        existingImg.img_location = filePath;
+                        existingImg.updated_on = DateTime.Now;
+
+                        var updated = repository.Update(existingImg);
+                        if (updated)
+                        {
+                            unitWorks.Commit();
+                            PopupNotification.PopUpMessages(1, "Service image updated: " + existingImg.title + " " + Messages.SuccessUpdate,
+                                Messages.TitleSuccessUpdate);
+                            returnValue = 1;
+                        }
+                    }
+                    else
+                    {
+                        // Add new
+                        var img = new ServiceImages()
+                        {
+                            image_code = imageCode,
+                            title = txtServiceImgTitle.Text.Trim(),
+                            img_type = cmbServiceImgType.Text.Trim(),
+                            img_location = filePath,
+                            created_on = DateTime.Now,
+                            updated_on = DateTime.Now
+                        };
+
+                        var result = repository.Add(img);
+                        if (result > 0)
+                        {
+                            unitWorks.Commit();
+                            PopupNotification.PopUpMessages(1, "Service image added: " + img.title + " " + Messages.SuccessInsert,
+                                Messages.TitleSuccessInsert);
+                            returnValue = 1;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    unitWorks.Rollback();
+                    PopupNotification.PopUpMessages(0, ex.Message, Messages.TitleFailedInsert);
+                }
             }
-            else
-            {
-                PopupNotification.PopUpMessages(0, "Service image: " + txtServiceImgTitle.Text.Trim(' ') + " " + Messages.ErrorInsert,
-                 Messages.TitleFailedInsert);
-            }
+
+            return returnValue;
         }
+
 
         private void GridServices_RowClick(object sender, RowClickEventArgs e)
         {
