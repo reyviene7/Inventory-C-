@@ -228,6 +228,68 @@ namespace Inventory.MainForm
                 PopupNotification.PopUpMessages(0, "Please fill all the entries!", Messages.TitleFailedInsert);
             }
         }
+        private int saveProductImage()
+        {
+            var returnValue = 0;
+            using (var session = new DalSession())
+            {
+                var unitWorks = session.UnitofWrk;
+                unitWorks.Begin();
+                try
+                {
+                    var filePathLocation = txtImageFilename.Text.Trim(' ');
+                    var filePath = ExtractFileName(filePathLocation);
+                    var repository = new Repository<ProductImages>(unitWorks);
+                    var imageCode = txtProductBar.Text.Trim(' ');
+
+                    var existingImg = repository.FindBy(x => x.image_code == imageCode);
+
+                    if (existingImg != null)
+                    {
+                        existingImg.title = txtImageTitle.Text.Trim(' ');
+                        existingImg.img_type = txtImageType.Text.Trim(' ');
+                        existingImg.img_location = filePath;
+                        existingImg.branch_id = 1;
+
+                        var updated = repository.Update(existingImg);
+                        if (updated)
+                        {
+                            PopupNotification.PopUpMessages(1, "Product image updated: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
+                                Messages.TitleSuccessUpdate);
+                            unitWorks.Commit();
+                            returnValue = 1;
+                        }
+                    }
+                    else
+                    {
+                        var img = new ProductImages()
+                        {
+                            image_code = imageCode,
+                            title = txtImageTitle.Text.Trim(' '),
+                            img_type = txtImageType.Text.Trim(' '),
+                            img_location = filePath,
+                            branch_id = 1
+                        };
+                        var result = repository.Add(img);
+                        if (result > 0)
+                        {
+                            PopupNotification.PopUpMessages(1, "Product image added: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
+                                Messages.TitleSuccessInsert);
+                            unitWorks.Commit();
+                            returnValue = 1;
+                        }
+                    }
+                    bindRefreshed();
+                }
+                catch (Exception ex)
+                {
+                    unitWorks.Rollback();
+                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
+                    returnValue = 0;
+                }
+            }
+            return returnValue;
+        }
         private void pcAdd_Click(object sender, EventArgs e)
         {
             ButAdd();
@@ -1464,67 +1526,6 @@ namespace Inventory.MainForm
         }
 
 
-        private int saveProductImage()
-        {
-            var returnValue = 0;
-            using (var session = new DalSession())
-            {
-                var unitWorks = session.UnitofWrk;
-                unitWorks.Begin();
-                try
-                {
-                    var filePathLocation = txtImageFilename.Text.Trim(' ');
-                    var filePath = ExtractFileName(filePathLocation);
-                    var repository = new Repository<ProductImages>(unitWorks);
-                    var imageCode = txtProductBar.Text.Trim(' ');
-
-                    var existingImg = repository.FindBy(x => x.image_code == imageCode);
-
-                    if (existingImg != null)
-                    {
-                        existingImg.title = txtImageTitle.Text.Trim(' ');
-                        existingImg.img_type = txtImageType.Text.Trim(' ');
-                        existingImg.img_location = filePath;
-                        existingImg.branch_id = 1;
-
-                        var updated = repository.Update(existingImg);
-                        if (updated)
-                        {
-                            PopupNotification.PopUpMessages(1, "Product image updated: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessUpdate,
-                                Messages.TitleSuccessUpdate);
-                            unitWorks.Commit();
-                            returnValue = 1;
-                        }
-                    }
-                    else
-                    {
-                        var img = new ProductImages()
-                        {
-                            image_code = imageCode,
-                            title = txtImageTitle.Text.Trim(' '),
-                            img_type = txtImageType.Text.Trim(' '),
-                            img_location = filePath,
-                            branch_id = 1
-                        };
-                        var result = repository.Add(img);
-                        if (result > 0)
-                        {
-                            PopupNotification.PopUpMessages(1, "Product image added: " + txtProductName.Text.Trim(' ') + " " + Messages.SuccessInsert,
-                                Messages.TitleSuccessInsert);
-                            unitWorks.Commit();
-                            returnValue = 1;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    unitWorks.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
-                    returnValue = 0;
-                }
-            }
-            return returnValue;
-        }
         int SafeInt(object value)
         {
             if (value == null) return 0;

@@ -23,6 +23,7 @@ namespace Inventory.MainForm
         private readonly int _userTyp;
         private readonly string _userName;
         private IEnumerable<ViewReportProductList> _products;
+        private IEnumerable<ViewProducts> _viewproducts;
         private IEnumerable<RequestSupplier> _suppliers;
         private IEnumerable<WarehouseStatus> _statuses;
         private IEnumerable<Location> _locations;
@@ -107,6 +108,7 @@ namespace Inventory.MainForm
             RightOptions.Start();
             splashScreen.ShowWaitForm();
             _products = (IEnumerable<ViewReportProductList>)EnumerableUtils.getProductWarehouseList();
+            _viewproducts = EnumerableUtils.getProductList();
             _suppliers = EnumerableUtils.getSupplierWarehouseList();
             _statuses = EnumerableUtils.getStatusWarehouseList();
             _locations = EnumerableUtils.getLocationWarehouseList();
@@ -490,11 +492,11 @@ namespace Inventory.MainForm
             cmbProductName.DataBindings.Clear();
             cmbStatus.DataBindings.Clear();
             cmbItemLocation.DataBindings.Clear();
-            cmbProductName.DataSource = _products.Select(p => p.product_name).ToList();
+            cmbProductName.DataSource = _viewproducts.Select(p => p.product_name).ToList();
             cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
             cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
             cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
-            if (_products.Any())
+            if (_viewproducts.Any())
             {
                 cmbProductName.SelectedIndex = 0;
                 cmbProductName_SelectedIndexChanged(cmbProductName, EventArgs.Empty); // 👈 this line is key
@@ -514,11 +516,23 @@ namespace Inventory.MainForm
             cmbSupplier.DataBindings.Clear();
             cmbStatus.DataBindings.Clear();
             cmbItemLocation.DataBindings.Clear();
-            cmbProductName.DataSource = _products.Select(p => p.product_name).ToList();
+            cmbProductName.DataSource = _viewproducts.Select(p => p.product_name).ToList();
             cmbSupplier.DataSource = _suppliers.Select(p => p.supplier_name).ToList();
             cmbStatus.DataSource = _statuses.Select(p => p.status_details).ToList();
             cmbItemLocation.DataSource = _locations.Select(p => p.location_code).ToList();
             txtWarehouseSKU.Focus();
+            string currentProductCode = cmbProductName.SelectedValue?.ToString();
+            if (_viewproducts.Any())
+            {
+                var currentProductIndex = _viewproducts
+                    .Select((p, index) => new { Product = p, Index = index })
+                    .FirstOrDefault(x => x.Product.product_code == currentProductCode)?.Index ?? -1;
+
+                if (currentProductIndex >= 0)
+                    cmbProductName.SelectedIndex = currentProductIndex;
+
+                cmbProductName_SelectedIndexChanged(cmbProductName, EventArgs.Empty);
+            }
         }
         private void delete()
         {
@@ -662,17 +676,19 @@ namespace Inventory.MainForm
 
         private void cmbProductName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedIndex = cmbProductName.SelectedIndex;
-            if (selectedIndex >= 0 && selectedIndex < _products.Count())
+            if (cmbProductName.SelectedIndex >= 0)
             {
-                var selectedProduct = _products.ElementAt(selectedIndex);
+                var selectedProductName = cmbProductName.SelectedItem.ToString();
+                var selectedProduct = _viewproducts.FirstOrDefault(p => p.product_name == selectedProductName);
 
-                bindImage(selectedProduct.product_code);
-
-                txtCostPerUnit.Text = selectedProduct.trade_price.ToString("N2");
-                txtLastCostPerUnit.Text = selectedProduct.retail_price.ToString("N2");
-                cmbSupplier.Text = selectedProduct.supplier_name;
-                txtBarcode.Text = selectedProduct.product_code;
+                if (selectedProduct != null)
+                {
+                    cmbSupplier.DataSource = new List<string> { selectedProduct.supplier_name };
+                    txtCostPerUnit.Text = selectedProduct.trade_price.ToString("N2");
+                    txtLastCostPerUnit.Text = selectedProduct.retail_price.ToString("N2");
+                    txtBarcode.Text = selectedProduct.product_code;
+                }
+                
             }
         }
 
@@ -861,7 +877,7 @@ namespace Inventory.MainForm
                 txtBarcode.Text = barcode;
                 txtQuantityStock.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
 
-                var product = _products.FirstOrDefault(p => p.product_code == barcode);
+                var product = _viewproducts.FirstOrDefault(p => p.product_code == barcode);
                 cmbProductName.Text = product?.product_name ?? "";
 
                 txtReorderLevel.Text = w.reorder_level.ToString(CultureInfo.InvariantCulture);

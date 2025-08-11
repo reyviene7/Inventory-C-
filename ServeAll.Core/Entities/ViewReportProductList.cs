@@ -11,7 +11,6 @@ namespace ServeAll.Entities
         public string product_name { get; set; }
         public decimal trade_price { get; set; }
         public decimal retail_price { get; set; }
-
-        public string supplier_name { get; set; }
+        public decimal wholesale { get; set; }
     }
 }
