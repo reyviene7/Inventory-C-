@@ -809,8 +809,6 @@ namespace Inventory.MainForm
 
                 try
                 {
-                    splashManager.ShowWaitForm();
-
                     var filePathLocation = txtProfileImgFileName.Text.Trim();
                     var filePath = ExtractFileName(filePathLocation);
                     var imageCode = txtProfileImgBarcode.Text.Trim();
@@ -863,10 +861,6 @@ namespace Inventory.MainForm
                 {
                     unitWorks.Rollback();
                     PopupNotification.PopUpMessages(0, "Error saving image: " + ex.Message, Messages.TitleFailedInsert);
-                }
-                finally
-                {
-                    splashManager.CloseWaitForm();
                 }
             }
 

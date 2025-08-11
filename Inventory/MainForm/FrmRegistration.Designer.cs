@@ -2185,7 +2185,7 @@ namespace Inventory.MainForm
             this.imgProfileImages.Location = new System.Drawing.Point(35, 43);
             this.imgProfileImages.Margin = new System.Windows.Forms.Padding(4);
             this.imgProfileImages.Name = "imgProfileImages";
-            this.imgProfileImages.Size = new System.Drawing.Size(660, 636);
+            this.imgProfileImages.Size = new System.Drawing.Size(673, 583);
             this.imgProfileImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgProfileImages.TabIndex = 224;
             this.imgProfileImages.TabStop = false;
