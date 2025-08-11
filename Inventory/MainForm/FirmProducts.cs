@@ -1311,59 +1311,123 @@ namespace Inventory.MainForm
                 bindRefreshed();
             }
         }
-
         private void DataDelete()
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
+
                 try
                 {
                     var productName = txtProductName.Text.Trim();
 
+                    // Get product ID and product itself
                     var productId = FetchUtils.getProductId(productName);
-
                     if (productId == 0)
                     {
-                        PopupNotification.PopUpMessages(0, "Product not found: " + productName, Messages.TitleFialedDelete);
+                        PopupNotification.PopUpMessages(0, $"Product not found: {productName}", Messages.TitleFialedDelete);
                         return;
                     }
 
                     var productRepository = new Repository<Products>(unWork);
                     var product = productRepository.Id(productId);
-
                     if (product == null)
                     {
-                        PopupNotification.PopUpMessages(0, "Product not found for deletion: " + productName, Messages.TitleFialedDelete);
+                        PopupNotification.PopUpMessages(0, $"Product not found for deletion: {productName}", Messages.TitleFialedDelete);
                         return;
                     }
 
-                    // Use the productName as the image title to fetch image id
+                    // 🔎 Get related inventory
+                    var inventoryRepository = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
+                    var relatedInventory = inventoryRepository
+                        .SelectAll($"SELECT * FROM inventory WHERE product_id = {productId}")
+                        .ToList();
+                    // 🔎 Get related warehouseReturn
+                    var returnWarehouseRepo = new Repository<ReturnWareHouse>(unWork);
+                    var relatedReturnWarehouse = returnWarehouseRepo
+                        .SelectAll($"SELECT * FROM return_warehouse WHERE product_id = {productId}")
+                        .ToList();
+
+                    // 🔎 Get related warehouse_delivery
+                    var warehouseDeliveryRepo = new Repository<WarehouseDelivery>(unWork);
+                    var relatedWarehouseDelivery = warehouseDeliveryRepo
+                        .SelectAll($"SELECT * FROM warehouse_delivery WHERE product_id = {productId}")
+                        .ToList();
+
+                    // 🔎 Get related warehouse_inventory
+                    var warehouseInvRepo = new Repository<WarehouseInventory>(unWork);
+                    var relatedWarehouseInventory = warehouseInvRepo
+                        .SelectAll($"SELECT * FROM warehouse_inventory WHERE product_id = {productId}")
+                        .ToList();
+
+
+                    bool hasRelatedData =
+                        (relatedInventory != null && relatedInventory.Any()) ||
+                        (relatedReturnWarehouse != null && relatedReturnWarehouse.Any()) ||
+                        (relatedWarehouseDelivery != null && relatedWarehouseDelivery.Any() ||
+                        (relatedWarehouseInventory != null && relatedWarehouseInventory.Any()));
+
+                    // Confirm before deletion if any related data exists
+                    if (hasRelatedData)
+                    {
+                        var confirmResult = MessageBox.Show(
+                            $"The product '{productName}' exists in one or more of the following:\n- inventory\n- warehouse_inventory\n- warehouse_delivery\n- return_warehouse\n\nAre you sure you want to delete this product and all related records?",
+                            "Confirm Deletion",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning
+                        );
+
+                        if (confirmResult != DialogResult.Yes)
+                        {
+                            unWork.Rollback();
+                            return;
+                        }
+
+                        // Delete from inventory
+                        foreach (var inv in relatedInventory)
+                        {
+                            inventoryRepository.Delete(inv);
+                        }
+
+                        // Delete from warehouse_delivery
+                        foreach (var wRet in relatedReturnWarehouse)
+                        {
+                            returnWarehouseRepo.Delete(wRet);
+                        }
+
+                        // Delete from warehouse_delivery
+                        foreach (var wDel in relatedWarehouseDelivery)
+                        {
+                            warehouseDeliveryRepo.Delete(wDel);
+                        }
+
+                        // Delete from warehouse_inventory
+                        foreach (var wInv in relatedWarehouseInventory)
+                        {
+                            warehouseInvRepo.Delete(wInv);
+                        }
+                    }
+
+                    // 🖼 Delete product image if exists
                     var imageId = FetchUtils.getImageId(productName);
-
                     var imageRepository = new Repository<ProductImages>(unWork);
+                    var image = imageId != 0 ? imageRepository.Id(imageId) : null;
 
-                    ProductImages productImage = null;
-                    if (imageId != 0)
-                    {
-                        productImage = imageRepository.Id(imageId);
-                    }
-
-                    // Delete product image if found
                     bool imageDeleted = true;
-                    if (productImage != null)
+                    if (image != null)
                     {
-                        imageDeleted = imageRepository.Delete(productImage);
+                        imageDeleted = imageRepository.Delete(image);
                     }
 
+                    // 🗑 Delete product itself
                     var productDeleted = productRepository.Delete(product);
 
                     if (productDeleted && imageDeleted)
                     {
                         unWork.Commit();
-                        PopupNotification.PopUpMessages(1, $"Product '{productName}' and its image deleted successfully.", Messages.TitleSuccessDelete);
-                        bindRefreshed();
+                        PopupNotification.PopUpMessages(1, $"Product '{productName}' and all related records were deleted successfully.", Messages.TitleSuccessDelete);
+                        bindRefreshed(); // Refresh UI
                     }
                     else
                     {
@@ -1378,6 +1442,7 @@ namespace Inventory.MainForm
                 }
             }
         }
+
 
         private int saveProductImage()
         {

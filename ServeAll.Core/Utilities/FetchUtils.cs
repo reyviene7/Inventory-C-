@@ -476,6 +476,7 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+
         public static int getImageId(string title)
         {
             using (var session = new DalSession())
