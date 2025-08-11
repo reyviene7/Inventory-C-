@@ -19,7 +19,7 @@ namespace Inventory.Alert
             fRM.TitleAlertBox = title;
             fRM.TextAlertBox = text;
             fRM.IconeAlertBox = icon;
-            fRM.ShowDialog();
+            fRM.Show();
         }
         private void BtnExit_Click(object sender, EventArgs e)
         {
