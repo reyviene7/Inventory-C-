@@ -86,6 +86,22 @@ namespace Inventory.MainForm
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.XtraEmployee = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabImport = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.gridCtrlImport = new DevExpress.XtraGrid.GridControl();
+            this.gridImport = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.bntBrowseImport = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSaveImport = new DevExpress.XtraEditors.SimpleButton();
+            this.cmbImportExt = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtImportFile = new System.Windows.Forms.TextBox();
             this.xtraTabImage = new DevExpress.XtraTab.XtraTabPage();
             this.grpImage = new DevExpress.XtraEditors.GroupControl();
             this.txtImageType = new System.Windows.Forms.ComboBox();
@@ -141,6 +157,16 @@ namespace Inventory.MainForm
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XtraEmployee)).BeginInit();
             this.XtraEmployee.SuspendLayout();
+            this.xtraTabImport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlImport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridImport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             this.xtraTabImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpImage)).BeginInit();
             this.grpImage.SuspendLayout();
@@ -969,13 +995,297 @@ namespace Inventory.MainForm
             this.XtraEmployee.Location = new System.Drawing.Point(256, 39);
             this.XtraEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.XtraEmployee.Name = "XtraEmployee";
-            this.XtraEmployee.SelectedTabPage = this.XtrPerProfile;
+            this.XtraEmployee.SelectedTabPage = this.xtraTabImport;
             this.XtraEmployee.Size = new System.Drawing.Size(1349, 903);
             this.XtraEmployee.TabIndex = 1;
             this.XtraEmployee.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.XtrPerProfile,
-            this.xtraTabImage});
+            this.xtraTabImage,
+            this.xtraTabImport});
             this.XtraEmployee.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.XtraEmployee_SelectedPageChanged);
+            // 
+            // xtraTabImport
+            // 
+            this.xtraTabImport.Controls.Add(this.groupControl1);
+            this.xtraTabImport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabImport.ImageOptions.Image")));
+            this.xtraTabImport.Name = "xtraTabImport";
+            this.xtraTabImport.Size = new System.Drawing.Size(1347, 873);
+            this.xtraTabImport.Text = "Import Products";
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupControl1.Appearance.Options.UseBackColor = true;
+            this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl1.Controls.Add(this.groupControl2);
+            this.groupControl1.Controls.Add(this.label22);
+            this.groupControl1.Controls.Add(this.bntBrowseImport);
+            this.groupControl1.Controls.Add(this.btnSaveImport);
+            this.groupControl1.Controls.Add(this.cmbImportExt);
+            this.groupControl1.Controls.Add(this.label19);
+            this.groupControl1.Controls.Add(this.label21);
+            this.groupControl1.Controls.Add(this.txtImportFile);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(1347, 873);
+            this.groupControl1.TabIndex = 175;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.groupControl2.Appearance.Options.UseBackColor = true;
+            this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl2.Controls.Add(this.gridCtrlImport);
+            this.groupControl2.Controls.Add(this.textBox4);
+            this.groupControl2.Location = new System.Drawing.Point(0, 328);
+            this.groupControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupControl2.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupControl2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(1348, 542);
+            this.groupControl2.TabIndex = 214;
+            this.groupControl2.Text = "Import Product List";
+            // 
+            // gridCtrlImport
+            // 
+            this.gridCtrlImport.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridCtrlImport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridCtrlImport.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.gridCtrlImport.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridCtrlImport.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
+            this.gridCtrlImport.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.gridCtrlImport.Location = new System.Drawing.Point(3, 21);
+            this.gridCtrlImport.MainView = this.gridImport;
+            this.gridCtrlImport.Margin = new System.Windows.Forms.Padding(4);
+            this.gridCtrlImport.Name = "gridCtrlImport";
+            this.gridCtrlImport.Size = new System.Drawing.Size(1342, 518);
+            this.gridCtrlImport.TabIndex = 101;
+            this.gridCtrlImport.TabStop = false;
+            this.gridCtrlImport.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridImport,
+            this.gridView4,
+            this.gridView5,
+            this.gridView6});
+            // 
+            // gridImport
+            // 
+            this.gridImport.Appearance.Empty.BackColor = System.Drawing.Color.LightGray;
+            this.gridImport.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridImport.Appearance.Empty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridImport.Appearance.Empty.Options.UseBackColor = true;
+            this.gridImport.Appearance.Empty.Options.UseBorderColor = true;
+            this.gridImport.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridImport.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridImport.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridImport.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridImport.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridImport.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridImport.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridImport.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridImport.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridImport.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridImport.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridImport.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.gridImport.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridImport.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridImport.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridImport.Appearance.Preview.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.gridImport.Appearance.Preview.Options.UseFont = true;
+            this.gridImport.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
+            this.gridImport.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridImport.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridImport.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridImport.Appearance.Row.Options.UseBackColor = true;
+            this.gridImport.Appearance.Row.Options.UseBorderColor = true;
+            this.gridImport.Appearance.Row.Options.UseFont = true;
+            this.gridImport.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridImport.Appearance.ViewCaption.Options.UseFont = true;
+            this.gridImport.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridImport.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridImport.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridImport.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridImport.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridImport.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridImport.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
+            this.gridImport.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridImport.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridImport.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridImport.AppearancePrint.Row.Options.UseFont = true;
+            this.gridImport.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridImport.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.gridImport.DetailHeight = 431;
+            this.gridImport.GridControl = this.gridCtrlImport;
+            this.gridImport.Name = "gridImport";
+            this.gridImport.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridImport.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridImport.OptionsBehavior.Editable = false;
+            this.gridImport.OptionsCustomization.AllowRowSizing = true;
+            this.gridImport.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridImport.OptionsSelection.MultiSelect = true;
+            this.gridImport.OptionsView.EnableAppearanceEvenRow = true;
+            // 
+            // gridView4
+            // 
+            this.gridView4.DetailHeight = 431;
+            this.gridView4.GridControl = this.gridCtrlImport;
+            this.gridView4.Name = "gridView4";
+            // 
+            // gridView5
+            // 
+            this.gridView5.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridView5.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridView5.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridView5.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView5.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Green;
+            this.gridView5.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView5.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridView5.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridView5.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView5.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridView5.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView5.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView5.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView5.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView5.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridView5.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.gridView5.Appearance.Row.Options.UseFont = true;
+            this.gridView5.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridView5.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView5.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView5.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridView5.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridView5.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridView5.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView5.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridView5.AppearancePrint.Row.Options.UseFont = true;
+            this.gridView5.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridView5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.gridView5.DetailHeight = 431;
+            this.gridView5.GridControl = this.gridCtrlImport;
+            this.gridView5.Name = "gridView5";
+            this.gridView5.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView5.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView5.OptionsBehavior.Editable = false;
+            this.gridView5.OptionsBehavior.ReadOnly = true;
+            this.gridView5.OptionsCustomization.AllowRowSizing = true;
+            this.gridView5.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridView5.OptionsSelection.MultiSelect = true;
+            this.gridView5.OptionsView.ColumnAutoWidth = false;
+            // 
+            // gridView6
+            // 
+            this.gridView6.DetailHeight = 431;
+            this.gridView6.GridControl = this.gridCtrlImport;
+            this.gridView6.Name = "gridView6";
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.DimGray;
+            this.textBox4.Enabled = false;
+            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox4.Location = new System.Drawing.Point(-11, 26);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(12, 11);
+            this.textBox4.TabIndex = 99;
+            this.textBox4.Visible = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label22.Location = new System.Drawing.Point(379, 33);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(563, 60);
+            this.label22.TabIndex = 122;
+            this.label22.Text = "Import Products from File";
+            // 
+            // bntBrowseImport
+            // 
+            this.bntBrowseImport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntBrowseImport.ImageOptions.Image")));
+            this.bntBrowseImport.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.bntBrowseImport.Location = new System.Drawing.Point(462, 206);
+            this.bntBrowseImport.Margin = new System.Windows.Forms.Padding(4);
+            this.bntBrowseImport.Name = "bntBrowseImport";
+            this.bntBrowseImport.Size = new System.Drawing.Size(198, 71);
+            this.bntBrowseImport.TabIndex = 212;
+            this.bntBrowseImport.ToolTip = "User Manual";
+            this.bntBrowseImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // btnSaveImport
+            // 
+            this.btnSaveImport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveImport.ImageOptions.Image")));
+            this.btnSaveImport.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnSaveImport.Location = new System.Drawing.Point(660, 206);
+            this.btnSaveImport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSaveImport.Name = "btnSaveImport";
+            this.btnSaveImport.Size = new System.Drawing.Size(198, 71);
+            this.btnSaveImport.TabIndex = 213;
+            this.btnSaveImport.ToolTip = "Service Manual";
+            this.btnSaveImport.Click += new System.EventHandler(this.btnSaveImport_Click);
+            // 
+            // cmbImportExt
+            // 
+            this.cmbImportExt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbImportExt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbImportExt.BackColor = System.Drawing.Color.White;
+            this.cmbImportExt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbImportExt.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbImportExt.FormattingEnabled = true;
+            this.cmbImportExt.Items.AddRange(new object[] {
+            "CSV",
+            "XLS"});
+            this.cmbImportExt.Location = new System.Drawing.Point(481, 149);
+            this.cmbImportExt.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbImportExt.Name = "cmbImportExt";
+            this.cmbImportExt.Size = new System.Drawing.Size(358, 36);
+            this.cmbImportExt.TabIndex = 24;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(361, 156);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(86, 23);
+            this.label19.TabIndex = 209;
+            this.label19.Text = "File Type:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(360, 116);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(87, 23);
+            this.label21.TabIndex = 205;
+            this.label21.Text = "Filename:";
+            // 
+            // txtImportFile
+            // 
+            this.txtImportFile.BackColor = System.Drawing.Color.White;
+            this.txtImportFile.Enabled = false;
+            this.txtImportFile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImportFile.ForeColor = System.Drawing.Color.Maroon;
+            this.txtImportFile.Location = new System.Drawing.Point(482, 108);
+            this.txtImportFile.Margin = new System.Windows.Forms.Padding(4);
+            this.txtImportFile.Name = "txtImportFile";
+            this.txtImportFile.Size = new System.Drawing.Size(357, 34);
+            this.txtImportFile.TabIndex = 205;
             // 
             // xtraTabImage
             // 
@@ -1475,6 +1785,18 @@ namespace Inventory.MainForm
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XtraEmployee)).EndInit();
             this.XtraEmployee.ResumeLayout(false);
+            this.xtraTabImport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlImport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridImport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             this.xtraTabImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpImage)).EndInit();
             this.grpImage.ResumeLayout(false);
@@ -1585,5 +1907,21 @@ namespace Inventory.MainForm
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ComboBox txtImageType;
         private System.Windows.Forms.Label label17;
+        private DevExpress.XtraTab.XtraTabPage xtraTabImport;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private System.Windows.Forms.ComboBox cmbImportExt;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtImportFile;
+        private DevExpress.XtraEditors.SimpleButton bntBrowseImport;
+        private DevExpress.XtraEditors.SimpleButton btnSaveImport;
+        private System.Windows.Forms.Label label22;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraGrid.GridControl gridCtrlImport;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridImport;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }

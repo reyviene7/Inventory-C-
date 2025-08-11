@@ -3,12 +3,15 @@ using DevExpress.Utils.DirectXPaint;
 using DevExpress.XtraExport.Helpers;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
 using Inventory.Config;
+using Microsoft.VisualBasic.FileIO;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -28,6 +31,8 @@ namespace Inventory.MainForm
         private int productId;
         private readonly int _userId;
         private readonly int _userTyp;
+        private DataTable importedTable;
+
         public FirmMain Main
         {
             get { return _main; }
@@ -63,6 +68,7 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             bindRefreshed();
+            XtraEmployee.SelectedTabPage = XtrPerProfile;
         }
 
         private void FrmProducts_MouseMove(object sender, MouseEventArgs e)
@@ -1267,7 +1273,38 @@ namespace Inventory.MainForm
 
         private void XtraEmployee_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
+            if (e.Page == XtrPerProfile)
+            {
+                try
+                {
+                    if (imgBigPreview.Image != null)
+                    {
+                        imgBigPreview.Image.Dispose();
+                        imgBigPreview.Image = null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error disposing image: " + ex.Message);
+                }
+
+                bindRefreshed();
+            }
             if (e.Page == xtraTabImage && e.PrevPage == XtrPerProfile)
+            {
+                _add = false;
+                _edt = false;
+                _del = false;
+
+                bntAdd.Enabled = false;
+                bntUpdate.Enabled = false;
+                bntDelete.Enabled = false;
+                bntSave.Enabled = false;
+                bntClear.Enabled = false;
+                bntCancel.Enabled = false;
+            }
+
+            if (e.Page == xtraTabImport)
             {
                 _add = false;
                 _edt = false;
@@ -1292,25 +1329,8 @@ namespace Inventory.MainForm
                 bntClear.Enabled = false;
                 bntCancel.Enabled = true;
             }
-
-            if (e.Page == XtrPerProfile)
-            {
-                try
-                {
-                    if (imgBigPreview.Image != null)
-                    {
-                        imgBigPreview.Image.Dispose();
-                        imgBigPreview.Image = null;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error disposing image: " + ex.Message);
-                }
-
-                bindRefreshed();
-            }
         }
+
         private void DataDelete()
         {
             using (var session = new DalSession())
@@ -1505,5 +1525,150 @@ namespace Inventory.MainForm
             }
             return returnValue;
         }
+        int SafeInt(object value)
+        {
+            if (value == null) return 0;
+            int result;
+            return int.TryParse(value.ToString(), out result) ? result : 0;
+        }
+
+        decimal SafeDecimal(object value)
+        {
+            if (value == null) return 0m;
+            decimal result;
+            return decimal.TryParse(value.ToString(), out result) ? result : 0m;
+        }
+
+        DateTime SafeDate(object value)
+        {
+            if (value == null) return DateTime.Now;
+            DateTime result;
+            return DateTime.TryParse(value.ToString(), out result) ? result : DateTime.Now;
+        }
+
+
+        private void btnSaveImport_Click(object sender, EventArgs e)
+        {
+            if (importedTable == null || importedTable.Rows.Count == 0)
+            {
+                MessageBox.Show("No data to import.");
+                return;
+            }
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                var repository = new Repository<Products>(unWork);
+                unWork.Begin();
+
+                try
+                {
+                    foreach (DataRow row in importedTable.Rows)
+                    {
+                        var prodCode = row["product_code"].ToString().Trim();
+                        var existing = repository.FindBy(p => p.product_code == prodCode);
+
+                        if (existing == null)
+                        {
+                            var newProd = new Products
+                            {
+                                product_code = prodCode,
+                                product_name = row["product_name"].ToString().Trim(),
+                                category_id = SafeInt(row["category_id"]),
+                                supplier_id = SafeInt(row["supplier_id"]),
+                                stock_code = row["stock_code"].ToString().Trim(),
+                                brand = row["brand"].ToString().Trim(),
+                                model = row["model"].ToString().Trim(),
+                                made = row["made"].ToString().Trim(),
+                                serial_number = row["serial_number"].ToString().Trim(),
+                                tare_weight = SafeDecimal(row["tare_weight"]),
+                                net_weight = SafeDecimal(row["net_weight"]),
+                                trade_price = SafeDecimal(row["trade_price"]),
+                                retail_price = SafeDecimal(row["retail_price"]),
+                                wholesale = SafeDecimal(row["wholesale"]),
+                                status_id = SafeInt(row["status_id"]),
+                                date_register = SafeDate(row["date_register"])
+                            };
+
+                            repository.Add(new List<Products> { newProd });
+                        }
+                        else
+                        {
+                            existing.product_name = row["product_name"].ToString().Trim();
+                            existing.category_id = SafeInt(row["category_id"]);
+                            existing.supplier_id = SafeInt(row["supplier_id"]);
+                            existing.stock_code = row["stock_code"].ToString().Trim();
+                            existing.brand = row["brand"].ToString().Trim();
+                            existing.model = row["model"].ToString().Trim();
+                            existing.made = row["made"].ToString().Trim();
+                            existing.serial_number = row["serial_number"].ToString().Trim();
+                            existing.tare_weight = SafeDecimal(row["tare_weight"]);
+                            existing.net_weight = SafeDecimal(row["net_weight"]);
+                            existing.trade_price = SafeDecimal(row["trade_price"]);
+                            existing.retail_price = SafeDecimal(row["retail_price"]);
+                            existing.wholesale = SafeDecimal(row["wholesale"]);
+                            existing.status_id = SafeInt(row["status_id"]);
+                            existing.date_register = SafeDate(row["date_register"]);
+
+                            repository.Update(existing);
+                        }
+                    }
+
+                    unWork.Commit();
+                    PopupNotification.PopUpMessages(1, "Import complete! " + " " + Messages.SuccessInsert, Messages.TitleSuccessInsert);
+                    txtImportFile.Clear();
+                    cmbImportExt.Text = "";
+                    gridCtrlImport.DataSource = null;
+                    gridImport.Columns.Clear();
+                }
+                catch (Exception ex)
+                {
+                    unWork.Rollback();
+                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
+                }
+            }
+        }
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "CSV Files (*.csv)|*.csv";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    importedTable = LoadCsvToDataTable(ofd.FileName);
+                    gridCtrlImport.DataSource = importedTable; // Show in grid
+                    string fileNameAndExtension = ofd.FileName;
+                    txtImportFile.Text = fileNameAndExtension;
+                }
+            }
+        }
+        private DataTable LoadCsvToDataTable(string filePath)
+        {
+            DataTable dt = new DataTable();
+            using (var reader = new StreamReader(filePath))
+            {
+                bool isFirstRow = true;
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+
+                    if (isFirstRow)
+                    {
+                        foreach (var header in values)
+                        {
+                            dt.Columns.Add(header.Trim());
+                        }
+                        isFirstRow = false;
+                    }
+                    else
+                    {
+                        dt.Rows.Add(values);
+                    }
+                }
+            }
+            return dt;
+        }
+
     }
 }
