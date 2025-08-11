@@ -801,7 +801,7 @@ namespace Inventory.MainForm
             if (_isCanceled)
             {
                 MessageBox.Show("Operation canceled by the user.", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Main.Show();
+                DialogResult = DialogResult.Cancel;
                 Close();
             }
         }
@@ -824,7 +824,7 @@ namespace Inventory.MainForm
             }
             if (xCON.SelectedTabPage == xtraReturn)
             {
-                ShowBranch();
+                BindInventory(_branch);
             }
         }
         private void InsertReturn()

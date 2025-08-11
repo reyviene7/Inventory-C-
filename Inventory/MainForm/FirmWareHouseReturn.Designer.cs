@@ -30,7 +30,6 @@ namespace Inventory.MainForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmWareHouseReturn));
             this.bntCLR = new System.Windows.Forms.Button();
@@ -835,7 +834,7 @@ namespace Inventory.MainForm
             this.xtraDelivery.Margin = new System.Windows.Forms.Padding(4);
             this.xtraDelivery.Name = "xtraDelivery";
             this.xtraDelivery.Size = new System.Drawing.Size(1513, 929);
-            this.xtraDelivery.Text = "Delivery History";
+            this.xtraDelivery.Text = "Return History";
             // 
             // groupDeliveryDetails
             // 
@@ -1604,6 +1603,7 @@ namespace Inventory.MainForm
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmWareHouseReturn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

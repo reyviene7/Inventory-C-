@@ -393,18 +393,19 @@ namespace Inventory.MainForm
 
         private void tileDTW_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            var ret = new FirmWareHouseReturn(_userId, _usrTyp)
+            using (var ret = new FirmWareHouseReturn(_userId, _usrTyp) { Main = this })
             {
-                Main=this
-            };
-            if (ret.DialogResult == DialogResult.OK)
-            {
-                ret.Show();
-                Hide();
-            }
-            else
-            {
-                this.Show();
+                Hide(); 
+                var result = ret.ShowDialog(); 
+
+                if (result == DialogResult.Cancel || result == DialogResult.Abort)
+                {
+                    Show();
+                }
+                else if (result == DialogResult.OK)
+                {
+                    Show();
+                }
             }
         }
 
