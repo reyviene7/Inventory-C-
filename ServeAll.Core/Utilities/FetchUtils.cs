@@ -319,6 +319,46 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static int getLastDeliveryId()
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewWarehouseDelivery>(unWork);
+                    return repository.SelectAll(Query.getLastDeliveryIdQuery)
+                        .Select(x => x.delivery_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
+        public static int getLastInventoryId()
+        {
+
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewInventory>(unWork);
+                    return repository.SelectAll(Query.getLastDeliveryIdQuery)
+                        .Select(x => x.inventory_id).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return 0;
+                }
+            }
+        }
+
         public static int getLastAddressId()
         {
 

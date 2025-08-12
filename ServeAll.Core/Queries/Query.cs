@@ -308,6 +308,7 @@
         public const string getCustomerList = "select customer_id, customer_name from view_poscustomers";
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
         public const string getWarehouseDeliveryById = "SELECT * FROM view_warehouse_delivery WHERE delivery_id = @deliveryId";
+        public const string getWarehouseInventoryById = "SELECT * FROM view_warehouse_inventory WHERE inventory_id = @inventoryId";
         public const string getAcceptedDeliveryById = "SELECT * FROM view_accepted_delivery WHERE received_id = @receivedId";
         public const string getReturnById = "SELECT * FROM view_return_warehouse WHERE return_id = @returnId";
         public const string getExpenseById = "SELECT * FROM view_daily_expenses WHERE expense_id = @expenseId";
@@ -321,6 +322,8 @@
         public const string getLastProfileImgQuery = "SELECT COUNT(image_id) as image_id FROM profile_image";
         public const string getLastContactIdQuery = "SELECT COUNT(contact_id) as contact_id FROM contact";
         public const string getLastCompanyIdQuery = "SELECT COUNT(company_id) as company_id FROM company";
+        public const string getLastDeliveryIdQuery = "SELECT COUNT(delivery_id) as delivery_id FROM view_warehouse_delivery";
+        public const string getLastInventoryIdQuery = "SELECT COUNT(inventory_id) as inventory_id FROM view_inventory";
         public const string getLastAddressIdQuery = "SELECT COUNT(address_id) as address_id FROM address";
         public const string getLastServiceIdQuery = "SELECT COUNT(service_id) as service_id FROM services";
         public const string getLastServiceImgQuery = "SELECT COUNT(image_id) as image_id FROM service_image";
