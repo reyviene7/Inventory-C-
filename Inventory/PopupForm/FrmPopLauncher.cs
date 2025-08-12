@@ -1,8 +1,10 @@
-﻿using Inventory.Config;
+﻿using DevExpress.XtraReports.UI;
+using Inventory.Config;
 using Inventory.MainForm;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
+using ServeAll.Entities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,10 +18,13 @@ namespace Inventory.PopupForm
         private FrmManagement _main;
         private readonly int _userId;
         private readonly int _userType;
-        private readonly ViewWarehouseDelivery _delivery;
         private IEnumerable<ViewImageProduct> _imgList;
         private IEnumerable<WarehouseStatus> _warehouseStatus;
         private IEnumerable<DeliveryStatus> _delivery_status;
+        private IEnumerable<ViewWareHouseInventory> _warehouse_list;
+        private ViewWareHouseInventory _warehouse;
+        private IEnumerable<ViewProducts> _products;
+        private IEnumerable<Branch> branch;
 
         public FrmManagement main
         {
@@ -27,11 +32,11 @@ namespace Inventory.PopupForm
             set { _main = value; }
         }
 
-        public FrmPopLauncher(int userId, int userType, ViewWarehouseDelivery delivery)
+        public FrmPopLauncher(int userId, int userType, ViewWareHouseInventory inventory)
         {
             _userId = userId;
             _userType = userType;
-            _delivery = delivery;
+            _warehouse = inventory;
             InitializeComponent();
         }
 
@@ -40,16 +45,15 @@ namespace Inventory.PopupForm
             _imgList = EnumerableUtils.getImgProductList();
             _warehouseStatus = EnumerableUtils.getStatusWarehouseList();
             _delivery_status = EnumerableUtils.getWarehouseDelivery();
-            var barcode = _delivery.product_code;
+            branch = EnumerableUtils.getBranchDetails();
+            _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
+            _products = EnumerableUtils.getProductList();
+            var barcode = _warehouse.product_code;
             txtBarcode.Text = barcode;
-            txtItemName.Text = _delivery.product_name;
-            cmbBranchName.Text = _delivery.branch_details;
-            txtLastCost.Text = _delivery.last_cost_per_unit.ToString();
-            txtCostPrice.Text = _delivery.cost_per_unit.ToString();
-            txtQuantity.Text = _delivery.delivery_qty.ToString();
-            cmbItemStatus.Text = _delivery.status_details;
-            cmbDeliveryStatus.Text = _delivery.delivery_status;
-
+            txtCostPrice.Text = _warehouse.cost_per_unit.ToString();
+            txtLastCost.Text = _warehouse.last_cost_per_unit.ToString();
+            cmbItemStatus.Text = _warehouse.status_details;
+            txtItemName.Text = _products.FirstOrDefault(p => p.product_code == barcode).product_name;
             if (barcode != null)
             {
                 var img = searchProductImg(barcode);
@@ -65,6 +69,7 @@ namespace Inventory.PopupForm
                     imgPreview.Refresh();
                 }
             }
+            txtQuantity.Focus();
         }
 
         private ViewImageProduct searchProductImg(string param)
@@ -79,52 +84,7 @@ namespace Inventory.PopupForm
 
         private void bntAccept_Click(object sender, EventArgs e)
         {
-            receivedDelivery();
-        }
-
-        private void bntCancel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtRetailPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtRetailPrice.Text) && e.KeyChar == (char)Keys.Enter)
-            {
-                PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
-                txtRetailPrice.Focus();
-                txtRetailPrice.BackColor = Color.Yellow;
-            }
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtRetailPrice.Focus();
-                txtRetailPrice.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtRetailPrice.BackColor = Color.White;
-            }
-        }
-
-        private void txtWholePrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtWholePrice.Text) && e.KeyChar == (char)Keys.Enter)
-            {
-                PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
-                txtWholePrice.Focus();
-                txtWholePrice.BackColor = Color.Yellow;
-            }
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                PopupNotification.PopUpMessages(0, "Non-numeric entry detected!", "INVALID ENTRY");
-                txtWholePrice.Focus();
-                txtWholePrice.BackColor = Color.Yellow;
-            }
-            else
-            {
-                txtWholePrice.BackColor = Color.White;
-            }
+            InsertData();
         }
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -147,28 +107,9 @@ namespace Inventory.PopupForm
             }
         }
 
-        private void txtRetailPrice_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter) {
-                txtRetailPrice.BackColor = Color.White;
-                txtWholePrice.Focus();
-                txtWholePrice.BackColor = Color.Yellow;
-            }
-        }
-
-        private void txtWholePrice_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
-            {
-                txtWholePrice.BackColor = Color.White;
-                cmbItemStatus.Focus();
-                cmbItemStatus.BackColor = Color.Yellow;
-            }
-        }
-
         private void cmbItemStatus_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Tab)
             {
                 cmbItemStatus.BackColor = Color.White;
                 cmbDeliveryStatus.Focus();
@@ -181,9 +122,24 @@ namespace Inventory.PopupForm
             }
         }
 
+        private void cmbBranchName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Tab)
+            {
+                cmbBranchName.BackColor = Color.White;
+                cmbItemStatus.Focus();
+                cmbItemStatus.BackColor = Color.Yellow;
+            }
+            if (e.KeyCode == Keys.F1)
+            {
+                cmbBranchName.DataBindings.Clear();
+                cmbBranchName.DataSource = branch.Select(p => p.branch_details).ToList();
+            }
+        }
+
         private void cmbDeliveryStatus_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Tab)
             {
                 cmbDeliveryStatus.BackColor = Color.White;
                 txtQuantity.Focus();
@@ -199,81 +155,102 @@ namespace Inventory.PopupForm
 
         private void txtQuantity_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Tab)
             {
                 txtQuantity.BackColor = Color.White;
+                txtRemarks.Focus();
+            }
+        }
+        private void txtRemarks_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Tab)
+            {
+                txtRemarks.BackColor = Color.White;
                 dkpDelivery.Focus();
             }
         }
 
         private void dkpDelivery_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Tab)
             {
                 dkpDelivery.BackColor = Color.White;
                 bntAccept.Focus();
             }
         }
 
-        private void receivedDelivery()
+        private string GenerateWareHouseCode()
         {
-            if (string.IsNullOrWhiteSpace(txtRetailPrice.Text) ||
-                string.IsNullOrWhiteSpace(txtWholePrice.Text) ||
-                string.IsNullOrWhiteSpace(txtQuantity.Text))
+            var lastWarehouseDeliveryId = FetchUtils.getLastDeliveryId();
+            var alphaNumeric = new GenerateAlpaNum("DC", 3, lastWarehouseDeliveryId);
+            alphaNumeric.Increment();
+            return alphaNumeric.ToString();
+        }
+        private string GenerateReceiptCode()
+        {
+            var lastReceiptCode = FetchUtils.getLastDeliveryId();
+            var alphaNumeric = new GenerateAlpaNum("RCPT", 3, lastReceiptCode);
+            alphaNumeric.Increment();
+            return alphaNumeric.ToString();
+        }
+
+        private void InsertData()
+        {
+            if (string.IsNullOrWhiteSpace(txtQuantity.Text))
             {
                 PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
                 return;
             }
-            decimal costPrice = decimal.Parse(txtCostPrice.Text);
-            decimal retailPrice = decimal.Parse(txtRetailPrice.Text);
-            if (retailPrice < costPrice)
+
+            if (!int.TryParse(txtQuantity.Text, out int deliveryQty) || deliveryQty <= 0)
             {
-                PopupNotification.PopUpMessages(0, "Retail Price must be greater than the Cost Price!", "Invalid Input");
+                PopupNotification.PopUpMessages(0, "Invalid quantity value!", "INVALID INPUT");
                 return;
             }
-            if (retailPrice > 0)
+
+            if (_warehouse == null)
             {
-                splashScreen.ShowWaitForm();
-                var deliveryId = _delivery.delivery_id;
-                ReceivedInventory warehouseDel = new ReceivedInventory
-                {
-                    product_id = FetchUtils.getProductIdBarcode(_delivery.product_code),
-                    delivery_id = deliveryId,
-                    delivery_code = _delivery.delivery_code,
-                    warehouse_id = FetchUtils.getWarehouseId(_delivery.warehouse_name),
-                    last_cost_per_unit = decimal.Parse(txtLastCost.Text),
-                    item_price = _delivery.cost_per_unit,
-                    retail_price = decimal.Parse(txtRetailPrice.Text),
-                    whole_sale = decimal.Parse(txtWholePrice.Text),
-                    receipt_number = _delivery.receipt_number,
-                    user_id = _userId,
-                    branch_id = FetchUtils.getBranchId(_delivery.branch_details),
-                    status_id = FetchUtils.getStatusId(cmbItemStatus.Text),
-                    delivery_qty = int.Parse(txtQuantity.Text),
-                    delivery_status_id = FetchUtils.getDeliveryStatus(cmbDeliveryStatus.Text),
-                    received_date = dkpDelivery.Value.Date,
-                    update_on = dkpDelivery.Value.Date,
-                    remarks = ""
-                };
-                var result = RepositoryEntity.AddEntity<ReceivedInventory>(warehouseDel);
-                if (result > 0)
-                {
-                    int deliveryResult = RepositoryEntity.UpdateEntity<WarehouseDelivery>(deliveryId, entity => {
-                        entity.delivery_status_id = FetchUtils.getDeliveryStatus(cmbDeliveryStatus.Text.Trim());
-                    });
-                    if (deliveryResult > 0) {
-                        splashScreen.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Delivery Code: " + _delivery.delivery_code + " Successfully Received/Completed!", Messages.InventorySystem);
-                        _main.received = 1;
-                        Close();
-                    }
-                }
-                else
-                {
-                    splashScreen.CloseWaitForm();
-                    PopupNotification.PopUpMessages(0, "Delivery Code: " + _delivery.delivery_code + " Failed to Received/Complete Delivery!", Messages.InventorySystem);
-                }
+                PopupNotification.PopUpMessages(0, "No warehouse item selected!", "ERROR");
+                return;
+            }
+
+            splashScreen.ShowWaitForm();
+
+            // 3️⃣ Prepare the entity
+            WarehouseDelivery warehouseDel = new WarehouseDelivery
+            {
+                product_id = FetchUtils.getProductIdBarcode(_warehouse.product_code),
+                delivery_code = GenerateWareHouseCode(),
+                warehouse_id = FetchUtils.getWarehouseId(_warehouse.warehouse_name),
+                last_cost_per_unit = _warehouse.last_cost_per_unit,
+                item_price = _warehouse.cost_per_unit,
+                receipt_number = GenerateReceiptCode(),
+                user_id = _userId,
+                branch_id = FetchUtils.getBranchId(cmbBranchName.Text),
+                status_id = FetchUtils.getStatusId(cmbItemStatus.Text),
+                delivery_status_id = FetchUtils.getDeliveryStatus(cmbDeliveryStatus.Text),
+                inventory_id = _warehouse.inventory_id,
+                delivery_qty = deliveryQty,
+                remarks = txtRemarks.Text.Trim(),
+                delivery_date = dkpDelivery.Value.Date,
+                update_on = DateTime.Now
+            };
+
+            var result = RepositoryEntity.AddEntity<WarehouseDelivery>(warehouseDel);
+
+            splashScreen.CloseWaitForm();
+
+            if (result > 0)
+            {
+                PopupNotification.PopUpMessages(1, $"Product: {txtItemName.Text.Trim()} Successfully Delivered!", Messages.InventorySystem);
+                _main.received = 1;
+                Close();
+            }
+            else
+            {
+                PopupNotification.PopUpMessages(0, $"Product: {txtItemName.Text.Trim()} Failed to Add!", Messages.InventorySystem);
             }
         }
+
     }
 }
