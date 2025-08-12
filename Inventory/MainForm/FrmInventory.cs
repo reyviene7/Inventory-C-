@@ -679,13 +679,13 @@ namespace Inventory.MainForm
             cmbSalesStatus.BackColor = Color.DimGray;
             dkpSalesDate.BackColor = Color.DimGray;
         }
-        /* private void GenerateCode()
+         private void GenerateInventoryCode()
         {
-            var lastProductId = FetchUtils.GetLastId();
+            var lastProductId = FetchUtils.getLastInventoryId();
             var alphaNumeric = new GenerateAlpaNum("INV", 3, lastProductId);
             alphaNumeric.Increment();
             txtInventoryCode.Text = alphaNumeric.ToString();
-        }*/
+        }
         private void GenerateInventoryId()
         {
             int lastInventoryId = listInventory.Any() ? listInventory.Max(x => x.inventory_id) : 0;
@@ -694,6 +694,7 @@ namespace Inventory.MainForm
             txtInventoryId.Text = newInventoryId.ToString();
             txtInventoryId.Focus();
         }
+        /*
         private void GenerateInventoryCode()
         {
             var lastInventoryCode = FetchUtils.GetLastInventoryCode();
@@ -709,26 +710,10 @@ namespace Inventory.MainForm
             txtInventoryCode.Text = alphaNumeric.ToString();
             txtInventoryCode.Focus();
         }
-
-        private void GenerateDeliveryCode()
-        {
-            var lastDeliveryCode = FetchUtils.GetLastDeliveryCode();
-            int lastDeliveryNumber;
-
-            if (string.IsNullOrEmpty(lastDeliveryCode) || !int.TryParse(lastDeliveryCode.Replace("DC", ""), out lastDeliveryNumber))
-            {
-                lastDeliveryNumber = 0;
-            }
-
-            var alphaNumeric = new GenerateAlpaNum("DC", 3, lastDeliveryNumber);
-            alphaNumeric.Increment();
-            txtDeliveryNumber.Text = alphaNumeric.ToString();
-            txtDeliveryNumber.Focus();
-        }
+        */
         private void CreateNewInventoryRecord()
         {
             GenerateInventoryCode();
-            GenerateDeliveryCode();
         }
         private void DataInsert()
         {
@@ -1352,6 +1337,7 @@ namespace Inventory.MainForm
                     lblPrice.Text = matchedProduct.last_cost_per_unit.ToString("N2");
                     txtLastCost.Text = matchedProduct.last_cost_per_unit.ToString("N2");
                     txtDeliveredQty.Text = matchedProduct.delivery_qty.ToString();
+                    txtDeliveryNumber.Text = matchedProduct.delivery_code;
                     txtQty.Text = matchedProduct.delivery_qty.ToString();
                 }
                 else
