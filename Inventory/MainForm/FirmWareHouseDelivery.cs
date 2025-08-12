@@ -864,32 +864,19 @@ namespace Inventory.MainForm
         {
             InputDimG();
         }
+
         private void GenerateWareHouseCode()
         {
-            var lastWarehouseDeliveryCode = FetchUtils.GetLastWarehouseDeliveryCode();
-            int lastWarehouseDeliveryNumber;
-
-            if (string.IsNullOrEmpty(lastWarehouseDeliveryCode) || !int.TryParse(lastWarehouseDeliveryCode.Replace("DC", ""), out lastWarehouseDeliveryNumber))
-            {
-                lastWarehouseDeliveryNumber = 0;
-            }
-
-            var alphaNumeric = new GenerateAlpaDev("DC", 3, lastWarehouseDeliveryNumber);
+            var lastWarehouseDeliveryId = FetchUtils.getLastDeliveryId();
+            var alphaNumeric = new GenerateAlpaNum("DC", 3, lastWarehouseDeliveryId);
             alphaNumeric.Increment();
             txtDeliveryCode.Text = alphaNumeric.ToString();
             txtDeliveryCode.Focus();
         }
         private void GenerateReceiptCode()
         {
-            var lastReceiptCode = FetchUtils.GetLastReceiptCode();
-            int lastReceiptNumber;
-
-            if (string.IsNullOrEmpty(lastReceiptCode) || !int.TryParse(lastReceiptCode.Replace("RCPT", ""), out lastReceiptNumber))
-            {
-                lastReceiptNumber = 0;
-            }
-
-            var alphaNumeric = new GenerateAlpaRcpt("RCPT", 3, lastReceiptNumber);
+            var lastReceiptCode = FetchUtils.getLastDeliveryId();
+            var alphaNumeric = new GenerateAlpaNum("RCPT", 3, lastReceiptCode);
             alphaNumeric.Increment();
             txtReceiptNum.Text = alphaNumeric.ToString();
             txtReceiptNum.Focus();
