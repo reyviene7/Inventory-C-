@@ -87,5 +87,13 @@ namespace Inventory.PopupForm
                 Close();
             }
         }
+
+        private void cmbBranchName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bntGoBranch.Focus();
+            }
+        }
     }
 }

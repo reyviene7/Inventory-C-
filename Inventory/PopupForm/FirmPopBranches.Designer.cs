@@ -30,7 +30,6 @@ namespace Inventory.PopupForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new Icon("wizard.ico");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmPopBranches));
             this.gbCON = new DevExpress.XtraEditors.GroupControl();
             this.cmbBranchName = new System.Windows.Forms.ComboBox();
@@ -55,7 +54,7 @@ namespace Inventory.PopupForm
             this.gbCON.Location = new System.Drawing.Point(0, 0);
             this.gbCON.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.gbCON.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCON.Margin = new System.Windows.Forms.Padding(4);
             this.gbCON.Name = "gbCON";
             this.gbCON.Size = new System.Drawing.Size(609, 247);
             this.gbCON.TabIndex = 5;
@@ -69,10 +68,11 @@ namespace Inventory.PopupForm
             this.cmbBranchName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.cmbBranchName.FormattingEnabled = true;
             this.cmbBranchName.Location = new System.Drawing.Point(17, 108);
-            this.cmbBranchName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbBranchName.Margin = new System.Windows.Forms.Padding(4);
             this.cmbBranchName.Name = "cmbBranchName";
             this.cmbBranchName.Size = new System.Drawing.Size(576, 49);
             this.cmbBranchName.TabIndex = 1;
+            this.cmbBranchName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbBranchName_KeyDown);
             // 
             // lblMainTitle
             // 
@@ -91,7 +91,7 @@ namespace Inventory.PopupForm
             this.bntGoBranch.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntGoBranch.ImageOptions.Image")));
             this.bntGoBranch.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntGoBranch.Location = new System.Drawing.Point(92, 187);
-            this.bntGoBranch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntGoBranch.Margin = new System.Windows.Forms.Padding(4);
             this.bntGoBranch.Name = "bntGoBranch";
             this.bntGoBranch.Size = new System.Drawing.Size(209, 46);
             this.bntGoBranch.TabIndex = 2;
@@ -103,7 +103,7 @@ namespace Inventory.PopupForm
             this.bntClose.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntClose.ImageOptions.Image")));
             this.bntClose.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.bntClose.Location = new System.Drawing.Point(309, 187);
-            this.bntClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntClose.Margin = new System.Windows.Forms.Padding(4);
             this.bntClose.Name = "bntClose";
             this.bntClose.Size = new System.Drawing.Size(209, 46);
             this.bntClose.TabIndex = 3;
@@ -117,7 +117,8 @@ namespace Inventory.PopupForm
             this.ClientSize = new System.Drawing.Size(609, 247);
             this.Controls.Add(this.gbCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmPopBranches";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Branches";
