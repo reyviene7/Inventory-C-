@@ -30,29 +30,20 @@ namespace Inventory.PopupForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new Icon("wizard.ico");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPopAccept));
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.groupLauncher = new DevExpress.XtraEditors.GroupControl();
             this.label12 = new System.Windows.Forms.Label();
             this.txtItemQty = new System.Windows.Forms.TextBox();
-            this.txtReceiptNumber = new System.Windows.Forms.TextBox();
+            this.txtInventoryCode = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dkpDelivery = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bntExit = new DevExpress.XtraEditors.SimpleButton();
             this.lblMainTitle = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cmbDeliveryStatus = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cmbItemStatus = new System.Windows.Forms.ComboBox();
-            this.txtTotalValue = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtWholePrice = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtRetailPrice = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtCostPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtLastCost = new System.Windows.Forms.TextBox();
@@ -66,6 +57,10 @@ namespace Inventory.PopupForm
             this.imgPreview = new System.Windows.Forms.PictureBox();
             this.cmbBranchName = new System.Windows.Forms.ComboBox();
             this.bntAccept = new DevExpress.XtraEditors.SimpleButton();
+            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDeliveryQty = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupLauncher)).BeginInit();
             this.groupLauncher.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -80,25 +75,21 @@ namespace Inventory.PopupForm
             this.groupLauncher.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.groupLauncher.Appearance.Options.UseBackColor = true;
             this.groupLauncher.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupLauncher.Controls.Add(this.txtDeliveryQty);
+            this.groupLauncher.Controls.Add(this.label5);
+            this.groupLauncher.Controls.Add(this.txtProductName);
+            this.groupLauncher.Controls.Add(this.label4);
             this.groupLauncher.Controls.Add(this.label12);
             this.groupLauncher.Controls.Add(this.txtItemQty);
-            this.groupLauncher.Controls.Add(this.txtReceiptNumber);
+            this.groupLauncher.Controls.Add(this.txtInventoryCode);
             this.groupLauncher.Controls.Add(this.label11);
             this.groupLauncher.Controls.Add(this.label10);
             this.groupLauncher.Controls.Add(this.dkpDelivery);
             this.groupLauncher.Controls.Add(this.pictureBox1);
             this.groupLauncher.Controls.Add(this.bntExit);
             this.groupLauncher.Controls.Add(this.lblMainTitle);
-            this.groupLauncher.Controls.Add(this.label9);
-            this.groupLauncher.Controls.Add(this.cmbDeliveryStatus);
             this.groupLauncher.Controls.Add(this.label8);
             this.groupLauncher.Controls.Add(this.cmbItemStatus);
-            this.groupLauncher.Controls.Add(this.txtTotalValue);
-            this.groupLauncher.Controls.Add(this.label6);
-            this.groupLauncher.Controls.Add(this.txtWholePrice);
-            this.groupLauncher.Controls.Add(this.label4);
-            this.groupLauncher.Controls.Add(this.txtRetailPrice);
-            this.groupLauncher.Controls.Add(this.label5);
             this.groupLauncher.Controls.Add(this.txtCostPrice);
             this.groupLauncher.Controls.Add(this.label2);
             this.groupLauncher.Controls.Add(this.txtLastCost);
@@ -118,7 +109,7 @@ namespace Inventory.PopupForm
             this.groupLauncher.Name = "groupLauncher";
             this.groupLauncher.Size = new System.Drawing.Size(931, 582);
             this.groupLauncher.TabIndex = 6;
-            this.groupLauncher.Text = "Stock Delivery From Warehouse Delivery";
+            this.groupLauncher.Text = "Accepting Delivery";
             // 
             // label12
             // 
@@ -126,9 +117,9 @@ namespace Inventory.PopupForm
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(387, 337);
+            this.label12.Location = new System.Drawing.Point(386, 312);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 21);
+            this.label12.Size = new System.Drawing.Size(83, 28);
             this.label12.TabIndex = 277;
             this.label12.Text = "Branch:";
             // 
@@ -138,19 +129,19 @@ namespace Inventory.PopupForm
             this.txtItemQty.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtItemQty.Location = new System.Drawing.Point(523, 90);
             this.txtItemQty.Name = "txtItemQty";
-            this.txtItemQty.Size = new System.Drawing.Size(396, 32);
+            this.txtItemQty.Size = new System.Drawing.Size(396, 38);
             this.txtItemQty.TabIndex = 3;
             this.txtItemQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtItemQty_KeyDown);
             this.txtItemQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemQty_KeyPress);
             // 
-            // txtReceiptNumber
+            // txtInventoryCode
             // 
-            this.txtReceiptNumber.Enabled = false;
-            this.txtReceiptNumber.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtReceiptNumber.Location = new System.Drawing.Point(523, 294);
-            this.txtReceiptNumber.Name = "txtReceiptNumber";
-            this.txtReceiptNumber.Size = new System.Drawing.Size(396, 32);
-            this.txtReceiptNumber.TabIndex = 9;
+            this.txtInventoryCode.Enabled = false;
+            this.txtInventoryCode.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
+            this.txtInventoryCode.Location = new System.Drawing.Point(523, 162);
+            this.txtInventoryCode.Name = "txtInventoryCode";
+            this.txtInventoryCode.Size = new System.Drawing.Size(396, 38);
+            this.txtInventoryCode.TabIndex = 9;
             // 
             // label11
             // 
@@ -158,11 +149,11 @@ namespace Inventory.PopupForm
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(387, 299);
+            this.label11.Location = new System.Drawing.Point(387, 167);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(139, 21);
+            this.label11.Size = new System.Drawing.Size(162, 28);
             this.label11.TabIndex = 275;
-            this.label11.Text = "Receipt Number:";
+            this.label11.Text = "Inventory Code:";
             // 
             // label10
             // 
@@ -170,9 +161,9 @@ namespace Inventory.PopupForm
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(387, 448);
+            this.label10.Location = new System.Drawing.Point(386, 389);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(125, 21);
+            this.label10.Size = new System.Drawing.Size(156, 28);
             this.label10.TabIndex = 273;
             this.label10.Text = "Accepted Date:";
             // 
@@ -181,9 +172,9 @@ namespace Inventory.PopupForm
             this.dkpDelivery.CustomFormat = "dd-MM-yyyy";
             this.dkpDelivery.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.dkpDelivery.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dkpDelivery.Location = new System.Drawing.Point(523, 440);
+            this.dkpDelivery.Location = new System.Drawing.Point(522, 381);
             this.dkpDelivery.Name = "dkpDelivery";
-            this.dkpDelivery.Size = new System.Drawing.Size(223, 34);
+            this.dkpDelivery.Size = new System.Drawing.Size(223, 41);
             this.dkpDelivery.TabIndex = 13;
             this.dkpDelivery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dkpDelivery_KeyDown);
             // 
@@ -215,35 +206,9 @@ namespace Inventory.PopupForm
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblMainTitle.Location = new System.Drawing.Point(441, 486);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(305, 51);
+            this.lblMainTitle.Size = new System.Drawing.Size(373, 62);
             this.lblMainTitle.TabIndex = 270;
             this.lblMainTitle.Text = "Accept Delivery";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(387, 409);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(130, 21);
-            this.label9.TabIndex = 269;
-            this.label9.Text = "Delivery Status:";
-            // 
-            // cmbDeliveryStatus
-            // 
-            this.cmbDeliveryStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbDeliveryStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbDeliveryStatus.BackColor = System.Drawing.Color.White;
-            this.cmbDeliveryStatus.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.cmbDeliveryStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.cmbDeliveryStatus.FormattingEnabled = true;
-            this.cmbDeliveryStatus.Location = new System.Drawing.Point(523, 403);
-            this.cmbDeliveryStatus.Name = "cmbDeliveryStatus";
-            this.cmbDeliveryStatus.Size = new System.Drawing.Size(223, 36);
-            this.cmbDeliveryStatus.TabIndex = 12;
-            this.cmbDeliveryStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbDeliveryStatus_KeyDown);
             // 
             // label8
             // 
@@ -251,9 +216,9 @@ namespace Inventory.PopupForm
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(387, 371);
+            this.label8.Location = new System.Drawing.Point(386, 346);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 21);
+            this.label8.Size = new System.Drawing.Size(125, 28);
             this.label8.TabIndex = 267;
             this.label8.Text = "Item Status:";
             // 
@@ -265,83 +230,19 @@ namespace Inventory.PopupForm
             this.cmbItemStatus.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.cmbItemStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.cmbItemStatus.FormattingEnabled = true;
-            this.cmbItemStatus.Location = new System.Drawing.Point(523, 365);
+            this.cmbItemStatus.Location = new System.Drawing.Point(522, 340);
             this.cmbItemStatus.Name = "cmbItemStatus";
-            this.cmbItemStatus.Size = new System.Drawing.Size(223, 36);
+            this.cmbItemStatus.Size = new System.Drawing.Size(223, 43);
             this.cmbItemStatus.TabIndex = 11;
             this.cmbItemStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbItemStatus_KeyDown);
-            // 
-            // txtTotalValue
-            // 
-            this.txtTotalValue.Enabled = false;
-            this.txtTotalValue.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtTotalValue.Location = new System.Drawing.Point(523, 260);
-            this.txtTotalValue.Name = "txtTotalValue";
-            this.txtTotalValue.Size = new System.Drawing.Size(396, 32);
-            this.txtTotalValue.TabIndex = 8;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(387, 265);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 21);
-            this.label6.TabIndex = 264;
-            this.label6.Text = "Total Value:";
-            // 
-            // txtWholePrice
-            // 
-            this.txtWholePrice.Enabled = false;
-            this.txtWholePrice.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtWholePrice.Location = new System.Drawing.Point(523, 226);
-            this.txtWholePrice.Name = "txtWholePrice";
-            this.txtWholePrice.Size = new System.Drawing.Size(396, 32);
-            this.txtWholePrice.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(387, 231);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 21);
-            this.label4.TabIndex = 262;
-            this.label4.Text = "Whole Sale:";
-            // 
-            // txtRetailPrice
-            // 
-            this.txtRetailPrice.BackColor = System.Drawing.Color.White;
-            this.txtRetailPrice.Enabled = false;
-            this.txtRetailPrice.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtRetailPrice.Location = new System.Drawing.Point(523, 192);
-            this.txtRetailPrice.Name = "txtRetailPrice";
-            this.txtRetailPrice.Size = new System.Drawing.Size(396, 32);
-            this.txtRetailPrice.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(387, 197);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 21);
-            this.label5.TabIndex = 260;
-            this.label5.Text = "Retail Price:";
             // 
             // txtCostPrice
             // 
             this.txtCostPrice.Enabled = false;
             this.txtCostPrice.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtCostPrice.Location = new System.Drawing.Point(523, 158);
+            this.txtCostPrice.Location = new System.Drawing.Point(523, 234);
             this.txtCostPrice.Name = "txtCostPrice";
-            this.txtCostPrice.Size = new System.Drawing.Size(396, 32);
+            this.txtCostPrice.Size = new System.Drawing.Size(396, 38);
             this.txtCostPrice.TabIndex = 5;
             // 
             // label2
@@ -350,9 +251,9 @@ namespace Inventory.PopupForm
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(387, 163);
+            this.label2.Location = new System.Drawing.Point(387, 239);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 21);
+            this.label2.Size = new System.Drawing.Size(111, 28);
             this.label2.TabIndex = 258;
             this.label2.Text = "Cost Price:";
             // 
@@ -360,9 +261,9 @@ namespace Inventory.PopupForm
             // 
             this.txtLastCost.Enabled = false;
             this.txtLastCost.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtLastCost.Location = new System.Drawing.Point(523, 124);
+            this.txtLastCost.Location = new System.Drawing.Point(523, 269);
             this.txtLastCost.Name = "txtLastCost";
-            this.txtLastCost.Size = new System.Drawing.Size(396, 32);
+            this.txtLastCost.Size = new System.Drawing.Size(396, 38);
             this.txtLastCost.TabIndex = 4;
             // 
             // label3
@@ -371,9 +272,9 @@ namespace Inventory.PopupForm
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(387, 129);
+            this.label3.Location = new System.Drawing.Point(387, 274);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 21);
+            this.label3.Size = new System.Drawing.Size(102, 28);
             this.label3.TabIndex = 256;
             this.label3.Text = "Last Cost:";
             // 
@@ -385,7 +286,7 @@ namespace Inventory.PopupForm
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(387, 96);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 21);
+            this.label1.Size = new System.Drawing.Size(149, 28);
             this.label1.TabIndex = 255;
             this.label1.Text = "Item Quantity:";
             // 
@@ -393,9 +294,9 @@ namespace Inventory.PopupForm
             // 
             this.txtDeliveryCode.Enabled = false;
             this.txtDeliveryCode.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
-            this.txtDeliveryCode.Location = new System.Drawing.Point(523, 56);
+            this.txtDeliveryCode.Location = new System.Drawing.Point(523, 199);
             this.txtDeliveryCode.Name = "txtDeliveryCode";
-            this.txtDeliveryCode.Size = new System.Drawing.Size(396, 32);
+            this.txtDeliveryCode.Size = new System.Drawing.Size(396, 38);
             this.txtDeliveryCode.TabIndex = 2;
             // 
             // lblName
@@ -404,9 +305,9 @@ namespace Inventory.PopupForm
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblName.ForeColor = System.Drawing.Color.Black;
-            this.lblName.Location = new System.Drawing.Point(387, 61);
+            this.lblName.Location = new System.Drawing.Point(387, 204);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(122, 21);
+            this.lblName.Size = new System.Drawing.Size(150, 28);
             this.lblName.TabIndex = 253;
             this.lblName.Text = "Delivery Code:";
             // 
@@ -416,7 +317,7 @@ namespace Inventory.PopupForm
             this.txtBarcode.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
             this.txtBarcode.Location = new System.Drawing.Point(523, 22);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(396, 32);
+            this.txtBarcode.Size = new System.Drawing.Size(396, 38);
             this.txtBarcode.TabIndex = 1;
             // 
             // label7
@@ -427,7 +328,7 @@ namespace Inventory.PopupForm
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(387, 27);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 21);
+            this.label7.Size = new System.Drawing.Size(94, 28);
             this.label7.TabIndex = 251;
             this.label7.Text = "Barcode:";
             // 
@@ -451,9 +352,9 @@ namespace Inventory.PopupForm
             // 
             this.imgPreview.BackColor = System.Drawing.Color.White;
             this.imgPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imgPreview.Location = new System.Drawing.Point(3, 18);
+            this.imgPreview.Location = new System.Drawing.Point(3, 21);
             this.imgPreview.Name = "imgPreview";
-            this.imgPreview.Size = new System.Drawing.Size(366, 412);
+            this.imgPreview.Size = new System.Drawing.Size(366, 409);
             this.imgPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgPreview.TabIndex = 244;
             this.imgPreview.TabStop = false;
@@ -467,9 +368,9 @@ namespace Inventory.PopupForm
             this.cmbBranchName.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.cmbBranchName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.cmbBranchName.FormattingEnabled = true;
-            this.cmbBranchName.Location = new System.Drawing.Point(523, 328);
+            this.cmbBranchName.Location = new System.Drawing.Point(522, 303);
             this.cmbBranchName.Name = "cmbBranchName";
-            this.cmbBranchName.Size = new System.Drawing.Size(223, 36);
+            this.cmbBranchName.Size = new System.Drawing.Size(397, 43);
             this.cmbBranchName.TabIndex = 10;
             // 
             // bntAccept
@@ -485,14 +386,57 @@ namespace Inventory.PopupForm
             this.bntAccept.ToolTip = "Accept Delivery";
             this.bntAccept.Click += new System.EventHandler(this.bntAccept_Click);
             // 
+            // txtProductName
+            // 
+            this.txtProductName.Enabled = false;
+            this.txtProductName.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
+            this.txtProductName.Location = new System.Drawing.Point(523, 55);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Size = new System.Drawing.Size(396, 38);
+            this.txtProductName.TabIndex = 278;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(387, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(153, 28);
+            this.label4.TabIndex = 279;
+            this.label4.Text = "Product Name:";
+            // 
+            // txtDeliveryQty
+            // 
+            this.txtDeliveryQty.Enabled = false;
+            this.txtDeliveryQty.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold);
+            this.txtDeliveryQty.Location = new System.Drawing.Point(523, 124);
+            this.txtDeliveryQty.Name = "txtDeliveryQty";
+            this.txtDeliveryQty.Size = new System.Drawing.Size(396, 38);
+            this.txtDeliveryQty.TabIndex = 280;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(387, 129);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(137, 28);
+            this.label5.TabIndex = 281;
+            this.label5.Text = "Delivery Qty:";
+            // 
             // FrmPopAccept
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 582);
             this.Controls.Add(this.groupLauncher);
             this.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPopAccept";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -517,16 +461,8 @@ namespace Inventory.PopupForm
         private DevExpress.XtraEditors.GroupControl groupImage;
         private System.Windows.Forms.PictureBox imgPreview;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cmbDeliveryStatus;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbItemStatus;
-        private System.Windows.Forms.TextBox txtTotalValue;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtWholePrice;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtRetailPrice;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCostPrice;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtLastCost;
@@ -541,9 +477,13 @@ namespace Inventory.PopupForm
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dkpDelivery;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreen;
-        private System.Windows.Forms.TextBox txtReceiptNumber;
+        private System.Windows.Forms.TextBox txtInventoryCode;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtItemQty;
+        private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtDeliveryQty;
+        private System.Windows.Forms.Label label5;
     }
 }

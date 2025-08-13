@@ -16,7 +16,7 @@ namespace Inventory.PopupForm
         private FrmManagement _main;
         private readonly int _userId;
         private readonly int _userType;
-        private readonly ViewAcceptedDelivery _accepted_list;
+        private readonly DeliveryDetails _delivery;
         private IEnumerable<ViewImageProduct> _imgList;
         private IEnumerable<WarehouseStatus> _warehouseStatus;
         private IEnumerable<DeliveryStatus> _delivery_status;
@@ -27,11 +27,11 @@ namespace Inventory.PopupForm
             set { _main = value; }
         }
 
-        public FrmPopAccept(int userId, int userType, ViewAcceptedDelivery accept)
+        public FrmPopAccept(int userId, int userType, DeliveryDetails delivery)
         {
             _userId = userId;
             _userType = userType;
-            _accepted_list = accept;
+            _delivery = delivery;
             InitializeComponent();
         }
 
@@ -39,20 +39,17 @@ namespace Inventory.PopupForm
         {
             _imgList = EnumerableUtils.getImgProductList();
             _warehouseStatus = EnumerableUtils.getStatusWarehouseList();
-            _delivery_status = EnumerableUtils.getWarehouseDelivery();
-            var barcode = _accepted_list.product_code;
+            var barcode = _delivery.product_code;
             txtBarcode.Text = barcode;
-            txtDeliveryCode.Text = _accepted_list.delivery_code;
-            txtItemQty.Text = _accepted_list.delivery_qty.ToString();
-            txtLastCost.Text = _accepted_list.last_cost_per_unit.ToString();
-            txtCostPrice.Text = _accepted_list.item_price.ToString();
-            txtRetailPrice.Text = _accepted_list.retail_price.ToString();
-            txtWholePrice.Text = _accepted_list.whole_sale.ToString();
-            txtTotalValue.Text = _accepted_list.total_value.ToString();
-            txtReceiptNumber.Text = _accepted_list.receipt_number;
-            cmbBranchName.Text = _accepted_list.branch_details;
-            cmbItemStatus.Text = _accepted_list.status_details;
-            cmbDeliveryStatus.Text = _accepted_list.delivery_status;
+            txtProductName.Text = _delivery.product_name;
+            txtDeliveryQty.Text = _delivery.delivery_qty.ToString();
+            txtDeliveryCode.Text = _delivery.delivery_code;
+            txtItemQty.Text = _delivery.delivery_qty.ToString();
+            txtLastCost.Text = _delivery.last_cost_per_unit.ToString();
+            txtCostPrice.Text = _delivery.cost_per_unit.ToString();
+            txtInventoryCode.Text = _delivery.receipt_number;
+            cmbBranchName.Text = _delivery.branch_details;
+            cmbItemStatus.Text = _delivery.status_details;
 
             if (barcode != null)
             {
@@ -83,7 +80,7 @@ namespace Inventory.PopupForm
 
         private void bntAccept_Click(object sender, EventArgs e)
         {
-            receivedInventory();
+            DataInsert();
         }
 
         private void txtItemQty_KeyPress(object sender, KeyPressEventArgs e)
@@ -120,8 +117,8 @@ namespace Inventory.PopupForm
             if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
             {
                 cmbItemStatus.BackColor = Color.White;
-                cmbDeliveryStatus.Focus();
-                cmbDeliveryStatus.BackColor = Color.Yellow;
+                dkpDelivery.Focus();
+                dkpDelivery.BackColor = Color.Yellow;
             }
             if (e.KeyCode == Keys.F1)
             {
@@ -130,21 +127,6 @@ namespace Inventory.PopupForm
             }
         }
 
-        private void cmbDeliveryStatus_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Enter)
-            {
-                cmbDeliveryStatus.BackColor = Color.White;
-                dkpDelivery.Focus();
-                dkpDelivery.BackColor = Color.Yellow;
-            }
-
-            if (e.KeyCode == Keys.F1)
-            {
-                cmbDeliveryStatus.DataBindings.Clear();
-                cmbDeliveryStatus.DataSource = _delivery_status.Select(p => p.delivery_status).ToList();
-            }
-        }
 
         private void dkpDelivery_KeyDown(object sender, KeyEventArgs e)
         {
@@ -154,62 +136,109 @@ namespace Inventory.PopupForm
                 bntAccept.Focus();
             }
         }
-
-        private void receivedInventory()
+        private void DataInsert()
         {
-            if (string.IsNullOrWhiteSpace(txtItemQty.Text))
+            // Validate required fields
+            if (string.IsNullOrWhiteSpace(txtInventoryCode.Text) ||
+                string.IsNullOrWhiteSpace(txtProductName.Text) ||
+                string.IsNullOrWhiteSpace(txtDeliveryCode.Text) ||
+                string.IsNullOrWhiteSpace(txtItemQty.Text) ||
+                string.IsNullOrWhiteSpace(cmbBranchName.Text) ||
+                string.IsNullOrWhiteSpace(txtLastCost.Text) ||
+                string.IsNullOrWhiteSpace(cmbItemStatus.Text))
             {
-                PopupNotification.PopUpMessages(0, "Please enter a numeric value!", "EMPTY INPUT");
+                PopupNotification.PopUpMessages(0, "Please fill in all required fields.", "Incomplete Input");
                 return;
             }
-            var receiveId = _accepted_list.received_id;
-            if (receiveId > 0)
+
+            using (var session = new DalSession())
             {
-                splashScreen.ShowWaitForm();
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+
                 try
                 {
-                    var result = RepositoryEntity.UpdateEntity<ReceivedInventory>(receiveId, warehouseDel =>
-                    {
-                        warehouseDel.product_id = FetchUtils.getProductIdBarcode(_accepted_list.product_code);
-                        warehouseDel.delivery_code = _accepted_list.delivery_code;
-                        warehouseDel.delivery_qty = int.Parse(txtItemQty.Text);
-                        warehouseDel.warehouse_id = FetchUtils.getWarehouseId(_accepted_list.warehouse_name);
-                        warehouseDel.last_cost_per_unit = decimal.Parse(txtLastCost.Text);
-                        warehouseDel.item_price = _accepted_list.item_price;
-                        warehouseDel.retail_price = decimal.Parse(txtRetailPrice.Text);
-                        warehouseDel.whole_sale = decimal.Parse(txtWholePrice.Text);
-                        warehouseDel.receipt_number = _accepted_list.receipt_number;
-                        warehouseDel.user_id = _userId;
-                        warehouseDel.branch_id = FetchUtils.getBranchId(_accepted_list.branch_details);
-                        warehouseDel.status_id = FetchUtils.getStatusId(cmbItemStatus.Text);
-                        warehouseDel.delivery_status_id = FetchUtils.getDeliveryStatus(cmbDeliveryStatus.Text);
-                        warehouseDel.received_date = dkpDelivery.Value.Date;
-                        warehouseDel.update_on = dkpDelivery.Value.Date;
-                        warehouseDel.remarks = "";
-                    });
+                    splashScreen.ShowWaitForm();
 
-                    if (result > 0)
+                    var inventoryRepo = new Repository<ServeAll.Core.Entities.Inventory>(unWork);
+                    var deliveryRepo = new Repository<ServeAll.Core.Entities.WarehouseDelivery>(unWork);
+
+                    int quantity = int.Parse(txtItemQty.Text);
+                    string deliveryCode = txtDeliveryCode.Text;
+
+                    // Use product ID from _delivery, not just name lookup
+                    int productId = _delivery.product_id;
+                    int branchId = FetchUtils.getBranchId(cmbBranchName.Text);
+
+                    // Get existing inventory for this product & branch
+                    var existingInventory = inventoryRepo
+                        .FindBy(x => x.product_id == productId && x.branch_id == branchId);
+
+                    if (existingInventory != null)
                     {
-                        splashScreen.CloseWaitForm();
-                        PopupNotification.PopUpMessages(1, "Delivery Code: " + _accepted_list.delivery_code + " Successfully Received/Completed!", Messages.InventorySystem);
-                        _main.received = 1;
-                        Close();
+                        existingInventory.quantity += quantity;
+                        existingInventory.updatedOn = DateTime.Now;
+                        inventoryRepo.Update(existingInventory);
                     }
                     else
                     {
-                        splashScreen.CloseWaitForm();
-                        PopupNotification.PopUpMessages(0, "Delivery Code: " + _accepted_list.delivery_code + " Failed to Receive/Complete Delivery!", Messages.InventorySystem);
+                        var newInventory = new ServeAll.Core.Entities.Inventory
+                        {
+                            inventory_code = txtInventoryCode.Text,
+                            product_id = productId,
+                            delivery_code = deliveryCode,
+                            quantity = quantity,
+                            branch_id = branchId,
+                            last_price_cost = Convert.ToDecimal(txtLastCost.Text),
+                            inventory_date = dkpDelivery.Value.Date,
+                            status_id = FetchUtils.getProductStatusId(cmbItemStatus.Text),
+                            user_id = _userId, // Use actual user ID
+                            updatedOn = DateTime.Now,
+                            snooze = false
+                        };
+                        inventoryRepo.Add(newInventory);
                     }
+
+                    // Update or delete delivery record
+                    var delivery = deliveryRepo.Id(_delivery.delivery_id);
+                    if (delivery != null)
+                    {
+                        if (quantity == delivery.delivery_qty)
+                        {
+                            deliveryRepo.Delete(delivery);
+                        }
+                        else if (quantity < delivery.delivery_qty)
+                        {
+                            delivery.delivery_qty -= quantity;
+                            deliveryRepo.Update(delivery);
+                        }
+                        else
+                        {
+                            splashScreen.CloseWaitForm();
+                            PopupNotification.PopUpMessages(0,
+                                "Inventory quantity exceeds the delivery quantity.",
+                                "Invalid Quantity");
+                            unWork.Rollback();
+                            return;
+                        }
+                    }
+
+                    unWork.Commit();
+                    splashScreen.CloseWaitForm();
+
+                    PopupNotification.PopUpMessages(1,
+                        "Product Name: " + txtProductName.Text.Trim() + " " + Messages.SuccessInsert,
+                        Messages.TitleSuccessInsert);
+                    _delivery.delivery_qty -= quantity;
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }
                 catch (Exception ex)
                 {
+                    unWork.Rollback();
                     splashScreen.CloseWaitForm();
-                    Console.WriteLine(ex.Message);
+                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFailedInsert);
                 }
-            }
-            else
-            {
-                PopupNotification.PopUpMessages(0, "Invalid Receive ID!", "Error");
             }
         }
     }

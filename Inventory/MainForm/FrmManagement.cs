@@ -24,6 +24,8 @@ namespace Inventory.MainForm
         private FirmMain _main;
         private bool _isCanceled;
         private IEnumerable<ViewWarehouseDelivery> _warehouse_delivery;
+        private IEnumerable<ViewWarehouseDelivery> _viewDeliveries;
+        private IEnumerable<WarehouseDelivery> _delivery;
         private IEnumerable<ViewWareHouseInventory> _warehouse_list;
         private IEnumerable<ViewReturnWarehouse> _return_list;
         private IEnumerable<ViewReturnWarehouse> warehouse_return;
@@ -34,6 +36,9 @@ namespace Inventory.MainForm
         private IEnumerable<ViewDailyExpenses> _daily_expenses;
         private IEnumerable<ViewInventory> _inventory_list;
         private IEnumerable<ViewProducts> _products;
+        private Dictionary<int, ViewProducts> _productDict;
+        private Dictionary<int, string> _statusDict;
+        private Dictionary<int, string> _deliveryStatusDict;
         private readonly int _userId;
         private readonly int _userType;
         private readonly string _username;
@@ -79,6 +84,7 @@ namespace Inventory.MainForm
             }
             InitializeComponent();
             this.DialogResult = DialogResult.OK;
+            _delivery = EnumerableUtils.getWarehouseDeliveries();
             _warehouse_list = EnumerableUtils.getWareHouseInventoryList();
             _warehouse_delivery = EnumerableUtils.getWareHouseDeliveryList();
             _return_list = EnumerableUtils.getWareHouseReturnList();
@@ -89,6 +95,10 @@ namespace Inventory.MainForm
             _inventory_list = EnumerableUtils.getLowQuantity();
             _imgList = EnumerableUtils.getImgProductList();
             _products = EnumerableUtils.getProductList();
+            _viewDeliveries = EnumerableUtils.getViewWarehouseDeliveries();
+            _productDict = _products.ToDictionary(p => p.product_id);
+            _statusDict = EnumerableUtils.getAllStatuses().ToDictionary(s => s.status_id, s => s.status_details);
+            _deliveryStatusDict = EnumerableUtils.getAllDeliveryStatuses().ToDictionary(s => s.delivery_status_id, s => s.delivery_status);
         }
         private void FrmManagement_Load(object sender, System.EventArgs e)
         {
@@ -210,50 +220,33 @@ namespace Inventory.MainForm
 
         private void bindDeliveryList(string branch)
         {
-            ClearGrid();
-            var list = _warehouse_delivery
-                .Where(p => p.branch_details == branch)
-                .Select(p => new
-                {
-                    Id = "" + p.delivery_id,
-                    Barcode = p.product_code,
-                    Code = p.delivery_code,
-                    Item = p.product_name,
-                    Branch = p.branch_details,
-                    Price = "P" + p.cost_per_unit,
-                    LastCost = "P" + p.last_cost_per_unit,
-                    Quantity = "" + p.delivery_qty,
-                    Status = p.status_details,
-                    Date = p.delivery_date,
-                    Delivery = p.delivery_status
-                }).ToList();
-            gridCtrlPending.DataSource = list;
-            gridCtrlPending.Update();
-        }
-
-        private void bindAcceptedDelivery()
-        {
             clearAcceptedDelivery();
-            var list = _accepted_list.Select(p => new {
-                Id = "" + p.received_id,
-                Barcode = p.product_code,
-                Delivery = p.delivery_code,
-                Quantity = "" + p.delivery_qty,
-                LastCost = "P" + p.last_cost_per_unit,
-                ItemPrice = "P" + p.item_price,
-                RetailPrice = "P" + p.retail_price,
-                WholeSale = "P" + p.whole_sale,
-                Totaled = "P" + p.total_value,
-                ReceiptNo = p.receipt_number,
-                User = p.username,
-                Warehouse = p.warehouse_name,
-                Branch = p.branch_details,
-                Status = p.status_details,
-                DeliverySta = p.delivery_status,
-                Received = p.received_date,
-                UpdateOn = p.update_on,
-                Remarks = p.remarks
-            }).ToList();
+            int branchId = FetchUtils.getBranchId(branch);
+
+            var list = _delivery
+                .Where(p => p.branch_id == branchId)
+                .Select(p =>
+                {
+                    var product = _products.FirstOrDefault(prod => prod.product_id == p.product_id);
+
+                    return new
+                    {
+                        Id = p.delivery_id.ToString(),
+                        Barcode = product?.product_code,   
+                        Code = p.delivery_code,
+                        Item = product?.product_name,
+                        Branch = branch,
+                        Price = "P" + p.item_price,
+                        LastCost = "P" + p.last_cost_per_unit,
+                        Quantity = p.delivery_qty.ToString(),
+                        Status = FetchUtils.getStatusName(p.status_id),
+                        Date = p.delivery_date,
+                        Update = p.update_on,
+                        Delivery = FetchUtils.getDeliveryStatusName(p.delivery_status_id)
+                    };
+                })
+                .ToList();
+
             gridCtrlAccepted.DataSource = list;
             gridCtrlAccepted.Update();
         }
@@ -611,9 +604,9 @@ namespace Inventory.MainForm
         private void barCreditLine_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             splashScreen.ShowWaitForm();
-            _accepted_list = Enumerable.Empty<ViewAcceptedDelivery>();
-            _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
-            bindAcceptedDelivery();
+            _delivery = Enumerable.Empty<WarehouseDelivery>();
+            _delivery = EnumerableUtils.getWarehouseDeliveries();
+            bindDeliveryList(branch);
             xInventory.SelectedTabPage = xtraAccepted;
             splashScreen.CloseWaitForm();
         }
@@ -792,7 +785,6 @@ namespace Inventory.MainForm
             }
         }
 
-
         private void gridAcceptView(object sender)
         {
             if (gridAccepted.RowCount > 0)
@@ -800,17 +792,15 @@ namespace Inventory.MainForm
                 var barcode = ((LayoutView)sender).GetFocusedRowCellValue("Barcode")?.ToString();
                 txtBarcode.Text = barcode;
                 txtItemName.Text = ((LayoutView)sender).GetFocusedRowCellValue("Item")?.ToString();
-                txtControl.Text = ((LayoutView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
+                txtControl.Text = ((LayoutView)sender).GetFocusedRowCellValue("Code")?.ToString();
                 txtQuantity.Text = ((LayoutView)sender).GetFocusedRowCellValue("Quantity")?.ToString();
-                txtDeliveryStatus.Text = ((LayoutView)sender).GetFocusedRowCellValue("DeliverySta")?.ToString();
+                txtDeliveryStatus.Text = ((LayoutView)sender).GetFocusedRowCellValue("Delivery")?.ToString();
                 txtStockStatus.Text = ((LayoutView)sender).GetFocusedRowCellValue("Status")?.ToString();
-                txtRetail.Text = ((LayoutView)sender).GetFocusedRowCellValue("RetailPrice")?.ToString();
-                txtWholeSale.Text = ((LayoutView)sender).GetFocusedRowCellValue("WholeSale")?.ToString();
-                txtCostPrice.Text = ((LayoutView)sender).GetFocusedRowCellValue("ItemPrice")?.ToString();
+                txtCostPrice.Text = ((LayoutView)sender).GetFocusedRowCellValue("Price")?.ToString();
                 txtLastCost.Text = ((LayoutView)sender).GetFocusedRowCellValue("LastCost")?.ToString();
                 txtBranch.Text = ((LayoutView)sender).GetFocusedRowCellValue("Branch")?.ToString();
-                dkpDeliveryDate.Value = Convert.ToDateTime(((LayoutView)sender).GetFocusedRowCellValue("Received")?.ToString());
-                dpkUpdated.Value = Convert.ToDateTime(((LayoutView)sender).GetFocusedRowCellValue("UpdateOn")?.ToString());
+                dkpDeliveryDate.Value = Convert.ToDateTime(((LayoutView)sender).GetFocusedRowCellValue("Date")?.ToString());
+                dpkUpdated.Value = Convert.ToDateTime(((LayoutView)sender).GetFocusedRowCellValue("Update")?.ToString());
                 if (barcode != null)
                 {
                     var img = searchProductImg(barcode);
@@ -976,19 +966,37 @@ namespace Inventory.MainForm
 
         private void gridAccepted_DoubleClick(object sender, EventArgs e)
         {
-            if (gridAccepted.RowCount > 0)
+            if (gridAccepted.RowCount == 0) return;
+
+            splashScreen.ShowWaitForm();
+
+            var idValue = ((LayoutView)sender).GetFocusedRowCellValue("Id")?.ToString();
+            splashScreen.CloseWaitForm();
+            if (string.IsNullOrEmpty(idValue)) return;
+
+            int deliveryId = int.Parse(idValue);
+
+            var details = EntityUtils.GetDeliveryDetails(deliveryId);
+            if (details == null) return;
+
+            var pop = new FrmPopAccept(_userId, 1, details) { main = this };
+            if (pop.ShowDialog() == DialogResult.OK)
             {
-                splashScreen.ShowWaitForm();
-                var id = ((LayoutView)sender).GetFocusedRowCellValue("Id")?.ToString();
-                var Received = EntityUtils.getAccepted(int.Parse(id));
-                var pop = new FrmPopAccept(_userId, 1, Received)
+                var updated = _delivery.FirstOrDefault(d => d.delivery_id == deliveryId);
+                if (updated != null)
                 {
-                    main = this
-                };
-                splashScreen.CloseWaitForm();
-                pop.ShowDialog();
-                _accepted_list = EnumerableUtils.getAcceptedDelivery(branch);
-                bindAcceptedDelivery();
+                    updated.delivery_qty = details.delivery_qty;
+                    updated.delivery_status_id = details.delivery_status_id;
+                }
+
+                // Remove if completed or no quantity left
+                _delivery = _delivery
+                    .Where(d => !(d.delivery_id == deliveryId &&
+                                 (details.delivery_status_id == 10 || details.delivery_qty <= 0)))
+                    .ToList();
+
+                // Refresh grid
+                bindDeliveryList(branch);
             }
         }
 

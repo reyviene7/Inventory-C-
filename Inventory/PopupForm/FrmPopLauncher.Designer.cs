@@ -105,7 +105,7 @@ namespace Inventory.PopupForm
             this.groupLauncher.Name = "groupLauncher";
             this.groupLauncher.Size = new System.Drawing.Size(931, 582);
             this.groupLauncher.TabIndex = 6;
-            this.groupLauncher.Text = "Stock Delivery From Warehouse";
+            this.groupLauncher.Text = "From Warehouse Inventory to Delivery";
             // 
             // txtRemarks
             // 
