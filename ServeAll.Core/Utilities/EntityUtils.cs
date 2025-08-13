@@ -41,14 +41,14 @@ namespace ServeAll.Core.Utilities
             }
         }
 
-        public static ViewWarehouseDelivery getWarehouseDelivery(int deliveryId)
+        public static WarehouseDelivery getWarehouseDelivery(int deliveryId)
         {
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 try
                 {
-                    var repository = new Repository<ViewWarehouseDelivery>(unWork);
+                    var repository = new Repository<WarehouseDelivery>(unWork);
                     var parameter = new { deliveryId = deliveryId };
                     return repository.SearchBy(Query.getWarehouseDeliveryById, parameter);
                 }
@@ -58,6 +58,55 @@ namespace ServeAll.Core.Utilities
                     return null;
                 }
             }
+        }
+
+        public static ViewWarehouseDelivery getViewWarehouseDelivery(int deliveryId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewWarehouseDelivery>(unWork);
+                    var parameter = new { deliveryId = deliveryId };
+                    return repository.SearchBy(Query.getViewWarehouseDeliveryById, parameter);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return null;
+                }
+            }
+        }
+
+        public static DeliveryDetails GetDeliveryDetails(int deliveryId)
+        {
+            var delivery = getWarehouseDelivery(deliveryId); // WarehouseDelivery
+            var view = getViewWarehouseDelivery(deliveryId); // ViewWarehouseDelivery
+
+            if (delivery == null || view == null) return null;
+
+            return new DeliveryDetails
+            {
+                // From WarehouseDelivery
+                delivery_id = delivery.delivery_id,
+                product_id = delivery.product_id,
+                delivery_code = delivery.delivery_code,
+                last_cost_per_unit = delivery.last_cost_per_unit,
+                receipt_number = delivery.receipt_number,
+                branch_id = delivery.branch_id,
+                delivery_qty = delivery.delivery_qty,
+                status_id = delivery.status_id,
+                delivery_status_id = delivery.delivery_status_id,
+
+                // From ViewWarehouseDelivery
+                product_code = view.product_code,
+                product_name = view.product_name,
+                branch_details = view.branch_details,
+                status_details = view.status_details,
+                cost_per_unit = view.cost_per_unit,
+                delivery_status = view.delivery_status
+            };
         }
 
         public static ViewWareHouseInventory getWarehouseInventory(int inventoryId)

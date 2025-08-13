@@ -887,6 +887,25 @@ namespace ServeAll.Core.Utilities
             }
         }
 
+        public static IEnumerable<ViewWarehouseDelivery> getViewWarehouseDeliveries()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                try
+                {
+                    var repository = new Repository<ViewWarehouseDelivery>(unWork);
+                    return repository.SelectAll(Query.getWarehouseDelivery).ToList();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return new List<ViewWarehouseDelivery>();
+                }
+            }
+        }
+
+
         public static IEnumerable<ViewWareHouseInventory> getWareHouseInventoryList()
         {
             using (var session = new DalSession())
@@ -958,6 +977,63 @@ namespace ServeAll.Core.Utilities
                 {
                     Console.WriteLine(ex.Message);
                     return GetEmptyList<ViewWarehouseDelivery>();
+                }
+            }
+        }
+
+        public static IEnumerable<WarehouseDelivery> getWarehouseDeliveries()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<WarehouseDelivery>(unWork);
+                    return repository.SelectAll(Query.getOrgWarehouseDelivery).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<WarehouseDelivery>();
+                }
+            }
+        }
+
+        public static IEnumerable<WarehouseStatus> getAllStatuses()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<WarehouseStatus>(unWork);
+                    return repository.SelectAll(Query.getWarehouseStatus).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return Enumerable.Empty<WarehouseStatus>();
+                }
+            }
+        }
+
+        public static IEnumerable<DeliveryStatus> getAllDeliveryStatuses()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<DeliveryStatus>(unWork);
+                    return repository.SelectAll(Query.getDeliveryStatus).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return Enumerable.Empty<DeliveryStatus>();
                 }
             }
         }

@@ -307,7 +307,8 @@
         public const string getProductDetails = "select code, item, qty, retail_price, wholesale, status, branch from view_product_inventory where code = @barcode and branch = @branch and status = @status and qty >= 1";
         public const string getCustomerList = "select customer_id, customer_name from view_poscustomers";
         public const string getCustomerCurrentCredit = "select * FROM customer_credit where customer_id = @customerId";
-        public const string getWarehouseDeliveryById = "SELECT * FROM view_warehouse_delivery WHERE delivery_id = @deliveryId";
+        public const string getWarehouseDeliveryById = "SELECT * FROM warehouse_delivery WHERE delivery_id = @deliveryId";
+        public const string getViewWarehouseDeliveryById = "SELECT * FROM view_warehouse_delivery WHERE delivery_id = @deliveryId";
         public const string getWarehouseInventoryById = "SELECT * FROM view_warehouse_inventory WHERE inventory_id = @inventoryId";
         public const string getAcceptedDeliveryById = "SELECT * FROM view_accepted_delivery WHERE received_id = @receivedId";
         public const string getReturnById = "SELECT * FROM view_return_warehouse WHERE return_id = @returnId";
@@ -378,6 +379,10 @@
         public const string getWarehouseReturn = @"SELECT * FROM view_return_warehouse ";
         public const string getServices = "SELECT * FROM view_services ORDER BY service_id DESC";
         public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
+        public const string getOrgWarehouseDelivery = @"SELECT * FROM warehouse_delivery ORDER BY delivery_id DESC";
+        public const string getDeliveryStatus = @"SELECT * FROM delivery_status";
+        public const string getWarehouseStatus = @"SELECT * FROM warehouse_status";
+        public const string getWarehouseDeliveries = @"SELECT * FROM warehouse_delivery ORDER BY delivery_id DESC";
         public const string getAcceptedDelivery = @"SELECT * FROM view_accepted_delivery WHERE branch_details = @branch ORDER BY received_id DESC";
         public const string getCreditSales = @"SELECT * FROM view_credit_sales WHERE branch = @branch ORDER BY id DESC";
         public const string getDailyExpenses = @"SELECT * FROM view_daily_expenses ORDER BY expense_id DESC";
