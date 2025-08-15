@@ -43,6 +43,7 @@ namespace Inventory.MainForm
         private readonly int _userType;
         private readonly string _username;
         private int _received;
+        private readonly Size _designResolution = new Size(1600, 850); // Your design size
         public FrmManagement management { protected get; set; }
         Image imgProcessing = Image.FromFile(ConstantUtils.imgProcessing);
         Image imgCancelled = Image.FromFile(ConstantUtils.imgCancelled);
@@ -100,6 +101,8 @@ namespace Inventory.MainForm
             _statusDict = EnumerableUtils.getAllStatuses().ToDictionary(s => s.status_id, s => s.status_details);
             _deliveryStatusDict = EnumerableUtils.getAllDeliveryStatuses().ToDictionary(s => s.delivery_status_id, s => s.delivery_status);
         }
+        private const float ScaleIntensity = 0.8f;
+
         private void FrmManagement_Load(object sender, System.EventArgs e)
         {
             ShowBranch();
@@ -107,15 +110,39 @@ namespace Inventory.MainForm
             barUser.EditValue = _username;
             barSoftware.EditValue = "Inventory System V1.0";
             barBranch.EditValue = branch;
-            barDate.EditValue = DateTime.Now.Date.ToString();
+            barDate.EditValue = DateTime.Now.ToString("yyyy-MM-dd"); // or your preferred date format
+            barTime.EditValue = DateTime.Now.ToString("HH:mm:ss"); 
             xInventory.SelectedTabPage = null;
-
             // Make the form fullscreen
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None; // Optional: remove title bar and borders
 
-            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+            float scaleX = 1 + ((Screen.PrimaryScreen.Bounds.Width / (float)_designResolution.Width) - 1) * ScaleIntensity;
+            float scaleY = 1 + ((Screen.PrimaryScreen.Bounds.Height / (float)_designResolution.Height) - 1) * ScaleIntensity;
+
+
+            // Apply scaling
+            ScaleControls(this, scaleX, scaleY);
+        }
+        private void ScaleControls(Control parent, float scaleX, float scaleY)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                ctrl.Left = (int)(ctrl.Left * scaleX);
+                ctrl.Top = (int)(ctrl.Top * scaleY);
+                ctrl.Width = (int)(ctrl.Width * scaleX);
+                ctrl.Height = (int)(ctrl.Height * scaleY);
+
+                if (ctrl.Font != null)
+                {
+                    ctrl.Font = new Font(ctrl.Font.FontFamily, ctrl.Font.Size * scaleY, ctrl.Font.Style);
+                }
+
+                if (ctrl.Controls.Count > 0)
+                {
+                    ScaleControls(ctrl, scaleX, scaleY);
+                }
+            }
         }
         private void barMainMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
