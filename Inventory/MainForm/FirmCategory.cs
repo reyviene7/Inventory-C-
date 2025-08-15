@@ -254,25 +254,26 @@ namespace Inventory.MainForm
         }
         private void InputClea()
         {
-            txtCategoryId.Clear();
-            txtSupplierId.Clear();
             if (!_add == false)
             {
                 txtCategoryCode.Clear();
                 txtSupplierCode.Clear();
             }
             txtCategoryDetails.Clear();
+        }
+        private void InputClearSup()
+        {
             txtSupplierName.Clear();
-            cmbGender.DataBindings.Clear();
-            txtBarangay.DataBindings.Clear();
-            txtCity.DataBindings.Clear();
-            txtProvince.DataBindings.Clear();
-            txtZipCode.DataBindings.Clear();
-            txtContactPerson.DataBindings.Clear();
-            txtTelephone.DataBindings.Clear();
-            txtMobile.DataBindings.Clear();
-            txtEmail.DataBindings.Clear();
-            txtCompanyType.DataBindings.Clear();
+            txtBarangay.Clear();
+            txtCity.Clear();
+            txtProvince.Clear();
+            txtZipCode.Clear();
+            txtContactPerson.Clear();
+            txtTelephone.Clear();
+            txtMobile.Clear();
+            txtEmail.Clear();
+            txtCompanyType.Clear();
+            cmbGender.Text = "";
         }
         private void InputDimG()
         {
@@ -315,11 +316,20 @@ namespace Inventory.MainForm
             txtSupplierCode.Text = alphaNumeric.ToString();
         }
 
-        private void GenerateContactCode()
+        private void GenerateNewCategoryId()
         {
-            var lastContactId = FetchUtils.getLastContactId();
-            var alphaNumeric = new GenerateAlpaNum("C", 3, lastContactId);
-            alphaNumeric.Increment();
+            int lastId = FetchUtils.getLastCategoryId();
+            int newId = lastId + 1;
+
+            txtCategoryId.Text = newId.ToString();
+        }
+
+        private void GenerateNewSupplierId()
+        {
+            int lastId = FetchUtils.getLastSupplierId();
+            int newId = lastId + 1;
+
+            txtSupplierId.Text = newId.ToString();
         }
 
         private void ButAdd()
@@ -329,6 +339,8 @@ namespace Inventory.MainForm
             _edt = false;
             _del = false;
             gridControl.Enabled = false;
+            gridCtrlSupplier.Enabled = false;
+            InputClearSup();
             if (_cat && _sup == false)
             {
                 InputEnab();
@@ -336,17 +348,16 @@ namespace Inventory.MainForm
                 InputClea();
                 txtCategoryDetails.Focus();
                 GenerateCode();
+                GenerateNewCategoryId();
             }
             if (_cat == false && _sup )
             {
-                BindContact();
-                BindCompany();
-                BindAddress();
                 InputEnabSup();
                 InputWhitSup();
-                InputClea();
+                InputClearSup();
                 txtSupplierName.Focus();
                 GenerateSupCode();
+                GenerateNewSupplierId();
             }
         }
         private void ButUpd()
@@ -366,7 +377,7 @@ namespace Inventory.MainForm
             {
                 InputEnabSup();
                 InputWhitSup();
-                gridControl.Enabled = false;
+                gridCtrlSupplier.Enabled = false;
                 txtSupplierName.Focus();
             }
         }
@@ -381,6 +392,7 @@ namespace Inventory.MainForm
             _edt = false;
             _del = true;
             gridControl.Enabled = false;
+            gridCtrlSupplier.Enabled = false;
         }
         private void ButClr()
         {
@@ -391,11 +403,15 @@ namespace Inventory.MainForm
             InputDisb();
             InputWhitSup();
             InputDisbSup();
+            InputClea();
+            InputClearSup();
             gridControl.Enabled = true;
+            gridCtrlSupplier.Enabled = true;
             txtCategoryCode.DataBindings.Clear();
             txtCategoryDetails.DataBindings.Clear();
             txtSupplierCode.DataBindings.Clear();
             txtSupplierName.DataBindings.Clear();
+            cmbGender.DataBindings.Clear();
         }
         private void ButSav()
         {
@@ -407,9 +423,11 @@ namespace Inventory.MainForm
             InputDisb();
             InputDimG();
             InputClea();
+            InputClearSup();
             InputDisbSup();
             InputDimGSup();
             gridControl.Enabled = true;
+            gridCtrlSupplier.Enabled = true;
         }
 
         private void SavCat()
@@ -421,7 +439,6 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindRefreshedCategory();
             }
             if (_add == false && _edt && _del == false && _sup == false)
             {
@@ -430,7 +447,6 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindRefreshedCategory();
             }
             if (_add == false && _edt == false && _del && _sup == false)
             {
@@ -439,7 +455,6 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindRefreshedCategory();
             }
             if (_add && _edt == false && _del == false && _cat == false)
             {
@@ -447,8 +462,7 @@ namespace Inventory.MainForm
                 ButtonSav();
                 InputDisbSup();
                 InputDimGSup();
-                InputClea();
-                bindRefreshedSupplier();
+                InputClearSup();
             }
             if (_add == false && _edt && _del == false && _cat == false)
             {
@@ -456,8 +470,7 @@ namespace Inventory.MainForm
                 ButtonSav();
                 InputDisbSup();
                 InputDimGSup();
-                InputClea();
-                bindRefreshedSupplier();
+                InputClearSup();
             }
             if (_add == false && _edt == false && _del && _cat == false)
             {
@@ -465,8 +478,7 @@ namespace Inventory.MainForm
                 ButtonSav();
                 InputDisbSup();
                 InputDimGSup();
-                InputClea();
-                bindRefreshedSupplier();
+                InputClearSup();
             }
             _add = false;
             _edt = false;

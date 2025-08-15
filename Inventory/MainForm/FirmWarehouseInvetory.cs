@@ -476,6 +476,13 @@ namespace Inventory.MainForm
             alphaNumeric.Increment();
             txtWarehouseSKU.Text = alphaNumeric.ToString();
         }
+        private void GenerateNewWInventoryId()
+        {
+            int lastId = FetchUtils.getLastWarehouseInventoryId();
+            int newId = lastId + 1;
+
+            txtInventoryId.Text = newId.ToString();
+        }
         private void insert()
         {
             ButtonAdd();
@@ -502,6 +509,7 @@ namespace Inventory.MainForm
                 cmbProductName_SelectedIndexChanged(cmbProductName, EventArgs.Empty); // 👈 this line is key
             }
             GenerateCode();
+            GenerateNewWInventoryId();
         }
         private void update()
         {

@@ -395,6 +395,7 @@ namespace Inventory.MainForm
             cmbServiceStatus.DataSource = _service_statuses.Select(p => p.status_name).ToList();
             txtServiceName.Focus();
             generateLastServiceCode();
+            GenerateNewServiceId();
         }
         private void ButtonAdd()
         {
@@ -820,6 +821,14 @@ namespace Inventory.MainForm
             var alphaNumeric = new GenerateAlpaNum("S", 3, lastProductId);
             alphaNumeric.Increment();
             txtBarcode.Text = alphaNumeric.ToString();
+        }
+
+        private void GenerateNewServiceId()
+        {
+            int lastId = FetchUtils.getLastServiceId();
+            int newId = lastId + 1;
+
+            txtServiceId.Text = newId.ToString();
         }
 
         private void bindServices()
