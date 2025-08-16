@@ -564,10 +564,35 @@ namespace Inventory.MainForm
                 gridUserList.Enabled = false;
             }
         }
-        private void DataDelete() { }
-        private void DataImgInsert() { }
-        private void DataImgUpdate() { }
-        private void DataImgDelete() { }
+        private void DataDelete()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var catId = Convert.ToInt32(txtUserId.Text);
+                    var repository = new Repository<users>(unWork);
+                    var que = repository.Id(catId);
+                    var result = repository.Delete(que);
+                    if (result)
+                    {
+                        unWork.Commit();
+                        PopupNotification.PopUpMessages(1, "Username: " +
+                                                           txtUsername.Text.Trim(' ')
+                                                           + " " + Messages.SuccessDelete,
+                            Messages.TitleSuccessDelete);
+                        bindRefreshed();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    unWork.Rollback();
+                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedDelete);
+                }
+            }
+        }
 
         private void bntAdd_Click(object sender, EventArgs e)
         {
@@ -591,12 +616,10 @@ namespace Inventory.MainForm
 
         private void bntDelete_Click(object sender, EventArgs e)
         {
-            if (_usr && _img == false)
-            {
                 InputWhit();
                 var que =
                     PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delete USer: " + txtUsername.Text.Trim(' ') + " " + "?", "Category Details");
+                        "Are you sure you want to Delete this User: " + txtUsername.Text.Trim(' ') + " " + "?", "User Details");
                 if (que)
                 {
                     buttonDelete();
@@ -607,22 +630,6 @@ namespace Inventory.MainForm
                     buttonCancel();
                     gridUserList.Enabled = true;
                 }
-            }
-            if (_usr == false && _img)
-            {
-                InputWhitimg();
-                var que =
-                    PopupNotification.PopUpMessageQuestion(
-                        "Are you sure you want to Delete Image Name: " + txtImageName.Text.Trim(' ') + " " + "?", "Image Details");
-                if (que)
-                {
-                    buttonDelete();
-                }
-                else
-                {
-                    buttonCancel();
-                }
-            }
         }
 
         private void bntHome_Click(object sender, EventArgs e)
@@ -739,45 +746,6 @@ namespace Inventory.MainForm
             return user_image.FirstOrDefault(img => img.image_code == param);
         }
 
-        /*
-        private void gridImage(object sender)
-        {
-            var grid = gridImg;
-            if (grid.RowCount > 0)
-                try
-                {
-                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
-                    var code = ((GridView)sender).GetFocusedRowCellValue("CODE").ToString();
-                    if (code.Length > 0)
-                    {
-                        var user = searchUserImage(code);
-                        txtImageId.Text = id;
-                        txtImageCode.Text = code;
-                        txtImageName.Text = user.title;
-                        txtImageType.Text = user.img_type;
-                        txtImageLocation.Text = user.img_location;
-
-                        var img = searchUserImage(code);
-                        var imgLocation = img?.img_location;  // Use null conditional operator
-
-                        if (img == null || string.IsNullOrEmpty(imgLocation))
-                        {
-                            imgPro.ImageLocation = ConstantUtils.defaultUserImgEmpty;
-                        }
-                        else
-                        {
-                            var location = ConstantUtils.defaultUserImgLocation + imgLocation;
-                            imgPro.ImageLocation = location;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    Console.WriteLine(ex.ToString());
-                }
-        }
-        */
         private string getfileExntesion(string filePath)
         {
             return Path.GetFileName(filePath);
@@ -939,19 +907,6 @@ namespace Inventory.MainForm
                 Messages.TitleUsers);
             }
         }
-
-        /*
-        private void txtImageType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedImageType = txtImageType.SelectedItem?.ToString();
-
-            if (selectedImageType != null)
-            {
-                // For demonstration, show a message box with the selected image type
-                MessageBox.Show("Selected Image Type: " + selectedImageType);
-            }
-        }
-        */
 
         private void txtRewrite_Leave(object sender, EventArgs e)
         {
