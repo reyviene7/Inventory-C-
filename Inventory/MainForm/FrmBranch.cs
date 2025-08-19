@@ -1,15 +1,19 @@
-﻿using System;
+﻿using DevExpress.Printing.Utils.DocumentStoring;
+using DevExpress.XtraExport.Helpers;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
+using Inventory.Config;
+using ServeAll.Core.Entities;
+using ServeAll.Core.Repository;
+using ServeAll.Core.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using DevExpress.XtraGrid.Views.Grid;
-using ServeAll.Core.Entities;
-using ServeAll.Core.Repository;
-using Inventory.Config;
-using ServeAll.Core.Utilities;
-using System.Globalization;
 
 
 namespace Inventory.MainForm
@@ -17,11 +21,13 @@ namespace Inventory.MainForm
     public partial class FrmBranch : Form
     {
         private FirmMain _main;
-        private bool _add, _edt, _del;
+        private bool _add, _edt, _del, _bra, _sto;
         private readonly int _userId;
         private readonly int _usrTyp;
         private IEnumerable<ViewBranch> listbranch;
+        private IEnumerable<ViewStore> liststore;
         private int BranchId = 0;
+        private int StoreId = 0;
 
         public FirmMain Main
         {
@@ -54,7 +60,10 @@ namespace Inventory.MainForm
             Options.Start();
             RightOptions.Start();
             listbranch = EnumerableUtils.GetBranchList();
+            liststore = EnumerableUtils.GetStoreList();
             BindBranch();
+            BindStore();
+            xtraBranch.SelectedTabPage = xtraDetails;
         }
 
         private void BindBranchClear()
@@ -108,7 +117,51 @@ namespace Inventory.MainForm
             catch (Exception ex)
             {
                 gCON.EndUpdate();
-                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableSupplier);
+                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableBranch);
+            }
+        }
+        private void BindStore()
+        {
+
+            gridCtrlStore.Update();
+            try
+            {
+
+                var list = liststore.Select(x => new
+                {
+                    ID = x.store_id,
+                    NAME = x.store_name,
+                    TIN = x.store_tin,
+                    BARANGAY = x.barangay,
+                    STREET = x.street,
+                    CITY = x.city,
+                    PROVINCE = x.province,
+                    ZIPCODE = x.zip_code,
+                    TELEPHONE = x.telephone_number,
+                    MOBILE = x.mobile_number,
+                    EMAIL = x.email_address,
+                    WEB = x.web_url
+                });
+
+                gridCtrlStore.DataSource = list;
+
+
+                gridStore.Columns[0].Width = 30;
+                gridStore.Columns[1].Width = 100;
+                gridStore.Columns[2].Width = 100;
+                gridStore.Columns[3].Width = 120;
+                gridStore.Columns[4].Width = 100;
+                gridStore.Columns[5].Width = 100;
+                gridStore.Columns[6].Width = 120;
+                gridStore.Columns[8].Width = 100;
+                gridStore.Columns[9].Width = 100;
+                gridStore.Columns[10].Width = 100;
+                gridStore.Columns[11].Width = 100;
+            }
+            catch (Exception ex)
+            {
+                gridCtrlStore.EndUpdate();
+                PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TableBranch);
             }
         }
         private void FrmBranch_MouseMove(object sender, MouseEventArgs e)
@@ -152,6 +205,14 @@ namespace Inventory.MainForm
         private void bntCAN_Click(object sender, EventArgs e)
         {
             ButCan();
+            if (_bra && _sto == false)
+            {
+                gridBranch.FocusedRowHandle = gridBranch.FocusedRowHandle;
+            }
+            if (_bra == false && _sto)
+            {
+                gridStore.FocusedRowHandle = gridStore.FocusedRowHandle;
+            }
         }
 
         private void bntDEL_Click(object sender, EventArgs e)
@@ -298,25 +359,36 @@ namespace Inventory.MainForm
             txtBranchMobile.Clear();
             txtBranchEmail.Clear();
             txtBranchFax.Clear();
-            //cmbHED.Text = "";
         }
-        private void CleArInput()
+        private void CleInputStor()
         {
-            txtBranchId.Clear();
-            txtBranchName.Clear();
-            txtBranchBarangay.Clear();
-            txtBranchStreet.Clear();
-            txtBranchCity.Clear();
-            cmbProvincialAddress.Text = "";
-            txtBranchZip.Clear();
-            txtBranchCountry.Clear();
-            txtBranchTel.Clear();
-            txtBranchMobile.Clear();
-            txtBranchEmail.Clear();
-            txtBranchFax.Clear();
-            //cmbHED.Text = "";
+            txtStoreId.Clear();
+            txtStoreName.Clear();
+            txtStoreTIN.Clear();
+            txtStoreBRGY.Clear();
+            txtStoreCity.Clear();
+            cmbStoreProv.Text = "";
+            txtStoreZIP.Clear();
+            txtStoreTel.Clear();
+            txtStoreMob.Clear();
+            txtStoreEmail.Clear();
+            txtStoreWeb.Clear();
         }
-
+        private void DimInputStor()
+        {
+            txtStoreId.BackColor = Color.DimGray;
+            txtStoreName.BackColor = Color.DimGray;
+            txtStoreTIN.BackColor = Color.DimGray;
+            txtStoreBRGY.BackColor = Color.DimGray;
+            txtStoreCity.BackColor = Color.DimGray;
+            cmbStoreProv.BackColor = Color.DimGray;
+            txtStoreZIP.BackColor = Color.DimGray;
+            txtStoreTel.BackColor = Color.DimGray;
+            txtStoreMob.BackColor = Color.DimGray;
+            txtStoreEmail.BackColor = Color.DimGray;
+            txtStoreWeb.BackColor = Color.DimGray;
+            dkpStoreReg.BackColor = Color.DimGray;
+        }
         private void DimInput()
         {
             txtBranchId.BackColor = Color.DimGray;
@@ -331,10 +403,23 @@ namespace Inventory.MainForm
             txtBranchMobile.BackColor = Color.DimGray;
             txtBranchEmail.BackColor = Color.DimGray;
             txtBranchFax.BackColor = Color.DimGray;
-            //cmbHED.BackColor = Color.DimGray;
             dkpDateRegister.BackColor = Color.DimGray;
         }
-
+        private void WhtInputStor()
+        {
+            txtStoreId.BackColor = Color.White;
+            txtStoreName.BackColor = Color.White;
+            txtStoreTIN.BackColor = Color.White;
+            txtStoreBRGY.BackColor = Color.White;
+            txtStoreCity.BackColor = Color.White;
+            cmbStoreProv.BackColor = Color.White;
+            txtStoreZIP.BackColor = Color.White;
+            txtStoreTel.BackColor = Color.White;
+            txtStoreMob.BackColor = Color.White;
+            txtStoreEmail.BackColor = Color.White;
+            txtStoreWeb.BackColor = Color.White;
+            dkpStoreReg.BackColor = Color.White;
+        }
         private void WhtInput()
         {
             txtBranchId.BackColor = Color.White;
@@ -350,10 +435,22 @@ namespace Inventory.MainForm
             txtBranchMobile.BackColor = Color.White;
             txtBranchEmail.BackColor = Color.White;
             txtBranchFax.BackColor = Color.White;
-            //cmbHED.BackColor = Color.White;
-
         }
-
+        private void EnbInputStor()
+        {
+            txtStoreId.Enabled = false;
+            txtStoreName.Enabled = true;
+            txtStoreTIN.Enabled = true;
+            txtStoreBRGY.Enabled = true;
+            txtStoreCity.Enabled = true;
+            cmbStoreProv.Enabled = true;
+            txtStoreZIP.Enabled = true;
+            txtStoreTel.Enabled = true;
+            txtStoreMob.Enabled = true;
+            txtStoreEmail.Enabled = true;
+            txtStoreWeb.Enabled = true;
+            dkpStoreReg.Enabled = true;
+        }
         private void EnbInput()
         {
             txtBranchId.Enabled = false;
@@ -369,10 +466,23 @@ namespace Inventory.MainForm
             txtBranchMobile.Enabled = true;
             txtBranchEmail.Enabled = true;
             txtBranchFax.Enabled = true;
-            //cmbHED.Enabled = true;
             dkpDateRegister.Enabled = true;
         }
-
+        private void DisInputStor()
+        {
+            txtStoreId.Enabled = false;
+            txtStoreName.Enabled = false;
+            txtStoreTIN.Enabled = false;
+            txtStoreBRGY.Enabled = false;
+            txtStoreCity.Enabled = false;
+            cmbStoreProv.Enabled = false;
+            txtStoreZIP.Enabled = false;
+            txtStoreTel.Enabled = false;
+            txtStoreMob.Enabled = false;
+            txtStoreEmail.Enabled = false;
+            txtStoreWeb.Enabled = false;
+            dkpStoreReg.Enabled = false;
+        }
         private void DisInput()
         {
             txtBranchId.Enabled = false;
@@ -388,35 +498,56 @@ namespace Inventory.MainForm
             txtBranchMobile.Enabled = false;
             txtBranchEmail.Enabled = false;
             txtBranchFax.Enabled = false;
-            //cmbHED.Enabled = false;
             dkpDateRegister.Enabled = false;
         }
 
         private void ButAdd()
         {
             gCON.Enabled = false;
-            ButtonAdd();
-            WhtInput();
-            EnbInput();
-            CleArInput();
-            BindBranch();
-            GenerateBranchCode();
-            GenerateBranchId();
-            txtBranchName.Focus();
+            gridCtrlStore.Enabled = false;
             _add = true;
             _edt = false;
             _del = false;
+            ButtonAdd();
+            txtBranchName.Focus();
+            if (_bra && _sto == false)
+            {
+                WhtInput();
+                EnbInput();
+                CleInput();
+                GenerateBranchCode();
+                GenerateBranchId();
+            }
+            if (_bra == false && _sto)
+            {
+                WhtInputStor();
+                EnbInputStor();
+                CleInputStor();
+                txtStoreName.Focus();
+                GenerateStoreId();
+            }
         }
 
         private void ButUpd()
         {
             ButtonUpd();
-            EnbInput();
-            WhtInput();
             _add = false;
             _edt = true;
             _del = false;
-            txtBranchName.Focus();
+            if (_bra && _sto == false)
+            {
+                WhtInput();
+                EnbInput();
+                gCON.Enabled = false;
+                txtBranchName.Focus();
+            }
+            else if (_bra == false && _sto)
+            {
+                WhtInputStor();
+                EnbInputStor();
+                gridCtrlStore.Enabled = false;
+                txtStoreName.Focus();
+            }
         }
 
         private void ButDel()
@@ -424,14 +555,18 @@ namespace Inventory.MainForm
             ButtonDel();
             WhtInput();
             EnbInput();
+            WhtInputStor();
+            EnbInputStor();
             _add = false;
             _edt = false;
             _del = true;
+            gCON.Enabled = false;
+            gridCtrlStore.Enabled = false;
         }
 
         private void ButSav()
         {
-            if (_add && _edt == false && _del == false)
+            if (_add && _edt == false && _del == false && _sto == false)
             {
                 DataAdd();
                 ButtonSav();
@@ -440,7 +575,7 @@ namespace Inventory.MainForm
                 DisInput();
 
             }
-            if (_add == false && _edt && _del == false)
+            if (_add == false && _edt && _del == false && _sto == false)
             {
                 DataUpdate();
                 ButtonSav();
@@ -449,7 +584,7 @@ namespace Inventory.MainForm
                 DisInput();
 
             }
-            if (_add == false && _edt == false && _del)
+            if (_add == false && _edt == false && _del && _sto == false)
             {
                 DataDelete();
                 ButtonSav();
@@ -458,21 +593,68 @@ namespace Inventory.MainForm
                 DisInput();
 
             }
+            if (_add == false && _edt && _del == false && _bra == false)
+            {
+                DataUpdateStore();
+                ButtonSav();
+                DimInputStor();
+                CleInputStor();
+                DisInputStor();
+            }
             _add = false;
             _edt = false;
             _del = false;
             BindBranch();
+            listbranch = EnumerableUtils.GetBranchList();
+            liststore = EnumerableUtils.GetStoreList();
+            BindStore();
+            gCON.Enabled = true;
+            gridCtrlStore.Enabled = true;
         }
 
         private void ButClr()
         {
             BindBranch();
+            BindStore();
             ButtonClr();
             WhtInput();
             CleInput();
             DisInput();
+            WhtInputStor();
+            CleInputStor();
+            DisInputStor();
+            gridCtrlStore.Enabled = true;
+            gridCtrlStore.Update();
             gCON.Enabled = true;
             gCON.Update();
+            if (_bra && _sto == false)
+            {
+                int focusedRowHandle = gridBranch.FocusedRowHandle;
+                if (focusedRowHandle >= 0)
+                {
+                    gridBranch_FocusedRowChanged(
+                        gridBranch,
+                        new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                            focusedRowHandle,
+                            focusedRowHandle
+                        )
+                    );
+                }
+            }
+            else if (_bra == false && _sto)
+            {
+                int focusedRowHandle = gridStore.FocusedRowHandle;
+                if (focusedRowHandle >= 0)
+                {
+                    gridStore_FocusedRowChanged(
+                        gridStore,
+                        new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                            focusedRowHandle,
+                            focusedRowHandle
+                        )
+                    );
+                }
+            }
         }
 
         private void ButCan()
@@ -481,6 +663,13 @@ namespace Inventory.MainForm
             DimInput();
             CleInput();
             DisInput();
+            DimInputStor();
+            CleInputStor();
+            DisInputStor();
+            gCON.Enabled = true;
+            gridCtrlStore.Enabled = true;
+            listbranch = EnumerableUtils.GetBranchList();
+            liststore = EnumerableUtils.GetStoreList();
         }
 
         private void pcAdd_Click(object sender, EventArgs e)
@@ -506,6 +695,14 @@ namespace Inventory.MainForm
         private void pcBL_Click(object sender, EventArgs e)
         {
             ButSav();
+        }
+        private void GenerateStoreId()
+        {
+            int laststoreId = liststore.Any() ? liststore.Max(x => x.store_id) : 0;
+            int newstoreId = laststoreId + 1;
+
+            txtStoreId.Text = newstoreId.ToString();
+            txtStoreId.Focus();
         }
         private void GenerateBranchId()
         {
@@ -611,7 +808,82 @@ namespace Inventory.MainForm
                 }
             }
         }
+        private void DataUpdateStore()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    if (!int.TryParse(txtStoreId.Text, out int storeId) || storeId <= 0)
+                    {
+                        PopupNotification.PopUpMessages(0, "Invalid store ID.", Messages.TitleFialedUpdate);
+                        return;
+                    }
 
+                    var storeRepo = new Repository<Store>(unWork);
+                    var store = storeRepo.Id(storeId);
+                    if (store == null)
+                    {
+                        PopupNotification.PopUpMessages(0, "Store not found.", Messages.TitleFialedUpdate);
+                        return;
+                    }
+
+                    // === Update Contact ===
+                    var contactRepo = new Repository<Contact>(unWork);
+                    var contact = contactRepo.Id(store.contact_id);
+                    if (contact != null)
+                    {
+                        contact.position = "Supervisor/Authorized Person";
+                        contact.telephone_number = txtStoreTel.Text.Trim();
+                        contact.mobile_number = txtStoreMob.Text.Trim();
+                        contact.mobile_secondary = txtStoreMob.Text.Trim();
+                        contact.email_address = txtStoreEmail.Text.Trim();
+                        contact.web_url = txtStoreWeb.Text.Trim();
+                        contact.date_register = DateTime.Now;
+                        contactRepo.Update(contact);
+                    }
+
+                    // === Update Address ===
+                    var addressRepo = new Repository<Address>(unWork);
+                    var address = addressRepo.Id(store.address_id);
+                    if (address != null)
+                    {
+                        address.barangay = txtStoreBRGY.Text.Trim();
+                        address.city = txtStoreCity.Text.Trim();
+                        address.province = cmbStoreProv.Text.Trim();
+                        address.zip_code = int.TryParse(txtStoreZIP.Text.Trim(), out var zip) ? zip.ToString() : "0";
+                        address.country = "Philippines";
+                        addressRepo.Update(address);
+                    }
+
+                    // === Update Supplier ===
+                    store.store_name = txtStoreName.Text.Trim();
+                    store.store_tin = txtStoreTIN.Text.Trim();
+
+                    var result = storeRepo.Update(store);
+
+                    if (result)
+                    {
+                        unWork.Commit();
+                        PopupNotification.PopUpMessages(1, $"Store: {store.store_name} successfully updated!", Messages.TitleSuccessUpdate);
+                        BindStore();
+                        liststore = EnumerableUtils.GetStoreList();
+                    }
+                    else
+                    {
+                        unWork.Rollback();
+                        PopupNotification.PopUpMessages(0, "Update failed. Please check the input.", Messages.TitleFialedUpdate);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    unWork.Rollback();
+                    PopupNotification.PopUpMessages(0, $"Update failed due to an error: {ex.Message}", Messages.TitleFialedUpdate);
+                }
+            }
+        }
 
         private void DataUpdate()
         {
@@ -736,6 +1008,47 @@ namespace Inventory.MainForm
             DimInput();
         }
 
+        private void gridStore_RowClick(object sender, RowClickEventArgs e)
+        {
+            WhtInputStor();
+            bntCAN.Enabled = true;
+        }
+
+        private void gridStore_LostFocus(object sender, EventArgs e)
+        {
+            DimInputStor();
+        }
+
+        private void gridStore_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (gridStore.RowCount > 0)
+                try
+                {
+                    var id = ((GridView)sender).GetFocusedRowCellValue("ID").ToString();
+                    if (id.Length > 0)
+                    {
+                        StoreId = int.Parse(id);
+                        var ent = searchStoreId(StoreId);
+                        txtStoreId.Text = ent.store_id.ToString();
+                        txtStoreName.Text = ent.store_name;
+                        txtStoreTIN.Text = ent.store_tin;
+                        txtStoreBRGY.Text = ent.barangay;
+                        txtStoreCity.Text = ent.city;
+                        cmbStoreProv.Text = ent.province;
+                        txtStoreZIP.Text = ent.zip_code.ToString(CultureInfo.InvariantCulture);
+                        txtStoreTel.Text = ent.telephone_number;
+                        txtStoreMob.Text = ent.mobile_number;
+                        txtStoreEmail.Text = ent.email_address;
+                        txtStoreWeb.Text = ent.web_url;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+        }
+
         private void gridBranch_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (gridBranch.RowCount > 0)
@@ -772,22 +1085,17 @@ namespace Inventory.MainForm
         {
             return listbranch.FirstOrDefault(Branch => Branch.branch_id == id);
         }
-
-        //INPUT MANIPULATION
-        private void txtBAC_Leave(object sender, EventArgs e)
+        private ViewStore searchStoreId(int id)
         {
-            InputManipulation.InputEmpLeave(txtBranchCode, txtBranchName, "Branch Code", Messages.TitleBranch);
+            return liststore.FirstOrDefault(Store => Store.store_id == id);
         }
+
         private void txtBAC_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 InputManipulation.InputEmpLeave(txtBranchCode, txtBranchName, "Branch Code", Messages.TitleBranch);
             }
-        }
-        private void txtBAD_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputEmpLeave(txtBranchName, txtBranchBarangay, "Branch Name", Messages.TitleBranch);
         }
 
         private void txtBAD_KeyDown(object sender, KeyEventArgs e)
@@ -798,11 +1106,6 @@ namespace Inventory.MainForm
             }
         }
 
-        private void txtBAA_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputEmpLeave(txtBranchBarangay, txtBranchStreet, "Branch Barangay", Messages.TitleBranch);
-        }
-
         private void txtBAA_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -810,22 +1113,12 @@ namespace Inventory.MainForm
                 InputManipulation.InputEmpLeave(txtBranchBarangay, txtBranchStreet, "Branch Barangay", Messages.TitleBranch);
             }
         }
-
-        private void txtBranchStreet_Leave(object sender, KeyEventArgs e)
-        {
-            InputManipulation.InputEmpLeave(txtBranchStreet, txtBranchCity, "Branch Street", Messages.TitleBranch);
-        }
         private void txtBranchStreet_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 InputManipulation.InputEmpLeave(txtBranchStreet, txtBranchCity, "Branch Street", Messages.TitleBranch);
             }
-        }
-        private void txtBranchCity_Leave(object sender, KeyEventArgs e)
-        {
-            InputManipulation.InputEmpLeave(txtBranchCity, cmbProvincialAddress, "Branch City", Messages.TitleBranch);
-
         }
         private void txtBranchCity_KeyDown(object sender, KeyEventArgs e)
         {
@@ -835,21 +1128,12 @@ namespace Inventory.MainForm
             }
         }
 
-        private void cmbPRV_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputEmpLeave(cmbProvincialAddress, txtBranchZip, "Provincial Address", Messages.TitleBranch);
-        }
-
         private void cmbPRV_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 InputManipulation.InputEmpLeave(cmbProvincialAddress, txtBranchZip, "Provincial Address", Messages.TitleBranch);
             }
-        }
-        private void txtBranchZip_Leave(object sender, KeyEventArgs e)
-        {
-            InputManipulation.InputEmpLeave(txtBranchZip, txtBranchCountry, "Branch Zip Code", Messages.TitleBranch);
         }
         private void txtBranchZip_KeyDown(object sender, KeyEventArgs e)
         {
@@ -858,21 +1142,12 @@ namespace Inventory.MainForm
                 InputManipulation.InputEmpLeave(txtBranchZip, txtBranchCountry, "Branch Zip Code", Messages.TitleBranch);
             }
         }
-        private void txtBranchCountry_Leave(object sender, KeyEventArgs e)
-        {
-            InputManipulation.InputEmpLeave(txtBranchCountry, txtBranchTel, "Branch Country", Messages.TitleBranch);
-        }
         private void txtBranchCountry_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 InputManipulation.InputEmpLeave(txtBranchCountry, txtBranchTel, "Branch Country", Messages.TitleBranch);
             }
-        }
-
-        private void txtBAT_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputEmpLeave(txtBranchTel, txtBranchMobile, "Branch Telephone Number", Messages.TitleBranch);
         }
         private void txtBAT_KeyDown(object sender, KeyEventArgs e)
         {
@@ -882,11 +1157,6 @@ namespace Inventory.MainForm
             }
         }
 
-        private void txtBAM_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputEmpLeave(txtBranchMobile, txtBranchEmail, "Branch Mobile Number", Messages.TitleBranch);
-        }
-
         private void txtBAM_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -894,10 +1164,7 @@ namespace Inventory.MainForm
                 InputManipulation.InputEmpLeave(txtBranchMobile, txtBranchEmail, "Branch Mobile Number", Messages.TitleBranch);
             }
         }
-        private void txtBranchEmail_Leave(object sender, KeyEventArgs e)
-        {
-            InputManipulation.InputEmpLeave(txtBranchEmail, txtBranchFax, "Branch Email", Messages.TitleBranch);
-        }
+
         private void txtBranchEmail_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -905,42 +1172,38 @@ namespace Inventory.MainForm
                 InputManipulation.InputEmpLeave(txtBranchEmail, txtBranchFax, "Branch Email", Messages.TitleBranch);
             }
         }
-        private void txtFAX_Leave(object sender, EventArgs e)
-        {
-            //InputManipulation.InputEmpLeave(txtBranchFax, cmbHED, "Branch Fax Number", Messages.TitleBranch);
-        }
 
         private void txtFAX_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                //InputManipulation.InputEmpLeave(txtBranchFax, cmbHED, "Branch Fax Number", Messages.TitleBranch);
+                InputManipulation.InputEmpLeave(txtBranchFax, dkpDateRegister, "Branch Fax Number", Messages.TitleBranch);
             }
         }
 
-        private void cmbHED_Leave(object sender, EventArgs e)
+        private void xtraBranch_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            //InputManipulation.InputEmpLeave(cmbHED, dkpDateRegister, "Branch Head", Messages.TitleBranch);
-        }
-
-        private void cmbHED_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            if (xtraBranch.SelectedTabPage == xtraDetails)
             {
-                //InputManipulation.InputEmpLeave(cmbHED, dkpDateRegister, "Branch Head", Messages.TitleBranch);
+                _bra = true;
+                _sto = false;
+                lblMainTitle.Text = "BRANCH";
             }
-        }
-
-        private void dkpREG_Leave(object sender, EventArgs e)
-        {
-            InputManipulation.InputEmpLeave(dkpDateRegister, bntADD, "Date Register", Messages.TitleBranch);
+            else if (xtraBranch.SelectedTabPage == xtraStore)
+            {
+                _bra = false;
+                _sto = true;
+                bntADD.Enabled = false;
+                bntDEL.Enabled = false;
+                lblMainTitle.Text = "STORE";
+            }
         }
 
         private void dkpREG_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                InputManipulation.InputEmpLeave(dkpDateRegister, bntADD, "Date Register", Messages.TitleBranch);
+                InputManipulation.InputEmpLeave(dkpDateRegister, bntSAV, "Date Register", Messages.TitleBranch);
             }
         }
     }

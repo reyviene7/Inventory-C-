@@ -30,7 +30,6 @@ namespace Inventory.MainForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBranch));
             this.pnlRightOptions = new System.Windows.Forms.Panel();
@@ -81,6 +80,39 @@ namespace Inventory.MainForm
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pcLOG = new System.Windows.Forms.PictureBox();
             this.xtraBranch = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraStore = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtStoreEmail = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtStoreZIP = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtStoreCity = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtStoreWeb = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtStoreMob = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtStoreTel = new System.Windows.Forms.TextBox();
+            this.cmbStoreProv = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.dkpStoreReg = new System.Windows.Forms.DateTimePicker();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtStoreBRGY = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtStoreTIN = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtStoreName = new System.Windows.Forms.TextBox();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.gridCtrlStore = new DevExpress.XtraGrid.GridControl();
+            this.gridStore = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtStoreId = new System.Windows.Forms.TextBox();
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.bntHOM = new System.Windows.Forms.Button();
             this.bntDEL = new System.Windows.Forms.Button();
@@ -121,6 +153,16 @@ namespace Inventory.MainForm
             ((System.ComponentModel.ISupportInitialize)(this.pcLOG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraBranch)).BeginInit();
             this.xtraBranch.SuspendLayout();
+            this.xtraStore.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlStore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridStore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             this.pnlOptions.SuspendLayout();
             this.pnlOptionsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
@@ -695,7 +737,7 @@ namespace Inventory.MainForm
             this.gbCON.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gbCON.Margin = new System.Windows.Forms.Padding(4);
             this.gbCON.Name = "gbCON";
-            this.gbCON.Size = new System.Drawing.Size(1343, 428);
+            this.gbCON.Size = new System.Drawing.Size(1347, 428);
             this.gbCON.TabIndex = 172;
             this.gbCON.Text = "Branch List";
             // 
@@ -711,7 +753,7 @@ namespace Inventory.MainForm
             this.gCON.MainView = this.gridBranch;
             this.gCON.Margin = new System.Windows.Forms.Padding(4);
             this.gCON.Name = "gCON";
-            this.gCON.Size = new System.Drawing.Size(1337, 404);
+            this.gCON.Size = new System.Drawing.Size(1341, 404);
             this.gCON.TabIndex = 100;
             this.gCON.TabStop = false;
             this.gCON.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -921,14 +963,612 @@ namespace Inventory.MainForm
             this.xtraBranch.Size = new System.Drawing.Size(1349, 779);
             this.xtraBranch.TabIndex = 1;
             this.xtraBranch.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraDetails});
+            this.xtraDetails,
+            this.xtraStore});
+            this.xtraBranch.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraBranch_SelectedPageChanged);
+            // 
+            // xtraStore
+            // 
+            this.xtraStore.Controls.Add(this.groupControl1);
+            this.xtraStore.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraStore.ImageOptions.Image")));
+            this.xtraStore.Name = "xtraStore";
+            this.xtraStore.Size = new System.Drawing.Size(1347, 749);
+            this.xtraStore.Text = "Store Details";
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupControl1.Appearance.Options.UseBackColor = true;
+            this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl1.Controls.Add(this.label13);
+            this.groupControl1.Controls.Add(this.txtStoreEmail);
+            this.groupControl1.Controls.Add(this.label15);
+            this.groupControl1.Controls.Add(this.txtStoreZIP);
+            this.groupControl1.Controls.Add(this.label16);
+            this.groupControl1.Controls.Add(this.txtStoreCity);
+            this.groupControl1.Controls.Add(this.label18);
+            this.groupControl1.Controls.Add(this.txtStoreWeb);
+            this.groupControl1.Controls.Add(this.label19);
+            this.groupControl1.Controls.Add(this.txtStoreMob);
+            this.groupControl1.Controls.Add(this.label20);
+            this.groupControl1.Controls.Add(this.txtStoreTel);
+            this.groupControl1.Controls.Add(this.cmbStoreProv);
+            this.groupControl1.Controls.Add(this.label21);
+            this.groupControl1.Controls.Add(this.label22);
+            this.groupControl1.Controls.Add(this.dkpStoreReg);
+            this.groupControl1.Controls.Add(this.label23);
+            this.groupControl1.Controls.Add(this.txtStoreBRGY);
+            this.groupControl1.Controls.Add(this.label24);
+            this.groupControl1.Controls.Add(this.txtStoreTIN);
+            this.groupControl1.Controls.Add(this.label25);
+            this.groupControl1.Controls.Add(this.txtStoreName);
+            this.groupControl1.Controls.Add(this.groupControl2);
+            this.groupControl1.Controls.Add(this.label26);
+            this.groupControl1.Controls.Add(this.txtStoreId);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(1347, 749);
+            this.groupControl1.TabIndex = 174;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(567, 152);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(107, 23);
+            this.label13.TabIndex = 203;
+            this.label13.Text = "Store Email:";
+            // 
+            // txtStoreEmail
+            // 
+            this.txtStoreEmail.BackColor = System.Drawing.Color.DimGray;
+            this.txtStoreEmail.Enabled = false;
+            this.txtStoreEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStoreEmail.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStoreEmail.Location = new System.Drawing.Point(747, 144);
+            this.txtStoreEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoreEmail.Name = "txtStoreEmail";
+            this.txtStoreEmail.Size = new System.Drawing.Size(357, 34);
+            this.txtStoreEmail.TabIndex = 121;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(566, 38);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 23);
+            this.label15.TabIndex = 199;
+            this.label15.Text = "Zipcode:";
+            // 
+            // txtStoreZIP
+            // 
+            this.txtStoreZIP.BackColor = System.Drawing.Color.DimGray;
+            this.txtStoreZIP.Enabled = false;
+            this.txtStoreZIP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStoreZIP.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStoreZIP.Location = new System.Drawing.Point(747, 31);
+            this.txtStoreZIP.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoreZIP.Name = "txtStoreZIP";
+            this.txtStoreZIP.Size = new System.Drawing.Size(357, 34);
+            this.txtStoreZIP.TabIndex = 117;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(11, 188);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(47, 23);
+            this.label16.TabIndex = 198;
+            this.label16.Text = "City:";
+            // 
+            // txtStoreCity
+            // 
+            this.txtStoreCity.BackColor = System.Drawing.Color.DimGray;
+            this.txtStoreCity.Enabled = false;
+            this.txtStoreCity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStoreCity.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStoreCity.Location = new System.Drawing.Point(187, 181);
+            this.txtStoreCity.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoreCity.Name = "txtStoreCity";
+            this.txtStoreCity.Size = new System.Drawing.Size(357, 34);
+            this.txtStoreCity.TabIndex = 115;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(567, 188);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(100, 23);
+            this.label18.TabIndex = 191;
+            this.label18.Text = "Store Web:";
+            // 
+            // txtStoreWeb
+            // 
+            this.txtStoreWeb.BackColor = System.Drawing.Color.DimGray;
+            this.txtStoreWeb.Enabled = false;
+            this.txtStoreWeb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStoreWeb.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStoreWeb.Location = new System.Drawing.Point(747, 181);
+            this.txtStoreWeb.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoreWeb.Name = "txtStoreWeb";
+            this.txtStoreWeb.Size = new System.Drawing.Size(357, 34);
+            this.txtStoreWeb.TabIndex = 122;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(567, 115);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(119, 23);
+            this.label19.TabIndex = 189;
+            this.label19.Text = "Store Mobile:";
+            // 
+            // txtStoreMob
+            // 
+            this.txtStoreMob.BackColor = System.Drawing.Color.DimGray;
+            this.txtStoreMob.Enabled = false;
+            this.txtStoreMob.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStoreMob.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStoreMob.Location = new System.Drawing.Point(747, 106);
+            this.txtStoreMob.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoreMob.Name = "txtStoreMob";
+            this.txtStoreMob.Size = new System.Drawing.Size(357, 34);
+            this.txtStoreMob.TabIndex = 120;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(566, 75);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(144, 23);
+            this.label20.TabIndex = 187;
+            this.label20.Text = "Store Telephone:";
+            // 
+            // txtStoreTel
+            // 
+            this.txtStoreTel.BackColor = System.Drawing.Color.DimGray;
+            this.txtStoreTel.Enabled = false;
+            this.txtStoreTel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStoreTel.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStoreTel.Location = new System.Drawing.Point(747, 68);
+            this.txtStoreTel.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoreTel.Name = "txtStoreTel";
+            this.txtStoreTel.Size = new System.Drawing.Size(357, 34);
+            this.txtStoreTel.TabIndex = 119;
+            // 
+            // cmbStoreProv
+            // 
+            this.cmbStoreProv.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbStoreProv.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbStoreProv.BackColor = System.Drawing.Color.DimGray;
+            this.cmbStoreProv.Enabled = false;
+            this.cmbStoreProv.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStoreProv.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbStoreProv.FormattingEnabled = true;
+            this.cmbStoreProv.Items.AddRange(new object[] {
+            "Abra",
+            "Agusan del Norte",
+            "Agusan del Sur",
+            "Aklan",
+            "Albay",
+            "Antique",
+            "Apayao",
+            "Aurora",
+            "Basilan",
+            "Bataan",
+            "Batanes",
+            "Batangas",
+            "Benguet",
+            "Biliran",
+            "Biliran",
+            "Bukidnon",
+            "Bulacan",
+            "Cagayan",
+            "Camarines Norte",
+            "Camarines Sur",
+            "Camiguin",
+            "Capiz",
+            "Catanduanes",
+            "Cavite",
+            "Cebu",
+            "Compostela Valley",
+            "Cotabato",
+            "Davao del Norte",
+            "Davao del Sur",
+            "Davao Oriental",
+            "Eastern Samar",
+            "Guimaras",
+            "Ifugao",
+            "Ilocos Norte",
+            "Ilocos Sur",
+            "Iloilo",
+            "Isabela",
+            "Kalinga",
+            "La Union",
+            "Laguna",
+            "Lanao del Norte",
+            "1st District of Iligan City",
+            "Lanao del Sur",
+            "Leyte",
+            "Maguindanao",
+            "Marinduque",
+            "Masbate",
+            "Misamis Occidental",
+            "Misamis Oriental-Cagayan de Oro City",
+            "Mountain Province",
+            "Negros Occidental",
+            "Negros Oriental",
+            "Northern Samar",
+            "Nueva Ecija",
+            "Nueva Vizcaya",
+            "Occidental Mindoro",
+            "Oriental Mindoro",
+            "Palawan",
+            "Pampanga",
+            "Pangasinan",
+            "Quezon",
+            "Quirino",
+            "Rizal",
+            "Romblon",
+            "Samar",
+            "Sarangani",
+            "Siquijor",
+            "Sorsogon",
+            "South Cotabato",
+            "Southern Leyte",
+            "Sultan Kudarat",
+            "Sulu",
+            "Surigao del Norte",
+            "Surigao del Sur",
+            "Tarlac",
+            "Tawi-Tawi",
+            "Unknown",
+            "Zambales",
+            "Zamboanga del Norte",
+            "Zamboanga del Sur",
+            "Zamboanga Sibugay",
+            "Metro Manila"});
+            this.cmbStoreProv.Location = new System.Drawing.Point(187, 218);
+            this.cmbStoreProv.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbStoreProv.Name = "cmbStoreProv";
+            this.cmbStoreProv.Size = new System.Drawing.Size(357, 36);
+            this.cmbStoreProv.TabIndex = 116;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(11, 225);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(162, 23);
+            this.label21.TabIndex = 185;
+            this.label21.Text = "Provincial Address:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(567, 225);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(125, 23);
+            this.label22.TabIndex = 183;
+            this.label22.Text = "Date Register:";
+            // 
+            // dkpStoreReg
+            // 
+            this.dkpStoreReg.CustomFormat = "dd-MM-yyyy";
+            this.dkpStoreReg.Enabled = false;
+            this.dkpStoreReg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dkpStoreReg.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dkpStoreReg.Location = new System.Drawing.Point(747, 218);
+            this.dkpStoreReg.Margin = new System.Windows.Forms.Padding(4);
+            this.dkpStoreReg.Name = "dkpStoreReg";
+            this.dkpStoreReg.Size = new System.Drawing.Size(357, 34);
+            this.dkpStoreReg.TabIndex = 123;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(11, 151);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(90, 23);
+            this.label23.TabIndex = 178;
+            this.label23.Text = "Barangay:";
+            // 
+            // txtStoreBRGY
+            // 
+            this.txtStoreBRGY.BackColor = System.Drawing.Color.DimGray;
+            this.txtStoreBRGY.Enabled = false;
+            this.txtStoreBRGY.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStoreBRGY.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStoreBRGY.Location = new System.Drawing.Point(187, 144);
+            this.txtStoreBRGY.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoreBRGY.Name = "txtStoreBRGY";
+            this.txtStoreBRGY.Size = new System.Drawing.Size(357, 34);
+            this.txtStoreBRGY.TabIndex = 113;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.Location = new System.Drawing.Point(11, 114);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(91, 23);
+            this.label24.TabIndex = 176;
+            this.label24.Text = "Store TIN:";
+            // 
+            // txtStoreTIN
+            // 
+            this.txtStoreTIN.BackColor = System.Drawing.Color.DimGray;
+            this.txtStoreTIN.Enabled = false;
+            this.txtStoreTIN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStoreTIN.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStoreTIN.Location = new System.Drawing.Point(187, 107);
+            this.txtStoreTIN.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoreTIN.Name = "txtStoreTIN";
+            this.txtStoreTIN.Size = new System.Drawing.Size(357, 34);
+            this.txtStoreTIN.TabIndex = 112;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(11, 78);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(110, 23);
+            this.label25.TabIndex = 174;
+            this.label25.Text = "Store Name:";
+            // 
+            // txtStoreName
+            // 
+            this.txtStoreName.BackColor = System.Drawing.Color.DimGray;
+            this.txtStoreName.Enabled = false;
+            this.txtStoreName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStoreName.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStoreName.Location = new System.Drawing.Point(187, 70);
+            this.txtStoreName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoreName.Name = "txtStoreName";
+            this.txtStoreName.Size = new System.Drawing.Size(357, 34);
+            this.txtStoreName.TabIndex = 111;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.groupControl2.Appearance.Options.UseBackColor = true;
+            this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl2.Controls.Add(this.gridCtrlStore);
+            this.groupControl2.Controls.Add(this.textBox12);
+            this.groupControl2.Location = new System.Drawing.Point(-1, 317);
+            this.groupControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupControl2.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupControl2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(1347, 428);
+            this.groupControl2.TabIndex = 172;
+            this.groupControl2.Text = "Store Information";
+            // 
+            // gridCtrlStore
+            // 
+            this.gridCtrlStore.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridCtrlStore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridCtrlStore.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.gridCtrlStore.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridCtrlStore.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
+            this.gridCtrlStore.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.gridCtrlStore.Location = new System.Drawing.Point(3, 21);
+            this.gridCtrlStore.MainView = this.gridStore;
+            this.gridCtrlStore.Margin = new System.Windows.Forms.Padding(4);
+            this.gridCtrlStore.Name = "gridCtrlStore";
+            this.gridCtrlStore.Size = new System.Drawing.Size(1341, 404);
+            this.gridCtrlStore.TabIndex = 100;
+            this.gridCtrlStore.TabStop = false;
+            this.gridCtrlStore.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridStore,
+            this.gridView4,
+            this.gridView5,
+            this.gridView6});
+            // 
+            // gridStore
+            // 
+            this.gridStore.Appearance.Empty.BackColor = System.Drawing.Color.LightGray;
+            this.gridStore.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridStore.Appearance.Empty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridStore.Appearance.Empty.Options.UseBackColor = true;
+            this.gridStore.Appearance.Empty.Options.UseBorderColor = true;
+            this.gridStore.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridStore.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridStore.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridStore.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridStore.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridStore.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridStore.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridStore.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridStore.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridStore.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridStore.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridStore.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.gridStore.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridStore.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridStore.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridStore.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
+            this.gridStore.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridStore.Appearance.Row.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridStore.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridStore.Appearance.Row.Options.UseBackColor = true;
+            this.gridStore.Appearance.Row.Options.UseBorderColor = true;
+            this.gridStore.Appearance.Row.Options.UseFont = true;
+            this.gridStore.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridStore.Appearance.ViewCaption.Options.UseFont = true;
+            this.gridStore.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridStore.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridStore.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridStore.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridStore.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridStore.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridStore.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
+            this.gridStore.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridStore.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridStore.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridStore.AppearancePrint.Row.Options.UseFont = true;
+            this.gridStore.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridStore.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.gridStore.DetailHeight = 431;
+            this.gridStore.GridControl = this.gridCtrlStore;
+            this.gridStore.Name = "gridStore";
+            this.gridStore.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridStore.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridStore.OptionsBehavior.Editable = false;
+            this.gridStore.OptionsCustomization.AllowRowSizing = true;
+            this.gridStore.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridStore.OptionsSelection.MultiSelect = true;
+            this.gridStore.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridStore.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridStore_RowClick);
+            this.gridStore.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridStore_FocusedRowChanged);
+            this.gridStore.LostFocus += new System.EventHandler(this.gridStore_LostFocus);
+            // 
+            // gridView4
+            // 
+            this.gridView4.DetailHeight = 431;
+            this.gridView4.GridControl = this.gridCtrlStore;
+            this.gridView4.Name = "gridView4";
+            // 
+            // gridView5
+            // 
+            this.gridView5.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gridView5.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridView5.Appearance.FocusedRow.BorderColor = System.Drawing.Color.Red;
+            this.gridView5.Appearance.FocusedRow.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView5.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Green;
+            this.gridView5.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView5.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridView5.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridView5.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView5.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridView5.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView5.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView5.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView5.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView5.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridView5.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.gridView5.Appearance.Row.Options.UseFont = true;
+            this.gridView5.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridView5.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView5.AppearancePrint.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView5.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
+            this.gridView5.AppearancePrint.HeaderPanel.Options.UseFont = true;
+            this.gridView5.AppearancePrint.HeaderPanel.Options.UseForeColor = true;
+            this.gridView5.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridView5.AppearancePrint.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridView5.AppearancePrint.Row.Options.UseFont = true;
+            this.gridView5.AppearancePrint.Row.Options.UseForeColor = true;
+            this.gridView5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.gridView5.DetailHeight = 431;
+            this.gridView5.GridControl = this.gridCtrlStore;
+            this.gridView5.Name = "gridView5";
+            this.gridView5.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView5.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView5.OptionsBehavior.Editable = false;
+            this.gridView5.OptionsBehavior.ReadOnly = true;
+            this.gridView5.OptionsCustomization.AllowRowSizing = true;
+            this.gridView5.OptionsDetail.AllowExpandEmptyDetails = true;
+            this.gridView5.OptionsSelection.MultiSelect = true;
+            this.gridView5.OptionsView.ColumnAutoWidth = false;
+            // 
+            // gridView6
+            // 
+            this.gridView6.DetailHeight = 431;
+            this.gridView6.GridControl = this.gridCtrlStore;
+            this.gridView6.Name = "gridView6";
+            // 
+            // textBox12
+            // 
+            this.textBox12.BackColor = System.Drawing.Color.DimGray;
+            this.textBox12.Enabled = false;
+            this.textBox12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox12.Location = new System.Drawing.Point(-11, 26);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox12.Multiline = true;
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(12, 11);
+            this.textBox12.TabIndex = 99;
+            this.textBox12.Visible = false;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(11, 41);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(79, 23);
+            this.label26.TabIndex = 142;
+            this.label26.Text = "Store Id:";
+            // 
+            // txtStoreId
+            // 
+            this.txtStoreId.BackColor = System.Drawing.Color.DimGray;
+            this.txtStoreId.Enabled = false;
+            this.txtStoreId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStoreId.ForeColor = System.Drawing.Color.Maroon;
+            this.txtStoreId.Location = new System.Drawing.Point(187, 33);
+            this.txtStoreId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoreId.Name = "txtStoreId";
+            this.txtStoreId.Size = new System.Drawing.Size(357, 34);
+            this.txtStoreId.TabIndex = 110;
             // 
             // lblMainTitle
             // 
             this.lblMainTitle.AutoSize = true;
             this.lblMainTitle.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMainTitle.Location = new System.Drawing.Point(15, 135);
+            this.lblMainTitle.Location = new System.Drawing.Point(23, 135);
             this.lblMainTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainTitle.Name = "lblMainTitle";
             this.lblMainTitle.Size = new System.Drawing.Size(209, 60);
@@ -1213,6 +1853,7 @@ namespace Inventory.MainForm
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmBranch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1242,6 +1883,18 @@ namespace Inventory.MainForm
             ((System.ComponentModel.ISupportInitialize)(this.pcLOG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraBranch)).EndInit();
             this.xtraBranch.ResumeLayout(false);
+            this.xtraStore.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCtrlStore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridStore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             this.pnlOptions.ResumeLayout(false);
             this.pnlOptionsMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
@@ -1328,5 +1981,38 @@ namespace Inventory.MainForm
         private System.Windows.Forms.TextBox txtBranchEmail;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtBranchCountry;
+        private DevExpress.XtraTab.XtraTabPage xtraStore;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtStoreEmail;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtStoreZIP;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtStoreCity;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtStoreWeb;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtStoreMob;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtStoreTel;
+        private System.Windows.Forms.ComboBox cmbStoreProv;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.DateTimePicker dkpStoreReg;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtStoreBRGY;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtStoreTIN;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtStoreName;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraGrid.GridControl gridCtrlStore;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridStore;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtStoreId;
     }
 }
