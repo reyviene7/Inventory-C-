@@ -43,7 +43,7 @@ namespace Inventory.MainForm
         private readonly int _userType;
         private readonly string _username;
         private int _received;
-        private readonly Size _designResolution = new Size(1600, 850); // Your design size
+        private readonly Size _designResolution = new Size(1620, 850); // Your design size
         public FrmManagement management { protected get; set; }
         Image imgProcessing = Image.FromFile(ConstantUtils.imgProcessing);
         Image imgCancelled = Image.FromFile(ConstantUtils.imgCancelled);

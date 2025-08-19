@@ -967,8 +967,8 @@ namespace Inventory.MainForm
             tileItemElement45.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileItemElement45.Text = "Branch";
             tileItemElement46.AnchorAlignment = DevExpress.Utils.AnchorAlignment.Top;
-            tileItemElement46.Text = "";
-            tileItemElement46.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
+            tileItemElement46.Text = "Store";
+            tileItemElement46.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight;
             this.tileDEV.Elements.Add(tileItemElement45);
             this.tileDEV.Elements.Add(tileItemElement46);
             this.tileDEV.Id = 55;

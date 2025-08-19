@@ -354,7 +354,6 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindRefreshed();
             }
             if (_add == false && _edt && _del == false )
             {
@@ -363,7 +362,6 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindRefreshed();
             }
             if (_add == false && _edt == false && _del )
             {
@@ -372,7 +370,6 @@ namespace Inventory.MainForm
                 InputDisb();
                 InputDimG();
                 InputClea();
-                bindRefreshed();
             }
             _add = false;
             _edt = false;
