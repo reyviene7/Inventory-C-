@@ -4,6 +4,7 @@
     {
         public const string DefaultCode = @"00-00-00";
         public const string AllBranch = @"select * FROM view_branch;";
+        public const string AllStore = @"select * FROM view_store;";
         public const string AllWarehouse = @"SELECT * FROM view_warehouse";
         public const string AllSpecificBranch = @"SELECT  
                                                  BranchDetails FROM Branch";
