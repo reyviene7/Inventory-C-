@@ -425,6 +425,17 @@ namespace Inventory.MainForm
             gridControl.Enabled = true;
             cmbCategory.DataBindings.Clear();
             cmbSupplier.DataBindings.Clear();
+            int focusedRowHandle = gridProductList.FocusedRowHandle;
+            if (focusedRowHandle >= 0)
+            {
+                gridProduct_FocusedRowChanged(
+                    gridProductList,
+                    new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                        focusedRowHandle,
+                        focusedRowHandle
+                    )
+                );
+            }
         }
         private bool IsProduct(string productCode)
         {

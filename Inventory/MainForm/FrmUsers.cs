@@ -326,6 +326,17 @@ namespace Inventory.MainForm
             gridUserList.Enabled = true;
             bntBrowseImage.Enabled = true;
             gridUserList.DataBindings.Clear();
+            int focusedRowHandle = gridUsers.FocusedRowHandle;
+            if (focusedRowHandle >= 0)
+            {
+                gridUsers_FocusedRowChanged(
+                    gridUsers,
+                    new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                        focusedRowHandle,
+                        focusedRowHandle
+                    )
+                );
+            }
         }
         private void buttonCancel()
         {

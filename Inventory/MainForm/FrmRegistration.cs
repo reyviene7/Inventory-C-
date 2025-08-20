@@ -268,6 +268,17 @@ namespace Inventory.MainForm
             gridCtlProfile.Enabled = true;
             gridControlAddress.Enabled = true;
             gridControlContact.Enabled = true;
+            int focusedRowHandle = gridProfile.FocusedRowHandle;
+            if (focusedRowHandle >= 0)
+            {
+                gridEmployee_FocusedRowChanged(
+                    gridProfile,
+                    new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                        focusedRowHandle,
+                        focusedRowHandle
+                    )
+                );
+            }
         }
 
         private void buttonCancel()

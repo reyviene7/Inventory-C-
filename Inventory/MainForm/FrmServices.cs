@@ -100,11 +100,6 @@ namespace Inventory.MainForm
             return _service_image_list.FirstOrDefault(img => img.image_code == param);
         }
 
-        private string selectedCode(int seletedIndex)
-        {
-            return _products.FirstOrDefault(i => i.product_id == seletedIndex).product_code;
-        }
-
         private void gridInventory_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (gridServices.RowCount > 0)
@@ -554,6 +549,17 @@ namespace Inventory.MainForm
             InputWhit();
             InputDisb();
             gridController.Enabled = true;
+            int focusedRowHandle = gridServices.FocusedRowHandle;
+            if (focusedRowHandle >= 0)
+            {
+                gridInventory_FocusedRowChanged(
+                    gridServices,
+                    new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                        focusedRowHandle,
+                        focusedRowHandle
+                    )
+                );
+            }
         }
 
         private void bntHome_Click(object sender, EventArgs e)

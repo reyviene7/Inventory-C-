@@ -407,11 +407,34 @@ namespace Inventory.MainForm
             InputClearSup();
             gridControl.Enabled = true;
             gridCtrlSupplier.Enabled = true;
-            txtCategoryCode.DataBindings.Clear();
-            txtCategoryDetails.DataBindings.Clear();
-            txtSupplierCode.DataBindings.Clear();
-            txtSupplierName.DataBindings.Clear();
-            cmbGender.DataBindings.Clear();
+            if (_cat && _sup == false)
+            {
+                int focusedRowHandle = gridCategory.FocusedRowHandle;
+                if (focusedRowHandle >= 0)
+                {
+                    gridCategory_FocusedRowChanged(
+                        gridCategory,
+                        new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                            focusedRowHandle,
+                            focusedRowHandle
+                        )
+                    );
+                }
+            }
+            else if (_cat == false && _sup)
+            {
+                int focusedRowHandle = gridSupplier.FocusedRowHandle;
+                if (focusedRowHandle >= 0)
+                {
+                    GridSupplier_FocusedRowChanged(
+                        gridSupplier,
+                        new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                            focusedRowHandle,
+                            focusedRowHandle
+                        )
+                    );
+                }
+            }
         }
         private void ButSav()
         {
@@ -532,7 +555,7 @@ namespace Inventory.MainForm
             gridCtrlSupplier.Update();
             try
             {
-                var listCat = listSupplier.Select(x => new {
+                var listSup = listSupplier.Select(x => new {
                     ID = x.supplier_id,
                     CODE = x.supplier_code,
                     SUPPLIER = x.supplier_name,
@@ -546,7 +569,7 @@ namespace Inventory.MainForm
                 });
 
                 gridCtrlSupplier.DataBindings.Clear();
-                gridCtrlSupplier.DataSource = listCat;
+                gridCtrlSupplier.DataSource = listSup;
                 gridSupplier.Columns[0].Width = 40;
                 gridSupplier.Columns[1].Width = 90;
                 gridSupplier.Columns[2].Width = 250;

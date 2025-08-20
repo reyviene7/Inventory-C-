@@ -254,6 +254,17 @@ namespace Inventory.MainForm
             InputClear();
             gridControl.Enabled = true;
             gridControl.Update();
+            int focusedRowHandle = gridWarehouse.FocusedRowHandle;
+            if (focusedRowHandle >= 0)
+            {
+                gridWarehouse_FocusedRowChanged(
+                    gridWarehouse,
+                    new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                        focusedRowHandle,
+                        focusedRowHandle
+                    )
+                );
+            }
         }
         private void ButCan()
         {

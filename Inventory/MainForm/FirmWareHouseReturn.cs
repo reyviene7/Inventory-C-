@@ -176,6 +176,17 @@ namespace Inventory.MainForm
             cmbToBranch.Text = Constant.DefaultWareHouse;
             txtProductStatus.Text = Constant.DefaultReturn;
             gCON.Enabled = true;
+            int focusedRowHandle = gridDelivery.FocusedRowHandle;
+            if (focusedRowHandle >= 0)
+            {
+                gridDelivery_FocusedRowChanged(
+                    gridDelivery,
+                    new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                        focusedRowHandle,
+                        focusedRowHandle
+                    )
+                );
+            }
         }
         private void ButAdd()
         {

@@ -489,6 +489,8 @@ namespace Inventory.MainForm
             inputEnabled();
             inputWhite();
             inputClear();
+            GenerateCode();
+            GenerateNewWInventoryId();
             cmbUser.Text = _userName;
             cmbItemLocation.Text = Constant.DefaultSource;
             cmbProductName.Focus();
@@ -508,8 +510,6 @@ namespace Inventory.MainForm
                 cmbProductName.SelectedIndex = 0;
                 cmbProductName_SelectedIndexChanged(cmbProductName, EventArgs.Empty); // 👈 this line is key
             }
-            GenerateCode();
-            GenerateNewWInventoryId();
         }
         private void update()
         {
@@ -645,6 +645,17 @@ namespace Inventory.MainForm
             clearDelivery();
             clearSales();
             ClearReturn();
+            int focusedRowHandle = gridInventory.FocusedRowHandle;
+            if (focusedRowHandle >= 0)
+            {
+                gridInventory_FocusedRowChanged(
+                    gridInventory,
+                    new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                        focusedRowHandle,
+                        focusedRowHandle
+                    )
+                );
+            }
         }
 
         private void bntCancel_Click(object sender, EventArgs e)

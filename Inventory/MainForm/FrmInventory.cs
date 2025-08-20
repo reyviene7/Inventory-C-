@@ -152,6 +152,8 @@ namespace Inventory.MainForm
             InputEnab();
             InputWhit();
             InputClea();
+            txtInventoryId.Clear();
+            txtInventoryId.Text = "";
             GenerateInventoryId();
             CreateNewInventoryRecord();
             BindInventory();
@@ -277,6 +279,17 @@ namespace Inventory.MainForm
             gCON.Enabled = true;
             cmbProductName.DataBindings.Clear();
             cmbBranchName.DataBindings.Clear();
+            int focusedRowHandle = gridInventory.FocusedRowHandle;
+            if (focusedRowHandle >= 0)
+            {
+                gridInventory_FocusedRowChanged(
+                    gridInventory,
+                    new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                        focusedRowHandle,
+                        focusedRowHandle
+                    )
+                );
+            }
         }
         private void ButSav()
         {
@@ -688,11 +701,9 @@ namespace Inventory.MainForm
         }
         private void GenerateInventoryId()
         {
-            int lastInventoryId = listInventory.Any() ? listInventory.Max(x => x.inventory_id) : 0;
-            int newInventoryId = lastInventoryId + 1;
-
-            txtInventoryId.Text = newInventoryId.ToString();
-            txtInventoryId.Focus();
+            int lastId = FetchUtils.getLastInventoryId();
+            int newId = lastId + 1;
+            txtInventoryId.Text = newId.ToString();
         }
         /*
         private void GenerateInventoryCode()

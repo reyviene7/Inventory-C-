@@ -143,6 +143,17 @@ namespace Inventory.MainForm
             ButtonClr();
             InputWhit();
             InputClea();
+            int focusedRowHandle = gridInventory.FocusedRowHandle;
+            if (focusedRowHandle >= 0)
+            {
+                gridList_FocusedRowChanged(
+                    gridInventory,
+                    new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs(
+                        focusedRowHandle,
+                        focusedRowHandle
+                    )
+                );
+            }
         }
         private void bntCAN_Click(object sender, EventArgs e)
         {
