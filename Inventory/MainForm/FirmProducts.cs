@@ -1055,6 +1055,8 @@ namespace Inventory.MainForm
                 else
                 {
                     var location = ConstantUtils.defaultImgLocation + imgLocation;
+                    imgProduct.BackColor = Color.White;
+                    imgBigPreview.BackColor = Color.White;
                     if (imgProduct != null) imgProduct.ImageLocation = location;
                     if (imgBigPreview != null) imgBigPreview.ImageLocation = location;
                 }

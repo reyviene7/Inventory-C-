@@ -137,7 +137,8 @@ namespace Inventory.MainForm
                         else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
-
+                            imgProduct.BackColor = Color.White;
+                            imgServiceImages.BackColor = Color.White;
                             imgProduct.ImageLocation = location;
                             imgServiceImages.ImageLocation = location;
                         }

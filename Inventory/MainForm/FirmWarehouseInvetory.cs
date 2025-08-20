@@ -917,12 +917,15 @@ namespace Inventory.MainForm
 
                 var img = searchProductImg(barcode);
                 var imgLocation = img?.img_location;
-
-                if (imgInventory != null)
+                if (img == null || string.IsNullOrEmpty(imgLocation))
                 {
-                    imgInventory.ImageLocation = string.IsNullOrEmpty(imgLocation)
-                        ? ConstantUtils.defaultImgEmpty
-                        : ConstantUtils.defaultImgLocation + imgLocation;
+                    imgInventory.ImageLocation = ConstantUtils.defaultImgEmpty;
+                }
+                else
+                {
+                    var location = ConstantUtils.defaultImgLocation + imgLocation;
+                    imgInventory.BackColor = Color.White;
+                    imgInventory.ImageLocation = location;
                 }
             }
             catch (Exception ex)
@@ -969,6 +972,7 @@ namespace Inventory.MainForm
                         else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            imgDelivery.BackColor = Color.White;
                             imgDelivery.ImageLocation = location;
                         }
 
@@ -1009,6 +1013,7 @@ namespace Inventory.MainForm
                         else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            imgReturn.BackColor = Color.White;
                             imgReturn.ImageLocation = location;
                             imgReturn.Refresh();
                         }
@@ -1053,7 +1058,7 @@ namespace Inventory.MainForm
                         else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
-
+                            imgSales.BackColor = Color.White;
                             imgSales.ImageLocation = location;
                         }
                     }

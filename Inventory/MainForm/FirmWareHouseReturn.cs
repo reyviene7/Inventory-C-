@@ -634,6 +634,7 @@ namespace Inventory.MainForm
                         else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            imgPreview.BackColor = Color.White;
                             imgPreview.ImageLocation = location;
                         }
                     }

@@ -942,7 +942,7 @@ namespace Inventory.MainForm
                         else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
-
+                            imgPreview.BackColor = Color.White;
                             imgPreview.ImageLocation = location;
                         }
                     }
@@ -991,7 +991,7 @@ namespace Inventory.MainForm
                         else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
-
+                            ImageProduct.BackColor = Color.White;
                             ImageProduct.ImageLocation = location;
                         }
                     }
@@ -1028,6 +1028,7 @@ namespace Inventory.MainForm
                 else
                 {
                     var location = ConstantUtils.defaultImgLocation + imgLocation;
+                    ImageSales.BackColor = Color.White;
                     ImageSales.ImageLocation = location;
                 }
             }
@@ -1067,6 +1068,7 @@ namespace Inventory.MainForm
                         else
                         {
                             var location = ConstantUtils.defaultImgLocation + imgLocation;
+                            ImageSales.BackColor = Color.White;
 
                             ImageSales.ImageLocation = location;
                         }
