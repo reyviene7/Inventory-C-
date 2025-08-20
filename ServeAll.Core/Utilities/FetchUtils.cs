@@ -369,7 +369,7 @@ namespace ServeAll.Core.Utilities
                 try
                 {
                     var repository = new Repository<ViewInventory>(unWork);
-                    return repository.SelectAll(Query.getLastDeliveryIdQuery)
+                    return repository.SelectAll(Query.getLastInventoryIdQuery)
                         .Select(x => x.inventory_id).FirstOrDefault();
                 }
                 catch (Exception e)
@@ -485,7 +485,7 @@ namespace ServeAll.Core.Utilities
                 {
                     var repository = new Repository<WarehouseInventory>(unWork);
                     return repository.SelectAll(Query.getLastWarehouseInventoryIdQuery)
-                        .Select(x => x.warehouse_id).FirstOrDefault();
+                        .Select(x => x.inventory_id).FirstOrDefault();
                 }
                 catch (Exception e)
                 {

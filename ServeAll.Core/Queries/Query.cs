@@ -325,7 +325,7 @@
         public const string getLastContactIdQuery = "SELECT COUNT(contact_id) as contact_id FROM contact";
         public const string getLastCompanyIdQuery = "SELECT COUNT(company_id) as company_id FROM company";
         public const string getLastDeliveryIdQuery = "SELECT COUNT(delivery_id) as delivery_id FROM view_warehouse_delivery";
-        public const string getLastInventoryIdQuery = "SELECT COUNT(inventory_id) as inventory_id FROM view_inventory";
+        public const string getLastInventoryIdQuery = "SELECT MAX(inventory_id) as inventory_id FROM view_inventory";
         public const string getLastAddressIdQuery = "SELECT COUNT(address_id) as address_id FROM address";
         public const string getLastServiceIdQuery = "SELECT COUNT(service_id) as service_id FROM services";
         public const string getLastServiceImgQuery = "SELECT COUNT(image_id) as image_id FROM service_image";
@@ -338,7 +338,7 @@
         public const string getLastReceiptQuery = "SELECT MAX(receipt_number) AS receipt_number FROM warehouse_delivery";
         public const string getLastCategoryIdQuery = "SELECT COUNT(category_id) as category_id FROM category";
         public const string getLastSupplierIdQuery = "SELECT COUNT(supplier_id) as supplier_id FROM supplier";
-        public const string getLastWarehouseInventoryIdQuery = "SELECT * FROM warehouse_inventory ORDER BY inventory_id DESC LIMIT 1;";
+        public const string getLastWarehouseInventoryIdQuery = "SELECT MAX(inventory_id) AS inventory_id FROM warehouse_inventory";
         public const string getLastImageIdQuery = "SELECT COUNT(image_id) as image_id FROM product_image";
         public const string getLastWarehousId = "SELECT COUNT(warehouse_id) as warehouse_id FROM warehouse";
         public const string getLastBranchCodeQuery = "SELECT MAX(branch_code) AS branch_code FROM branch";
