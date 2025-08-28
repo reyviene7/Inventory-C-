@@ -554,9 +554,9 @@ namespace Inventory.MainForm
         {
             ButtonDel();
             WhtInput();
-            EnbInput();
+            DisInput();
             WhtInputStor();
-            EnbInputStor();
+            DisInputStor();
             _add = false;
             _edt = false;
             _del = true;

@@ -192,6 +192,7 @@
         public const string AllUserImage = "SELECT * FROM user_image";
         public const string AllViewUserImage = "SELECT * FROM view_user_image";
         public const string AllStaff = @"SELECT * FROM view_request_staff ORDER BY staff ASC";
+        public const string AllProfileEnt = @"SELECT * FROM view_profile_entities ORDER BY name ASC";
         public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
         public const string AllPaymentMethod = @"SELECT method_name FROM payment_method";
         public const string AllExpenseType = @"SELECT type_name FROM expense_type";
@@ -327,7 +328,7 @@
         public const string getLastDeliveryIdQuery = "SELECT COUNT(delivery_id) as delivery_id FROM view_warehouse_delivery";
         public const string getLastInventoryIdQuery = "SELECT MAX(inventory_id) as inventory_id FROM view_inventory";
         public const string getLastAddressIdQuery = "SELECT COUNT(address_id) as address_id FROM address";
-        public const string getLastServiceIdQuery = "SELECT COUNT(service_id) as service_id FROM services";
+        public const string getLastServiceIdQuery = "SELECT MAX(service_id) as service_id FROM services";
         public const string getLastServiceImgQuery = "SELECT COUNT(image_id) as image_id FROM service_image";
         public const string getLastInventoryQuery = "SELECT MAX(inventory_id) as inventory_id FROM inventory";
         public const string getLastReturnQuery = "SELECT MAX(return_id) as return_id FROM return_warehouse";

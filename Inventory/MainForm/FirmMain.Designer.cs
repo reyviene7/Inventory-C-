@@ -871,7 +871,7 @@ namespace Inventory.MainForm
             tileItemElement38.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
             tileItemElement39.Text = "Product Details";
             tileItemElement39.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopLeft;
-            tileItemElement40.Text = "Name";
+            tileItemElement40.Text = "";
             tileItemElement40.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
             this.tilePRO.Elements.Add(tileItemElement38);
             this.tilePRO.Elements.Add(tileItemElement39);

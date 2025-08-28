@@ -221,7 +221,7 @@ namespace Inventory.MainForm
         private void ButDel()
         {
             ButtonDel();
-            inputEnableDelivery();
+            InputDisbDel();
             InputWhit();
             _add = false;
             _edt = false;
