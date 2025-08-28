@@ -388,7 +388,7 @@ namespace Inventory.MainForm
             this.bntAdd.Margin = new System.Windows.Forms.Padding(4);
             this.bntAdd.Name = "bntAdd";
             this.bntAdd.Size = new System.Drawing.Size(121, 128);
-            this.bntAdd.TabIndex = 129;
+            this.bntAdd.TabIndex = 130;
             this.bntAdd.Text = "ADD";
             this.bntAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntAdd.UseVisualStyleBackColor = false;
@@ -621,6 +621,7 @@ namespace Inventory.MainForm
             this.cmbOperator.Name = "cmbOperator";
             this.cmbOperator.Size = new System.Drawing.Size(379, 36);
             this.cmbOperator.TabIndex = 16;
+            this.cmbOperator.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbOperator_KeyDown);
             // 
             // imgProduct
             // 
@@ -698,6 +699,7 @@ namespace Inventory.MainForm
             this.txtServiceCommision.Name = "txtServiceCommision";
             this.txtServiceCommision.Size = new System.Drawing.Size(379, 34);
             this.txtServiceCommision.TabIndex = 8;
+            this.txtServiceCommision.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtServiceCommision_KeyDown);
             // 
             // label3
             // 
@@ -736,6 +738,7 @@ namespace Inventory.MainForm
             this.txtServiceCharges.Name = "txtServiceCharges";
             this.txtServiceCharges.Size = new System.Drawing.Size(379, 34);
             this.txtServiceCharges.TabIndex = 5;
+            this.txtServiceCharges.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtServiceCharges_KeyDown);
             // 
             // txtServiceDescription
             // 
@@ -748,6 +751,7 @@ namespace Inventory.MainForm
             this.txtServiceDescription.Name = "txtServiceDescription";
             this.txtServiceDescription.Size = new System.Drawing.Size(379, 34);
             this.txtServiceDescription.TabIndex = 4;
+            this.txtServiceDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtServiceDescription_KeyDown);
             // 
             // label2
             // 
@@ -1184,7 +1188,7 @@ namespace Inventory.MainForm
             this.bntSave.Margin = new System.Windows.Forms.Padding(4);
             this.bntSave.Name = "bntSave";
             this.bntSave.Size = new System.Drawing.Size(244, 128);
-            this.bntSave.TabIndex = 131;
+            this.bntSave.TabIndex = 129;
             this.bntSave.Text = "SAVE";
             this.bntSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSave.UseVisualStyleBackColor = false;
@@ -1201,7 +1205,7 @@ namespace Inventory.MainForm
             this.bntUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.bntUpdate.Name = "bntUpdate";
             this.bntUpdate.Size = new System.Drawing.Size(121, 128);
-            this.bntUpdate.TabIndex = 130;
+            this.bntUpdate.TabIndex = 131;
             this.bntUpdate.Text = "EDIT";
             this.bntUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntUpdate.UseVisualStyleBackColor = false;
