@@ -456,6 +456,17 @@ namespace Inventory.MainForm
 
             if (_add && _edt == false && _del == false)
             {
+                if (string.IsNullOrEmpty(productCode))
+                {
+                    DataInsert();
+                    ButtonSav();
+                    InputDisb();
+                    InputDimG();
+                    InputClea();
+                    bindRefreshed();
+                    gridControl.Enabled = true;
+                    return;
+                }
                 if (IsProduct(productCode))
                 {
                     PopupNotification.PopUpMessages(0, "Product Barcode: " + productCode + " already exists in the Product.", Messages.TitleFailedInsert);
@@ -467,7 +478,6 @@ namespace Inventory.MainForm
                 InputDimG();
                 InputClea();
                 bindRefreshed();
-
             }
             if (_add == false && _edt && _del == false)
             {
@@ -619,19 +629,8 @@ namespace Inventory.MainForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                var barcode = txtProductBarcode.Text.Trim(' ');
-                var que = VerifyCode(barcode);
-                if (que == 0)
-                {
-                    InputManipulation.InputBoxLeave(txtProductBarcode, txtProductName, "Barcode",
-                        Messages.TitleProducts);
-                    txtProductBarcode.Enabled = true;
-                }
-                else
-                {
-                    PopupNotification.PopUpMessages(0, "Product Barcode already exist!", Messages.InventorySystem);
-                    txtProductBarcode.Focus();
-                }
+                e.SuppressKeyPress = true; // Prevents ding sound
+                txtProductName.Focus();
             }
         }
 
@@ -1012,6 +1011,7 @@ namespace Inventory.MainForm
 
                 productId = int.Parse(id);
                 var product = searchProductId(productId);
+                var barcode = product.product_code;
 
                 if (product == null)
                 {
@@ -1025,9 +1025,9 @@ namespace Inventory.MainForm
                     return;
                 }
 
-                txtProductBar.Text = product.product_code ?? "";
+                txtProductBar.Text = barcode ?? "";
                 txtImageTitle.Text = product.product_name ?? "";
-                txtProductBarcode.Text = product.product_code ?? "";
+                txtProductBarcode.Text = barcode ?? "";
                 txtProductName.Text = product.product_name ?? "";
                 cmbCategory.Text = product.category_details ?? "";
                 cmbSupplier.Text = product.supplier_name ?? "";
@@ -1044,21 +1044,43 @@ namespace Inventory.MainForm
                 cmbProductStatus.Text = product.status_details ?? "";
                 dkpDateRegister.Value = product.date_register;
 
-                var img = searchProductImg(product.product_code);
+                var img = searchProductImg(barcode);
                 var imgLocation = img?.img_location;
 
-                if (string.IsNullOrEmpty(imgLocation))
+                try
                 {
-                    if (imgProduct != null) imgProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
-                    if (imgBigPreview != null) imgBigPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    if (img == null || string.IsNullOrEmpty(imgLocation))
+                    {
+                        // No image record or empty path → show default
+                        imgProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        imgBigPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    }
+                    else
+                    {
+                        var location = Path.Combine(ConstantUtils.defaultImgLocation, imgLocation);
+
+                        if (File.Exists(location)) // ✅ check if file actually exists
+                        {
+                            imgProduct.BackColor = Color.White;
+                            imgBigPreview.BackColor = Color.White;
+
+                            // Safely load image
+                            imgProduct.Image = Image.FromFile(location);
+                            imgBigPreview.Image = Image.FromFile(location);
+                        }
+                        else
+                        {
+                            // File path invalid → fallback to default
+                            imgProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
+                            imgBigPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
+                        }
+                    }
                 }
-                else
+                catch
                 {
-                    var location = ConstantUtils.defaultImgLocation + imgLocation;
-                    imgProduct.BackColor = Color.White;
-                    imgBigPreview.BackColor = Color.White;
-                    if (imgProduct != null) imgProduct.ImageLocation = location;
-                    if (imgBigPreview != null) imgBigPreview.ImageLocation = location;
+                    // In case image is corrupted or unreadable
+                    imgProduct.ImageLocation = ConstantUtils.defaultImgEmpty;
+                    imgBigPreview.ImageLocation = ConstantUtils.defaultImgEmpty;
                 }
             }
             catch (Exception ex)
@@ -1650,6 +1672,11 @@ namespace Inventory.MainForm
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     importedTable = LoadCsvToDataTable(ofd.FileName);
+                    if (importedTable == null || importedTable.Rows.Count == 0)
+                    {
+                        PopupNotification.PopUpMessages(0, "No valid data found in file.", "Import Failed");
+                        return;
+                    }
                     gridCtrlImport.DataSource = importedTable; // Show in grid
                     string fileNameAndExtension = ofd.FileName;
                     txtImportFile.Text = fileNameAndExtension;
@@ -1659,30 +1686,69 @@ namespace Inventory.MainForm
         private DataTable LoadCsvToDataTable(string filePath)
         {
             DataTable dt = new DataTable();
-            using (var reader = new StreamReader(filePath))
-            {
-                bool isFirstRow = true;
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
 
-                    if (isFirstRow)
+            try
+            {
+                using (var reader = new StreamReader(filePath))
+                {
+                    bool isFirstRow = true;
+                    string[] headers = null;
+
+                    while (!reader.EndOfStream)
                     {
-                        foreach (var header in values)
+                        var line = reader.ReadLine();
+                        if (string.IsNullOrWhiteSpace(line)) continue; // skip empty lines
+
+                        var values = line.Split(',');
+
+                        if (isFirstRow)
                         {
-                            dt.Columns.Add(header.Trim());
+                            headers = values.Select(h => h.Trim()).ToArray();
+
+                            // ✅ Validate required headers exist
+                            string[] requiredHeaders = {
+                                "product_code","product_name","category_id","supplier_id",
+                                "stock_code","brand","model","made","serial_number",
+                                "tare_weight","net_weight","trade_price","retail_price",
+                                "wholesale","status_id","date_register"
+                            };
+
+                            foreach (var req in requiredHeaders)
+                            {
+                                if (!headers.Contains(req))
+                                {
+                                    PopupNotification.PopUpMessages(0, $"Missing required column: {req}", "Import Failed");
+                                    return null; // ❌ return nothing
+                                }
+                            }
+
+                            foreach (var header in headers)
+                                dt.Columns.Add(header);
+
+                            isFirstRow = false;
                         }
-                        isFirstRow = false;
-                    }
-                    else
-                    {
-                        dt.Rows.Add(values);
+                        else
+                        {
+                            if (values.Length != dt.Columns.Count)
+                            {
+                                PopupNotification.PopUpMessages(0,
+                                    "Invalid row format. Row does not match header column count.",
+                                    "Import Failed");
+                                return null; // ❌ return nothing
+                            }
+
+                            dt.Rows.Add(values);
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                PopupNotification.PopUpMessages(0, "Error reading CSV: " + ex.Message, "Import Failed");
+                return null;
+            }
+
             return dt;
         }
-
     }
 }
