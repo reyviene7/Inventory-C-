@@ -530,6 +530,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ViewProfileEnt> getProfileEntity()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewProfileEnt>(unWork);
+                    return repository.SelectAll(Query.AllProfileEnt).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewProfileEnt>();
+                }
+            }
+        }
 
         public static IEnumerable<Location> getLocationWarehouseList()
         {

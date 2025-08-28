@@ -24,6 +24,7 @@ namespace Inventory.MainForm
         private IEnumerable<ServeAll.Entities.ViewReportProductList> _products;
         private IEnumerable<ViewRequestCategory> _category;
         private IEnumerable<ViewRequestStaff> _staff;
+        private IEnumerable<ViewProfileEnt> _profile;
         private IEnumerable<ServiceStatus> _service_statuses;
         private IEnumerable<ViewServices> _services_list;
         private IEnumerable<ViewServiceImages> _service_image_list;
@@ -91,6 +92,7 @@ namespace Inventory.MainForm
             _products = EnumerableUtils.getProductWarehouseList();
             _category = EnumerableUtils.getRequestCategoryList();
             _staff = EnumerableUtils.getStaffList();
+            _profile = EnumerableUtils.getProfileEntity();
             _service_statuses = EnumerableUtils.getServiceStatusList();
             _warehouse = EnumerableUtils.getWarehouse();
             bindServices();
@@ -163,7 +165,7 @@ namespace Inventory.MainForm
             var staff = cmbStaff.Text.Trim(' ');
             var operators = cmbOperator.Text.Trim(' ');
             var statusId = FetchUtils.getServiceStatusId(cmbServiceStatus.Text.Trim(' '));
-            var staffId = FetchUtils.getStaffId(staff);
+            var staffId = FetchUtils.getProfileId(staff);
             if (staffId > 0 || statusId > 0)
             {
                 var categoryId = FetchUtils.getCategoryId(category);
@@ -177,7 +179,7 @@ namespace Inventory.MainForm
                     category_id = categoryId,
                     service_commission = decimal.Parse(txtServiceCommision.Text.Trim(' ')),
                     user_id = operatorId,
-                    employee_id = staffId,
+                    profile_id = staffId,
                     status_id = statusId,
                     service_date = dpkServiceDate.Value.Date,
                     created_date = dpkCreatedDate.Value.Date,
@@ -219,7 +221,7 @@ namespace Inventory.MainForm
                     entity.category_id = FetchUtils.getCategoryId(cmbServiceCategory.Text.Trim(' '));
                     entity.service_commission = decimal.Parse(txtServiceCommision.Text);
                     entity.user_id = FetchUtils.getUserId(cmbOperator.Text);
-                    entity.employee_id = FetchUtils.getStaffId(cmbStaff.Text);
+                    entity.profile_id = FetchUtils.getProfileId(cmbStaff.Text);
                     entity.status_id = FetchUtils.getServiceStatusId(cmbServiceStatus.Text);
                     entity.service_date = dpkServiceDate.Value.Date;
                     entity.created_date = dpkCreatedDate.Value.Date;
@@ -333,28 +335,33 @@ namespace Inventory.MainForm
             cmbServiceStatus.BackColor = Color.DimGray;
         }
 
-
         private void DataDelete()
         {
+            var ctrlId = Convert.ToInt32(txtServiceId.Text);
             using (var session = new DalSession())
             {
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
                 try
                 {
-                    var proId = Convert.ToInt32(txtServiceId.Text);
-                    var repository = new Repository<WareHouse>(unWork);
-                    var que = repository.Id(proId);
-                    var result = repository.Delete(que);
-                    if (result)
-                    {
-                        unWork.Commit();
-                    }
+                    var repository = new Repository<ServeAll.Core.Entities.Services>(unWork);
+                    var query = repository.Id(ctrlId);
+                    var result = repository.Delete(query);
+                    if (!result) return;
+                    PopupNotification.PopUpMessages(1, Messages.TableServices + Messages.CodeName +
+                                                    txtServiceName.Text.Trim(' ')
+                                                    + " " + Messages.SuccessDelete,
+                                                    Messages.TitleSuccessDelete);
+
+                    unWork.Commit();
+                    splashScreen.CloseWaitForm();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
+
                     unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedDelete);
+                    splashScreen.CloseWaitForm();
+                    PopupNotification.PopUpMessages(0, Messages.ErrorDelete + Messages.TableServices + Messages.ErrorOccurred, Messages.TitleFialedDelete);
 
                 }
             }
@@ -387,7 +394,7 @@ namespace Inventory.MainForm
             cmbServiceStatus.DataBindings.Clear();
             cmbStaff.DataBindings.Clear();
             cmbServiceCategory.DataSource = _category.Select(p => p.category_details).ToList();
-            cmbStaff.DataSource = _staff.Select(p => p.staff).ToList();
+            cmbStaff.DataSource = _profile.Select(p => p.name).ToList();
             cmbServiceStatus.DataSource = _service_statuses.Select(p => p.status_name).ToList();
             txtServiceName.Focus();
             generateLastServiceCode();
@@ -485,7 +492,7 @@ namespace Inventory.MainForm
         private void ButDel()
         {
             ButtonDel();
-            InputEnab();
+            InputDisb();
             InputWhit();
             _add = false;
             _edt = false;
@@ -593,12 +600,17 @@ namespace Inventory.MainForm
         {
             ButCan();
         }
-
-
-
         private void bntDelete_Click(object sender, EventArgs e)
         {
-            ButDel();
+            InputWhit();
+            var que =
+                PopupNotification.PopUpMessageQuestion(
+                    "Are you sure you want to Delete Service Name: " + txtServiceName.Text.Trim(' ') + "?", "Service Details");
+            if (que)
+            {
+                ButDel();
+            }
+            else { ButCan(); }
         }
 
         private void FirmWarehouseInvetory_MouseMove(object sender, MouseEventArgs e)
@@ -611,12 +623,93 @@ namespace Inventory.MainForm
             PanelInterface.RightOptionTick(this, pnlRightOptions);
         }
 
+        private void txtServiceName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                InputManipulation.InputBoxLeave(txtServiceName, txtServiceDescription, "Service Name",
+                Messages.TitleServices);
+            }
+        }
+
+        private void txtServiceDescription_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                InputManipulation.InputBoxLeave(txtServiceDescription, txtServiceCharges, "Service Description",
+                Messages.TitleServices);
+            }
+        }
+
+        private void txtServiceCharges_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtServiceCharges.Text.Length;
+                if (len > 0)
+                {
+                    txtServiceCharges.BackColor = Color.White;
+                    InputManipulation.InputBoxLeave(txtServiceCharges, cmbServiceCategory, "Service Charges",
+                    Messages.TitleServices);
+                }
+                else
+                {
+                    txtServiceCharges.Text = @"0";
+                    txtServiceCharges.BackColor = Color.Yellow;
+                    txtServiceCharges.Focus();
+                }
+                if (txtServiceCharges.Text == "0" && e.KeyCode == Keys.Enter)
+                {
+                    InputManipulation.InputBoxLeave(txtServiceCharges, cmbServiceCategory, "Service Charges",
+                        Messages.TitleProducts);
+                }
+            }
+        }
+
+        private void cmbOperator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                InputManipulation.InputBoxLeave(cmbOperator, txtServiceCommision, "Service Operator",
+                Messages.TitleServices);
+            }
+        }
+
+        private void txtServiceCommision_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                var len = txtServiceCommision.Text.Length;
+                if (len > 0)
+                {
+                    txtServiceCommision.BackColor = Color.White;
+                    InputManipulation.InputBoxLeave(txtServiceCommision, cmbStaff, "Service Commission",
+                    Messages.TitleServices);
+                }
+                else
+                {
+                    txtServiceCommision.Text = @"0";
+                    txtServiceCommision.BackColor = Color.Yellow;
+                    txtServiceCommision.Focus();
+                }
+                if (txtServiceCommision.Text == "0" && e.KeyCode == Keys.Enter)
+                {
+                    InputManipulation.InputBoxLeave(txtServiceCommision, cmbStaff, "Service Commission",
+                        Messages.TitleProducts);
+                }
+            }
+        }
         private void cmbServiceStatus_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
                 cmbServiceStatus.DataBindings.Clear();
                 cmbServiceStatus.DataSource = _service_statuses.Select(p => p.status_name).ToList();
+            }
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                InputManipulation.InputBoxLeave(cmbServiceStatus, bntSave, "Service Status",
+                Messages.TitleServices);
             }
         }
         private void cmbServiceCategory_KeyDown(object sender, KeyEventArgs e)
@@ -626,6 +719,11 @@ namespace Inventory.MainForm
                 cmbServiceCategory.DataBindings.Clear();
                 cmbServiceCategory.DataSource = _category.Select(p => p.category_details).ToList();
             }
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                InputManipulation.InputBoxLeave(cmbServiceCategory, cmbOperator, "Service Category",
+                Messages.TitleServices);
+            }
         }
 
         private void cmbStaff_KeyDown(object sender, KeyEventArgs e)
@@ -633,7 +731,12 @@ namespace Inventory.MainForm
             if (e.KeyCode == Keys.F1)
             {
                 cmbStaff.DataBindings.Clear();
-                cmbStaff.DataSource = _staff.Select(p => p.staff).ToList();
+                cmbStaff.DataSource = _profile.Select(p => p.name).ToList();
+            }
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                InputManipulation.InputBoxLeave(cmbStaff, cmbServiceStatus, "Service Staff",
+                Messages.TitleServices);
             }
         }
 
@@ -735,13 +838,7 @@ namespace Inventory.MainForm
         {
             PanelInterface.OptionTick(this, pnlOptions);
         }
-        private void txtServiceName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
-            {
-                txtServiceDescription.Focus();
-            }
-        }
+        
         private int saveServiceImage()
         {
             var returnValue = 0;

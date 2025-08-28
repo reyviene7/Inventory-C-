@@ -545,7 +545,7 @@ namespace Inventory.MainForm
         private void delete()
         {
             buttonDelete();
-            inputEnabled();
+            inputDisabled();
             inputWhite();
             _add = false;
             _edt = false;

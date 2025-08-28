@@ -239,7 +239,7 @@ namespace Inventory.MainForm
         private void ButDel()
         {
             ButtonDel();
-            InputEnable();
+            InputDisable();
             InputWhite();
             _add = false;
             _edt = false;
