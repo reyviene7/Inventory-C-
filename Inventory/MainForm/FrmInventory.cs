@@ -260,7 +260,7 @@ namespace Inventory.MainForm
         private void ButDel()
         {
             ButtonDel();
-            InputEnab();
+            InputDisb();
             InputWhit();
             _add = false;
             _edt = false;

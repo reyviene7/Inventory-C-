@@ -225,7 +225,7 @@ namespace Inventory.MainForm
             _del = true;
             ButtonDel();
             InputWhitRet();
-            InputEnabRet();
+            InputDisbRet();
             gDEL.Enabled = false;
         }
         private void ButCan()

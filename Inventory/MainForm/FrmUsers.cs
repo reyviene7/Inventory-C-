@@ -308,7 +308,7 @@ namespace Inventory.MainForm
         private void buttonDelete()
         {
             ButtonDel();
-            InputEnab();
+            InputDisb();
             InputWhit();
             _add = false;
             _edt = false;
