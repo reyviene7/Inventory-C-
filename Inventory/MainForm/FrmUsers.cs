@@ -349,6 +349,7 @@ namespace Inventory.MainForm
             gridUserList.Enabled = true;
             cmbName.DataBindings.Clear();
             bntBrowseImage.Enabled = true;
+            _users = EnumerableUtils.getUserNameList();
         }
         private void buttonSave()
         {
@@ -468,8 +469,8 @@ namespace Inventory.MainForm
                 TITLE = i.title,
                 TYPE = i.img_type,
                 LOCATION = i.img_location,
-                CREATED = i.created_on,
-                UPDATED = i.updated_on
+                CREATED = i.created_on.ToString("MM/dd/yyyy"),
+                UPDATED = i.updated_on.ToString("MM/dd/yyyy")
             }).ToList();
         }
 
@@ -620,6 +621,7 @@ namespace Inventory.MainForm
         private void bntCancel_Click(object sender, EventArgs e)
         {
             buttonCancel();
+            gridUsers.FocusedRowHandle = gridUsers.FocusedRowHandle;
         }
 
         private void bntDelete_Click(object sender, EventArgs e)

@@ -267,8 +267,8 @@ namespace Inventory.MainForm
                         LastCost = "P" + p.last_cost_per_unit,
                         Quantity = p.delivery_qty.ToString(),
                         Status = FetchUtils.getStatusName(p.status_id),
-                        Date = p.delivery_date,
-                        Update = p.update_on,
+                        Date = p.delivery_date.ToString("MM/dd/yyyy"),
+                        Update = p.update_on.ToString("MM/dd/yyyy"),
                         Delivery = FetchUtils.getDeliveryStatusName(p.delivery_status_id)
                     };
                 })
@@ -291,8 +291,8 @@ namespace Inventory.MainForm
                     COST = p.cost_per_unit,
                     PRICE = p.last_cost_per_unit,
                     TOTAL = p.total_value.ToString("N2"),
-                    EXPIRE = p.expiration_date,
-                    DATE = p.created_at,
+                    EXPIRE = p.expiration_date.ToString("MM/dd/yyyy"),
+                    DATE = p.created_at.ToString("MM/dd/yyyy"),
                     STATUS = p.status_details
                 });
             gridCtrlPending.DataSource = list;
@@ -310,15 +310,15 @@ namespace Inventory.MainForm
                 ReQty = p.reorder_level,
                 Location = p.location_code,
                 Supplier = p.supplier_name,
-                LStocked = p.last_stocked_date,
-                LOrder = p.last_ordered_date,
-                Expire = p.expiration_date,
+                LStocked = p.last_stocked_date.ToString("MM/dd/yyyy"),
+                LOrder = p.last_ordered_date.ToString("MM/dd/yyyy"),
+                Expire = p.expiration_date.ToString("MM/dd/yyyy"),
                 Price = p.cost_per_unit,
                 LastCost = p.last_cost_per_unit,
                 Total = p.total_value,
                 Status = p.status_details,
-                Created = p.created_at,
-                Updated = p.updated_at
+                Created = p.created_at.ToString("MM/dd/yyyy"),
+                Updated = p.updated_at.ToString("MM/dd/yyyy")
             }).ToList();
             gridCtrlWarehouse.DataSource = list;
             gridCtrlWarehouse.Update();
@@ -350,7 +350,7 @@ namespace Inventory.MainForm
                     NetSales = x.net,
                     Customer = x.customer,
                     Branch = x.branch,
-                    Date = x.date,
+                    Date = x.date.ToString("MM/dd/yyyy"),
                 }).ToList();
                 gridCtrlSales.DataSource = list;
                 gridCtrlSales.Update();
@@ -391,7 +391,7 @@ namespace Inventory.MainForm
                 Destination = p.destination,
                 Status = p.status,
                 Remarks = p.remarks,
-                UpdateOn = p.update_on
+                UpdateOn = p.update_on.ToString("MM/dd/yyyy")
             }).ToList();
             gridCtrlReturn.DataSource = list;
             gridCtrlReturn.Update();
@@ -426,7 +426,7 @@ namespace Inventory.MainForm
                 CreditBalance = p.credit_balance,
                 CreditLimit = p.credit_limit,
                 Receipt = p.receipt,
-                Date = p.credit_date
+                Date = p.credit_date.ToString("MM/dd/yyyy")
             }).ToList();
             gridCtrlCredits.DataSource = list;
             gridCtrlCredits.Update();
@@ -446,7 +446,7 @@ namespace Inventory.MainForm
                     Amount = x.amount,
                     RelatedEntity = x.related_entity,
                     EntityId = x.entity_id,
-                    Date = x.expense_date,
+                    Date = x.expense_date.ToString("MM/dd/yyyy"),
                 }).ToList();
                 gridCtrlDaily.DataSource = list;
                 gridCtrlDaily.Update();
@@ -483,7 +483,7 @@ namespace Inventory.MainForm
                     Wholesale = x.wholesale,
                     LastPrice = x.last_price_cost,
                     Status = x.status,
-                    Date = x.inventory_date
+                    Date = x.inventory_date.ToString("MM/dd/yyyy")
                 }).ToList();
                 gridCtrlQuantity.DataSource = list;
                 gridCtrlQuantity.Update();
@@ -715,7 +715,11 @@ namespace Inventory.MainForm
                 txtStockStatus.Text = ((GridView)sender).GetFocusedRowCellValue("Status")?.ToString();
                 txtCostPrice.Text = ((GridView)sender).GetFocusedRowCellValue("Price")?.ToString();
                 txtLastCost.Text = ((GridView)sender).GetFocusedRowCellValue("LastCost")?.ToString();
+                dkpDeliveryDate.Format = DateTimePickerFormat.Custom;
+                dkpDeliveryDate.CustomFormat = "MM/dd/yyyy";
                 dkpDeliveryDate.Value = Convert.ToDateTime(((GridView)sender).GetFocusedRowCellValue("Created")?.ToString());
+                dpkUpdated.Format = DateTimePickerFormat.Custom;
+                dpkUpdated.CustomFormat = "MM/dd/yyyy";
                 dpkUpdated.Value = Convert.ToDateTime(((GridView)sender).GetFocusedRowCellValue("Updated")?.ToString());
                 if (barcode != null)
                 {
@@ -826,7 +830,11 @@ namespace Inventory.MainForm
                 txtCostPrice.Text = ((LayoutView)sender).GetFocusedRowCellValue("Price")?.ToString();
                 txtLastCost.Text = ((LayoutView)sender).GetFocusedRowCellValue("LastCost")?.ToString();
                 txtBranch.Text = ((LayoutView)sender).GetFocusedRowCellValue("Branch")?.ToString();
+                dkpDeliveryDate.Format = DateTimePickerFormat.Custom;
+                dkpDeliveryDate.CustomFormat = "MM/dd/yyyy";
                 dkpDeliveryDate.Value = Convert.ToDateTime(((LayoutView)sender).GetFocusedRowCellValue("Date")?.ToString());
+                dpkUpdated.Format = DateTimePickerFormat.Custom;
+                dpkUpdated.CustomFormat = "MM/dd/yyyy";
                 dpkUpdated.Value = Convert.ToDateTime(((LayoutView)sender).GetFocusedRowCellValue("Update")?.ToString());
                 if (barcode != null)
                 {
@@ -888,6 +896,8 @@ namespace Inventory.MainForm
                 txtWholeSale.Text = ((GridView)sender).GetFocusedRowCellValue("Wholesale")?.ToString();
                 txtLastCost.Text = ((GridView)sender).GetFocusedRowCellValue("LastPrice")?.ToString();
                 txtCostPrice.Text = ((GridView)sender).GetFocusedRowCellValue("Trade")?.ToString();
+                dkpDeliveryDate.Format = DateTimePickerFormat.Custom;
+                dkpDeliveryDate.CustomFormat = "MM/dd/yyyy";
                 dkpDeliveryDate.Value = Convert.ToDateTime(((GridView)sender).GetFocusedRowCellValue("Date")?.ToString());
                 if (barcode != null)
                 {

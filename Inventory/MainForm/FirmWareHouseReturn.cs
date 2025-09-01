@@ -666,6 +666,8 @@ namespace Inventory.MainForm
                         cmbReturnedWarehouse.Text = ent.destination;
                         txtReturnedStatus.Text = ent.status;
                         txtReturnedRemarks.Text = ent.remarks;
+                        dkpReturedDate.Format = DateTimePickerFormat.Custom;
+                        dkpReturedDate.CustomFormat = "MM/dd/yyyy";
                         dkpReturedDate.Value = ent.return_date;
 
                         var img = searchProductImg(barcode);
@@ -761,7 +763,7 @@ namespace Inventory.MainForm
                 DESTINATION = r.destination,
                 STATUS = r.status,
                 REMARKS = r.remarks,
-                DATE = r.return_date
+                DATE = r.return_date.ToString("MM/dd/yyyy")
             }).ToList();
             gDEL.DataSource = list;
             gDEL.Update();

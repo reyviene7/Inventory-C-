@@ -61,6 +61,8 @@ namespace Inventory.MainForm
             RightOptions.Start();
             listbranch = EnumerableUtils.GetBranchList();
             liststore = EnumerableUtils.GetStoreList();
+            _bra = true;
+            _sto = false;
             BindBranch();
             BindStore();
             xtraBranch.SelectedTabPage = xtraDetails;
@@ -94,7 +96,7 @@ namespace Inventory.MainForm
                     MOBILE = x.mobile_number,
                     EMAIL = x.email_address,
                     FAX = x.fax_number,
-                    DATE = x.date_register
+                    DATE = x.date_register.ToString("MM/dd/yyyy")
                 });
 
                 gCON.DataSource = list;

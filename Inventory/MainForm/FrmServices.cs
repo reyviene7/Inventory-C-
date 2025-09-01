@@ -133,9 +133,15 @@ namespace Inventory.MainForm
                         txtBarcode.Text = barcode;
                         txtServiceImgBarcode.Text = barcode;
                         txtServiceImgTitle.Text = ((GridView)sender).GetFocusedRowCellValue("SERVICE").ToString();
-                        dpkServiceDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DATE");
-                        dpkCreatedDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("CREATED");
-                        dpkUpdated.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("UPDATED");
+                        dpkServiceDate.Format = DateTimePickerFormat.Custom;
+                        dpkServiceDate.CustomFormat = "MM/dd/yyyy";
+                        dpkServiceDate.Value = Convert.ToDateTime(((GridView)sender).GetFocusedRowCellValue("DATE"));
+                        dpkCreatedDate.Format = DateTimePickerFormat.Custom;
+                        dpkCreatedDate.CustomFormat = "MM/dd/yyyy";
+                        dpkCreatedDate.Value = Convert.ToDateTime(((GridView)sender).GetFocusedRowCellValue("CREATED"));
+                        dpkUpdated.Format = DateTimePickerFormat.Custom;
+                        dpkUpdated.CustomFormat = "MM/dd/yyyy";
+                        dpkUpdated.Value = Convert.ToDateTime(((GridView)sender).GetFocusedRowCellValue("UPDATED"));
 
                         var img = searchServiceImg(barcode);
                         var imgLocation = img?.img_location;
@@ -1337,9 +1343,9 @@ namespace Inventory.MainForm
                 USER = p.username,
                 STAFF = p.staff,
                 STATUS = p.status,
-                DATE = p.service_date,
-                CREATED = p.created_date,
-                UPDATED = p.updated_date
+                DATE = p.service_date.ToString("MM/dd/yyyy"),
+                CREATED = p.created_date.ToString("MM/dd/yyyy"),
+                UPDATED = p.updated_date.ToString("MM/dd/yyyy")
             }).ToList();
             gridController.DataSource = list;
             gridController.Update();
@@ -1600,7 +1606,11 @@ namespace Inventory.MainForm
                 txtTwenty.Text = breakdown.b20.ToString();
                 txtCoins.Text = breakdown.coins.ToString("F2");
                 txtTotal.Text = breakdown.total.ToString("F2");
+                dpkCreatedDate.Format = DateTimePickerFormat.Custom;
+                dpkCreatedDate.CustomFormat = "MM/dd/yyyy";
                 dpkCreatedDate.Value = breakdown.date_register;
+                dpkUpdated.Format = DateTimePickerFormat.Custom;
+                dpkUpdated.CustomFormat = "MM/dd/yyyy";
                 dpkUpdated.Value = breakdown.date_update;
             }
             catch (Exception ex)
@@ -1623,8 +1633,8 @@ namespace Inventory.MainForm
                 COINS = p.coins,
                 TOTAL = p.total,
                 STAFF = p.User,
-                CREATED = p.date_register,
-                UPDATED = p.date_update
+                CREATED = p.date_register.ToString("MM/dd/yyyy"),
+                UPDATED = p.date_update.ToString("MM/dd/yyyy")
             }).ToList();
             gridCtrlBreakdown.DataSource = list;
             gridCtrlBreakdown.Update();

@@ -1042,6 +1042,8 @@ namespace Inventory.MainForm
                 txtRetailPrice.Text = product.retail_price.ToString(CultureInfo.InvariantCulture) ?? "0";
                 txtWholesale.Text = product.wholesale.ToString(CultureInfo.InvariantCulture) ?? "0";
                 cmbProductStatus.Text = product.status_details ?? "";
+                dkpDateRegister.Format = DateTimePickerFormat.Custom;
+                dkpDateRegister.CustomFormat = "MM/dd/yyyy";
                 dkpDateRegister.Value = product.date_register;
 
                 var img = searchProductImg(barcode);

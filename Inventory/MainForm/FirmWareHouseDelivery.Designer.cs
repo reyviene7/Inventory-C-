@@ -30,7 +30,6 @@ namespace Inventory.MainForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmWareHouseDelivery));
             this.bntADD = new System.Windows.Forms.Button();
@@ -222,6 +221,7 @@ namespace Inventory.MainForm
             this.tabWarehouseDelivery.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabDEL,
             this.tabHIS});
+            this.tabWarehouseDelivery.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabWarehouseDelivery_SelectedPageChanged);
             // 
             // tabDEL
             // 
@@ -1911,6 +1911,7 @@ namespace Inventory.MainForm
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmWareHouseDelivery";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
