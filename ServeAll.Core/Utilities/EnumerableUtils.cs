@@ -979,6 +979,24 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+        public static IEnumerable<ViewCashBreakdown> getBreakdownList()
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    var repository = new Repository<ViewCashBreakdown>(unWork);
+                    return repository.SelectAll(Query.getCashBreakdown).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return GetEmptyList<ViewCashBreakdown>();
+                }
+            }
+        }
 
         public static IEnumerable<ViewWarehouseDelivery> getWareHouseDeliveryList()
         {
