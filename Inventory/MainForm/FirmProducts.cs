@@ -1372,19 +1372,6 @@ namespace Inventory.MainForm
         {
             if (e.Page == XtrPerProfile)
             {
-                try
-                {
-                    if (imgBigPreview.Image != null)
-                    {
-                        imgBigPreview.Image.Dispose();
-                        imgBigPreview.Image = null;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error disposing image: " + ex.Message);
-                }
-
                 bindRefreshed();
             }
             if (e.Page == xtraTabImage && e.PrevPage == XtrPerProfile)
