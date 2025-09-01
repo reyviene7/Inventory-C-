@@ -63,6 +63,7 @@ namespace Inventory.Config
         public const string TitleCategory = "CATEGORY DETAILS";
         public const string TitleProducts = "PRODUCT DETAILS";
         public const string TitleServices = "SERVICE DETAILS";
+        public const string TitleBreakdown = "CASH BREAKDOWN DETAILS";
         public const string TitleInventory = "INVENTORY DETAILS";
         public const string TitleUsers = "USER DETAILS";
         public const string TitleCredit = "CREDIT DETAILS";
