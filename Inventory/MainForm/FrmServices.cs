@@ -69,7 +69,9 @@ namespace Inventory.MainForm
             _userName = username;
             _userId = userId;
             _userTyp = userTy;
-            if (_userTyp != 1)
+            var allowedRoles = new List<int> { 1, 2 }; // Admin and User
+
+            if (!allowedRoles.Contains(_userTyp))
             {
                 PopupNotification.PopUpMessages(0, Messages.AdminPrivilege, Messages.InventorySystem);
 
