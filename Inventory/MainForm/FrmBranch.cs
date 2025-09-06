@@ -109,6 +109,7 @@ namespace Inventory.MainForm
                 gridBranch.Columns[4].Width = 100;
                 gridBranch.Columns[5].Width = 100;
                 gridBranch.Columns[6].Width = 120;
+                gridBranch.Columns[7].Width = 60;
                 gridBranch.Columns[8].Width = 100;
                 gridBranch.Columns[9].Width = 100;
                 gridBranch.Columns[10].Width = 100;
@@ -606,8 +607,8 @@ namespace Inventory.MainForm
             _add = false;
             _edt = false;
             _del = false;
-            BindBranch();
             listbranch = EnumerableUtils.GetBranchList();
+            BindBranch();
             liststore = EnumerableUtils.GetStoreList();
             BindStore();
             gCON.Enabled = true;
@@ -1189,6 +1190,8 @@ namespace Inventory.MainForm
             {
                 _bra = true;
                 _sto = false;
+                bntADD.Enabled = true;
+                bntDEL.Enabled = true;
                 lblMainTitle.Text = "BRANCH";
             }
             else if (xtraBranch.SelectedTabPage == xtraStore)
