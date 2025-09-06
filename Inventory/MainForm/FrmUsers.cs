@@ -579,29 +579,78 @@ namespace Inventory.MainForm
             {
                 var unWork = session.UnitofWrk;
                 unWork.Begin();
+
                 try
                 {
-                    var catId = Convert.ToInt32(txtUserId.Text);
-                    var repository = new Repository<users>(unWork);
-                    var que = repository.Id(catId);
-                    var result = repository.Delete(que);
-                    if (result)
+                    var userId = Convert.ToInt32(txtUserId.Text.Trim());
+                    var username = txtUsername.Text.Trim();
+
+                    var userRepo = new Repository<users>(unWork);
+                    var user = userRepo.Id(userId);
+                    if (user == null)
+                    {
+                        PopupNotification.PopUpMessages(0,
+                            $"User not found for deletion: {username}",
+                            Messages.TitleFialedDelete);
+                        return;
+                    }
+
+                    var serviceRepo = new Repository<ServeAll.Core.Entities.Services>(unWork);
+                    var relatedServices = serviceRepo
+                        .SelectAll($"SELECT * FROM services WHERE user_id = {userId}")
+                        .ToList();
+
+                    bool hasRelatedData = relatedServices != null && relatedServices.Any();
+
+                    if (hasRelatedData)
+                    {
+                        var confirmResult = MessageBox.Show(
+                            $"The user '{username}' exists in one or more related records (e.g. services).\n\nAre you sure you want to delete this user and all related records?",
+                            "Confirm Deletion",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning
+                        );
+
+                        if (confirmResult != DialogResult.Yes)
+                        {
+                            unWork.Rollback();
+                            return;
+                        }
+
+                        foreach (var service in relatedServices)
+                        {
+                            serviceRepo.Delete(service);
+                        }
+                    }
+
+                    var userDeleted = userRepo.Delete(user);
+
+                    if (userDeleted)
                     {
                         unWork.Commit();
-                        PopupNotification.PopUpMessages(1, "Username: " +
-                                                           txtUsername.Text.Trim(' ')
-                                                           + " " + Messages.SuccessDelete,
+                        PopupNotification.PopUpMessages(1,
+                            $"User '{username}' and related records were deleted successfully.",
                             Messages.TitleSuccessDelete);
                         bindRefreshed();
+                    }
+                    else
+                    {
+                        unWork.Rollback();
+                        PopupNotification.PopUpMessages(0,
+                            $"Failed to delete user: {username}",
+                            Messages.TitleFialedDelete);
                     }
                 }
                 catch (Exception ex)
                 {
                     unWork.Rollback();
-                    PopupNotification.PopUpMessages(0, ex.ToString(), Messages.TitleFialedDelete);
+                    PopupNotification.PopUpMessages(0,
+                        ex.ToString(),
+                        Messages.TitleFialedDelete);
                 }
             }
         }
+
 
         private void bntAdd_Click(object sender, EventArgs e)
         {
