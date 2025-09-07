@@ -907,6 +907,12 @@ namespace Inventory.MainForm
                 cmbStatus.Text = w.status_details ?? "";
                 cmbItemLocation.Text = w.location_code ?? "";
 
+                dkpLastStockedDate.Format = DateTimePickerFormat.Custom;
+                dkpLastStockedDate.CustomFormat = "MM/dd/yyyy";
+                dkpLastOrderDate.Format = DateTimePickerFormat.Custom;
+                dkpLastOrderDate.CustomFormat = "MM/dd/yyyy";
+                dpkExpirationDate.Format = DateTimePickerFormat.Custom;
+                dpkExpirationDate.CustomFormat = "MM/dd/yyyy";
                 // DateTime? safety checks  
                 if (w.last_stocked_date != null)
                     dkpLastStockedDate.Value = w.last_stocked_date;
@@ -955,12 +961,16 @@ namespace Inventory.MainForm
                         txtDelReceipt.Text = w.receipt_number;
                         txtDelRemainQty.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
                         cmbDelBranch.Text = w.branch_details;
+                        dkpDelDeliveryDate.Format = DateTimePickerFormat.Custom;
+                        dkpDelDeliveryDate.CustomFormat = "MM/dd/yyyy";
                         dkpDelDeliveryDate.Value = w.delivery_date;
                         cmbDelProductStatus.Text = w.status_details;
                         txtDelItemPrice.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
                         txtDelQty.Text = w.delivery_qty.ToString(CultureInfo.InvariantCulture);
                         cmbDelDeliveryStatus.Text = w.delivery_status;
                         txtDelRemarks.Text = w.remarks;
+                        dkpDelUpdate.Format = DateTimePickerFormat.Custom;
+                        dkpDelUpdate.CustomFormat = "MM/dd/yyyy";
                         dkpDelUpdate.Value = w.update_on;
 
                         var img = searchProductImg(barcode);
@@ -1003,6 +1013,8 @@ namespace Inventory.MainForm
                         cmbReturnedWarehouse.Text = ent.destination;
                         txtReturnedStatus.Text = ent.status;
                         txtReturnedRemarks.Text = ent.remarks;
+                        dkpReturedDate.Format = DateTimePickerFormat.Custom;
+                        dkpReturedDate.CustomFormat = "MM/dd/yyyy";
                         dkpReturedDate.Value = ent.return_date;
                         var img = searchProductImg(barcode);
                         var imgLocation = img?.img_location;
@@ -1047,6 +1059,8 @@ namespace Inventory.MainForm
                         txtGrossSales.Text = ((GridView)sender).GetFocusedRowCellValue("GROSS").ToString();
                         txtNetSales.Text = ((GridView)sender).GetFocusedRowCellValue("NETSALES").ToString();
                         txtBranchName.Text = ((GridView)sender).GetFocusedRowCellValue("BRANCH").ToString();
+                        dkpSalesDate.Format = DateTimePickerFormat.Custom;
+                        dkpSalesDate.CustomFormat = "MM/dd/yyyy";
                         dkpSalesDate.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DATE");
 
                         var img = searchProductImg(barcode);
@@ -1086,11 +1100,11 @@ namespace Inventory.MainForm
                 PRICE = p.last_cost_per_unit,
                 TOTAL = p.total_value.ToString("N2"),
                 STATUS = p.status_details,
-                LSTOCKED = p.last_stocked_date,
-                LORDERED = p.last_ordered_date,
-                EXPIRY = p.expiration_date,
-                CREATED = p.created_at,
-                UPDATED = p.updated_at
+                LSTOCKED = p.last_stocked_date.ToString("MM/dd/yyyy"),
+                LORDERED = p.last_ordered_date.ToString("MM/dd/yyyy"),
+                EXPIRY = p.expiration_date.ToString("MM/dd/yyyy"),
+                CREATED = p.created_at.ToString("MM/dd/yyyy"),
+                UPDATED = p.updated_at.ToString("MM/dd/yyyy"),
             }).ToList();
             gridController.DataSource = list;
             gridController.Update();
@@ -1126,13 +1140,13 @@ namespace Inventory.MainForm
                 DELCODE = p.delivery_code,
                 PRODUCT = p.product_name,
                 BRANCH = p.branch_details,
-                DELIVERYDATE = p.delivery_date,
+                DELIVERYDATE = p.delivery_date.ToString("MM/dd/yyyy"),
                 STATUS = p.status_details,
                 COST = p.cost_per_unit,
                 QTY = p.delivery_qty,
                 TOTAL = p.total_value.ToString("N2"),
                 DELIVERYSTATUS = p.delivery_status,
-                UPDATE = p.update_on,
+                UPDATE = p.update_on.ToString("MM/dd/yyyy"),
             });
 
             gridControlDelivery.DataSource = list;
@@ -1165,7 +1179,7 @@ namespace Inventory.MainForm
                 DESTINATION = r.destination,
                 STATUS = r.status,
                 REMARKS = r.remarks,
-                DATE = r.return_date
+                DATE = r.return_date.ToString("MM/dd/yyyy")
             }).ToList();
             gridControlReturn.DataSource = list;
             gridControlReturn.Update();
@@ -1200,7 +1214,7 @@ namespace Inventory.MainForm
                     NETSALES = x.net,
                     CUSTOMER = x.customer,
                     BRANCH = x.branch,
-                    DATE = x.date,
+                    DATE = x.date.ToString("MM/dd/yyyy"),
                 }).ToList();
                 gridControlSales.DataSource = list;
                 gridControlSales.Update();

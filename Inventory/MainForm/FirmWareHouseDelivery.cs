@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Windows.Forms;
-using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraTab;
 using Inventory.Config;
 using ServeAll.Core.Entities;
 using ServeAll.Core.Entities.request;
 using ServeAll.Core.Repository;
 using ServeAll.Core.Utilities;
 using ServeAll.Entities;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Inventory.MainForm
 {
@@ -78,8 +79,9 @@ namespace Inventory.MainForm
                 }
                 BindWareHouse();
             }
+            tabWarehouseDelivery.SelectedTabPage = tabDEL;
         }
-        
+
         private void clearGridWarehouse()
         {
             gridControl.DataSource = null;
@@ -810,12 +812,16 @@ namespace Inventory.MainForm
                         previousDelQty = w.delivery_qty;            
                         txtDelRemainQty.Text = w.quantity_in_stock.ToString(CultureInfo.InvariantCulture);
                         cmbDelBranch.Text = w.branch_details;
+                        dkpDelDeliveryDate.Format = DateTimePickerFormat.Custom;
+                        dkpDelDeliveryDate.CustomFormat = "MM/dd/yyyy";
                         dkpDelDeliveryDate.Value = w.delivery_date;
                         cmbDelProductStatus.Text = w.status_details;
                         txtDelItemPrice.Text = w.cost_per_unit.ToString(CultureInfo.InvariantCulture);
                         txtDelQty.Text = w.delivery_qty.ToString(CultureInfo.InvariantCulture);
                         cmbDelDeliveryStatus.Text = w.delivery_status;
                         txtDelRemarks.Text = w.remarks;
+                        dkpDelUpdate.Format = DateTimePickerFormat.Custom;
+                        dkpDelUpdate.CustomFormat = "MM/dd/yyyy";
                         dkpDelUpdate.Value = w.update_on;
                         
                         var img = searchProductImg(barcode);
@@ -905,7 +911,7 @@ namespace Inventory.MainForm
                 COST = p.cost_per_unit,
                 PRICE = p.last_cost_per_unit,
                 TOTAL = p.total_value.ToString("N2"),
-                EXPIRE = p.expiration_date,
+                EXPIRE = p.expiration_date.ToString("MM/dd/yyyy"),
                 STATUS = p.status_details
             }).ToList();
 
@@ -932,13 +938,13 @@ namespace Inventory.MainForm
                 DELCODE = p.delivery_code,
                 PRODUCT = p.product_name,
                 BRANCH = p.branch_details,
-                DELIVERYDATE = p.delivery_date,
+                DELIVERYDATE = p.delivery_date.ToString("MM/dd/yyyy"),
                 STATUS = p.status_details,
                 COST = p.cost_per_unit,
                 QTY = p.delivery_qty,
                 TOTAL = p.total_value.ToString("N2"),
                 DELIVERYSTATUS = p.delivery_status,
-                UPDATE = p.update_on,
+                UPDATE = p.update_on.ToString("MM/dd/yyyy"),
             }).ToList();
             gridControlDelivery.DataSource = list;
             gridControlDelivery.Update();
@@ -1175,6 +1181,28 @@ namespace Inventory.MainForm
                 e.Handled = true;
                 bntADD_Click(bntADD, EventArgs.Empty); // Simulate Add click
                 InputWhit(); // Reset all controls' backgrounds
+            }
+        }
+
+        private void tabWarehouseDelivery_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if(e.Page == tabDEL)
+            {
+                BindWareHouse();
+            }
+            if (e.Page == tabHIS && e.PrevPage == tabDEL)
+            {
+                _add = false;
+                _edt = false;
+                _del = false;
+
+                bntADD.Enabled = false;
+                bntUPDATE.Enabled = false;
+                bntDELETE.Enabled = false;
+                bntSAVE.Enabled = false;
+                bntCLEAR.Enabled = false;
+                bntCANCEL.Enabled = false;
+                BindDeliveryList();
             }
         }
 

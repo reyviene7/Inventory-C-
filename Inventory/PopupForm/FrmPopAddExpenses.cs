@@ -38,10 +38,10 @@ namespace Inventory.PopupForm
             //_imgList = EnumerableUtils.getImgProductList();
             var expensesType = EnumerableUtils.getExpensesType();
             var relatedEntity = EnumerableUtils.getRelatedEntity();
-            var viewEmployees = EnumerableUtils.getEmployees();
+            var viewEmployees = EnumerableUtils.getProfileEntity();
             var typeName = expensesType.Select(type => type.type_name).ToList();
             var entity = relatedEntity.Select(related => related.related_entity).ToList();
-            var employees = viewEmployees.Select(fullName => fullName.full_name).ToList();
+            var employees = viewEmployees.Select(fullName => fullName.name).ToList();
             cmbExpensesType.Items.AddRange(typeName.ToArray());
             cmbRelatedEntity.Items.AddRange(entity.ToArray());
             cmbEmployee.Items.AddRange((employees.ToArray()));
@@ -228,7 +228,7 @@ namespace Inventory.PopupForm
                         expense_type_id = FetchUtils.getExpensesType(cmbExpensesType.Text),
                         amount = decimal.Parse(txtAmount.Text),
                         entity_id = FetchUtils.getRelatedEntity(cmbRelatedEntity.Text),
-                        employee_id = FetchUtils.getEmployee(cmbEmployee.Text),
+                        profile_id = FetchUtils.getProfileId(cmbEmployee.Text),
                         description = txtDescription.Text,
                         expense_date = dkpExpensesDate.Value.Date
                     };

@@ -1,4 +1,7 @@
-﻿namespace Inventory.MainForm
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace Inventory.MainForm
 {
     partial class FirmSplash
     {
@@ -44,7 +47,7 @@
             // 
             this.marqueeProgressBarControl1.EditValue = 0;
             this.marqueeProgressBarControl1.Location = new System.Drawing.Point(31, 320);
-            this.marqueeProgressBarControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.marqueeProgressBarControl1.Margin = new System.Windows.Forms.Padding(4);
             this.marqueeProgressBarControl1.Name = "marqueeProgressBarControl1";
             this.marqueeProgressBarControl1.Size = new System.Drawing.Size(539, 15);
             this.marqueeProgressBarControl1.TabIndex = 5;
@@ -53,7 +56,7 @@
             // 
             this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.labelControl1.Location = new System.Drawing.Point(31, 388);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(102, 16);
             this.labelControl1.TabIndex = 6;
@@ -62,7 +65,7 @@
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(31, 289);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(57, 16);
             this.labelControl2.TabIndex = 7;
@@ -73,7 +76,7 @@
             this.pictureEdit1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
             this.pictureEdit1.Location = new System.Drawing.Point(371, 363);
-            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.AllowFocused = false;
             this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -85,19 +88,17 @@
             // 
             // pictureEdit2
             // 
-            this.pictureEdit2.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureEdit2.EditValue = ((object)(resources.GetObject("pictureEdit2.EditValue")));
-            this.pictureEdit2.Location = new System.Drawing.Point(20, 7);
-            this.pictureEdit2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureEdit2.Location = new System.Drawing.Point(177, 12);
             this.pictureEdit2.Name = "pictureEdit2";
             this.pictureEdit2.Properties.AllowFocused = false;
             this.pictureEdit2.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit2.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit2.Properties.ShowMenu = false;
-            this.pictureEdit2.Properties.ZoomPercent = 11D;
-            this.pictureEdit2.Size = new System.Drawing.Size(596, 202);
-            this.pictureEdit2.TabIndex = 10;
+            this.pictureEdit2.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pictureEdit2.Size = new System.Drawing.Size(244, 219);
+            this.pictureEdit2.TabIndex = 4;
             // 
             // label3
             // 
@@ -115,6 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(628, 430);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureEdit2);
@@ -122,7 +124,8 @@
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.marqueeProgressBarControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Padding = new Padding(10);
             this.Name = "FirmSplash";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.marqueeProgressBarControl1.Properties)).EndInit();

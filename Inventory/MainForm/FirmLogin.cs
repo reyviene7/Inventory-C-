@@ -80,8 +80,10 @@ namespace Inventory.MainForm
 
         private void bntLCL_Click(object sender, EventArgs e)
         {
-         Login(Constant.LogGues);
-        
+            UserId = 0;                
+            UserTy = Constant.LogGues; 
+            string guestName = "Guest";
+            LaunchMain(guestName);
         }
 
         private void bntExit_Click(object sender, EventArgs e)

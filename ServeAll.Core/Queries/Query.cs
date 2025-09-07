@@ -380,6 +380,7 @@
         ";
         public const string getWarehouseReturn = @"SELECT * FROM view_return_warehouse ";
         public const string getServices = "SELECT * FROM view_services ORDER BY service_id DESC";
+        public const string getCashBreakdown = "SELECT * FROM view_cash_breakdown ORDER BY breakdown_id DESC";
         public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
         public const string getOrgWarehouseDelivery = @"SELECT * FROM warehouse_delivery ORDER BY delivery_id DESC";
         public const string getDeliveryStatus = @"SELECT * FROM delivery_status";

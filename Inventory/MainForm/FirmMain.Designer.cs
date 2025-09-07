@@ -232,7 +232,7 @@ namespace Inventory.MainForm
             this.tileMAN.AppearanceItem.Normal.BackColor = System.Drawing.Color.Purple;
             this.tileMAN.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tileMAN.AppearanceItem.Normal.BorderColor = System.Drawing.Color.White;
-            this.tileMAN.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileMAN.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tileMAN.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileMAN.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileMAN.AppearanceItem.Normal.Options.UseFont = true;
@@ -264,7 +264,7 @@ namespace Inventory.MainForm
             this.tileREC.AppearanceItem.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.tileREC.AppearanceItem.Hovered.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.tileREC.AppearanceItem.Hovered.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tileREC.AppearanceItem.Hovered.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileREC.AppearanceItem.Hovered.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tileREC.AppearanceItem.Hovered.Options.UseBackColor = true;
             this.tileREC.AppearanceItem.Hovered.Options.UseBorderColor = true;
             this.tileREC.AppearanceItem.Hovered.Options.UseFont = true;
@@ -763,9 +763,9 @@ namespace Inventory.MainForm
             // 
             this.tileWarehouse.Items.Add(this.tileStaffRegistration);
             this.tileWarehouse.Items.Add(this.tileRDP);
-            this.tileWarehouse.Items.Add(this.tilePRO);
             this.tileWarehouse.Items.Add(this.tileCAT);
-            this.tileWarehouse.Items.Add(this.tileInventory);
+            this.tileWarehouse.Items.Add(this.tilePRO);
+            this.tileWarehouse.Items.Add(this.tileDEP);
             this.tileWarehouse.Name = "tileWarehouse";
             this.tileWarehouse.Text = null;
             // 
@@ -831,6 +831,7 @@ namespace Inventory.MainForm
             tileItemElement36.ImageOptions.ImageSize = new System.Drawing.Size(50, 50);
             tileItemElement36.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
             tileItemElement36.Text = "Users";
+            tileItemElement37.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
             tileItemElement37.Text = "Admin";
             this.tileRDP.Elements.Add(tileItemElement36);
             this.tileRDP.Elements.Add(tileItemElement37);
@@ -886,7 +887,7 @@ namespace Inventory.MainForm
             this.tileCAT.AppearanceItem.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.tileCAT.AppearanceItem.Hovered.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.tileCAT.AppearanceItem.Hovered.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tileCAT.AppearanceItem.Hovered.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileCAT.AppearanceItem.Hovered.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tileCAT.AppearanceItem.Hovered.Options.UseBackColor = true;
             this.tileCAT.AppearanceItem.Hovered.Options.UseBorderColor = true;
             this.tileCAT.AppearanceItem.Hovered.Options.UseFont = true;
@@ -915,7 +916,7 @@ namespace Inventory.MainForm
             // 
             this.tileInventory.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.tileInventory.AppearanceItem.Normal.BorderColor = System.Drawing.Color.White;
-            this.tileInventory.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.tileInventory.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.tileInventory.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileInventory.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileInventory.AppearanceItem.Normal.Options.UseFont = true;
@@ -937,11 +938,11 @@ namespace Inventory.MainForm
             // 
             // tileInvetoryWarehouse
             // 
-            this.tileInvetoryWarehouse.Items.Add(this.tileDEV);
-            this.tileInvetoryWarehouse.Items.Add(this.tileWAR);
-            this.tileInvetoryWarehouse.Items.Add(this.tileDEP);
             this.tileInvetoryWarehouse.Items.Add(this.tileDFB);
+            this.tileInvetoryWarehouse.Items.Add(this.tileInventory);
             this.tileInvetoryWarehouse.Items.Add(this.tileDTW);
+            this.tileInvetoryWarehouse.Items.Add(this.tileWAR);
+            this.tileInvetoryWarehouse.Items.Add(this.tileDEV);
             this.tileInvetoryWarehouse.Name = "tileInvetoryWarehouse";
             this.tileInvetoryWarehouse.Text = null;
             // 
@@ -986,7 +987,7 @@ namespace Inventory.MainForm
             this.tileWAR.AppearanceItem.Normal.BackColor = System.Drawing.Color.Purple;
             this.tileWAR.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tileWAR.AppearanceItem.Normal.BorderColor = System.Drawing.Color.White;
-            this.tileWAR.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileWAR.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tileWAR.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileWAR.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileWAR.AppearanceItem.Normal.Options.UseFont = true;
@@ -1023,7 +1024,7 @@ namespace Inventory.MainForm
             this.tileDEP.AppearanceItem.Normal.BackColor = System.Drawing.Color.Black;
             this.tileDEP.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.tileDEP.AppearanceItem.Normal.BorderColor = System.Drawing.Color.White;
-            this.tileDEP.AppearanceItem.Normal.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileDEP.AppearanceItem.Normal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tileDEP.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileDEP.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileDEP.AppearanceItem.Normal.Options.UseFont = true;
@@ -1068,7 +1069,7 @@ namespace Inventory.MainForm
             this.tileDFB.AppearanceItem.Selected.Options.UseBackColor = true;
             tileItemElement52.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image23")));
             tileItemElement52.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement52.Text = "WareHouse Delivery";
+            tileItemElement52.Text = "Delivery";
             tileItemElement53.StretchVertical = true;
             tileItemElement53.Text = "To Branches";
             tileItemElement53.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
@@ -1084,7 +1085,7 @@ namespace Inventory.MainForm
             this.tileDTW.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.tileDTW.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.tileDTW.AppearanceItem.Normal.BorderColor = System.Drawing.Color.White;
-            this.tileDTW.AppearanceItem.Normal.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileDTW.AppearanceItem.Normal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tileDTW.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileDTW.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileDTW.AppearanceItem.Normal.Options.UseFont = true;
@@ -1096,7 +1097,7 @@ namespace Inventory.MainForm
             this.tileDTW.Checked = true;
             tileItemElement54.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image24")));
             tileItemElement54.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement54.Text = "Delivery Return";
+            tileItemElement54.Text = "Return Product";
             tileItemElement55.AnchorAlignment = DevExpress.Utils.AnchorAlignment.Bottom;
             tileItemElement55.Text = "Inventory";
             tileItemElement55.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
@@ -1328,9 +1329,9 @@ namespace Inventory.MainForm
             this.tileServices.AppearanceItem.Normal.Options.UseFont = true;
             tileItemElement71.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image31")));
             tileItemElement71.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement71.Text = "Manage";
+            tileItemElement71.Text = "Services";
             tileItemElement72.ImageOptions.ImageBorder = DevExpress.XtraEditors.TileItemElementImageBorderMode.None;
-            tileItemElement72.Text = "Services";
+            tileItemElement72.Text = "Cash Breakdown";
             tileItemElement72.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
             this.tileServices.Elements.Add(tileItemElement71);
             this.tileServices.Elements.Add(tileItemElement72);
@@ -1344,7 +1345,7 @@ namespace Inventory.MainForm
             this.tileManagement.AppearanceItem.Normal.BackColor = System.Drawing.Color.Maroon;
             this.tileManagement.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Black;
             this.tileManagement.AppearanceItem.Normal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.tileManagement.AppearanceItem.Normal.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileManagement.AppearanceItem.Normal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tileManagement.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileManagement.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileManagement.AppearanceItem.Normal.Options.UseFont = true;
