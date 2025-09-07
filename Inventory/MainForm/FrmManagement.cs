@@ -43,6 +43,7 @@ namespace Inventory.MainForm
         private readonly int _userType;
         private readonly string _username;
         private int _received;
+        private Timer _timer;
         private readonly Size _designResolution = new Size(1620, 850); // Your design size
         public FrmManagement management { protected get; set; }
         Image imgProcessing = Image.FromFile(ConstantUtils.imgProcessing);
@@ -111,7 +112,7 @@ namespace Inventory.MainForm
             barSoftware.EditValue = "Inventory System V1.0";
             barBranch.EditValue = branch;
             barDate.EditValue = DateTime.Now.ToString("yyyy-MM-dd"); // or your preferred date format
-            barTime.EditValue = DateTime.Now.ToString("HH:mm:ss"); 
+            barTime.EditValue = DateTime.Now.ToString("hh:mm:ss"); 
             xInventory.SelectedTabPage = null;
             // Make the form fullscreen
             this.WindowState = FormWindowState.Maximized;
@@ -123,7 +124,16 @@ namespace Inventory.MainForm
 
             // Apply scaling
             ScaleControls(this, scaleX, scaleY);
+            _timer = new Timer();
+            _timer.Interval = 1000; // 1 second
+            _timer.Tick += Timer_Tick;
+            _timer.Start();
         }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            barTime.EditValue = DateTime.Now.ToString("hh:mm:ss");
+        }
+
         private void ScaleControls(Control parent, float scaleX, float scaleY)
         {
             foreach (Control ctrl in parent.Controls)
