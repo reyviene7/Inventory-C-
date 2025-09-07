@@ -46,26 +46,13 @@ namespace Inventory.PopupForm
             //_imgList = EnumerableUtils.getImgProductList();
             var expensesType = EnumerableUtils.getExpensesType();
             var relatedEntity = EnumerableUtils.getRelatedEntity();
-            var viewEmployees = EnumerableUtils.getEmployees();
+            var viewEmployees = EnumerableUtils.getProfileEntity();
             var typeName = expensesType.Select(type => type.type_name).ToList();
             var entity = relatedEntity.Select(related => related.related_entity).ToList();
-            var employees = viewEmployees.Select(fullName => fullName.full_name).ToList();
+            var employees = viewEmployees.Select(fullName => fullName.name).ToList();
             cmbExpensesType.Items.AddRange(typeName.ToArray());
             cmbRelatedEntity.Items.AddRange(entity.ToArray());
             cmbEmployee.Items.AddRange((employees.ToArray()));
-            if (typeName.Any())
-            {
-                cmbExpensesType.Text = typeName.First();
-            }
-
-            if (entity.Any())
-            {
-                cmbRelatedEntity.Text = entity.First();
-            }
-            if (employees.Any())
-            {
-                cmbEmployee.Text = employees.First();
-            }
 
             /*
             if (barcode != null)
@@ -248,7 +235,7 @@ namespace Inventory.PopupForm
                     {
                         DailyExpenses.expense_type_id = FetchUtils.getExpensesType(cmbExpensesType.Text);
                         DailyExpenses.amount = decimal.Parse(txtAmount.Text);
-                        DailyExpenses.employee_id = FetchUtils.getEmployee(cmbEmployee.Text);
+                        DailyExpenses.profile_id = FetchUtils.getProfileId(cmbEmployee.Text);
                         DailyExpenses.entity_id = FetchUtils.getRelatedEntity(cmbRelatedEntity.Text);
                         DailyExpenses.description = txtDescription.Text;
                         DailyExpenses.expense_date = DateTime.Now.Date;

@@ -1319,8 +1319,8 @@ namespace Inventory.MainForm
                     EMAIL = p.email_address,
                     ADDRESS = $"{p.street}, {p.barangay}, {p.province}",
                     POSITION = p.position,
-                    HIREDATE = p.hire_date,
-                    REGISTERED = p.date_register,
+                    HIREDATE = p.hire_date.ToString("MM/dd/yyyy"),
+                    REGISTERED = p.date_register.ToString("MM/dd/yyyy"),
                     DEPARTMENT = p.department_name
                 }).ToList();
                 gridCtlProfile.DataSource = list;
@@ -1361,7 +1361,7 @@ namespace Inventory.MainForm
                         EMAIL = p.email_address,
                         WEB = p.web_url,
                         FAX = p.fax_number,
-                        DATE = p.date_register
+                        DATE = p.date_register.ToString("MM/dd/yyyy")
                     });
                     gridControlContact.Update();
                 }
@@ -1557,6 +1557,8 @@ namespace Inventory.MainForm
                 txtEmailAddress.Text = ((GridView)sender).GetFocusedRowCellValue("EMAIL").ToString();
                 txtWebUrl.Text = ((GridView)sender).GetFocusedRowCellValue("WEB").ToString();
                 txtFaxNumber.Text = ((GridView)sender).GetFocusedRowCellValue("FAX").ToString();
+                dkpContactDateReg.Format = DateTimePickerFormat.Custom;
+                dkpContactDateReg.CustomFormat = "MM/dd/yyyy";
                 dkpContactDateReg.Value = (DateTime)((GridView)sender).GetFocusedRowCellValue("DATE");
             }
         }
@@ -1592,6 +1594,8 @@ namespace Inventory.MainForm
                 txtMiddleInitial.Text = profile.middle_initial ?? "";
                 cmbDepartment.Text = profile.department_name ?? "";
                 cmbgender.Text = profile.gender ?? "";
+                dkpBirthdate.Format = DateTimePickerFormat.Custom;
+                dkpBirthdate.CustomFormat = "MM/dd/yyyy";
                 dkpBirthdate.Value = profile.birthdate;
                 cmbCivilStatus.Text = profile.civil_status ?? "";
                 txtPhone.Text = profile.telephone_number ?? "";
@@ -1602,7 +1606,11 @@ namespace Inventory.MainForm
                 txtSSSNumber.Text = profile.sss_number ?? "";
                 txtPhilhealthNumber.Text = profile.phil_health ?? "";
                 cmbPosition.Text = profile.position ?? "";
+                dkpDateHired.Format = DateTimePickerFormat.Custom;
+                dkpDateHired.CustomFormat = "MM/dd/yyyy";
                 dkpDateHired.Value = profile.hire_date;
+                dkpDateRegistered.Format = DateTimePickerFormat.Custom;
+                dkpDateRegistered.CustomFormat = "MM/dd/yyyy";
                 dkpDateRegistered.Value = profile.date_register;
 
                 // Load Image

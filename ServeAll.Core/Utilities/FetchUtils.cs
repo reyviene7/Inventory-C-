@@ -231,8 +231,11 @@ namespace ServeAll.Core.Utilities
                 try
                 {
                     var repository = new Repository<ProfileEntities>(unWork);
-                    var query = repository.FindBy(x => x.name == input);
-                    return query.profile_id;
+                    var query = repository.FindBy(x => x.name.Equals(input, StringComparison.OrdinalIgnoreCase));
+                    if (query != null)
+                        return query.profile_id;
+
+                    return 0;
                 }
                 catch (Exception ex)
                 {
@@ -241,6 +244,28 @@ namespace ServeAll.Core.Utilities
                 }
             }
         }
+
+        public static int getProfileIdByUserId(int userId)
+        {
+            using (var session = new DalSession())
+            {
+                var unWork = session.UnitofWrk;
+                unWork.Begin();
+                try
+                {
+                    // Repository for users → profile_id is a direct column
+                    var repository = new Repository<users>(unWork);
+                    var query = repository.FindBy(x => x.user_id == userId);
+                    return query?.profile_id ?? 0;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
+                }
+            }
+        }
+
 
         public static int getLastProductId()
         {

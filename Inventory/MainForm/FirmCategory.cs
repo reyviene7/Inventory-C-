@@ -534,7 +534,7 @@ namespace Inventory.MainForm
                     ID = x.category_id,
                     CODE = x.category_code,
                     CATEGORY = x.category_details,
-                    DATE = x.date_register
+                    DATE = x.date_register.ToString("MM/dd/yyyy")
                 });
 
                 gridControl.DataBindings.Clear();
@@ -565,7 +565,7 @@ namespace Inventory.MainForm
                     TELEPHONE = x.telephone_number,
                     MOBILE = x.mobile_number,
                     ADDRESS = $"{x.street}, {x.barangay}, {x.province}",
-                    DATE = x.date_register
+                    DATE = x.date_register.ToString("MM/dd/yyyy")
                 });
 
                 gridCtrlSupplier.DataBindings.Clear();
@@ -662,6 +662,8 @@ namespace Inventory.MainForm
                         txtCategoryId.Text = categoryId.ToString();
                         txtCategoryCode.Text = categoryCode;
                         txtCategoryDetails.Text = category.category_details;
+                        dkpDateRegister.Format = DateTimePickerFormat.Custom;
+                        dkpDateRegister.CustomFormat = "MM/dd/yyyy";
                         dkpDateRegister.Value = category.date_register;
                     }
                 }
@@ -699,6 +701,8 @@ namespace Inventory.MainForm
                         txtEmail.Text = supplier.email_address;
                         txtWeb.Text = supplier.web;
                         txtCompanyType.Text = supplier.company_type;
+                        dkpDateRegister.Format = DateTimePickerFormat.Custom;
+                        dkpDateRegister.CustomFormat = "MM/dd/yyyy";
                         dkpDateRegister.Value = supplier.date_register;
                     }
                 }

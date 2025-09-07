@@ -30,7 +30,6 @@ namespace Inventory.MainForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagement));
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
@@ -257,6 +256,14 @@ namespace Inventory.MainForm
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barSubItem6 = new DevExpress.XtraBars.BarSubItem();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barTopSales = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barWeeklySales = new DevExpress.XtraBars.BarButtonItem();
+            this.barLowStocks = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -1092,10 +1099,13 @@ namespace Inventory.MainForm
             this.barSubItem4,
             this.barAddExpenses,
             this.barUpdateExpenses,
-            this.barLowQuantity});
+            this.barLowQuantity,
+            this.barTopSales,
+            this.barWeeklySales,
+            this.barLowStocks});
             this.rbControl.Location = new System.Drawing.Point(0, 0);
             this.rbControl.Margin = new System.Windows.Forms.Padding(4);
-            this.rbControl.MaxItemId = 50;
+            this.rbControl.MaxItemId = 53;
             this.rbControl.Name = "rbControl";
             this.rbControl.OptionsMenuMinWidth = 440;
             this.rbControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -1103,7 +1113,8 @@ namespace Inventory.MainForm
             this.PageSel,
             this.PageInv,
             this.PageCus,
-            this.PageRep});
+            this.PageRep,
+            this.ribbonPage1});
             this.rbControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageEdit1,
             this.repositoryItemImageEdit2,
@@ -3198,6 +3209,63 @@ namespace Inventory.MainForm
             this.ribbonPageGroup8.ItemLinks.Add(this.barReportReturnWare);
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup10,
+            this.ribbonPageGroup11,
+            this.ribbonPageGroup12});
+            this.ribbonPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage1.ImageOptions.Image")));
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Charts";
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.barTopSales);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Add-Expenses";
+            this.barButtonItem1.Id = 47;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barTopSales
+            // 
+            this.barTopSales.Caption = "Top-Sales";
+            this.barTopSales.Id = 50;
+            this.barTopSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barTopSales.ImageOptions.Image")));
+            this.barTopSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barTopSales.ImageOptions.LargeImage")));
+            this.barTopSales.Name = "barTopSales";
+            // 
+            // ribbonPageGroup11
+            // 
+            this.ribbonPageGroup11.ItemLinks.Add(this.barWeeklySales);
+            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
+            // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.barLowStocks);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
+            // 
+            // barWeeklySales
+            // 
+            this.barWeeklySales.Caption = "Weekly-Sales";
+            this.barWeeklySales.Id = 51;
+            this.barWeeklySales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barWeeklySales.ImageOptions.Image")));
+            this.barWeeklySales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barWeeklySales.ImageOptions.LargeImage")));
+            this.barWeeklySales.Name = "barWeeklySales";
+            // 
+            // barLowStocks
+            // 
+            this.barLowStocks.Caption = "Low-Stocks";
+            this.barLowStocks.Id = 52;
+            this.barLowStocks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLowStocks.ImageOptions.Image")));
+            this.barLowStocks.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLowStocks.ImageOptions.LargeImage")));
+            this.barLowStocks.Name = "barLowStocks";
+            // 
             // FrmManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3205,12 +3273,13 @@ namespace Inventory.MainForm
             this.ClientSize = new System.Drawing.Size(0, 0);
             this.Controls.Add(this.spCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Management";
             this.Load += new System.EventHandler(this.FrmManagement_Load);
-            this.KeyPreview = true;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmManagement_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).EndInit();
@@ -3541,5 +3610,13 @@ namespace Inventory.MainForm
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraGrid.GridControl gridCtrlReturn;
         private DevExpress.XtraGrid.Views.Grid.GridView gridReturn;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
+        private DevExpress.XtraBars.BarButtonItem barTopSales;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barWeeklySales;
+        private DevExpress.XtraBars.BarButtonItem barLowStocks;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
     }
 }

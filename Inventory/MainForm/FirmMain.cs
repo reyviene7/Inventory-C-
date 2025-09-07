@@ -1,4 +1,5 @@
 ﻿using DevExpress.Xpo.DB;
+using DevExpress.XtraEditors;
 using Inventory.Alert;
 using Inventory.Config;
 using Inventory.PopupForm;
@@ -442,8 +443,19 @@ namespace Inventory.MainForm
                 this.Show();
             }
         }
+        private bool CanAccessReports()
+        {
+            if (_usrTyp == 1 || _usrTyp == 2)
+                return true;
+
+            XtraMessageBox.Show("You don’t have permission to access this report.",
+                "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
         private void tileReportInventoryList_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
-        { 
+        {
+            if (!CanAccessReports()) return;
 
             var name = GetUseFullName(_userId);
             ReportSetting.ListofInventoryProducts(name);
@@ -458,11 +470,15 @@ namespace Inventory.MainForm
         }
         private void tileReportProducts_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            if (!CanAccessReports()) return;
+
             var name = GetUseFullName(_userId);
             ReportSetting.ListofProductItem(name);
         }
         private void tileReportWarehouseINV_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            if (!CanAccessReports()) return;
+
             var name = GetUseFullName(_userId);
 
             var view = new FirmPopDateEntries(name, 1)
@@ -473,6 +489,8 @@ namespace Inventory.MainForm
         }
         private void tileReportWarehouseDEL_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            if (!CanAccessReports()) return;
+
             var name = GetUseFullName(_userId);
 
             var view = new FirmPopCategoryReport(name, 1)
@@ -483,6 +501,8 @@ namespace Inventory.MainForm
         }
         private void tileReportReturnWare_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            if (!CanAccessReports()) return;
+
             var name = GetUseFullName(_userId);
             var view = new FirmPopCategoryReport(name, 2)
             {
@@ -492,6 +512,8 @@ namespace Inventory.MainForm
         }
         private void tileReportSales_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
+            if (!CanAccessReports()) return;
+
             var name = GetUseFullName(_userId);
 
             var view = new FirmPopCategoryReport(name, 6)
