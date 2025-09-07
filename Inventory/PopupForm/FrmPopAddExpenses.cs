@@ -228,7 +228,7 @@ namespace Inventory.PopupForm
                         expense_type_id = FetchUtils.getExpensesType(cmbExpensesType.Text),
                         amount = decimal.Parse(txtAmount.Text),
                         entity_id = FetchUtils.getRelatedEntity(cmbRelatedEntity.Text),
-                        employee_id = FetchUtils.getEmployee(cmbEmployee.Text),
+                        profile_id = FetchUtils.getProfileId(cmbEmployee.Text),
                         description = txtDescription.Text,
                         expense_date = dkpExpensesDate.Value.Date
                     };

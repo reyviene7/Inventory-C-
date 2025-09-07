@@ -248,7 +248,7 @@ namespace Inventory.PopupForm
                     {
                         DailyExpenses.expense_type_id = FetchUtils.getExpensesType(cmbExpensesType.Text);
                         DailyExpenses.amount = decimal.Parse(txtAmount.Text);
-                        DailyExpenses.employee_id = FetchUtils.getEmployee(cmbEmployee.Text);
+                        DailyExpenses.profile_id = FetchUtils.getProfileId(cmbEmployee.Text);
                         DailyExpenses.entity_id = FetchUtils.getRelatedEntity(cmbRelatedEntity.Text);
                         DailyExpenses.description = txtDescription.Text;
                         DailyExpenses.expense_date = DateTime.Now.Date;
