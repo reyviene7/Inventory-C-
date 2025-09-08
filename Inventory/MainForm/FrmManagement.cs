@@ -3,6 +3,7 @@ using DevExpress.XtraGrid.Views.Card;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Layout;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraCharts;
 using Inventory.Config;
 using Inventory.PopupForm;
 using ServeAll.Core.Entities;
@@ -16,6 +17,8 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms.DataVisualization.Charting;
+using Series = System.Windows.Forms.DataVisualization.Charting.Series;
 
 namespace Inventory.MainForm
 {
@@ -684,6 +687,76 @@ namespace Inventory.MainForm
             bindLowQuantity();
             xInventory.SelectedTabPage = xtraQuantity;
             splashScreen.CloseWaitForm();
+        }
+
+        private void barTopSales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            xInventory.SelectedTabPage = xtraCharts;
+
+            LoadTopSalesChart();
+        }
+        private void LoadTopSalesChart()
+        {
+            // 1. Fetch all sales
+            var sales = EnumerableUtils.getSalesParticular();
+
+            // 2. Group by product & compute total quantity
+            var topProducts = sales
+                .GroupBy(s => s.item)
+                .Select(g => new
+                {
+                    Product = g.Key,
+                    TotalQty = g.Sum(x => x.qty)
+                })
+                .OrderByDescending(x => x.TotalQty) // ascending: low to high
+                .Take(6)
+                .ToList();
+
+            // 3. Clear old series (keep Designer chart areas, legends, and title)
+            chartTopSales.Series.Clear();
+
+            // 4. Create a new series
+            Series series = new Series("Top 5 Best-Selling Products")
+            {
+                ChartType = SeriesChartType.Column, // Vertical bars
+                IsValueShownAsLabel = true,
+                Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold),
+                Legend = chartTopSales.Legends[0].Name // Use Designer legend
+            };
+
+            // 5. Predefined color palette (distinct for each bar)
+            Color[] colors = new Color[]
+            {
+                Color.FromArgb(128, 255, 0),
+                Color.FromArgb(255, 0, 128),
+                Color.FromArgb(128, 0, 255),
+                Color.FromArgb(255, 0, 64),
+                Color.FromArgb(0, 192, 255)
+            };
+
+            // 6. Add points and assign colors
+            for (int i = 0; i < topProducts.Count; i++)
+            {
+                var p = topProducts[i];
+                series.Points.AddXY(p.Product, p.TotalQty);
+                series.Points[i].Color = colors[i % colors.Length];
+            }
+
+            // 7. Add series to chart (Designer formatting stays)
+            chartTopSales.Series.Add(series);
+
+            // Designer handles title, chart area, legend, colors, and fonts
+        }
+
+
+        private void barWeeklySales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barLowStocks_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
 
         private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
