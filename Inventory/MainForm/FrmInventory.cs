@@ -260,7 +260,7 @@ namespace Inventory.MainForm
         private void ButDel()
         {
             ButtonDel();
-            InputEnab();
+            InputDisb();
             InputWhit();
             _add = false;
             _edt = false;
@@ -928,6 +928,8 @@ namespace Inventory.MainForm
                         txtQty.Text = ent.quantity.ToString(CultureInfo.InvariantCulture);
                         cmbBranchName.Text = ent.branch_details;
                         txtLastCost.Text = ent.retail_price.ToString(CultureInfo.InvariantCulture);
+                        dkpInventoryDate.Format = DateTimePickerFormat.Custom;
+                        dkpInventoryDate.CustomFormat = "MM/dd/yyyy";
                         dkpInventoryDate.Value = ent.inventory_date;
                         cmbProductStatus.Text = ent.status;
                         txtBarcode.Text = barcode;
@@ -979,7 +981,11 @@ namespace Inventory.MainForm
                         txtDelReceiptNo.Text = ent.receipt_number;
                         txtDelRemarks.Text = ent.remarks;
                         cmbDelDeliveryStatus.Text = ent.delivery_status;
+                        dkpDelDeliveryDate.Format = DateTimePickerFormat.Custom;
+                        dkpDelDeliveryDate.CustomFormat = "MM/dd/yyyy";
                         dkpDelDeliveryDate.Value = ent.delivery_date;
+                        dkpDelUpdate.Format = DateTimePickerFormat.Custom;
+                        dkpDelUpdate.CustomFormat = "MM/dd/yyyy";
                         dkpDelUpdate.Value = ent.update_on;
 
                         var img = searchProductImg(barcode);
@@ -1057,6 +1063,8 @@ namespace Inventory.MainForm
                         txtSalesCustomer.Text = ent.customer;
                         cmbSalesBranch.Text = ent.branch;
                         cmbSalesStatus.Text = ent.status;
+                        dkpSalesDate.Format = DateTimePickerFormat.Custom;
+                        dkpSalesDate.CustomFormat = "MM/dd/yyyy";
                         dkpSalesDate.Value = ent.date;
 
                         var img = searchProductImg(barcode);
@@ -1122,7 +1130,7 @@ namespace Inventory.MainForm
                     QTY = x.quantity,
                     BRANCH = x.branch_details,
                     RETAIL = x.retail_price,
-                    DATE = x.inventory_date,
+                    DATE = x.inventory_date.ToString("MM/dd/yyyy"),
                     STATUS = x.status
                 });
 
@@ -1192,7 +1200,7 @@ namespace Inventory.MainForm
                     NET = x.net,
                     CUSTOMER = x.customer,
                     BRANCH = x.branch,
-                    DATE = x.date,
+                    DATE = x.date.ToString("MM/dd/yyyy"),
                 }).ToList();
 
                 gridCtrlSales.DataSource = null; 
@@ -1367,6 +1375,49 @@ namespace Inventory.MainForm
             if (e.KeyCode == Keys.Tab)
             {
                 cmbProductStatus_KeyDown(sender, new KeyEventArgs(Keys.Tab));
+            }
+        }
+
+        private void xtraInventory_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (e.Page == xtraIntake)
+            {
+                listInventory = EnumerableUtils.getInventory();
+                BindInventory();
+
+                bntAdd.Enabled = true;
+                bntUpdate.Enabled = true;
+                bntDelete.Enabled = true;
+            }
+            if (e.Page == xtraDelivery && e.PrevPage == xtraIntake)
+            {
+                _add = false;
+                _edt = false;
+                _del = false;
+
+                bntAdd.Enabled = false;
+                bntUpdate.Enabled = false;
+                bntDelete.Enabled = false;
+                bntSave.Enabled = false;
+                bntClear.Enabled = false;
+                bntCancel.Enabled = false;
+                listWarehouseProduct = EnumerableUtils.getWarehouseProduct();
+                BindWarehouseProduct();
+            }
+            if (e.Page == xtraSales && e.PrevPage == xtraIntake)
+            {
+                _add = false;
+                _edt = false;
+                _del = false;
+
+                bntAdd.Enabled = false;
+                bntUpdate.Enabled = false;
+                bntDelete.Enabled = false;
+                bntSave.Enabled = false;
+                bntClear.Enabled = false;
+                bntCancel.Enabled = false;
+                listSalesPart = EnumerableUtils.getSalesParticular();
+                BindSalesPart();
             }
         }
 

@@ -192,6 +192,7 @@
         public const string AllUserImage = "SELECT * FROM user_image";
         public const string AllViewUserImage = "SELECT * FROM view_user_image";
         public const string AllStaff = @"SELECT * FROM view_request_staff ORDER BY staff ASC";
+        public const string AllProfileEnt = @"SELECT * FROM view_profile_entities ORDER BY name ASC";
         public const string AllDeliveryStatus = @"SELECT * FROM delivery_status ORDER BY delivery_status ASC";
         public const string AllPaymentMethod = @"SELECT method_name FROM payment_method";
         public const string AllExpenseType = @"SELECT type_name FROM expense_type";
@@ -327,7 +328,7 @@
         public const string getLastDeliveryIdQuery = "SELECT COUNT(delivery_id) as delivery_id FROM view_warehouse_delivery";
         public const string getLastInventoryIdQuery = "SELECT MAX(inventory_id) as inventory_id FROM view_inventory";
         public const string getLastAddressIdQuery = "SELECT COUNT(address_id) as address_id FROM address";
-        public const string getLastServiceIdQuery = "SELECT COUNT(service_id) as service_id FROM services";
+        public const string getLastServiceIdQuery = "SELECT MAX(service_id) as service_id FROM services";
         public const string getLastServiceImgQuery = "SELECT COUNT(image_id) as image_id FROM service_image";
         public const string getLastInventoryQuery = "SELECT MAX(inventory_id) as inventory_id FROM inventory";
         public const string getLastReturnQuery = "SELECT MAX(return_id) as return_id FROM return_warehouse";
@@ -379,6 +380,7 @@
         ";
         public const string getWarehouseReturn = @"SELECT * FROM view_return_warehouse ";
         public const string getServices = "SELECT * FROM view_services ORDER BY service_id DESC";
+        public const string getCashBreakdown = "SELECT * FROM view_cash_breakdown ORDER BY breakdown_id DESC";
         public const string getWarehouseDelivery = @"SELECT * FROM view_warehouse_delivery ORDER BY delivery_id DESC";
         public const string getOrgWarehouseDelivery = @"SELECT * FROM warehouse_delivery ORDER BY delivery_id DESC";
         public const string getDeliveryStatus = @"SELECT * FROM delivery_status";
@@ -387,7 +389,7 @@
         public const string getAcceptedDelivery = @"SELECT * FROM view_accepted_delivery WHERE branch_details = @branch ORDER BY received_id DESC";
         public const string getCreditSales = @"SELECT * FROM view_credit_sales WHERE branch = @branch ORDER BY id DESC";
         public const string getDailyExpenses = @"SELECT * FROM view_daily_expenses ORDER BY expense_id DESC";
-        public const string getLowQuantity = @"SELECT * FROM view_inventory WHERE quantity <= 5 ORDER BY quantity ASC";
+        public const string getLowQuantity = @"SELECT * FROM view_inventory WHERE quantity <= 20 ORDER BY quantity ASC";
         public const string getContactById = @"SELECT * FROM contact WHERE contact_id = @contact";
         public const string getAddressById = @"SELECT * FROM address WHERE address_id = @address";
         public const string getMachineByKey = "SELECT * FROM authorized_machine where machine_key = @machineKey AND machine_name = @machineName";

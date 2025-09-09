@@ -30,7 +30,6 @@ namespace Inventory.MainForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInventory));
             this.pnlRightOptions = new System.Windows.Forms.Panel();
@@ -404,6 +403,7 @@ namespace Inventory.MainForm
             this.xtraIntake,
             this.xtraDelivery,
             this.xtraSales});
+            this.xtraInventory.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraInventory_SelectedPageChanged);
             // 
             // xtraIntake
             // 
@@ -2400,6 +2400,7 @@ namespace Inventory.MainForm
             this.Controls.Add(this.pnlRightOptions);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmInventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -123,7 +123,7 @@ namespace Inventory.MainForm
                     MOBILE = x.mobile_number,
                     EMAIL = x.email_address,
                     FAX = x.fax_number,
-                    DATE = x.date_added
+                    DATE = x.date_added.ToString("MM/dd/yyyy")
                 });
 
                 gridControl.DataSource = list;
@@ -239,7 +239,7 @@ namespace Inventory.MainForm
         private void ButDel()
         {
             ButtonDel();
-            InputEnable();
+            InputDisable();
             InputWhite();
             _add = false;
             _edt = false;
@@ -782,6 +782,8 @@ namespace Inventory.MainForm
                         txtMobile.Text = ent.mobile_number;
                         txtEmail.Text = ent.email_address;
                         txtFax.Text = ent.fax_number;
+                        dkpDateRegister.Format = DateTimePickerFormat.Custom;
+                        dkpDateRegister.CustomFormat = "MM/dd/yyyy";
                         dkpDateRegister.Value = ent.date_added;
                     }
                 }

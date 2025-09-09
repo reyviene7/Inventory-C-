@@ -30,9 +30,11 @@ namespace Inventory.MainForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new Icon("wizard.ico");
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagement));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.splashScreen = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Inventory.MainForm.FrmWait), true, true);
             this.bntSave = new DevExpress.XtraBars.BarSubItem();
             this.barDLT = new DevExpress.XtraBars.BarButtonItem();
@@ -146,6 +148,9 @@ namespace Inventory.MainForm
             this.barInvoice = new DevExpress.XtraBars.BarSubItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.barLowQuantity = new DevExpress.XtraBars.BarButtonItem();
+            this.barTopSales = new DevExpress.XtraBars.BarButtonItem();
+            this.barWeeklySales = new DevExpress.XtraBars.BarButtonItem();
+            this.barLowStocks = new DevExpress.XtraBars.BarButtonItem();
             this.PageSel = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribUSE = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribPAR = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -163,6 +168,10 @@ namespace Inventory.MainForm
             this.ribPAM = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribDEL = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.clock = new System.Windows.Forms.Timer(this.components);
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.lblBarcode = new System.Windows.Forms.Label();
@@ -230,6 +239,9 @@ namespace Inventory.MainForm
             this.gridView19 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView20 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView21 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.xtraCharts = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.chartTopSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRetail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -257,6 +269,7 @@ namespace Inventory.MainForm
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barSubItem6 = new DevExpress.XtraBars.BarSubItem();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -340,6 +353,10 @@ namespace Inventory.MainForm
             ((System.ComponentModel.ISupportInitialize)(this.gridView19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView21)).BeginInit();
+            this.xtraCharts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTopSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcLOG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spCON)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spCON.Panel1)).BeginInit();
@@ -1092,10 +1109,13 @@ namespace Inventory.MainForm
             this.barSubItem4,
             this.barAddExpenses,
             this.barUpdateExpenses,
-            this.barLowQuantity});
+            this.barLowQuantity,
+            this.barTopSales,
+            this.barWeeklySales,
+            this.barLowStocks});
             this.rbControl.Location = new System.Drawing.Point(0, 0);
             this.rbControl.Margin = new System.Windows.Forms.Padding(4);
-            this.rbControl.MaxItemId = 50;
+            this.rbControl.MaxItemId = 53;
             this.rbControl.Name = "rbControl";
             this.rbControl.OptionsMenuMinWidth = 440;
             this.rbControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -1103,7 +1123,8 @@ namespace Inventory.MainForm
             this.PageSel,
             this.PageInv,
             this.PageCus,
-            this.PageRep});
+            this.PageRep,
+            this.ribbonPage1});
             this.rbControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageEdit1,
             this.repositoryItemImageEdit2,
@@ -1384,6 +1405,33 @@ namespace Inventory.MainForm
             this.barLowQuantity.Name = "barLowQuantity";
             this.barLowQuantity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barLowQuantity_ItemClick);
             // 
+            // barTopSales
+            // 
+            this.barTopSales.Caption = "Top-Sales";
+            this.barTopSales.Id = 50;
+            this.barTopSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barTopSales.ImageOptions.Image")));
+            this.barTopSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barTopSales.ImageOptions.LargeImage")));
+            this.barTopSales.Name = "barTopSales";
+            this.barTopSales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barTopSales_ItemClick);
+            // 
+            // barWeeklySales
+            // 
+            this.barWeeklySales.Caption = "Weekly-Sales";
+            this.barWeeklySales.Id = 51;
+            this.barWeeklySales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barWeeklySales.ImageOptions.Image")));
+            this.barWeeklySales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barWeeklySales.ImageOptions.LargeImage")));
+            this.barWeeklySales.Name = "barWeeklySales";
+            this.barWeeklySales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barWeeklySales_ItemClick);
+            // 
+            // barLowStocks
+            // 
+            this.barLowStocks.Caption = "Low-Stocks";
+            this.barLowStocks.Id = 52;
+            this.barLowStocks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLowStocks.ImageOptions.Image")));
+            this.barLowStocks.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLowStocks.ImageOptions.LargeImage")));
+            this.barLowStocks.Name = "barLowStocks";
+            this.barLowStocks.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barLowStocks_ItemClick);
+            // 
             // PageSel
             // 
             this.PageSel.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -1488,6 +1536,31 @@ namespace Inventory.MainForm
             // 
             this.ribbonPageGroup5.ItemLinks.Add(this.barReportServicesParticular);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup10,
+            this.ribbonPageGroup11,
+            this.ribbonPageGroup12});
+            this.ribbonPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage1.ImageOptions.Image")));
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Charts";
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.barTopSales);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            // 
+            // ribbonPageGroup11
+            // 
+            this.ribbonPageGroup11.ItemLinks.Add(this.barWeeklySales);
+            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
+            // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.barLowStocks);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             // 
             // txtBarcode
             // 
@@ -1658,6 +1731,7 @@ namespace Inventory.MainForm
             this.xInventory.Location = new System.Drawing.Point(28, 159);
             this.xInventory.Margin = new System.Windows.Forms.Padding(4);
             this.xInventory.Name = "xInventory";
+            this.xInventory.SelectedTabPage = this.xtraPending;
             this.xInventory.Size = new System.Drawing.Size(2087, 617);
             this.xInventory.TabIndex = 242;
             this.xInventory.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
@@ -1668,7 +1742,8 @@ namespace Inventory.MainForm
             this.xtraSales,
             this.xtraCredits,
             this.xtraDaily,
-            this.xtraQuantity});
+            this.xtraQuantity,
+            this.xtraCharts});
             // 
             // xtraPending
             // 
@@ -2843,6 +2918,60 @@ namespace Inventory.MainForm
             this.gridView21.GridControl = this.gridCtrlQuantity;
             this.gridView21.Name = "gridView21";
             // 
+            // xtraCharts
+            // 
+            this.xtraCharts.Controls.Add(this.groupControl4);
+            this.xtraCharts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraCharts.ImageOptions.Image")));
+            this.xtraCharts.Margin = new System.Windows.Forms.Padding(4);
+            this.xtraCharts.Name = "xtraCharts";
+            this.xtraCharts.Size = new System.Drawing.Size(2085, 590);
+            this.xtraCharts.Text = "Charts";
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupControl4.Appearance.Options.UseBackColor = true;
+            this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl4.Controls.Add(this.chartTopSales);
+            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl4.Location = new System.Drawing.Point(0, 0);
+            this.groupControl4.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.groupControl4.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupControl4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(2085, 590);
+            this.groupControl4.TabIndex = 178;
+            // 
+            // chartTopSales
+            // 
+            this.chartTopSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.chartTopSales.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            chartArea1.Name = "ChartArea1";
+            this.chartTopSales.ChartAreas.Add(chartArea1);
+            legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.ForeColor = System.Drawing.Color.White;
+            legend1.Name = "Legend1";
+            this.chartTopSales.Legends.Add(legend1);
+            this.chartTopSales.Location = new System.Drawing.Point(277, 50);
+            this.chartTopSales.Name = "chartTopSales";
+            series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            series1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartTopSales.Series.Add(series1);
+            this.chartTopSales.Size = new System.Drawing.Size(1457, 500);
+            this.chartTopSales.TabIndex = 0;
+            this.chartTopSales.Text = "Top Sales Chart";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -3120,7 +3249,7 @@ namespace Inventory.MainForm
             this.lblInvoice.BackColor = System.Drawing.Color.Transparent;
             this.lblInvoice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblInvoice.ForeColor = System.Drawing.Color.White;
-            this.lblInvoice.Location = new System.Drawing.Point(902, 44);
+            this.lblInvoice.Location = new System.Drawing.Point(901, 44);
             this.lblInvoice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInvoice.Name = "lblInvoice";
             this.lblInvoice.Size = new System.Drawing.Size(100, 28);
@@ -3198,19 +3327,28 @@ namespace Inventory.MainForm
             this.ribbonPageGroup8.ItemLinks.Add(this.barReportReturnWare);
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Add-Expenses";
+            this.barButtonItem1.Id = 47;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // FrmManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(0, 0);
+            this.ClientSize = new System.Drawing.Size(1920, 1055);
             this.Controls.Add(this.spCON);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Management";
             this.Load += new System.EventHandler(this.FrmManagement_Load);
-            this.KeyPreview = true;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmManagement_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).EndInit();
@@ -3296,6 +3434,10 @@ namespace Inventory.MainForm
             ((System.ComponentModel.ISupportInitialize)(this.gridView19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView21)).EndInit();
+            this.xtraCharts.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartTopSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcLOG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spCON.Panel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spCON.Panel2)).EndInit();
@@ -3541,5 +3683,16 @@ namespace Inventory.MainForm
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraGrid.GridControl gridCtrlReturn;
         private DevExpress.XtraGrid.Views.Grid.GridView gridReturn;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
+        private DevExpress.XtraBars.BarButtonItem barTopSales;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barWeeklySales;
+        private DevExpress.XtraBars.BarButtonItem barLowStocks;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
+        private DevExpress.XtraTab.XtraTabPage xtraCharts;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTopSales;
     }
 }
