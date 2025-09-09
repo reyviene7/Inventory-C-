@@ -1375,6 +1375,10 @@ namespace Inventory.MainForm
             if (e.Page == XtrPerProfile)
             {
                 bindRefreshed();
+
+                bntAdd.Enabled = true;
+                bntUpdate.Enabled = true;
+                bntDelete.Enabled = true;
             }
             if (e.Page == xtraTabImage && e.PrevPage == XtrPerProfile)
             {
