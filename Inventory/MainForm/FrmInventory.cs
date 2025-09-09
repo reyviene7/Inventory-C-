@@ -1384,6 +1384,10 @@ namespace Inventory.MainForm
             {
                 listInventory = EnumerableUtils.getInventory();
                 BindInventory();
+
+                bntAdd.Enabled = true;
+                bntUpdate.Enabled = true;
+                bntDelete.Enabled = true;
             }
             if (e.Page == xtraDelivery && e.PrevPage == xtraIntake)
             {
