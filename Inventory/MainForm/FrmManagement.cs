@@ -19,6 +19,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Windows.Forms.DataVisualization.Charting;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
+using Title = System.Windows.Forms.DataVisualization.Charting.Title;
 
 namespace Inventory.MainForm
 {
@@ -695,12 +696,25 @@ namespace Inventory.MainForm
 
             LoadTopSalesChart();
         }
+
+        private void barWeeklySales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            xInventory.SelectedTabPage = xtraCharts;
+
+            LoadWeeklySalesChart();
+        }
+
+        private void barLowStocks_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            xInventory.SelectedTabPage = xtraCharts;
+
+            LoadLowStocksChart();
+        }
+
         private void LoadTopSalesChart()
         {
-            // 1. Fetch all sales
             var sales = EnumerableUtils.getSalesParticular();
 
-            // 2. Group by product & compute total quantity
             var topProducts = sales
                 .GroupBy(s => s.item)
                 .Select(g => new
@@ -708,23 +722,30 @@ namespace Inventory.MainForm
                     Product = g.Key,
                     TotalQty = g.Sum(x => x.qty)
                 })
-                .OrderByDescending(x => x.TotalQty) // ascending: low to high
-                .Take(6)
+                .OrderByDescending(x => x.TotalQty)
+                .Take(5)
                 .ToList();
 
-            // 3. Clear old series (keep Designer chart areas, legends, and title)
             chartTopSales.Series.Clear();
+            chartTopSales.Titles.Clear();
 
-            // 4. Create a new series
-            Series series = new Series("Top 5 Best-Selling Products")
+            Title chartTitle = new Title("Top 5 Best-Selling Products")
             {
-                ChartType = SeriesChartType.Column, // Vertical bars
-                IsValueShownAsLabel = true,
-                Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold),
-                Legend = chartTopSales.Legends[0].Name // Use Designer legend
+                Font = new System.Drawing.Font("Segoe UI", 14F, FontStyle.Bold),
+                ForeColor = Color.White,
+                Alignment = ContentAlignment.TopCenter
             };
 
-            // 5. Predefined color palette (distinct for each bar)
+            chartTopSales.Titles.Add(chartTitle);
+            Series series = new Series("")
+            {
+                ChartType = SeriesChartType.Column,
+                IsValueShownAsLabel = true,
+                Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold),
+                Legend = chartTopSales.Legends[0].Name
+            };
+            chartTopSales.Legends[0].Enabled = false;
+
             Color[] colors = new Color[]
             {
                 Color.FromArgb(128, 255, 0),
@@ -734,29 +755,120 @@ namespace Inventory.MainForm
                 Color.FromArgb(0, 192, 255)
             };
 
-            // 6. Add points and assign colors
             for (int i = 0; i < topProducts.Count; i++)
             {
                 var p = topProducts[i];
                 series.Points.AddXY(p.Product, p.TotalQty);
                 series.Points[i].Color = colors[i % colors.Length];
             }
-
-            // 7. Add series to chart (Designer formatting stays)
             chartTopSales.Series.Add(series);
-
-            // Designer handles title, chart area, legend, colors, and fonts
         }
 
-
-        private void barWeeklySales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void LoadWeeklySalesChart()
         {
+            var sales = EnumerableUtils.getSalesParticular();
 
+            DateTime today = DateTime.Today;
+            int diff = (7 + (today.DayOfWeek - DayOfWeek.Sunday)) % 7;
+            DateTime sunday = today.AddDays(-diff).Date;
+            DateTime saturday = sunday.AddDays(6).Date;
+
+            var weeklySales = sales
+                .Where(s => s.date.Date >= sunday && s.date.Date <= saturday)
+                .GroupBy(s => s.date.DayOfWeek)
+                .Select(g => new
+                {
+                    Day = g.Key,
+                    TotalSales = g.Sum(x => x.net)
+                })
+                .ToList();
+
+            var orderedDays = new[]
+            {
+                DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Tuesday,
+                DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday, DayOfWeek.Saturday
+            };
+
+            chartTopSales.Series.Clear();
+            chartTopSales.Titles.Clear();
+
+            Title chartTitle = new Title("Weekly Sales (Sunday to Saturday)")
+            {
+                Font = new System.Drawing.Font("Segoe UI", 14F, FontStyle.Bold),
+                ForeColor = Color.White,
+                Alignment = ContentAlignment.TopCenter
+            };
+            chartTopSales.Titles.Add(chartTitle);
+
+            Series series = new Series("")
+            {
+                ChartType = SeriesChartType.Column,
+                IsValueShownAsLabel = true,
+                Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold),
+                Legend = chartTopSales.Legends[0].Name
+            };
+            chartTopSales.Legends[0].Enabled = false;
+
+            Color[] colors = new Color[]
+            {
+                Color.OrangeRed, Color.Gold, Color.LightGreen,
+                Color.DeepSkyBlue, Color.MediumPurple, Color.Coral, Color.Turquoise
+            };
+
+            for (int i = 0; i < orderedDays.Length; i++)
+            {
+                var day = orderedDays[i];
+                var salesForDay = weeklySales.FirstOrDefault(x => x.Day == day);
+
+                decimal total = salesForDay?.TotalSales ?? 0;
+                int pointIndex = series.Points.AddXY(day.ToString(), total);
+                series.Points[pointIndex].Color = colors[i % colors.Length];
+            }
+            chartTopSales.Series.Add(series);
         }
 
-        private void barLowStocks_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void LoadLowStocksChart()
         {
+            var inventory = EnumerableUtils.getInventoryList();
 
+            var lowStocks = inventory
+                .OrderBy(x => x.quantity) 
+                .Take(5)
+                .ToList();
+
+            chartTopSales.Series.Clear();
+            chartTopSales.Titles.Clear();
+
+            Title chartTitle = new Title("Top 5 Products with Lowest Stocks")
+            {
+                Font = new System.Drawing.Font("Segoe UI", 14F, FontStyle.Bold),
+                ForeColor = Color.White,
+                Alignment = ContentAlignment.TopCenter
+            };
+            chartTopSales.Titles.Add(chartTitle);
+
+            Series series = new Series("")
+            {
+                ChartType = SeriesChartType.Column, 
+                IsValueShownAsLabel = true,
+                Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold),
+                Legend = chartTopSales.Legends[0].Name
+            };
+            chartTopSales.Legends[0].Enabled = false;
+
+            Color[] colors = new Color[]
+            {
+                Color.OrangeRed, Color.Gold, Color.MediumPurple, Color.DeepSkyBlue, Color.LimeGreen
+            };
+
+            for (int i = 0; i < lowStocks.Count; i++)
+            {
+                var item = lowStocks[i];
+                int pointIndex = series.Points.AddXY(item.product_name, item.quantity);
+                series.Points[pointIndex].Color = colors[i % colors.Length];
+            }
+
+            chartTopSales.Series.Add(series);
         }
 
         private void cardPending_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)

@@ -389,7 +389,7 @@
         public const string getAcceptedDelivery = @"SELECT * FROM view_accepted_delivery WHERE branch_details = @branch ORDER BY received_id DESC";
         public const string getCreditSales = @"SELECT * FROM view_credit_sales WHERE branch = @branch ORDER BY id DESC";
         public const string getDailyExpenses = @"SELECT * FROM view_daily_expenses ORDER BY expense_id DESC";
-        public const string getLowQuantity = @"SELECT * FROM view_inventory WHERE quantity <= 5 ORDER BY quantity ASC";
+        public const string getLowQuantity = @"SELECT * FROM view_inventory WHERE quantity <= 20 ORDER BY quantity ASC";
         public const string getContactById = @"SELECT * FROM contact WHERE contact_id = @contact";
         public const string getAddressById = @"SELECT * FROM address WHERE address_id = @address";
         public const string getMachineByKey = "SELECT * FROM authorized_machine where machine_key = @machineKey AND machine_name = @machineName";
