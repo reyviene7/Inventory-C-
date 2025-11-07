@@ -1204,6 +1204,18 @@ namespace Inventory.MainForm
                 bntCANCEL.Enabled = false;
                 BindDeliveryList();
             }
+            if (e.Page == tabDEL && e.PrevPage == tabHIS)
+            {
+                bntADD.Enabled = true;
+                bntUPDATE.Enabled = true;
+                bntDELETE.Enabled = true;
+                bntSAVE.Enabled = false;
+                bntCLEAR.Enabled = true;
+                bntCANCEL.Enabled = false;
+                bntHOME.Enabled = true;
+                BindWareHouse();
+            }
+
         }
 
         private void UpdateDelivery()
